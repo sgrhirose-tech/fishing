@@ -1,0 +1,697 @@
+#!/usr/bin/env python3
+"""
+シロギス釣り場アドバイザー
+投げ釣りで白ギスを釣るのに適した釣り場を推薦します
+対応エリア: 相模湾・東京湾・内房・外房
+
+使い方:
+    python fishing_advisor.py             # 翌日の予報を表示
+    python fishing_advisor.py 2025-06-15  # 指定日の予報を表示
+"""
+
+import os
+import sys
+import json
+import math
+import requests
+from datetime import datetime, timedelta, timezone
+
+JST = timezone(timedelta(hours=9))
+
+# ============================================================
+# 釣り場データ（固定情報）
+# shore_direction: 海岸線が「海に向かって」いる方位（度）
+#   例）南向きの砂浜 → 180
+#   「追い風（オフショア）」＝陸から海への風＝この方向の逆から吹く風
+# seabed: sand=砂地, sand_gravel=砂礫, sand_mud=砂泥, sand_rock=砂と岩礁混在
+# ============================================================
+FISHING_SPOTS = [
+    # ---- 相模湾 ----
+    {
+        "id": "tsujido",
+        "name": "辻堂海岸",
+        "area": "相模湾",
+        "lat": 35.3285,
+        "lon": 139.4567,
+        "shore_direction": 180,
+        "seabed": "sand",
+        "depth_near": 5,
+        "depth_far": 15,
+        "surfer_spot": True,
+        "notes": "湘南の代表的な砂浜。サーファー多め。オフショア時は空きやすい",
+        "access": "辻堂駅から徒歩15分",
+    },
+    {
+        "id": "katase",
+        "name": "片瀬西浜（江ノ島）",
+        "area": "相模湾",
+        "lat": 35.3037,
+        "lon": 139.4797,
+        "shore_direction": 185,
+        "seabed": "sand",
+        "depth_near": 4,
+        "depth_far": 12,
+        "surfer_spot": True,
+        "notes": "広い砂浜。サーファー多い。江ノ島の西側で多少風が遮られる",
+        "access": "片瀬江ノ島駅から徒歩5分",
+    },
+    {
+        "id": "oiso",
+        "name": "大磯海岸",
+        "area": "相模湾",
+        "lat": 35.3049,
+        "lon": 139.3093,
+        "shore_direction": 175,
+        "seabed": "sand_gravel",
+        "depth_near": 5,
+        "depth_far": 20,
+        "surfer_spot": False,
+        "notes": "砂と砂利が混じる。サーファー少なめ。良型シロギスが出ることも",
+        "access": "大磯駅から徒歩10分",
+    },
+    {
+        "id": "hiratsuka",
+        "name": "平塚海岸",
+        "area": "相模湾",
+        "lat": 35.3197,
+        "lon": 139.3479,
+        "shore_direction": 180,
+        "seabed": "sand",
+        "depth_near": 4,
+        "depth_far": 15,
+        "surfer_spot": True,
+        "notes": "遠浅の砂浜。平塚新港も近く便利",
+        "access": "平塚駅からバス20分",
+    },
+    {
+        "id": "sakawa",
+        "name": "酒匂海岸（小田原）",
+        "area": "相模湾",
+        "lat": 35.2587,
+        "lon": 139.1593,
+        "shore_direction": 170,
+        "seabed": "sand",
+        "depth_near": 5,
+        "depth_far": 20,
+        "surfer_spot": False,
+        "notes": "比較的空いている穴場。砂地が広がる",
+        "access": "鴨宮駅から車10分",
+    },
+    # ---- 東京湾 ----
+    {
+        "id": "nojima",
+        "name": "野島海岸（金沢八景）",
+        "area": "東京湾",
+        "lat": 35.3374,
+        "lon": 139.6405,
+        "shore_direction": 100,
+        "seabed": "sand_mud",
+        "depth_near": 3,
+        "depth_far": 10,
+        "surfer_spot": False,
+        "notes": "東京湾内で穏やか。砂泥底。波が静かでファミリー可",
+        "access": "金沢八景駅から徒歩20分",
+    },
+    {
+        "id": "futtsu",
+        "name": "富津海岸",
+        "area": "東京湾",
+        "lat": 35.3085,
+        "lon": 139.8134,
+        "shore_direction": 270,
+        "seabed": "sand",
+        "depth_near": 2,
+        "depth_far": 8,
+        "surfer_spot": False,
+        "notes": "東京湾内の遠浅砂地。波が静かでシロギスに最適",
+        "access": "佐貫町駅から車15分",
+    },
+    # ---- 内房 ----
+    {
+        "id": "hota",
+        "name": "保田海岸",
+        "area": "内房",
+        "lat": 35.1677,
+        "lon": 139.8289,
+        "shore_direction": 290,
+        "seabed": "sand",
+        "depth_near": 3,
+        "depth_far": 15,
+        "surfer_spot": False,
+        "notes": "内房の砂浜ポイント。シロギスの好場",
+        "access": "保田駅から徒歩5分",
+    },
+    {
+        "id": "takeoka",
+        "name": "竹岡・関豊海岸",
+        "area": "内房",
+        "lat": 35.2762,
+        "lon": 139.8012,
+        "shore_direction": 280,
+        "seabed": "sand_rock",
+        "depth_near": 5,
+        "depth_far": 20,
+        "surfer_spot": False,
+        "notes": "砂と岩礁が混在。変化に富む地形",
+        "access": "竹岡駅から徒歩10分",
+    },
+    # ---- 外房 ----
+    {
+        "id": "ohara",
+        "name": "大原海岸",
+        "area": "外房",
+        "lat": 35.2536,
+        "lon": 140.3734,
+        "shore_direction": 95,
+        "seabed": "sand",
+        "depth_near": 4,
+        "depth_far": 15,
+        "surfer_spot": True,
+        "notes": "外房の砂地。外洋に面しているためうねりが入りやすい",
+        "access": "大原駅から徒歩10分",
+    },
+    {
+        "id": "onjuku",
+        "name": "御宿海岸",
+        "area": "外房",
+        "lat": 35.1822,
+        "lon": 140.3864,
+        "shore_direction": 110,
+        "seabed": "sand",
+        "depth_near": 4,
+        "depth_far": 18,
+        "surfer_spot": True,
+        "notes": "白砂のシロギス名所。外洋うねり注意",
+        "access": "御宿駅から徒歩15分",
+    },
+    {
+        "id": "moriya",
+        "name": "守谷海岸（勝浦）",
+        "area": "外房",
+        "lat": 35.1486,
+        "lon": 140.3174,
+        "shore_direction": 130,
+        "seabed": "sand",
+        "depth_near": 5,
+        "depth_far": 20,
+        "surfer_spot": False,
+        "notes": "透明度高い砂浜。遠浅でシロギスの好ポイント",
+        "access": "勝浦駅から徒歩20分",
+    },
+]
+
+
+# ============================================================
+# 気象・海洋データ取得
+# Open-Meteo API（無料・API key不要・ECMWFモデル使用）
+# https://open-meteo.com/
+# ============================================================
+
+def fetch_weather(lat, lon, date_str):
+    """
+    Open-Meteo Weather APIから気象データを取得
+    風速・風向・降水量を取得します
+    """
+    url = "https://api.open-meteo.com/v1/forecast"
+    params = {
+        "latitude": lat,
+        "longitude": lon,
+        "daily": [
+            "wind_speed_10m_max",
+            "wind_direction_10m_dominant",
+            "precipitation_sum",
+            "weather_code",
+        ],
+        "wind_speed_unit": "ms",
+        "timezone": "Asia/Tokyo",
+        "start_date": date_str,
+        "end_date": date_str,
+    }
+    try:
+        resp = requests.get(url, params=params, timeout=15)
+        resp.raise_for_status()
+        return resp.json()
+    except Exception as e:
+        print(f"  [警告] 気象データ取得失敗 ({lat},{lon}): {e}", file=sys.stderr)
+        return {}
+
+
+def fetch_marine(lat, lon, date_str):
+    """
+    Open-Meteo Marine APIから海洋データを取得
+    波高・波向き・海面水温を取得します
+    ※東京湾など内湾では波浪データが不正確な場合があります
+    """
+    url = "https://marine-api.open-meteo.com/v1/marine"
+    params = {
+        "latitude": lat,
+        "longitude": lon,
+        "hourly": ["sea_surface_temperature"],
+        "daily": ["wave_height_max", "dominant_wave_direction"],
+        "timezone": "Asia/Tokyo",
+        "start_date": date_str,
+        "end_date": date_str,
+    }
+    try:
+        resp = requests.get(url, params=params, timeout=15)
+        resp.raise_for_status()
+        return resp.json()
+    except Exception as e:
+        print(f"  [警告] 海洋データ取得失敗 ({lat},{lon}): {e}", file=sys.stderr)
+        return {}
+
+
+# ============================================================
+# スコアリング関数
+# ============================================================
+
+def angle_diff(a, b):
+    """2つの方位角の最小差（0〜180度）を返す"""
+    diff = abs(a - b) % 360
+    return min(diff, 360 - diff)
+
+
+def calc_wind_score(wind_speed, wind_dir, shore_direction):
+    """
+    風のスコアを計算する
+    shore_direction: 海岸が海側を向いている方位（度）
+    wind_dir: 風が吹いてくる方向（気象慣例: 北から吹く風=0度）
+
+    追い風（オフショア）= 陸→海方向に吹く風
+    陸側方位 = shore_direction + 180 度
+    """
+    inland_dir = (shore_direction + 180) % 360
+    diff = angle_diff(wind_dir, inland_dir)
+
+    # 風向きスコア（追い風かどうか）
+    if diff <= 45:
+        dir_label = "追い風（オフショア）"
+        dir_pts = 10
+        is_surfer_friendly = False   # オフショア=サーファーが来にくい
+    elif diff <= 90:
+        dir_label = "やや追い風"
+        dir_pts = 7
+        is_surfer_friendly = False
+    elif diff <= 135:
+        dir_label = "横風〜やや向かい風"
+        dir_pts = 4
+        is_surfer_friendly = True
+    else:
+        dir_label = "向かい風（オンショア）"
+        dir_pts = 1
+        is_surfer_friendly = True    # オンショア=サーファーが来やすい
+
+    # 風速スコア
+    if wind_speed < 3.0:
+        spd_label = f"{wind_speed:.1f}m/s（微風）"
+        spd_pts = 15
+    elif wind_speed < 5.0:
+        spd_label = f"{wind_speed:.1f}m/s（弱風）"
+        spd_pts = 12
+    elif wind_speed < 7.0:
+        spd_label = f"{wind_speed:.1f}m/s（やや強い）"
+        spd_pts = 7
+    elif wind_speed < 10.0:
+        spd_label = f"{wind_speed:.1f}m/s（強風）"
+        spd_pts = 3
+    else:
+        spd_label = f"{wind_speed:.1f}m/s（非常に強い）"
+        spd_pts = 0
+
+    return {
+        "dir_pts": dir_pts,
+        "spd_pts": spd_pts,
+        "dir_label": dir_label,
+        "spd_label": spd_label,
+        "surfer_friendly": is_surfer_friendly,
+        "total_pts": dir_pts + spd_pts,
+    }
+
+
+def calc_wave_score(wave_height):
+    """波高スコア（投げ釣りでの釣りやすさ）"""
+    if wave_height is None:
+        return {"pts": 10, "label": "データなし"}
+    if wave_height < 0.3:
+        return {"pts": 20, "label": f"{wave_height:.1f}m（ベタ凪）"}
+    elif wave_height < 0.5:
+        return {"pts": 16, "label": f"{wave_height:.1f}m（穏やか）"}
+    elif wave_height < 0.8:
+        return {"pts": 10, "label": f"{wave_height:.1f}m（やや波あり）"}
+    elif wave_height < 1.2:
+        return {"pts": 4, "label": f"{wave_height:.1f}m（波あり・釣りにくい）"}
+    else:
+        return {"pts": 0, "label": f"{wave_height:.1f}m（荒れ・釣り不可）"}
+
+
+def calc_temp_score(sst):
+    """
+    海面水温スコア（シロギスの適水温）
+    シロギスは水温18〜26°Cが適温、20〜24°Cが最適
+    """
+    if sst is None:
+        return {"pts": 12, "label": "データなし"}
+    if 20.0 <= sst <= 24.0:
+        return {"pts": 20, "label": f"{sst:.1f}°C（最適）"}
+    elif 18.0 <= sst < 20.0 or 24.0 < sst <= 26.0:
+        return {"pts": 15, "label": f"{sst:.1f}°C（良好）"}
+    elif 15.0 <= sst < 18.0 or 26.0 < sst <= 28.0:
+        return {"pts": 7, "label": f"{sst:.1f}°C（やや不向き）"}
+    else:
+        return {"pts": 2, "label": f"{sst:.1f}°C（厳しい）"}
+
+
+def calc_seabed_score(seabed):
+    """底質スコア（シロギスは砂地が必須）"""
+    table = {
+        "sand":        (35, "砂地（最適）"),
+        "sand_gravel": (25, "砂礫（良好）"),
+        "sand_mud":    (20, "砂泥（可）"),
+        "sand_rock":   (15, "砂と岩礁混在（やや不向き）"),
+        "rock":        (0,  "岩礁（不向き）"),
+        "mud":         (3,  "泥底（不向き）"),
+    }
+    pts, label = table.get(seabed, (10, seabed))
+    return {"pts": pts, "label": label}
+
+
+# ============================================================
+# 釣り場スコアの総合計算
+# ============================================================
+
+def score_spot(spot, weather_data, marine_data):
+    """
+    1か所の釣り場について総合スコアを計算する
+    最大スコア: 35(底質) + 25(風) + 20(波) + 20(水温) = 100点
+    """
+    details = {}
+
+    # --- 底質 ---
+    sb = calc_seabed_score(spot["seabed"])
+    seabed_pts = sb["pts"]
+    details["seabed"] = sb["label"]
+
+    # --- 風（速度・向き） ---
+    wind_speed = None
+    wind_dir = None
+    if weather_data and "daily" in weather_data:
+        d = weather_data["daily"]
+        spd_list = d.get("wind_speed_10m_max", [])
+        dir_list = d.get("wind_direction_10m_dominant", [])
+        if spd_list and spd_list[0] is not None:
+            wind_speed = spd_list[0]
+        if dir_list and dir_list[0] is not None:
+            wind_dir = dir_list[0]
+
+    if wind_speed is not None and wind_dir is not None:
+        ws = calc_wind_score(wind_speed, wind_dir, spot["shore_direction"])
+        wind_pts = ws["total_pts"]
+        details["wind_speed"] = ws["spd_label"]
+        details["wind_dir"] = f"{direction_label(wind_dir)}（{ws['dir_label']}）"
+        details["surfer_friendly"] = ws["surfer_friendly"]
+    else:
+        wind_pts = 12
+        details["wind_speed"] = "データなし"
+        details["wind_dir"] = "データなし"
+        details["surfer_friendly"] = None
+
+    # --- 波高 ---
+    wave_height = None
+    if marine_data and "daily" in marine_data:
+        d = marine_data["daily"]
+        wh_list = d.get("wave_height_max", [])
+        if wh_list and wh_list[0] is not None:
+            wave_height = wh_list[0]
+    wv = calc_wave_score(wave_height)
+    wave_pts = wv["pts"]
+    details["wave"] = wv["label"]
+
+    # --- 海面水温（SST）---
+    sst = None
+    if marine_data and "hourly" in marine_data:
+        sst_list = marine_data["hourly"].get("sea_surface_temperature", [])
+        valid = [v for v in sst_list if v is not None]
+        if valid:
+            sst = sum(valid) / len(valid)
+    tp = calc_temp_score(sst)
+    temp_pts = tp["pts"]
+    details["sst"] = tp["label"]
+
+    # --- 降水量（ペナルティ） ---
+    precip = None
+    if weather_data and "daily" in weather_data:
+        pr_list = weather_data["daily"].get("precipitation_sum", [])
+        if pr_list and pr_list[0] is not None:
+            precip = pr_list[0]
+
+    rain_penalty = 0
+    if precip is not None:
+        details["precip"] = f"{precip:.1f}mm"
+        if precip > 10:
+            rain_penalty = -30
+            details["rain_warning"] = "大雨（釣行非推奨）"
+        elif precip > 5:
+            rain_penalty = -15
+            details["rain_warning"] = "雨（注意）"
+        elif precip > 1:
+            rain_penalty = -5
+            details["rain_warning"] = "小雨"
+    else:
+        details["precip"] = "データなし"
+
+    total = seabed_pts + wind_pts + wave_pts + temp_pts + rain_penalty
+
+    return {
+        "spot": spot,
+        "total": total,
+        "scores": {
+            "seabed": seabed_pts,
+            "wind": wind_pts,
+            "wave": wave_pts,
+            "temp": temp_pts,
+            "rain_penalty": rain_penalty,
+        },
+        "details": details,
+    }
+
+
+# ============================================================
+# ユーティリティ
+# ============================================================
+
+def direction_label(deg):
+    """方位角（度）を16方位の文字列に変換"""
+    dirs = [
+        "北", "北北東", "北東", "東北東",
+        "東", "東南東", "南東", "南南東",
+        "南", "南南西", "南西", "西南西",
+        "西", "西北西", "北西", "北北西",
+    ]
+    idx = int((deg + 11.25) / 22.5) % 16
+    return dirs[idx]
+
+
+# ============================================================
+# テキストレポート生成
+# ============================================================
+
+RANK_MARKS = ["1位", "2位", "3位", "4位", "5位"]
+
+
+def generate_report(scored_spots, target_date):
+    """スコア結果からテキストレポートを生成する"""
+    ranked = sorted(scored_spots, key=lambda x: x["total"], reverse=True)
+    now_str = datetime.now(JST).strftime("%Y年%m月%d日 %H:%M")
+
+    lines = []
+    lines.append("=" * 62)
+    lines.append(f"   シロギス釣り場おすすめレポート  {target_date}")
+    lines.append("=" * 62)
+    lines.append(f"   作成: {now_str} JST")
+    lines.append("")
+
+    # トップ5
+    lines.append("【おすすめ釣り場 トップ5】")
+    lines.append("")
+    for i, r in enumerate(ranked[:5]):
+        spot = r["spot"]
+        d = r["details"]
+        mark = RANK_MARKS[i]
+
+        lines.append(f"  {mark}: {spot['name']}（{spot['area']}）  [{r['total']}点]")
+        lines.append(f"         底質   : {d['seabed']}")
+        lines.append(f"         海水温 : {d['sst']}")
+        lines.append(f"         波高   : {d['wave']}")
+        lines.append(f"         風速   : {d['wind_speed']}")
+        lines.append(f"         風向   : {d['wind_dir']}")
+        lines.append(f"         降水量 : {d['precip']}")
+
+        if d.get("rain_warning"):
+            lines.append(f"         !! {d['rain_warning']}")
+
+        sf = d.get("surfer_friendly")
+        if sf is False:
+            lines.append("         >> オフショア: サーファー少なく釣り場が空きやすい")
+        elif sf is True and spot.get("surfer_spot"):
+            lines.append("         >> オンショア: サーファーが来やすい（混雑注意）")
+
+        lines.append(f"         アクセス: {spot['access']}")
+        lines.append(f"         memo   : {spot['notes']}")
+        lines.append("")
+
+    # エリア別ベスト
+    lines.append("【エリア別ベスト】")
+    areas = {}
+    for r in ranked:
+        area = r["spot"]["area"]
+        if area not in areas:
+            areas[area] = r
+    for area, r in areas.items():
+        lines.append(f"  {area:6s}: {r['spot']['name']} ({r['total']}点)")
+
+    lines.append("")
+    lines.append("【スコアの見方】")
+    lines.append("  100点満点（底質35点 + 風25点 + 波20点 + 水温20点）")
+    lines.append("  雨が多い場合はペナルティあり（最大-30点）")
+    lines.append("")
+    lines.append("【注意事項】")
+    lines.append("  ・予報は数値モデルによる推定値です。出発前に最新情報をご確認ください")
+    lines.append("  ・天候の急変には十分注意してください")
+    lines.append("  ・気象データ: Open-Meteo API（ECMWFモデル、約9kmメッシュ）")
+    lines.append("=" * 62)
+
+    return "\n".join(lines)
+
+
+# ============================================================
+# Claude API によるAIコメント（オプション）
+# 環境変数 ANTHROPIC_API_KEY が設定されている場合のみ動作します
+# ============================================================
+
+def claude_ai_comment(scored_spots):
+    """
+    Anthropic Claude APIを使って自然言語のアドバイスを生成する
+    ANTHROPIC_API_KEY が未設定の場合は空文字を返す
+    """
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        return ""
+
+    try:
+        import anthropic
+    except ImportError:
+        print(
+            "[情報] anthropic ライブラリが未インストールです。"
+            "'pip install anthropic' を実行するとAIアドバイスが追加されます",
+            file=sys.stderr,
+        )
+        return ""
+
+    ranked = sorted(scored_spots, key=lambda x: x["total"], reverse=True)
+    top5 = []
+    for i, r in enumerate(ranked[:5]):
+        d = r["details"]
+        top5.append({
+            "rank": i + 1,
+            "name": r["spot"]["name"],
+            "area": r["spot"]["area"],
+            "score": r["total"],
+            "seabed": d["seabed"],
+            "sst": d["sst"],
+            "wave": d["wave"],
+            "wind_speed": d["wind_speed"],
+            "wind_dir": d["wind_dir"],
+            "surfer_friendly": d.get("surfer_friendly"),
+            "precip": d["precip"],
+            "rain_warning": d.get("rain_warning", "なし"),
+        })
+
+    prompt = f"""あなたは投げ釣りでシロギス（白ギス）を専門とする釣りガイドです。
+以下の釣り場スコアデータをもとに、明日の釣行計画に役立つ具体的なアドバイスを
+日本語で書いてください。
+
+## 上位5釣り場のデータ
+{json.dumps(top5, ensure_ascii=False, indent=2)}
+
+## シロギス釣りの基礎知識（参考にしてください）
+- シロギスは砂地を好む魚。岩礁や泥地には少ない
+- 適水温は18〜26°C、最も活性が高いのは20〜24°C
+- 投げ釣りは追い風（オフショア）だと仕掛けが遠くまで飛ぶ
+- オフショアの日はサーファーが来にくく釣り場が空く
+- 波高0.5m以上は釣りにくい。1m以上は危険
+- 大雨の後は海が濁り釣果が落ちやすい
+
+## 出力形式
+1. **1位のおすすめポイント**: 具体的なアドバイス（2〜3文）
+2. **2位・3位**: 簡単なコメント（各1〜2文）
+3. **総合コメント**: 今日の全体的な釣況（1〜2文）
+
+親しみやすい言葉で、釣り師が聞いて役立つ情報を簡潔に伝えてください。"""
+
+    try:
+        client = anthropic.Anthropic(api_key=api_key)
+        message = client.messages.create(
+            model="claude-opus-4-6",
+            max_tokens=1024,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        return message.content[0].text
+    except Exception as e:
+        print(f"[警告] Claude API エラー: {e}", file=sys.stderr)
+        return ""
+
+
+# ============================================================
+# メイン処理
+# ============================================================
+
+def main():
+    # 対象日を引数または翌日に設定
+    if len(sys.argv) > 1:
+        try:
+            datetime.strptime(sys.argv[1], "%Y-%m-%d")
+            target_date = sys.argv[1]
+        except ValueError:
+            print(f"日付の形式が正しくありません: {sys.argv[1]}")
+            print("使い方: python fishing_advisor.py 2025-06-15")
+            sys.exit(1)
+    else:
+        target_date = (datetime.now(JST) + timedelta(days=1)).strftime("%Y-%m-%d")
+
+    print(f"シロギス釣り場アドバイザー")
+    print(f"対象日: {target_date}")
+    print(f"釣り場数: {len(FISHING_SPOTS)}か所")
+    print("気象・海洋データを取得しています...\n")
+
+    scored_spots = []
+    for spot in FISHING_SPOTS:
+        print(f"  {spot['name']}...", end="", flush=True)
+        weather = fetch_weather(spot["lat"], spot["lon"], target_date)
+        marine = fetch_marine(spot["lat"], spot["lon"], target_date)
+        result = score_spot(spot, weather, marine)
+        scored_spots.append(result)
+        print(f" {result['total']}点")
+
+    print()
+    report = generate_report(scored_spots, target_date)
+
+    # Claude API コメント追加（API key設定時のみ）
+    ai_text = claude_ai_comment(scored_spots)
+    if ai_text:
+        report += "\n\n" + "=" * 62 + "\n"
+        report += "【AIアドバイス（Claude）】\n"
+        report += "=" * 62 + "\n"
+        report += ai_text + "\n"
+        report += "=" * 62
+
+    print(report)
+
+    # ファイルにも保存
+    output_file = f"fishing_report_{target_date}.txt"
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(report)
+    print(f"\nレポートを保存しました: {output_file}")
+
+
+if __name__ == "__main__":
+    main()
