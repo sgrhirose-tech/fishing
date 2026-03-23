@@ -17,7 +17,8 @@ PC版との違い:
 import os
 import json
 import math
-import requests
+import urllib.request
+import urllib.parse
 from datetime import datetime, timedelta, timezone
 
 JST = timezone(timedelta(hours=9))
@@ -420,45 +421,44 @@ FISHING_SPOTS = [
 # ============================================================
 
 def fetch_weather(lat, lon, date_str):
-    url = "https://api.open-meteo.com/v1/forecast"
-    params = {
-        "latitude": lat,
-        "longitude": lon,
-        "daily": [
-            "wind_speed_10m_max",
-            "wind_direction_10m_dominant",
-            "precipitation_sum",
-            "weather_code",
-        ],
-        "wind_speed_unit": "ms",
-        "timezone": "Asia/Tokyo",
-        "start_date": date_str,
-        "end_date": date_str,
-    }
+    base_url = "https://api.open-meteo.com/v1/forecast"
+    params = [
+        ("latitude", lat),
+        ("longitude", lon),
+        ("daily", "wind_speed_10m_max"),
+        ("daily", "wind_direction_10m_dominant"),
+        ("daily", "precipitation_sum"),
+        ("daily", "weather_code"),
+        ("wind_speed_unit", "ms"),
+        ("timezone", "Asia/Tokyo"),
+        ("start_date", date_str),
+        ("end_date", date_str),
+    ]
     try:
-        resp = requests.get(url, params=params, timeout=15)
-        resp.raise_for_status()
-        return resp.json()
+        full_url = base_url + "?" + urllib.parse.urlencode(params)
+        with urllib.request.urlopen(full_url, timeout=15) as resp:
+            return json.loads(resp.read().decode("utf-8"))
     except Exception as e:
         print(f"  [警告] 気象データ取得失敗 ({lat},{lon}): {e}")
         return {}
 
 
 def fetch_marine(lat, lon, date_str):
-    url = "https://marine-api.open-meteo.com/v1/marine"
-    params = {
-        "latitude": lat,
-        "longitude": lon,
-        "hourly": ["sea_surface_temperature"],
-        "daily": ["wave_height_max", "dominant_wave_direction"],
-        "timezone": "Asia/Tokyo",
-        "start_date": date_str,
-        "end_date": date_str,
-    }
+    base_url = "https://marine-api.open-meteo.com/v1/marine"
+    params = [
+        ("latitude", lat),
+        ("longitude", lon),
+        ("hourly", "sea_surface_temperature"),
+        ("daily", "wave_height_max"),
+        ("daily", "dominant_wave_direction"),
+        ("timezone", "Asia/Tokyo"),
+        ("start_date", date_str),
+        ("end_date", date_str),
+    ]
     try:
-        resp = requests.get(url, params=params, timeout=15)
-        resp.raise_for_status()
-        return resp.json()
+        full_url = base_url + "?" + urllib.parse.urlencode(params)
+        with urllib.request.urlopen(full_url, timeout=15) as resp:
+            return json.loads(resp.read().decode("utf-8"))
     except Exception as e:
         print(f"  [警告] 海洋データ取得失敗 ({lat},{lon}): {e}")
         return {}
