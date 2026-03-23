@@ -1,0 +1,10 @@
+# APIキーや秘密情報 - Gitに含めない
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# 生成されたレポートファイル
+fishing_report_*.txt
