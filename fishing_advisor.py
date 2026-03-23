@@ -18,6 +18,16 @@ from datetime import datetime, timedelta, timezone
 
 JST = timezone(timedelta(hours=9))
 
+# エリアごとの波高取得用沖合代理座標
+# Open-Meteo Marine は外洋波浪モデルのため湾内・沿岸は400エラー → 外洋代表点を使用
+MARINE_PROXY = {
+    "相模湾":   (34.70, 139.30),  # 相模灘（伊豆大島南西の外洋）
+    "三浦半島": (34.70, 139.70),  # 三浦半島南沖の外洋
+    "東京湾":   (35.00, 140.00),  # 浦賀水道外（太平洋側）
+    "内房":     (35.00, 140.00),  # 東京湾口外（太平洋側）
+    "外房":     (35.10, 141.00),  # 房総半島東沖約60km
+}
+
 # ============================================================
 # 釣り場データ（固定情報）
 # shore_direction: 海岸線が「海に向かって」いる方位（度）
@@ -916,7 +926,8 @@ def main():
     for spot in FISHING_SPOTS:
         print(f"  {spot['name']}...", end="", flush=True)
         weather = fetch_weather(spot["lat"], spot["lon"], target_date)
-        marine = fetch_marine(spot["lat"], spot["lon"], target_date)
+        proxy_lat, proxy_lon = MARINE_PROXY.get(spot["area"], (spot["lat"], spot["lon"]))
+        marine = fetch_marine(proxy_lat, proxy_lon, target_date)
         sst = fetch_sst_noaa(spot["lat"], spot["lon"], target_date)
         result = score_spot(spot, weather, marine, sst_noaa=sst)
         scored_spots.append(result)
