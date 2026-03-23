@@ -465,20 +465,19 @@ def fetch_marine(lat, lon, date_str):
 
 def fetch_sst_noaa(lat, lon, date_str):
     """
-    NOAA CoastWatch ERDDAP (jplMURSST41) から海面水温を取得
-    MUR SST: 複数衛星データの複合解析、解像度 0.01°（約1km）、APIキー不要
-    https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplMURSST41.html
-    ※ MUR SST は約1日の遅延があるため、対象日の前日データを使用
+    海面水温を取得（NOAA ERDDAP → Open-Meteo Marine の順で試行）
+
+    1次: NOAA CoastWatch ERDDAP (jplMURSST41) MUR SST
+         %5B/%5D でブラケットをエンコード、(last) で最新データを取得
+    2次: Open-Meteo Marine API（沿岸では 400 になる場合あり）
     """
-    target = datetime.strptime(date_str, "%Y-%m-%d") - timedelta(days=1)
-    noaa_date = target.strftime("%Y-%m-%dT09:00:00Z")
     lat_str = f"{lat:.4f}"
     lon_str = f"{lon:.4f}"
+
+    # --- 1. NOAA ERDDAP (last = 最新利用可能データ) ---
     url = (
-        f"https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplMURSST41.json"
-        f"?analysed_sst[({noaa_date}):1:({noaa_date})]"
-        f"[({lat_str}):1:({lat_str})]"
-        f"[({lon_str}):1:({lon_str})]"
+        "https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplMURSST41.json"
+        f"?analysed_sst%5B(last)%5D%5B({lat_str})%5D%5B({lon_str})%5D"
     )
     try:
         resp = requests.get(url, timeout=15)
@@ -487,10 +486,32 @@ def fetch_sst_noaa(lat, lon, date_str):
         rows = data.get("table", {}).get("rows", [])
         if rows and rows[0] and rows[0][3] is not None:
             return float(rows[0][3])
-        return None
     except Exception as e:
-        print(f"  [警告] 水温データ取得失敗 ({lat},{lon}): {e}", file=sys.stderr)
-        return None
+        print(f"  [情報] NOAA水温取得失敗 ({lat},{lon}): {e}", file=sys.stderr)
+
+    # --- 2. フォールバック: Open-Meteo Marine API ---
+    try:
+        resp = requests.get(
+            "https://marine-api.open-meteo.com/v1/marine",
+            params={
+                "latitude": lat,
+                "longitude": lon,
+                "hourly": "sea_surface_temperature",
+                "timezone": "Asia/Tokyo",
+                "start_date": date_str,
+                "end_date": date_str,
+            },
+            timeout=15,
+        )
+        resp.raise_for_status()
+        sst_list = resp.json().get("hourly", {}).get("sea_surface_temperature", [])
+        valid = [v for v in sst_list if v is not None]
+        if valid:
+            return sum(valid) / len(valid)
+    except Exception:
+        pass
+
+    return None
 
 
 # ============================================================
