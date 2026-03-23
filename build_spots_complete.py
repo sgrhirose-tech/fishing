@@ -153,15 +153,24 @@ def nearest_point_on_segment(px, py, ax, ay, bx, by):
     return nearest_lat, nearest_lon, seg_bearing
 
 
-def _overpass_get(query):
-    """Overpass APIにGETリクエストを送り、elementsリストを返す。"""
+def _overpass_get(query, _retries=3):
+    """Overpass APIにGETリクエストを送り、elementsリストを返す。429/503/504はバックオフ後にリトライ。"""
     url = "https://overpass-api.de/api/interpreter?" + urllib.parse.urlencode({"data": query})
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        return json.loads(resp.read().decode("utf-8")).get("elements", [])
+    for attempt in range(_retries):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                return json.loads(resp.read().decode("utf-8")).get("elements", [])
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 503, 504) and attempt < _retries - 1:
+                wait = 30 * (attempt + 1)
+                print(f"    HTTP {e.code} – {wait}秒後にリトライ...")
+                time.sleep(wait)
+            else:
+                raise
 
 
-def calculate_sea_bearing(lat, lon, search_radius_m=30000):
+def calculate_sea_bearing(lat, lon, search_radius_m=10000):
     """
     OSM Overpass APIで周辺の海岸線(natural=coastline)を取得し、
     最近傍セグメントの法線（海方向）を返す。
@@ -177,7 +186,7 @@ def calculate_sea_bearing(lat, lon, search_radius_m=30000):
     query = (
         f"[out:json];"
         f"way[\"natural\"=\"coastline\"](around:{search_radius_m},{lat},{lon});"
-        f"out geom;"
+        f"out geom qt 20;"
     )
     try:
         elements = _overpass_get(query)
@@ -192,7 +201,7 @@ def calculate_sea_bearing(lat, lon, search_radius_m=30000):
         query2 = (
             f"[out:json];"
             f"way[\"natural\"=\"coastline\"](around:{wider},{lat},{lon});"
-            f"out geom;"
+            f"out geom qt 10;"
         )
         try:
             elements = _overpass_get(query2)
@@ -766,7 +775,7 @@ def main():
             print("取得失敗")
         # Overpass API レート制限対策
         if idx < len(items):
-            time.sleep(1.0)
+            time.sleep(5.0)
 
     print()
 
