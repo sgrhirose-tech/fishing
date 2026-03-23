@@ -459,6 +459,12 @@ def fetch_marine(lat, lon, date_str):
         full_url = base_url + "?" + urllib.parse.urlencode(params)
         with urllib.request.urlopen(full_url, timeout=15) as resp:
             return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        if e.code == 400:
+            # 沿岸・湾内は海洋モデルの対象外のため正常な挙動
+            return {}
+        print(f"  [警告] 海洋データ取得失敗 ({lat},{lon}): {e}")
+        return {}
     except Exception as e:
         print(f"  [警告] 海洋データ取得失敗 ({lat},{lon}): {e}")
         return {}
