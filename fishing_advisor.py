@@ -436,14 +436,13 @@ def fetch_weather(lat, lon, date_str):
 def fetch_marine(lat, lon, date_str):
     """
     Open-Meteo Marine APIから海洋データを取得
-    波高・波向き・海面水温を取得します
-    ※東京湾など内湾では波浪データが不正確な場合があります
+    波高・波向きを取得します（外洋寄りのスポットで有効）
+    ※東京湾など内湾は対象外のためエラーになる場合があります
     """
     url = "https://marine-api.open-meteo.com/v1/marine"
     params = {
         "latitude": lat,
         "longitude": lon,
-        "hourly": ["sea_surface_temperature"],
         "daily": ["wave_height_max", "dominant_wave_direction"],
         "timezone": "Asia/Tokyo",
         "start_date": date_str,
@@ -453,9 +452,45 @@ def fetch_marine(lat, lon, date_str):
         resp = requests.get(url, params=params, timeout=15)
         resp.raise_for_status()
         return resp.json()
-    except Exception as e:
-        print(f"  [警告] 海洋データ取得失敗 ({lat},{lon}): {e}", file=sys.stderr)
+    except requests.exceptions.HTTPError as e:
+        if e.response is not None and e.response.status_code == 400:
+            # 沿岸・湾内は海洋波浪モデルの対象外のため正常な挙動
+            return {}
+        print(f"  [警告] 波浪データ取得失敗 ({lat},{lon}): {e}", file=sys.stderr)
         return {}
+    except Exception as e:
+        print(f"  [警告] 波浪データ取得失敗 ({lat},{lon}): {e}", file=sys.stderr)
+        return {}
+
+
+def fetch_sst_noaa(lat, lon, date_str):
+    """
+    NOAA CoastWatch ERDDAP (jplMURSST41) から海面水温を取得
+    MUR SST: 複数衛星データの複合解析、解像度 0.01°（約1km）、APIキー不要
+    https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplMURSST41.html
+    ※ MUR SST は約1日の遅延があるため、対象日の前日データを使用
+    """
+    target = datetime.strptime(date_str, "%Y-%m-%d") - timedelta(days=1)
+    noaa_date = target.strftime("%Y-%m-%dT09:00:00Z")
+    lat_str = f"{lat:.4f}"
+    lon_str = f"{lon:.4f}"
+    url = (
+        f"https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplMURSST41.json"
+        f"?analysed_sst[({noaa_date}):1:({noaa_date})]"
+        f"[({lat_str}):1:({lat_str})]"
+        f"[({lon_str}):1:({lon_str})]"
+    )
+    try:
+        resp = requests.get(url, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+        rows = data.get("table", {}).get("rows", [])
+        if rows and rows[0] and rows[0][3] is not None:
+            return float(rows[0][3])
+        return None
+    except Exception as e:
+        print(f"  [警告] 水温データ取得失敗 ({lat},{lon}): {e}", file=sys.stderr)
+        return None
 
 
 # ============================================================
@@ -576,7 +611,7 @@ def calc_seabed_score(seabed):
 # 釣り場スコアの総合計算
 # ============================================================
 
-def score_spot(spot, weather_data, marine_data):
+def score_spot(spot, weather_data, marine_data, sst_noaa=None):
     """
     1か所の釣り場について総合スコアを計算する
     最大スコア: 35(底質) + 25(風) + 20(波) + 20(水温) = 100点
@@ -624,12 +659,8 @@ def score_spot(spot, weather_data, marine_data):
     details["wave"] = wv["label"]
 
     # --- 海面水温（SST）---
-    sst = None
-    if marine_data and "hourly" in marine_data:
-        sst_list = marine_data["hourly"].get("sea_surface_temperature", [])
-        valid = [v for v in sst_list if v is not None]
-        if valid:
-            sst = sum(valid) / len(valid)
+    # NOAA ERDDAP データを優先、なければフォールバック
+    sst = sst_noaa
     tp = calc_temp_score(sst)
     temp_pts = tp["pts"]
     details["sst"] = tp["label"]
@@ -865,7 +896,8 @@ def main():
         print(f"  {spot['name']}...", end="", flush=True)
         weather = fetch_weather(spot["lat"], spot["lon"], target_date)
         marine = fetch_marine(spot["lat"], spot["lon"], target_date)
-        result = score_spot(spot, weather, marine)
+        sst = fetch_sst_noaa(spot["lat"], spot["lon"], target_date)
+        result = score_spot(spot, weather, marine, sst_noaa=sst)
         scored_spots.append(result)
         print(f" {result['total']}点")
 
