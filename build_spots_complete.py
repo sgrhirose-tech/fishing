@@ -3,6 +3,8 @@ import math
 import re
 import time
 import unicodedata
+import urllib.parse
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -151,6 +153,14 @@ def nearest_point_on_segment(px, py, ax, ay, bx, by):
     return nearest_lat, nearest_lon, seg_bearing
 
 
+def _overpass_get(query):
+    """Overpass APIにGETリクエストを送り、elementsリストを返す。"""
+    url = "https://overpass-api.de/api/interpreter?" + urllib.parse.urlencode({"data": query})
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        return json.loads(resp.read().decode("utf-8")).get("elements", [])
+
+
 def calculate_sea_bearing(lat, lon, search_radius_m=5000):
     """
     OSM Overpass APIで周辺の海岸線(natural=coastline)を取得し、
@@ -170,14 +180,7 @@ def calculate_sea_bearing(lat, lon, search_radius_m=5000):
         f"out geom;"
     )
     try:
-        r = requests.post(
-            "https://overpass-api.de/api/interpreter",
-            data={"data": query},
-            headers={"User-Agent": USER_AGENT},
-            timeout=60
-        )
-        r.raise_for_status()
-        elements = r.json().get("elements", [])
+        elements = _overpass_get(query)
     except Exception as e:
         print(f"    Overpass APIエラー: {e}")
         return None
@@ -192,14 +195,7 @@ def calculate_sea_bearing(lat, lon, search_radius_m=5000):
             f"out geom;"
         )
         try:
-            r = requests.post(
-                "https://overpass-api.de/api/interpreter",
-                data={"data": query2},
-                headers={"User-Agent": USER_AGENT},
-                timeout=60
-            )
-            r.raise_for_status()
-            elements = r.json().get("elements", [])
+            elements = _overpass_get(query2)
         except Exception as e:
             print(f"    Overpass API再試行エラー: {e}")
             return None
