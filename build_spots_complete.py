@@ -161,7 +161,7 @@ def _overpass_get(query):
         return json.loads(resp.read().decode("utf-8")).get("elements", [])
 
 
-def calculate_sea_bearing(lat, lon, search_radius_m=5000):
+def calculate_sea_bearing(lat, lon, search_radius_m=30000):
     """
     OSM Overpass APIで周辺の海岸線(natural=coastline)を取得し、
     最近傍セグメントの法線（海方向）を返す。
@@ -187,7 +187,7 @@ def calculate_sea_bearing(lat, lon, search_radius_m=5000):
 
     if not elements:
         # 半径を広げて再試行
-        wider = search_radius_m * 3
+        wider = 100000
         print(f"    半径{search_radius_m}mで海岸線なし。{wider}mで再試行...")
         query2 = (
             f"[out:json];"
@@ -204,6 +204,7 @@ def calculate_sea_bearing(lat, lon, search_radius_m=5000):
         print(f"    海岸線データが見つかりませんでした (lat={lat}, lon={lon})")
         return None
 
+    print(f"    {len(elements)}ウェイ発見 セグメント解析中...")
     best_dist = float("inf")
     best_seg_bearing = None
 
@@ -223,6 +224,7 @@ def calculate_sea_bearing(lat, lon, search_radius_m=5000):
                 best_seg_bearing = seg_b
 
     if best_seg_bearing is None:
+        print(f"    警告: ウェイは存在するがセグメントなし ({len(elements)}ウェイ)")
         return None
 
     seaward = (best_seg_bearing + 90) % 360
