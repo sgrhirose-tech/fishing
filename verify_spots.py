@@ -22,6 +22,34 @@ def load_spots(spots_dir: Path):
     return spots
 
 
+def _load_marine_areas(spots_dir: Path) -> dict:
+    """spots/_marine_areas.json からエリア名→(center_lat, center_lon) を返す"""
+    path = spots_dir / "_marine_areas.json"
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return {
+            name: (v["center_lat"], v["center_lon"])
+            for name, v in data.get("areas", {}).items()
+            if "center_lat" in v and "center_lon" in v
+        }
+    except Exception as e:
+        print(f"[警告] _marine_areas.json 読み込み失敗: {e}")
+        return {}
+
+
+def _assign_marine_area(spot: dict, marine_areas: dict) -> str:
+    """スポット座標に最近傍のエリア名を返す（nearest-neighbor）"""
+    lat = spot["location"]["latitude"]
+    lon = spot["location"]["longitude"]
+    best, best_d = "", float("inf")
+    for name, (clat, clon) in marine_areas.items():
+        d = (lat - clat) ** 2 + (lon - clon) ** 2
+        if d < best_d:
+            best_d = d
+            best = name
+    return best
+
+
 # 主要方位ラベル（5° 刻み select 用）
 COMPASS_LABELS = {
     0: "北", 45: "北東", 90: "東", 135: "南東",
@@ -116,6 +144,15 @@ select.edit-select {
 }
 #save-btn:active { background: #e65100; }
 #save-msg { font-size: 12px; color: #f57c00; margin-top: 4px; text-align: center; }
+
+/* エリアフィルターバー */
+#area-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 12px; background: #e3f2fd; border-bottom: 1px solid #90caf9;
+  flex-shrink: 0;
+}
+#area-bar label { font-weight: bold; color: #1565c0; font-size: 14px; white-space: nowrap; }
+#area-bar select { border: 1px solid #90caf9; border-radius: 5px; padding: 4px 8px; font-size: 14px; background: white; color: #333; }
 </style>
 </head>
 <body>
@@ -127,6 +164,13 @@ select.edit-select {
     <div id="nav-count"></div>
   </div>
   <button id="btn-next" onclick="navigate(1)">次へ ▶</button>
+</div>
+
+<div id="area-bar">
+  <label>エリア</label>
+  <select id="area-select">
+    <option value="">すべて</option>
+  </select>
 </div>
 
 <div id="map"></div>
@@ -143,10 +187,13 @@ select.edit-select {
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const SPOTS = __SPOTS_JSON__;
+const AREA_NAMES = __AREA_NAMES_JSON__;
 const BEARING_OPTIONS_HTML = `__BEARING_OPTIONS__`;
 const BOTTOM_OPTIONS_HTML = `__BOTTOM_OPTIONS__`;
 
 let currentIndex = 0;
+let filteredSpots = [];   // 現在のフィルター結果
+let filteredPos   = 0;    // filteredSpots 内の位置
 let pendingBearing = null;   // 変更中の bearing 値
 let pendingBottom  = null;   // 変更中の bottom_type.value
 let pendingCoords  = null;   // ドラッグ後の新座標 {lat, lon}
@@ -302,9 +349,9 @@ function showSpot(idx) {
 
   // ナビ更新
   document.getElementById('spot-name').textContent = s.name;
-  document.getElementById('nav-count').textContent = (idx+1) + ' / ' + SPOTS.length;
-  document.getElementById('btn-prev').disabled = (idx === 0);
-  document.getElementById('btn-next').disabled = (idx === SPOTS.length - 1);
+  document.getElementById('nav-count').textContent = (filteredPos+1) + ' / ' + filteredSpots.length;
+  document.getElementById('btn-prev').disabled = (filteredPos === 0);
+  document.getElementById('btn-next').disabled = (filteredPos === filteredSpots.length - 1);
 
   // マップ更新
   map.setView([lat, lon], 14);
@@ -375,10 +422,27 @@ function showSpot(idx) {
   document.getElementById('info-table').innerHTML = html;
 }
 
+function applyAreaFilter() {
+  const area = document.getElementById('area-select').value;
+  filteredSpots = area === '' ? SPOTS.slice() : SPOTS.filter(s => s._marine_area === area);
+  filteredPos = 0;
+  if (filteredSpots.length > 0) {
+    currentIndex = SPOTS.indexOf(filteredSpots[0]);
+    showSpot(currentIndex);
+  } else {
+    document.getElementById('spot-name').textContent = 'スポットなし';
+    document.getElementById('nav-count').textContent = '0 / 0';
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
+    spotLayer.clearLayers();
+  }
+}
+
 function navigate(delta) {
-  const next = currentIndex + delta;
-  if (next < 0 || next >= SPOTS.length) return;
-  currentIndex = next;
+  const next = filteredPos + delta;
+  if (next < 0 || next >= filteredSpots.length) return;
+  filteredPos = next;
+  currentIndex = SPOTS.indexOf(filteredSpots[filteredPos]);
   showSpot(currentIndex);
 }
 
@@ -396,6 +460,19 @@ document.getElementById('info-table').addEventListener('change', function(e) {
   if (e.target.id === 'bottom-select') onBottomChange();
 });
 
+// エリアセレクトを構築
+const areaSelectEl = document.getElementById('area-select');
+for (const name of AREA_NAMES) {
+  const opt = document.createElement('option');
+  opt.value = name;
+  opt.textContent = name;
+  areaSelectEl.appendChild(opt);
+}
+areaSelectEl.addEventListener('change', applyAreaFilter);
+
+// 初期表示
+filteredSpots = SPOTS.slice();
+filteredPos = 0;
 if (SPOTS.length > 0) {
   showSpot(0);
 } else {
@@ -448,11 +525,13 @@ class SpotDelegate:
         print(f"保存完了: {filename}")
 
 
-def generate_html(spots: list) -> str:
+def generate_html(spots: list, area_names: list = None) -> str:
     spots_json = json.dumps(spots, ensure_ascii=False)
+    area_names_json = json.dumps(area_names or [], ensure_ascii=False)
     return (
         HTML_TEMPLATE
         .replace("__SPOTS_JSON__", spots_json)
+        .replace("__AREA_NAMES_JSON__", area_names_json)
         .replace("__BEARING_OPTIONS__", _bearing_options_html())
         .replace("__BOTTOM_OPTIONS__", _bottom_options_html())
     )
@@ -470,7 +549,12 @@ def main():
         print("spots/*.json が見つかりませんでした。")
         return
 
-    html = generate_html(spots)
+    marine_areas = _load_marine_areas(spots_dir)
+    area_names = list(marine_areas.keys())
+    for spot in spots:
+        spot["_marine_area"] = _assign_marine_area(spot, marine_areas) if marine_areas else ""
+
+    html = generate_html(spots, area_names)
     out = Path.home() / "Documents" / "spots_viewer.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
