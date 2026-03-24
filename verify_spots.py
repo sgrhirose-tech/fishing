@@ -149,6 +149,21 @@ const BOTTOM_OPTIONS_HTML = `__BOTTOM_OPTIONS__`;
 let currentIndex = 0;
 let pendingBearing = null;   // 変更中の bearing 値
 let pendingBottom  = null;   // 変更中の bottom_type.value
+let pendingCoords  = null;   // ドラッグ後の新座標 {lat, lon}
+
+// ドラッグ後は新座標、未変更なら元の座標を返す
+function getEffectiveLoc() {
+  if (pendingCoords !== null) return [pendingCoords.lat, pendingCoords.lon];
+  const s = SPOTS[currentIndex];
+  return [s.location.latitude, s.location.longitude];
+}
+
+// pendingBearing 優先、なければ元の bearing を返す
+function getEffectiveBearing() {
+  if (pendingBearing !== null) return pendingBearing;
+  const s = SPOTS[currentIndex];
+  return s.physical_features ? s.physical_features.sea_bearing_deg : null;
+}
 
 const map = L.map('map');
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -171,7 +186,17 @@ function bearing2latlon(lat, lon, bearingDeg, distM) {
 // マップ上の矢印を更新（bearing が null なら消す）
 function updateBearingArrow(lat, lon, bearing) {
   spotLayer.clearLayers();
-  L.marker([lat, lon]).addTo(spotLayer).bindPopup(SPOTS[currentIndex].name);
+  const marker = L.marker([lat, lon], {draggable: true})
+    .addTo(spotLayer)
+    .bindPopup(SPOTS[currentIndex].name);
+  marker.on('dragend', function(e) {
+    const p = e.target.getLatLng();
+    pendingCoords = {lat: p.lat, lon: p.lng};
+    document.getElementById('coord-lat').textContent = p.lat.toFixed(6);
+    document.getElementById('coord-lon').textContent = p.lng.toFixed(6);
+    updateBearingArrow(p.lat, p.lng, getEffectiveBearing());
+    markDirty();
+  });
   if (bearing !== null && bearing !== undefined && bearing !== '') {
     const tip = bearing2latlon(lat, lon, Number(bearing), 400);
     L.polyline([[lat, lon], tip], {color: '#1565c0', weight: 4}).addTo(spotLayer);
@@ -188,8 +213,7 @@ function updateBearingArrow(lat, lon, bearing) {
 // ±5° 調整ボタン
 function adjustBearing(delta) {
   const s = SPOTS[currentIndex];
-  const lat = s.location.latitude;
-  const lon = s.location.longitude;
+  const [lat, lon] = getEffectiveLoc();
   const base = pendingBearing !== null ? pendingBearing
     : (s.physical_features && s.physical_features.sea_bearing_deg !== null
        ? s.physical_features.sea_bearing_deg : 0);
@@ -203,9 +227,9 @@ function adjustBearing(delta) {
 function applyBearing() {
   const sel = document.getElementById('bearing-select');
   if (sel.value === '') return;
-  const s = SPOTS[currentIndex];
+  const [lat, lon] = getEffectiveLoc();
   pendingBearing = Number(sel.value);
-  updateBearingArrow(s.location.latitude, s.location.longitude, pendingBearing);
+  updateBearingArrow(lat, lon, pendingBearing);
   document.getElementById('bearing-display').textContent = Math.round(pendingBearing) + '°';
   markDirty();
 }
@@ -227,6 +251,7 @@ function saveChanges() {
   const changes = {};
   if (pendingBearing !== null) changes.sea_bearing_deg = pendingBearing;
   if (pendingBottom  !== null) changes.bottom_type_value = pendingBottom;
+  if (pendingCoords  !== null) { changes.location_lat = pendingCoords.lat; changes.location_lon = pendingCoords.lon; }
   if (Object.keys(changes).length === 0) return;
   const payload = JSON.stringify({filename: SPOTS[currentIndex]._filename, changes});
   // Python delegate が 'pythonista://save?data=...' を捕捉して JSON に書き戻す
@@ -241,8 +266,13 @@ function saveChanges() {
     }
     SPOTS[currentIndex].physical_features.bottom_type.value = pendingBottom;
   }
+  if (pendingCoords !== null) {
+    SPOTS[currentIndex].location.latitude  = pendingCoords.lat;
+    SPOTS[currentIndex].location.longitude = pendingCoords.lon;
+  }
   pendingBearing = null;
   pendingBottom  = null;
+  pendingCoords  = null;
   document.getElementById('save-msg').textContent = '✓ 保存しました';
   setTimeout(() => {
     document.getElementById('save-bar').style.display = 'none';
@@ -258,6 +288,7 @@ function val(v, unit) {
 function showSpot(idx) {
   pendingBearing = null;
   pendingBottom  = null;
+  pendingCoords  = null;
   document.getElementById('save-bar').style.display = 'none';
 
   const s = SPOTS[idx];
@@ -317,8 +348,8 @@ function showSpot(idx) {
     ['section', '基本情報'],
     ['都道府県', val(area.prefecture)],
     ['市区町村', val(area.city)],
-    ['緯度', val(lat)],
-    ['経度', val(lon)],
+    ['緯度', `<span id="coord-lat" class="ok">${lat}</span>`],
+    ['経度', `<span id="coord-lon" class="ok">${lon}</span>`],
     ['section', '海・地形'],
     ['海の方向', bearingCell],
     ['底質タイプ', bottomCell],
@@ -407,6 +438,11 @@ class SpotDelegate:
             if "bottom_type" not in data["physical_features"]:
                 data["physical_features"]["bottom_type"] = {}
             data["physical_features"]["bottom_type"]["value"] = v if v != "" else None
+
+        if "location_lat" in changes and "location_lon" in changes:
+            data["location"]["latitude"]  = float(changes["location_lat"])
+            data["location"]["longitude"] = float(changes["location_lon"])
+            data["location"]["coordinate_source"] = "manual drag"
 
         path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"保存完了: {filename}")
