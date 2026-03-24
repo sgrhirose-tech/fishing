@@ -247,12 +247,22 @@ def fetch_marine(lat, lon, date_str):
         return {}
 
 
+_WEATHERAPI_CACHE: dict = {}  # (grid_lat, grid_lon, date_str) → result
+
+
 def fetch_marine_weatherapi(lat, lon, date_str):
     """WeatherAPI.com Marine API から波高を取得する。
-    環境変数 WEATHERAPI_KEY が未設定の場合は即 {} を返す。"""
+    0.25° グリッド丸め込みキャッシュで重複リクエストを抑制。
+    WEATHERAPI_KEY 未設定の場合は即 {} を返す。"""
     api_key = _API_KEYS.get("WEATHERAPI_KEY") or os.environ.get("WEATHERAPI_KEY", "")
     if not api_key:
         return {}
+    # WeatherAPI Marine の分解能は約 0.25°（≒ 27km）なので同一グリッドはキャッシュ流用
+    grid_lat = round(round(lat * 4) / 4, 2)
+    grid_lon = round(round(lon * 4) / 4, 2)
+    cache_key = (grid_lat, grid_lon, date_str)
+    if cache_key in _WEATHERAPI_CACHE:
+        return _WEATHERAPI_CACHE[cache_key]
     url = "https://api.weatherapi.com/v1/marine.json"
     params = urllib.parse.urlencode([
         ("key", api_key),
@@ -260,6 +270,7 @@ def fetch_marine_weatherapi(lat, lon, date_str):
         ("dt", date_str),
         ("tides", "no"),
     ])
+    result = {}
     try:
         with urllib.request.urlopen(url + "?" + params, timeout=15) as resp:
             data = json.loads(resp.read().decode("utf-8"))
@@ -270,10 +281,12 @@ def fetch_marine_weatherapi(lat, lon, date_str):
                     if h.get("sig_ht_mt") is not None
                 ]
                 if heights:
-                    return {"wave_height_max": max(heights)}
+                    result = {"wave_height_max": max(heights)}
+                    break
     except Exception as e:
         print(f"  [情報] WeatherAPI 波浪取得失敗: {e}")
-    return {}
+    _WEATHERAPI_CACHE[cache_key] = result
+    return result
 
 
 def estimate_wave_from_wind(wind_speed_ms: float, fetch_km: float) -> float:
