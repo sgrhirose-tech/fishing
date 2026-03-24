@@ -611,7 +611,16 @@ def main():
         sst = fetch_sst_noaa(lat, lon, target_date)
         result = score_spot(spot, weather, marine, sst_noaa=sst)
         scored_spots.append(result)
-        print(f" {result['total']}点")
+        d = result["details"]
+        missing = []
+        if d.get("wind_speed") == "データなし":
+            missing.append("×風")
+        if d.get("wave") == "データなし":
+            missing.append("×波")
+        if d.get("sst") == "データなし":
+            missing.append("×水温")
+        suffix = f"（{'、'.join(missing)}）" if missing else ""
+        print(f" {result['total']}点{suffix}")
 
     print()
     report = generate_report(scored_spots, target_date)
