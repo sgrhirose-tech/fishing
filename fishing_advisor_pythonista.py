@@ -22,25 +22,29 @@ from pathlib import Path
 
 JST = timezone(timedelta(hours=9))
 
-# エリアごとの波高取得用沖合代理座標
-# Open-Meteo Marine は外洋波浪モデルのため湾内・沿岸は400エラー → 外洋代表点を使用
-MARINE_PROXY = {
-    "相模湾":   (34.00, 139.50),  # 伊豆半島南沖（外洋）
-    "三浦半島": (34.00, 140.00),  # 三浦半島南東沖（太平洋）
-    "東京湾":   (34.20, 140.20),  # 浦賀水道南方（太平洋）
-    "内房":     (34.20, 140.20),  # 浦賀水道南方（太平洋）
-    "外房":     (34.50, 141.50),  # 房総半島東沖遠洋
-}
-
-# プライマリ代理座標が 400 を返した場合の最終フォールバック（外洋確実）
-_MARINE_FALLBACKS = [
-    (34.0, 139.5),
-    (33.5, 138.5),
-    (34.5, 141.5),
-    (33.0, 138.0),
-]
-# プロキシ座標ごとに成功した座標をキャッシュ（同セッション内の重複 API 呼び出しを削減）
+# エリアごとの波高取得用沖合代理座標は spots/_marine_areas.json から読み込む
 _MARINE_COORD_CACHE: dict = {}
+
+
+def _load_marine_areas(json_path="spots/_marine_areas.json"):
+    """spots/_marine_areas.json からエリア定義・フォールバック座標を読み込む。
+    ファイルがない場合は空で返す（_MARINE_FALLBACKS のチェーンで補完）。"""
+    p = Path(__file__).parent / json_path
+    try:
+        with open(p, encoding="utf-8") as f:
+            data = json.load(f)
+        proxy = {
+            name: (v["lat"], v["lon"])
+            for name, v in data.get("areas", {}).items()
+        }
+        fallbacks = [(v["lat"], v["lon"]) for v in data.get("fallbacks", [])]
+        return proxy, fallbacks
+    except Exception as e:
+        print(f"[警告] marine_areas 読み込み失敗: {e}")
+        return {}, []
+
+
+MARINE_PROXY, _MARINE_FALLBACKS = _load_marine_areas()
 
 # Pythonista 固有モジュール（PC環境では None になる）
 try:
