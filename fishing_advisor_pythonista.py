@@ -285,7 +285,8 @@ def fetch_marine_weatherapi(lat, lon, date_str):
                     break
     except Exception as e:
         print(f"  [情報] WeatherAPI 波浪取得失敗: {e}")
-    _WEATHERAPI_CACHE[cache_key] = result
+    if result:
+        _WEATHERAPI_CACHE[cache_key] = result
     return result
 
 
