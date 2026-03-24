@@ -500,12 +500,17 @@ def generate_report(scored_spots, target_date):
 # ★ Anthropic API キーをここに直接書いてもOKです（Pythonista用）
 # 例: ANTHROPIC_API_KEY = "sk-ant-xxxxxxxxxxxx"
 # セキュリティ注意: 他人とファイルを共有する場合は消してください
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+_key_file = Path(__file__).parent / "api_key.txt"
+if _key_file.exists():
+    ANTHROPIC_API_KEY = _key_file.read_text(encoding="utf-8").strip()
+else:
+    ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 
 
 def claude_ai_comment(scored_spots):
     api_key = ANTHROPIC_API_KEY
     if not api_key:
+        print("[情報] ANTHROPIC_API_KEY が未設定のためAIアドバイスをスキップします")
         return ""
 
     ranked = sorted(scored_spots, key=lambda x: x["total"], reverse=True)
