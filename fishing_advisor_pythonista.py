@@ -25,12 +25,22 @@ JST = timezone(timedelta(hours=9))
 # エリアごとの波高取得用沖合代理座標
 # Open-Meteo Marine は外洋波浪モデルのため湾内・沿岸は400エラー → 外洋代表点を使用
 MARINE_PROXY = {
-    "相模湾":   (34.70, 139.30),  # 相模灘（外洋）
-    "三浦半島": (34.70, 139.70),  # 三浦半島南沖
-    "東京湾":   (35.00, 140.00),  # 浦賀水道外（太平洋側）
-    "内房":     (35.00, 140.00),  # 東京湾口外
-    "外房":     (35.10, 141.00),  # 房総半島東沖約60km
+    "相模湾":   (34.00, 139.50),  # 伊豆半島南沖（外洋）
+    "三浦半島": (34.00, 140.00),  # 三浦半島南東沖（太平洋）
+    "東京湾":   (34.20, 140.20),  # 浦賀水道南方（太平洋）
+    "内房":     (34.20, 140.20),  # 浦賀水道南方（太平洋）
+    "外房":     (34.50, 141.50),  # 房総半島東沖遠洋
 }
+
+# プライマリ代理座標が 400 を返した場合の最終フォールバック（外洋確実）
+_MARINE_FALLBACKS = [
+    (34.0, 139.5),
+    (33.5, 138.5),
+    (34.5, 141.5),
+    (33.0, 138.0),
+]
+# プロキシ座標ごとに成功した座標をキャッシュ（同セッション内の重複 API 呼び出しを削減）
+_MARINE_COORD_CACHE: dict = {}
 
 # Pythonista 固有モジュール（PC環境では None になる）
 try:
@@ -154,6 +164,40 @@ def fetch_marine(lat, lon, date_str):
     except Exception as e:
         print(f"  [警告] 波浪データ取得失敗 ({lat},{lon}): {e}")
         return {}
+
+
+def fetch_marine_with_fallback(lat, lon, date_str):
+    """プライマリ座標 → _MARINE_FALLBACKS の順で波高データを取得する。
+    フォールバック座標を使用した場合は '_is_fallback': True を付加して返す。"""
+    cache_key = (round(lat, 2), round(lon, 2))
+
+    # キャッシュ済みの成功座標があれば直接使用
+    if cache_key in _MARINE_COORD_CACHE:
+        c = _MARINE_COORD_CACHE[cache_key]
+        result = fetch_marine(c[0], c[1], date_str)
+        if result:
+            result["_is_fallback"] = c[2]
+            return result
+
+    # 1次: プライマリ座標
+    result = fetch_marine(lat, lon, date_str)
+    if result:
+        _MARINE_COORD_CACHE[cache_key] = (lat, lon, False)
+        return result
+
+    # 2次: フォールバック座標を距離順に試行
+    fallbacks = sorted(
+        _MARINE_FALLBACKS,
+        key=lambda p: (p[0] - lat) ** 2 + (p[1] - lon) ** 2,
+    )
+    for fb_lat, fb_lon in fallbacks:
+        result = fetch_marine(fb_lat, fb_lon, date_str)
+        if result:
+            result["_is_fallback"] = True
+            _MARINE_COORD_CACHE[cache_key] = (fb_lat, fb_lon, True)
+            return result
+
+    return {}
 
 
 def fetch_sst_noaa(lat, lon, date_str):
@@ -351,12 +395,15 @@ def score_spot(spot, weather_data, marine_data, sst_noaa=None):
 
     # 波高スコア
     wave_height = None
+    wave_is_fallback = marine_data.get("_is_fallback", False)
     if marine_data and "daily" in marine_data:
         d = marine_data["daily"]
         wh_list = d.get("wave_height_max", [])
         if wh_list and wh_list[0] is not None:
             wave_height = wh_list[0]
     wv = calc_wave_score(wave_height)
+    if wave_is_fallback and wave_height is not None:
+        wv["label"] += "（沖合参考）"
     wave_pts = wv["pts"]
     details["wave"] = wv["label"]
 
@@ -607,7 +654,7 @@ def main():
         print(f"  {name}...", end="", flush=True)
         weather = fetch_weather(lat, lon, target_date)
         proxy_lat, proxy_lon = get_marine_proxy(lat, lon)
-        marine = fetch_marine(proxy_lat, proxy_lon, target_date)
+        marine = fetch_marine_with_fallback(proxy_lat, proxy_lon, target_date)
         sst = fetch_sst_noaa(lat, lon, target_date)
         result = score_spot(spot, weather, marine, sst_noaa=sst)
         scored_spots.append(result)
