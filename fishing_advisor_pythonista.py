@@ -223,39 +223,36 @@ def calc_wind_score(wind_speed, wind_dir, sea_bearing_deg):
         diff = angle_diff(wind_dir, inland_dir)
         if diff <= 45:
             dir_label = "追い風（オフショア）"
-            dir_pts = 10
+            dir_pts = 15
             is_surfer_friendly = False
         elif diff <= 90:
             dir_label = "やや追い風"
-            dir_pts = 7
+            dir_pts = 10
             is_surfer_friendly = False
         elif diff <= 135:
             dir_label = "横風〜やや向かい風"
-            dir_pts = 4
+            dir_pts = 3
             is_surfer_friendly = True
         else:
             dir_label = "向かい風（オンショア）"
-            dir_pts = 1
+            dir_pts = 6
             is_surfer_friendly = True
     else:
-        dir_pts = 5
+        dir_pts = 7
         dir_label = "方位データなし"
         is_surfer_friendly = None
 
     if wind_speed < 3.0:
         spd_label = f"{wind_speed:.1f}m/s（微風）"
-        spd_pts = 15
+        spd_pts = 25
     elif wind_speed < 5.0:
         spd_label = f"{wind_speed:.1f}m/s（弱風）"
-        spd_pts = 12
+        spd_pts = 20
     elif wind_speed < 7.0:
         spd_label = f"{wind_speed:.1f}m/s（やや強い）"
-        spd_pts = 7
-    elif wind_speed < 10.0:
-        spd_label = f"{wind_speed:.1f}m/s（強風）"
-        spd_pts = 3
+        spd_pts = 10
     else:
-        spd_label = f"{wind_speed:.1f}m/s（非常に強い）"
+        spd_label = f"{wind_speed:.1f}m/s（釣行困難）"
         spd_pts = 0
 
     return {
@@ -270,38 +267,38 @@ def calc_wind_score(wind_speed, wind_dir, sea_bearing_deg):
 
 def calc_wave_score(wave_height):
     if wave_height is None:
-        return {"pts": 10, "label": "データなし"}
+        return {"pts": 15, "label": "データなし"}
     if wave_height < 0.3:
-        return {"pts": 20, "label": f"{wave_height:.1f}m（ベタ凪）"}
+        return {"pts": 30, "label": f"{wave_height:.1f}m（ベタ凪）"}
     elif wave_height < 0.5:
-        return {"pts": 16, "label": f"{wave_height:.1f}m（穏やか）"}
+        return {"pts": 24, "label": f"{wave_height:.1f}m（穏やか）"}
     elif wave_height < 0.8:
-        return {"pts": 10, "label": f"{wave_height:.1f}m（やや波あり）"}
+        return {"pts": 15, "label": f"{wave_height:.1f}m（やや波あり）"}
     elif wave_height < 1.2:
-        return {"pts": 4, "label": f"{wave_height:.1f}m（波あり・釣りにくい）"}
+        return {"pts": 5, "label": f"{wave_height:.1f}m（波あり・釣りにくい）"}
     else:
         return {"pts": 0, "label": f"{wave_height:.1f}m（荒れ・釣り不可）"}
 
 
 def calc_temp_score(sst):
     if sst is None:
-        return {"pts": 12, "label": "データなし"}
+        return {"pts": 8, "label": "データなし"}
     if 20.0 <= sst <= 24.0:
-        return {"pts": 20, "label": f"{sst:.1f}°C（最適）"}
+        return {"pts": 15, "label": f"{sst:.1f}°C（最適）"}
     elif 18.0 <= sst < 20.0 or 24.0 < sst <= 26.0:
-        return {"pts": 15, "label": f"{sst:.1f}°C（良好）"}
+        return {"pts": 11, "label": f"{sst:.1f}°C（良好）"}
     elif 15.0 <= sst < 18.0 or 26.0 < sst <= 28.0:
-        return {"pts": 7, "label": f"{sst:.1f}°C（やや不向き）"}
+        return {"pts": 5, "label": f"{sst:.1f}°C（やや不向き）"}
     else:
-        return {"pts": 2, "label": f"{sst:.1f}°C（厳しい）"}
+        return {"pts": 1, "label": f"{sst:.1f}°C（厳しい）"}
 
 
 def calc_seabed_score(kisugo_score):
     """
     kisugo_score: 0〜100（derived_features.bottom_kisugo_score）
-    → シロギス適性に基づき 0〜35点に換算
+    → シロギス適性に基づき 0〜15点に換算
     """
-    pts = round(kisugo_score / 100 * 35)
+    pts = round(kisugo_score / 100 * 15)
     if kisugo_score >= 80:
         label = "砂地主体（シロギス最適）"
     elif kisugo_score >= 60:
@@ -347,7 +344,7 @@ def score_spot(spot, weather_data, marine_data, sst_noaa=None):
         details["wind_dir"] = f"{direction_label(wind_dir)}（{ws['dir_label']}）"
         details["surfer_friendly"] = ws["surfer_friendly"]
     else:
-        wind_pts = 12
+        wind_pts = 20
         details["wind_speed"] = "データなし"
         details["wind_dir"] = "データなし"
         details["surfer_friendly"] = None
@@ -480,7 +477,7 @@ def generate_report(scored_spots, target_date):
 
     lines.append("")
     lines.append("【スコアの見方】")
-    lines.append("  100点満点（底質35点 + 風25点 + 波20点 + 水温20点）")
+    lines.append("  100点満点（底質15点 + 風40点 + 波30点 + 水温15点）")
     lines.append("  雨が多い場合はペナルティあり（最大-30点）")
     lines.append("")
     lines.append("【注意事項】")
