@@ -508,12 +508,6 @@ def claude_ai_comment(scored_spots):
     if not api_key:
         return ""
 
-    try:
-        import anthropic
-    except ImportError:
-        print("[情報] anthropic ライブラリが未インストールです（Pythonistaでは使用不可）")
-        return ""
-
     ranked = sorted(scored_spots, key=lambda x: x["total"], reverse=True)
     top5 = []
     for i, r in enumerate(ranked[:5]):
@@ -554,14 +548,26 @@ def claude_ai_comment(scored_spots):
 
 親しみやすい言葉で、釣り師が聞いて役立つ情報を簡潔に伝えてください。"""
 
+    body = json.dumps({
+        "model": "claude-opus-4-6",
+        "max_tokens": 1024,
+        "messages": [{"role": "user", "content": prompt}],
+    }).encode("utf-8")
+
+    req = urllib.request.Request(
+        "https://api.anthropic.com/v1/messages",
+        data=body,
+        headers={
+            "x-api-key": api_key,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        },
+        method="POST",
+    )
     try:
-        client = anthropic.Anthropic(api_key=api_key)
-        message = client.messages.create(
-            model="claude-opus-4-6",
-            max_tokens=1024,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        return message.content[0].text
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        return data["content"][0]["text"]
     except Exception as e:
         print(f"[警告] Claude API エラー: {e}")
         return ""
