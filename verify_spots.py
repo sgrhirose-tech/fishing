@@ -285,16 +285,16 @@ function showSpot(idx) {
   if (bearing !== null && bearing !== undefined) {
     bearingCell = `
       <div class="edit-row">
-        <button class="adj-btn" onclick="adjustBearing(-5)">-5°</button>
+        <button class="adj-btn" data-action="adj-minus">-5°</button>
         <span class="bearing-val" id="bearing-val">${Math.round(bearing)}°</span>
-        <button class="adj-btn" onclick="adjustBearing(+5)">+5°</button>
+        <button class="adj-btn" data-action="adj-plus">+5°</button>
       </div>`;
   } else {
     bearingCell = `
       <span class="missing" id="bearing-display">データなし</span>
       <div class="edit-row" style="margin-top:4px">
         <select class="edit-select" id="bearing-select">${BEARING_OPTIONS_HTML}</select>
-        <button class="adj-btn" onclick="applyBearing()">適用</button>
+        <button class="adj-btn" data-action="apply-bearing">適用</button>
       </div>`;
   }
 
@@ -305,7 +305,7 @@ function showSpot(idx) {
     bottomCell = `<span class="ok">${btVal}</span>`;
   } else {
     bottomCell = `
-      <select class="edit-select" id="bottom-select" onchange="onBottomChange()">
+      <select class="edit-select" id="bottom-select">
         ${BOTTOM_OPTIONS_HTML}
       </select>`;
   }
@@ -350,6 +350,20 @@ function navigate(delta) {
   currentIndex = next;
   showSpot(currentIndex);
 }
+
+// イベント委譲: innerHTML で挿入した要素の onclick は WKWebView でブロックされるため
+// data-action 属性 + addEventListener で統一処理する
+document.getElementById('info-table').addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  const a = btn.dataset.action;
+  if (a === 'adj-minus')          adjustBearing(-5);
+  else if (a === 'adj-plus')      adjustBearing(+5);
+  else if (a === 'apply-bearing') applyBearing();
+});
+document.getElementById('info-table').addEventListener('change', function(e) {
+  if (e.target.id === 'bottom-select') onBottomChange();
+});
 
 if (SPOTS.length > 0) {
   showSpot(0);
