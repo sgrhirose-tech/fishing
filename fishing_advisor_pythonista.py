@@ -627,8 +627,10 @@ def claude_ai_comment(scored_spots):
 # ============================================================
 
 def main():
-    # 常に「翌日」の予報を取得（コマンドライン引数なし）
-    target_date = (datetime.now(JST) + timedelta(days=1)).strftime("%Y-%m-%d")
+    # 0〜2時台は当日、3時以降は翌日の予報を取得
+    now = datetime.now(JST)
+    days_ahead = 1 if now.hour >= 3 else 0
+    target_date = (now + timedelta(days=days_ahead)).strftime("%Y-%m-%d")
 
     # Pythonista のコンソールをクリア
     if _console_module:
