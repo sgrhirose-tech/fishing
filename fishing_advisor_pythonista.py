@@ -48,13 +48,13 @@ MARINE_PROXY, _MARINE_FALLBACKS = _load_marine_areas()
 
 
 def _load_area_centers(json_path="spots/_marine_areas.json"):
-    """エリア名 → 地理的中心座標 dict を返す（エリア分類用）"""
+    """エリア名 → (center_lat, center_lon, fetch_km) dict を返す（エリア分類・波高推定用）"""
     p = Path(__file__).parent / json_path
     try:
         with open(p, encoding="utf-8") as f:
             data = json.load(f)
         return {
-            name: (v["center_lat"], v["center_lon"])
+            name: (v["center_lat"], v["center_lon"], v.get("fetch_km", 50))
             for name, v in data.get("areas", {}).items()
             if "center_lat" in v and "center_lon" in v
         }
@@ -222,6 +222,44 @@ def fetch_marine(lat, lon, date_str):
     except Exception as e:
         print(f"  [警告] 波浪データ取得失敗 ({lat},{lon}): {e}")
         return {}
+
+
+def fetch_marine_weatherapi(lat, lon, date_str):
+    """WeatherAPI.com Marine API から波高を取得する。
+    環境変数 WEATHERAPI_KEY が未設定の場合は即 {} を返す。"""
+    api_key = os.environ.get("WEATHERAPI_KEY", "")
+    if not api_key:
+        return {}
+    url = "https://api.weatherapi.com/v1/marine.json"
+    params = urllib.parse.urlencode([
+        ("key", api_key),
+        ("q", f"{lat},{lon}"),
+        ("dt", date_str),
+        ("tides", "no"),
+    ])
+    try:
+        with urllib.request.urlopen(url + "?" + params, timeout=15) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        for day in data.get("forecast", {}).get("forecastday", []):
+            if day.get("date") == date_str:
+                heights = [
+                    h["sig_ht_mt"] for h in day.get("hour", [])
+                    if h.get("sig_ht_mt") is not None
+                ]
+                if heights:
+                    return {"wave_height_max": max(heights)}
+    except Exception as e:
+        print(f"  [情報] WeatherAPI 波浪取得失敗: {e}")
+    return {}
+
+
+def estimate_wave_from_wind(wind_speed_ms: float, fetch_km: float) -> float:
+    """SMB 簡易式: 風速と吹送距離から有義波高 (m) を推定する。
+    Hs ≈ 0.0248 × U × √(F / g)  U: 風速(m/s), F: 吹送距離(m)"""
+    if not wind_speed_ms or wind_speed_ms <= 0:
+        return 0.0
+    Hs = 0.0248 * wind_speed_ms * math.sqrt(fetch_km * 1000 / 9.8)
+    return round(min(Hs, 5.0), 2)
 
 
 def fetch_marine_with_fallback(lat, lon, date_str):
@@ -416,7 +454,7 @@ def calc_seabed_score(kisugo_score):
 # 釣り場スコアの総合計算
 # ============================================================
 
-def score_spot(spot, weather_data, marine_data, sst_noaa=None):
+def score_spot(spot, weather_data, marine_data, sst_noaa=None, fetch_km=None):
     details = {}
 
     # 底質スコア（JSON の bottom_kisugo_score を使用）
@@ -453,15 +491,19 @@ def score_spot(spot, weather_data, marine_data, sst_noaa=None):
 
     # 波高スコア
     wave_height = None
-    wave_is_fallback = marine_data.get("_is_fallback", False)
-    if marine_data and "daily" in marine_data:
-        d = marine_data["daily"]
-        wh_list = d.get("wave_height_max", [])
+    wave_estimated = False
+    if marine_data and "daily" in marine_data:          # Open-Meteo 形式
+        wh_list = marine_data["daily"].get("wave_height_max", [])
         if wh_list and wh_list[0] is not None:
             wave_height = wh_list[0]
+    if wave_height is None:                              # WeatherAPI 形式
+        wave_height = marine_data.get("wave_height_max")
+    if wave_height is None and fetch_km is not None and wind_speed is not None:
+        wave_height = estimate_wave_from_wind(wind_speed, fetch_km)
+        wave_estimated = True
     wv = calc_wave_score(wave_height)
-    if wave_is_fallback and wave_height is not None:
-        wv["label"] += "（沖合参考）"
+    if wave_estimated:
+        wv["label"] += "（風推定）"
     wave_pts = wv["pts"]
     details["wave"] = wv["label"]
 
@@ -723,10 +765,13 @@ def main():
         name = spot_name(spot)
         print(f"  {name}...", end="", flush=True)
         weather = fetch_weather(lat, lon, target_date)
-        proxy_lat, proxy_lon = get_marine_proxy(lat, lon)
-        marine = fetch_marine_with_fallback(proxy_lat, proxy_lon, target_date)
+        marine = fetch_marine_weatherapi(lat, lon, target_date)   # WeatherAPI 優先
+        if not marine:
+            marine = fetch_marine(lat, lon, target_date)           # Open-Meteo 直接試み
+        area = _assign_area(spot, area_centers)
+        fetch_km = area_centers[area][2] if area in area_centers else 50
         sst = fetch_sst_noaa(lat, lon, target_date)
-        result = score_spot(spot, weather, marine, sst_noaa=sst)
+        result = score_spot(spot, weather, marine, sst_noaa=sst, fetch_km=fetch_km)
         scored_spots.append(result)
         d = result["details"]
         missing = []

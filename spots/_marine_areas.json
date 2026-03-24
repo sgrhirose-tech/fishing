@@ -1,11 +1,11 @@
 {
   "areas": {
-    "湘南":     {"lat": 34.00, "lon": 139.50, "center_lat": 35.32, "center_lon": 139.43, "note": "辻堂〜茅ヶ崎（相模湾東部）"},
-    "西湘":     {"lat": 34.00, "lon": 139.20, "center_lat": 35.31, "center_lon": 139.29, "note": "平塚〜小田原（相模湾西部）"},
-    "三浦半島": {"lat": 34.00, "lon": 140.00, "center_lat": 35.10, "center_lon": 139.65, "note": "三浦半島南東沖（太平洋）"},
-    "東京湾":   {"lat": 34.20, "lon": 140.20, "center_lat": 35.45, "center_lon": 139.75, "note": "浦賀水道南方（太平洋）"},
-    "内房":     {"lat": 34.20, "lon": 140.20, "center_lat": 35.15, "center_lon": 139.90, "note": "浦賀水道南方（太平洋）"},
-    "外房":     {"lat": 34.50, "lon": 141.50, "center_lat": 35.25, "center_lon": 140.65, "note": "房総半島東沖遠洋"}
+    "湘南":     {"lat": 34.00, "lon": 139.50, "center_lat": 35.32, "center_lon": 139.43, "fetch_km": 100, "note": "辻堂〜茅ヶ崎（相模湾東部）"},
+    "西湘":     {"lat": 34.00, "lon": 139.20, "center_lat": 35.31, "center_lon": 139.29, "fetch_km":  60, "note": "平塚〜小田原（相模湾西部）"},
+    "三浦半島": {"lat": 34.00, "lon": 140.00, "center_lat": 35.10, "center_lon": 139.65, "fetch_km": 100, "note": "三浦半島南東沖（太平洋）"},
+    "東京湾":   {"lat": 34.20, "lon": 140.20, "center_lat": 35.45, "center_lon": 139.75, "fetch_km":  40, "note": "浦賀水道南方（太平洋）"},
+    "内房":     {"lat": 34.20, "lon": 140.20, "center_lat": 35.15, "center_lon": 139.90, "fetch_km":  20, "note": "浦賀水道南方（太平洋）"},
+    "外房":     {"lat": 34.50, "lon": 141.50, "center_lat": 35.25, "center_lon": 140.65, "fetch_km": 400, "note": "房総半島東沖遠洋"}
   },
   "fallbacks": [
     {"lat": 34.0, "lon": 139.5, "note": "伊豆半島南沖"},
