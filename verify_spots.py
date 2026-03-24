@@ -39,8 +39,11 @@ def _load_marine_areas(spots_dir: Path) -> dict:
 
 def _assign_marine_area(spot: dict, marine_areas: dict) -> str:
     """スポット座標に最近傍のエリア名を返す（nearest-neighbor）"""
-    lat = spot["location"]["latitude"]
-    lon = spot["location"]["longitude"]
+    loc = spot.get("location") or {}
+    lat = loc.get("latitude")
+    lon = loc.get("longitude")
+    if lat is None or lon is None:
+        return ""
     best, best_d = "", float("inf")
     for name, (clat, clon) in marine_areas.items():
         d = (lat - clat) ** 2 + (lon - clon) ** 2
