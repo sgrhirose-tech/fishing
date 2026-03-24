@@ -514,21 +514,26 @@ def score_spot(spot, weather_data, marine_data, sst_noaa=None, fetch_km=None):
 
     # 波高スコア
     wave_height = None
-    wave_estimated = False
+    wave_source = None  # "weatherapi" | "open-meteo" | "estimate" | None
     if marine_data and "daily" in marine_data:          # Open-Meteo 形式
         wh_list = marine_data["daily"].get("wave_height_max", [])
         if wh_list and wh_list[0] is not None:
             wave_height = wh_list[0]
+            wave_source = "open-meteo"
     if wave_height is None:                              # WeatherAPI 形式
-        wave_height = marine_data.get("wave_height_max")
+        wh = marine_data.get("wave_height_max")
+        if wh is not None:
+            wave_height = wh
+            wave_source = "weatherapi"
     if wave_height is None and fetch_km is not None and wind_speed is not None:
         wave_height = estimate_wave_from_wind(wind_speed, fetch_km)
-        wave_estimated = True
+        wave_source = "estimate"
     wv = calc_wave_score(wave_height)
-    if wave_estimated:
+    if wave_source == "estimate":
         wv["label"] += "（風推定）"
     wave_pts = wv["pts"]
     details["wave"] = wv["label"]
+    details["wave_source"] = wave_source
 
     # 水温スコア（NOAA ERDDAP を優先）
     sst = sst_noaa
@@ -796,8 +801,12 @@ def main():
         missing = []
         if d.get("wind_speed") == "データなし":
             missing.append("×風")
-        if d.get("wave") == "データなし":
+        ws = d.get("wave_source")
+        if ws is None:
             missing.append("×波")
+        elif ws in ("estimate", "open-meteo"):
+            missing.append("△波")
+        # ws == "weatherapi" → 正常取得、マーカーなし
         if d.get("sst") == "データなし":
             missing.append("×水温")
         suffix = f"（{'、'.join(missing)}）" if missing else ""
