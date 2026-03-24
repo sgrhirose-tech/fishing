@@ -642,9 +642,11 @@ def main():
         print("\nレポートをクリップボードにコピーしました")
         print("メモ帳やメッセージアプリに貼り付けて使えます")
 
-    # ファイルに保存（Pythonista の Documents フォルダ）
-    docs_dir = os.path.expanduser("~/Documents")
-    output_file = os.path.join(docs_dir, f"fishing_report_{target_date}.txt")
+    # ファイルに保存（python フォルダと同階層の results フォルダ）
+    results_dir = Path(__file__).parent.parent / "results"
+    results_dir.mkdir(exist_ok=True)
+    now_str = datetime.now(JST).strftime("%Y%m%d_%H%M%S")
+    output_file = results_dir / f"fishing_report_{now_str}.txt"
     try:
         with open(output_file, "w", encoding="utf-8") as f:
             f.write(report)
