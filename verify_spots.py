@@ -218,7 +218,14 @@ def main():
     out.write_text(html, encoding="utf-8")
     print(f"生成完了: {out}")
     print(f"スポット数: {len(spots)}")
-    webbrowser.open(str(out))
+
+    # Pythonista (iOS) では webview モジュールでインアプリ表示する
+    try:
+        import webview  # type: ignore  # Pythonista built-in
+        webview.open("file://" + str(out))
+    except ImportError:
+        # デスクトップ環境のフォールバック
+        webbrowser.open(out.as_uri())
 
 
 if __name__ == "__main__":
