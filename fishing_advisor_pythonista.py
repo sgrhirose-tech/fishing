@@ -22,6 +22,29 @@ from pathlib import Path
 
 JST = timezone(timedelta(hours=9))
 
+# API キー（keys.txt から読み込む）
+def _load_api_keys(filename="keys.txt"):
+    """keys.txt から KEY=VALUE 形式で API キーを読み込む。
+    api_key.txt が存在する場合は ANTHROPIC_API_KEY の後方互換として使用。"""
+    keys = {}
+    p = Path(__file__).parent / filename
+    if p.exists():
+        for line in p.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            if "=" in line:
+                k, _, v = line.partition("=")
+                keys[k.strip()] = v.strip()
+    # 後方互換: api_key.txt → ANTHROPIC_API_KEY
+    legacy = Path(__file__).parent / "api_key.txt"
+    if legacy.exists() and "ANTHROPIC_API_KEY" not in keys:
+        keys["ANTHROPIC_API_KEY"] = legacy.read_text(encoding="utf-8").strip()
+    return keys
+
+
+_API_KEYS = _load_api_keys()
+
 # エリアごとの波高取得用沖合代理座標は spots/_marine_areas.json から読み込む
 _MARINE_COORD_CACHE: dict = {}
 
@@ -227,7 +250,7 @@ def fetch_marine(lat, lon, date_str):
 def fetch_marine_weatherapi(lat, lon, date_str):
     """WeatherAPI.com Marine API から波高を取得する。
     環境変数 WEATHERAPI_KEY が未設定の場合は即 {} を返す。"""
-    api_key = os.environ.get("WEATHERAPI_KEY", "")
+    api_key = _API_KEYS.get("WEATHERAPI_KEY") or os.environ.get("WEATHERAPI_KEY", "")
     if not api_key:
         return {}
     url = "https://api.weatherapi.com/v1/marine.json"
@@ -644,11 +667,7 @@ def generate_report(scored_spots, target_date):
 # ★ Anthropic API キーをここに直接書いてもOKです（Pythonista用）
 # 例: ANTHROPIC_API_KEY = "sk-ant-xxxxxxxxxxxx"
 # セキュリティ注意: 他人とファイルを共有する場合は消してください
-_key_file = Path(__file__).parent / "api_key.txt"
-if _key_file.exists():
-    ANTHROPIC_API_KEY = _key_file.read_text(encoding="utf-8").strip()
-else:
-    ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+ANTHROPIC_API_KEY = _API_KEYS.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_API_KEY", "")
 
 
 def claude_ai_comment(scored_spots):
