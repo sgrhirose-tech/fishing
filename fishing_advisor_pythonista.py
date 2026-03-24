@@ -71,29 +71,33 @@ def _assign_area(spot: dict, area_centers: dict) -> str:
     return min(area_centers, key=lambda n: (area_centers[n][0]-lat)**2 + (area_centers[n][1]-lon)**2)
 
 
-def _select_area(area_names: list):
-    """エリアを選択して返す。全選択/キャンセルなら None を返す"""
-    options = ["すべて"] + area_names
+def _select_areas(area_names: list):
+    """エリアを複数選択して list を返す。全選択/キャンセルなら None を返す"""
     try:
         import dialogs  # Pythonista only
-        chosen = dialogs.list_dialog("エリアを選択", options)
-        return None if (chosen is None or chosen == "すべて") else chosen
-    except ImportError:
+        chosen = dialogs.list_dialog("エリアを選択（複数可）", area_names, multiple=True)
+        return chosen if chosen else None
+    except (ImportError, TypeError):
+        # dialogs 未対応、または multiple パラメータ非対応の旧バージョン
         pass
-    # フォールバック: コンソール入力
-    print("エリアを選択してください (Enter でスキップ):")
+    # フォールバック: コンソール入力（カンマ区切り）
+    print("エリアを選択してください（複数可, カンマ区切り。Enter でスキップ）:")
     for i, name in enumerate(area_names, 1):
         print(f"  {i}. {name}")
     try:
         ans = input("番号> ").strip()
-        if ans == "" or ans == "0":
+        if not ans:
             return None
-        idx = int(ans) - 1
-        if 0 <= idx < len(area_names):
-            return area_names[idx]
-    except (ValueError, EOFError):
-        pass
-    return None
+        selected = []
+        for token in ans.split(","):
+            token = token.strip()
+            if token.isdigit():
+                idx = int(token) - 1
+                if 0 <= idx < len(area_names):
+                    selected.append(area_names[idx])
+        return selected or None
+    except EOFError:
+        return None
 
 
 # Pythonista 固有モジュール（PC環境では None になる）
@@ -699,14 +703,14 @@ def main():
 
     # エリア絞り込み
     area_centers = _load_area_centers()
-    selected_area = _select_area(list(area_centers.keys())) if area_centers else None
-    if selected_area:
-        spots = [s for s in spots if _assign_area(s, area_centers) == selected_area]
+    selected_areas = _select_areas(list(area_centers.keys())) if area_centers else None
+    if selected_areas:
+        spots = [s for s in spots if _assign_area(s, area_centers) in selected_areas]
         if not spots:
-            print(f"[エラー] {selected_area} のスポットが見つかりません。")
+            print(f"[エラー] 選択エリアのスポットが見つかりません: {', '.join(selected_areas)}")
             return
 
-    area_label = f"【{selected_area}】" if selected_area else ""
+    area_label = f"【{'・'.join(selected_areas)}】" if selected_areas else ""
     print("シロギス釣り場アドバイザー")
     print(f"対象日: {target_date} {area_label}")
     print(f"釣り場数: {len(spots)}か所")
