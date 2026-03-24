@@ -46,6 +46,56 @@ def _load_marine_areas(json_path="spots/_marine_areas.json"):
 
 MARINE_PROXY, _MARINE_FALLBACKS = _load_marine_areas()
 
+
+def _load_area_centers(json_path="spots/_marine_areas.json"):
+    """エリア名 → 地理的中心座標 dict を返す（エリア分類用）"""
+    p = Path(__file__).parent / json_path
+    try:
+        with open(p, encoding="utf-8") as f:
+            data = json.load(f)
+        return {
+            name: (v["center_lat"], v["center_lon"])
+            for name, v in data.get("areas", {}).items()
+            if "center_lat" in v and "center_lon" in v
+        }
+    except Exception:
+        return {}
+
+
+def _assign_area(spot: dict, area_centers: dict) -> str:
+    """スポット座標に最近傍のエリア名を返す"""
+    loc = spot.get("location") or {}
+    lat, lon = loc.get("latitude"), loc.get("longitude")
+    if lat is None or lon is None:
+        return ""
+    return min(area_centers, key=lambda n: (area_centers[n][0]-lat)**2 + (area_centers[n][1]-lon)**2)
+
+
+def _select_area(area_names: list):
+    """エリアを選択して返す。全選択/キャンセルなら None を返す"""
+    options = ["すべて"] + area_names
+    try:
+        import dialogs  # Pythonista only
+        chosen = dialogs.list_dialog("エリアを選択", options)
+        return None if (chosen is None or chosen == "すべて") else chosen
+    except ImportError:
+        pass
+    # フォールバック: コンソール入力
+    print("エリアを選択してください (Enter でスキップ):")
+    for i, name in enumerate(area_names, 1):
+        print(f"  {i}. {name}")
+    try:
+        ans = input("番号> ").strip()
+        if ans == "" or ans == "0":
+            return None
+        idx = int(ans) - 1
+        if 0 <= idx < len(area_names):
+            return area_names[idx]
+    except (ValueError, EOFError):
+        pass
+    return None
+
+
 # Pythonista 固有モジュール（PC環境では None になる）
 try:
     import clipboard as _clipboard_module
@@ -647,8 +697,18 @@ def main():
         print("build_spots_complete.py を先に実行してください。")
         return
 
+    # エリア絞り込み
+    area_centers = _load_area_centers()
+    selected_area = _select_area(list(area_centers.keys())) if area_centers else None
+    if selected_area:
+        spots = [s for s in spots if _assign_area(s, area_centers) == selected_area]
+        if not spots:
+            print(f"[エラー] {selected_area} のスポットが見つかりません。")
+            return
+
+    area_label = f"【{selected_area}】" if selected_area else ""
     print("シロギス釣り場アドバイザー")
-    print(f"対象日: {target_date}")
+    print(f"対象日: {target_date} {area_label}")
     print(f"釣り場数: {len(spots)}か所")
     print("気象・海洋データを取得しています...\n")
 
