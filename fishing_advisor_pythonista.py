@@ -228,6 +228,7 @@ def fetch_marine(lat, lon, date_str):
         ("longitude", lon),
         ("daily", "wave_height_max"),
         ("daily", "dominant_wave_direction"),
+        ("daily", "wave_period_max"),
         ("timezone", "Asia/Tokyo"),
         ("start_date", date_str),
         ("end_date", date_str),
@@ -276,12 +277,13 @@ def fetch_marine_weatherapi(lat, lon, date_str):
             data = json.loads(resp.read().decode("utf-8"))
         for day in data.get("forecast", {}).get("forecastday", []):
             if day.get("date") == date_str:
-                heights = [
-                    h["sig_ht_mt"] for h in day.get("hour", [])
-                    if h.get("sig_ht_mt") is not None
-                ]
+                hours = day.get("hour", [])
+                heights = [h["sig_ht_mt"] for h in hours if h.get("sig_ht_mt") is not None]
+                periods = [h["swell_period_secs"] for h in hours if h.get("swell_period_secs") is not None]
                 if heights:
                     result = {"wave_height_max": max(heights)}
+                    if periods:
+                        result["swell_period_max"] = max(periods)
                     break
     except Exception as e:
         print(f"  [情報] WeatherAPI 波浪取得失敗: {e}")
@@ -419,17 +421,20 @@ def calc_wind_score(wind_speed, wind_dir, sea_bearing_deg):
         dir_label = "方位データなし"
         is_surfer_friendly = None
 
-    if wind_speed < 3.0:
-        spd_label = f"{wind_speed:.1f}m/s（微風）"
+    if wind_speed < 4.0:
+        spd_label = f"{wind_speed:.1f}m/s（微風・かなり行きやすい）"
         spd_pts = 25
     elif wind_speed < 5.0:
-        spd_label = f"{wind_speed:.1f}m/s（弱風）"
+        spd_label = f"{wind_speed:.1f}m/s（弱風・良条件）"
         spd_pts = 20
     elif wind_speed < 7.0:
-        spd_label = f"{wind_speed:.1f}m/s（やや強い）"
+        spd_label = f"{wind_speed:.1f}m/s（境目）"
         spd_pts = 10
+    elif wind_speed < 8.0:
+        spd_label = f"{wind_speed:.1f}m/s（やめた方がいい）"
+        spd_pts = 4
     else:
-        spd_label = f"{wind_speed:.1f}m/s（釣行困難）"
+        spd_label = f"{wind_speed:.1f}m/s（中止推奨）"
         spd_pts = 0
 
     return {
@@ -442,19 +447,31 @@ def calc_wind_score(wind_speed, wind_dir, sea_bearing_deg):
     }
 
 
-def calc_wave_score(wave_height):
+def calc_wave_score(wave_height, swell_period=None):
     if wave_height is None:
-        return {"pts": 15, "label": "データなし"}
-    if wave_height < 0.3:
-        return {"pts": 30, "label": f"{wave_height:.1f}m（ベタ凪）"}
-    elif wave_height < 0.5:
-        return {"pts": 24, "label": f"{wave_height:.1f}m（穏やか）"}
-    elif wave_height < 0.8:
-        return {"pts": 15, "label": f"{wave_height:.1f}m（やや波あり）"}
-    elif wave_height < 1.2:
-        return {"pts": 5, "label": f"{wave_height:.1f}m（波あり・釣りにくい）"}
+        base_pts, height_label = 15, "データなし"
+    elif wave_height <= 0.4:
+        base_pts, height_label = 30, f"{wave_height:.1f}m（ベタ凪・かなり行きやすい）"
+    elif wave_height <= 0.8:
+        base_pts, height_label = 22, f"{wave_height:.1f}m（良好）"
+    elif wave_height <= 1.2:
+        base_pts, height_label = 10, f"{wave_height:.1f}m（境目・場所次第）"
+    elif wave_height <= 1.5:
+        base_pts, height_label = 3, f"{wave_height:.1f}m（やめた方がいい）"
     else:
-        return {"pts": 0, "label": f"{wave_height:.1f}m（荒れ・釣り不可）"}
+        base_pts, height_label = 0, f"{wave_height:.1f}m（中止推奨）"
+
+    period_penalty, period_label = 0, ""
+    if swell_period is not None:
+        period_label = f" 周期{swell_period:.0f}s"
+        if swell_period >= 8:
+            period_penalty, period_label = -8, period_label + "（長周期うねり・危険）"
+        elif swell_period >= 7:
+            period_penalty, period_label = -5, period_label + "（うねりあり・注意）"
+        elif swell_period >= 6:
+            period_penalty, period_label = -3, period_label + "（やや長い）"
+
+    return {"pts": max(0, base_pts + period_penalty), "label": height_label + period_label}
 
 
 def calc_temp_score(sst):
@@ -528,21 +545,28 @@ def score_spot(spot, weather_data, marine_data, sst_noaa=None, fetch_km=None):
 
     # 波高スコア
     wave_height = None
+    wave_period = None
     wave_source = None  # "weatherapi" | "open-meteo" | "estimate" | None
     if marine_data and "daily" in marine_data:          # Open-Meteo 形式
         wh_list = marine_data["daily"].get("wave_height_max", [])
         if wh_list and wh_list[0] is not None:
             wave_height = wh_list[0]
             wave_source = "open-meteo"
+        wp_list = marine_data["daily"].get("wave_period_max", [])
+        if wp_list and wp_list[0] is not None:
+            wave_period = wp_list[0]
     if wave_height is None:                              # WeatherAPI 形式
         wh = marine_data.get("wave_height_max")
         if wh is not None:
             wave_height = wh
             wave_source = "weatherapi"
+        wp = marine_data.get("swell_period_max")
+        if wp is not None:
+            wave_period = wp
     if wave_height is None and fetch_km is not None and wind_speed is not None:
         wave_height = estimate_wave_from_wind(wind_speed, fetch_km)
         wave_source = "estimate"
-    wv = calc_wave_score(wave_height)
+    wv = calc_wave_score(wave_height, wave_period)
     if wave_source == "estimate":
         wv["label"] += "（風推定）"
     wave_pts = wv["pts"]
