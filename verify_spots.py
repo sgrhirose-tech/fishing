@@ -157,6 +157,45 @@ select.edit-select {
 }
 #area-bar label { font-weight: bold; color: #1565c0; font-size: 14px; white-space: nowrap; }
 #area-bar select { border: 1px solid #90caf9; border-radius: 5px; padding: 4px 8px; font-size: 14px; background: white; color: #333; }
+
+/* ── 新規登録モーダル ── */
+#newspot-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55); z-index: 9000;
+  align-items: center; justify-content: center;
+}
+#newspot-overlay.open { display: flex; }
+#newspot-card {
+  background: white; border-radius: 12px;
+  padding: 20px 18px 16px; width: 88%; max-width: 380px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+}
+#newspot-card h2 { font-size: 16px; font-weight: bold; color: #1565c0; margin-bottom: 14px; text-align: center; }
+.ns-field { margin-bottom: 12px; }
+.ns-field label { display: block; font-size: 12px; color: #555; font-weight: 600; margin-bottom: 4px; }
+.ns-field input {
+  width: 100%; border: 1px solid #90caf9; border-radius: 6px;
+  padding: 8px 10px; font-size: 15px; background: #fafafa;
+}
+.ns-field input:focus { outline: none; border-color: #1565c0; background: white; }
+.ns-field input.input-error { border-color: #d32f2f; background: #fff8f8; }
+#ns-error { font-size: 12px; color: #d32f2f; min-height: 18px; margin-bottom: 8px; text-align: center; }
+#ns-progress {
+  display: none; font-size: 12px; color: #555;
+  background: #f5f5f5; border-radius: 6px;
+  padding: 8px 10px; margin-bottom: 10px; line-height: 1.8;
+}
+#ns-progress.visible { display: block; }
+.ns-btn-row { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
+#ns-submit-btn {
+  background: #1565c0; color: white; border: none;
+  border-radius: 8px; padding: 9px 20px; font-size: 14px; font-weight: bold; cursor: pointer; flex: 1;
+}
+#ns-submit-btn:disabled { background: #90caf9; cursor: default; }
+#ns-cancel-btn {
+  background: #e0e0e0; color: #333; border: none;
+  border-radius: 8px; padding: 9px 16px; font-size: 14px; cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -175,6 +214,36 @@ select.edit-select {
   <select id="area-select">
     <option value="">すべて</option>
   </select>
+  <button id="new-spot-btn" style="
+    margin-left:auto; background:#1565c0; color:white;
+    border:none; border-radius:6px; padding:5px 12px;
+    font-size:13px; font-weight:bold; cursor:pointer; white-space:nowrap;">
+    ＋ 新規登録
+  </button>
+</div>
+
+<div id="newspot-overlay">
+  <div id="newspot-card">
+    <h2>＋ 新規スポット登録</h2>
+    <div class="ns-field">
+      <label for="ns-name">スポット名</label>
+      <input type="text" id="ns-name" placeholder="例: 野球場下" autocomplete="off">
+    </div>
+    <div class="ns-field">
+      <label for="ns-lat">緯度</label>
+      <input type="number" id="ns-lat" placeholder="例: 35.3179094" step="any">
+    </div>
+    <div class="ns-field">
+      <label for="ns-lon">経度</label>
+      <input type="number" id="ns-lon" placeholder="例: 139.4054069" step="any">
+    </div>
+    <div id="ns-error"></div>
+    <div id="ns-progress"></div>
+    <div class="ns-btn-row">
+      <button id="ns-cancel-btn">キャンセル</button>
+      <button id="ns-submit-btn">登録開始</button>
+    </div>
+  </div>
 </div>
 
 <div id="map"></div>
@@ -523,6 +592,102 @@ function onRefetchComplete(data) {
   }, 2000);
 }
 
+function openNewSpotModal() {
+  ['ns-name','ns-lat','ns-lon'].forEach(id => {
+    const el = document.getElementById(id);
+    el.value = '';
+    el.classList.remove('input-error');
+  });
+  document.getElementById('ns-error').textContent = '';
+  document.getElementById('ns-progress').textContent = '';
+  document.getElementById('ns-progress').classList.remove('visible');
+  document.getElementById('ns-submit-btn').disabled = false;
+  document.getElementById('ns-submit-btn').textContent = '登録開始';
+  document.getElementById('newspot-overlay').classList.add('open');
+  setTimeout(() => document.getElementById('ns-name').focus(), 80);
+}
+
+function closeNewSpotModal() {
+  document.getElementById('newspot-overlay').classList.remove('open');
+}
+
+function submitNewSpot() {
+  const nameEl = document.getElementById('ns-name');
+  const latEl  = document.getElementById('ns-lat');
+  const lonEl  = document.getElementById('ns-lon');
+  const errEl  = document.getElementById('ns-error');
+  errEl.textContent = '';
+  [nameEl, latEl, lonEl].forEach(el => el.classList.remove('input-error'));
+
+  const name = nameEl.value.trim();
+  const lat  = parseFloat(latEl.value);
+  const lon  = parseFloat(lonEl.value);
+
+  let err = '';
+  if (!name)                                            { nameEl.classList.add('input-error'); err = 'スポット名を入力してください'; }
+  else if (isNaN(lat) || lat < -90  || lat > 90)       { latEl.classList.add('input-error');  err = '緯度が不正です（-90〜90）'; }
+  else if (isNaN(lon) || lon < -180 || lon > 180)      { lonEl.classList.add('input-error');  err = '経度が不正です（-180〜180）'; }
+  if (err) { errEl.textContent = err; return; }
+
+  document.getElementById('ns-submit-btn').disabled = true;
+  document.getElementById('ns-cancel-btn').disabled = true;
+  document.getElementById('ns-submit-btn').textContent = '取得中...';
+  document.getElementById('ns-progress').classList.add('visible');
+  document.getElementById('ns-progress').innerHTML = '⏳ 開始中...';
+
+  const payload = JSON.stringify({name, lat, lon});
+  window.location.href = 'pythonista://newspot?data=' + encodeURIComponent(payload);
+}
+
+function onNewSpotProgress(data) {
+  const labels = {
+    1: '🧭 海の方向を算出中...',
+    2: '📍 住所を取得中...',
+    3: '🪨 底質データを取得中...',
+    4: '📏 水深データを取得中...',
+    5: '💾 JSON を生成中...',
+  };
+  const el = document.getElementById('ns-progress');
+  if (el) el.innerHTML = labels[data.step] || data.message || '';
+}
+
+function onNewSpotComplete(data) {
+  document.getElementById('ns-cancel-btn').disabled = false;
+  if (data.status === 'error') {
+    document.getElementById('ns-error').textContent = '❌ ' + data.message;
+    document.getElementById('ns-submit-btn').disabled = false;
+    document.getElementById('ns-submit-btn').textContent = '登録開始';
+    document.getElementById('ns-progress').classList.remove('visible');
+    return;
+  }
+  const spot = data.spot;
+  SPOTS.push(spot);
+
+  // area-select に新エリアがなければ追加
+  const areaEl = document.getElementById('area-select');
+  if (spot._marine_area && ![...areaEl.options].some(o => o.value === spot._marine_area)) {
+    const opt = document.createElement('option');
+    opt.value = spot._marine_area;
+    opt.textContent = spot._marine_area;
+    areaEl.appendChild(opt);
+  }
+
+  // フィルターをリセットして新スポットに移動
+  areaEl.value = '';
+  filteredSpots = SPOTS.slice();
+  filteredPos   = filteredSpots.length - 1;
+  currentIndex  = SPOTS.length - 1;
+
+  closeNewSpotModal();
+  showSpot(currentIndex);
+  document.getElementById('save-msg').textContent = '✓ 登録完了: ' + spot.name;
+  document.getElementById('save-bar').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('save-bar').style.display = 'none';
+    document.getElementById('save-msg').textContent = '';
+  }, 3000);
+}
+
 // イベント委譲: innerHTML で挿入した要素の onclick は WKWebView でブロックされるため
 // data-action 属性 + addEventListener で統一処理する
 document.getElementById('info-table').addEventListener('click', function(e) {
@@ -547,6 +712,14 @@ for (const name of AREA_NAMES) {
   areaSelectEl.appendChild(opt);
 }
 areaSelectEl.addEventListener('change', applyAreaFilter);
+
+// 新規登録モーダルのイベント
+document.getElementById('new-spot-btn').addEventListener('click', openNewSpotModal);
+document.getElementById('ns-cancel-btn').addEventListener('click', closeNewSpotModal);
+document.getElementById('ns-submit-btn').addEventListener('click', submitNewSpot);
+document.getElementById('newspot-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeNewSpotModal();
+});
 
 // 初期表示
 filteredSpots = SPOTS.slice();
@@ -584,6 +757,13 @@ class SpotDelegate:
             except Exception as e:
                 import traceback; traceback.print_exc()
                 self._send_refetch_result({"status": "error", "message": str(e)})
+            return False
+        if url.startswith("pythonista://newspot"):
+            try:
+                self._handle_newspot(url)
+            except Exception as e:
+                import traceback; traceback.print_exc()
+                self._send_newspot_result({"status": "error", "message": str(e)})
             return False
         return True
 
@@ -744,6 +924,109 @@ class SpotDelegate:
     def _send_refetch_result(self, result: dict):
         if self.webview:
             js = "onRefetchComplete(" + json.dumps(result, ensure_ascii=False) + ")"
+            self.webview.evaluate_javascript(js)
+
+    def _handle_newspot(self, url: str):
+        from urllib.parse import urlparse, parse_qs, unquote
+        qs = parse_qs(urlparse(url).query)
+        payload = json.loads(unquote(qs["data"][0]))
+        name = str(payload["name"]).strip()
+        lat  = float(payload["lat"])
+        lon  = float(payload["lon"])
+        if not name:
+            self._send_newspot_result({"status": "error", "message": "スポット名が空です"}); return
+        if not (-90 <= lat <= 90):
+            self._send_newspot_result({"status": "error", "message": f"緯度が不正: {lat}"}); return
+        if not (-180 <= lon <= 180):
+            self._send_newspot_result({"status": "error", "message": f"経度が不正: {lon}"}); return
+        self._run_newspot(name, lat, lon)
+
+    def _run_newspot(self, name: str, lat: float, lon: float):
+        """バックグラウンドスレッドで新規スポットを構築して JSON に書き出す。"""
+        spots_dir = self.spots_dir
+
+        def run():
+            import sys; sys.path.insert(0, str(spots_dir.parent))
+            try:
+                from build_spots_complete import (
+                    calculate_sea_bearing, reverse_geocode,
+                    query_bottom_types, query_depth_contours,
+                    summarize_depth_profile_from_contours,
+                    derive_features_from_physical, build_spot_json, slugify_filename,
+                )
+            except ImportError as e:
+                self._send_newspot_result({"status": "error", "message": f"インポート失敗: {e}"}); return
+
+            def progress(step):
+                if self.webview:
+                    self.webview.evaluate_javascript(
+                        "onNewSpotProgress(" + json.dumps({"step": step}, ensure_ascii=False) + ")")
+
+            try:
+                # ── Step 1: 海方向 ──
+                progress(1)
+                sea_bearing = calculate_sea_bearing(lat, lon)
+                item = {
+                    "name": name, "lat": lat, "lon": lon,
+                    "sea_bearing_deg": sea_bearing,
+                    "sea_bearing_source": "OSM Overpass coastline",
+                    "sea_bearing_status": "auto" if sea_bearing is not None else "failed",
+                }
+
+                # ── Step 2: 住所 ──
+                progress(2)
+                reverse_geo = None
+                try:
+                    reverse_geo = reverse_geocode(lat, lon)
+                except Exception as e:
+                    print(f"  reverse geocode 失敗: {e}")
+
+                # ── Step 3: 底質 ──
+                progress(3)
+                if sea_bearing is not None:
+                    bottom_data = query_bottom_types(lat, lon, sea_bearing)
+                else:
+                    bottom_data = {"value": None, "matched_layers": [],
+                                   "best_match": None, "status": "海方向未取得のためスキップ"}
+
+                # ── Step 4: 水深 ──
+                progress(4)
+                depth_raw = query_depth_contours(lat, lon)
+                depth_summary = summarize_depth_profile_from_contours(depth_raw["nearest_contours"])
+
+                # ── Step 5: JSON 生成・書き出し ──
+                progress(5)
+                index = sum(1 for f in spots_dir.glob("*.json") if not f.name.startswith("_")) + 1
+                spot = build_spot_json(
+                    item=item, reverse_geo=reverse_geo,
+                    bottom_data=bottom_data, depth_summary=depth_summary,
+                    depth_raw=depth_raw, index=index,
+                )
+                spot["metadata"]["json_created_by"] = "verify_spots.py"
+
+                filename = slugify_filename(name) + ".json"
+                target = spots_dir / filename
+                if target.exists():
+                    filename = slugify_filename(name) + f"_{index:02d}.json"
+                    target = spots_dir / filename
+                spot["_filename"] = filename
+                target.write_text(json.dumps(spot, ensure_ascii=False, indent=2), encoding="utf-8")
+                print(f"新規登録完了: {filename}")
+
+                marine_areas = _load_marine_areas(spots_dir)
+                spot["_marine_area"] = _assign_marine_area(spot, marine_areas) if marine_areas else ""
+
+                self._send_newspot_result({"status": "ok", "spot": spot})
+
+            except Exception as e:
+                import traceback; traceback.print_exc()
+                self._send_newspot_result({"status": "error", "message": str(e)})
+
+        threading.Thread(target=run, daemon=True).start()
+
+    def _send_newspot_result(self, result: dict):
+        if self.webview:
+            js = "onNewSpotComplete(" + json.dumps(result, ensure_ascii=False) + ")"
             self.webview.evaluate_javascript(js)
 
 
