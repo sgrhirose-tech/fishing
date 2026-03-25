@@ -572,10 +572,18 @@ class SpotDelegate:
     def webview_should_start_load(self, webview, url, nav_type):
         self.webview = webview
         if url.startswith("pythonista://save"):
-            self._handle_save(url)
+            try:
+                self._handle_save(url)
+            except Exception as e:
+                import traceback; traceback.print_exc()
+                self._send_refetch_result({"status": "error", "message": str(e)})
             return False
         if url.startswith("pythonista://refetch"):
-            self._handle_refetch(url)
+            try:
+                self._handle_refetch(url)
+            except Exception as e:
+                import traceback; traceback.print_exc()
+                self._send_refetch_result({"status": "error", "message": str(e)})
             return False
         return True
 
@@ -595,7 +603,7 @@ class SpotDelegate:
 
         if "bottom_type_value" in changes:
             v = changes["bottom_type_value"]
-            if "bottom_type" not in data["physical_features"]:
+            if not data["physical_features"].get("bottom_type"):  # None / 未存在 どちらも対応
                 data["physical_features"]["bottom_type"] = {}
             data["physical_features"]["bottom_type"]["value"] = v if v != "" else None
 
@@ -639,8 +647,10 @@ class SpotDelegate:
             v = changes.get("bottom_type_value")
             if v:
                 # best_match.name も手動値に合わせて更新（最適マッチ表示を一致させる）
-                bt = data["physical_features"].setdefault("bottom_type", {})
-                bt.setdefault("best_match", {})["name"] = v
+                if not data["physical_features"].get("bottom_type"):
+                    data["physical_features"]["bottom_type"] = {}
+                bt = data["physical_features"]["bottom_type"]
+                bt["best_match"] = {"name": v}   # null の場合も直接代入で上書き
 
             new_df = derive_features_from_physical(data)
             data["derived_features"] = new_df
