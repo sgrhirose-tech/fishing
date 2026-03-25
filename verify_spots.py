@@ -231,11 +231,11 @@ select.edit-select {
     </div>
     <div class="ns-field">
       <label for="ns-lat">緯度</label>
-      <input type="number" id="ns-lat" placeholder="例: 35.3179094" step="any">
+      <input type="text" inputmode="decimal" id="ns-lat" placeholder="例: 35.3179094" autocomplete="off">
     </div>
     <div class="ns-field">
       <label for="ns-lon">経度</label>
-      <input type="number" id="ns-lon" placeholder="例: 139.4054069" step="any">
+      <input type="text" inputmode="decimal" id="ns-lon" placeholder="例: 139.4054069" autocomplete="off">
     </div>
     <div id="ns-error"></div>
     <div id="ns-progress"></div>
