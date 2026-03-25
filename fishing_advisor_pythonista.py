@@ -206,6 +206,8 @@ def fetch_weather(lat, lon, date_str):
         ("daily", "wind_direction_10m_dominant"),
         ("daily", "precipitation_sum"),
         ("daily", "weather_code"),
+        ("hourly", "temperature_2m"),
+        ("daily", "temperature_2m_max"),
         ("wind_speed_unit", "ms"),
         ("timezone", "Asia/Tokyo"),
         ("start_date", date_str),
@@ -447,6 +449,47 @@ def calc_wind_score(wind_speed, wind_dir, sea_bearing_deg):
     }
 
 
+def weather_code_label(code):
+    """WMO 天気コードを日本語ラベルに変換する。"""
+    if code is None:       return "不明"
+    if code == 0:          return "快晴"
+    if code == 1:          return "晴れ"
+    if code == 2:          return "晴れ時々くもり"
+    if code == 3:          return "くもり"
+    if code in (45, 48):   return "霧"
+    if code in (51, 53, 55): return "霧雨"
+    if code in (56, 57):   return "着氷性霧雨"
+    if 61 <= code <= 63:   return "雨"
+    if code == 65:         return "大雨"
+    if code in (71, 73):   return "雪"
+    if code == 75:         return "大雪"
+    if code == 77:         return "霰"
+    if code in (80, 81, 82): return "にわか雨"
+    if code in (85, 86):   return "にわか雪"
+    if code == 95:         return "雷雨"
+    if code in (96, 99):   return "雷雨（雹）"
+    return f"天気コード{code}"
+
+
+def calc_air_temp_score(temp_max):
+    """最高気温から快適性スコア（0〜5点）を返す。"""
+    if temp_max is None:
+        return {"pts": 3, "label": "データなし"}
+    if 15.0 <= temp_max <= 24.0:
+        pts, label = 5, "最も快適"
+    elif 10.0 <= temp_max < 15.0 or 25.0 <= temp_max <= 27.0:
+        pts, label = 4, "快適"
+    elif 5.0 <= temp_max < 10.0 or 28.0 <= temp_max <= 30.0:
+        pts, label = 3, "対策が必要"
+    elif 0.0 <= temp_max < 5.0 or 31.0 <= temp_max <= 34.0:
+        pts, label = 2, "厳しい"
+    elif temp_max < 0.0 or 35.0 <= temp_max <= 37.0:
+        pts, label = 1, "危険寄り"
+    else:  # >= 38
+        pts, label = 0, "危険（熱中症リスク高）"
+    return {"pts": pts, "label": f"{temp_max:.1f}°C（{label}）"}
+
+
 def calc_wave_score(wave_height, swell_period=None):
     if wave_height is None:
         base_pts, height_label = 15, "データなし"
@@ -601,16 +644,40 @@ def score_spot(spot, weather_data, marine_data, sst_noaa=None, fetch_km=None):
     else:
         details["precip"] = "データなし"
 
-    # 生データ保存（マークダウン表出力用）
-    details["_wind_speed_raw"]  = wind_speed
-    details["_wind_dir_raw"]    = wind_dir
-    details["_wave_height_raw"] = wave_height
-    details["_wave_period_raw"] = wave_period
-    details["_sst_raw"]         = sst
-    details["_precip_raw"]      = precip
-    details["_kisugo_raw"]      = kisugo_score
+    # 気温・天気スコア
+    temp_6am = None
+    temp_max = None
+    weather_code = None
+    if weather_data and "daily" in weather_data:
+        wc_list = weather_data["daily"].get("weather_code", [])
+        if wc_list and wc_list[0] is not None:
+            weather_code = int(wc_list[0])
+        tm_list = weather_data["daily"].get("temperature_2m_max", [])
+        if tm_list and tm_list[0] is not None:
+            temp_max = tm_list[0]
+    if weather_data and "hourly" in weather_data:
+        t2m = weather_data["hourly"].get("temperature_2m", [])
+        if len(t2m) > 6 and t2m[6] is not None:
+            temp_6am = t2m[6]
+    at = calc_air_temp_score(temp_max)
+    air_temp_pts = at["pts"]
+    details["sky"]      = weather_code_label(weather_code)
+    details["temp_max"] = at["label"]
+    details["temp_6am"] = f"{temp_6am:.1f}°C" if temp_6am is not None else "データなし"
 
-    total = seabed_pts + wind_pts + wave_pts + temp_pts + rain_penalty
+    # 生データ保存（マークダウン表出力用）
+    details["_wind_speed_raw"]    = wind_speed
+    details["_wind_dir_raw"]      = wind_dir
+    details["_wave_height_raw"]   = wave_height
+    details["_wave_period_raw"]   = wave_period
+    details["_sst_raw"]           = sst
+    details["_precip_raw"]        = precip
+    details["_kisugo_raw"]        = kisugo_score
+    details["_temp_6am_raw"]      = temp_6am
+    details["_temp_max_raw"]      = temp_max
+    details["_weather_code_raw"]  = weather_code
+
+    total = seabed_pts + wind_pts + wave_pts + temp_pts + air_temp_pts + rain_penalty
 
     return {
         "spot": spot,
@@ -672,6 +739,9 @@ def generate_report(scored_spots, target_date):
         if d.get("terrain"):
             lines.append(f"         地形   : {d['terrain']}")
         lines.append(f"         海水温 : {d['sst']}")
+        lines.append(f"         天気   : {d['sky']}")
+        lines.append(f"         最高気温: {d['temp_max']}")
+        lines.append(f"         朝6時  : {d['temp_6am']}")
         lines.append(f"         波高   : {d['wave']}")
         lines.append(f"         風速   : {d['wind_speed']}")
         lines.append(f"         風向   : {d['wind_dir']}")
@@ -699,7 +769,7 @@ def generate_report(scored_spots, target_date):
 
     lines.append("")
     lines.append("【スコアの見方】")
-    lines.append("  100点満点（底質15点 + 風40点 + 波30点 + 水温15点）")
+    lines.append("  105点満点（底質15点 + 風40点 + 波30点 + 水温15点 + 気温5点）")
     lines.append("  雨が多い場合はペナルティあり（最大-30点）")
     lines.append("")
     lines.append("【注意事項】")
@@ -723,8 +793,8 @@ def generate_markdown_table(scored_spots, target_date):
         f"# シロギス釣り場 生データ — {target_date}",
         f"作成: {now_str} JST",
         "",
-        "| 順位 | スポット名 | エリア | 総合点 | 風速 | 風向 | 降水量 | 水温 | 波高 | 周期 | 底質スコア | 波データ元 |",
-        "| ---: | --- | --- | ---: | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |",
+        "| 順位 | スポット名 | エリア | 総合点 | 風速 | 風向 | 降水量 | 天気 | 最高気温 | 朝6時気温 | 水温 | 波高 | 周期 | 底質スコア | 波データ元 |",
+        "| ---: | --- | --- | ---: | ---: | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
     ]
     for i, r in enumerate(ranked, 1):
         d = r["details"]
@@ -738,6 +808,9 @@ def generate_markdown_table(scored_spots, target_date):
             f"| {_fmt(d.get('_wind_speed_raw'), suffix='m/s')} "
             f"| {wind_dir_str} "
             f"| {_fmt(d.get('_precip_raw'), suffix='mm')} "
+            f"| {d.get('sky') or '-'} "
+            f"| {_fmt(d.get('_temp_max_raw'), suffix='°C')} "
+            f"| {_fmt(d.get('_temp_6am_raw'), suffix='°C')} "
             f"| {_fmt(d.get('_sst_raw'), suffix='°C')} "
             f"| {_fmt(d.get('_wave_height_raw'), suffix='m')} "
             f"| {_fmt(d.get('_wave_period_raw'), suffix='s')} "
