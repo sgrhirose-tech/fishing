@@ -196,6 +196,13 @@ select.edit-select {
   background: #e0e0e0; color: #333; border: none;
   border-radius: 8px; padding: 9px 16px; font-size: 14px; cursor: pointer;
 }
+.ns-field-row { display: flex; gap: 6px; align-items: center; }
+.ns-field-row input { flex: 1; }
+.ns-paste-btn {
+  padding: 8px 10px; background: #e3f2fd; color: #1565c0;
+  border: 1px solid #90caf9; border-radius: 6px;
+  font-size: 13px; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+}
 </style>
 </head>
 <body>
@@ -231,7 +238,10 @@ select.edit-select {
     </div>
     <div class="ns-field">
       <label for="ns-lat">緯度</label>
-      <input type="text" inputmode="decimal" id="ns-lat" placeholder="例: 35.3179094" autocomplete="off">
+      <div class="ns-field-row">
+        <input type="text" inputmode="decimal" id="ns-lat" placeholder="例: 35.3179094" autocomplete="off">
+        <button class="ns-paste-btn" id="ns-paste-btn">📋 貼り付け</button>
+      </div>
     </div>
     <div class="ns-field">
       <label for="ns-lon">経度</label>
@@ -651,6 +661,17 @@ function onNewSpotProgress(data) {
   if (el) el.innerHTML = labels[data.step] || data.message || '';
 }
 
+function onCoordsFromClipboard(data) {
+  if (data.status === 'error') {
+    document.getElementById('ns-error').textContent = data.message;
+    return;
+  }
+  document.getElementById('ns-lat').value = data.lat;
+  document.getElementById('ns-lon').value = data.lon;
+  document.getElementById('ns-error').textContent = '';
+  ['ns-lat','ns-lon'].forEach(id => document.getElementById(id).classList.remove('input-error'));
+}
+
 function onNewSpotComplete(data) {
   document.getElementById('ns-cancel-btn').disabled = false;
   if (data.status === 'error') {
@@ -717,6 +738,9 @@ areaSelectEl.addEventListener('change', applyAreaFilter);
 document.getElementById('new-spot-btn').addEventListener('click', openNewSpotModal);
 document.getElementById('ns-cancel-btn').addEventListener('click', closeNewSpotModal);
 document.getElementById('ns-submit-btn').addEventListener('click', submitNewSpot);
+document.getElementById('ns-paste-btn').addEventListener('click', function() {
+  window.location.href = 'pythonista://pastecords';
+});
 document.getElementById('newspot-overlay').addEventListener('click', function(e) {
   if (e.target === this) closeNewSpotModal();
 });
@@ -764,6 +788,13 @@ class SpotDelegate:
             except Exception as e:
                 import traceback; traceback.print_exc()
                 self._send_newspot_result({"status": "error", "message": str(e)})
+            return False
+        if url.startswith("pythonista://pastecords"):
+            try:
+                self._handle_pastecords()
+            except Exception as e:
+                import traceback; traceback.print_exc()
+                self._send_coords_to_modal({"status": "error", "message": str(e)})
             return False
         return True
 
@@ -1027,6 +1058,36 @@ class SpotDelegate:
     def _send_newspot_result(self, result: dict):
         if self.webview:
             js = "onNewSpotComplete(" + json.dumps(result, ensure_ascii=False) + ")"
+            self.webview.evaluate_javascript(js)
+
+    def _handle_pastecords(self):
+        """Pythonista clipboard モジュールで緯度経度文字列を読み込んで JS に返す。"""
+        try:
+            import clipboard
+            text = (clipboard.get() or "").strip()
+        except ImportError:
+            self._send_coords_to_modal({"status": "error",
+                "message": "clipboard モジュール未対応（Pythonista 専用）"})
+            return
+        if not text:
+            self._send_coords_to_modal({"status": "error", "message": "クリップボードが空です"})
+            return
+        import re
+        nums = re.findall(r"-?\d+\.?\d*", text)
+        if len(nums) < 2:
+            self._send_coords_to_modal({"status": "error",
+                "message": f"緯度経度が読み取れません: {text[:40]}"})
+            return
+        lat, lon = float(nums[0]), float(nums[1])
+        if not (-90 <= lat <= 90) or not (-180 <= lon <= 180):
+            self._send_coords_to_modal({"status": "error",
+                "message": f"範囲外の値: {lat}, {lon}"})
+            return
+        self._send_coords_to_modal({"status": "ok", "lat": lat, "lon": lon})
+
+    def _send_coords_to_modal(self, result: dict):
+        if self.webview:
+            js = "onCoordsFromClipboard(" + json.dumps(result, ensure_ascii=False) + ")"
             self.webview.evaluate_javascript(js)
 
 
