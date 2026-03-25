@@ -855,17 +855,32 @@ def claude_ai_comment(scored_spots):
             "name": spot_name(r["spot"]),
             "area": spot_area(r["spot"]),
             "score": r["total"],
+            # --- 地形・底質 ---
             "seabed": d["seabed"],
             "terrain": d.get("terrain", ""),
-            "sst": d["sst"],
-            "wave": d["wave"],
+            # --- 天気・気温 ---
+            "sky": d.get("sky", ""),
+            "temp_max": d.get("temp_max", ""),
+            "temp_6am": d.get("temp_6am", ""),
+            # --- 風 ---
             "wind_speed": d["wind_speed"],
             "wind_dir": d["wind_dir"],
+            # --- 降水 ---
             "precip": d["precip"],
             "rain_warning": d.get("rain_warning", "なし"),
+            # --- 海況 ---
+            "sst": d["sst"],
+            "wave_height": d.get("wave_height", d.get("wave", "")),
+            "wave_period": d.get("wave_period", ""),
         })
 
-    prompt = f"""あなたは投げ釣りでシロギス（白ギス）を専門とする釣りガイドです。
+    # ai_prompt.md を読み込み（なければインラインフォールバック）
+    prompt_file = Path(__file__).parent / "ai_prompt.md"
+    if prompt_file.exists():
+        template = prompt_file.read_text(encoding="utf-8")
+        prompt = template.replace("{top5_data}", json.dumps(top5, ensure_ascii=False, indent=2))
+    else:
+        prompt = f"""あなたは投げ釣りでシロギス（白ギス）を専門とする釣りガイドです。
 以下の釣り場スコアデータをもとに、明日の釣行計画に役立つ具体的なアドバイスを
 日本語で書いてください。
 
