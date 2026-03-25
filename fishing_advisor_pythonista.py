@@ -601,6 +601,15 @@ def score_spot(spot, weather_data, marine_data, sst_noaa=None, fetch_km=None):
     else:
         details["precip"] = "データなし"
 
+    # 生データ保存（マークダウン表出力用）
+    details["_wind_speed_raw"]  = wind_speed
+    details["_wind_dir_raw"]    = wind_dir
+    details["_wave_height_raw"] = wave_height
+    details["_wave_period_raw"] = wave_period
+    details["_sst_raw"]         = sst
+    details["_precip_raw"]      = precip
+    details["_kisugo_raw"]      = kisugo_score
+
     total = seabed_pts + wind_pts + wave_pts + temp_pts + rain_penalty
 
     return {
@@ -698,6 +707,43 @@ def generate_report(scored_spots, target_date):
     lines.append("  ・天候の急変には十分注意してください")
     lines.append("  ・気象データ: Open-Meteo API（ECMWFモデル、約9kmメッシュ）")
     lines.append("=" * 62)
+
+    return "\n".join(lines)
+
+
+def generate_markdown_table(scored_spots, target_date):
+    """生データをマークダウン表として返す。"""
+    ranked = sorted(scored_spots, key=lambda x: x["total"], reverse=True)
+    now_str = datetime.now(JST).strftime("%Y年%m月%d日 %H:%M")
+
+    def _fmt(v, fmt="{:.1f}", suffix="", na="-"):
+        return fmt.format(v) + suffix if v is not None else na
+
+    lines = [
+        f"# シロギス釣り場 生データ — {target_date}",
+        f"作成: {now_str} JST",
+        "",
+        "| 順位 | スポット名 | エリア | 総合点 | 風速 | 風向 | 降水量 | 水温 | 波高 | 周期 | 底質スコア | 波データ元 |",
+        "| ---: | --- | --- | ---: | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |",
+    ]
+    for i, r in enumerate(ranked, 1):
+        d = r["details"]
+        wd = d.get("_wind_dir_raw")
+        wind_dir_str = direction_label(wd) if wd is not None else "-"
+        lines.append(
+            f"| {i} "
+            f"| {spot_name(r['spot'])} "
+            f"| {spot_area(r['spot'])} "
+            f"| {r['total']}点 "
+            f"| {_fmt(d.get('_wind_speed_raw'), suffix='m/s')} "
+            f"| {wind_dir_str} "
+            f"| {_fmt(d.get('_precip_raw'), suffix='mm')} "
+            f"| {_fmt(d.get('_sst_raw'), suffix='°C')} "
+            f"| {_fmt(d.get('_wave_height_raw'), suffix='m')} "
+            f"| {_fmt(d.get('_wave_period_raw'), suffix='s')} "
+            f"| {_fmt(d.get('_kisugo_raw'), '{:.0f}')} "
+            f"| {d.get('wave_source') or '-'} |"
+        )
 
     return "\n".join(lines)
 
@@ -881,6 +927,16 @@ def main():
         print(f"レポートを保存しました: {output_file}")
     except Exception as e:
         print(f"[情報] ファイル保存をスキップ: {e}")
+
+    # マークダウン生データ表を保存
+    md_table = generate_markdown_table(scored_spots, target_date)
+    md_file = results_dir / f"fishing_data_{now_str}.md"
+    try:
+        with open(md_file, "w", encoding="utf-8") as f:
+            f.write(md_table)
+        print(f"生データ表を保存しました: {md_file}")
+    except Exception as e:
+        print(f"[情報] 生データ表の保存をスキップ: {e}")
 
 
 if __name__ == "__main__":
