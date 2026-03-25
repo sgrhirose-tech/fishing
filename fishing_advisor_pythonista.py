@@ -514,7 +514,12 @@ def calc_wave_score(wave_height, swell_period=None):
         elif swell_period >= 6:
             period_penalty, period_label = -3, period_label + "（やや長い）"
 
-    return {"pts": max(0, base_pts + period_penalty), "label": height_label + period_label}
+    return {
+        "pts": max(0, base_pts + period_penalty),
+        "label": height_label + period_label,
+        "height_label": height_label,
+        "period_label": period_label,
+    }
 
 
 def calc_temp_score(sst):
@@ -610,10 +615,10 @@ def score_spot(spot, weather_data, marine_data, sst_noaa=None, fetch_km=None):
         wave_height = estimate_wave_from_wind(wind_speed, fetch_km)
         wave_source = "estimate"
     wv = calc_wave_score(wave_height, wave_period)
-    if wave_source == "estimate":
-        wv["label"] += "（風推定）"
     wave_pts = wv["pts"]
     details["wave"] = wv["label"]
+    details["wave_height"] = wv["height_label"] + ("（風推定）" if wave_source == "estimate" else "")
+    details["wave_period"] = wv["period_label"] if wv["period_label"] else "データなし"
     details["wave_source"] = wave_source
 
     # 水温スコア（NOAA ERDDAP を優先）
@@ -742,7 +747,8 @@ def generate_report(scored_spots, target_date):
         lines.append(f"         天気   : {d['sky']}")
         lines.append(f"         最高気温: {d['temp_max']}")
         lines.append(f"         朝6時  : {d['temp_6am']}")
-        lines.append(f"         波高   : {d['wave']}")
+        lines.append(f"         波高   : {d['wave_height']}")
+        lines.append(f"         周期   : {d['wave_period']}")
         lines.append(f"         風速   : {d['wind_speed']}")
         lines.append(f"         風向   : {d['wind_dir']}")
         lines.append(f"         降水量 : {d['precip']}")
@@ -793,8 +799,8 @@ def generate_markdown_table(scored_spots, target_date):
         f"# シロギス釣り場 生データ — {target_date}",
         f"作成: {now_str} JST",
         "",
-        "| 順位 | スポット名 | エリア | 総合点 | 風速 | 風向 | 降水量 | 天気 | 最高気温 | 朝6時気温 | 水温 | 波高 | 周期 | 底質スコア | 波データ元 |",
-        "| ---: | --- | --- | ---: | ---: | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
+        "| 順位 | スポット名 | エリア | 総合点 | 天気 | 最高気温 | 朝6時気温 | 風速 | 風向 | 降水量 | 水温 | 波高 | 周期 | 底質スコア | 波データ元 |",
+        "| ---: | --- | --- | ---: | --- | ---: | ---: | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |",
     ]
     for i, r in enumerate(ranked, 1):
         d = r["details"]
@@ -805,12 +811,12 @@ def generate_markdown_table(scored_spots, target_date):
             f"| {spot_name(r['spot'])} "
             f"| {spot_area(r['spot'])} "
             f"| {r['total']}点 "
-            f"| {_fmt(d.get('_wind_speed_raw'), suffix='m/s')} "
-            f"| {wind_dir_str} "
-            f"| {_fmt(d.get('_precip_raw'), suffix='mm')} "
             f"| {d.get('sky') or '-'} "
             f"| {_fmt(d.get('_temp_max_raw'), suffix='°C')} "
             f"| {_fmt(d.get('_temp_6am_raw'), suffix='°C')} "
+            f"| {_fmt(d.get('_wind_speed_raw'), suffix='m/s')} "
+            f"| {wind_dir_str} "
+            f"| {_fmt(d.get('_precip_raw'), suffix='mm')} "
             f"| {_fmt(d.get('_sst_raw'), suffix='°C')} "
             f"| {_fmt(d.get('_wave_height_raw'), suffix='m')} "
             f"| {_fmt(d.get('_wave_period_raw'), suffix='s')} "
