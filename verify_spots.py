@@ -304,6 +304,10 @@ function saveChanges() {
   if (pendingBottom  !== null) changes.bottom_type_value = pendingBottom;
   if (pendingCoords  !== null) { changes.location_lat = pendingCoords.lat; changes.location_lon = pendingCoords.lon; }
   if (Object.keys(changes).length === 0) return;
+
+  // 保存後にバックグラウンド再取得が走るかを判定
+  const willRefetch = ('location_lat' in changes) && (getEffectiveBearing() !== null);
+
   const payload = JSON.stringify({filename: SPOTS[currentIndex]._filename, changes});
   // Python delegate が 'pythonista://save?data=...' を捕捉して JSON に書き戻す
   window.location.href = 'pythonista://save?data=' + encodeURIComponent(payload);
@@ -324,11 +328,19 @@ function saveChanges() {
   pendingBearing = null;
   pendingBottom  = null;
   pendingCoords  = null;
-  document.getElementById('save-msg').textContent = '✓ 保存しました';
-  setTimeout(() => {
-    document.getElementById('save-bar').style.display = 'none';
-    document.getElementById('save-msg').textContent = '';
-  }, 2000);
+
+  if (willRefetch) {
+    // 再取得中ステータスを表示。完了は onRefetchComplete が save-bar を閉じる
+    const statusEl = document.getElementById('refetch-status');
+    if (statusEl) { statusEl.textContent = '再取得中...'; statusEl.style.color = '#888'; }
+    document.getElementById('save-msg').textContent = '✓ 保存しました（底質・水深を再取得中）';
+  } else {
+    document.getElementById('save-msg').textContent = '✓ 保存しました';
+    setTimeout(() => {
+      document.getElementById('save-bar').style.display = 'none';
+      document.getElementById('save-msg').textContent = '';
+    }, 2000);
+  }
 }
 
 function val(v, unit) {
@@ -504,6 +516,11 @@ function onRefetchComplete(data) {
   setCell('cell-depth-150', val(cd['150m'] !== undefined ? cd['150m'] : null, 'm'));
   setCell('cell-depth-200', val(cd['200m'] !== undefined ? cd['200m'] : null, 'm'));
   if (statusEl) { statusEl.textContent = '✓ 再取得完了'; statusEl.style.color = '#2e7d32'; }
+  // 保存フローで呼ばれた場合に save-bar を閉じる
+  setTimeout(() => {
+    document.getElementById('save-bar').style.display = 'none';
+    document.getElementById('save-msg').textContent = '';
+  }, 2000);
 }
 
 // イベント委譲: innerHTML で挿入した要素の onclick は WKWebView でブロックされるため
@@ -590,15 +607,69 @@ class SpotDelegate:
         path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"保存完了: {filename}")
 
+        # ── Feature 1: 座標変更 → バックグラウンドで底質・水深を再取得 ──
+        coord_changed  = "location_lat" in changes and "location_lon" in changes
+        bottom_changed = "bottom_type_value" in changes
+
+        if coord_changed:
+            bearing = data["physical_features"].get("sea_bearing_deg")
+            if bearing is None:
+                self._send_refetch_result({
+                    "status": "error",
+                    "message": "海の方向が未設定のため底質・水深を再取得できません",
+                })
+                return
+            self._run_refetch(
+                filename,
+                float(changes["location_lat"]),
+                float(changes["location_lon"]),
+                float(bearing),
+            )
+
+        # ── Feature 2: 底質手動変更 → 派生フィーチャーを再計算（同期） ──
+        elif bottom_changed:
+            try:
+                import sys
+                sys.path.insert(0, str(self.spots_dir.parent))
+                from build_spots_complete import derive_features_from_physical
+            except ImportError as e:
+                self._send_refetch_result({"status": "error", "message": f"再計算失敗: {e}"})
+                return
+
+            v = changes.get("bottom_type_value")
+            if v:
+                # best_match.name も手動値に合わせて更新（最適マッチ表示を一致させる）
+                bt = data["physical_features"].setdefault("bottom_type", {})
+                bt.setdefault("best_match", {})["name"] = v
+
+            new_df = derive_features_from_physical(data)
+            data["derived_features"] = new_df
+            path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+            bt = data["physical_features"].get("bottom_type") or {}
+            self._send_refetch_result({
+                "status": "ok",
+                "filename": filename,
+                "bottom_type_value": bt.get("value"),
+                "bottom_best_match": (bt.get("best_match") or {}).get("name"),
+                "bottom_kisugo_score": new_df.get("bottom_kisugo_score"),
+                "terrain_summary": new_df.get("terrain_summary"),
+                "contour_distances_m": new_df.get("contour_distances_m", {}),
+            })
+
     def _handle_refetch(self, url: str):
         from urllib.parse import urlparse, parse_qs, unquote
         qs = parse_qs(urlparse(url).query)
         payload = json.loads(unquote(qs["data"][0]))
-        filename = payload["filename"]
-        lat = float(payload["lat"])
-        lon = float(payload["lon"])
-        sea_bearing_deg = float(payload["sea_bearing_deg"])
+        self._run_refetch(
+            payload["filename"],
+            float(payload["lat"]),
+            float(payload["lon"]),
+            float(payload["sea_bearing_deg"]),
+        )
 
+    def _run_refetch(self, filename: str, lat: float, lon: float, sea_bearing_deg: float):
+        """バックグラウンドスレッドで底質・水深 API を再取得し JSON を更新する。"""
         def run():
             try:
                 import sys
@@ -621,7 +692,6 @@ class SpotDelegate:
                 depth_raw = query_depth_contours(lat, lon)
                 depth_summary = summarize_depth_profile_from_contours(depth_raw["nearest_contours"])
 
-                # JSON ファイルに書き戻す
                 path = self.spots_dir / filename
                 data = json.loads(path.read_text(encoding="utf-8"))
                 data["physical_features"]["bottom_type"] = {

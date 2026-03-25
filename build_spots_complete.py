@@ -571,11 +571,14 @@ def derive_features_from_physical(spot):
         if name and name not in names:
             names.append(name)
 
-    best_match = bottom.get("best_match") or {}
-    best_name = best_match.get("name")
+    # 手動上書き(value)がある場合は最優先、なければ best_match → matched_layers の順
+    manual_value = bottom.get("value")
+    best_name = (bottom.get("best_match") or {}).get("name")
 
     bottom_primary = "不明"
-    if best_name:
+    if manual_value:
+        bottom_primary = manual_value
+    elif best_name:
         bottom_primary = best_name
     elif "砂" in names:
         bottom_primary = "砂"
