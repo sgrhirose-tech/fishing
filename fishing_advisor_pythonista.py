@@ -722,7 +722,8 @@ RANK_MARKS = ["1位", "2位", "3位", "4位", "5位"]
 
 def generate_report(scored_spots, target_date):
     ranked = sorted(scored_spots, key=lambda x: x["total"], reverse=True)
-    now_str = datetime.now(JST).strftime("%Y年%m月%d日 %H:%M")
+    _dt = datetime.now(JST)
+    now_str = f"{_dt.year}年{_dt.month:02d}月{_dt.day:02d}日 {_dt.hour:02d}:{_dt.minute:02d}"
 
     lines = []
     lines.append("=" * 62)
@@ -790,7 +791,8 @@ def generate_report(scored_spots, target_date):
 def generate_markdown_table(scored_spots, target_date):
     """生データをマークダウン表として返す。"""
     ranked = sorted(scored_spots, key=lambda x: x["total"], reverse=True)
-    now_str = datetime.now(JST).strftime("%Y年%m月%d日 %H:%M")
+    _dt = datetime.now(JST)
+    now_str = f"{_dt.year}年{_dt.month:02d}月{_dt.day:02d}日 {_dt.hour:02d}:{_dt.minute:02d}"
 
     def _fmt(v, fmt="{:.1f}", suffix="", na="-"):
         return fmt.format(v) + suffix if v is not None else na
