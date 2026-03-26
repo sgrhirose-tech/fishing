@@ -1,0 +1,220 @@
+{
+  "spot_id": "秋谷海岸_28",
+  "name": "秋谷海岸",
+  "official_name": "秋谷一丁目, 横須賀市, 神奈川県, 238-8550, 日本",
+  "area": {
+    "major": null,
+    "minor": null,
+    "prefecture": "神奈川県",
+    "city": "横須賀市",
+    "address": "秋谷一丁目, 横須賀市, 神奈川県, 238-8550, 日本"
+  },
+  "location": {
+    "latitude": 35.23699711024434,
+    "longitude": 139.60061073303225,
+    "coordinate_source": "manual drag",
+    "reverse_geocode_source": "Nominatim Reverse API"
+  },
+  "physical_features": {
+    "shore_type": null,
+    "sea_bearing_deg": 260.20000000000005,
+    "sea_bearing_source": "OSM Overpass coastline",
+    "sea_bearing_status": "auto",
+    "bottom_type": {
+      "value": "砂/石・岩",
+      "matched_layers": [
+        {
+          "sample_offset_m": 50,
+          "sample_lat": 35.23692057,
+          "sample_lon": 139.60006823,
+          "name": "砂",
+          "distance_m": 528.6,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 11244,
+            "nature": "砂(細かい)"
+          }
+        },
+        {
+          "sample_offset_m": 50,
+          "sample_lat": 35.23692057,
+          "sample_lon": 139.60006823,
+          "name": "石・岩",
+          "distance_m": 579.4,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 13780,
+            "nature": "岩"
+          }
+        },
+        {
+          "sample_offset_m": 100,
+          "sample_lat": 35.23684403,
+          "sample_lon": 139.59952573,
+          "name": "砂",
+          "distance_m": 479.8,
+          "search_radius_m": 500,
+          "attributes_sample": {
+            "OBJECTID": 11244,
+            "nature": "砂(細かい)"
+          }
+        },
+        {
+          "sample_offset_m": 100,
+          "sample_lat": 35.23684403,
+          "sample_lon": 139.59952573,
+          "name": "石・岩",
+          "distance_m": 556.6,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 13780,
+            "nature": "岩"
+          }
+        },
+        {
+          "sample_offset_m": 200,
+          "sample_lat": 35.23669094,
+          "sample_lon": 139.59844074,
+          "name": "砂",
+          "distance_m": 383.1,
+          "search_radius_m": 500,
+          "attributes_sample": {
+            "OBJECTID": 11244,
+            "nature": "砂(細かい)"
+          }
+        },
+        {
+          "sample_offset_m": 200,
+          "sample_lat": 35.23669094,
+          "sample_lon": 139.59844074,
+          "name": "石・岩",
+          "distance_m": 478.6,
+          "search_radius_m": 500,
+          "attributes_sample": {
+            "OBJECTID": 13897,
+            "nature": "岩"
+          }
+        }
+      ],
+      "best_match": {
+        "sample_offset_m": 200,
+        "sample_lat": 35.23669094,
+        "sample_lon": 139.59844074,
+        "name": "砂",
+        "distance_m": 383.1,
+        "search_radius_m": 500,
+        "attributes_sample": {
+          "OBJECTID": 11244,
+          "nature": "砂(細かい)"
+        }
+      },
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T06:25:33+09:00"
+    },
+    "depth_profile": {
+      "depth_at_50m_from_shore_m": null,
+      "depth_at_100m_from_shore_m": null,
+      "depth_at_200m_from_shore_m": null,
+      "depth_points_source": "海しる等深線APIでは直接取得不可",
+      "shallow_profile_confirmed": true,
+      "shallow_profile_reason": "20m等深線が 1127.4m 先のため、近岸は遠浅傾向",
+      "contour_reference": {
+        "nearest_20m_contour_distance_m": 1127.4,
+        "nearest_50m_contour_distance_m": 2334.5,
+        "nearest_100m_contour_distance_m": 5333.9,
+        "nearest_150m_contour_distance_m": 5801.7,
+        "nearest_200m_contour_distance_m": 6070.2
+      },
+      "raw_contours": [
+        {
+          "depth_m": 20,
+          "distance_m": 1127.4,
+          "search_radius_m": 2000,
+          "attributes": {
+            "Depth": 20,
+            "OBJECTID": 7051,
+            "Shape_Length": 109.76471430671924
+          }
+        },
+        {
+          "depth_m": 50,
+          "distance_m": 2334.5,
+          "search_radius_m": 5000,
+          "attributes": {
+            "Depth": 50,
+            "OBJECTID": 4789,
+            "Shape_Length": 79.68747476604443
+          }
+        },
+        {
+          "depth_m": 100,
+          "distance_m": 5333.9,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 100,
+            "OBJECTID": 2641,
+            "Shape_Length": 67.28742372793847
+          }
+        },
+        {
+          "depth_m": 150,
+          "distance_m": 5801.7,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 150,
+            "OBJECTID": 1219,
+            "Shape_Length": 61.08208186790016
+          }
+        },
+        {
+          "depth_m": 200,
+          "distance_m": 6070.2,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 200,
+            "OBJECTID": 50,
+            "Shape_Length": 54.24935132341124
+          }
+        }
+      ],
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T06:25:33+09:00"
+    }
+  },
+  "derived_features": {
+    "bottom_primary": "砂",
+    "bottom_secondary": [
+      "石・岩"
+    ],
+    "bottom_is_sandy": true,
+    "bottom_has_shell": false,
+    "bottom_has_rock": true,
+    "bottom_kisugo_score": 80,
+    "slope_type": "遠浅",
+    "slope_score": 90,
+    "nearshore_depth_numeric_available": false,
+    "nearshore_depth_note": "20m等深線が 1127.4m 先のため、近岸は遠浅傾向",
+    "contour_distances_m": {
+      "20m": 1127.4,
+      "50m": 2334.5,
+      "100m": 5333.9,
+      "150m": 5801.7,
+      "200m": 6070.2
+    },
+    "terrain_confidence": "high",
+    "terrain_summary": "砂主体、近傍に石要素あり、遠浅。シロギス投げ釣り向きの地形"
+  },
+  "metadata": {
+    "created_at": "2026-03-24T06:46:13+09:00",
+    "updated_at": "2026-03-26T06:25:33+09:00",
+    "json_created_by": "build_spots_complete.py",
+    "notes": [
+      "座標付き入力から生成",
+      "海に向かう方位はOSM海岸線データから自動算出",
+      "住所系は reverse geocoding で取得",
+      "底質・等深線は海しるAPIで取得"
+    ]
+  }
+}
