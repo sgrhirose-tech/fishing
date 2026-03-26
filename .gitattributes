@@ -1,0 +1,9 @@
+# バイナリファイルはコードブランチにコミットしない
+# 写真・画像は resources ブランチで管理すること
+*.jpg   binary
+*.jpeg  binary
+*.png   binary
+*.gif   binary
+*.webp  binary
+*.mp4   binary
+*.pdf   binary

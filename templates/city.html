@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}{{ city_name }}のシロギス釣り場 | シロギス釣り場ガイド{% endblock %}
+{% block description %}{{ city_name }}（{{ pref_name }}）の投げ釣りシロギスポイント一覧。{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <a href="/{{ pref_slug }}/">{{ pref_name }}</a> &rsaquo;
+  <a href="/{{ pref_slug }}/{{ area_slug }}/">{{ area_name }}</a> &rsaquo;
+  <span>{{ city_name }}</span>
+</nav>
+
+<h1>{{ city_name }}のシロギス釣り場</h1>
+
+<div id="map-city" class="map-container"></div>
+
+<section class="spots-list">
+  {% for spot in spots %}
+  {% set area = spot.area %}
+  <article class="spot-card">
+    <h2>
+      <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/{{ spot.slug }}">
+        {{ spot.name }}
+      </a>
+    </h2>
+    <div class="spot-meta">
+      {% if spot.physical_features.surfer_spot %}
+      <span class="badge badge-warning">サーファーあり</span>
+      {% endif %}
+    </div>
+    <p class="spot-seabed">底質: {{ spot.derived_features.terrain_summary }}</p>
+    <p class="spot-access">🚃 {{ spot.info.access }}</p>
+    <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/{{ spot.slug }}" class="btn-detail">
+      詳細・気象情報 →
+    </a>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const SPOTS = {{ spots | tojson }};
+  document.addEventListener('DOMContentLoaded', function() {
+    initSpotListMap('map-city', SPOTS);
+  });
+</script>
+{% endblock %}

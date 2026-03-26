@@ -172,7 +172,8 @@ def convert_spot(old: dict) -> dict:
         },
         "info": {
             "notes": old.get("notes", ""),
-            "access": old.get("access", "")
+            "access": old.get("access", ""),
+            "photo_url": f"https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/{spot_id}.jpg"
         }
     }
 
