@@ -110,7 +110,7 @@ def spot_bearing(s: dict) -> float | None:
     return s.get("physical_features", {}).get("sea_bearing_deg")
 
 def spot_kisugo(s: dict) -> float:
-    """シロギス適性スコア 0〜100。"""
+    """底質スコア 0〜100。"""
     return s.get("derived_features", {}).get("bottom_kisugo_score", 50)
 
 def spot_terrain(s: dict) -> str:

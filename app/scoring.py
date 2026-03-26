@@ -173,7 +173,7 @@ def calc_seabed_score(kisugo_score: float) -> dict:
     """kisugo_score: 0〜100 → 0〜15点に換算。"""
     pts = round(kisugo_score / 100 * 15)
     if kisugo_score >= 80:
-        label = "砂地主体(シロギス最適)"
+        label = "砂地主体"
     elif kisugo_score >= 60:
         label = "砂混じり(良好)"
     elif kisugo_score >= 40:
@@ -195,11 +195,8 @@ def score_spot(spot: dict, weather_data: dict, marine_data: dict,
                           weather_code_label, angle_diff)
     details = {}
 
-    # 底質スコア
-    kisugo = spot_kisugo(spot)
-    sb = calc_seabed_score(kisugo)
-    seabed_pts = sb["pts"]
-    details["seabed"] = sb["label"]
+    # 底質スコア（廃止 → 0固定）
+    seabed_pts = 0
     details["terrain"] = spot_terrain(spot)
 
     # 風スコア
@@ -442,8 +439,7 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
     at = calc_air_temp_score(temp_avg)
     air_temp_pts = at["pts"]
 
-    sb = calc_seabed_score(kisugo_score)
-    seabed_pts = sb["pts"]
+    seabed_pts = 0  # 底質スコア廃止
 
     rain_penalty = 0
     if precip is not None:
