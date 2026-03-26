@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}シロギス釣り場ガイド{% endblock %}</title>
-  <meta name="description" content="{% block description %}神奈川・千葉の投げ釣りシロギスポイント情報。波高・風向・水温をリアルタイム表示。{% endblock %}">
+  <title>{% block title %}Tsuricast | 千葉・東京・神奈川の釣り場天気情報{% endblock %}</title>
+  <meta name="description" content="{% block description %}千葉・東京・神奈川の釣り場天気・波高情報。風向・水温をリアルタイム表示。{% endblock %}">
 
   <!-- OG タグ -->
   <meta property="og:type"        content="website">
-  <meta property="og:site_name"   content="シロギス釣り場ガイド">
-  <meta property="og:title"       content="{% block og_title %}{% block title2 %}シロギス釣り場ガイド{% endblock %}{% endblock %}">
-  <meta property="og:description" content="{% block og_desc %}神奈川・千葉の投げ釣りシロギスポイント情報。波高・風向・水温をリアルタイム表示。{% endblock %}">
+  <meta property="og:site_name"   content="Tsuricast">
+  <meta property="og:title"       content="{% block og_title %}{% block title2 %}Tsuricast{% endblock %}{% endblock %}">
+  <meta property="og:description" content="{% block og_desc %}千葉・東京・神奈川の釣り場天気・波高情報。風向・水温をリアルタイム表示。{% endblock %}">
   {% block og_image %}<meta property="og:image" content="/static/img/ogp.png">{% endblock %}
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary">
-  <meta name="twitter:title"       content="{% block tw_title %}シロギス釣り場ガイド{% endblock %}">
-  <meta name="twitter:description" content="{% block tw_desc %}神奈川・千葉の投げ釣りシロギスポイント情報。波高・風向・水温をリアルタイム表示。{% endblock %}">
+  <meta name="twitter:title"       content="{% block tw_title %}Tsuricast{% endblock %}">
+  <meta name="twitter:description" content="{% block tw_desc %}千葉・東京・神奈川の釣り場天気・波高情報。風向・水温をリアルタイム表示。{% endblock %}">
 
   <!-- JSON-LD 構造化データ -->
   {% block jsonld %}
@@ -24,8 +24,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "シロギス釣り場ガイド",
-    "description": "神奈川・千葉の投げ釣りシロギスポイント情報サイト",
+    "name": "Tsuricast",
+    "description": "千葉・東京・神奈川の釣り場天気・波高情報サイト",
     "url": "/"
   }
   </script>
@@ -39,7 +39,7 @@
 <body>
   <header>
     <nav>
-      <a href="/" class="site-title">🎣 シロギス釣り場ガイド</a>
+      <a href="/" class="site-title">🎣 Tsuricast</a>
       <ul>
         <li><a href="/">ホーム</a></li>
         <li><a href="/spots">釣り場一覧</a></li>

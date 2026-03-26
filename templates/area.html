@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}{{ area_name }}のシロギス投げ釣りポイント | {{ pref_name }}{% endblock %}
-{% block description %}{{ area_name }}（{{ pref_name }}）の投げ釣りシロギスポイント一覧。{{ cities|length }}市区町村・{{ spots|length }}か所を掲載。{% endblock %}
+{% block title %}{{ area_name }}の釣り場・天気情報 | {{ pref_name }} | Tsuricast{% endblock %}
+{% block description %}{{ area_name }}（{{ pref_name }}）の釣り場天気情報。{{ cities|length }}市区町村・{{ spots|length }}か所を掲載。{% endblock %}
 
 {% block jsonld %}
 <script type="application/ld+json">
@@ -24,7 +24,7 @@
   <span>{{ area_name }}</span>
 </nav>
 
-<h1>{{ area_name }}のシロギス釣り場</h1>
+<h1>{{ area_name }}の釣り場</h1>
 
 <div id="map-area" class="map-container"></div>
 

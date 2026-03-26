@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}{{ pref_name }}のシロギス投げ釣りポイント一覧 | シロギス釣り場ガイド{% endblock %}
-{% block description %}{{ pref_name }}の投げ釣りシロギスポイント一覧。相模湾・三浦半島・東京湾など{{ areas|length }}エリアを掲載。{% endblock %}
+{% block title %}{{ pref_name }}の釣り場・天気情報 | Tsuricast{% endblock %}
+{% block description %}{{ pref_name }}の釣り場・天気情報。相模湾・三浦半島・東京湾など{{ areas|length }}エリアを掲載。{% endblock %}
 
 {% block jsonld %}
 <script type="application/ld+json">
@@ -21,7 +21,7 @@
   <a href="/">ホーム</a> &rsaquo; <span>{{ pref_name }}</span>
 </nav>
 
-<h1>{{ pref_name }}のシロギス釣り場</h1>
+<h1>{{ pref_name }}の釣り場</h1>
 
 <div id="map-pref" class="map-container"></div>
 

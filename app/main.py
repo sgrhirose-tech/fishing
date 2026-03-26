@@ -85,7 +85,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="シロギス釣り場ガイド", lifespan=lifespan)
+app = FastAPI(title="Tsuricast", lifespan=lifespan)
 
 # 静的ファイルとテンプレート
 import pathlib
