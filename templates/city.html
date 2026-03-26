@@ -1,7 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}{{ city_name }}のシロギス釣り場 | シロギス釣り場ガイド{% endblock %}
-{% block description %}{{ city_name }}（{{ pref_name }}）の投げ釣りシロギスポイント一覧。{% endblock %}
+{% block title %}{{ city_name }}のシロギス投げ釣りポイント | {{ area_name }}・{{ pref_name }}{% endblock %}
+{% block description %}{{ city_name }}（{{ area_name }}・{{ pref_name }}）の投げ釣りシロギスポイント{{ spots|length }}か所を掲載。波高・風向・底質情報あり。{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "ホーム",         "item": "/"},
+    {"@type": "ListItem", "position": 2, "name": "{{ pref_name }}", "item": "/{{ pref_slug }}/"},
+    {"@type": "ListItem", "position": 3, "name": "{{ area_name }}", "item": "/{{ pref_slug }}/{{ area_slug }}/"},
+    {"@type": "ListItem", "position": 4, "name": "{{ city_name }}"}
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <nav class="breadcrumb">

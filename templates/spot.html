@@ -4,8 +4,45 @@
 {% set pf = spot.physical_features %}
 {% set df = spot.derived_features %}
 
-{% block title %}{{ spot.name }}でシロギス釣り | 波高・風向・駐車場情報{% endblock %}
-{% block description %}{{ spot.name }}（{{ area.city }}）のシロギス釣り場情報。底質・波高・風向・アクセスを掲載。{% endblock %}
+{% block title %}{{ spot.name }}でシロギス投げ釣り | {{ area.city }}・波高・風向き・駐車場情報{% endblock %}
+{% block description %}{{ spot.name }}（{{ area.city }}）のシロギス釣り場情報。底質: {{ df.terrain_summary }}。波高・風向・水温をリアルタイム表示。アクセス: {{ spot.info.access }}{% endblock %}
+
+{% block og_title %}{{ spot.name }}でシロギス投げ釣り | {{ area.city }}{% endblock %}
+{% block og_desc %}{{ spot.name }}（{{ area.city }}）のシロギス釣り場。底質: {{ df.terrain_summary }}。波高・風向・水温情報あり。{% endblock %}
+{% if spot.info.photo_url %}
+{% block og_image %}<meta property="og:image" content="{{ spot.info.photo_url }}">{% endblock %}
+{% endif %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "{{ spot.name }}",
+  "description": "{{ spot.name }}（{{ area.city }}）のシロギス釣り場。{{ df.terrain_summary }}。",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "{{ area.prefecture }}",
+    "addressLocality": "{{ area.city }}"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": {{ spot.location.latitude }},
+    "longitude": {{ spot.location.longitude }}
+  },
+  "touristType": "釣り・アウトドア",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "ホーム",             "item": "/"},
+      {"@type": "ListItem", "position": 2, "name": "{{ area.area_name }}", "item": "/{{ area.pref_slug }}/{{ area.area_slug }}/"},
+      {"@type": "ListItem", "position": 3, "name": "{{ area.city }}",     "item": "/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/"},
+      {"@type": "ListItem", "position": 4, "name": "{{ spot.name }}"}
+    ]
+  }
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <!-- パンくずリスト -->
