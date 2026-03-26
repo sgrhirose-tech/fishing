@@ -198,6 +198,11 @@ def get_marine_proxy(lat, lon):
 # ============================================================
 
 def fetch_weather(lat, lon, date_str):
+    grid_lat = round(round(lat * 10) / 10, 1)   # 0.1° グリッド (≈11km)
+    grid_lon = round(round(lon * 10) / 10, 1)
+    cache_key = (grid_lat, grid_lon, date_str)
+    if cache_key in _WEATHER_CACHE:
+        return _WEATHER_CACHE[cache_key]
     base_url = "https://api.open-meteo.com/v1/forecast"
     params = [
         ("latitude", lat),
@@ -216,7 +221,9 @@ def fetch_weather(lat, lon, date_str):
     try:
         full_url = base_url + "?" + urllib.parse.urlencode(params)
         with urllib.request.urlopen(full_url, timeout=15) as resp:
-            return json.loads(resp.read().decode("utf-8"))
+            result = json.loads(resp.read().decode("utf-8"))
+        _WEATHER_CACHE[cache_key] = result
+        return result
     except Exception as e:
         print(f"  [警告] 気象データ取得失敗 ({lat},{lon}): {e}")
         return {}
@@ -250,6 +257,8 @@ def fetch_marine(lat, lon, date_str):
         return {}
 
 
+_WEATHER_CACHE: dict = {}     # (grid_lat, grid_lon, date_str) → result
+_SST_CACHE: dict = {}         # (grid_lat, grid_lon, date_str) → result
 _WEATHERAPI_CACHE: dict = {}  # (grid_lat, grid_lon, date_str) → result
 
 
@@ -345,6 +354,11 @@ def fetch_sst_noaa(lat, lon, date_str):
     1次: NOAA CoastWatch ERDDAP (jplMURSST41) MUR SST
     2次: Open-Meteo Marine API（沿岸では 400 になる場合あり）
     """
+    grid_lat = round(round(lat * 10) / 10, 1)   # 0.1° グリッド (≈11km)
+    grid_lon = round(round(lon * 10) / 10, 1)
+    cache_key = (grid_lat, grid_lon, date_str)
+    if cache_key in _SST_CACHE:
+        return _SST_CACHE[cache_key]
     lat_str = f"{lat:.4f}"
     lon_str = f"{lon:.4f}"
 
@@ -358,7 +372,9 @@ def fetch_sst_noaa(lat, lon, date_str):
             data = json.loads(resp.read().decode("utf-8"))
         rows = data.get("table", {}).get("rows", [])
         if rows and rows[0] and rows[0][3] is not None:
-            return float(rows[0][3])
+            sst = float(rows[0][3])
+            _SST_CACHE[cache_key] = sst
+            return sst
     except Exception as e:
         print(f"  [情報] NOAA水温取得失敗 ({lat},{lon}): {e}")
 
@@ -379,7 +395,9 @@ def fetch_sst_noaa(lat, lon, date_str):
         sst_list = data.get("hourly", {}).get("sea_surface_temperature", [])
         valid = [v for v in sst_list[6:16] if v is not None]   # 6時〜15時
         if valid:
-            return max(valid)
+            sst = max(valid)
+            _SST_CACHE[cache_key] = sst
+            return sst
     except Exception:
         pass
 
