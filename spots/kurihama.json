@@ -1,0 +1,31 @@
+{
+  "slug": "kurihama",
+  "name": "久里浜海岸",
+  "location": {
+    "latitude": 35.2175,
+    "longitude": 139.7174
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 215,
+    "seabed_type": "sand_mud",
+    "depth_near_m": 3,
+    "depth_far_m": 12,
+    "surfer_spot": false
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 55,
+    "terrain_summary": "砂泥の穏やかな浜"
+  },
+  "info": {
+    "notes": "東京湾口の砂泥浜。波は穏やか。ペリー来航の地",
+    "access": "京急久里浜駅から徒歩15分"
+  }
+}

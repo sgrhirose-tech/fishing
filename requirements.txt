@@ -5,3 +5,9 @@ requests>=2.28.0
 # ANTHROPIC_API_KEY を設定した場合のみ使用されます
 # 不要な場合はコメントアウトのままで構いません
 anthropic>=0.40.0
+
+# Webアプリケーション
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-dotenv>=1.0.0
+jinja2>=3.1.0

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}シロギス釣り場ガイド | 神奈川・千葉の投げ釣りポイント{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>シロギス釣り場ガイド</h1>
+  <p>神奈川・千葉の投げ釣りシロギスポイント。波高・風向・水温をリアルタイムでチェック。</p>
+</section>
+
+<!-- 全域マップ -->
+<section class="map-section">
+  <div id="map-top" class="map-container"></div>
+</section>
+
+<!-- エリア別リンク -->
+<section class="area-links">
+  <h2>エリアから探す</h2>
+  <div class="area-grid">
+    <a href="/spots?area=sagamibay" class="area-card">
+      <h3>相模湾</h3>
+      <p>辻堂・片瀬・大磯・平塚・小田原エリア</p>
+    </a>
+    <a href="/spots?area=miura" class="area-card">
+      <h3>三浦半島</h3>
+      <p>逗子・葉山・横須賀・三浦エリア</p>
+    </a>
+    <a href="/spots?area=tokyobay" class="area-card">
+      <h3>東京湾</h3>
+      <p>金沢八景・富津エリア</p>
+    </a>
+    <a href="/spots?area=uchibo" class="area-card">
+      <h3>内房</h3>
+      <p>鋸南・富津エリア</p>
+    </a>
+    <a href="/spots?area=sotobo" class="area-card">
+      <h3>外房</h3>
+      <p>いすみ・御宿・勝浦エリア</p>
+    </a>
+  </div>
+</section>
+
+<section class="all-spots-link">
+  <a href="/spots" class="btn-primary">全釣り場一覧を見る（{{ spots|length }}か所）</a>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const SPOTS = {{ spots | tojson }};
+  document.addEventListener('DOMContentLoaded', function() {
+    initTopMap('map-top', SPOTS);
+  });
+</script>
+{% endblock %}

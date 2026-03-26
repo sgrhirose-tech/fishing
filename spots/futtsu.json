@@ -1,0 +1,31 @@
+{
+  "slug": "futtsu",
+  "name": "富津海岸",
+  "location": {
+    "latitude": 35.3085,
+    "longitude": 139.8134
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 270,
+    "seabed_type": "sand",
+    "depth_near_m": 2,
+    "depth_far_m": 8,
+    "surfer_spot": false
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 90,
+    "terrain_summary": "遠浅の砂浜"
+  },
+  "info": {
+    "notes": "東京湾内の遠浅砂地。波が静かでシロギスに最適",
+    "access": "佐貫町駅から車15分"
+  }
+}

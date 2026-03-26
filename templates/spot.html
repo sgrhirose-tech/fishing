@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% set area = spot.area %}
+{% set pf = spot.physical_features %}
+{% set df = spot.derived_features %}
+
+{% block title %}{{ spot.name }}でシロギス釣り | 波高・風向・駐車場情報{% endblock %}
+{% block description %}{{ spot.name }}（{{ area.city }}）のシロギス釣り場情報。底質・波高・風向・アクセスを掲載。{% endblock %}
+
+{% block content %}
+<!-- パンくずリスト -->
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <a href="/spots?area={{ area.area_slug }}">{{ area.area_name }}</a> &rsaquo;
+  <span>{{ spot.name }}</span>
+</nav>
+
+<h1>{{ spot.name }}</h1>
+<div class="spot-meta">
+  <span class="badge">{{ area.prefecture }}</span>
+  <span class="badge">{{ area.area_name }}</span>
+  <span class="badge">{{ area.city }}</span>
+  {% if pf.surfer_spot %}
+  <span class="badge badge-warning">サーファーあり</span>
+  {% endif %}
+</div>
+
+<!-- スポットマップ -->
+<div id="map-detail" class="map-container map-detail"></div>
+
+<!-- 基本情報 -->
+<section class="spot-info">
+  <h2>基本情報</h2>
+  <table class="info-table">
+    <tr><th>地形</th><td>{{ df.terrain_summary }}</td></tr>
+    <tr><th>シロギス適性</th><td>{{ df.bottom_kisugo_score }}/100</td></tr>
+    <tr>
+      <th>水深</th>
+      <td>
+        {% if pf.depth_near_m %}手前 {{ pf.depth_near_m }}m{% endif %}
+        {% if pf.depth_far_m %} / 遠投先 {{ pf.depth_far_m }}m{% endif %}
+      </td>
+    </tr>
+    <tr><th>アクセス</th><td>{{ spot.info.access }}</td></tr>
+    <tr><th>メモ</th><td>{{ spot.info.notes }}</td></tr>
+  </table>
+</section>
+
+<!-- 気象・スコア（JS で非同期ロード） -->
+<section class="weather-section">
+  <h2>明日 (<span id="weather-date">{{ tomorrow }}</span>) の海況予報</h2>
+  <div id="weather-loading" class="loading">気象データを取得中...</div>
+  <div id="weather-result" style="display:none;">
+    <div class="score-badge" id="total-score"></div>
+    <table class="info-table" id="weather-table"></table>
+  </div>
+</section>
+
+<!-- AdSense 枠（コメントアウト） -->
+<!--
+<section class="ad-section">
+  <ins class="adsbygoogle" ...></ins>
+</section>
+-->
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const SPOT = {{ spot | tojson }};
+  const TOMORROW = "{{ tomorrow }}";
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // 単体スポットマップ
+    initDetailMap('map-detail', SPOT);
+
+    // 気象データを非同期取得
+    fetch('/api/weather/' + SPOT.slug + '?date=' + TOMORROW)
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('weather-loading').style.display = 'none';
+        document.getElementById('weather-result').style.display = 'block';
+        document.getElementById('total-score').textContent = data.total + '点';
+
+        const d = data.details;
+        const rows = [
+          ['天気',     d.sky],
+          ['最高気温', d.temp_max],
+          ['朝6時気温',d.temp_6am],
+          ['風速',     d.wind_speed],
+          ['風向',     d.wind_dir],
+          ['波高',     d.wave_height],
+          ['波周期',   d.wave_period],
+          ['海水温',   d.sst],
+          ['降水量',   d.precip],
+          ['底質',     d.seabed],
+        ];
+        const table = document.getElementById('weather-table');
+        rows.forEach(([label, val]) => {
+          if (!val) return;
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<th>${label}</th><td>${val}</td>`;
+          table.appendChild(tr);
+        });
+        if (d.rain_warning) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<th>注意</th><td class="warn">${d.rain_warning}</td>`;
+          table.appendChild(tr);
+        }
+      })
+      .catch(() => {
+        document.getElementById('weather-loading').textContent = '気象データの取得に失敗しました';
+      });
+  });
+</script>
+{% endblock %}

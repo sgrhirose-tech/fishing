@@ -1,0 +1,31 @@
+{
+  "slug": "nojima",
+  "name": "野島海岸（金沢八景）",
+  "location": {
+    "latitude": 35.3374,
+    "longitude": 139.6405
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市金沢区",
+    "city_slug": "kanazawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 100,
+    "seabed_type": "sand_mud",
+    "depth_near_m": 3,
+    "depth_far_m": 10,
+    "surfer_spot": false
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 55,
+    "terrain_summary": "砂泥の穏やかな浜"
+  },
+  "info": {
+    "notes": "東京湾内で穏やか。砂泥底。波が静かでファミリー可",
+    "access": "金沢八景駅から徒歩20分"
+  }
+}

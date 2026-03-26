@@ -1,0 +1,31 @@
+{
+  "slug": "chojakasaki",
+  "name": "長者ヶ崎海岸",
+  "location": {
+    "latitude": 35.2454,
+    "longitude": 139.6219
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "葉山町",
+    "city_slug": "hayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 220,
+    "seabed_type": "sand_gravel",
+    "depth_near_m": 5,
+    "depth_far_m": 18,
+    "surfer_spot": false
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 70,
+    "terrain_summary": "砂礫混じりの浜"
+  },
+  "info": {
+    "notes": "葉山・横須賀境の岬周辺。砂礫混じり。眺望よく穴場的存在",
+    "access": "逗子駅からバス30分"
+  }
+}
