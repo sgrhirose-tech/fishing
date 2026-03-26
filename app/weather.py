@@ -29,10 +29,16 @@ def _get_weatherapi_key() -> str:
 # ============================================================
 
 def fetch_weather(lat: float, lon: float, date_str: str) -> dict:
-    """Open-Meteo Weather API から気象データを取得。"""
+    """Open-Meteo Weather API から気象データを取得（1日分）。"""
+    return fetch_weather_range(lat, lon, date_str, date_str)
+
+
+def fetch_weather_range(lat: float, lon: float,
+                        start_date: str, end_date: str) -> dict:
+    """Open-Meteo Weather API から指定範囲の気象データを取得（最大7日）。"""
     grid_lat = round(round(lat * 10) / 10, 1)
     grid_lon = round(round(lon * 10) / 10, 1)
-    cache_key = (grid_lat, grid_lon, date_str)
+    cache_key = (grid_lat, grid_lon, start_date, end_date)
     if cache_key in _WEATHER_CACHE:
         return _WEATHER_CACHE[cache_key]
 
@@ -40,16 +46,22 @@ def fetch_weather(lat: float, lon: float, date_str: str) -> dict:
     params = [
         ("latitude", lat),
         ("longitude", lon),
+        # 日次データ
         ("daily", "wind_speed_10m_max"),
         ("daily", "wind_direction_10m_dominant"),
         ("daily", "precipitation_sum"),
         ("daily", "weather_code"),
-        ("hourly", "temperature_2m"),
         ("daily", "temperature_2m_max"),
+        # 時間別データ（4区分スコア用）
+        ("hourly", "wind_speed_10m"),
+        ("hourly", "wind_direction_10m"),
+        ("hourly", "precipitation"),
+        ("hourly", "temperature_2m"),
+        ("hourly", "weather_code"),
         ("wind_speed_unit", "ms"),
         ("timezone", "Asia/Tokyo"),
-        ("start_date", date_str),
-        ("end_date", date_str),
+        ("start_date", start_date),
+        ("end_date", end_date),
     ]
     try:
         full_url = base_url + "?" + urllib.parse.urlencode(params)
@@ -63,7 +75,13 @@ def fetch_weather(lat: float, lon: float, date_str: str) -> dict:
 
 
 def fetch_marine(lat: float, lon: float, date_str: str) -> dict:
-    """Open-Meteo Marine API から波高データを取得（沖合代理座標で呼ぶこと）。"""
+    """Open-Meteo Marine API から波高データを取得（1日分）。"""
+    return fetch_marine_range(lat, lon, date_str, date_str)
+
+
+def fetch_marine_range(lat: float, lon: float,
+                       start_date: str, end_date: str) -> dict:
+    """Open-Meteo Marine API から指定範囲の波高データを取得（最大7日）。"""
     base_url = "https://marine-api.open-meteo.com/v1/marine"
     params = [
         ("latitude", lat),
@@ -72,8 +90,8 @@ def fetch_marine(lat: float, lon: float, date_str: str) -> dict:
         ("daily", "dominant_wave_direction"),
         ("daily", "wave_period_max"),
         ("timezone", "Asia/Tokyo"),
-        ("start_date", date_str),
-        ("end_date", date_str),
+        ("start_date", start_date),
+        ("end_date", end_date),
     ]
     try:
         full_url = base_url + "?" + urllib.parse.urlencode(params)

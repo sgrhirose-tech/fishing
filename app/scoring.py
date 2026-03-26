@@ -332,3 +332,204 @@ def score_spot(spot: dict, weather_data: dict, marine_data: dict,
         },
         "details": details,
     }
+
+
+# ============================================================
+# 7日予報・4区分スコアリング
+# ============================================================
+
+# 時間帯区分: (ラベル, 開始時, 終了時（含まない）)
+TIME_PERIODS = [
+    ("朝",  5,  9),
+    ("昼",  9, 15),
+    ("夕", 15, 18),
+    ("夜", 18, 22),
+]
+
+
+def _hourly_index(day_index: int, hour: int) -> int:
+    """hourly 配列のインデックスを返す（1日24要素）。"""
+    return day_index * 24 + hour
+
+
+def score_period(weather_data: dict, marine_data: dict, day_index: int,
+                 period_label: str, start_h: int, end_h: int,
+                 sea_bearing_deg, kisugo_score: float,
+                 fetch_km: float = 50, sst: float | None = None) -> dict:
+    """指定時間帯の気象データからスコアを計算する。"""
+    hourly = weather_data.get("hourly", {})
+    daily  = weather_data.get("daily",  {})
+
+    # 対象時間インデックス
+    idxs = [_hourly_index(day_index, h) for h in range(start_h, end_h)]
+
+    # 風速・風向（時間帯最大風速の時刻の風向を採用）
+    wind_speeds = [hourly.get("wind_speed_10m", [])[i]
+                   for i in idxs
+                   if i < len(hourly.get("wind_speed_10m", []))
+                   and hourly["wind_speed_10m"][i] is not None]
+    wind_dirs   = [hourly.get("wind_direction_10m", [])[i]
+                   for i in idxs
+                   if i < len(hourly.get("wind_direction_10m", []))
+                   and hourly["wind_direction_10m"][i] is not None]
+    wind_speed = max(wind_speeds) if wind_speeds else None
+    # 最大風速時の風向を採用
+    if wind_speed is not None and wind_speeds:
+        max_idx_local = wind_speeds.index(wind_speed)
+        wind_dir = wind_dirs[max_idx_local] if max_idx_local < len(wind_dirs) else None
+    else:
+        wind_dir = None
+
+    # 降水量（時間帯合計）
+    precip_vals = [hourly.get("precipitation", [])[i]
+                   for i in idxs
+                   if i < len(hourly.get("precipitation", []))
+                   and hourly["precipitation"][i] is not None]
+    precip = sum(precip_vals) if precip_vals else None
+
+    # 気温（時間帯平均）
+    temp_vals = [hourly.get("temperature_2m", [])[i]
+                 for i in idxs
+                 if i < len(hourly.get("temperature_2m", []))
+                 and hourly["temperature_2m"][i] is not None]
+    temp_avg = sum(temp_vals) / len(temp_vals) if temp_vals else None
+
+    # 天気コード（時間帯最頻値）
+    wc_vals = [int(hourly.get("weather_code", [])[i])
+               for i in idxs
+               if i < len(hourly.get("weather_code", []))
+               and hourly["weather_code"][i] is not None]
+    weather_code = max(set(wc_vals), key=wc_vals.count) if wc_vals else None
+
+    # 波高（日次データから取得）
+    wave_height = wave_period = None
+    wave_source = None
+    if marine_data and "daily" in marine_data:
+        wh_list = marine_data["daily"].get("wave_height_max", [])
+        wp_list = marine_data["daily"].get("wave_period_max", [])
+        if day_index < len(wh_list) and wh_list[day_index] is not None:
+            wave_height = wh_list[day_index]
+            wave_source = "open-meteo"
+        if day_index < len(wp_list) and wp_list[day_index] is not None:
+            wave_period = wp_list[day_index]
+    if wave_height is None and marine_data.get("wave_height_max") is not None:
+        wave_height = marine_data["wave_height_max"]
+        wave_source = "weatherapi"
+    if wave_height is None and fetch_km and wind_speed:
+        from .weather import estimate_wave_from_wind
+        wave_height = estimate_wave_from_wind(wind_speed, fetch_km)
+        wave_source = "estimate"
+
+    # スコア計算
+    if wind_speed is not None and wind_dir is not None:
+        ws = calc_wind_score(wind_speed, wind_dir, sea_bearing_deg)
+        wind_pts = ws["total_pts"]
+        wind_dir_label = f"{direction_label(wind_dir)}({ws['dir_label']})"
+        wind_speed_label = ws["spd_label"]
+        surfer_friendly = ws["surfer_friendly"]
+    else:
+        wind_pts = 20
+        wind_dir_label = "データなし"
+        wind_speed_label = "データなし"
+        surfer_friendly = None
+
+    wv = calc_wave_score(wave_height, wave_period)
+    wave_pts = wv["pts"]
+
+    tp = calc_temp_score(sst)
+    temp_pts = tp["pts"]
+
+    at = calc_air_temp_score(temp_avg)
+    air_temp_pts = at["pts"]
+
+    sb = calc_seabed_score(kisugo_score)
+    seabed_pts = sb["pts"]
+
+    rain_penalty = 0
+    if precip is not None:
+        if precip > 5:
+            rain_penalty = -30
+        elif precip > 2:
+            rain_penalty = -15
+        elif precip > 0.5:
+            rain_penalty = -5
+
+    total = seabed_pts + wind_pts + wave_pts + temp_pts + air_temp_pts + rain_penalty
+
+    return {
+        "period": period_label,
+        "total": total,
+        "wind_speed": wind_speed_label,
+        "wind_dir": wind_dir_label,
+        "wave": wv["label"],
+        "wave_height_raw": wave_height,
+        "sst": tp["label"],
+        "temp": at["label"],
+        "sky": weather_code_label(weather_code),
+        "precip": f"{precip:.1f}mm" if precip is not None else "データなし",
+        "rain_warning": (
+            "大雨" if precip and precip > 5
+            else "雨" if precip and precip > 2
+            else "小雨" if precip and precip > 0.5
+            else None
+        ),
+        "surfer_friendly": surfer_friendly,
+    }
+
+
+def score_7days(spot: dict, weather_data: dict, marine_data: dict,
+                sst: float | None = None, fetch_km: float = 50) -> list[dict]:
+    """
+    7日分・4区分のスコアを計算する。
+    戻り値: [{"date": "2026-03-27", "periods": [...], "best_total": 85, "best_period": "朝"}, ...]
+    """
+    daily = weather_data.get("daily", {})
+    dates = daily.get("time", [])
+    sea_bearing = spot_bearing(spot)
+    kisugo = spot_kisugo(spot)
+
+    results = []
+    for day_idx, date_str in enumerate(dates):
+        periods = []
+        for label, start_h, end_h in TIME_PERIODS:
+            p = score_period(
+                weather_data, marine_data, day_idx,
+                label, start_h, end_h,
+                sea_bearing, kisugo, fetch_km, sst,
+            )
+            periods.append(p)
+
+        # 日別最高スコア（夜は除外して昼間を優先）
+        daytime = [p for p in periods if p["period"] != "夜"]
+        best = max(daytime, key=lambda p: p["total"]) if daytime else max(periods, key=lambda p: p["total"])
+
+        # 日次データ（既存の daily スコア）
+        daily_weather = {}
+        for key in ("wind_speed_10m_max", "wind_direction_10m_dominant",
+                    "precipitation_sum", "weather_code", "temperature_2m_max"):
+            vals = daily.get(key, [])
+            daily_weather[key] = [vals[day_idx]] if day_idx < len(vals) else [None]
+
+        results.append({
+            "date": date_str,
+            "day_label": _day_label(date_str),
+            "periods": periods,
+            "best_total": best["total"],
+            "best_period": best["period"],
+            "best_wave_height": best.get("wave_height_raw"),
+        })
+
+    return results
+
+
+def _day_label(date_str: str) -> str:
+    """'2026-03-27' → '3/27(金)' 形式に変換。"""
+    from datetime import date, timedelta
+    WEEKDAYS = ["月", "火", "水", "木", "金", "土", "日"]
+    try:
+        y, m, d = map(int, date_str.split("-"))
+        dt = date(y, m, d)
+        wd = WEEKDAYS[dt.weekday()]
+        return f"{m}/{d}({wd})"
+    except Exception:
+        return date_str

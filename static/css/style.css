@@ -158,3 +158,29 @@ footer {
   margin-top: 2rem;
 }
 footer a { color: #8bc; }
+
+/* ---- 7日間予報テーブル ---- */
+.forecast-section { margin: 2rem 0; }
+.forecast-scroll { overflow-x: auto; }
+.forecast-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+.forecast-table th,
+.forecast-table td {
+  padding: .45rem .65rem;
+  border-bottom: 1px solid #dde8f0;
+  text-align: center;
+  white-space: nowrap;
+}
+.forecast-table thead th {
+  background: #1a6b9e;
+  color: white;
+  font-weight: normal;
+}
+.forecast-table tbody tr:hover { background: #f0f6fb; }
+.score-high { background: #e6f4ea; color: #1a6b3a; font-weight: bold; }
+.score-mid  { background: #fff8e1; color: #7a5800; }
+.score-low  { background: #fce8e6; color: #8b1a1a; }

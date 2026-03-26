@@ -101,6 +101,31 @@
   </div>
 </section>
 
+<!-- 7日間予報 -->
+<section class="forecast-section">
+  <h2>7日間予報</h2>
+  <div id="forecast-loading" class="loading">予報データを取得中...</div>
+  <div id="forecast-result" style="display:none;">
+    <div class="forecast-scroll">
+      <table class="forecast-table" id="forecast-table">
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>天気</th>
+            <th>総合</th>
+            <th>朝</th>
+            <th>昼</th>
+            <th>夕</th>
+            <th>夜</th>
+            <th>波高</th>
+          </tr>
+        </thead>
+        <tbody id="forecast-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- AdSense 枠（コメントアウト） -->
 <!--
 <section class="ad-section">
@@ -133,6 +158,37 @@
         });
       })
       .catch(() => {});  // 施設取得失敗は無視
+
+    // 7日間予報を非同期取得
+    fetch('/api/forecast/' + SPOT.slug)
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('forecast-loading').style.display = 'none';
+        document.getElementById('forecast-result').style.display = 'block';
+        const tbody = document.getElementById('forecast-tbody');
+        (data.days || []).forEach(day => {
+          const scoreClass = s => s >= 70 ? 'score-high' : s >= 45 ? 'score-mid' : 'score-low';
+          const periods = day.periods || [];
+          const pCell = name => {
+            const p = periods.find(p => p.period === name);
+            return p ? `<td class="${scoreClass(p.total)}">${p.total}</td>` : '<td>-</td>';
+          };
+          const wh = day.best_wave_height != null ? day.best_wave_height.toFixed(1) + 'm' : '-';
+          const sky = (periods[1] || periods[0] || {}).sky || '-';
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${day.day_label || day.date}</td>
+            <td>${sky}</td>
+            <td class="${scoreClass(day.best_total || 0)}"><b>${day.best_total ?? '-'}</b></td>
+            ${pCell('朝')}${pCell('昼')}${pCell('夕')}${pCell('夜')}
+            <td>${wh}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(() => {
+        document.getElementById('forecast-loading').textContent = '予報データの取得に失敗しました';
+      });
 
     // 気象データを非同期取得
     fetch('/api/weather/' + SPOT.slug + '?date=' + TOMORROW)
