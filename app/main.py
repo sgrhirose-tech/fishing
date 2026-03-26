@@ -22,8 +22,10 @@ from fastapi import Request
 
 from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_slug
 from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, assign_area, get_area_centers
-from .weather import fetch_weather, fetch_marine_weatherapi, fetch_marine, fetch_sst_noaa
-from .scoring import score_spot, direction_label
+from .weather import (fetch_weather, fetch_weather_range,
+                       fetch_marine_weatherapi, fetch_marine, fetch_marine_range,
+                       fetch_sst_noaa)
+from .scoring import score_spot, direction_label, score_7days
 from .osm import fetch_nearby_facilities
 
 JST = timezone(timedelta(hours=9))
@@ -138,6 +140,35 @@ def api_ranking(date: str | None = None):
             for i, r in enumerate(ranked)
         ],
     }
+
+
+@app.get("/api/forecast/{slug}")
+def api_forecast(slug: str):
+    """スポットの7日分・4区分予報を返す。"""
+    spot = load_spot(slug)
+    if not spot:
+        raise HTTPException(status_code=404, detail="スポットが見つかりません")
+
+    from datetime import date, timedelta
+    today = date.today()
+    start = (today + timedelta(days=1)).strftime("%Y-%m-%d")
+    end   = (today + timedelta(days=7)).strftime("%Y-%m-%d")
+
+    lat = spot_lat(spot)
+    lon = spot_lon(spot)
+    area = assign_area(spot)
+    area_centers = get_area_centers()
+    fetch_km = area_centers[area][2] if area in area_centers else 50
+
+    weather = fetch_weather_range(lat, lon, start, end)
+    marine  = fetch_marine_range(lat, lon, start, end)
+    if not marine:
+        from .weather import fetch_marine_with_fallback
+        marine = fetch_marine_with_fallback(lat, lon, start)
+    sst = fetch_sst_noaa(lat, lon, start)
+
+    days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
+    return {"slug": slug, "days": days}
 
 
 @app.get("/api/osm/{slug}")
