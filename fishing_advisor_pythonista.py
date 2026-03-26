@@ -280,8 +280,9 @@ def fetch_marine_weatherapi(lat, lon, date_str):
         for day in data.get("forecast", {}).get("forecastday", []):
             if day.get("date") == date_str:
                 hours = day.get("hour", [])
-                heights = [h["sig_ht_mt"] for h in hours if h.get("sig_ht_mt") is not None]
-                periods = [h["swell_period_secs"] for h in hours if h.get("swell_period_secs") is not None]
+                day_hours = hours[6:16]   # 6時〜15時（インデックス6〜15）
+                heights = [h["sig_ht_mt"] for h in day_hours if h.get("sig_ht_mt") is not None]
+                periods = [h["swell_period_secs"] for h in day_hours if h.get("swell_period_secs") is not None]
                 if heights:
                     result = {"wave_height_max": max(heights)}
                     if periods:
@@ -376,9 +377,9 @@ def fetch_sst_noaa(lat, lon, date_str):
         with urllib.request.urlopen(full_url, timeout=15) as resp:
             data = json.loads(resp.read().decode("utf-8"))
         sst_list = data.get("hourly", {}).get("sea_surface_temperature", [])
-        valid = [v for v in sst_list if v is not None]
+        valid = [v for v in sst_list[6:16] if v is not None]   # 6時〜15時
         if valid:
-            return sum(valid) / len(valid)
+            return max(valid)
     except Exception:
         pass
 
