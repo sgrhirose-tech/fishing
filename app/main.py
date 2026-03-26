@@ -18,6 +18,7 @@ from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_sl
 from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, assign_area, get_area_centers
 from .weather import fetch_weather, fetch_marine_weatherapi, fetch_marine, fetch_sst_noaa
 from .scoring import score_spot, direction_label
+from .osm import fetch_nearby_facilities
 
 JST = timezone(timedelta(hours=9))
 
@@ -133,6 +134,16 @@ def api_ranking(date: str | None = None):
     }
 
 
+@app.get("/api/osm/{slug}")
+def api_osm(slug: str):
+    """スポット周辺の OSM 施設（駐車場・トイレ等）を返す。"""
+    spot = load_spot(slug)
+    if not spot:
+        raise HTTPException(status_code=404, detail="スポットが見つかりません")
+    facilities = fetch_nearby_facilities(spot_lat(spot), spot_lon(spot))
+    return {"slug": slug, "facilities": facilities}
+
+
 @app.get("/api/weather/{slug}")
 def api_weather(slug: str, date: str | None = None):
     """単一スポットの気象データを返す（6h キャッシュ済み）。"""
@@ -177,6 +188,89 @@ def page_top(request: Request):
 def page_spots(request: Request):
     spots = load_spots()
     return templates.TemplateResponse(request, "spots.html", {
+        "spots": spots,
+    })
+
+
+@app.get("/privacy", response_class=HTMLResponse)
+def page_privacy(request: Request):
+    return templates.TemplateResponse(request, "static_pages/privacy.html", {})
+
+@app.get("/about", response_class=HTMLResponse)
+def page_about(request: Request):
+    return templates.TemplateResponse(request, "static_pages/about.html", {})
+
+@app.get("/contact", response_class=HTMLResponse)
+def page_contact(request: Request):
+    return templates.TemplateResponse(request, "static_pages/contact.html", {})
+
+
+@app.get("/{pref_slug}/", response_class=HTMLResponse)
+def page_pref(request: Request, pref_slug: str):
+    all_spots = load_spots()
+    spots = [s for s in all_spots if s.get("area", {}).get("pref_slug") == pref_slug]
+    if not spots:
+        raise HTTPException(status_code=404)
+    pref_name = spots[0]["area"]["prefecture"]
+    areas: dict = {}
+    for s in spots:
+        a_slug = s["area"]["area_slug"]
+        a_name = s["area"]["area_name"]
+        areas.setdefault(a_slug, {"name": a_name, "count": 0})
+        areas[a_slug]["count"] += 1
+    return templates.TemplateResponse(request, "pref.html", {
+        "pref_slug": pref_slug,
+        "pref_name": pref_name,
+        "areas": areas,
+        "spots": spots,
+    })
+
+
+@app.get("/{pref_slug}/{area_slug}/", response_class=HTMLResponse)
+def page_area(request: Request, pref_slug: str, area_slug: str):
+    all_spots = load_spots()
+    spots = [s for s in all_spots
+             if s.get("area", {}).get("pref_slug") == pref_slug
+             and s.get("area", {}).get("area_slug") == area_slug]
+    if not spots:
+        raise HTTPException(status_code=404)
+    pref_name = spots[0]["area"]["prefecture"]
+    area_name = spots[0]["area"]["area_name"]
+    cities: dict = {}
+    for s in spots:
+        c_slug = s["area"]["city_slug"]
+        c_name = s["area"]["city"]
+        cities.setdefault(c_slug, {"name": c_name, "count": 0})
+        cities[c_slug]["count"] += 1
+    return templates.TemplateResponse(request, "area.html", {
+        "pref_slug": pref_slug,
+        "area_slug": area_slug,
+        "pref_name": pref_name,
+        "area_name": area_name,
+        "cities": cities,
+        "spots": spots,
+    })
+
+
+@app.get("/{pref_slug}/{area_slug}/{city_slug}/", response_class=HTMLResponse)
+def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
+    all_spots = load_spots()
+    spots = [s for s in all_spots
+             if s.get("area", {}).get("pref_slug") == pref_slug
+             and s.get("area", {}).get("area_slug") == area_slug
+             and s.get("area", {}).get("city_slug") == city_slug]
+    if not spots:
+        raise HTTPException(status_code=404)
+    pref_name = spots[0]["area"]["prefecture"]
+    area_name = spots[0]["area"]["area_name"]
+    city_name = spots[0]["area"]["city"]
+    return templates.TemplateResponse(request, "city.html", {
+        "pref_slug": pref_slug,
+        "area_slug": area_slug,
+        "city_slug": city_slug,
+        "pref_name": pref_name,
+        "area_name": area_name,
+        "city_name": city_name,
         "spots": spots,
     })
 

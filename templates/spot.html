@@ -25,6 +25,14 @@
   {% endif %}
 </div>
 
+<!-- スポット写真（resources ブランチから参照） -->
+{% if spot.info.photo_url %}
+<div class="spot-photo">
+  <img src="{{ spot.info.photo_url }}" alt="{{ spot.name }}" loading="lazy"
+       onerror="this.parentElement.style.display='none'">
+</div>
+{% endif %}
+
 <!-- スポットマップ -->
 <div id="map-detail" class="map-container map-detail"></div>
 
@@ -71,7 +79,23 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     // 単体スポットマップ
-    initDetailMap('map-detail', SPOT);
+    const map = initDetailMap('map-detail', SPOT);
+
+    // OSM 周辺施設を非同期ロード
+    fetch('/api/osm/' + SPOT.slug)
+      .then(r => r.json())
+      .then(data => {
+        (data.facilities || []).forEach(f => {
+          const icon = L.divIcon({
+            html: `<div style="background:${f.color};width:10px;height:10px;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,.4)"></div>`,
+            iconSize: [14, 14], iconAnchor: [7, 7], className: '',
+          });
+          L.marker([f.lat, f.lon], { icon })
+            .addTo(map)
+            .bindPopup(`<b>${f.type}</b><br>${f.name}`);
+        });
+      })
+      .catch(() => {});  // 施設取得失敗は無視
 
     // 気象データを非同期取得
     fetch('/api/weather/' + SPOT.slug + '?date=' + TOMORROW)

@@ -78,4 +78,5 @@ function initDetailMap(elementId, spot) {
   });
   L.marker([lat, lon], { icon }).addTo(map)
     .bindPopup(`<b>${spot.name}</b>`).openPopup();
+  return map;
 }

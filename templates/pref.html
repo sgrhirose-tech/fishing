@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{{ pref_name }}のシロギス釣り場 | シロギス釣り場ガイド{% endblock %}
+{% block description %}{{ pref_name }}の投げ釣りシロギスポイント一覧。エリア別に掲載。{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo; <span>{{ pref_name }}</span>
+</nav>
+
+<h1>{{ pref_name }}のシロギス釣り場</h1>
+
+<div id="map-pref" class="map-container"></div>
+
+<section class="area-links">
+  <h2>エリアから選ぶ</h2>
+  <div class="area-grid">
+    {% for area_slug, info in areas.items() %}
+    <a href="/{{ pref_slug }}/{{ area_slug }}/" class="area-card">
+      <h3>{{ info.name }}</h3>
+      <p>{{ info.count }}か所</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const SPOTS = {{ spots | tojson }};
+  document.addEventListener('DOMContentLoaded', function() {
+    initSpotListMap('map-pref', SPOTS);
+  });
+</script>
+{% endblock %}
