@@ -1,0 +1,31 @@
+{
+  "slug": "ohara",
+  "name": "大原海岸",
+  "location": {
+    "latitude": 35.2536,
+    "longitude": 140.3734
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "いすみ市",
+    "city_slug": "isumi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 95,
+    "seabed_type": "sand",
+    "depth_near_m": 4,
+    "depth_far_m": 15,
+    "surfer_spot": true
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 90,
+    "terrain_summary": "遠浅の砂浜"
+  },
+  "info": {
+    "notes": "外房の砂地。外洋に面しているためうねりが入りやすい",
+    "access": "大原駅から徒歩10分"
+  }
+}

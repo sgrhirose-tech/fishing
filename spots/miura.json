@@ -1,0 +1,31 @@
+{
+  "slug": "miura",
+  "name": "三浦海岸",
+  "location": {
+    "latitude": 35.1389,
+    "longitude": 139.6234
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "三浦市",
+    "city_slug": "miura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 130,
+    "seabed_type": "sand",
+    "depth_near_m": 4,
+    "depth_far_m": 15,
+    "surfer_spot": true
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 90,
+    "terrain_summary": "遠浅の砂浜"
+  },
+  "info": {
+    "notes": "神奈川屈指のシロギスポイント。白い砂浜が1km以上続く",
+    "access": "三浦海岸駅から徒歩5分"
+  }
+}

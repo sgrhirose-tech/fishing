@@ -1,0 +1,31 @@
+{
+  "slug": "moriya",
+  "name": "守谷海岸（勝浦）",
+  "location": {
+    "latitude": 35.1486,
+    "longitude": 140.3174
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "勝浦市",
+    "city_slug": "katsuura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 130,
+    "seabed_type": "sand",
+    "depth_near_m": 5,
+    "depth_far_m": 20,
+    "surfer_spot": false
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 90,
+    "terrain_summary": "遠浅の砂浜"
+  },
+  "info": {
+    "notes": "透明度高い砂浜。遠浅でシロギスの好ポイント",
+    "access": "勝浦駅から徒歩20分"
+  }
+}

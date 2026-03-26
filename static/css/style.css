@@ -1,0 +1,151 @@
+/* ============================================================
+   シロギス釣り場ガイド - スタイルシート
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  margin: 0;
+  background: #f5f8fa;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* ---- ナビ ---- */
+header { background: #1a6b9e; color: white; }
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.site-title { color: white; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1rem; }
+nav ul a { color: #cde; text-decoration: none; }
+nav ul a:hover { color: white; }
+
+/* ---- メイン ---- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+/* ---- ヒーロー ---- */
+.hero { text-align: center; padding: 2rem 1rem; }
+.hero h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #1a6b9e; }
+
+/* ---- マップ ---- */
+.map-container { height: 420px; border-radius: 8px; margin: 1.25rem 0; }
+.map-detail { height: 260px; }
+
+/* ---- エリアグリッド ---- */
+.area-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.area-card {
+  background: white;
+  border: 1px solid #d0e4f0;
+  border-radius: 8px;
+  padding: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .15s;
+}
+.area-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+.area-card h3 { margin: 0 0 .25rem; color: #1a6b9e; }
+.area-card p  { margin: 0; font-size: .85rem; color: #555; }
+
+/* ---- ボタン ---- */
+.btn-primary {
+  display: inline-block;
+  background: #1a6b9e;
+  color: white;
+  padding: .7rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+.btn-primary:hover { background: #155480; }
+
+.btn-detail {
+  display: inline-block;
+  background: #e8f4fd;
+  color: #1a6b9e;
+  padding: .4rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: .9rem;
+  border: 1px solid #aad1ea;
+}
+.btn-detail:hover { background: #d0e9f7; }
+
+/* ---- スポットカード ---- */
+.spots-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.spot-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 1px solid #dce9f2;
+}
+.spot-card h2 { margin: 0 0 .5rem; font-size: 1.1rem; }
+.spot-card h2 a { color: #1a6b9e; text-decoration: none; }
+.spot-card h2 a:hover { text-decoration: underline; }
+
+/* ---- バッジ ---- */
+.spot-meta { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .75rem; }
+.badge {
+  background: #e0eff9;
+  color: #1a6b9e;
+  font-size: .78rem;
+  padding: .2rem .6rem;
+  border-radius: 12px;
+}
+.badge-warning { background: #fff3cd; color: #856404; }
+
+/* ---- 情報テーブル ---- */
+.info-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+.info-table th,
+.info-table td { padding: .5rem .75rem; border-bottom: 1px solid #e0e8f0; text-align: left; }
+.info-table th { width: 8rem; color: #555; font-weight: normal; background: #f0f6fb; }
+.info-table .warn { color: #c00; font-weight: bold; }
+
+/* ---- スコアバッジ ---- */
+.score-badge {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1a6b9e;
+  margin: .5rem 0 1rem;
+}
+.score-badge::after { content: " / 110点"; font-size: 1rem; color: #888; }
+
+/* ---- パンくず ---- */
+.breadcrumb { font-size: .85rem; color: #666; margin-bottom: 1rem; }
+.breadcrumb a { color: #1a6b9e; text-decoration: none; }
+
+/* ---- ローディング ---- */
+.loading { color: #888; font-style: italic; padding: 1rem 0; }
+
+/* ---- フッター ---- */
+footer {
+  background: #1a3a50;
+  color: #aac;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: .85rem;
+  margin-top: 2rem;
+}
+footer a { color: #8bc; }

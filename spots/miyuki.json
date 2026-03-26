@@ -1,0 +1,31 @@
+{
+  "slug": "miyuki",
+  "name": "御幸の浜（小田原）",
+  "location": {
+    "latitude": 35.2503,
+    "longitude": 139.1469
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "小田原市",
+    "city_slug": "odawara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 185,
+    "seabed_type": "sand",
+    "depth_near_m": 4,
+    "depth_far_m": 18,
+    "surfer_spot": false
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 90,
+    "terrain_summary": "遠浅の砂浜"
+  },
+  "info": {
+    "notes": "小田原漁港に隣接。比較的空いている砂浜。シロギスの良型が出る",
+    "access": "小田原駅から徒歩20分"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "slug": "oiso",
+  "name": "大磯海岸",
+  "location": {
+    "latitude": 35.3049,
+    "longitude": 139.3093
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "大磯町",
+    "city_slug": "oiso"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 175,
+    "seabed_type": "sand_gravel",
+    "depth_near_m": 5,
+    "depth_far_m": 20,
+    "surfer_spot": false
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 70,
+    "terrain_summary": "砂礫混じりの浜"
+  },
+  "info": {
+    "notes": "砂と砂利が混じる。サーファー少なめ。良型シロギスが出ることも",
+    "access": "大磯駅から徒歩10分"
+  }
+}

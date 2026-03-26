@@ -1,0 +1,31 @@
+{
+  "slug": "katase_east",
+  "name": "片瀬東浜（江ノ島）",
+  "location": {
+    "latitude": 35.3065,
+    "longitude": 139.4869
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "藤沢市",
+    "city_slug": "fujisawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 175,
+    "seabed_type": "sand",
+    "depth_near_m": 4,
+    "depth_far_m": 12,
+    "surfer_spot": true
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 90,
+    "terrain_summary": "遠浅の砂浜"
+  },
+  "info": {
+    "notes": "江ノ島の東側の砂浜。西浜よりやや静かな日もある",
+    "access": "片瀬江ノ島駅から徒歩5分"
+  }
+}

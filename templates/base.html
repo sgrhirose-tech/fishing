@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}シロギス釣り場ガイド{% endblock %}</title>
+  <meta name="description" content="{% block description %}神奈川・千葉の投げ釣りシロギスポイント情報。波高・風向・水温をリアルタイム表示。{% endblock %}">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <!-- カスタムCSS -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/" class="site-title">🎣 シロギス釣り場ガイド</a>
+      <ul>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/spots">釣り場一覧</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>
+      <a href="/privacy">プライバシーポリシー</a> |
+      <a href="/contact">お問い合わせ</a> |
+      <a href="/about">運営者情報</a>
+    </p>
+    <p>気象データ: <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a> /
+       海面水温: <a href="https://coastwatch.pfeg.noaa.gov/" target="_blank">NOAA CoastWatch</a></p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- カスタムJS -->
+  <script src="/static/js/map.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
