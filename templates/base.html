@@ -6,6 +6,31 @@
   <title>{% block title %}シロギス釣り場ガイド{% endblock %}</title>
   <meta name="description" content="{% block description %}神奈川・千葉の投げ釣りシロギスポイント情報。波高・風向・水温をリアルタイム表示。{% endblock %}">
 
+  <!-- OG タグ -->
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="シロギス釣り場ガイド">
+  <meta property="og:title"       content="{% block og_title %}{% block title2 %}シロギス釣り場ガイド{% endblock %}{% endblock %}">
+  <meta property="og:description" content="{% block og_desc %}神奈川・千葉の投げ釣りシロギスポイント情報。波高・風向・水温をリアルタイム表示。{% endblock %}">
+  {% block og_image %}<meta property="og:image" content="/static/img/ogp.png">{% endblock %}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:title"       content="{% block tw_title %}シロギス釣り場ガイド{% endblock %}">
+  <meta name="twitter:description" content="{% block tw_desc %}神奈川・千葉の投げ釣りシロギスポイント情報。波高・風向・水温をリアルタイム表示。{% endblock %}">
+
+  <!-- JSON-LD 構造化データ -->
+  {% block jsonld %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "シロギス釣り場ガイド",
+    "description": "神奈川・千葉の投げ釣りシロギスポイント情報サイト",
+    "url": "/"
+  }
+  </script>
+  {% endblock %}
+
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <!-- カスタムCSS -->
@@ -27,6 +52,14 @@
   </main>
 
   <footer>
+    <!-- AdSense（コメントアウト）
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
     <p>
       <a href="/privacy">プライバシーポリシー</a> |
       <a href="/contact">お問い合わせ</a> |

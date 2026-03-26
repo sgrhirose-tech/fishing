@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}{{ pref_name }}のシロギス釣り場 | シロギス釣り場ガイド{% endblock %}
-{% block description %}{{ pref_name }}の投げ釣りシロギスポイント一覧。エリア別に掲載。{% endblock %}
+{% block title %}{{ pref_name }}のシロギス投げ釣りポイント一覧 | シロギス釣り場ガイド{% endblock %}
+{% block description %}{{ pref_name }}の投げ釣りシロギスポイント一覧。相模湾・三浦半島・東京湾など{{ areas|length }}エリアを掲載。{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "ホーム",       "item": "/"},
+    {"@type": "ListItem", "position": 2, "name": "{{ pref_name }}"}
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <nav class="breadcrumb">
