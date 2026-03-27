@@ -207,6 +207,7 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
 
 <script>
 // ---- data injected by Python ----
+var SAVE_MODE = '__SAVE_MODE__';
 var SPOTS = __SPOTS_JSON__;
 var AREA_SLUG_MAP = {
   "相模湾":   ["sagamibay",  "kanagawa", "神奈川県"],
@@ -528,8 +529,15 @@ function saveChanges() {
   document.getElementById('panel-header').textContent = payload.name || s.slug || '(無名)';
   buildList(document.getElementById('area-filter').value);
 
-  var encoded = encodeURIComponent(JSON.stringify(payload));
-  window.location.href = 'pythonista://save?data=' + encoded;
+  if (SAVE_MODE === 'http') {
+    fetch('/save', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
+      .then(function(r){ return r.json(); })
+      .then(function(res){ if (!res.ok) alert('保存エラー: ' + (res.error || '')); })
+      .catch(function(e){ alert('保存失敗: ' + e); });
+  } else {
+    var encoded = encodeURIComponent(JSON.stringify(payload));
+    window.location.href = 'pythonista://save?data=' + encoded;
+  }
 }
 
 // ---- new spot modal ----
@@ -558,8 +566,18 @@ function submitNewSpot() {
 
   closeModal();
   var payload = { name: name, slug: slug, lat: lat, lon: lon };
-  var encoded = encodeURIComponent(JSON.stringify(payload));
-  window.location.href = 'pythonista://newspot?data=' + encoded;
+  if (SAVE_MODE === 'http') {
+    fetch('/newspot', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        if (res.ok) onNewSpotComplete(JSON.stringify(res.spot));
+        else alert('作成エラー: ' + (res.error || ''));
+      })
+      .catch(function(e){ alert('作成失敗: ' + e); });
+  } else {
+    var encoded = encodeURIComponent(JSON.stringify(payload));
+    window.location.href = 'pythonista://newspot?data=' + encoded;
+  }
 }
 
 function onNewSpotComplete(spotJson) {
@@ -614,6 +632,124 @@ buildList('');
 
 
 # ---------------------------------------------------------------------------
+# 共通保存ロジック（Pythonista delegate・HTTP サーバー共用）
+# ---------------------------------------------------------------------------
+
+def _save_spot(payload):
+    filename = payload.get("_filename")
+    if not filename:
+        raise ValueError("missing _filename")
+
+    path = os.path.join(SPOTS_DIR, filename)
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"file not found: {path}")
+
+    with open(path, encoding="utf-8") as f:
+        spot = json.load(f)
+
+    if payload.get("name"):
+        spot["name"] = payload["name"]
+
+    loc = payload.get("location", {})
+    if loc.get("latitude") is not None:
+        spot.setdefault("location", {})["latitude"]  = loc["latitude"]
+    if loc.get("longitude") is not None:
+        spot.setdefault("location", {})["longitude"] = loc["longitude"]
+
+    area = payload.get("area", {})
+    spot.setdefault("area", {}).update({k: v for k, v in area.items() if v is not None and v != ""})
+
+    phys = payload.get("physical_features", {})
+    pf = spot.setdefault("physical_features", {})
+    if phys.get("sea_bearing_deg") is not None:
+        pf["sea_bearing_deg"] = phys["sea_bearing_deg"]
+    if phys.get("seabed_type"):
+        pf["seabed_type"] = phys["seabed_type"]
+    if phys.get("surfer_spot") is not None:
+        pf["surfer_spot"] = phys["surfer_spot"]
+    if phys.get("depth_near_m") is not None:
+        pf["depth_near_m"] = phys["depth_near_m"]
+    if phys.get("depth_far_m") is not None:
+        pf["depth_far_m"] = phys["depth_far_m"]
+
+    der = payload.get("derived_features", {})
+    df = spot.setdefault("derived_features", {})
+    if der.get("bottom_kisugo_score") is not None:
+        df["bottom_kisugo_score"] = der["bottom_kisugo_score"]
+    if der.get("terrain_summary") is not None:
+        df["terrain_summary"] = der["terrain_summary"]
+
+    info = payload.get("info", {})
+    inf = spot.setdefault("info", {})
+    for key in ("notes", "access", "photo_url"):
+        if info.get(key) is not None:
+            inf[key] = info[key]
+
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(spot, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+    print(f"[save] OK: {filename}")
+
+
+def _create_spot(payload):
+    """新規スポットを作成し、_filename 付きの dict を返す。スラッグ重複時は None。"""
+    name = payload.get("name", "").strip()
+    slug = payload.get("slug", "").strip()
+    lat  = float(payload.get("lat", 35.3))
+    lon  = float(payload.get("lon", 139.5))
+
+    if not name or not slug:
+        raise ValueError("missing name or slug")
+
+    filename = f"{slug}.json"
+    path = os.path.join(SPOTS_DIR, filename)
+    if os.path.exists(path):
+        return None  # 重複
+
+    area_name = _assign_marine_area(lat, lon)
+    area_info = AREA_MAP.get(area_name, ("", "", ""))
+
+    spot = {
+        "slug": slug,
+        "name": name,
+        "location": {"latitude": lat, "longitude": lon},
+        "area": {
+            "prefecture": area_info[2],
+            "pref_slug":  area_info[1],
+            "area_name":  area_name or "",
+            "area_slug":  area_info[0],
+            "city":       "",
+            "city_slug":  ""
+        },
+        "physical_features": {
+            "sea_bearing_deg": 180,
+            "seabed_type":     "sand",
+            "depth_near_m":    None,
+            "depth_far_m":     None,
+            "surfer_spot":     False
+        },
+        "derived_features": {
+            "bottom_kisugo_score": None,
+            "terrain_summary":     ""
+        },
+        "info": {
+            "notes":     "",
+            "access":    "",
+            "photo_url": f"https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/{slug}.jpg"
+        }
+    }
+
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(spot, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+    print(f"[newspot] created: {path}")
+    spot["_filename"] = filename
+    return spot
+
+
+# ---------------------------------------------------------------------------
 # Pythonista delegate
 # ---------------------------------------------------------------------------
 
@@ -646,64 +782,10 @@ class SpotDelegate(object):
         except Exception as e:
             print(f"[save] JSON parse error: {e}")
             return
-
-        filename = payload.get("_filename")
-        if not filename:
-            print("[save] missing _filename")
-            return
-
-        path = os.path.join(SPOTS_DIR, filename)
-        if not os.path.exists(path):
-            print(f"[save] file not found: {path}")
-            return
-
-        # Load existing, merge all editable fields
-        with open(path, encoding="utf-8") as f:
-            spot = json.load(f)
-
-        if payload.get("name"):
-            spot["name"] = payload["name"]
-
-        loc = payload.get("location", {})
-        if loc.get("latitude") is not None:
-            spot.setdefault("location", {})["latitude"]  = loc["latitude"]
-        if loc.get("longitude") is not None:
-            spot.setdefault("location", {})["longitude"] = loc["longitude"]
-
-        area = payload.get("area", {})
-        spot.setdefault("area", {}).update({k: v for k, v in area.items() if v is not None and v != ""})
-
-        phys = payload.get("physical_features", {})
-        pf = spot.setdefault("physical_features", {})
-        if phys.get("sea_bearing_deg") is not None:
-            pf["sea_bearing_deg"] = phys["sea_bearing_deg"]
-        if phys.get("seabed_type"):
-            pf["seabed_type"] = phys["seabed_type"]
-        if phys.get("surfer_spot") is not None:
-            pf["surfer_spot"] = phys["surfer_spot"]
-        if phys.get("depth_near_m") is not None:
-            pf["depth_near_m"] = phys["depth_near_m"]
-        if phys.get("depth_far_m") is not None:
-            pf["depth_far_m"] = phys["depth_far_m"]
-
-        der = payload.get("derived_features", {})
-        df = spot.setdefault("derived_features", {})
-        if der.get("bottom_kisugo_score") is not None:
-            df["bottom_kisugo_score"] = der["bottom_kisugo_score"]
-        if der.get("terrain_summary") is not None:
-            df["terrain_summary"] = der["terrain_summary"]
-
-        info = payload.get("info", {})
-        inf = spot.setdefault("info", {})
-        for key in ("notes", "access", "photo_url"):
-            if info.get(key) is not None:
-                inf[key] = info[key]
-
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(spot, f, ensure_ascii=False, indent=2)
-            f.write("\n")
-
-        print(f"[save] OK: {filename}")
+        try:
+            _save_spot(payload)
+        except Exception as e:
+            print(f"[save] error: {e}")
 
     def _handle_newspot(self, raw):
         try:
@@ -711,77 +793,85 @@ class SpotDelegate(object):
         except Exception as e:
             print(f"[newspot] JSON parse error: {e}")
             return
-
-        name = payload.get("name", "").strip()
-        slug = payload.get("slug", "").strip()
-        lat  = float(payload.get("lat", 35.3))
-        lon  = float(payload.get("lon", 139.5))
-
-        if not name or not slug:
-            print("[newspot] missing name or slug")
+        try:
+            spot = _create_spot(payload)
+        except Exception as e:
+            print(f"[newspot] error: {e}")
             return
-
-        filename = f"{slug}.json"
-        path = os.path.join(SPOTS_DIR, filename)
-        if os.path.exists(path):
-            print(f"[newspot] already exists: {path}")
+        if spot is None:
+            print(f"[newspot] already exists: {payload.get('slug')}")
             return
-
-        area_name = _assign_marine_area(lat, lon)
-        area_info = AREA_MAP.get(area_name, ("", "", ""))
-
-        spot = {
-            "slug": slug,
-            "name": name,
-            "location": {"latitude": lat, "longitude": lon},
-            "area": {
-                "prefecture": area_info[2],
-                "pref_slug":  area_info[1],
-                "area_name":  area_name or "",
-                "area_slug":  area_info[0],
-                "city":       "",
-                "city_slug":  ""
-            },
-            "physical_features": {
-                "sea_bearing_deg": 180,
-                "seabed_type":     "sand",
-                "depth_near_m":    None,
-                "depth_far_m":     None,
-                "surfer_spot":     False
-            },
-            "derived_features": {
-                "bottom_kisugo_score": None,
-                "terrain_summary":     ""
-            },
-            "info": {
-                "notes":     "",
-                "access":    "",
-                "photo_url": f"https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/{slug}.jpg"
-            }
-        }
-
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(spot, f, ensure_ascii=False, indent=2)
-            f.write("\n")
-
-        print(f"[newspot] created: {path}")
-
-        # Add _filename and push to JS SPOTS array
-        spot["_filename"] = filename
         spot_js = json.dumps(spot, ensure_ascii=False)
         self.wv.evaluate_javascript(f"onNewSpotComplete({json.dumps(spot_js, ensure_ascii=False)})")
+
+
+# ---------------------------------------------------------------------------
+# Mac HTTP サーバー
+# ---------------------------------------------------------------------------
+
+import http.server as _http_server
+
+
+class SpotHTTPHandler(_http_server.BaseHTTPRequestHandler):
+    def do_GET(self):
+        if self.path in ('/', '/index.html'):
+            body = self.server.html_content.encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.send_header('Content-Length', str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+        else:
+            self.send_error(404)
+
+    def do_POST(self):
+        length = int(self.headers.get('Content-Length', 0))
+        try:
+            payload = json.loads(self.rfile.read(length).decode('utf-8'))
+        except Exception as e:
+            self._respond(400, {'ok': False, 'error': str(e)})
+            return
+        if self.path == '/save':
+            try:
+                _save_spot(payload)
+                self._respond(200, {'ok': True})
+            except Exception as e:
+                self._respond(500, {'ok': False, 'error': str(e)})
+        elif self.path == '/newspot':
+            try:
+                spot = _create_spot(payload)
+                if spot:
+                    self._respond(200, {'ok': True, 'spot': spot})
+                else:
+                    self._respond(400, {'ok': False, 'error': 'スラッグが重複しています'})
+            except Exception as e:
+                self._respond(500, {'ok': False, 'error': str(e)})
+        else:
+            self.send_error(404)
+
+    def _respond(self, code, data):
+        body = json.dumps(data, ensure_ascii=False).encode('utf-8')
+        self.send_response(code)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Content-Length', str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def log_message(self, format, *args):
+        pass  # ログ抑制
 
 
 # ---------------------------------------------------------------------------
 # Build HTML
 # ---------------------------------------------------------------------------
 
-def build_html(spots):
+def build_html(spots, save_mode='pythonista'):
     spots_js = json.dumps(spots, ensure_ascii=False)
     seabed_js = json.dumps([[v, l] for v, l in SEABED_TYPE_OPTIONS], ensure_ascii=False)
     bearing_js = json.dumps(BEARING_OPTIONS, ensure_ascii=False)
 
     html = HTML_TEMPLATE
+    html = html.replace("__SAVE_MODE__",           save_mode)
     html = html.replace("__SPOTS_JSON__",          spots_js)
     html = html.replace("__SEABED_OPTIONS_JSON__",  seabed_js)
     html = html.replace("__BEARING_OPTIONS_JSON__", bearing_js)
@@ -794,17 +884,17 @@ def build_html(spots):
 
 def main():
     spots = load_spots()
-    html = build_html(spots)
-
-    # 一時ファイルに書き出す（load_html()よりも信頼性が高い）
-    import tempfile
-    tmp_dir = tempfile.gettempdir()
-    tmp_path = os.path.join(tmp_dir, "spot_editor_ui.html")
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        f.write(html)
 
     try:
         import ui
+
+        html = build_html(spots, save_mode='pythonista')
+
+        # 一時ファイルに書き出す（load_html()よりも信頼性が高い）
+        import tempfile
+        tmp_path = os.path.join(tempfile.gettempdir(), "spot_editor_ui.html")
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            f.write(html)
 
         wv = ui.WebView(name="スポットエディタ")
         wv.flex = "WH"
@@ -814,10 +904,27 @@ def main():
         wv.present("fullscreen")
 
     except ImportError:
-        # Desktop fallback: open in browser
+        # Mac fallback: ローカル HTTP サーバー
+        import socket
         import webbrowser
-        print(f"Opened in browser: {tmp_path}")
-        webbrowser.open(f"file://{tmp_path}")
+
+        html = build_html(spots, save_mode='http')
+
+        with socket.socket() as _s:
+            _s.bind(('', 0))
+            port = _s.getsockname()[1]
+
+        srv = _http_server.HTTPServer(('localhost', port), SpotHTTPHandler)
+        srv.html_content = html
+
+        url = f'http://localhost:{port}/'
+        print(f"スポットエディタ: {url}")
+        print("終了するには Ctrl+C")
+        webbrowser.open(url)
+        try:
+            srv.serve_forever()
+        except KeyboardInterrupt:
+            print("\n終了")
 
 
 if __name__ == "__main__":
