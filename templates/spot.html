@@ -81,6 +81,10 @@
   <table class="info-table">
     <tr><th>地形</th><td>{{ df.terrain_summary }}</td></tr>
     <tr>
+      <th>海底傾斜</th>
+      <td>{{ slope_type }}{% if pf.nearest_20m_contour_distance_m %} <small>（20m等深線まで {{ pf.nearest_20m_contour_distance_m | int }}m）</small>{% endif %}</td>
+    </tr>
+    <tr>
       <th>水深</th>
       <td>
         {% if pf.depth_near_m %}手前 {{ pf.depth_near_m }}m{% endif %}
