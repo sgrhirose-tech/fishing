@@ -117,6 +117,21 @@ def spot_terrain(s: dict) -> str:
     """地形サマリー文字列。"""
     return s.get("derived_features", {}).get("terrain_summary", "")
 
+def classify_slope(dist_m) -> str:
+    """20m等深線距離からslope_typeを返す。"""
+    if dist_m is None:
+        return "不明"
+    if dist_m < 1000:
+        return "急深"
+    if dist_m < 2000:
+        return "やや急深"
+    return "遠浅"
+
+def spot_slope_type(s: dict) -> str:
+    """スポットの海底傾斜分類を返す。"""
+    dist = s.get("physical_features", {}).get("nearest_20m_contour_distance_m")
+    return classify_slope(dist)
+
 
 # エリアユーティリティ
 def get_marine_proxy(lat: float, lon: float) -> tuple[float, float]:
