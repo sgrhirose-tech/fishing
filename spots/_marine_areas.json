@@ -34,6 +34,13 @@
       "center_lat": 35.2,
       "center_lon": 140.37,
       "fetch_km": 100
+    },
+    "九十九里": {
+      "lat": 35.5,
+      "lon": 141.0,
+      "center_lat": 35.55,
+      "center_lon": 140.65,
+      "fetch_km": 120
     }
   },
   "fallbacks": [

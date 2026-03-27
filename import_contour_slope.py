@@ -36,6 +36,11 @@ NAME_TO_SLUG = {
     "辻堂海岸": "tsujido",
     "逗子海岸": "zushi",
     "酒匂海岸": "sakawa",
+    "銚子港": "choshi_port",
+    "銚子外港": "choshi_outer",
+    "黒生港": "kuroo_port",
+    "名洗港": "narasho_port",
+    "犬吠埼": "inubosaki",
 }
 
 
