@@ -1,7 +1,7 @@
 """
 spot_editor.py — Pythonista用スポット編集ツール
 
-Web app の spots/*.json を Leaflet.js WebView で編集・保存する。
+unadjusted/*.json を Leaflet.js WebView で編集・保存する。
 全フィールド対応。新規スポット作成も可（APIコールなし）。
 
 使い方:
@@ -15,8 +15,8 @@ import os
 import sys
 import urllib.parse
 
-SPOTS_DIR = os.path.join(os.path.dirname(__file__), "spots")
-AREAS_FILE = os.path.join(SPOTS_DIR, "_marine_areas.json")
+SPOTS_DIR = os.path.join(os.path.dirname(__file__), "unadjusted")
+AREAS_FILE = os.path.join(os.path.dirname(__file__), "spots", "_marine_areas.json")
 
 SEABED_TYPE_OPTIONS = [
     ("sand",       "砂"),
