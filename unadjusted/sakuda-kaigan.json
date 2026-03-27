@@ -1,0 +1,33 @@
+{
+  "slug": "sakuda-kaigan",
+  "name": "作田海岸",
+  "location": {
+    "latitude": 35.566,
+    "longitude": 140.4492
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "山武市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 122.3,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "サーフでのびのび探れる",
+    "access": "求名駅からバス25分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/sakuda-kaigan.jpg"
+  }
+}

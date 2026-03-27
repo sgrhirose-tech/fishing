@@ -1,0 +1,33 @@
+{
+  "slug": "umezawa-kaigan",
+  "name": "梅沢海岸",
+  "location": {
+    "latitude": 35.3117,
+    "longitude": 139.2747
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "大磯町",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 165.2,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "投げ釣り向きの浜",
+    "access": "二宮駅から徒歩20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/umezawa-kaigan.jpg"
+  }
+}

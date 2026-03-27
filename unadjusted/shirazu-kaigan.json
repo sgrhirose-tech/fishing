@@ -1,0 +1,33 @@
+{
+  "slug": "shirazu-kaigan",
+  "name": "白渚海岸",
+  "location": {
+    "latitude": 35.0092,
+    "longitude": 140.0056
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "南房総市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 131.6,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 163.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "急深"
+  },
+  "info": {
+    "notes": "南房総らしい広い浜",
+    "access": "千倉駅からバス20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/shirazu-kaigan.jpg"
+  }
+}

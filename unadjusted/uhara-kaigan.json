@@ -1,0 +1,33 @@
+{
+  "slug": "uhara-kaigan",
+  "name": "鵜原海岸",
+  "location": {
+    "latitude": 35.1496,
+    "longitude": 140.3037
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "勝浦市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 172.2,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1778.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、やや急深"
+  },
+  "info": {
+    "notes": "静かな入り江の海岸",
+    "access": "鵜原駅から徒歩10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/uhara-kaigan.jpg"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "slug": "okawa-ko",
+  "name": "大川港",
+  "location": {
+    "latitude": 34.9372,
+    "longitude": 139.9492
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "南房総市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 112.2,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1626.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "やや急深"
+  },
+  "info": {
+    "notes": "外房南部の港ポイント",
+    "access": "千倉駅からバス20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/okawa-ko.jpg"
+  }
+}

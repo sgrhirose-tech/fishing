@@ -1,0 +1,33 @@
+{
+  "slug": "setohama-kaigan",
+  "name": "瀬戸浜海岸",
+  "location": {
+    "latitude": 34.9689,
+    "longitude": 139.9532
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "南房総市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 106.9,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "浜と港が近い手軽な場",
+    "access": "千倉駅から徒歩20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/setohama-kaigan.jpg"
+  }
+}

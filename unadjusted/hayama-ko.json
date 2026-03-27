@@ -1,0 +1,33 @@
+{
+  "slug": "hayama-ko",
+  "name": "葉山港",
+  "location": {
+    "latitude": 35.2727,
+    "longitude": 139.5721
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "葉山町",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 296.6,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1490.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、やや急深"
+  },
+  "info": {
+    "notes": "港内中心の手軽な場",
+    "access": "逗子駅からバス20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/hayama-ko.jpg"
+  }
+}

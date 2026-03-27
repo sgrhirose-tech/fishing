@@ -1,0 +1,33 @@
+{
+  "slug": "keihinjima-tsubasa-koen",
+  "name": "京浜島つばさ公園",
+  "location": {
+    "latitude": 35.57028,
+    "longitude": 139.76493
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "大田区",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 124.0,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、貝殻混じり、近傍に石要素あり、傾斜不明"
+  },
+  "info": {
+    "notes": "空港近くで景観良好",
+    "access": "平和島駅からバス20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/keihinjima-tsubasa-koen.jpg"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "slug": "note-hama",
+  "name": "野手浜",
+  "location": {
+    "latitude": 35.6819,
+    "longitude": 140.6144
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "旭市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 109.2,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "投げ釣り向きの広い浜",
+    "access": "旭駅からバス25分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/note-hama.jpg"
+  }
+}

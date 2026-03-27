@@ -1,0 +1,33 @@
+{
+  "slug": "wadaura-kaigan",
+  "name": "和田浦海岸",
+  "location": {
+    "latitude": 35.0314,
+    "longitude": 140.0188
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "南房総市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 187.6,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 770.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、急深"
+  },
+  "info": {
+    "notes": "広い浜で投げ釣り向き",
+    "access": "和田浦駅から徒歩10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/wadaura-kaigan.jpg"
+  }
+}

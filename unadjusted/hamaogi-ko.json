@@ -1,0 +1,33 @@
+{
+  "slug": "hamaogi-ko",
+  "name": "浜荻港",
+  "location": {
+    "latitude": 35.0929,
+    "longitude": 140.1517
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "鴨川市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 193.4,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1582.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "やや急深"
+  },
+  "info": {
+    "notes": "小規模港で手軽に探れる",
+    "access": "安房天津駅から徒歩20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/hamaogi-ko.jpg"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "slug": "komekami-teibo",
+  "name": "米神堤防",
+  "location": {
+    "latitude": 35.223,
+    "longitude": 139.1304
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "小田原市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 77.6,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1275.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "やや急深"
+  },
+  "info": {
+    "notes": "小田原西側の実績堤防",
+    "access": "根府川駅から徒歩25分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/komekami-teibo.jpg"
+  }
+}

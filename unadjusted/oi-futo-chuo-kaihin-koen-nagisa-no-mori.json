@@ -1,0 +1,33 @@
+{
+  "slug": "oi-futo-chuo-kaihin-koen-nagisa-no-mori",
+  "name": "大井ふ頭中央海浜公園なぎさの森",
+  "location": {
+    "latitude": 35.58726,
+    "longitude": 139.75147
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "大田区",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 82.4,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、傾斜不明"
+  },
+  "info": {
+    "notes": "運河沿いの静かな公園",
+    "access": "大井競馬場前駅から徒歩12分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/oi-futo-chuo-kaihin-koen-nagisa-no-mori.jpg"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "slug": "urayasu-nanbu-gogan",
+  "name": "浦安南部護岸",
+  "location": {
+    "latitude": 35.63143,
+    "longitude": 139.91078
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "浦安市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 146.3,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "護岸帯を広く探れる",
+    "access": "新浦安駅からバス15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/urayasu-nanbu-gogan.jpg"
+  }
+}

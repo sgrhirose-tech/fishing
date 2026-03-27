@@ -1,0 +1,33 @@
+{
+  "slug": "hikichigawa-kako",
+  "name": "引地川河口",
+  "location": {
+    "latitude": 35.3204,
+    "longitude": 139.4768
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "藤沢市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 200.3,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "河口絡みの変化を狙える",
+    "access": "鵠沼海岸駅から徒歩15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/hikichigawa-kako.jpg"
+  }
+}

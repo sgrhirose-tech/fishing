@@ -1,0 +1,33 @@
+{
+  "slug": "futoma-kaigan",
+  "name": "二夕間海岸",
+  "location": {
+    "latitude": 35.1017,
+    "longitude": 140.1633
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "鴨川市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 193.4,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1039.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "やや急深"
+  },
+  "info": {
+    "notes": "静かな海岸で投げ向き",
+    "access": "安房天津駅から徒歩20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/futoma-kaigan.jpg"
+  }
+}

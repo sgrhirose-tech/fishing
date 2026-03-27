@@ -1,0 +1,33 @@
+{
+  "slug": "shirosaki-kaigan",
+  "name": "城崎海岸",
+  "location": {
+    "latitude": 35.1089,
+    "longitude": 140.1832
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "鴨川市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 273.5,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 374.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、貝殻混じり、近傍に石要素あり、急深"
+  },
+  "info": {
+    "notes": "磯混じりで変化が多い",
+    "access": "安房天津駅から徒歩20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/shirosaki-kaigan.jpg"
+  }
+}

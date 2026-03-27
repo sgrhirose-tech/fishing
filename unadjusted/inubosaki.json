@@ -1,0 +1,33 @@
+{
+  "slug": "inubosaki",
+  "name": "犬吠埼",
+  "location": {
+    "latitude": 35.7077,
+    "longitude": 140.8684
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "銚子市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 87.8,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、傾斜不明"
+  },
+  "info": {
+    "notes": "地磯主体で景観抜群",
+    "access": "犬吠駅から徒歩10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/inubosaki.jpg"
+  }
+}

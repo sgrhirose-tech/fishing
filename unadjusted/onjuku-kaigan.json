@@ -1,0 +1,33 @@
+{
+  "slug": "onjuku-kaigan",
+  "name": "御宿海岸",
+  "location": {
+    "latitude": 35.1917,
+    "longitude": 140.35
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "御宿町",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 157.8,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "駅近の人気サーフ",
+    "access": "御宿駅から徒歩10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/onjuku-kaigan.jpg"
+  }
+}

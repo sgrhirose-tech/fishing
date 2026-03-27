@@ -1,0 +1,33 @@
+{
+  "slug": "nakanoshima-koen",
+  "name": "中の島公園",
+  "location": {
+    "latitude": 35.37661,
+    "longitude": 139.92025
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "木更津市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 258.3,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "港近くの実績スポット",
+    "access": "木更津駅から徒歩18分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/nakanoshima-koen.jpg"
+  }
+}
