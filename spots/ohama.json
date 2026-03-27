@@ -2,8 +2,8 @@
   "slug": "ohama",
   "name": "大浜海岸（三浦）",
   "location": {
-    "latitude": 35.1343,
-    "longitude": 139.6167
+    "latitude": 35.2580417,
+    "longitude": 139.5792023
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "miura"
   },
   "physical_features": {
-    "sea_bearing_deg": 185,
+    "sea_bearing_deg": 255.4,
     "seabed_type": "sand",
     "depth_near_m": 4,
     "depth_far_m": 15,
     "surfer_spot": false
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、遠浅"
   },
   "info": {
     "notes": "三浦半島南端の砂浜。三崎漁港近く。比較的空いている",

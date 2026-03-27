@@ -2,8 +2,8 @@
   "slug": "ninomiya",
   "name": "二宮海岸",
   "location": {
-    "latitude": 35.3021,
-    "longitude": 139.2437
+    "latitude": 35.29530728683009,
+    "longitude": 139.2632102966309
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "ninomiya"
   },
   "physical_features": {
-    "sea_bearing_deg": 180,
+    "sea_bearing_deg": 169.5,
     "seabed_type": "sand",
     "depth_near_m": 4,
     "depth_far_m": 18,
     "surfer_spot": false
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、急深寄り"
   },
   "info": {
     "notes": "二宮町の遠浅砂浜。湘南西端の穴場。比較的空いている",

@@ -2,8 +2,8 @@
   "slug": "moriya",
   "name": "守谷海岸（勝浦）",
   "location": {
-    "latitude": 35.1486,
-    "longitude": 140.3174
+    "latitude": 35.137457,
+    "longitude": 140.262372
   },
   "area": {
     "prefecture": "千葉県",
@@ -14,15 +14,15 @@
     "city_slug": "katsuura"
   },
   "physical_features": {
-    "sea_bearing_deg": 130,
+    "sea_bearing_deg": 230.5,
     "seabed_type": "sand",
     "depth_near_m": 5,
     "depth_far_m": 20,
     "surfer_spot": false
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、遠浅"
   },
   "info": {
     "notes": "透明度高い砂浜。遠浅で投げ釣りの好ポイント",

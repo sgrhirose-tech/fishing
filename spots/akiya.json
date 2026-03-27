@@ -2,8 +2,8 @@
   "slug": "akiya",
   "name": "秋谷海岸",
   "location": {
-    "latitude": 35.2316,
-    "longitude": 139.6142
+    "latitude": 35.23699711024434,
+    "longitude": 139.60061073303225
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 195,
+    "sea_bearing_deg": 260.2,
     "seabed_type": "sand",
     "depth_near_m": 5,
     "depth_far_m": 18,
     "surfer_spot": false
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、遠浅"
   },
   "info": {
     "notes": "横須賀市の砂浜。立石公園近く。比較的空いている穴場",

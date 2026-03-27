@@ -2,8 +2,8 @@
   "slug": "katase",
   "name": "片瀬西浜（江ノ島）",
   "location": {
-    "latitude": 35.3037,
-    "longitude": 139.4797
+    "latitude": 35.308771,
+    "longitude": 139.479586
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "fujisawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 185,
+    "sea_bearing_deg": 225.0,
     "seabed_type": "sand",
     "depth_near_m": 4,
     "depth_far_m": 12,
     "surfer_spot": true
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、貝殻混じり、近傍に石要素あり、遠浅"
   },
   "info": {
     "notes": "広い砂浜。サーファー多い。江ノ島の西側で多少風が遮られる",

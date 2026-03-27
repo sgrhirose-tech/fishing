@@ -2,8 +2,8 @@
   "slug": "isshiki",
   "name": "一色海岸（葉山）",
   "location": {
-    "latitude": 35.253,
-    "longitude": 139.586
+    "latitude": 35.255,
+    "longitude": 139.58
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "hayama"
   },
   "physical_features": {
-    "sea_bearing_deg": 250,
+    "sea_bearing_deg": 295.4,
     "seabed_type": "sand",
     "depth_near_m": 4,
     "depth_far_m": 15,
     "surfer_spot": false
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、遠浅"
   },
   "info": {
     "notes": "葉山の砂浜。投げ釣りの有名ポイント。西向きで相模湾に面する",
