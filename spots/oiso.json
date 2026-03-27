@@ -18,7 +18,8 @@
     "seabed_type": "sand_gravel",
     "depth_near_m": 5,
     "depth_far_m": 20,
-    "surfer_spot": false
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 970.9
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
