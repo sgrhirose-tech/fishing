@@ -159,6 +159,24 @@ footer {
 }
 footer a { color: #8bc; }
 
+/* ---- 安全警告・AIコメント ---- */
+.ai-comment-section { margin: 1rem 0; }
+.safety-danger, .safety-caution {
+  color: red;
+  font-weight: bold;
+  padding: .4rem .8rem;
+  margin-bottom: .5rem;
+}
+.ai-comment-box {
+  background: #f0f7ff;
+  border-left: 4px solid #1a6b9e;
+  padding: 1rem 1.2rem;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  margin-top: .5rem;
+}
+
 /* ---- 7日間タブ ---- */
 .forecast-tabs { display: flex; gap: .5rem; margin-bottom: 1rem; }
 .tab-btn {

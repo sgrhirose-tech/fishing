@@ -107,6 +107,13 @@
   </div>
 </section>
 
+<!-- 安全警告 + AIコメント -->
+<section class="ai-comment-section">
+  <div id="safety-warning" style="display:none;"></div>
+  <div id="ai-comment-loading" class="loading" style="display:none;">コメントを生成中...</div>
+  <div id="ai-comment-result" style="display:none;" class="ai-comment-box"></div>
+</section>
+
 <!-- 7日間予報 -->
 <section class="forecast-section">
   <h2>7日間の海況・気象情報</h2>
@@ -171,6 +178,35 @@
       })
       .catch(() => {});  // 施設取得失敗は無視
 
+    // 安全警告（閾値チェック）
+    function checkSafetyWarning(day) {
+      var maxWave = null, maxPeriod = null, maxWind = null, hasBadWind = false;
+      (day.periods || []).forEach(function(p) {
+        if (p.wave_height_raw != null && (maxWave   == null || p.wave_height_raw > maxWave))   maxWave   = p.wave_height_raw;
+        if (p.wave_period_raw != null && (maxPeriod == null || p.wave_period_raw > maxPeriod)) maxPeriod = p.wave_period_raw;
+        if (p.wind_speed_raw  != null && (maxWind   == null || p.wind_speed_raw  > maxWind))   maxWind   = p.wind_speed_raw;
+        if (p.wind_dir && (p.wind_dir.includes('向かい風') || p.wind_dir.includes('横風'))) hasBadWind = true;
+      });
+      var isDanger  = (maxWave   != null && maxWave   >  1.2)
+                   || (maxPeriod != null && maxPeriod >  8)
+                   || (maxWind   != null && maxWind   >  7);
+      var isCaution = !isDanger && (
+                       (maxWave   != null && maxWave   >= 0.8)
+                    || (maxPeriod != null && maxPeriod >= 7)
+                    || (maxWind   != null && maxWind   >= 5)
+                    || hasBadWind);
+      var el = document.getElementById('safety-warning');
+      if (isDanger) {
+        el.innerHTML = '<strong>⚠️ 釣行は控えることをおすすめします</strong>';
+        el.className = 'safety-danger';
+        el.style.display = 'block';
+      } else if (isCaution) {
+        el.innerHTML = '<strong>⚠️ 注意して釣行してください</strong>';
+        el.className = 'safety-caution';
+        el.style.display = 'block';
+      }
+    }
+
     // 7日間タブ＋明日タブを非同期取得
     var forecastDays = [];
     function fmtNum(val, unit, dec) {
@@ -231,6 +267,8 @@
       .then(r => r.json())
       .then(data => {
         forecastDays = data.days || [];
+        // 安全警告チェック
+        if (forecastDays[0]) checkSafetyWarning(forecastDays[0]);
         // 明日セクション
         document.getElementById('weather-loading').style.display = 'none';
         document.getElementById('weather-result').style.display = 'block';
@@ -247,6 +285,22 @@
       .catch(() => {
         document.getElementById('weather-loading').textContent = '気象データの取得に失敗しました';
         document.getElementById('forecast-loading').textContent = '海況データの取得に失敗しました';
+      });
+
+    // AIコメント
+    document.getElementById('ai-comment-loading').style.display = 'block';
+    fetch('/api/ai-comment/' + SPOT.slug)
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('ai-comment-loading').style.display = 'none';
+        if (data.comment) {
+          var el = document.getElementById('ai-comment-result');
+          el.textContent = data.comment;
+          el.style.display = 'block';
+        }
+      })
+      .catch(() => {
+        document.getElementById('ai-comment-loading').style.display = 'none';
       });
   });
 </script>
