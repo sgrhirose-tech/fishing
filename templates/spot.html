@@ -193,8 +193,7 @@
       var isCaution = !isDanger && (
                        (maxWave   != null && maxWave   >= 0.8)
                     || (maxPeriod != null && maxPeriod >= 7)
-                    || (maxWind   != null && maxWind   >= 5)
-                    || hasBadWind);
+                    || (maxWind   != null && maxWind   >= 5));
       var el = document.getElementById('safety-warning');
       if (isDanger) {
         el.innerHTML = '<strong>⚠️ 釣行は控えることをおすすめします</strong>';
