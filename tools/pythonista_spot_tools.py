@@ -741,6 +741,138 @@ def mode_edit(spots_dir: Path):
 
 
 # ──────────────────────────────────────────
+# モード 3: バッチCSV作成
+# ──────────────────────────────────────────
+
+def parse_csv_line(line: str, index: int) -> dict:
+    """
+    'name,lat,lon[,slug[,notes[,access]]]' をパースして dict を返す。
+    パース失敗時は ValueError を raise。
+    """
+    parts = [p.strip() for p in line.split(",")]
+    if len(parts) < 3:
+        raise ValueError(f"フィールドが不足（name,lat,lon が必要）: {line!r}")
+
+    name = parts[0]
+    if not name:
+        raise ValueError(f"name が空です: {line!r}")
+
+    try:
+        lat = float(parts[1])
+        lon = float(parts[2])
+    except ValueError:
+        raise ValueError(f"lat/lon が数値ではありません: {parts[1]!r}, {parts[2]!r}")
+
+    if not (-90 <= lat <= 90) or not (-180 <= lon <= 180):
+        raise ValueError(f"座標が範囲外: lat={lat}, lon={lon}")
+
+    slug   = parts[3] if len(parts) > 3 and parts[3] else f"spot_{index:03d}"
+    notes  = parts[4] if len(parts) > 4 else ""
+    access = parts[5] if len(parts) > 5 else ""
+
+    return {"slug": slug, "name": name, "lat": lat, "lon": lon,
+            "notes": notes, "access": access}
+
+
+def mode_batch_create(spots_dir: Path):
+    print("\n── バッチCSV作成 ──")
+
+    # エリアデフォルト
+    area_name = prompt("area_name",  default="九十九里")
+    area_slug = prompt("area_slug",  default="kujukuri")
+    pref      = prompt("prefecture", default="千葉県")
+    pref_slug = prompt("pref_slug",  default="chiba")
+    city      = prompt("city",       default="銚子市")
+    city_slug = prompt("city_slug",  default="choshi")
+
+    # CSV 入力（空行で終了）
+    print("\nCSVを貼り付け（空行で終了）:")
+    print("  書式: name,lat,lon[,slug[,notes[,access]]]")
+    lines = []
+    while True:
+        try:
+            row = input()
+        except EOFError:
+            break
+        if row.strip() == "":
+            break
+        lines.append(row)
+
+    # パース
+    items = []
+    for i, line in enumerate(lines, 1):
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        try:
+            item = parse_csv_line(stripped, i)
+            items.append(item)
+        except ValueError as e:
+            print(f"  [スキップ] 行{i}: {e}")
+
+    if not items:
+        print("有効な行がありません。終了します。")
+        return
+
+    print(f"\n{len(items)}件 読み込み:")
+    for it in items:
+        print(f"  {it['slug']} ({it['name']})  lat={it['lat']} lon={it['lon']}")
+
+    ok = input("続行しますか？ [y/N]: ").strip().lower()
+    if ok != "y":
+        print("キャンセルしました。")
+        return
+
+    # バッチ処理
+    spots_dir.mkdir(parents=True, exist_ok=True)
+    success, failed = [], []
+
+    for idx, it in enumerate(items, 1):
+        slug  = it["slug"]
+        name  = it["name"]
+        lat   = it["lat"]
+        lon   = it["lon"]
+        notes = it["notes"]
+        access = it["access"]
+
+        print(f"\n[{idx}/{len(items)}] {name} ({slug}) ...")
+
+        try:
+            phys = fetch_physical_data(lat, lon)
+            if phys is None:
+                print("  警告: API取得失敗 — 空の物理データで作成")
+                phys = {
+                    "sea_bearing_deg": None,
+                    "seabed_type": "unknown",
+                    "nearest_20m_contour_distance_m": None,
+                    "bottom_kisugo_score": 50,
+                    "terrain_summary": "地形情報不足",
+                }
+
+            spot = build_spot_json(
+                slug, name, lat, lon,
+                area_name, area_slug, pref, pref_slug, city, city_slug,
+                phys, notes, access
+            )
+            out_path = spots_dir / f"{slug}.json"
+            out_path.write_text(json.dumps(spot, ensure_ascii=False, indent=2), encoding="utf-8")
+            print(f"  → 保存完了: {out_path.name}")
+            success.append(slug)
+
+        except Exception as e:
+            print(f"  → エラー: {e}")
+            failed.append((slug, str(e)))
+
+    # サマリー
+    print(f"\n── 完了 ──")
+    print(f"成功: {len(success)}件 / 失敗: {len(failed)}件")
+    if failed:
+        print("失敗詳細:")
+        for slug, reason in failed:
+            print(f"  {slug}: {reason}")
+
+
+# ──────────────────────────────────────────
 # エントリーポイント
 # ──────────────────────────────────────────
 
@@ -749,8 +881,9 @@ def main():
     print(f"spots ディレクトリ: {spots_dir}")
 
     print("\n── メニュー ──")
-    print("  [1] 新規スポット作成")
+    print("  [1] 新規スポット作成（対話形式）")
     print("  [2] 既存スポット修正")
+    print("  [3] バッチCSV作成")
     print("  [0] 終了")
     choice = input("選択: ").strip()
 
@@ -758,6 +891,8 @@ def main():
         mode_create(spots_dir)
     elif choice == "2":
         mode_edit(spots_dir)
+    elif choice == "3":
+        mode_batch_create(spots_dir)
     elif choice == "0":
         print("終了")
     else:
