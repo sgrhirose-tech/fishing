@@ -178,15 +178,13 @@
       })
       .catch(() => {});  // 施設取得失敗は無視
 
-    // 安全警告（閾値チェック）
-    function checkSafetyWarning(day) {
-      var maxWave = null, maxPeriod = null, maxWind = null, hasBadWind = false;
-      (day.periods || []).forEach(function(p) {
-        if (p.wave_height_raw != null && (maxWave   == null || p.wave_height_raw > maxWave))   maxWave   = p.wave_height_raw;
-        if (p.wave_period_raw != null && (maxPeriod == null || p.wave_period_raw > maxPeriod)) maxPeriod = p.wave_period_raw;
-        if (p.wind_speed_raw  != null && (maxWind   == null || p.wind_speed_raw  > maxWind))   maxWind   = p.wind_speed_raw;
-        if (p.wind_dir && (p.wind_dir.includes('向かい風') || p.wind_dir.includes('横風'))) hasBadWind = true;
-      });
+    // 安全警告（閾値チェック）— 現在表示中の区分のみで判定
+    function checkSafetyWarning(p) {
+      var el = document.getElementById('safety-warning');
+      if (!p) { el.style.display = 'none'; return; }
+      var maxWave   = p.wave_height_raw != null ? p.wave_height_raw : null;
+      var maxPeriod = p.wave_period_raw != null ? p.wave_period_raw : null;
+      var maxWind   = p.wind_speed_raw  != null ? p.wind_speed_raw  : null;
       var isDanger  = (maxWave   != null && maxWave   >  1.2)
                    || (maxPeriod != null && maxPeriod >  8)
                    || (maxWind   != null && maxWind   >  7);
@@ -194,7 +192,6 @@
                        (maxWave   != null && maxWave   >= 0.8)
                     || (maxPeriod != null && maxPeriod >= 7)
                     || (maxWind   != null && maxWind   >= 5));
-      var el = document.getElementById('safety-warning');
       if (isDanger) {
         el.innerHTML = '<strong>⚠️ 釣行は控えることをおすすめします</strong>';
         el.className = 'safety-danger';
@@ -203,6 +200,8 @@
         el.innerHTML = '<strong>⚠️ 注意して釣行してください</strong>';
         el.className = 'safety-caution';
         el.style.display = 'block';
+      } else {
+        el.style.display = 'none';
       }
     }
 
@@ -261,13 +260,12 @@
         tr.innerHTML = `<th>注意</th><td class="warn">${p.rain_warning}</td>`;
         table.appendChild(tr);
       }
+      checkSafetyWarning(p);
     }
     fetch('/api/forecast/' + SPOT.slug)
       .then(r => r.json())
       .then(data => {
         forecastDays = data.days || [];
-        // 安全警告チェック
-        if (forecastDays[0]) checkSafetyWarning(forecastDays[0]);
         // 明日セクション
         document.getElementById('weather-loading').style.display = 'none';
         document.getElementById('weather-result').style.display = 'block';
