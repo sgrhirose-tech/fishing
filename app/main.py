@@ -171,6 +171,30 @@ def api_forecast(slug: str):
     return {"slug": slug, "days": days}
 
 
+@app.get("/api/ai-comment/{slug}")
+def api_ai_comment(slug: str):
+    """翌日のAIコメントを生成して返す。ai_prompt.md が必要。"""
+    from .ai import generate_spot_comment
+    spot = load_spot(slug)
+    if not spot:
+        raise HTTPException(status_code=404, detail="スポットが見つかりません")
+    tomorrow = _tomorrow()
+    lat, lon = spot_lat(spot), spot_lon(spot)
+    area = assign_area(spot)
+    area_centers = get_area_centers()
+    fetch_km = area_centers[area][2] if area in area_centers else 50
+    weather = fetch_weather_range(lat, lon, tomorrow, tomorrow)
+    marine = fetch_marine_range(lat, lon, tomorrow, tomorrow)
+    if not marine:
+        from .weather import fetch_marine_with_fallback
+        marine = fetch_marine_with_fallback(lat, lon, tomorrow)
+    sst = fetch_sst_noaa(lat, lon, tomorrow)
+    days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
+    periods = days[0]["periods"] if days else []
+    text = generate_spot_comment(spot, periods, tomorrow)
+    return {"comment": text, "date": tomorrow}
+
+
 @app.get("/api/osm/{slug}")
 def api_osm(slug: str):
     """スポット周辺の OSM 施設（駐車場・トイレ等）を返す。"""
