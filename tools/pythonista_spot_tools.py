@@ -588,6 +588,7 @@ def prompt_optional(label, default=None):
 # ──────────────────────────────────────────
 
 def mode_create(spots_dir: Path):
+    spots_dir = Path(spots_dir)
     print("\n── 新規スポット作成 ──")
     slug      = prompt("slug (例: choshi_port)")
     name      = prompt("name (例: 銚子港)")
@@ -631,6 +632,7 @@ def mode_create(spots_dir: Path):
 # ──────────────────────────────────────────
 
 def mode_edit(spots_dir: Path):
+    spots_dir = Path(spots_dir)
     print("\n── 既存スポット修正 ──")
 
     # slug 選択
@@ -775,6 +777,7 @@ def parse_csv_line(line: str, index: int) -> dict:
 
 
 def mode_batch_create(spots_dir: Path):
+    spots_dir = Path(spots_dir)
     print("\n── バッチCSV作成 ──")
 
     # エリアデフォルト
