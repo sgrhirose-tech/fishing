@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ city_name }}の釣り場・天気情報 | {{ area_name }}・{{ pref_name }} | Tsuricast{% endblock %}
-{% block description %}{{ city_name }}（{{ area_name }}・{{ pref_name }}）の釣り場{{ spots|length }}か所を掲載。波高・風向情報あり。{% endblock %}
+{% block description %}{{ city_name }}（{{ area_name }}・{{ pref_name }}）の釣り場{{ spots|length }}か所を掲載。天気・海況情報あり。{% endblock %}
 
 {% block jsonld %}
 <script type="application/ld+json">
