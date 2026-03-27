@@ -1,0 +1,33 @@
+{
+  "slug": "aikuru",
+  "name": "アイクル",
+  "location": {
+    "latitude": 35.3127789,
+    "longitude": 139.6461868
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 120,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1113.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、貝殻混じり、近傍に石要素あり、やや急深"
+  },
+  "info": {
+    "notes": "足場が良く手軽に楽しめる",
+    "access": "久里浜駅からバス15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/aikuru.jpg"
+  }
+}

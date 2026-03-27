@@ -1,0 +1,33 @@
+{
+  "slug": "kaneda-gyoko",
+  "name": "金田漁港",
+  "location": {
+    "latitude": 35.1889,
+    "longitude": 139.6497
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "三浦市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 120.6,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "小場所ながら実績あり",
+    "access": "三浦海岸駅からバス10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kaneda-gyoko.jpg"
+  }
+}

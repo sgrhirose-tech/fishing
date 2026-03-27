@@ -1,0 +1,33 @@
+{
+  "slug": "miura-kaigan",
+  "name": "三浦海岸",
+  "location": {
+    "latitude": 35.1948,
+    "longitude": 139.6678
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 125.2,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1485.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、やや急深"
+  },
+  "info": {
+    "notes": "遠浅の定番サーフ",
+    "access": "三浦海岸駅から徒歩5分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/miura-kaigan.jpg"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "slug": "kuromae-ko",
+  "name": "黒生港",
+  "location": {
+    "latitude": 35.7363,
+    "longitude": 140.8628
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "銚子市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 331.6,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、傾斜不明"
+  },
+  "info": {
+    "notes": "外洋向きで風波の影響大",
+    "access": "笠上黒生駅から徒歩15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kuromae-ko.jpg"
+  }
+}

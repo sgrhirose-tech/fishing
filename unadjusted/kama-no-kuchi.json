@@ -1,0 +1,33 @@
+{
+  "slug": "kama-no-kuchi",
+  "name": "釜の口",
+  "location": {
+    "latitude": 35.151,
+    "longitude": 139.1276
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "湯河原町",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 188.9,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 359.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、急深"
+  },
+  "info": {
+    "notes": "地磯混じりの先端部",
+    "access": "真鶴駅から徒歩25分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kama-no-kuchi.jpg"
+  }
+}

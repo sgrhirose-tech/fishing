@@ -1,0 +1,33 @@
+{
+  "slug": "kominato-ko",
+  "name": "小湊港",
+  "location": {
+    "latitude": 35.1233,
+    "longitude": 140.1917
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "鴨川市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 251.3,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 554.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、急深"
+  },
+  "info": {
+    "notes": "港内で多魚種を狙える",
+    "access": "安房小湊駅から徒歩10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kominato-ko.jpg"
+  }
+}

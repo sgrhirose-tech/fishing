@@ -1,0 +1,33 @@
+{
+  "slug": "higashi-ogishima-nishi-koen",
+  "name": "東扇島西公園",
+  "location": {
+    "latitude": 35.488506,
+    "longitude": 139.742233
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "川崎市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 223.9,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1412.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、やや急深"
+  },
+  "info": {
+    "notes": "足場が広くファミリー向き",
+    "access": "川崎駅からバス35分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/higashi-ogishima-nishi-koen.jpg"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "slug": "amatsu-ko",
+  "name": "天津港",
+  "location": {
+    "latitude": 35.1065,
+    "longitude": 140.17
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "鴨川市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 205.1,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 695.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "急深"
+  },
+  "info": {
+    "notes": "駅近の港ポイント",
+    "access": "安房天津駅から徒歩10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/amatsu-ko.jpg"
+  }
+}

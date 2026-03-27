@@ -1,0 +1,33 @@
+{
+  "slug": "hiratsuka-shinko",
+  "name": "平塚新港",
+  "location": {
+    "latitude": 35.314,
+    "longitude": 139.3617
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "平塚市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 185.2,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1044.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、やや急深"
+  },
+  "info": {
+    "notes": "西湘の定番港ポイント",
+    "access": "平塚駅からバス15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/hiratsuka-shinko.jpg"
+  }
+}

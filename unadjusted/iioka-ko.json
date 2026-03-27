@@ -1,0 +1,33 @@
+{
+  "slug": "iioka-ko",
+  "name": "飯岡港",
+  "location": {
+    "latitude": 35.7165,
+    "longitude": 140.6734
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "旭市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 100.0,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "港内外で多魚種を狙える",
+    "access": "旭駅からバス20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/iioka-ko.jpg"
+  }
+}

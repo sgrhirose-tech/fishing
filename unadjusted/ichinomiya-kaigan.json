@@ -1,0 +1,33 @@
+{
+  "slug": "ichinomiya-kaigan",
+  "name": "一宮海岸",
+  "location": {
+    "latitude": 35.3726,
+    "longitude": 140.3934
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "一宮町",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 234.5,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "人気の広いサーフ",
+    "access": "上総一ノ宮駅から徒歩20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/ichinomiya-kaigan.jpg"
+  }
+}

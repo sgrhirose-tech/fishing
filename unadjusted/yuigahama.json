@@ -1,0 +1,33 @@
+{
+  "slug": "yuigahama",
+  "name": "由比ヶ浜",
+  "location": {
+    "latitude": 35.3086,
+    "longitude": 139.5464
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "鎌倉市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 232.1,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、傾斜不明"
+  },
+  "info": {
+    "notes": "観光地近くの定番海岸",
+    "access": "鎌倉駅から徒歩15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/yuigahama.jpg"
+  }
+}

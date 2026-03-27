@@ -1,0 +1,33 @@
+{
+  "slug": "anesaki-ko",
+  "name": "姉崎港",
+  "location": {
+    "latitude": 35.52076,
+    "longitude": 140.03152
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "市原市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 5.5,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、貝殻混じり、傾斜不明"
+  },
+  "info": {
+    "notes": "港内中心の実績場",
+    "access": "姉ケ崎駅から徒歩25分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/anesaki-ko.jpg"
+  }
+}

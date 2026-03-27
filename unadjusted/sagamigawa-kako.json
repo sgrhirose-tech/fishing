@@ -1,0 +1,33 @@
+{
+  "slug": "sagamigawa-kako",
+  "name": "相模川河口",
+  "location": {
+    "latitude": 35.3145,
+    "longitude": 139.3659
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "平塚市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180.3,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1116.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、やや急深"
+  },
+  "info": {
+    "notes": "河口の流れ込みが魅力",
+    "access": "平塚駅からバス15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/sagamigawa-kako.jpg"
+  }
+}

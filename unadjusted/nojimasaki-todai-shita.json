@@ -1,0 +1,33 @@
+{
+  "slug": "nojimasaki-todai-shita",
+  "name": "野島崎灯台下",
+  "location": {
+    "latitude": 34.9038,
+    "longitude": 139.8762
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "南房総市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 345.3,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1005.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "やや急深"
+  },
+  "info": {
+    "notes": "灯台下の有名磯場",
+    "access": "館山駅からバス40分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/nojimasaki-todai-shita.jpg"
+  }
+}

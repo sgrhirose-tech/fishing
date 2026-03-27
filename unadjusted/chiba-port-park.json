@@ -1,0 +1,33 @@
+{
+  "slug": "chiba-port-park",
+  "name": "千葉ポートパーク",
+  "location": {
+    "latitude": 35.60632,
+    "longitude": 140.09386
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "千葉市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 230.6,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、傾斜不明"
+  },
+  "info": {
+    "notes": "都市近郊の港湾公園",
+    "access": "千葉みなと駅から徒歩15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/chiba-port-park.jpg"
+  }
+}

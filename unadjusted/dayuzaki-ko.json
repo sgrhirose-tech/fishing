@@ -1,0 +1,33 @@
+{
+  "slug": "dayuzaki-ko",
+  "name": "太夫崎港",
+  "location": {
+    "latitude": 35.0739,
+    "longitude": 140.0733
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "鴨川市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 184.9,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "外海に面した実績場",
+    "access": "江見駅から徒歩20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/dayuzaki-ko.jpg"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "slug": "daikoku-umizuri-shisetsu",
+  "name": "大黒海づり施設",
+  "location": {
+    "latitude": 35.450086,
+    "longitude": 139.69541
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 209.5,
+    "seabed_type": "shell",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 909.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "terrain_summary": "貝殻主体、貝殻混じり、急深"
+  },
+  "info": {
+    "notes": "定番の海釣り施設",
+    "access": "鶴見駅からバス25分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/daikoku-umizuri-shisetsu.jpg"
+  }
+}

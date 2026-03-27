@@ -1,0 +1,33 @@
+{
+  "slug": "akatsuki-futo-koen",
+  "name": "暁ふ頭公園",
+  "location": {
+    "latitude": 35.61762,
+    "longitude": 139.81617
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "江東区",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.8,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、貝殻混じり、近傍に石要素あり、傾斜不明"
+  },
+  "info": {
+    "notes": "運河筋を狙える公園",
+    "access": "東京テレポート駅からバス15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/akatsuki-futo-koen.jpg"
+  }
+}
