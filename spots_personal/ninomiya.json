@@ -1,0 +1,32 @@
+{
+  "slug": "ninomiya",
+  "name": "二宮海岸",
+  "location": {
+    "latitude": 35.29530728683009,
+    "longitude": 139.2632102966309
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "二宮町",
+    "city_slug": "ninomiya"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 169.5,
+    "seabed_type": "sand",
+    "depth_near_m": 4,
+    "depth_far_m": 18,
+    "surfer_spot": false
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、急深寄り"
+  },
+  "info": {
+    "notes": "二宮町の遠浅砂浜。湘南西端の穴場。比較的空いている",
+    "access": "二宮駅から徒歩15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/ninomiya.jpg"
+  }
+}
