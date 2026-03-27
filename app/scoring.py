@@ -309,7 +309,7 @@ def score_spot(spot: dict, weather_data: dict, marine_data: dict,
     details["_wave_period_raw"] = wave_period
     details["_sst_raw"] = sst
     details["_precip_raw"] = precip
-    details["_kisugo_raw"] = kisugo
+
     details["_temp_6am_raw"] = temp_6am
     details["_temp_max_raw"] = temp_max
     details["_weather_code_raw"] = weather_code

@@ -92,7 +92,7 @@
 
 <!-- 気象・スコア（JS で非同期ロード） -->
 <section class="weather-section">
-  <h2>明日 (<span id="weather-date">{{ tomorrow }}</span>) の海況予報</h2>
+  <h2>明日 (<span id="weather-date">{{ tomorrow }}</span>) の海況情報</h2>
   <div id="weather-loading" class="loading">気象データを取得中...</div>
   <div id="weather-result" style="display:none;">
     <div class="score-badge" id="total-score"></div>
@@ -102,8 +102,8 @@
 
 <!-- 7日間予報 -->
 <section class="forecast-section">
-  <h2>7日間予報</h2>
-  <div id="forecast-loading" class="loading">予報データを取得中...</div>
+  <h2>7日間の海況・気象情報</h2>
+  <div id="forecast-loading" class="loading">海況データを取得中...</div>
   <div id="forecast-result" style="display:none;">
     <div class="forecast-scroll">
       <table class="forecast-table" id="forecast-table">
@@ -186,7 +186,7 @@
         });
       })
       .catch(() => {
-        document.getElementById('forecast-loading').textContent = '予報データの取得に失敗しました';
+        document.getElementById('forecast-loading').textContent = '海況データの取得に失敗しました';
       });
 
     // 気象データを非同期取得
