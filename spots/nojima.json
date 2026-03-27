@@ -2,8 +2,8 @@
   "slug": "nojima",
   "name": "野島海岸（金沢八景）",
   "location": {
-    "latitude": 35.3374,
-    "longitude": 139.6405
+    "latitude": 35.3392142,
+    "longitude": 139.6365738
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,7 +14,7 @@
     "city_slug": "kanazawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 100,
+    "sea_bearing_deg": 125,
     "seabed_type": "sand_mud",
     "depth_near_m": 3,
     "depth_far_m": 10,

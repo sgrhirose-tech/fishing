@@ -2,8 +2,8 @@
   "slug": "takeoka",
   "name": "竹岡・関豊海岸",
   "location": {
-    "latitude": 35.2762,
-    "longitude": 139.8012
+    "latitude": 35.2043216,
+    "longitude": 139.8349714
   },
   "area": {
     "prefecture": "千葉県",
@@ -14,7 +14,7 @@
     "city_slug": "futtsu"
   },
   "physical_features": {
-    "sea_bearing_deg": 280,
+    "sea_bearing_deg": 320,
     "seabed_type": "sand_rock",
     "depth_near_m": 5,
     "depth_far_m": 20,

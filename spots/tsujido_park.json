@@ -2,8 +2,8 @@
   "slug": "tsujido_park",
   "name": "辻堂海浜公園下",
   "location": {
-    "latitude": 35.3358,
-    "longitude": 139.4384
+    "latitude": 35.3183468,
+    "longitude": 139.4484329
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,7 +14,7 @@
     "city_slug": "fujisawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 180,
+    "sea_bearing_deg": 185,
     "seabed_type": "sand",
     "depth_near_m": 5,
     "depth_far_m": 15,

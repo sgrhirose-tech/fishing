@@ -2,8 +2,8 @@
   "slug": "hota",
   "name": "保田海岸",
   "location": {
-    "latitude": 35.1677,
-    "longitude": 139.8289
+    "latitude": 35.1501614,
+    "longitude": 139.8294353
   },
   "area": {
     "prefecture": "千葉県",
@@ -14,7 +14,7 @@
     "city_slug": "kyonan"
   },
   "physical_features": {
-    "sea_bearing_deg": 290,
+    "sea_bearing_deg": 250,
     "seabed_type": "sand",
     "depth_near_m": 3,
     "depth_far_m": 15,
