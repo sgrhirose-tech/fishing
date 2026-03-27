@@ -163,6 +163,7 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
     <h1>🎣 スポットエディタ</h1>
     <button id="btn-new" style="background:#27ae60;color:white;border:none;padding:5px 12px;border-radius:4px;cursor:pointer;font-size:13px;">＋新規</button>
   </div>
+  <div id="js-error" style="display:none;background:#c0392b;color:white;padding:6px 12px;font-size:12px;"></div>
   <div id="main">
     <div id="sidebar">
       <select id="area-filter">
@@ -215,30 +216,44 @@ var AREA_SLUG_MAP = {
 var SEABED_OPTIONS = __SEABED_OPTIONS_JSON__;
 var BEARING_OPTIONS = __BEARING_OPTIONS_JSON__;
 
+// ---- error display (debug) ----
+window.onerror = function(msg, src, line) {
+  var el = document.getElementById('js-error');
+  if (el) { el.style.display = 'block'; el.textContent = 'JS Error: ' + msg + ' (line ' + line + ')'; }
+  return false;
+};
+
 // ---- state ----
 var currentIdx = -1;
 var dirty = false;
-var map, marker, bearingLayer;
+var map = null, marker = null, bearingLayer = null;
+var mapReady = false;
 
-// ---- init map ----
-map = L.map('map').setView([35.25, 139.5], 9);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap contributors', maxZoom: 18
-}).addTo(map);
-
-bearingLayer = L.layerGroup().addTo(map);
-
-marker = L.marker([35.25, 139.5], {draggable: true}).addTo(map);
-marker.on('dragend', function(e) {
-  var ll = e.target.getLatLng();
-  var tbl = document.getElementById('info-table');
-  if (tbl) {
-    var latI = tbl.querySelector('[data-field="latitude"]');
-    var lonI = tbl.querySelector('[data-field="longitude"]');
-    if (latI) latI.value = ll.lat.toFixed(7);
-    if (lonI) lonI.value = ll.lng.toFixed(7);
+// ---- init map (deferred, optional) ----
+window.addEventListener('load', function() {
+  try {
+    map = L.map('map').setView([35.25, 139.5], 9);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors', maxZoom: 18
+    }).addTo(map);
+    bearingLayer = L.layerGroup().addTo(map);
+    marker = L.marker([35.25, 139.5], {draggable: true}).addTo(map);
+    marker.on('dragend', function(e) {
+      var ll = e.target.getLatLng();
+      var tbl = document.getElementById('info-table');
+      if (tbl) {
+        var latI = tbl.querySelector('[data-field="latitude"]');
+        var lonI = tbl.querySelector('[data-field="longitude"]');
+        if (latI) latI.value = ll.lat.toFixed(7);
+        if (lonI) lonI.value = ll.lng.toFixed(7);
+      }
+      markDirty();
+    });
+    mapReady = true;
+  } catch(e) {
+    document.getElementById('map').innerHTML =
+      '<p style="padding:20px;color:#999;font-size:12px;">地図を読み込めませんでした<br>' + e.message + '</p>';
   }
-  markDirty();
 });
 
 // ---- sidebar list ----
@@ -270,10 +285,11 @@ function bearingToArrow(deg) {
 function updateBearingArrow(deg) {
   var el = document.getElementById('bearing-arrow');
   if (el) el.textContent = bearingToArrow(parseFloat(deg) || 0);
-  updateMapArrow(deg);
+  if (mapReady) updateMapArrow(deg);
 }
 
 function updateMapArrow(deg) {
+  if (!mapReady) return;
   bearingLayer.clearLayers();
   var pos = marker.getLatLng();
   var rad = (parseFloat(deg) || 0) * Math.PI / 180;
@@ -311,9 +327,11 @@ function showSpot(idx) {
 
   var lat = loc.latitude || 35.25;
   var lon = loc.longitude || 139.5;
-  marker.setLatLng([lat, lon]);
-  map.setView([lat, lon], 13);
-  updateMapArrow(phys.sea_bearing_deg || 0);
+  if (mapReady) {
+    marker.setLatLng([lat, lon]);
+    map.setView([lat, lon], 13);
+    updateMapArrow(phys.sea_bearing_deg || 0);
+  }
 
   document.getElementById('panel-header').textContent = s.name || s.slug || '(無名)';
 
@@ -775,6 +793,13 @@ def main():
     spots = load_spots()
     html = build_html(spots)
 
+    # 一時ファイルに書き出す（load_html()よりも信頼性が高い）
+    import tempfile
+    tmp_dir = tempfile.gettempdir()
+    tmp_path = os.path.join(tmp_dir, "spot_editor_ui.html")
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        f.write(html)
+
     try:
         import ui
 
@@ -782,17 +807,14 @@ def main():
         wv.flex = "WH"
         delegate = SpotDelegate(wv, spots)
         wv.delegate = delegate
-        wv.load_html(html)
+        wv.load_url("file://" + tmp_path)
         wv.present("fullscreen")
 
     except ImportError:
-        # Desktop fallback: write HTML to temp file and open in browser
-        import tempfile, webbrowser
-        with tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, encoding="utf-8") as f:
-            f.write(html)
-            tmp = f.name
-        print(f"Opened in browser: {tmp}")
-        webbrowser.open(f"file://{tmp}")
+        # Desktop fallback: open in browser
+        import webbrowser
+        print(f"Opened in browser: {tmp_path}")
+        webbrowser.open(f"file://{tmp_path}")
 
 
 if __name__ == "__main__":
