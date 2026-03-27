@@ -1,0 +1,32 @@
+{
+  "slug": "tsujido",
+  "name": "辻堂海岸",
+  "location": {
+    "latitude": 35.3189771,
+    "longitude": 139.4401932
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "藤沢市",
+    "city_slug": "fujisawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
+    "depth_near_m": 5,
+    "depth_far_m": 15,
+    "surfer_spot": true
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、遠浅"
+  },
+  "info": {
+    "notes": "湘南の代表的な砂浜。サーファー多め。オフショア時は空きやすい",
+    "access": "辻堂駅から徒歩15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/tsujido.jpg"
+  }
+}

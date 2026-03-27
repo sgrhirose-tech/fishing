@@ -1,0 +1,32 @@
+{
+  "slug": "onjuku",
+  "name": "御宿海岸",
+  "location": {
+    "latitude": 35.181,
+    "longitude": 140.352956
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "御宿町",
+    "city_slug": "onjuku"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 164.3,
+    "seabed_type": "sand",
+    "depth_near_m": 4,
+    "depth_far_m": 18,
+    "surfer_spot": true
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体"
+  },
+  "info": {
+    "notes": "白砂の投げ釣り名所。外洋うねり注意",
+    "access": "御宿駅から徒歩15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/onjuku.jpg"
+  }
+}
