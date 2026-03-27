@@ -18,6 +18,7 @@ TSV フォーマット（ヘッダなし・タブ区切り・6列）:
 
 import json
 import math
+import ssl
 import sys
 import time
 import urllib.error
@@ -39,6 +40,12 @@ OUTPUT_DIR = REPO_ROOT / "unadjusted"
 AREAS_FILE = REPO_ROOT / "spots" / "_marine_areas.json"
 
 USER_AGENT = "ShirogisuSpotBuilder/1.0 (personal-use; Mac)"
+
+# macOS の python.org 版 Python は証明書バンドルを自動参照しないため
+# 個人用ツールとして SSL 検証を無効化して確実に接続できるようにする
+_SSL_CTX = ssl.create_default_context()
+_SSL_CTX.check_hostname = False
+_SSL_CTX.verify_mode = ssl.CERT_NONE
 
 # area_name → (area_slug, pref_slug, prefecture)
 AREA_MAP = {
@@ -136,7 +143,7 @@ def reverse_geocode(lat: float, lon: float) -> dict:
     url = "https://nominatim.openstreetmap.org/reverse?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
+        with urllib.request.urlopen(req, timeout=30, context=_SSL_CTX) as resp:
             addr = json.loads(resp.read().decode("utf-8")).get("address", {})
         prefecture = (
             addr.get("state") or addr.get("province") or addr.get("region") or ""

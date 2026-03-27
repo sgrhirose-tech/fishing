@@ -22,6 +22,7 @@ Pythonista (iPhone) 用 釣りスポット JSON 作成・修正ツール
 
 import json
 import math
+import ssl
 import time
 import urllib.error
 import urllib.parse
@@ -33,6 +34,12 @@ from pathlib import Path
 # ──────────────────────────────────────────
 
 USER_AGENT = "ShirogisuSpotBuilder/1.0 (personal-use; Pythonista)"
+
+# macOS の python.org 版 Python は証明書バンドルを自動参照しないため
+# 個人用ツールとして SSL 検証を無効化して確実に接続できるようにする
+_SSL_CTX = ssl.create_default_context()
+_SSL_CTX.check_hostname = False
+_SSL_CTX.verify_mode = ssl.CERT_NONE
 REQUEST_INTERVAL_SEC = 1.1
 
 # 海しる試用キー（期限切れの場合は更新が必要）
@@ -148,7 +155,7 @@ def _overpass_get(query, _retries=3):
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     for attempt in range(_retries):
         try:
-            with urllib.request.urlopen(req, timeout=60) as resp:
+            with urllib.request.urlopen(req, timeout=60, context=_SSL_CTX) as resp:
                 return json.loads(resp.read().decode("utf-8")).get("elements", [])
         except urllib.error.HTTPError as e:
             if e.code in (429, 503, 504) and attempt < _retries - 1:
@@ -226,7 +233,7 @@ def request_json_with_keys(url, params):
         full_url = url + "?" + urllib.parse.urlencode(p)
         req = urllib.request.Request(full_url, headers={"User-Agent": USER_AGENT})
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
+            with urllib.request.urlopen(req, timeout=30, context=_SSL_CTX) as resp:
                 return json.loads(resp.read().decode("utf-8"))
         except urllib.error.HTTPError as e:
             last_error = f"HTTP {e.code}"
