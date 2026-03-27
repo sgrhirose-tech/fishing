@@ -95,7 +95,6 @@
   <h2>明日 (<span id="weather-date">{{ tomorrow }}</span>) の海況情報</h2>
   <div id="weather-loading" class="loading">気象データを取得中...</div>
   <div id="weather-result" style="display:none;">
-    <div class="score-badge" id="total-score"></div>
     <table class="info-table" id="weather-table"></table>
   </div>
 </section>
@@ -105,18 +104,24 @@
   <h2>7日間の海況・気象情報</h2>
   <div id="forecast-loading" class="loading">海況データを取得中...</div>
   <div id="forecast-result" style="display:none;">
+    <div class="forecast-tabs">
+      <button class="tab-btn active" data-period="朝">朝</button>
+      <button class="tab-btn" data-period="昼">昼</button>
+      <button class="tab-btn" data-period="夕">夕</button>
+      <button class="tab-btn" data-period="夜">夜</button>
+    </div>
     <div class="forecast-scroll">
       <table class="forecast-table" id="forecast-table">
         <thead>
           <tr>
             <th>日付</th>
             <th>天気</th>
-            <th>総合</th>
-            <th>朝</th>
-            <th>昼</th>
-            <th>夕</th>
-            <th>夜</th>
+            <th>気温</th>
+            <th>風速</th>
             <th>波高</th>
+            <th>波周期</th>
+            <th>海水温</th>
+            <th>降水量</th>
           </tr>
         </thead>
         <tbody id="forecast-tbody"></tbody>
@@ -158,32 +163,42 @@
       })
       .catch(() => {});  // 施設取得失敗は無視
 
-    // 7日間予報を非同期取得
+    // 7日間タブを非同期取得
+    var forecastDays = [];
+    function fmtNum(val, unit, dec) {
+      return val != null ? val.toFixed(dec) + unit : 'データなし';
+    }
+    function renderTab(period) {
+      document.querySelectorAll('.tab-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.period === period));
+      const tbody = document.getElementById('forecast-tbody');
+      tbody.innerHTML = '';
+      forecastDays.forEach(day => {
+        const p = (day.periods || []).find(p => p.period === period);
+        if (!p) return;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${day.day_label || day.date}</td>
+          <td>${p.sky || '-'}</td>
+          <td>${fmtNum(p.temp_raw,        '°C',  1)}</td>
+          <td>${fmtNum(p.wind_speed_raw,  'm/s', 1)}</td>
+          <td>${fmtNum(p.wave_height_raw, 'm',   1)}</td>
+          <td>${fmtNum(p.wave_period_raw, 's',   0)}</td>
+          <td>${fmtNum(p.sst_raw,         '°C',  1)}</td>
+          <td>${p.precip || 'データなし'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
     fetch('/api/forecast/' + SPOT.slug)
       .then(r => r.json())
       .then(data => {
+        forecastDays = data.days || [];
         document.getElementById('forecast-loading').style.display = 'none';
         document.getElementById('forecast-result').style.display = 'block';
-        const tbody = document.getElementById('forecast-tbody');
-        (data.days || []).forEach(day => {
-          const scoreClass = s => s >= 70 ? 'score-high' : s >= 45 ? 'score-mid' : 'score-low';
-          const periods = day.periods || [];
-          const pCell = name => {
-            const p = periods.find(p => p.period === name);
-            return p ? `<td class="${scoreClass(p.total)}">${p.total}</td>` : '<td>-</td>';
-          };
-          const wh = day.best_wave_height != null ? day.best_wave_height.toFixed(1) + 'm' : '-';
-          const sky = (periods[1] || periods[0] || {}).sky || '-';
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${day.day_label || day.date}</td>
-            <td>${sky}</td>
-            <td class="${scoreClass(day.best_total || 0)}"><b>${day.best_total ?? '-'}</b></td>
-            ${pCell('朝')}${pCell('昼')}${pCell('夕')}${pCell('夜')}
-            <td>${wh}</td>
-          `;
-          tbody.appendChild(tr);
-        });
+        renderTab('朝');
+        document.querySelectorAll('.tab-btn').forEach(b =>
+          b.addEventListener('click', () => renderTab(b.dataset.period)));
       })
       .catch(() => {
         document.getElementById('forecast-loading').textContent = '海況データの取得に失敗しました';
@@ -195,7 +210,6 @@
       .then(data => {
         document.getElementById('weather-loading').style.display = 'none';
         document.getElementById('weather-result').style.display = 'block';
-        document.getElementById('total-score').textContent = data.total + '点';
 
         const d = data.details;
         const rows = [

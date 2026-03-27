@@ -159,6 +159,19 @@ footer {
 }
 footer a { color: #8bc; }
 
+/* ---- 7日間タブ ---- */
+.forecast-tabs { display: flex; gap: .5rem; margin-bottom: 1rem; }
+.tab-btn {
+  padding: .4rem 1.2rem;
+  border: 1px solid #1a6b9e;
+  border-radius: 4px;
+  background: white;
+  color: #1a6b9e;
+  cursor: pointer;
+  font-size: .9rem;
+}
+.tab-btn.active { background: #1a6b9e; color: white; }
+
 /* ---- 7日間予報テーブル ---- */
 .forecast-section { margin: 2rem 0; }
 .forecast-scroll { overflow-x: auto; }
