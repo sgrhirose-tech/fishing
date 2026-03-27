@@ -885,12 +885,12 @@ def build_html(spots, save_mode='pythonista'):
 def main():
     spots = load_spots()
 
-    try:
+    if sys.platform == 'ios':
+        # Pythonista (iPhone/iPad)
         import ui
 
         html = build_html(spots, save_mode='pythonista')
 
-        # 一時ファイルに書き出す（load_html()よりも信頼性が高い）
         import tempfile
         tmp_path = os.path.join(tempfile.gettempdir(), "spot_editor_ui.html")
         with open(tmp_path, "w", encoding="utf-8") as f:
@@ -903,7 +903,7 @@ def main():
         wv.load_url("file://" + tmp_path)
         wv.present("fullscreen")
 
-    except ImportError:
+    else:
         # Mac fallback: ローカル HTTP サーバー
         import socket
         import webbrowser
