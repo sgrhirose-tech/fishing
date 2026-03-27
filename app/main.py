@@ -14,7 +14,7 @@ try:
 except ImportError:
     pass
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -222,10 +222,17 @@ def page_top(request: Request):
 
 
 @app.get("/spots", response_class=HTMLResponse)
-def page_spots(request: Request):
-    spots = load_spots()
+def page_spots(request: Request, area: str = Query(None)):
+    all_spots = load_spots()
+    area_name = None
+    if area:
+        filtered = [s for s in all_spots if s.get("area", {}).get("area_slug") == area]
+        if filtered:
+            all_spots = filtered
+            area_name = filtered[0]["area"]["area_name"]
     return templates.TemplateResponse(request, "spots.html", {
-        "spots": spots,
+        "spots": all_spots,
+        "area_name": area_name,
     })
 
 

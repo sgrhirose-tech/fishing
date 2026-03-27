@@ -1,11 +1,21 @@
 {% extends "base.html" %}
 
-{% block title %}釣り場一覧 | Tsuricast{% endblock %}
+{% block title %}{% if area_name %}{{ area_name }}の釣り場一覧{% else %}釣り場一覧{% endif %} | Tsuricast{% endblock %}
 {% block description %}千葉・東京・神奈川の釣り場一覧。全{{ spots|length }}か所の天気・海況・アクセス情報。{% endblock %}
 
 {% block content %}
+{% if area_name %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <span>{{ area_name }}の釣り場一覧</span>
+</nav>
+{% endif %}
 <section class="page-header">
+  {% if area_name %}
+  <h1>{{ area_name }}の釣り場一覧</h1>
+  {% else %}
   <h1>釣り場一覧</h1>
+  {% endif %}
   <p>全 {{ spots|length }} か所</p>
 </section>
 

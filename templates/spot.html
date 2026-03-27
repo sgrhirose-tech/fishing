@@ -48,7 +48,9 @@
 <!-- パンくずリスト -->
 <nav class="breadcrumb">
   <a href="/">ホーム</a> &rsaquo;
-  <a href="/spots?area={{ area.area_slug }}">{{ area.area_name }}</a> &rsaquo;
+  <a href="/{{ area.pref_slug }}/">{{ area.prefecture }}</a> &rsaquo;
+  <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/">{{ area.area_name }}</a> &rsaquo;
+  <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/">{{ area.city }}</a> &rsaquo;
   <span>{{ spot.name }}</span>
 </nav>
 
