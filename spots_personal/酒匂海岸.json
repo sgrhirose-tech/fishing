@@ -1,0 +1,136 @@
+{
+  "spot_id": "酒匂海岸_22",
+  "name": "酒匂海岸",
+  "official_name": "酒匂三丁目, 小田原市, 神奈川県, 250-0875, 日本",
+  "area": {
+    "major": null,
+    "minor": null,
+    "prefecture": "神奈川県",
+    "city": "小田原市",
+    "address": "酒匂三丁目, 小田原市, 神奈川県, 250-0875, 日本"
+  },
+  "location": {
+    "latitude": 35.2620713,
+    "longitude": 139.1866594,
+    "coordinate_source": "manual input",
+    "reverse_geocode_source": "Nominatim Reverse API"
+  },
+  "physical_features": {
+    "shore_type": null,
+    "sea_bearing_deg": 135.5,
+    "sea_bearing_source": "OSM Overpass coastline",
+    "sea_bearing_status": "auto",
+    "bottom_type": {
+      "value": "砂",
+      "matched_layers": [],
+      "best_match": {
+        "name": "砂"
+      },
+      "status": "該当なし",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T07:12:25+09:00"
+    },
+    "depth_profile": {
+      "depth_at_50m_from_shore_m": null,
+      "depth_at_100m_from_shore_m": null,
+      "depth_at_200m_from_shore_m": null,
+      "depth_points_source": "海しる等深線APIでは直接取得不可",
+      "shallow_profile_confirmed": false,
+      "shallow_profile_reason": "20m等深線が 338.7m と近く、遠浅とは言い切れない",
+      "contour_reference": {
+        "nearest_20m_contour_distance_m": 338.7,
+        "nearest_50m_contour_distance_m": 529.0,
+        "nearest_100m_contour_distance_m": 766.2,
+        "nearest_150m_contour_distance_m": 985.3,
+        "nearest_200m_contour_distance_m": 1256.7
+      },
+      "raw_contours": [
+        {
+          "depth_m": 20,
+          "distance_m": 338.7,
+          "search_radius_m": 500,
+          "attributes": {
+            "Depth": 20,
+            "OBJECTID": 7051,
+            "Shape_Length": 109.76471430671924
+          }
+        },
+        {
+          "depth_m": 50,
+          "distance_m": 529.0,
+          "search_radius_m": 1000,
+          "attributes": {
+            "Depth": 50,
+            "OBJECTID": 4789,
+            "Shape_Length": 79.68747476604443
+          }
+        },
+        {
+          "depth_m": 100,
+          "distance_m": 766.2,
+          "search_radius_m": 2000,
+          "attributes": {
+            "Depth": 100,
+            "OBJECTID": 2641,
+            "Shape_Length": 67.28742372793847
+          }
+        },
+        {
+          "depth_m": 150,
+          "distance_m": 985.3,
+          "search_radius_m": 2000,
+          "attributes": {
+            "Depth": 150,
+            "OBJECTID": 1219,
+            "Shape_Length": 61.08208186790016
+          }
+        },
+        {
+          "depth_m": 200,
+          "distance_m": 1256.7,
+          "search_radius_m": 2000,
+          "attributes": {
+            "Depth": 200,
+            "OBJECTID": 50,
+            "Shape_Length": 54.24935132341124
+          }
+        }
+      ],
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T07:12:25+09:00"
+    }
+  },
+  "derived_features": {
+    "bottom_primary": "砂",
+    "bottom_secondary": [],
+    "bottom_is_sandy": true,
+    "bottom_has_shell": false,
+    "bottom_has_rock": false,
+    "bottom_kisugo_score": 85,
+    "slope_type": "急深寄り",
+    "slope_score": 40,
+    "nearshore_depth_numeric_available": false,
+    "nearshore_depth_note": "20m等深線が 338.7m と近く、遠浅とは言い切れない",
+    "contour_distances_m": {
+      "20m": 338.7,
+      "50m": 529.0,
+      "100m": 766.2,
+      "150m": 985.3,
+      "200m": 1256.7
+    },
+    "terrain_confidence": "high",
+    "terrain_summary": "砂主体、急深寄り"
+  },
+  "metadata": {
+    "created_at": "2026-03-24T06:44:33+09:00",
+    "updated_at": "2026-03-26T07:12:25+09:00",
+    "json_created_by": "build_spots_complete.py",
+    "notes": [
+      "座標付き入力から生成",
+      "海に向かう方位はOSM海岸線データから自動算出",
+      "住所系は reverse geocoding で取得",
+      "底質・等深線は海しるAPIで取得"
+    ]
+  }
+}

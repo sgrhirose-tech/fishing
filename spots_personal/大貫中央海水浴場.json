@@ -1,0 +1,167 @@
+{
+  "spot_id": "大貫中央海水浴場_42",
+  "name": "大貫中央海水浴場",
+  "official_name": "小久保, 富津市, 千葉県, 293-0042, 日本",
+  "area": {
+    "major": null,
+    "minor": null,
+    "prefecture": "千葉県",
+    "city": "富津市",
+    "address": "小久保, 富津市, 千葉県, 293-0042, 日本"
+  },
+  "location": {
+    "latitude": 35.281253,
+    "longitude": 139.85276,
+    "coordinate_source": "manual input",
+    "reverse_geocode_source": "Nominatim Reverse API"
+  },
+  "physical_features": {
+    "shore_type": null,
+    "sea_bearing_deg": 278.4,
+    "sea_bearing_source": "OSM Overpass coastline",
+    "sea_bearing_status": "auto",
+    "bottom_type": {
+      "value": "砂",
+      "matched_layers": [
+        {
+          "sample_offset_m": 50,
+          "sample_lat": 35.28131869,
+          "sample_lon": 139.85221507,
+          "name": "砂",
+          "distance_m": 343.3,
+          "search_radius_m": 500,
+          "attributes_sample": {
+            "OBJECTID": 18269,
+            "nature": "砂(細かい)"
+          }
+        },
+        {
+          "sample_offset_m": 100,
+          "sample_lat": 35.28138437,
+          "sample_lon": 139.85167015,
+          "name": "砂",
+          "distance_m": 297.6,
+          "search_radius_m": 500,
+          "attributes_sample": {
+            "OBJECTID": 18269,
+            "nature": "砂(細かい)"
+          }
+        },
+        {
+          "sample_offset_m": 200,
+          "sample_lat": 35.28151573,
+          "sample_lon": 139.85058029,
+          "name": "砂",
+          "distance_m": 211.9,
+          "search_radius_m": 250,
+          "attributes_sample": {
+            "OBJECTID": 18269,
+            "nature": "砂(細かい)"
+          }
+        }
+      ],
+      "best_match": {
+        "sample_offset_m": 200,
+        "sample_lat": 35.28151573,
+        "sample_lon": 139.85058029,
+        "name": "砂",
+        "distance_m": 211.9,
+        "search_radius_m": 250,
+        "attributes_sample": {
+          "OBJECTID": 18269,
+          "nature": "砂(細かい)"
+        }
+      },
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T06:17:27+09:00"
+    },
+    "depth_profile": {
+      "depth_at_50m_from_shore_m": null,
+      "depth_at_100m_from_shore_m": null,
+      "depth_at_200m_from_shore_m": null,
+      "depth_points_source": "海しる等深線APIでは直接取得不可",
+      "shallow_profile_confirmed": null,
+      "shallow_profile_reason": "判定材料不足",
+      "contour_reference": {
+        "nearest_20m_contour_distance_m": null,
+        "nearest_50m_contour_distance_m": null,
+        "nearest_100m_contour_distance_m": null,
+        "nearest_150m_contour_distance_m": null,
+        "nearest_200m_contour_distance_m": null
+      },
+      "raw_contours": [
+        {
+          "depth_m": 20,
+          "distance_m": null,
+          "search_radius_m": null,
+          "attributes": {},
+          "status": "未検出"
+        },
+        {
+          "depth_m": 50,
+          "distance_m": null,
+          "search_radius_m": null,
+          "attributes": {},
+          "status": "未検出"
+        },
+        {
+          "depth_m": 100,
+          "distance_m": null,
+          "search_radius_m": null,
+          "attributes": {},
+          "status": "未検出"
+        },
+        {
+          "depth_m": 150,
+          "distance_m": null,
+          "search_radius_m": null,
+          "attributes": {},
+          "status": "未検出"
+        },
+        {
+          "depth_m": 200,
+          "distance_m": null,
+          "search_radius_m": null,
+          "attributes": {},
+          "status": "未検出"
+        }
+      ],
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T06:17:27+09:00"
+    }
+  },
+  "derived_features": {
+    "bottom_primary": "砂",
+    "bottom_secondary": [],
+    "bottom_is_sandy": true,
+    "bottom_has_shell": false,
+    "bottom_has_rock": false,
+    "bottom_kisugo_score": 85,
+    "slope_type": "不明",
+    "slope_score": 60,
+    "nearshore_depth_numeric_available": false,
+    "nearshore_depth_note": "判定材料不足",
+    "contour_distances_m": {
+      "20m": null,
+      "50m": null,
+      "100m": null,
+      "150m": null,
+      "200m": null
+    },
+    "terrain_confidence": "medium",
+    "terrain_summary": "砂主体"
+  },
+  "metadata": {
+    "created_at": "2026-03-24T06:50:04+09:00",
+    "updated_at": "2026-03-26T06:17:27+09:00",
+    "json_created_by": "build_spots_complete.py",
+    "notes": [
+      "座標付き入力から生成",
+      "海に向かう方位はOSM海岸線データから自動算出",
+      "住所系は reverse geocoding で取得",
+      "底質・等深線は海しるAPIで取得"
+    ]
+  }
+}
