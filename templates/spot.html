@@ -189,9 +189,9 @@
                    || (maxPeriod != null && maxPeriod >  8)
                    || (maxWind   != null && maxWind   >  7);
       var isCaution = !isDanger && (
-                       (maxWave   != null && maxWave   >= 0.8)
-                    || (maxPeriod != null && maxPeriod >= 7)
-                    || (maxWind   != null && maxWind   >= 5));
+                       (maxWave   != null && maxWave   >= 1.0)
+                    || (maxPeriod != null && maxPeriod >= 8)
+                    || (maxWind   != null && maxWind   >= 7));
       if (isDanger) {
         el.innerHTML = '<strong>⚠️ 釣行は控えることをおすすめします</strong>';
         el.className = 'safety-danger';
@@ -245,9 +245,9 @@
       const rows = [
         ['天気',   p.sky || 'データなし', false],
         ['気温',   fmtNum(p.temp_raw,  '°C',  1), false],
-        ['風速',   fmtNum(w,  'm/s', 1), w  != null && w  >= 5],
-        ['波高',   fmtNum(wv, 'm',   1), wv != null && wv >= 0.8],
-        ['波周期', fmtNum(wp, 's',   0), wp != null && wp >= 7],
+        ['風速',   fmtNum(w,  'm/s', 1), w  != null && w  >= 7],
+        ['波高',   fmtNum(wv, 'm',   1), wv != null && wv >= 1.0],
+        ['波周期', fmtNum(wp, 's',   0), wp != null && wp >= 8],
         ['海水温', fmtNum(p.sst_raw,  '°C',  1), false],
         ['降水量', p.precip || 'データなし', false],
       ];
