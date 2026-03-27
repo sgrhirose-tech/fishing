@@ -115,6 +115,7 @@
 <section class="ai-comment-section">
   <div id="safety-warning" style="display:none;"></div>
   <div id="ai-comment-loading" class="loading" style="display:none;">コメントを生成中...</div>
+  <p id="ai-comment-label" class="ai-comment-label" style="display:none;">フィッシングガイドAIからアドバイス</p>
   <div id="ai-comment-result" style="display:none;" class="ai-comment-box"></div>
 </section>
 
@@ -299,6 +300,7 @@
           var el = document.getElementById('ai-comment-result');
           el.textContent = data.comment;
           el.style.display = 'block';
+          document.getElementById('ai-comment-label').style.display = 'block';
         }
       })
       .catch(() => {

@@ -167,6 +167,14 @@ footer a { color: #8bc; }
   padding: .4rem .8rem;
   margin-bottom: .5rem;
 }
+.ai-comment-label {
+  font-size: .75rem;
+  font-weight: 600;
+  color: #1a6b9e;
+  letter-spacing: .04em;
+  margin: 0 0 .3rem 0;
+  text-transform: none;
+}
 .ai-comment-box {
   background: #f0f7ff;
   border-left: 4px solid #1a6b9e;
@@ -174,7 +182,7 @@ footer a { color: #8bc; }
   border-radius: 0 6px 6px 0;
   line-height: 1.7;
   white-space: pre-wrap;
-  margin-top: .5rem;
+  margin-top: 0;
 }
 
 /* ---- 7日間タブ ---- */
