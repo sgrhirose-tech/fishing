@@ -8,3 +8,6 @@ __pycache__/
 
 # 生成されたレポートファイル
 fishing_report_*.txt
+
+# 海岸線ローカルキャッシュ（大容量・再生成可能）
+tools/data/coastline_elements.json

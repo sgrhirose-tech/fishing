@@ -91,6 +91,41 @@ BOTTOM_TYPE_MAP = {
 # スポット JSON の出力先（Pythonista 上の実際のパスに合わせて変更可）
 DEFAULT_SPOTS_DIR = Path(__file__).parent.parent / "spots"
 
+# ──────────────────────────────────────────
+# 海岸線ローカルキャッシュ
+# ──────────────────────────────────────────
+
+_COASTLINE_CACHE_PATH = Path(__file__).parent / "data" / "coastline_elements.json"
+_coastline_cache = None  # None=未試行, []=失敗/空, list=ロード済み
+
+
+def _load_coastline_cache():
+    global _coastline_cache
+    if _coastline_cache is not None:
+        return _coastline_cache
+    if not _COASTLINE_CACHE_PATH.exists():
+        _coastline_cache = []
+        return _coastline_cache
+    try:
+        with _COASTLINE_CACHE_PATH.open(encoding="utf-8") as f:
+            _coastline_cache = json.load(f)
+        print(f"  [cache] 海岸線キャッシュ: {len(_coastline_cache)}ウェイ読み込み")
+    except Exception as e:
+        print(f"  [cache] 読み込み失敗: {e}")
+        _coastline_cache = []
+    return _coastline_cache
+
+
+def _filter_coastline_local(lat, lon, distance_m):
+    """キャッシュから distance_m 以内にノードを持つウェイを返す（粗フィルタ）。"""
+    result = []
+    for way in _load_coastline_cache():
+        for node in way.get("geometry", []):
+            if haversine_m(lat, lon, node["lat"], node["lon"]) <= distance_m:
+                result.append(way)
+                break
+    return result
+
 
 # ──────────────────────────────────────────
 # 数学ユーティリティ
@@ -150,53 +185,74 @@ def nearest_point_on_segment(px, py, ax, ay, bx, by):
 # Overpass API
 # ──────────────────────────────────────────
 
-def _overpass_get(query, _retries=3):
-    url = "https://overpass-api.de/api/interpreter?" + urllib.parse.urlencode({"data": query})
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    for attempt in range(_retries):
-        try:
-            with urllib.request.urlopen(req, timeout=60, context=_SSL_CTX) as resp:
-                return json.loads(resp.read().decode("utf-8")).get("elements", [])
-        except urllib.error.HTTPError as e:
-            if e.code in (429, 503, 504) and attempt < _retries - 1:
-                wait = 30 * (attempt + 1)
-                print(f"    HTTP {e.code} – {wait}秒後にリトライ...")
-                time.sleep(wait)
-            else:
-                raise
+_OVERPASS_ENDPOINTS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+]
+
+
+def _overpass_get(query, _retries=2):
+    for endpoint in _OVERPASS_ENDPOINTS:
+        url = endpoint + "?" + urllib.parse.urlencode({"data": query})
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        for attempt in range(_retries):
+            try:
+                with urllib.request.urlopen(req, timeout=30, context=_SSL_CTX) as resp:
+                    return json.loads(resp.read().decode("utf-8")).get("elements", [])
+            except urllib.error.HTTPError as e:
+                if e.code in (429, 503, 504) and attempt < _retries - 1:
+                    wait = 5 * (attempt + 1)   # 5s, 10s（旧: 30s, 60s）
+                    print(f"    HTTP {e.code} – {wait}秒後にリトライ ({endpoint})...")
+                    time.sleep(wait)
+                else:
+                    break  # このエンドポイントは諦めて次へ
+            except Exception:
+                break
+    raise RuntimeError("すべての Overpass エンドポイントが失敗しました")
 
 
 def calculate_sea_bearing(lat, lon, search_radius_m=10000):
-    query = (
-        f"[out:json];"
-        f"way[\"natural\"=\"coastline\"](around:{search_radius_m},{lat},{lon});"
-        f"out geom qt 20;"
-    )
-    try:
-        elements = _overpass_get(query)
-    except Exception as e:
-        print(f"    Overpass APIエラー: {e}")
-        return None
-
-    if not elements:
-        wider = 100000
-        print(f"    半径{search_radius_m}mで海岸線なし。{wider}mで再試行...")
-        query2 = (
-            f"[out:json];"
-            f"way[\"natural\"=\"coastline\"](around:{wider},{lat},{lon});"
-            f"out geom qt 10;"
+    # ── キャッシュ優先（download_coastline.py でキャッシュ構築済みなら Overpass 不要）──
+    cache = _load_coastline_cache()
+    if cache:
+        elements = _filter_coastline_local(lat, lon, search_radius_m * 1.5)
+        if not elements:
+            elements = _filter_coastline_local(lat, lon, 100_000 * 1.5)
+        source = "cache"
+    else:
+        # ── Overpass フォールバック（キャッシュ未構築時のみ）──────────────────────
+        query = (
+            f"[out:json][timeout:25];"
+            f"way[\"natural\"=\"coastline\"](around:{search_radius_m},{lat},{lon});"
+            f"out geom qt 20;"
         )
         try:
-            elements = _overpass_get(query2)
+            elements = _overpass_get(query)
         except Exception as e:
-            print(f"    Overpass API再試行エラー: {e}")
+            print(f"    Overpass APIエラー: {e}")
             return None
 
+        if not elements:
+            wider = 100_000
+            print(f"    半径{search_radius_m}mで海岸線なし。{wider}mで再試行...")
+            query2 = (
+                f"[out:json][timeout:25];"
+                f"way[\"natural\"=\"coastline\"](around:{wider},{lat},{lon});"
+                f"out geom qt 10;"
+            )
+            try:
+                elements = _overpass_get(query2)
+            except Exception as e:
+                print(f"    Overpass API再試行エラー: {e}")
+                return None
+        source = "overpass"
+
     if not elements:
-        print(f"    海岸線データが見つかりませんでした")
+        print(f"    [{source}] 海岸線データが見つかりませんでした")
         return None
 
-    print(f"    {len(elements)}ウェイ発見 セグメント解析中...")
+    print(f"    [{source}] {len(elements)}ウェイ発見 セグメント解析中...")
     best_dist = float("inf")
     best_seg_bearing = None
 
