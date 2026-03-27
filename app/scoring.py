@@ -417,6 +417,11 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
         wave_height = estimate_wave_from_wind(wind_speed, fetch_km)
         wave_source = "estimate"
 
+    # 波周期フォールバック: wave_height 確定後、wave_period が None なら物理式で推定
+    if wave_period is None and wave_height and wave_height > 0:
+        import math as _math
+        wave_period = round(4.77 * _math.sqrt(wave_height), 1)
+
     # スコア計算
     if wind_speed is not None and wind_dir is not None:
         ws = calc_wind_score(wind_speed, wind_dir, sea_bearing_deg)

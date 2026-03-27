@@ -153,8 +153,8 @@ def estimate_wave_from_wind(wind_speed_ms: float, fetch_km: float) -> float:
     """SMB 簡易式で風速と吹送距離から有義波高（m）を推定。"""
     if not wind_speed_ms or wind_speed_ms <= 0:
         return 0.0
-    Hs = 0.0248 * wind_speed_ms * math.sqrt(fetch_km * 1000 / 9.8)
-    return round(min(Hs, 5.0), 2)
+    Hs = 0.0248 * wind_speed_ms * math.sqrt(fetch_km)
+    return round(min(Hs, 4.0), 2)
 
 
 def fetch_marine_with_fallback(lat: float, lon: float, date_str: str) -> dict:
