@@ -1,0 +1,294 @@
+{
+  "spot_id": "斉田浜_27",
+  "name": "斉田浜",
+  "official_name": "長坂二丁目, 横須賀市, 神奈川県, 238-8550, 日本",
+  "area": {
+    "major": null,
+    "minor": null,
+    "prefecture": "神奈川県",
+    "city": "横須賀市",
+    "address": "長坂二丁目, 横須賀市, 神奈川県, 238-8550, 日本"
+  },
+  "location": {
+    "latitude": 35.218889,
+    "longitude": 139.622778,
+    "coordinate_source": "manual input",
+    "reverse_geocode_source": "Nominatim Reverse API"
+  },
+  "physical_features": {
+    "shore_type": null,
+    "sea_bearing_deg": 202.20000000000005,
+    "sea_bearing_source": "OSM Overpass coastline",
+    "sea_bearing_status": "auto",
+    "bottom_type": {
+      "value": "砂/礫/石・岩/貝殻",
+      "matched_layers": [
+        {
+          "sample_offset_m": 50,
+          "sample_lat": 35.21847267,
+          "sample_lon": 139.62257003,
+          "name": "砂",
+          "distance_m": 205.7,
+          "search_radius_m": 250,
+          "attributes_sample": {
+            "OBJECTID": 19103,
+            "nature": "砂"
+          }
+        },
+        {
+          "sample_offset_m": 50,
+          "sample_lat": 35.21847267,
+          "sample_lon": 139.62257003,
+          "name": "石・岩",
+          "distance_m": 793.1,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 26251,
+            "nature": "岩"
+          }
+        },
+        {
+          "sample_offset_m": 50,
+          "sample_lat": 35.21847267,
+          "sample_lon": 139.62257003,
+          "name": "礫",
+          "distance_m": 739.6,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 2291,
+            "nature": "細礫"
+          }
+        },
+        {
+          "sample_offset_m": 50,
+          "sample_lat": 35.21847267,
+          "sample_lon": 139.62257003,
+          "name": "貝殻",
+          "distance_m": 745.1,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 6023,
+            "nature": "砂; 貝殻"
+          }
+        },
+        {
+          "sample_offset_m": 100,
+          "sample_lat": 35.21805634,
+          "sample_lon": 139.62236207,
+          "name": "砂",
+          "distance_m": 175.4,
+          "search_radius_m": 250,
+          "attributes_sample": {
+            "OBJECTID": 19103,
+            "nature": "砂"
+          }
+        },
+        {
+          "sample_offset_m": 100,
+          "sample_lat": 35.21805634,
+          "sample_lon": 139.62236207,
+          "name": "石・岩",
+          "distance_m": 753.3,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 26140,
+            "nature": "岩"
+          }
+        },
+        {
+          "sample_offset_m": 100,
+          "sample_lat": 35.21805634,
+          "sample_lon": 139.62236207,
+          "name": "礫",
+          "distance_m": 693.4,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 2291,
+            "nature": "細礫"
+          }
+        },
+        {
+          "sample_offset_m": 100,
+          "sample_lat": 35.21805634,
+          "sample_lon": 139.62236207,
+          "name": "貝殻",
+          "distance_m": 725.9,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 6023,
+            "nature": "砂; 貝殻"
+          }
+        },
+        {
+          "sample_offset_m": 200,
+          "sample_lat": 35.21722369,
+          "sample_lon": 139.62194615,
+          "name": "砂",
+          "distance_m": 105.7,
+          "search_radius_m": 250,
+          "attributes_sample": {
+            "OBJECTID": 19105,
+            "nature": "砂(細かい)"
+          }
+        },
+        {
+          "sample_offset_m": 200,
+          "sample_lat": 35.21722369,
+          "sample_lon": 139.62194615,
+          "name": "石・岩",
+          "distance_m": 666.1,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 26140,
+            "nature": "岩"
+          }
+        },
+        {
+          "sample_offset_m": 200,
+          "sample_lat": 35.21722369,
+          "sample_lon": 139.62194615,
+          "name": "礫",
+          "distance_m": 603.0,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 2291,
+            "nature": "細礫"
+          }
+        },
+        {
+          "sample_offset_m": 200,
+          "sample_lat": 35.21722369,
+          "sample_lon": 139.62194615,
+          "name": "貝殻",
+          "distance_m": 696.7,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 6023,
+            "nature": "砂; 貝殻"
+          }
+        }
+      ],
+      "best_match": {
+        "sample_offset_m": 200,
+        "sample_lat": 35.21722369,
+        "sample_lon": 139.62194615,
+        "name": "砂",
+        "distance_m": 105.7,
+        "search_radius_m": 250,
+        "attributes_sample": {
+          "OBJECTID": 19105,
+          "nature": "砂(細かい)"
+        }
+      },
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T06:21:25+09:00"
+    },
+    "depth_profile": {
+      "depth_at_50m_from_shore_m": null,
+      "depth_at_100m_from_shore_m": null,
+      "depth_at_200m_from_shore_m": null,
+      "depth_points_source": "海しる等深線APIでは直接取得不可",
+      "shallow_profile_confirmed": true,
+      "shallow_profile_reason": "20m等深線が 1720.1m 先のため、近岸は遠浅傾向",
+      "contour_reference": {
+        "nearest_20m_contour_distance_m": 1720.1,
+        "nearest_50m_contour_distance_m": 4125.5,
+        "nearest_100m_contour_distance_m": 5415.0,
+        "nearest_150m_contour_distance_m": 5743.7,
+        "nearest_200m_contour_distance_m": 5996.8
+      },
+      "raw_contours": [
+        {
+          "depth_m": 20,
+          "distance_m": 1720.1,
+          "search_radius_m": 2000,
+          "attributes": {
+            "Depth": 20,
+            "OBJECTID": 7426,
+            "Shape_Length": 0.0034117594371916482
+          }
+        },
+        {
+          "depth_m": 50,
+          "distance_m": 4125.5,
+          "search_radius_m": 5000,
+          "attributes": {
+            "Depth": 50,
+            "OBJECTID": 4789,
+            "Shape_Length": 79.68747476604443
+          }
+        },
+        {
+          "depth_m": 100,
+          "distance_m": 5415.0,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 100,
+            "OBJECTID": 2641,
+            "Shape_Length": 67.28742372793847
+          }
+        },
+        {
+          "depth_m": 150,
+          "distance_m": 5743.7,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 150,
+            "OBJECTID": 1219,
+            "Shape_Length": 61.08208186790016
+          }
+        },
+        {
+          "depth_m": 200,
+          "distance_m": 5996.8,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 200,
+            "OBJECTID": 50,
+            "Shape_Length": 54.24935132341124
+          }
+        }
+      ],
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T06:21:25+09:00"
+    }
+  },
+  "derived_features": {
+    "bottom_primary": "砂",
+    "bottom_secondary": [
+      "石・岩",
+      "礫",
+      "貝殻"
+    ],
+    "bottom_is_sandy": true,
+    "bottom_has_shell": true,
+    "bottom_has_rock": true,
+    "bottom_kisugo_score": 80,
+    "slope_type": "遠浅",
+    "slope_score": 90,
+    "nearshore_depth_numeric_available": false,
+    "nearshore_depth_note": "20m等深線が 1720.1m 先のため、近岸は遠浅傾向",
+    "contour_distances_m": {
+      "20m": 1720.1,
+      "50m": 4125.5,
+      "100m": 5415.0,
+      "150m": 5743.7,
+      "200m": 5996.8
+    },
+    "terrain_confidence": "high",
+    "terrain_summary": "砂主体、貝殻混じり、近傍に石要素あり、遠浅。シロギス投げ釣り向きの地形"
+  },
+  "metadata": {
+    "created_at": "2026-03-24T06:45:56+09:00",
+    "updated_at": "2026-03-26T06:21:25+09:00",
+    "json_created_by": "build_spots_complete.py",
+    "notes": [
+      "座標付き入力から生成",
+      "海に向かう方位はOSM海岸線データから自動算出",
+      "住所系は reverse geocoding で取得",
+      "底質・等深線は海しるAPIで取得"
+    ]
+  }
+}

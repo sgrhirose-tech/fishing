@@ -1,0 +1,190 @@
+{
+  "spot_id": "上総湊海水浴場_41",
+  "name": "上総湊海水浴場",
+  "official_name": "湊, 富津市, 千葉県, 299-1607, 日本",
+  "area": {
+    "major": null,
+    "minor": null,
+    "prefecture": "千葉県",
+    "city": "富津市",
+    "address": "湊, 富津市, 千葉県, 299-1607, 日本"
+  },
+  "location": {
+    "latitude": 35.220219,
+    "longitude": 139.867847,
+    "coordinate_source": "manual input",
+    "reverse_geocode_source": "Nominatim Reverse API"
+  },
+  "physical_features": {
+    "shore_type": null,
+    "sea_bearing_deg": 312.70000000000005,
+    "sea_bearing_source": "OSM Overpass coastline",
+    "sea_bearing_status": "auto",
+    "bottom_type": {
+      "value": "石・岩/砂",
+      "matched_layers": [
+        {
+          "sample_offset_m": 50,
+          "sample_lat": 35.22052394,
+          "sample_lon": 139.86744249,
+          "name": "石・岩",
+          "distance_m": 947.0,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 13767,
+            "nature": "岩"
+          }
+        },
+        {
+          "sample_offset_m": 100,
+          "sample_lat": 35.22082888,
+          "sample_lon": 139.86703797,
+          "name": "石・岩",
+          "distance_m": 913.9,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 13767,
+            "nature": "岩"
+          }
+        },
+        {
+          "sample_offset_m": 200,
+          "sample_lat": 35.22143876,
+          "sample_lon": 139.86622893,
+          "name": "砂",
+          "distance_m": 948.4,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 11237,
+            "nature": "砂"
+          }
+        },
+        {
+          "sample_offset_m": 200,
+          "sample_lat": 35.22143876,
+          "sample_lon": 139.86622893,
+          "name": "石・岩",
+          "distance_m": 852.6,
+          "search_radius_m": 1000,
+          "attributes_sample": {
+            "OBJECTID": 13767,
+            "nature": "岩"
+          }
+        }
+      ],
+      "best_match": {
+        "sample_offset_m": 200,
+        "sample_lat": 35.22143876,
+        "sample_lon": 139.86622893,
+        "name": "石・岩",
+        "distance_m": 852.6,
+        "search_radius_m": 1000,
+        "attributes_sample": {
+          "OBJECTID": 13767,
+          "nature": "岩"
+        }
+      },
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T06:11:47+09:00"
+    },
+    "depth_profile": {
+      "depth_at_50m_from_shore_m": null,
+      "depth_at_100m_from_shore_m": null,
+      "depth_at_200m_from_shore_m": null,
+      "depth_points_source": "海しる等深線APIでは直接取得不可",
+      "shallow_profile_confirmed": null,
+      "shallow_profile_reason": "判定材料不足",
+      "contour_reference": {
+        "nearest_20m_contour_distance_m": null,
+        "nearest_50m_contour_distance_m": null,
+        "nearest_100m_contour_distance_m": 9219.1,
+        "nearest_150m_contour_distance_m": 9497.7,
+        "nearest_200m_contour_distance_m": 9739.7
+      },
+      "raw_contours": [
+        {
+          "depth_m": 20,
+          "distance_m": null,
+          "search_radius_m": null,
+          "attributes": {},
+          "status": "未検出"
+        },
+        {
+          "depth_m": 50,
+          "distance_m": null,
+          "search_radius_m": null,
+          "attributes": {},
+          "status": "未検出"
+        },
+        {
+          "depth_m": 100,
+          "distance_m": 9219.1,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 100,
+            "OBJECTID": 2641,
+            "Shape_Length": 67.28742372793847
+          }
+        },
+        {
+          "depth_m": 150,
+          "distance_m": 9497.7,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 150,
+            "OBJECTID": 1219,
+            "Shape_Length": 61.08208186790016
+          }
+        },
+        {
+          "depth_m": 200,
+          "distance_m": 9739.7,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 200,
+            "OBJECTID": 50,
+            "Shape_Length": 54.24935132341124
+          }
+        }
+      ],
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T06:11:47+09:00"
+    }
+  },
+  "derived_features": {
+    "bottom_primary": "石・岩",
+    "bottom_secondary": [
+      "砂"
+    ],
+    "bottom_is_sandy": false,
+    "bottom_has_shell": false,
+    "bottom_has_rock": true,
+    "bottom_kisugo_score": 35,
+    "slope_type": "不明",
+    "slope_score": 60,
+    "nearshore_depth_numeric_available": false,
+    "nearshore_depth_note": "判定材料不足",
+    "contour_distances_m": {
+      "20m": null,
+      "50m": null,
+      "100m": 9219.1,
+      "150m": 9497.7,
+      "200m": 9739.7
+    },
+    "terrain_confidence": "medium",
+    "terrain_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "metadata": {
+    "created_at": "2026-03-24T06:49:49+09:00",
+    "updated_at": "2026-03-26T06:11:47+09:00",
+    "json_created_by": "build_spots_complete.py",
+    "notes": [
+      "座標付き入力から生成",
+      "海に向かう方位はOSM海岸線データから自動算出",
+      "住所系は reverse geocoding で取得",
+      "底質・等深線は海しるAPIで取得"
+    ]
+  }
+}
