@@ -2,8 +2,8 @@
   "slug": "ohara",
   "name": "大原海岸",
   "location": {
-    "latitude": 35.2536,
-    "longitude": 140.3734
+    "latitude": 35.2604782,
+    "longitude": 140.4009819
   },
   "area": {
     "prefecture": "千葉県",
@@ -14,7 +14,7 @@
     "city_slug": "isumi"
   },
   "physical_features": {
-    "sea_bearing_deg": 95,
+    "sea_bearing_deg": 80,
     "seabed_type": "sand",
     "depth_near_m": 4,
     "depth_far_m": 15,

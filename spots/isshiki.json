@@ -2,8 +2,8 @@
   "slug": "isshiki",
   "name": "一色海岸（葉山）",
   "location": {
-    "latitude": 35.255,
-    "longitude": 139.58
+    "latitude": 35.2583844,
+    "longitude": 139.579035
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,7 +14,7 @@
     "city_slug": "hayama"
   },
   "physical_features": {
-    "sea_bearing_deg": 295.4,
+    "sea_bearing_deg": 260,
     "seabed_type": "sand",
     "depth_near_m": 4,
     "depth_far_m": 15,
