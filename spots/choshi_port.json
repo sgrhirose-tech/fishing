@@ -1,0 +1,33 @@
+{
+  "slug": "choshi_port",
+  "name": "銚子港",
+  "location": {
+    "latitude": 35.7349,
+    "longitude": 140.8263
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "銚子市",
+    "city_slug": "choshi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 75.0,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、傾斜不明"
+  },
+  "info": {
+    "notes": "利根川河口に位置する大型漁港。クロダイ・スズキ・ハゼの実績が高く、潮の流れが速い",
+    "access": "銚子駅から徒歩15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/choshi_port.jpg"
+  }
+}

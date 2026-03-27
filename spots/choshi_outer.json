@@ -1,0 +1,33 @@
+{
+  "slug": "choshi_outer",
+  "name": "銚子外港",
+  "location": {
+    "latitude": 35.7279,
+    "longitude": 140.8444
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "銚子市",
+    "city_slug": "choshi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 155.0,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 75,
+    "terrain_summary": "砂主体、傾斜不明"
+  },
+  "info": {
+    "notes": "銚子漁港の外港。投げ釣りでカレイ・ヒラメが狙える。太平洋に面し波に注意",
+    "access": "外川駅（銚子電鉄）から徒歩10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/choshi_outer.jpg"
+  }
+}
