@@ -142,13 +142,13 @@ def calc_temp_score(sst) -> dict:
     if sst is None:
         return {"pts": 8, "label": "データなし"}
     if 20.0 <= sst <= 24.0:
-        return {"pts": 15, "label": f"{sst:.1f}°C(最適)"}
+        return {"pts": 15, "label": f"{sst:.1f}°C"}
     elif 18.0 <= sst < 20.0 or 24.0 < sst <= 26.0:
-        return {"pts": 11, "label": f"{sst:.1f}°C(良好)"}
+        return {"pts": 11, "label": f"{sst:.1f}°C"}
     elif 15.0 <= sst < 18.0 or 26.0 < sst <= 28.0:
-        return {"pts": 5,  "label": f"{sst:.1f}°C(やや不向き)"}
+        return {"pts": 5,  "label": f"{sst:.1f}°C"}
     else:
-        return {"pts": 1,  "label": f"{sst:.1f}°C(厳しい)"}
+        return {"pts": 1,  "label": f"{sst:.1f}°C"}
 
 
 def calc_air_temp_score(temp_max) -> dict:
@@ -459,6 +459,10 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
         "wind_dir": wind_dir_label,
         "wave": wv["label"],
         "wave_height_raw": wave_height,
+        "wave_period_raw": wave_period,
+        "wind_speed_raw": wind_speed,
+        "sst_raw": sst,
+        "temp_raw": temp_avg,
         "sst": tp["label"],
         "temp": at["label"],
         "sky": weather_code_label(weather_code),
