@@ -4,11 +4,11 @@
 {% set pf = spot.physical_features %}
 {% set df = spot.derived_features %}
 
-{% block title %}{{ spot.name }}の釣り場情報 | {{ area.city }}・波高・風向き・駐車場情報{% endblock %}
-{% block description %}{{ spot.name }}（{{ area.city }}）の釣り場情報。波高・風向・水温をリアルタイム表示。アクセス: {{ spot.info.access }}{% endblock %}
+<!-- {% block title %}{{ spot.name }}の釣り場情報 | {{ area.city }}・天気・波・風・駐車場情報{% endblock %} -->
+{% block description %}{{ spot.name }}（{{ area.city }}）の釣り場情報。天気・波・風の情報。アクセス: {{ spot.info.access }}{% endblock %}
 
 {% block og_title %}{{ spot.name }}の釣り場情報 | {{ area.city }}{% endblock %}
-{% block og_desc %}{{ spot.name }}（{{ area.city }}）の釣り場。波高・風向・水温情報あり。{% endblock %}
+{% block og_desc %}{{ spot.name }}（{{ area.city }}）の釣り場。天気・波・風の情報。{% endblock %}
 {% if spot.info.photo_url %}
 {% block og_image %}<meta property="og:image" content="{{ spot.info.photo_url }}">{% endblock %}
 {% endif %}
