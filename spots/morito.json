@@ -2,8 +2,8 @@
   "slug": "morito",
   "name": "森戸海岸（葉山）",
   "location": {
-    "latitude": 35.267,
-    "longitude": 139.5836
+    "latitude": 35.275965441200434,
+    "longitude": 139.5709562301636
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "hayama"
   },
   "physical_features": {
-    "sea_bearing_deg": 265,
+    "sea_bearing_deg": 270.4,
     "seabed_type": "sand_gravel",
     "depth_near_m": 4,
     "depth_far_m": 15,
     "surfer_spot": false
   },
   "derived_features": {
-    "bottom_kisugo_score": 70,
-    "terrain_summary": "砂礫混じりの浜"
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、遠浅"
   },
   "info": {
     "notes": "葉山の砂礫浜。ヨット多いがサーファー少なめ。静かな環境",

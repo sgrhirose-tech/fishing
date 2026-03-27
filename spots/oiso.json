@@ -2,8 +2,8 @@
   "slug": "oiso",
   "name": "大磯海岸",
   "location": {
-    "latitude": 35.3049,
-    "longitude": 139.3093
+    "latitude": 35.309269,
+    "longitude": 139.319336
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "oiso"
   },
   "physical_features": {
-    "sea_bearing_deg": 175,
+    "sea_bearing_deg": 124.0,
     "seabed_type": "sand_gravel",
     "depth_near_m": 5,
     "depth_far_m": 20,
     "surfer_spot": false
   },
   "derived_features": {
-    "bottom_kisugo_score": 70,
-    "terrain_summary": "砂礫混じりの浜"
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、遠浅"
   },
   "info": {
     "notes": "砂と砂利が混じる。サーファー少なめ。投げ釣りで好釣果が期待できる",

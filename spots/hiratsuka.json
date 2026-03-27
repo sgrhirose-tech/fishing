@@ -2,8 +2,8 @@
   "slug": "hiratsuka",
   "name": "平塚海岸",
   "location": {
-    "latitude": 35.3197,
-    "longitude": 139.3479
+    "latitude": 35.3144875,
+    "longitude": 139.3548865
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "hiratsuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 180,
+    "sea_bearing_deg": 179.7,
     "seabed_type": "sand",
     "depth_near_m": 4,
     "depth_far_m": 15,
     "surfer_spot": true
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、遠浅"
   },
   "info": {
     "notes": "遠浅の砂浜。平塚新港も近く便利",

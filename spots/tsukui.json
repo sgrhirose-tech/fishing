@@ -2,8 +2,8 @@
   "slug": "tsukui",
   "name": "津久井浜",
   "location": {
-    "latitude": 35.1683,
-    "longitude": 139.6512
+    "latitude": 35.19548370283157,
+    "longitude": 139.6678161621094
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 135,
+    "sea_bearing_deg": 135.3,
     "seabed_type": "sand",
     "depth_near_m": 4,
     "depth_far_m": 15,
     "surfer_spot": true
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、遠浅"
   },
   "info": {
     "notes": "ウィンドサーフィンで有名な砂浜。さまざまな魚が狙える好ポイント",

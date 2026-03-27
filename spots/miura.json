@@ -2,8 +2,8 @@
   "slug": "miura",
   "name": "三浦海岸",
   "location": {
-    "latitude": 35.1389,
-    "longitude": 139.6234
+    "latitude": 35.18461319415856,
+    "longitude": 139.65657234191897
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "miura"
   },
   "physical_features": {
-    "sea_bearing_deg": 130,
+    "sea_bearing_deg": 120.6,
     "seabed_type": "sand",
     "depth_near_m": 4,
     "depth_far_m": 15,
     "surfer_spot": true
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、遠浅"
   },
   "info": {
     "notes": "神奈川屈指の投げ釣りポイント。白い砂浜が1km以上続く",

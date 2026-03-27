@@ -2,8 +2,8 @@
   "slug": "onjuku",
   "name": "御宿海岸",
   "location": {
-    "latitude": 35.1822,
-    "longitude": 140.3864
+    "latitude": 35.181,
+    "longitude": 140.352956
   },
   "area": {
     "prefecture": "千葉県",
@@ -14,15 +14,15 @@
     "city_slug": "onjuku"
   },
   "physical_features": {
-    "sea_bearing_deg": 110,
+    "sea_bearing_deg": 164.3,
     "seabed_type": "sand",
     "depth_near_m": 4,
     "depth_far_m": 18,
     "surfer_spot": true
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体"
   },
   "info": {
     "notes": "白砂の投げ釣り名所。外洋うねり注意",

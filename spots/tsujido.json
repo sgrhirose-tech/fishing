@@ -2,8 +2,8 @@
   "slug": "tsujido",
   "name": "辻堂海岸",
   "location": {
-    "latitude": 35.3285,
-    "longitude": 139.4567
+    "latitude": 35.3184181572513,
+    "longitude": 139.444055557251
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "fujisawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 180,
+    "sea_bearing_deg": 181.2,
     "seabed_type": "sand",
     "depth_near_m": 5,
     "depth_far_m": 15,
     "surfer_spot": true
   },
   "derived_features": {
-    "bottom_kisugo_score": 90,
-    "terrain_summary": "遠浅の砂浜"
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、遠浅"
   },
   "info": {
     "notes": "湘南の代表的な砂浜。サーファー多め。オフショア時は空きやすい",

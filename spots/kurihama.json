@@ -2,8 +2,8 @@
   "slug": "kurihama",
   "name": "久里浜海岸",
   "location": {
-    "latitude": 35.2175,
-    "longitude": 139.7174
+    "latitude": 35.22500870594622,
+    "longitude": 139.71407890319827
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,15 +14,15 @@
     "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 215,
+    "sea_bearing_deg": 117.5,
     "seabed_type": "sand_mud",
     "depth_near_m": 3,
     "depth_far_m": 12,
     "surfer_spot": false
   },
   "derived_features": {
-    "bottom_kisugo_score": 55,
-    "terrain_summary": "砂泥の穏やかな浜"
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、貝殻混じり、近傍に石要素あり、遠浅"
   },
   "info": {
     "notes": "東京湾口の砂泥浜。波は穏やか。ペリー来航の地",
