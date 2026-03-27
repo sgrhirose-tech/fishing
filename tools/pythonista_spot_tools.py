@@ -16,18 +16,17 @@ Pythonista (iPhone) 用 釣りスポット JSON 作成・修正ツール
   3. JSON の出力先は DEFAULT_SPOTS_DIR（デフォルト: スクリプトと同じ階層の spots/）
 
 依存ライブラリ:
-  - requests  (Pythonista プリインストール済み)
   - stdlib のみ（json, math, time, pathlib, urllib など）
+  - 外部ライブラリ不要
 """
 
 import json
 import math
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
-
-import requests
 
 # ──────────────────────────────────────────
 # 設定
@@ -224,11 +223,13 @@ def request_json_with_keys(url, params):
     for key in API_KEYS:
         p = dict(params)
         p["subscription-key"] = key
+        full_url = url + "?" + urllib.parse.urlencode(p)
+        req = urllib.request.Request(full_url, headers={"User-Agent": USER_AGENT})
         try:
-            r = requests.get(url, params=p, timeout=30)
-            if r.status_code == 200:
-                return r.json()
-            last_error = f"HTTP {r.status_code}: {r.text[:300]}"
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            last_error = f"HTTP {e.code}"
         except Exception as e:
             last_error = str(e)
     raise RuntimeError(last_error or "API request failed")

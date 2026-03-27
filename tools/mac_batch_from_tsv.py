@@ -20,9 +20,10 @@ import json
 import math
 import sys
 import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from pathlib import Path
-
-import requests
 
 # ── tools/ ディレクトリにある pythonista_spot_tools から API 関数を再利用 ──
 sys.path.insert(0, str(Path(__file__).parent))
@@ -124,7 +125,6 @@ def reverse_geocode(lat: float, lon: float) -> dict:
     Nominatim reverse geocode で prefecture / city を返す。
     失敗時は空文字で返す。
     """
-    url = "https://nominatim.openstreetmap.org/reverse"
     params = {
         "lat": lat,
         "lon": lon,
@@ -133,11 +133,11 @@ def reverse_geocode(lat: float, lon: float) -> dict:
         "accept-language": "ja,en",
         "zoom": 14,
     }
+    url = "https://nominatim.openstreetmap.org/reverse?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
-        r = requests.get(url, params=params,
-                         headers={"User-Agent": USER_AGENT}, timeout=30)
-        r.raise_for_status()
-        addr = r.json().get("address", {})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            addr = json.loads(resp.read().decode("utf-8")).get("address", {})
         prefecture = (
             addr.get("state") or addr.get("province") or addr.get("region") or ""
         )
