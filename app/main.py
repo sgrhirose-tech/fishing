@@ -5,6 +5,7 @@ uvicorn app.main:app --reload で起動。
 
 import os
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
 from email.utils import formatdate
@@ -39,23 +40,35 @@ _ranking_cache: dict = {}   # date_str → (timestamp, scored_spots)
 _RANKING_TTL = 6 * 3600     # 6時間
 
 
+def _score_one_spot(spot: dict, date_str: str, area_centers: dict) -> dict:
+    """スポット1件分の気象取得・スコア計算を行う（スレッド内で実行）。"""
+    lat = spot_lat(spot)
+    lon = spot_lon(spot)
+    weather = fetch_weather(lat, lon, date_str)
+    marine = fetch_marine_weatherapi(lat, lon, date_str)
+    if not marine:
+        marine = fetch_marine(lat, lon, date_str)
+    area = assign_area(spot)
+    fetch_km = area_centers[area][2] if area in area_centers else 50
+    sst = fetch_sst_noaa(lat, lon, date_str)
+    return score_spot(spot, weather, marine, sst_noaa=sst, fetch_km=fetch_km)
+
+
 def _compute_ranking(date_str: str) -> list[dict]:
-    """全スポットのスコアを計算して降順に返す。"""
+    """全スポットのスコアを並列計算して降順に返す。"""
     spots = load_spots()
     area_centers = get_area_centers()
     results = []
-    for spot in spots:
-        lat = spot_lat(spot)
-        lon = spot_lon(spot)
-        weather = fetch_weather(lat, lon, date_str)
-        marine = fetch_marine_weatherapi(lat, lon, date_str)
-        if not marine:
-            marine = fetch_marine(lat, lon, date_str)
-        area = assign_area(spot)
-        fetch_km = area_centers[area][2] if area in area_centers else 50
-        sst = fetch_sst_noaa(lat, lon, date_str)
-        result = score_spot(spot, weather, marine, sst_noaa=sst, fetch_km=fetch_km)
-        results.append(result)
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futures = {
+            executor.submit(_score_one_spot, spot, date_str, area_centers): spot
+            for spot in spots
+        }
+        for future in as_completed(futures):
+            try:
+                results.append(future.result())
+            except Exception as e:
+                print(f"[警告] スコア計算失敗 ({futures[future].get('slug', '?')}): {e}")
     return sorted(results, key=lambda x: x["total"], reverse=True)
 
 
