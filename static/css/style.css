@@ -148,6 +148,16 @@ main {
 /* ---- ローディング ---- */
 .loading { color: #888; font-style: italic; padding: 1rem 0; }
 
+/* ---- サイト共通注意書き ---- */
+.site-notice {
+  text-align: center;
+  padding: 1.2rem 1rem 0;
+  font-size: .85rem;
+  color: #667;
+  line-height: 1.7;
+}
+.site-notice p { margin: 0; }
+
 /* ---- フッター ---- */
 footer {
   background: #1a3a50;
