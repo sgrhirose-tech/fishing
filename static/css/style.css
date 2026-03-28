@@ -40,7 +40,23 @@ main {
 
 /* ---- マップ ---- */
 .map-container { height: 420px; border-radius: 8px; margin: 1.25rem 0; }
-.map-detail { height: 260px; }
+.map-detail { height: 350px; }
+.map-legend {
+  display: flex; flex-wrap: wrap; gap: .5rem 1.2rem;
+  font-size: .75rem; color: #555;
+  margin: -.75rem 0 1rem;
+}
+.legend-item { display: flex; align-items: center; gap: .3rem; }
+.legend-badge {
+  color: white; min-width: 20px; height: 20px; border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; font-weight: bold; padding: 0 3px;
+}
+.legend-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 2px solid white; box-shadow: 0 1px 2px rgba(0,0,0,.3);
+  display: inline-block; flex-shrink: 0;
+}
 
 /* ---- エリアグリッド ---- */
 .area-grid {

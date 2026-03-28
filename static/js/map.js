@@ -67,7 +67,7 @@ function initSpotListMap(elementId, spots) {
 function initDetailMap(elementId, spot) {
   const lat = spot.location?.latitude ?? spot.lat;
   const lon = spot.location?.longitude ?? spot.lon;
-  const map = L.map(elementId).setView([lat, lon], 13);
+  const map = L.map(elementId).setView([lat, lon], 15);
   L.tileLayer(OSM_TILE, { attribution: OSM_ATTR }).addTo(map);
 
   const icon = L.divIcon({

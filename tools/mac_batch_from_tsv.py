@@ -49,7 +49,8 @@ _SSL_CTX = ssl.create_default_context()
 _SSL_CTX.check_hostname = False
 _SSL_CTX.verify_mode = ssl.CERT_NONE
 
-# area_name → (area_slug, pref_slug, prefecture)
+# area_name → (area_slug, pref_slug_fallback, prefecture_fallback)
+# pref_slug_fallback は Nominatim が失敗した場合のみ使用する
 AREA_MAP = {
     "相模湾":   ("sagamibay", "kanagawa", "神奈川県"),
     "三浦半島": ("miura",     "kanagawa", "神奈川県"),
@@ -57,6 +58,13 @@ AREA_MAP = {
     "内房":     ("uchibo",    "chiba",    "千葉県"),
     "外房":     ("sotobo",    "chiba",    "千葉県"),
     "九十九里": ("kujukuri",  "chiba",    "千葉県"),
+}
+
+# 都道府県名 → pref_slug（Nominatim の実際の都道府県から導出）
+PREF_SLUG_MAP = {
+    "神奈川県": "kanagawa",
+    "東京都":   "tokyo",
+    "千葉県":   "chiba",
 }
 
 
@@ -197,11 +205,14 @@ def process_record(rec: dict, idx: int, total: int) -> dict:
     # 住所取得（Nominatim）
     print("    住所取得 (Nominatim)...", end=" ", flush=True)
     geo = reverse_geocode(lat, lon)
-    # Nominatim の prefecture が AREA_MAP と異なる場合は AREA_MAP 優先
     if not geo["prefecture"] and prefecture:
         geo["prefecture"] = prefecture
     print(f"→ {geo['prefecture']} {geo['city']}")
     time.sleep(1.1)  # Nominatim レート制限対策
+
+    # Nominatim の実際の都道府県から pref_slug を導出（AREA_MAP のフォールバックより優先）
+    actual_pref = geo["prefecture"] or prefecture
+    actual_pref_slug = PREF_SLUG_MAP.get(actual_pref, pref_slug)
 
     # 物理データ取得（OSM + 海しる）
     phys = fetch_physical_data(lat, lon)
@@ -218,8 +229,8 @@ def process_record(rec: dict, idx: int, total: int) -> dict:
     return build_spot_json(
         slug, name, lat, lon,
         area_name, area_slug,
-        geo["prefecture"] or prefecture,
-        pref_slug,
+        actual_pref,
+        actual_pref_slug,
         geo["city"], "",          # city_slug は空文字
         phys, notes, access,
     )
