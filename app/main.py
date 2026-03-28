@@ -7,6 +7,7 @@ import os
 import time
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
+from email.utils import formatdate
 
 try:
     from dotenv import load_dotenv
@@ -157,6 +158,58 @@ def robots_txt():
 @app.get("/ads.txt", response_class=PlainTextResponse, include_in_schema=False)
 def ads_txt():
     return "google.com, pub-1877528534583136, DIRECT, f08c47fec0942fa0\n"
+
+@app.get("/feed.xml", include_in_schema=False)
+def feed_xml():
+    spots_dir = str(_BASE / "spots")
+    spots = load_spots()
+
+    def _mtime(s: dict) -> float:
+        path = os.path.join(spots_dir, f"{s.get('slug', '')}.json")
+        return os.path.getmtime(path) if os.path.exists(path) else 0.0
+
+    recent = sorted(spots, key=_mtime, reverse=True)[:50]
+
+    items = []
+    for s in recent:
+        a = s.get("area", {})
+        p  = a.get("pref_slug", "")
+        ar = a.get("area_slug", "")
+        c  = a.get("city_slug", "")
+        sl = s.get("slug", "")
+        if not all([p, ar, c, sl]):
+            continue
+        url      = f"{_BASE_URL}/{p}/{ar}/{c}/{sl}"
+        name     = s.get("name", sl)
+        area_name = a.get("area_name", "")
+        city      = a.get("city", "")
+        seabed    = s.get("derived_features", {}).get("seabed_summary", "")
+        desc = f"{area_name}・{city}の釣り場。{seabed}"
+        pub  = formatdate(_mtime(s) or None, localtime=True)
+        items.append(
+            f"  <item>\n"
+            f"    <title>{name}</title>\n"
+            f"    <link>{url}</link>\n"
+            f"    <description>{desc}</description>\n"
+            f"    <guid isPermaLink=\"true\">{url}</guid>\n"
+            f"    <pubDate>{pub}</pubDate>\n"
+            f"  </item>"
+        )
+
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        '  <channel>\n'
+        '    <title>Tsuricast 新着釣り場</title>\n'
+        f'    <link>{_BASE_URL}/</link>\n'
+        '    <description>千葉・東京・神奈川の釣り場天気・波高情報。天気・風・波高・水温を毎日更新。</description>\n'
+        '    <language>ja</language>\n'
+        f'    <atom:link href="{_BASE_URL}/feed.xml" rel="self" type="application/rss+xml"/>\n'
+        + "\n".join(items) + "\n"
+        '  </channel>\n'
+        '</rss>'
+    )
+    return Response(xml, media_type="application/rss+xml")
 
 _BASE_URL = "https://tsuricast.jp"
 
