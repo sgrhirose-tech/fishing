@@ -154,6 +154,10 @@ Disallow: /
 def robots_txt():
     return _ROBOTS_TXT
 
+@app.get("/ads.txt", response_class=PlainTextResponse, include_in_schema=False)
+def ads_txt():
+    return "google.com, pub-1877528534583136, DIRECT, f08c47fec0942fa0\n"
+
 # ============================================================
 # API エンドポイント
 # ============================================================
