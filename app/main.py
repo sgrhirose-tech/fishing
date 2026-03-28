@@ -280,6 +280,10 @@ def page_about(request: Request):
 def page_contact(request: Request):
     return templates.TemplateResponse(request, "static_pages/contact.html", {})
 
+@app.get("/safety", response_class=HTMLResponse)
+def page_safety(request: Request):
+    return templates.TemplateResponse(request, "static_pages/safety.html", {})
+
 
 @app.get("/{pref_slug}/", response_class=HTMLResponse)
 def page_pref(request: Request, pref_slug: str):
