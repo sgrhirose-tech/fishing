@@ -4,7 +4,12 @@ spots/ フォルダ内の JSON ファイルを読み込む。
 """
 
 import json
+import logging
 from pathlib import Path
+
+from .constants import VALID_AREA_SLUGS, VALID_PREF_SLUGS
+
+logger = logging.getLogger(__name__)
 
 # spots/ フォルダのデフォルトパス（プロジェクトルート直下）
 _ROOT = Path(__file__).parent.parent
@@ -66,6 +71,15 @@ def load_spots(spots_dir: str | None = None) -> list[dict]:
                 spots.append(json.load(f))
         except Exception as e:
             print(f"[警告] {p.name} の読み込みに失敗: {e}")
+
+    for s in spots:
+        area = s.get("area", {})
+        a_slug = area.get("area_slug", "")
+        p_slug = area.get("pref_slug", "")
+        if a_slug and a_slug not in VALID_AREA_SLUGS:
+            logger.warning("invalid area_slug '%s' in %s", a_slug, s.get("slug"))
+        if p_slug and p_slug not in VALID_PREF_SLUGS:
+            logger.warning("invalid pref_slug '%s' in %s", p_slug, s.get("slug"))
 
     _spots_cache = spots
     return spots

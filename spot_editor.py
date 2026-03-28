@@ -12,11 +12,31 @@ unadjusted/*.json を Leaflet.js WebView で編集・保存する。
 import json
 import math
 import os
+import re
 import sys
 import urllib.parse
 
 SPOTS_DIR = os.path.join(os.path.dirname(__file__), "unadjusted")
 AREAS_FILE = os.path.join(os.path.dirname(__file__), "spots", "_marine_areas.json")
+
+# slug バリデーション用定数（app/constants.py と同一の値を保つこと）
+_VALID_AREA_SLUGS = {"sagamibay", "miura", "tokyobay", "uchibo", "sotobo", "kujukuri"}
+_VALID_PREF_SLUGS = {"kanagawa", "tokyo", "chiba"}
+_CITY_SLUG_RE = re.compile(r'^[a-z0-9\-]+$')
+
+
+def _validate_area(area: dict):
+    """area フィールドのバリデーション。エラー文字列を返す（問題なければ None）。"""
+    a = area.get("area_slug", "")
+    p = area.get("pref_slug", "")
+    c = area.get("city_slug", "")
+    if a and a not in _VALID_AREA_SLUGS:
+        return f'area_slug "{a}" は無効です。有効値: {sorted(_VALID_AREA_SLUGS)}'
+    if p and p not in _VALID_PREF_SLUGS:
+        return f'pref_slug "{p}" は無効です。有効値: {sorted(_VALID_PREF_SLUGS)}'
+    if c and not _CITY_SLUG_RE.match(c):
+        return f'city_slug "{c}" は英小文字・数字・ハイフンのみ使用可能です'
+    return None
 
 SEABED_TYPE_OPTIONS = [
     ("sand",       "砂"),
@@ -640,6 +660,10 @@ def _save_spot(payload):
     if not filename:
         raise ValueError("missing _filename")
 
+    area_err = _validate_area(payload.get("area", {}))
+    if area_err:
+        return {"ok": False, "error": area_err}
+
     path = os.path.join(SPOTS_DIR, filename)
     if not os.path.exists(path):
         raise FileNotFoundError(f"file not found: {path}")
@@ -783,7 +807,10 @@ class SpotDelegate(object):
             print(f"[save] JSON parse error: {e}")
             return
         try:
-            _save_spot(payload)
+            result = _save_spot(payload)
+            if result and not result.get('ok'):
+                msg = result.get('error', '保存エラー').replace("'", "\\'")
+                self.wv.eval_js(f"alert('保存エラー: {msg}');")
         except Exception as e:
             print(f"[save] error: {e}")
 
@@ -833,8 +860,11 @@ class SpotHTTPHandler(_http_server.BaseHTTPRequestHandler):
             return
         if self.path == '/save':
             try:
-                _save_spot(payload)
-                self._respond(200, {'ok': True})
+                result = _save_spot(payload)
+                if result and not result.get('ok'):
+                    self._respond(400, result)
+                else:
+                    self._respond(200, {'ok': True})
             except Exception as e:
                 self._respond(500, {'ok': False, 'error': str(e)})
         elif self.path == '/newspot':
