@@ -2,23 +2,23 @@
   "slug": "inamuragasaki",
   "name": "稲村ヶ崎",
   "location": {
-    "latitude": 35.3037,
-    "longitude": 139.5186
+    "latitude": 35.303043,
+    "longitude": 139.5195436
   },
   "area": {
     "prefecture": "神奈川県",
     "pref_slug": "kanagawa",
-    "area_name": "三浦半島",
-    "area_slug": "miura",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
     "city": "鎌倉市",
-    "city_slug": ""
+    "city_slug": "kamakura"
   },
   "physical_features": {
-    "sea_bearing_deg": 185.4,
-    "seabed_type": "rock",
+    "sea_bearing_deg": 185,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
-    "surfer_spot": false,
+    "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1881.5
   },
   "derived_features": {

@@ -2,8 +2,8 @@
   "slug": "katase-gyoko",
   "name": "片瀬漁港",
   "location": {
-    "latitude": 35.31,
-    "longitude": 139.4858
+    "latitude": 35.3051444,
+    "longitude": 139.478817
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "藤沢市",
-    "city_slug": ""
+    "city_slug": "fujisawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 163.7,
+    "sea_bearing_deg": 270,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

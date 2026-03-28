@@ -2,19 +2,19 @@
   "slug": "kuzuma-kaigan",
   "name": "久津間海岸",
   "location": {
-    "latitude": 35.44597,
-    "longitude": 139.98293
+    "latitude": 35.4077479,
+    "longitude": 139.9001598
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
     "area_name": "内房",
     "area_slug": "uchibo",
-    "city": "袖ケ浦市",
-    "city_slug": ""
+    "city": "木更津市",
+    "city_slug": "kisarazu"
   },
   "physical_features": {
-    "sea_bearing_deg": 244.7,
+    "sea_bearing_deg": 270,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

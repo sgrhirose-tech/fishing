@@ -2,20 +2,20 @@
   "slug": "shirazu-kaigan",
   "name": "白渚海岸",
   "location": {
-    "latitude": 35.0092,
-    "longitude": 140.0056
+    "latitude": 35.0310242,
+    "longitude": 140.0027704
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "南房総市",
-    "city_slug": ""
+    "city_slug": "minamiboso"
   },
   "physical_features": {
-    "sea_bearing_deg": 131.6,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 140,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

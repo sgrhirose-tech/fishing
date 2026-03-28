@@ -2,19 +2,19 @@
   "slug": "koshigoe-gyoko",
   "name": "腰越漁港",
   "location": {
-    "latitude": 35.3108,
-    "longitude": 139.4878
+    "latitude": 35.3058798,
+    "longitude": 139.49049
   },
   "area": {
     "prefecture": "神奈川県",
     "pref_slug": "kanagawa",
     "area_name": "相模湾",
     "area_slug": "sagamibay",
-    "city": "藤沢市",
-    "city_slug": ""
+    "city": "鎌倉市",
+    "city_slug": "kamakura"
   },
   "physical_features": {
-    "sea_bearing_deg": 173.8,
+    "sea_bearing_deg": 180,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

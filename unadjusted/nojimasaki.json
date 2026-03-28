@@ -2,20 +2,20 @@
   "slug": "nojimasaki",
   "name": "野島崎",
   "location": {
-    "latitude": 34.903,
-    "longitude": 139.8768
+    "latitude": 34.9007149,
+    "longitude": 139.8883581
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "南房総市",
-    "city_slug": ""
+    "city_slug": "minamiboso"
   },
   "physical_features": {
-    "sea_bearing_deg": 163.9,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

@@ -1,0 +1,33 @@
+{
+  "slug": "ariake-nishi-futo-koen",
+  "name": "有明西ふ頭公園",
+  "location": {
+    "latitude": 35.6276168,
+    "longitude": 139.7938156
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "江東区",
+    "city_slug": "koutou"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 245,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、傾斜不明"
+  },
+  "info": {
+    "notes": "夜景も楽しめる湾岸公園",
+    "access": "東京ビッグサイト駅から徒歩10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/ariake-nishi-futo-koen.jpg"
+  }
+}

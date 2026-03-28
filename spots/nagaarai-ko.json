@@ -1,0 +1,33 @@
+{
+  "slug": "nagaarai-ko",
+  "name": "名洗港",
+  "location": {
+    "latitude": 35.7063774,
+    "longitude": 140.8372915
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "銚子市",
+    "city_slug": "choshi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 305,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、傾斜不明"
+  },
+  "info": {
+    "notes": "外港寄りの実績場",
+    "access": "銚子駅からバス15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/nagaarai-ko.jpg"
+  }
+}

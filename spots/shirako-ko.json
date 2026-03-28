@@ -1,0 +1,33 @@
+{
+  "slug": "shirako-ko",
+  "name": "白子港",
+  "location": {
+    "latitude": 34.9854558,
+    "longitude": 139.9714476
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "南房総市",
+    "city_slug": "minamiboso"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1539.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、やや急深"
+  },
+  "info": {
+    "notes": "南端寄りの小規模港",
+    "access": "千倉駅からバス20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/shirako-ko.jpg"
+  }
+}

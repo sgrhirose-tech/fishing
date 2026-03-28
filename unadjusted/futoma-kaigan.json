@@ -2,8 +2,8 @@
   "slug": "futoma-kaigan",
   "name": "二夕間海岸",
   "location": {
-    "latitude": 35.1017,
-    "longitude": 140.1633
+    "latitude": 35.121418,
+    "longitude": 140.1531672
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "外房",
     "area_slug": "sotobo",
     "city": "鴨川市",
-    "city_slug": ""
+    "city_slug": "kamogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 193.4,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 145,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

@@ -2,8 +2,8 @@
   "slug": "motosuka-kaigan",
   "name": "本須賀海岸",
   "location": {
-    "latitude": 35.6238,
-    "longitude": 140.4768
+    "latitude": 35.5497736,
+    "longitude": 140.4709768
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "山武市",
-    "city_slug": ""
+    "city_slug": "sanmu"
   },
   "physical_features": {
-    "sea_bearing_deg": 134.5,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 120,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

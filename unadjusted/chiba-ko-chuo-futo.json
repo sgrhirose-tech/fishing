@@ -1,9 +1,9 @@
 {
   "slug": "chiba-ko-chuo-futo",
-  "name": "千葉港中央ふ頭",
+  "name": "千葉港中央ふ頭（千葉ポートパーク）",
   "location": {
-    "latitude": 35.60493,
-    "longitude": 140.10642
+    "latitude": 35.5967399,
+    "longitude": 140.0904465
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,10 +11,10 @@
     "area_name": "内房",
     "area_slug": "uchibo",
     "city": "千葉市",
-    "city_slug": ""
+    "city_slug": "chiba"
   },
   "physical_features": {
-    "sea_bearing_deg": 139.7,
+    "sea_bearing_deg": 270,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

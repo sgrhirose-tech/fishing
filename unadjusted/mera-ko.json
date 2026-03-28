@@ -2,8 +2,8 @@
   "slug": "mera-ko",
   "name": "布良港",
   "location": {
-    "latitude": 34.9148,
-    "longitude": 139.8345
+    "latitude": 34.9198861,
+    "longitude": 139.8239529
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "内房",
     "area_slug": "uchibo",
     "city": "館山市",
-    "city_slug": ""
+    "city_slug": "tateyama"
   },
   "physical_features": {
-    "sea_bearing_deg": 208.2,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 270,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

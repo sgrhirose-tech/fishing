@@ -2,8 +2,8 @@
   "slug": "kyu-yoshida-tei-shita",
   "name": "旧吉田邸下",
   "location": {
-    "latitude": 35.3155,
-    "longitude": 139.2937
+    "latitude": 35.3015807,
+    "longitude": 139.2905045
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,11 +11,11 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "大磯町",
-    "city_slug": ""
+    "city_slug": "oiso"
   },
   "physical_features": {
-    "sea_bearing_deg": 162.1,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 165,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

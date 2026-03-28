@@ -1,9 +1,9 @@
 {
   "slug": "ichihara-umizuri-shisetsu",
-  "name": "市原海づり施設",
+  "name": "市原海づり施設（オリジナルメーカー海づり公園）",
   "location": {
-    "latitude": 35.542463,
-    "longitude": 140.060454
+    "latitude": 35.5426766,
+    "longitude": 140.060513
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,10 +11,10 @@
     "area_name": "内房",
     "area_slug": "uchibo",
     "city": "市原市",
-    "city_slug": ""
+    "city_slug": "ichihara"
   },
   "physical_features": {
-    "sea_bearing_deg": 304.6,
+    "sea_bearing_deg": 305,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

@@ -2,20 +2,20 @@
   "slug": "umezawa-kaigan",
   "name": "梅沢海岸",
   "location": {
-    "latitude": 35.3117,
-    "longitude": 139.2747
+    "latitude": 35.2927016,
+    "longitude": 139.2490375
   },
   "area": {
     "prefecture": "神奈川県",
     "pref_slug": "kanagawa",
     "area_name": "相模湾",
     "area_slug": "sagamibay",
-    "city": "大磯町",
-    "city_slug": ""
+    "city": "二宮町",
+    "city_slug": "ninomiya"
   },
   "physical_features": {
-    "sea_bearing_deg": 165.2,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 145,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

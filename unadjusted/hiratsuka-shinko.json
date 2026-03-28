@@ -2,8 +2,8 @@
   "slug": "hiratsuka-shinko",
   "name": "平塚新港",
   "location": {
-    "latitude": 35.314,
-    "longitude": 139.3617
+    "latitude": 35.312884,
+    "longitude": 139.3648338
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "平塚市",
-    "city_slug": ""
+    "city_slug": "hiratsuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 185.2,
+    "sea_bearing_deg": 270,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

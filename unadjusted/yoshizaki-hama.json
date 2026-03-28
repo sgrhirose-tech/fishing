@@ -2,20 +2,20 @@
   "slug": "yoshizaki-hama",
   "name": "吉崎浜",
   "location": {
-    "latitude": 35.6948,
-    "longitude": 140.6408
+    "latitude": 35.6690813,
+    "longitude": 140.6181335
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
     "area_name": "九十九里",
     "area_slug": "kujukuri",
-    "city": "旭市",
-    "city_slug": ""
+    "city": "匝瑳市",
+    "city_slug": "sousa"
   },
   "physical_features": {
-    "sea_bearing_deg": 243.2,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 140,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

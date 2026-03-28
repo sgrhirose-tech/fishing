@@ -1,0 +1,33 @@
+{
+  "slug": "horikawa-hama",
+  "name": "堀川浜",
+  "location": {
+    "latitude": 35.6473404,
+    "longitude": 140.5859256
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "匝瑳市",
+    "city_slug": "sousa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 130,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、傾斜不明"
+  },
+  "info": {
+    "notes": "静かなサーフで探りやすい",
+    "access": "旭駅からバス25分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/horikawa-hama.jpg"
+  }
+}

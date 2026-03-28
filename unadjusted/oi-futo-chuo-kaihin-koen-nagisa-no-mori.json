@@ -2,8 +2,8 @@
   "slug": "oi-futo-chuo-kaihin-koen-nagisa-no-mori",
   "name": "大井ふ頭中央海浜公園なぎさの森",
   "location": {
-    "latitude": 35.58726,
-    "longitude": 139.75147
+    "latitude": 35.5937388,
+    "longitude": 139.7486472
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "大田区",
-    "city_slug": ""
+    "city_slug": "ota"
   },
   "physical_features": {
-    "sea_bearing_deg": 82.4,
+    "sea_bearing_deg": 275,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

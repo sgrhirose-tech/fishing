@@ -2,8 +2,8 @@
   "slug": "tsukuihama",
   "name": "津久井浜",
   "location": {
-    "latitude": 35.2143,
-    "longitude": 139.6943
+    "latitude": 35.1947129,
+    "longitude": 139.6666253
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,14 +11,14 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "横須賀市",
-    "city_slug": ""
+    "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 165.6,
-    "seabed_type": "rock",
+    "sea_bearing_deg": 125,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
-    "surfer_spot": false,
+    "surfer_spot": true,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {

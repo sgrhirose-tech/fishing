@@ -2,8 +2,8 @@
   "slug": "chigasaki-headland",
   "name": "茅ヶ崎ヘッドランド",
   "location": {
-    "latitude": 35.3245,
-    "longitude": 139.4208
+    "latitude": 35.3156855,
+    "longitude": 139.4142723
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,11 +11,11 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "茅ヶ崎市",
-    "city_slug": ""
+    "city_slug": "chigasaki"
   },
   "physical_features": {
-    "sea_bearing_deg": 167.3,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

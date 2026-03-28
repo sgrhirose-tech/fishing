@@ -2,19 +2,19 @@
   "slug": "anesaki-ko",
   "name": "姉崎港",
   "location": {
-    "latitude": 35.52076,
-    "longitude": 140.03152
+    "latitude": 35.4669267,
+    "longitude": 140.0220823
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
     "area_name": "内房",
     "area_slug": "uchibo",
-    "city": "市原市",
-    "city_slug": ""
+    "city": "袖ケ浦市",
+    "city_slug": "sodegaura"
   },
   "physical_features": {
-    "sea_bearing_deg": 5.5,
+    "sea_bearing_deg": 310,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

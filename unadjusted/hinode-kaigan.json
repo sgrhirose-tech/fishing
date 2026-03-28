@@ -2,8 +2,8 @@
   "slug": "hinode-kaigan",
   "name": "日の出海岸",
   "location": {
-    "latitude": 35.63797,
-    "longitude": 139.90768
+    "latitude": 35.6363718,
+    "longitude": 139.9326897
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "浦安市",
-    "city_slug": ""
+    "city_slug": "urayasu"
   },
   "physical_features": {
-    "sea_bearing_deg": 146.3,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 135,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

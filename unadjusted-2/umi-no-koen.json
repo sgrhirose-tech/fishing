@@ -1,0 +1,33 @@
+{
+  "slug": "umi-no-koen",
+  "name": "海の公園",
+  "location": {
+    "latitude": 35.3387241,
+    "longitude": 139.6354365
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": "yokohama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 120,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "潮干狩り場横の手軽な砂浜",
+    "access": "海の公園南口駅から徒歩3分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/umi-no-koen.jpg"
+  }
+}

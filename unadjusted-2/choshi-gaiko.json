@@ -1,0 +1,33 @@
+{
+  "slug": "choshi-gaiko",
+  "name": "銚子外港",
+  "location": {
+    "latitude": 35.7369594,
+    "longitude": 140.8704007
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "銚子市",
+    "city_slug": "choshi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 65,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1872.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、やや急深"
+  },
+  "info": {
+    "notes": "大型港湾で回遊魚期待",
+    "access": "銚子駅からバス15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/choshi-gaiko.jpg"
+  }
+}

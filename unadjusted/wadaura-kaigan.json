@@ -2,19 +2,19 @@
   "slug": "wadaura-kaigan",
   "name": "和田浦海岸",
   "location": {
-    "latitude": 35.0314,
-    "longitude": 140.0188
+    "latitude": 35.0408543,
+    "longitude": 140.0213528
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "南房総市",
-    "city_slug": ""
+    "city_slug": "minamiboso"
   },
   "physical_features": {
-    "sea_bearing_deg": 187.6,
+    "sea_bearing_deg": 120,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

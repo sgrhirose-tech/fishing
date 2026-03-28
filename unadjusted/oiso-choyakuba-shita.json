@@ -2,8 +2,8 @@
   "slug": "oiso-choyakuba-shita",
   "name": "大磯町役場下",
   "location": {
-    "latitude": 35.3135,
-    "longitude": 139.313
+    "latitude": 35.3056785,
+    "longitude": 139.3108678
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "大磯町",
-    "city_slug": ""
+    "city_slug": "oiso"
   },
   "physical_features": {
-    "sea_bearing_deg": 124.0,
+    "sea_bearing_deg": 165,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

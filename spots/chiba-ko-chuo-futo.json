@@ -1,0 +1,33 @@
+{
+  "slug": "chiba-ko-chuo-futo",
+  "name": "千葉港中央ふ頭（千葉ポートパーク）",
+  "location": {
+    "latitude": 35.5967399,
+    "longitude": 140.0904465
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "千葉市",
+    "city_slug": "chiba"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 270,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、傾斜不明"
+  },
+  "info": {
+    "notes": "港湾部を探れるポイント",
+    "access": "千葉みなと駅から徒歩18分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/chiba-ko-chuo-futo.jpg"
+  }
+}

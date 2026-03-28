@@ -2,8 +2,8 @@
   "slug": "kamogawa-ko",
   "name": "鴨川港",
   "location": {
-    "latitude": 35.1068,
-    "longitude": 140.0954
+    "latitude": 35.0927302,
+    "longitude": 140.107677
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "外房",
     "area_slug": "sotobo",
     "city": "鴨川市",
-    "city_slug": ""
+    "city_slug": "kamogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 120.0,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 125,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

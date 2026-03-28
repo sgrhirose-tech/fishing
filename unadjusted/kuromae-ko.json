@@ -2,8 +2,8 @@
   "slug": "kuromae-ko",
   "name": "黒生港",
   "location": {
-    "latitude": 35.7363,
-    "longitude": 140.8628
+    "latitude": 35.7305235,
+    "longitude": 140.869832
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,10 +11,10 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "銚子市",
-    "city_slug": ""
+    "city_slug": "choshi"
   },
   "physical_features": {
-    "sea_bearing_deg": 331.6,
+    "sea_bearing_deg": 70,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

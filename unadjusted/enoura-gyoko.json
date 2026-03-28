@@ -2,8 +2,8 @@
   "slug": "enoura-gyoko",
   "name": "江之浦漁港",
   "location": {
-    "latitude": 35.2138,
-    "longitude": 139.1368
+    "latitude": 35.1921528,
+    "longitude": 139.1384554
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,11 +11,11 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "小田原市",
-    "city_slug": ""
+    "city_slug": "odawara"
   },
   "physical_features": {
-    "sea_bearing_deg": 15.5,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 90,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

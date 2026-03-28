@@ -2,20 +2,20 @@
   "slug": "ichinomiyagawa-kako",
   "name": "一宮川河口",
   "location": {
-    "latitude": 35.3702,
-    "longitude": 140.392
+    "latitude": 35.384108,
+    "longitude": 140.39168
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
     "area_name": "外房",
     "area_slug": "sotobo",
-    "city": "一宮町",
-    "city_slug": ""
+    "city": "長生村",
+    "city_slug": "chousei"
   },
   "physical_features": {
-    "sea_bearing_deg": 90.0,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 90,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

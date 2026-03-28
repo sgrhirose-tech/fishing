@@ -2,19 +2,19 @@
   "slug": "shiromazu-no-iso",
   "name": "白間津の磯",
   "location": {
-    "latitude": 34.9278,
-    "longitude": 139.9472
+    "latitude": 34.9241878,
+    "longitude": 139.9456072
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "南房総市",
-    "city_slug": ""
+    "city_slug": "minamiboso"
   },
   "physical_features": {
-    "sea_bearing_deg": 340.3,
+    "sea_bearing_deg": 145,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

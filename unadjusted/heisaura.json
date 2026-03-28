@@ -11,10 +11,10 @@
     "area_name": "内房",
     "area_slug": "uchibo",
     "city": "館山市",
-    "city_slug": ""
+    "city_slug": "tateyama"
   },
   "physical_features": {
-    "sea_bearing_deg": 204.6,
+    "sea_bearing_deg": 215,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

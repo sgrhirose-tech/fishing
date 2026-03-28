@@ -2,8 +2,8 @@
   "slug": "uchiura-kaigan",
   "name": "内浦海岸",
   "location": {
-    "latitude": 35.1214,
-    "longitude": 140.1888
+    "latitude": 35.1271569,
+    "longitude": 140.1914477
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,10 +11,10 @@
     "area_name": "外房",
     "area_slug": "sotobo",
     "city": "鴨川市",
-    "city_slug": ""
+    "city_slug": "kamogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 131.4,
+    "sea_bearing_deg": 195,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

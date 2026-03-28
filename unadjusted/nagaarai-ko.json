@@ -2,8 +2,8 @@
   "slug": "nagaarai-ko",
   "name": "名洗港",
   "location": {
-    "latitude": 35.7246,
-    "longitude": 140.8573
+    "latitude": 35.7063774,
+    "longitude": 140.8372915
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "銚子市",
-    "city_slug": ""
+    "city_slug": "choshi"
   },
   "physical_features": {
-    "sea_bearing_deg": 66.4,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 305,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

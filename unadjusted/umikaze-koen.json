@@ -11,10 +11,10 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "横須賀市",
-    "city_slug": ""
+    "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 39.2,
+    "sea_bearing_deg": 40,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

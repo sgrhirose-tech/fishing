@@ -2,20 +2,20 @@
   "slug": "taito-saki",
   "name": "太東崎",
   "location": {
-    "latitude": 35.3436,
-    "longitude": 140.4018
+    "latitude": 35.3080337,
+    "longitude": 140.4147899
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
     "area_name": "外房",
     "area_slug": "sotobo",
-    "city": "一宮町",
-    "city_slug": ""
+    "city": "いすみ市",
+    "city_slug": "isumi"
   },
   "physical_features": {
-    "sea_bearing_deg": 88.6,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 95,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

@@ -2,8 +2,8 @@
   "slug": "enoshima",
   "name": "江の島",
   "location": {
-    "latitude": 35.2996,
-    "longitude": 139.4807
+    "latitude": 35.2995668,
+    "longitude": 139.480716
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "藤沢市",
-    "city_slug": ""
+    "city_slug": "fujisawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 120.6,
+    "sea_bearing_deg": 90,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

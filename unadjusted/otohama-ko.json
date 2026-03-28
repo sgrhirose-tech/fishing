@@ -2,19 +2,19 @@
   "slug": "otohama-ko",
   "name": "乙浜港",
   "location": {
-    "latitude": 34.923,
-    "longitude": 139.947
+    "latitude": 34.9113437,
+    "longitude": 139.9255979
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "南房総市",
-    "city_slug": ""
+    "city_slug": "minamiboso"
   },
   "physical_features": {
-    "sea_bearing_deg": 164.8,
+    "sea_bearing_deg": 180,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

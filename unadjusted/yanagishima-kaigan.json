@@ -2,8 +2,8 @@
   "slug": "yanagishima-kaigan",
   "name": "柳島海岸",
   "location": {
-    "latitude": 35.3211,
-    "longitude": 139.3917
+    "latitude": 35.3152302,
+    "longitude": 139.3815708
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,11 +11,11 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "茅ヶ崎市",
-    "city_slug": ""
+    "city_slug": "chigasaki"
   },
   "physical_features": {
-    "sea_bearing_deg": 177.0,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 175,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

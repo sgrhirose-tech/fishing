@@ -2,8 +2,8 @@
   "slug": "onjuku-ko",
   "name": "御宿港",
   "location": {
-    "latitude": 35.1826,
-    "longitude": 140.3507
+    "latitude": 35.1789473,
+    "longitude": 140.3486466
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "外房",
     "area_slug": "sotobo",
     "city": "御宿町",
-    "city_slug": ""
+    "city_slug": "onjuku"
   },
   "physical_features": {
-    "sea_bearing_deg": 147.6,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 150,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

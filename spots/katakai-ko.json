@@ -1,0 +1,33 @@
+{
+  "slug": "katakai-ko",
+  "name": "片貝港",
+  "location": {
+    "latitude": 35.5332041,
+    "longitude": 140.4641104
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "九十九里町",
+    "city_slug": "kujukuri"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 120,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "九十九里中部の代表港",
+    "access": "東金駅からバス30分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/katakai-ko.jpg"
+  }
+}

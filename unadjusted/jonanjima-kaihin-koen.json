@@ -2,8 +2,8 @@
   "slug": "jonanjima-kaihin-koen",
   "name": "城南島海浜公園",
   "location": {
-    "latitude": 35.57806,
-    "longitude": 139.78333
+    "latitude": 35.5810613,
+    "longitude": 139.7861016
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "大田区",
-    "city_slug": ""
+    "city_slug": "ota"
   },
   "physical_features": {
-    "sea_bearing_deg": 131.5,
+    "sea_bearing_deg": 50,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

@@ -2,20 +2,20 @@
   "slug": "dayuzaki-ko",
   "name": "太夫崎港",
   "location": {
-    "latitude": 35.0739,
-    "longitude": 140.0733
+    "latitude": 35.0623024,
+    "longitude": 140.0778884
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "鴨川市",
-    "city_slug": ""
+    "city_slug": "kamogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 184.9,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

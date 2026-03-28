@@ -1,0 +1,33 @@
+{
+  "slug": "moroi-so",
+  "name": "諸磯",
+  "location": {
+    "latitude": 35.1556747,
+    "longitude": 139.6073753
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "三浦市",
+    "city_slug": "miura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 295,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 568.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、貝殻混じり、近傍に石要素あり、急深"
+  },
+  "info": {
+    "notes": "小磯と港が混在する",
+    "access": "三崎口駅からバス20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/moroi-so.jpg"
+  }
+}

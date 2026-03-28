@@ -2,19 +2,19 @@
   "slug": "yuigahama",
   "name": "由比ヶ浜",
   "location": {
-    "latitude": 35.3086,
-    "longitude": 139.5464
+    "latitude": 35.3088742,
+    "longitude": 139.5423532
   },
   "area": {
     "prefecture": "神奈川県",
     "pref_slug": "kanagawa",
-    "area_name": "三浦半島",
-    "area_slug": "miura",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
     "city": "鎌倉市",
-    "city_slug": ""
+    "city_slug": "kamakura"
   },
   "physical_features": {
-    "sea_bearing_deg": 232.1,
+    "sea_bearing_deg": 210,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

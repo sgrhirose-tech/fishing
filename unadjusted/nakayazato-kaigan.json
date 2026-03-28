@@ -2,8 +2,8 @@
   "slug": "nakayazato-kaigan",
   "name": "中谷里海岸",
   "location": {
-    "latitude": 35.7098,
-    "longitude": 140.6615
+    "latitude": 35.6831391,
+    "longitude": 140.6435394
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "旭市",
-    "city_slug": ""
+    "city_slug": "asahi"
   },
   "physical_features": {
-    "sea_bearing_deg": 75.9,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 145,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

@@ -2,8 +2,8 @@
   "slug": "nagai-ko",
   "name": "長井港",
   "location": {
-    "latitude": 35.2217,
-    "longitude": 139.6369
+    "latitude": 35.2076178,
+    "longitude": 139.6091616
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,11 +11,11 @@
     "area_name": "三浦半島",
     "area_slug": "miura",
     "city": "横須賀市",
-    "city_slug": ""
+    "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 199.2,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 325,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

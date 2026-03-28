@@ -1,0 +1,33 @@
+{
+  "slug": "kyu-yoshida-tei-shita",
+  "name": "旧吉田邸下",
+  "location": {
+    "latitude": 35.3015807,
+    "longitude": 139.2905045
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "大磯町",
+    "city_slug": "oiso"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 165,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 711.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、急深"
+  },
+  "info": {
+    "notes": "静かな海岸ポイント",
+    "access": "二宮駅から徒歩20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kyu-yoshida-tei-shita.jpg"
+  }
+}

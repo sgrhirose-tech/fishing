@@ -1,0 +1,33 @@
+{
+  "slug": "chigasaki-headland",
+  "name": "茅ヶ崎ヘッドランド",
+  "location": {
+    "latitude": 35.3156855,
+    "longitude": 139.4142723
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "茅ヶ崎市",
+    "city_slug": "chigasaki"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1345.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、やや急深"
+  },
+  "info": {
+    "notes": "地形変化で魚影期待",
+    "access": "茅ケ崎駅からバス10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/chigasaki-headland.jpg"
+  }
+}

@@ -2,8 +2,8 @@
   "slug": "kawazu-ko",
   "name": "川津港",
   "location": {
-    "latitude": 35.1625,
-    "longitude": 140.3235
+    "latitude": 35.1455908,
+    "longitude": 140.3267115
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "外房",
     "area_slug": "sotobo",
     "city": "勝浦市",
-    "city_slug": ""
+    "city_slug": "katsuura"
   },
   "physical_features": {
-    "sea_bearing_deg": 91.9,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 90,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

@@ -2,23 +2,23 @@
   "slug": "shichirigahama",
   "name": "七里ヶ浜",
   "location": {
-    "latitude": 35.3098,
-    "longitude": 139.5039
+    "latitude": 35.3047941,
+    "longitude": 139.510746
   },
   "area": {
     "prefecture": "神奈川県",
     "pref_slug": "kanagawa",
-    "area_name": "三浦半島",
-    "area_slug": "miura",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
     "city": "鎌倉市",
-    "city_slug": ""
+    "city_slug": "kamakura"
   },
   "physical_features": {
-    "sea_bearing_deg": 186.1,
+    "sea_bearing_deg": 200,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
-    "surfer_spot": false,
+    "surfer_spot": true,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
@@ -26,7 +26,7 @@
     "terrain_summary": "砂主体、近傍に石要素あり、傾斜不明"
   },
   "info": {
-    "notes": "広い海岸で投げ釣り向き",
+    "notes": "広い海岸で投げ釣り向き アニメ聖地",
     "access": "七里ヶ浜駅から徒歩5分",
     "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/shichirigahama.jpg"
   }

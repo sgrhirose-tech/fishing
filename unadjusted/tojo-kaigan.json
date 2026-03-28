@@ -2,8 +2,8 @@
   "slug": "tojo-kaigan",
   "name": "東条海岸",
   "location": {
-    "latitude": 35.1073,
-    "longitude": 140.1136
+    "latitude": 35.1172232,
+    "longitude": 140.1243603
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,10 +11,10 @@
     "area_name": "外房",
     "area_slug": "sotobo",
     "city": "鴨川市",
-    "city_slug": ""
+    "city_slug": "kamogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 133.0,
+    "sea_bearing_deg": 135,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

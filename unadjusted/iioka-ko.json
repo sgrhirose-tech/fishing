@@ -2,8 +2,8 @@
   "slug": "iioka-ko",
   "name": "飯岡港",
   "location": {
-    "latitude": 35.7165,
-    "longitude": 140.6734
+    "latitude": 35.6910428,
+    "longitude": 140.7316017
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "旭市",
-    "city_slug": ""
+    "city_slug": "asahi"
   },
   "physical_features": {
-    "sea_bearing_deg": 100.0,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

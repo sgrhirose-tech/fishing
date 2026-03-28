@@ -1,0 +1,33 @@
+{
+  "slug": "jonanjima-kaihin-koen",
+  "name": "城南島海浜公園",
+  "location": {
+    "latitude": 35.5810613,
+    "longitude": 139.7861016
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "大田区",
+    "city_slug": "ota"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 50,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、傾斜不明"
+  },
+  "info": {
+    "notes": "羽田近くの広い海浜公園",
+    "access": "大森駅からバス25分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/jonanjima-kaihin-koen.jpg"
+  }
+}

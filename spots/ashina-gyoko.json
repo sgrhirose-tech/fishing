@@ -1,0 +1,33 @@
+{
+  "slug": "ashina-gyoko",
+  "name": "芦名漁港",
+  "location": {
+    "latitude": 35.2321419,
+    "longitude": 139.602102
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 205,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1116.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "砂主体、近傍に石要素あり、やや急深"
+  },
+  "info": {
+    "notes": "港内と外向き両方狙える",
+    "access": "逗子駅からバス30分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/ashina-gyoko.jpg"
+  }
+}

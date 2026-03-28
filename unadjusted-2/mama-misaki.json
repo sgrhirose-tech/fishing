@@ -1,0 +1,33 @@
+{
+  "slug": "mama-misaki",
+  "name": "ママ岬",
+  "location": {
+    "latitude": 35.2027436,
+    "longitude": 140.3937721
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "いすみ市",
+    "city_slug": "isumi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1553.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "やや急深"
+  },
+  "info": {
+    "notes": "岬周りの変化を探れる",
+    "access": "御宿駅からバス15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/mama-misaki.jpg"
+  }
+}

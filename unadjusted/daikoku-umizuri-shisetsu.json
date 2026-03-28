@@ -2,8 +2,8 @@
   "slug": "daikoku-umizuri-shisetsu",
   "name": "大黒海づり施設",
   "location": {
-    "latitude": 35.450086,
-    "longitude": 139.69541
+    "latitude": 35.4487057,
+    "longitude": 139.6945202
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,11 +11,11 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "横浜市",
-    "city_slug": ""
+    "city_slug": "yokohama"
   },
   "physical_features": {
-    "sea_bearing_deg": 209.5,
-    "seabed_type": "shell",
+    "sea_bearing_deg": 125,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,
