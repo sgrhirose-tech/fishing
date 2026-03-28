@@ -22,7 +22,7 @@ services:
     runtime: python
     repo: https://github.com/sgrhirose-tech/fishing
     branch: claude/fishing-guide-website-BdGZB
-    schedule: "55 18 * * *"   # 3:55 AM JST (= 18:55 UTC)
+    schedule: "55 10,18 * * *"   # 3:55 AM JST (18:55 UTC) + 7:55 PM JST (10:55 UTC)
     buildCommand: pip install -r requirements.txt
     startCommand: python scripts/post_morning_report.py
     envVars:

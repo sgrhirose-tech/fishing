@@ -143,7 +143,7 @@ def get_area_weather(area_name_jp: str, date_str: str, include_tide: bool = True
 _PROMPT_FILE = Path(__file__).parent.parent / "x_post_prompt.md"
 
 
-def generate_area_comment(area_name_jp: str, area_data: dict) -> str:
+def generate_area_comment(area_name_jp: str, area_data: dict, mode: str = "morning") -> str:
     """Claude API でエリア海況の一言コメントを生成する（最大40文字）。"""
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not api_key:
@@ -166,6 +166,7 @@ def generate_area_comment(area_name_jp: str, area_data: dict) -> str:
         val = area_data.get(key)
         return f"{val}{unit}" if val is not None else default
 
+    時間帯 = "今朝" if mode == "morning" else "明日"
     user_prompt = user_template.format(
         エリア名=area_name_jp,
         天気=area_data.get("weather_label", "--"),
@@ -174,6 +175,7 @@ def generate_area_comment(area_name_jp: str, area_data: dict) -> str:
         風向=area_data.get("wind_dir_label", "--"),
         水温=_v("sst"),
         潮回り=area_data.get("tide", "--"),
+        投稿時間帯=f"{時間帯}の{'実況' if mode == 'morning' else '予報'}",
     )
 
     try:
@@ -209,7 +211,8 @@ def generate_area_comment(area_name_jp: str, area_data: dict) -> str:
 # ツイート本文フォーマット
 # ============================================================
 
-def format_tweet(area_name_jp: str, area_data: dict, comment: str, url: str) -> str:
+def format_tweet(area_name_jp: str, area_data: dict, comment: str, url: str,
+                 mode: str = "morning") -> str:
     """投稿用ツイートテキストを組み立てる。280文字超過時はコメントを短縮。"""
 
     def _v(key, unit="", default="--"):
@@ -222,9 +225,16 @@ def format_tweet(area_name_jp: str, area_data: dict, comment: str, url: str) -> 
         else area_data.get("weather_label", "--")
     )
 
+    if mode == "morning":
+        title = f"🌊 今朝の{area_name_jp}海況"
+        hashtags = f"#釣り #{area_name_jp} #海釣り"
+    else:
+        title = f"🌅 明日の{area_name_jp}海況予報"
+        hashtags = f"#釣り #{area_name_jp} #海釣り #釣り予報"
+
     def _build(cmt: str) -> str:
         parts = [
-            f"🌊 今朝の{area_name_jp}海況",
+            title,
             "",
             f"波　: {_v('wave_height')}m",
             f"風　: {_v('wind_speed')}m/s {_v('wind_dir_label')}",
@@ -238,7 +248,7 @@ def format_tweet(area_name_jp: str, area_data: dict, comment: str, url: str) -> 
             f"{area_name_jp}の釣り場詳細👇",
             url,
             "",
-            f"#釣り #{area_name_jp} #海釣り",
+            hashtags,
         ]
         return "\n".join(parts)
 
@@ -280,12 +290,13 @@ def post_tweet(text: str) -> None:
 # エリア1件分の投稿処理
 # ============================================================
 
-def post_area(area_slug: str, area_name_jp: str, url: str, date_str: str) -> bool:
+def post_area(area_slug: str, area_name_jp: str, url: str, date_str: str,
+              mode: str = "morning") -> bool:
     """1エリア分のデータ取得・コメント生成・投稿を行う。失敗時はFalseを返す。"""
     try:
         area_data = get_area_weather(area_name_jp, date_str)
-        comment = generate_area_comment(area_name_jp, area_data)
-        tweet = format_tweet(area_name_jp, area_data, comment, url)
+        comment = generate_area_comment(area_name_jp, area_data, mode=mode)
+        tweet = format_tweet(area_name_jp, area_data, comment, url, mode=mode)
         print(f"--- {area_name_jp} ({count_weighted(tweet)}文字) ---")
         print(tweet)
         print()
