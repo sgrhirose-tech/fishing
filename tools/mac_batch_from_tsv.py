@@ -6,8 +6,10 @@ Mac用 TSV一括JSON作成ツール
 tsv/ フォルダにある TSV ファイルを一括処理し、
 unadjusted/ フォルダに釣りスポット JSON を書き出す。
 
-TSV フォーマット（ヘッダなし・タブ区切り・6列）:
-  name  lat  lon  slug  notes  access
+TSV フォーマット（ヘッダなし・タブ区切り・6〜7列）:
+  name  lat  lon  slug  notes  access  [area]
+
+  第7列 area は任意。日本語エリア名（例: 外房）を指定すると自動判定を上書きする。
 
 エリア・都道府県・市区町村は緯度経度から自動導出する。
 審査・手修正後に spots/ へ移動して本番反映すること。
@@ -91,6 +93,7 @@ def parse_tsv_file(path: Path) -> list:
             "slug":   cols[3].strip() if len(cols) > 3 else f"spot_{lineno:03d}",
             "notes":  cols[4].strip() if len(cols) > 4 else "",
             "access": cols[5].strip() if len(cols) > 5 else "",
+            "area":   cols[6].strip() if len(cols) > 6 else "",  # 任意: エリア名上書き
         })
     return records
 
@@ -101,8 +104,9 @@ def parse_tsv_file(path: Path) -> list:
 
 def assign_area(lat: float, lon: float) -> str:
     """
-    _marine_areas.json の center_lat/center_lon まで距離を計算し、
-    最近傍エリア名を返す。
+    _marine_areas.json のバウンディングボックスで候補エリアに絞り込んだ上で、
+    center_lat/center_lon への距離が最小のエリア名を返す。
+    BBox 定義がない or 全エリア外の場合は全エリアでフォールバック。
     """
     try:
         data = json.loads(AREAS_FILE.read_text(encoding="utf-8"))
@@ -111,9 +115,19 @@ def assign_area(lat: float, lon: float) -> str:
         print(f"  [警告] _marine_areas.json 読み込み失敗: {e}")
         return "不明"
 
+    # Step 1: BBox内に入るエリアに絞る
+    candidates = {
+        name: info for name, info in areas.items()
+        if (info.get("lat_min", -90) <= lat <= info.get("lat_max", 90) and
+            info.get("lon_min", -180) <= lon <= info.get("lon_max", 180))
+    }
+    if not candidates:
+        candidates = areas  # 全外れの場合は全エリアでフォールバック
+
+    # Step 2: 候補内で center_lat/lon への距離が最小を選ぶ
     best_name = "不明"
     best_dist = float("inf")
-    for name, info in areas.items():
+    for name, info in candidates.items():
         dlat = lat - info.get("center_lat", 0)
         dlon = lon - info.get("center_lon", 0)
         dist = math.sqrt(dlat * dlat + dlon * dlon)
@@ -173,8 +187,8 @@ def process_record(rec: dict, idx: int, total: int) -> dict:
 
     print(f"\n  [{idx}/{total}] {name} ({slug})  lat={lat} lon={lon}")
 
-    # エリア自動判定
-    area_name = assign_area(lat, lon)
+    # エリア自動判定（TSV第7列で上書き可能）
+    area_name = rec.get("area") or assign_area(lat, lon)
     area_slug, pref_slug, prefecture = AREA_MAP.get(
         area_name, ("unknown", "unknown", "")
     )
