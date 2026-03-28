@@ -101,12 +101,15 @@ async def lifespan(app: FastAPI):
 
 
 async def _warm_ranking_cache():
-    """サーバー起動後にランキングを事前計算してキャッシュを温める。"""
+    """サーバー起動後にランキングを事前計算してキャッシュを温める。
+    同期HTTPコールをスレッドプールで実行し、イベントループをブロックしない。
+    """
     import asyncio
     await asyncio.sleep(3)  # サーバーが完全に起動するまで待機
     try:
         date_str = _tomorrow()
-        get_ranking(date_str)
+        loop = asyncio.get_event_loop()
+        await loop.run_in_executor(None, get_ranking, date_str)
         print(f"[起動] ランキングキャッシュを事前計算しました ({date_str})")
     except Exception as e:
         print(f"[起動] ランキングキャッシュの事前計算に失敗: {e}")
