@@ -208,6 +208,35 @@ footer a { color: #8bc; }
 
 /* ---- 安全警告・AIコメント ---- */
 .ai-comment-section { margin: 1rem 0; }
+
+/* ---- 今日の海況セクション（グレー基調） ---- */
+.weather-section--today {
+  background: #f3f4f5;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0;
+}
+.weather-section--today h2 {
+  color: #666;
+  font-size: 1.05rem;
+}
+.weather-section--today .info-table th {
+  background: #dde0e3;
+  color: #555;
+}
+.weather-section--today .info-table td {
+  color: #444;
+}
+.weather-section--today .forecast-tabs .tab-btn {
+  background: #e0e2e5;
+  color: #555;
+  border-color: #c8cacc;
+}
+.weather-section--today .forecast-tabs .tab-btn.active {
+  background: #8a9099;
+  color: white;
+  border-color: #8a9099;
+}
 .safety-danger, .safety-caution {
   color: red;
   font-weight: bold;

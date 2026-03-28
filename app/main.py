@@ -73,6 +73,17 @@ def get_ranking(date_str: str) -> list[dict]:
 def _tomorrow() -> str:
     return (datetime.now(JST) + timedelta(days=1)).strftime("%Y-%m-%d")
 
+def _today() -> str:
+    return datetime.now(JST).strftime("%Y-%m-%d")
+
+_WEEKDAYS = "月火水木金土日"
+
+def _format_date_jp(date_str: str) -> str:
+    """'YYYY-MM-DD' → 'M月D日（曜日）' 形式に変換。"""
+    from datetime import datetime as _dt
+    d = _dt.strptime(date_str, "%Y-%m-%d")
+    return f"{d.month}月{d.day}日（{_WEEKDAYS[d.weekday()]}）"
+
 
 # ============================================================
 # FastAPI アプリ
@@ -151,7 +162,7 @@ def api_forecast(slug: str):
 
     from datetime import date, timedelta
     today = date.today()
-    start = (today + timedelta(days=1)).strftime("%Y-%m-%d")
+    start = today.strftime("%Y-%m-%d")            # 今日から取得（days[0]=今日）
     end   = (today + timedelta(days=7)).strftime("%Y-%m-%d")
 
     lat = spot_lat(spot)
@@ -167,8 +178,10 @@ def api_forecast(slug: str):
         marine = fetch_marine_with_fallback(lat, lon, start)
     sst = fetch_sst_noaa(lat, lon, start)
 
-    days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
-    return {"slug": slug, "days": days}
+    all_days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
+    today_data = all_days[0] if all_days else None   # days[0] = 今日
+    forecast   = all_days[1:]                        # days[1:] = 明日+6日
+    return {"slug": slug, "days": forecast, "today": today_data}
 
 
 @app.get("/api/ai-comment/{slug}")
@@ -375,9 +388,12 @@ def page_spot_detail(
     spot = load_spot(slug)
     if not spot:
         raise HTTPException(status_code=404, detail="スポットが見つかりません")
+    today_str    = _today()
+    tomorrow_str = _tomorrow()
     return templates.TemplateResponse(request, "spot.html", {
-        "spot": spot,
-        "tomorrow": _tomorrow(),
-        "slope_type": spot_slope_type(spot),
-        "photos": get_photos(slug),
+        "spot":         spot,
+        "today_jp":     _format_date_jp(today_str),
+        "tomorrow_jp":  _format_date_jp(tomorrow_str),
+        "slope_type":   spot_slope_type(spot),
+        "photos":       get_photos(slug),
     })
