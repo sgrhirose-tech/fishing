@@ -132,6 +132,14 @@ main {
   border-radius: 8px;
   padding: 1.25rem;
   border: 1px solid #dce9f2;
+  position: relative;
+}
+.weather-badge {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+  font-size: 1.5rem;
+  line-height: 1;
 }
 .spot-card h2 { margin: 0 0 .5rem; font-size: 1.1rem; }
 .spot-card h2 a { color: #1a6b9e; text-decoration: none; }
