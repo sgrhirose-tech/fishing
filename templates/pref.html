@@ -36,6 +36,18 @@
     {% endfor %}
   </div>
 </section>
+
+<section class="area-links">
+  <h2>市町村から探す</h2>
+  <div class="area-grid">
+    {% for city_slug, info in cities.items() %}
+    <a href="/{{ pref_slug }}/{{ info.area_slug }}/{{ city_slug }}/" class="area-card">
+      <h3>{{ info.name }}</h3>
+      <p>{{ info.count }}か所</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}
 
 {% block scripts %}

@@ -239,9 +239,17 @@ def api_weather(slug: str, date: str | None = None):
 @app.get("/", response_class=HTMLResponse)
 def page_top(request: Request):
     spots = load_spots()
+    prefs: dict = {}
+    for s in spots:
+        p_slug = s.get("area", {}).get("pref_slug", "")
+        p_name = s.get("area", {}).get("prefecture", "")
+        if p_slug:
+            prefs.setdefault(p_slug, {"name": p_name, "count": 0})
+            prefs[p_slug]["count"] += 1
     return templates.TemplateResponse(request, "top.html", {
         "spots": spots,
         "tomorrow": _tomorrow(),
+        "prefs": prefs,
     })
 
 
@@ -286,10 +294,19 @@ def page_pref(request: Request, pref_slug: str):
         a_name = s["area"]["area_name"]
         areas.setdefault(a_slug, {"name": a_name, "count": 0})
         areas[a_slug]["count"] += 1
+    cities: dict = {}
+    for s in spots:
+        c_slug = s["area"].get("city_slug", "")
+        c_name = s["area"].get("city", "")
+        a_slug = s["area"].get("area_slug", "")
+        if c_slug:
+            cities.setdefault(c_slug, {"name": c_name, "count": 0, "area_slug": a_slug})
+            cities[c_slug]["count"] += 1
     return templates.TemplateResponse(request, "pref.html", {
         "pref_slug": pref_slug,
         "pref_name": pref_name,
         "areas": areas,
+        "cities": cities,
         "spots": spots,
     })
 
