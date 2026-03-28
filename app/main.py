@@ -15,7 +15,7 @@ except ImportError:
     pass
 
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import HTMLResponse, PlainTextResponse
+from fastapi.responses import HTMLResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -157,6 +157,57 @@ def robots_txt():
 @app.get("/ads.txt", response_class=PlainTextResponse, include_in_schema=False)
 def ads_txt():
     return "google.com, pub-1877528534583136, DIRECT, f08c47fec0942fa0\n"
+
+_BASE_URL = "https://tsuricast.jp"
+
+@app.get("/sitemap.xml", include_in_schema=False)
+def sitemap_xml():
+    spots = load_spots()
+    urls: list[tuple[str, str, str]] = []  # (loc, changefreq, priority)
+
+    # 固定ページ
+    urls.append((f"{_BASE_URL}/",       "daily",   "1.0"))
+    urls.append((f"{_BASE_URL}/spots",  "daily",   "0.8"))
+    for s in ("safety", "privacy", "about", "contact"):
+        urls.append((f"{_BASE_URL}/{s}", "monthly", "0.4"))
+
+    # スポットデータから動的ページを収集
+    seen_prefs: set = set()
+    seen_areas: set = set()
+    seen_cities: set = set()
+    for spot in spots:
+        a = spot.get("area", {})
+        p  = a.get("pref_slug", "")
+        ar = a.get("area_slug", "")
+        c  = a.get("city_slug", "")
+        sl = spot.get("slug", "")
+        if not all([p, ar, c, sl]):
+            continue
+        if p not in seen_prefs:
+            seen_prefs.add(p)
+            urls.append((f"{_BASE_URL}/{p}/", "weekly", "0.7"))
+        if (p, ar) not in seen_areas:
+            seen_areas.add((p, ar))
+            urls.append((f"{_BASE_URL}/{p}/{ar}/", "weekly", "0.7"))
+        if (p, ar, c) not in seen_cities:
+            seen_cities.add((p, ar, c))
+            urls.append((f"{_BASE_URL}/{p}/{ar}/{c}/", "weekly", "0.6"))
+        urls.append((f"{_BASE_URL}/{p}/{ar}/{c}/{sl}", "weekly", "0.5"))
+
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for loc, freq, pri in urls:
+        lines += [
+            "  <url>",
+            f"    <loc>{loc}</loc>",
+            f"    <changefreq>{freq}</changefreq>",
+            f"    <priority>{pri}</priority>",
+            "  </url>",
+        ]
+    lines.append("</urlset>")
+    return Response("\n".join(lines), media_type="application/xml")
 
 # ============================================================
 # API エンドポイント
