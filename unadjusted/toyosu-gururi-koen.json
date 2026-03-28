@@ -2,8 +2,8 @@
   "slug": "toyosu-gururi-koen",
   "name": "豊洲ぐるり公園",
   "location": {
-    "latitude": 35.64202,
-    "longitude": 139.79088
+    "latitude": 35.6458582,
+    "longitude": 139.7812414
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "江東区",
-    "city_slug": ""
+    "city_slug": "koto"
   },
   "physical_features": {
-    "sea_bearing_deg": 320.2,
+    "sea_bearing_deg": 320,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

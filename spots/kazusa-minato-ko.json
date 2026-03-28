@@ -1,0 +1,33 @@
+{
+  "slug": "kazusa-minato-ko",
+  "name": "上総湊港",
+  "location": {
+    "latitude": 35.218864,
+    "longitude": 139.8657632
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 290,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "terrain_summary": "砂主体、傾斜不明"
+  },
+  "info": {
+    "notes": "港内で手軽に竿を出せる",
+    "access": "上総湊駅から徒歩10分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kazusa-minato-ko.jpg"
+  }
+}

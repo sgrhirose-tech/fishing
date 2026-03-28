@@ -2,8 +2,8 @@
   "slug": "yashikura-no-iso",
   "name": "屋志倉の磯",
   "location": {
-    "latitude": 35.1386,
-    "longitude": 139.615
+    "latitude": 35.1505298,
+    "longitude": 139.6132493
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "三浦半島",
     "area_slug": "miura",
     "city": "三浦市",
-    "city_slug": ""
+    "city_slug": "miura"
   },
   "physical_features": {
-    "sea_bearing_deg": 219.6,
+    "sea_bearing_deg": 225,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

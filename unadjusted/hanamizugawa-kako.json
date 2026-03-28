@@ -2,8 +2,8 @@
   "slug": "hanamizugawa-kako",
   "name": "花水川河口",
   "location": {
-    "latitude": 35.3094,
-    "longitude": 139.3338
+    "latitude": 35.3126564,
+    "longitude": 139.3317032
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "平塚市",
-    "city_slug": ""
+    "city_slug": "hiratsuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 174.0,
+    "sea_bearing_deg": 165,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

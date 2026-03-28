@@ -2,8 +2,8 @@
   "slug": "kurosaki-no-hana",
   "name": "黒崎の鼻",
   "location": {
-    "latitude": 35.198,
-    "longitude": 139.6075
+    "latitude": 35.182946,
+    "longitude": 139.6150947
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "三浦半島",
     "area_slug": "miura",
     "city": "横須賀市",
-    "city_slug": ""
+    "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 308.0,
+    "sea_bearing_deg": 270,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

@@ -2,20 +2,20 @@
   "slug": "banzu-higata",
   "name": "盤洲干潟",
   "location": {
-    "latitude": 35.41242,
-    "longitude": 139.95586
+    "latitude": 35.4137465,
+    "longitude": 139.8993015
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
     "area_name": "内房",
     "area_slug": "uchibo",
-    "city": "袖ケ浦市",
-    "city_slug": ""
+    "city": "木更津市",
+    "city_slug": "kisarazu"
   },
   "physical_features": {
-    "sea_bearing_deg": 277.1,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 270,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

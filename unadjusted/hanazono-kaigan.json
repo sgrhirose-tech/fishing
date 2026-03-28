@@ -2,19 +2,19 @@
   "slug": "hanazono-kaigan",
   "name": "花園海岸",
   "location": {
-    "latitude": 35.0177,
-    "longitude": 140.0129
+    "latitude": 35.0491813,
+    "longitude": 140.0326395
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "南房総市",
-    "city_slug": ""
+    "city_slug": "minamiboso"
   },
   "physical_features": {
-    "sea_bearing_deg": 192.3,
+    "sea_bearing_deg": 140,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

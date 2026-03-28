@@ -2,8 +2,8 @@
   "slug": "shinmaiko-kaigan",
   "name": "新舞子海岸",
   "location": {
-    "latitude": 35.30906,
-    "longitude": 139.85392
+    "latitude": 35.250771,
+    "longitude": 139.8659563
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "内房",
     "area_slug": "uchibo",
     "city": "富津市",
-    "city_slug": ""
+    "city_slug": "futtsu"
   },
   "physical_features": {
-    "sea_bearing_deg": 214.1,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 255,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

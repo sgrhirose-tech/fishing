@@ -2,8 +2,8 @@
   "slug": "choshi-ko",
   "name": "銚子港",
   "location": {
-    "latitude": 35.7349,
-    "longitude": 140.8263
+    "latitude": 35.735087,
+    "longitude": 140.8406925
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,10 +11,10 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "銚子市",
-    "city_slug": ""
+    "city_slug": "choshi"
   },
   "physical_features": {
-    "sea_bearing_deg": 43.2,
+    "sea_bearing_deg": 280,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

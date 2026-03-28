@@ -2,8 +2,8 @@
   "slug": "tokai-futo-koen",
   "name": "東海ふ頭公園",
   "location": {
-    "latitude": 35.57262,
-    "longitude": 139.76988
+    "latitude": 35.577126,
+    "longitude": 139.7561145
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "大田区",
-    "city_slug": ""
+    "city_slug": "ota"
   },
   "physical_features": {
-    "sea_bearing_deg": 124.0,
+    "sea_bearing_deg": 180,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

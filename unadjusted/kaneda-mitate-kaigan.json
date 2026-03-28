@@ -2,8 +2,8 @@
   "slug": "kaneda-mitate-kaigan",
   "name": "金田みたて海岸",
   "location": {
-    "latitude": 35.43814,
-    "longitude": 139.93977
+    "latitude": 35.4314072,
+    "longitude": 139.9035931
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "内房",
     "area_slug": "uchibo",
     "city": "木更津市",
-    "city_slug": ""
+    "city_slug": "kisarazu"
   },
   "physical_features": {
-    "sea_bearing_deg": 356.0,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 315,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

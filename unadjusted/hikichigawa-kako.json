@@ -2,8 +2,8 @@
   "slug": "hikichigawa-kako",
   "name": "引地川河口",
   "location": {
-    "latitude": 35.3204,
-    "longitude": 139.4768
+    "latitude": 35.3150902,
+    "longitude": 139.4682276
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,11 +11,11 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "藤沢市",
-    "city_slug": ""
+    "city_slug": "fujisawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 200.3,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 200,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

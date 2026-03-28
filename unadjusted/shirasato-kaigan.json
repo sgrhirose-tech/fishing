@@ -2,8 +2,8 @@
   "slug": "shirasato-kaigan",
   "name": "白里海岸",
   "location": {
-    "latitude": 35.4744,
-    "longitude": 140.4318
+    "latitude": 35.4840166,
+    "longitude": 140.4220104
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "大網白里市",
-    "city_slug": ""
+    "city_slug": "oamishiarasato"
   },
   "physical_features": {
-    "sea_bearing_deg": 112.7,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 110,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

@@ -2,8 +2,8 @@
   "slug": "oiso-ko",
   "name": "大磯港",
   "location": {
-    "latitude": 35.3092,
-    "longitude": 139.316
+    "latitude": 35.3059937,
+    "longitude": 139.3174124
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "大磯町",
-    "city_slug": ""
+    "city_slug": "oiso"
   },
   "physical_features": {
-    "sea_bearing_deg": 214.7,
+    "sea_bearing_deg": 180,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

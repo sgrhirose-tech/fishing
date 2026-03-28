@@ -2,23 +2,23 @@
   "slug": "zaimokuza-kaigan",
   "name": "材木座海岸",
   "location": {
-    "latitude": 35.3047,
-    "longitude": 139.5486
+    "latitude": 35.3048861,
+    "longitude": 139.5505178
   },
   "area": {
     "prefecture": "神奈川県",
     "pref_slug": "kanagawa",
-    "area_name": "三浦半島",
-    "area_slug": "miura",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
     "city": "鎌倉市",
-    "city_slug": ""
+    "city_slug": "kamakura"
   },
   "physical_features": {
-    "sea_bearing_deg": 218.6,
+    "sea_bearing_deg": 225,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
-    "surfer_spot": false,
+    "surfer_spot": true,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {

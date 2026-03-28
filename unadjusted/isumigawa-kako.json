@@ -2,8 +2,8 @@
   "slug": "isumigawa-kako",
   "name": "夷隅川河口",
   "location": {
-    "latitude": 35.2904,
-    "longitude": 140.3931
+    "latitude": 35.2992253,
+    "longitude": 140.4100907
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "外房",
     "area_slug": "sotobo",
     "city": "いすみ市",
-    "city_slug": ""
+    "city_slug": "isumi"
   },
   "physical_features": {
-    "sea_bearing_deg": 110.3,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 90,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

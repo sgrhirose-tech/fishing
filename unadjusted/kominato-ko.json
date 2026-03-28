@@ -2,8 +2,8 @@
   "slug": "kominato-ko",
   "name": "小湊港",
   "location": {
-    "latitude": 35.1233,
-    "longitude": 140.1917
+    "latitude": 35.1197506,
+    "longitude": 140.1959109
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,10 +11,10 @@
     "area_name": "外房",
     "area_slug": "sotobo",
     "city": "鴨川市",
-    "city_slug": ""
+    "city_slug": "kamogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 251.3,
+    "sea_bearing_deg": 245,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

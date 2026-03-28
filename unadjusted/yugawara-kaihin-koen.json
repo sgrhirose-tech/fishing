@@ -2,8 +2,8 @@
   "slug": "yugawara-kaihin-koen",
   "name": "湯河原海浜公園",
   "location": {
-    "latitude": 35.1451,
-    "longitude": 139.1087
+    "latitude": 35.14195,
+    "longitude": 139.1129208
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "湯河原町",
-    "city_slug": ""
+    "city_slug": "yugawara"
   },
   "physical_features": {
-    "sea_bearing_deg": 110.1,
+    "sea_bearing_deg": 120,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

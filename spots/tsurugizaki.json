@@ -1,0 +1,33 @@
+{
+  "slug": "tsurugizaki",
+  "name": "剱崎",
+  "location": {
+    "latitude": 35.1407042,
+    "longitude": 139.6787167
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "三浦市",
+    "city_slug": "miura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 711.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、貝殻混じり、近傍に石要素あり、急深"
+  },
+  "info": {
+    "notes": "潮通し抜群の地磯場",
+    "access": "三崎口駅からバス20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/tsurugizaki.jpg"
+  }
+}

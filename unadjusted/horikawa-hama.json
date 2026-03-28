@@ -2,8 +2,8 @@
   "slug": "horikawa-hama",
   "name": "堀川浜",
   "location": {
-    "latitude": 35.665,
-    "longitude": 140.5827
+    "latitude": 35.6473404,
+    "longitude": 140.5859256
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "匝瑳市",
-    "city_slug": ""
+    "city_slug": "sousa"
   },
   "physical_features": {
-    "sea_bearing_deg": 123.1,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 130,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

@@ -2,8 +2,8 @@
   "slug": "higashi-ogishima-nishi-koen",
   "name": "東扇島西公園",
   "location": {
-    "latitude": 35.488506,
-    "longitude": 139.742233
+    "latitude": 35.4879041,
+    "longitude": 139.7420061
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,11 +11,11 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "川崎市",
-    "city_slug": ""
+    "city_slug": "kawasaki"
   },
   "physical_features": {
-    "sea_bearing_deg": 223.9,
-    "seabed_type": "sand",
+    "sea_bearing_deg": 235,
+    "seabed_type": "sand_rock",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

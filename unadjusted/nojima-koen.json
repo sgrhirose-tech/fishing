@@ -2,8 +2,8 @@
   "slug": "nojima-koen",
   "name": "野島公園",
   "location": {
-    "latitude": 35.33193,
-    "longitude": 139.64093
+    "latitude": 35.328291,
+    "longitude": 139.636488
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "横須賀市",
-    "city_slug": ""
+    "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 23.3,
+    "sea_bearing_deg": 25,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

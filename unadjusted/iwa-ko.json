@@ -2,8 +2,8 @@
   "slug": "iwa-ko",
   "name": "岩港",
   "location": {
-    "latitude": 35.1547,
-    "longitude": 139.1346
+    "latitude": 35.1605472,
+    "longitude": 139.1425216
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "真鶴町",
-    "city_slug": ""
+    "city_slug": "manazuru"
   },
   "physical_features": {
-    "sea_bearing_deg": 168.2,
+    "sea_bearing_deg": 0,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

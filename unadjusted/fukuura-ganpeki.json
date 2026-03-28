@@ -2,8 +2,8 @@
   "slug": "fukuura-ganpeki",
   "name": "福浦岸壁",
   "location": {
-    "latitude": 35.34293,
-    "longitude": 139.64998
+    "latitude": 35.3495671,
+    "longitude": 139.6568406
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "横浜市",
-    "city_slug": ""
+    "city_slug": "yokohama"
   },
   "physical_features": {
-    "sea_bearing_deg": 167.2,
+    "sea_bearing_deg": 90,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

@@ -1,0 +1,33 @@
+{
+  "slug": "uchiura-kaigan",
+  "name": "内浦海岸",
+  "location": {
+    "latitude": 35.1271569,
+    "longitude": 140.1914477
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "鴨川市",
+    "city_slug": "kamogawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 195,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 970.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、近傍に石要素あり、急深"
+  },
+  "info": {
+    "notes": "入り江状の静かな海岸",
+    "access": "安房小湊駅から徒歩8分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/uchiura-kaigan.jpg"
+  }
+}

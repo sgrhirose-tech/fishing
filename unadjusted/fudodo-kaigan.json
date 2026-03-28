@@ -2,8 +2,8 @@
   "slug": "fudodo-kaigan",
   "name": "不動堂海岸",
   "location": {
-    "latitude": 35.496,
-    "longitude": 140.4425
+    "latitude": 35.5088936,
+    "longitude": 140.4373741
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "九十九里町",
-    "city_slug": ""
+    "city_slug": "kujukuri"
   },
   "physical_features": {
-    "sea_bearing_deg": 120.7,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 110,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

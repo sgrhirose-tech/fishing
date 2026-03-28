@@ -2,8 +2,8 @@
   "slug": "hayakawa-ko",
   "name": "早川港",
   "location": {
-    "latitude": 35.2391,
-    "longitude": 139.1443
+    "latitude": 35.2398972,
+    "longitude": 139.1477036
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "小田原市",
-    "city_slug": ""
+    "city_slug": "odawara"
   },
   "physical_features": {
-    "sea_bearing_deg": 39.4,
+    "sea_bearing_deg": 90,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

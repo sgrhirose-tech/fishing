@@ -2,19 +2,19 @@
   "slug": "manazuru-ko",
   "name": "真鶴港",
   "location": {
-    "latitude": 35.153,
-    "longitude": 139.1342
+    "latitude": 35.1527755,
+    "longitude": 139.1427684
   },
   "area": {
     "prefecture": "神奈川県",
     "pref_slug": "kanagawa",
     "area_name": "相模湾",
     "area_slug": "sagamibay",
-    "city": "湯河原町",
-    "city_slug": ""
+    "city": "真鶴町",
+    "city_slug": "manazuru"
   },
   "physical_features": {
-    "sea_bearing_deg": 178.6,
+    "sea_bearing_deg": 110,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

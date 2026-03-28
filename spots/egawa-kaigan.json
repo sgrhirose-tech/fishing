@@ -1,0 +1,33 @@
+{
+  "slug": "egawa-kaigan",
+  "name": "江川海岸",
+  "location": {
+    "latitude": 35.4013467,
+    "longitude": 139.9021125
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "木更津市",
+    "city_slug": "kisarazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 270,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "傾斜不明"
+  },
+  "info": {
+    "notes": "干潟景観で有名な海岸",
+    "access": "巌根駅からバス15分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/egawa-kaigan.jpg"
+  }
+}

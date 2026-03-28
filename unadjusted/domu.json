@@ -2,8 +2,8 @@
   "slug": "domu",
   "name": "道無",
   "location": {
-    "latitude": 35.1499,
-    "longitude": 139.1428
+    "latitude": 35.1447925,
+    "longitude": 139.1468775
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "真鶴町",
-    "city_slug": ""
+    "city_slug": "manazuru"
   },
   "physical_features": {
-    "sea_bearing_deg": 14.1,
+    "sea_bearing_deg": 180,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

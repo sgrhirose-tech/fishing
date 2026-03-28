@@ -2,8 +2,8 @@
   "slug": "aburatsubo",
   "name": "油壷",
   "location": {
-    "latitude": 35.1618,
-    "longitude": 139.6199
+    "latitude": 35.16167,
+    "longitude": 139.615438
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "三浦半島",
     "area_slug": "miura",
     "city": "三浦市",
-    "city_slug": ""
+    "city_slug": "miura"
   },
   "physical_features": {
-    "sea_bearing_deg": 269.1,
+    "sea_bearing_deg": 5,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

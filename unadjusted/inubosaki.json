@@ -11,10 +11,10 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "銚子市",
-    "city_slug": ""
+    "city_slug": "choshi"
   },
   "physical_features": {
-    "sea_bearing_deg": 87.8,
+    "sea_bearing_deg": 90,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

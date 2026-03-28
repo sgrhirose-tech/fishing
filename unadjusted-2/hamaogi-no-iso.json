@@ -1,0 +1,33 @@
+{
+  "slug": "hamaogi-no-iso",
+  "name": "浜荻の磯",
+  "location": {
+    "latitude": 35.1167932,
+    "longitude": 140.150485
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "鴨川市",
+    "city_slug": "kamogawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "unknown",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 749.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "terrain_summary": "急深"
+  },
+  "info": {
+    "notes": "磯場中心の実績エリア",
+    "access": "安房天津駅から徒歩20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/hamaogi-no-iso.jpg"
+  }
+}

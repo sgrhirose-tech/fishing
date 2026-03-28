@@ -2,19 +2,19 @@
   "slug": "emi-kaigan",
   "name": "江見海岸",
   "location": {
-    "latitude": 35.0458,
-    "longitude": 140.0301
+    "latitude": 35.0589213,
+    "longitude": 140.0584531
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
-    "city": "南房総市",
-    "city_slug": ""
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "鴨川市",
+    "city_slug": "kamogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 145.8,
+    "sea_bearing_deg": 145,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

@@ -2,8 +2,8 @@
   "slug": "hamaogi-no-iso",
   "name": "浜荻の磯",
   "location": {
-    "latitude": 35.0946,
-    "longitude": 140.1541
+    "latitude": 35.1167932,
+    "longitude": 140.150485
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "外房",
     "area_slug": "sotobo",
     "city": "鴨川市",
-    "city_slug": ""
+    "city_slug": "kamogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 193.4,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

@@ -2,8 +2,8 @@
   "slug": "kazusa-minato-ko",
   "name": "上総湊港",
   "location": {
-    "latitude": 35.22854,
-    "longitude": 139.83569
+    "latitude": 35.218864,
+    "longitude": 139.8657632
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,10 +11,10 @@
     "area_name": "内房",
     "area_slug": "uchibo",
     "city": "富津市",
-    "city_slug": ""
+    "city_slug": "futtsu"
   },
   "physical_features": {
-    "sea_bearing_deg": 354.9,
+    "sea_bearing_deg": 290,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

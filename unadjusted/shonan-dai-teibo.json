@@ -2,8 +2,8 @@
   "slug": "shonan-dai-teibo",
   "name": "湘南大堤防",
   "location": {
-    "latitude": 35.3005,
-    "longitude": 139.4828
+    "latitude": 35.2989451,
+    "longitude": 139.4874537
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,10 +11,10 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "藤沢市",
-    "city_slug": ""
+    "city_slug": "fujisawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 52.3,
+    "sea_bearing_deg": 90,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

@@ -2,20 +2,20 @@
   "slug": "okawa-ko",
   "name": "大川港",
   "location": {
-    "latitude": 34.9372,
-    "longitude": 139.9492
+    "latitude": 34.9277592,
+    "longitude": 139.9482465
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "南房総市",
-    "city_slug": ""
+    "city_slug": "minamiboso"
   },
   "physical_features": {
-    "sea_bearing_deg": 112.2,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 130,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

@@ -2,8 +2,8 @@
   "slug": "magame-kaigan",
   "name": "真亀海岸",
   "location": {
-    "latitude": 35.5208,
-    "longitude": 140.4479
+    "latitude": 35.5017667,
+    "longitude": 140.4325676
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,11 +11,11 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "九十九里町",
-    "city_slug": ""
+    "city_slug": "kujukuri"
   },
   "physical_features": {
-    "sea_bearing_deg": 124.4,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 115,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

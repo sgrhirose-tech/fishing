@@ -2,19 +2,19 @@
   "slug": "shiromazu-ko",
   "name": "白間津港",
   "location": {
-    "latitude": 34.9305,
-    "longitude": 139.948
+    "latitude": 34.924311,
+    "longitude": 139.94138
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "南房総市",
-    "city_slug": ""
+    "city_slug": "minamiboso"
   },
   "physical_features": {
-    "sea_bearing_deg": 96.3,
+    "sea_bearing_deg": 125,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,

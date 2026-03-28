@@ -2,20 +2,20 @@
   "slug": "futomi-ko",
   "name": "太海港",
   "location": {
-    "latitude": 35.0892,
-    "longitude": 140.0901
+    "latitude": 35.0768043,
+    "longitude": 140.1014221
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "鴨川市",
-    "city_slug": ""
+    "city_slug": "kamogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 121.9,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 125,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

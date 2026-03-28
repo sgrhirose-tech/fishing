@@ -2,8 +2,8 @@
   "slug": "shirosaki-kaigan",
   "name": "城崎海岸",
   "location": {
-    "latitude": 35.1089,
-    "longitude": 140.1832
+    "latitude": 35.1233222,
+    "longitude": 140.1691532
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,10 +11,10 @@
     "area_name": "外房",
     "area_slug": "sotobo",
     "city": "鴨川市",
-    "city_slug": ""
+    "city_slug": "kamogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 273.5,
+    "sea_bearing_deg": 210,
     "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,

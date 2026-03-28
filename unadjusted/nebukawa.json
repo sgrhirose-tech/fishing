@@ -2,8 +2,8 @@
   "slug": "nebukawa",
   "name": "根府川",
   "location": {
-    "latitude": 35.2102,
-    "longitude": 139.132
+    "latitude": 35.2012971,
+    "longitude": 139.1400111
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,11 +11,11 @@
     "area_name": "相模湾",
     "area_slug": "sagamibay",
     "city": "小田原市",
-    "city_slug": ""
+    "city_slug": "odawara"
   },
   "physical_features": {
-    "sea_bearing_deg": 63.6,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 120,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

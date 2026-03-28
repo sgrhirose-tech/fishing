@@ -2,8 +2,8 @@
   "slug": "kasai-rinkai-koen",
   "name": "葛西臨海公園",
   "location": {
-    "latitude": 35.643102,
-    "longitude": 139.860463
+    "latitude": 35.6391272,
+    "longitude": 139.8550558
   },
   "area": {
     "prefecture": "神奈川県",
@@ -11,11 +11,11 @@
     "area_name": "東京湾",
     "area_slug": "tokyobay",
     "city": "江戸川区",
-    "city_slug": ""
+    "city_slug": "edogawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 107.1,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 20,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

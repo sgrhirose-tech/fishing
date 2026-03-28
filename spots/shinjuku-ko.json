@@ -1,0 +1,33 @@
+{
+  "slug": "shinjuku-ko",
+  "name": "新宿港",
+  "location": {
+    "latitude": 35.2044093,
+    "longitude": 139.6061468
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 270,
+    "seabed_type": "rock",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 979.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "terrain_summary": "石・岩主体、貝殻混じり、近傍に石要素あり、急深"
+  },
+  "info": {
+    "notes": "岸壁でのんびり楽しめる",
+    "access": "三崎口駅からバス20分",
+    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/shinjuku-ko.jpg"
+  }
+}

@@ -1,21 +1,21 @@
 {
   "slug": "chikura-ko",
-  "name": "千倉港",
+  "name": "千倉・平舘港",
   "location": {
-    "latitude": 34.9758,
-    "longitude": 139.9558
+    "latitude": 34.956905,
+    "longitude": 139.9632454
   },
   "area": {
     "prefecture": "千葉県",
     "pref_slug": "chiba",
-    "area_name": "内房",
-    "area_slug": "uchibo",
+    "area_name": "外房",
+    "area_slug": "sotobo",
     "city": "南房総市",
-    "city_slug": ""
+    "city_slug": "minamibouso"
   },
   "physical_features": {
-    "sea_bearing_deg": 127.8,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 90,
+    "seabed_type": "sand",
     "depth_near_m": null,
     "depth_far_m": null,
     "surfer_spot": false,

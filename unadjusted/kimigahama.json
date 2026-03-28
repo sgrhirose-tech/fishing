@@ -2,8 +2,8 @@
   "slug": "kimigahama",
   "name": "君ヶ浜",
   "location": {
-    "latitude": 35.7107,
-    "longitude": 140.8662
+    "latitude": 35.7135384,
+    "longitude": 140.8660126
   },
   "area": {
     "prefecture": "千葉県",
@@ -11,10 +11,10 @@
     "area_name": "九十九里",
     "area_slug": "kujukuri",
     "city": "銚子市",
-    "city_slug": ""
+    "city_slug": "choshi"
   },
   "physical_features": {
-    "sea_bearing_deg": 96.3,
+    "sea_bearing_deg": 95,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,
