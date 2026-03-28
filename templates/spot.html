@@ -140,7 +140,8 @@
             <th>日付</th>
             <th>天気</th>
             <th>気温</th>
-            <th>風速</th>
+            <th>潮</th>
+            <th>風速・風向</th>
             <th>波高</th>
             <th>波周期</th>
             <th>海水温</th>
@@ -227,11 +228,15 @@
         const p = (day.periods || []).find(p => p.period === period);
         if (!p) return;
         const tr = document.createElement('tr');
+        const windCell = p.wind_speed_raw != null
+          ? `${p.wind_speed_raw.toFixed(1)}m/s ${p.wind_dir_compass || ''}`
+          : 'データなし';
         tr.innerHTML = `
           <td>${day.day_label || day.date}</td>
           <td>${p.sky || '-'}</td>
           <td>${fmtNum(p.temp_raw,        '°C',  1)}</td>
-          <td>${fmtNum(p.wind_speed_raw,  'm/s', 1)}</td>
+          <td>${p.tide || 'ー'}</td>
+          <td>${windCell}</td>
           <td>${fmtNum(p.wave_height_raw, 'm',   1)}</td>
           <td>${fmtNum(p.wave_period_raw, 's',   0)}</td>
           <td>${fmtNum(p.sst_raw,         '°C',  1)}</td>
@@ -250,14 +255,18 @@
       const p = (tomorrow.periods || []).find(p => p.period === period);
       if (!p) return;
       const w = p.wind_speed_raw, wv = p.wave_height_raw, wp = p.wave_period_raw;
+      const windVal = w != null
+        ? `${w.toFixed(1)}m/s ${p.wind_dir_compass || ''}`
+        : 'データなし';
       const rows = [
-        ['天気',   p.sky || 'データなし', false],
-        ['気温',   fmtNum(p.temp_raw,  '°C',  1), false],
-        ['風速',   fmtNum(w,  'm/s', 1), w  != null && w  >= 7],
-        ['波高',   fmtNum(wv, 'm',   1), wv != null && wv >= 1.0],
-        ['波周期', fmtNum(wp, 's',   0), wp != null && wp >= 8],
-        ['海水温', fmtNum(p.sst_raw,  '°C',  1), false],
-        ['降水量', p.precip || 'データなし', false],
+        ['天気',       p.sky || 'データなし',          false],
+        ['気温',       fmtNum(p.temp_raw,  '°C',  1),  false],
+        ['潮',         p.tide || 'ー',                 false],
+        ['風速・風向', windVal,                          w != null && w >= 7],
+        ['波高',       fmtNum(wv, 'm',   1), wv != null && wv >= 1.0],
+        ['波周期',     fmtNum(wp, 's',   0), wp != null && wp >= 8],
+        ['海水温',     fmtNum(p.sst_raw,  '°C',  1),  false],
+        ['降水量',     p.precip || 'データなし',        false],
       ];
       rows.forEach(([label, val, over]) => {
         const tr = document.createElement('tr');

@@ -4,6 +4,23 @@ CLI（fishing_advisor_pythonista.py）と FastAPI ウェブアプリで共用。
 """
 
 from .spots import spot_lat, spot_lon, spot_bearing, spot_kisugo, spot_terrain
+from .lunar import tide_label
+
+# ============================================================
+# 天気コード → 絵文字マッピング
+# ============================================================
+
+WEATHER_EMOJI: dict[int, str] = {
+    0: "☀️", 1: "🌤", 2: "⛅", 3: "☁️",
+    45: "🌫", 48: "🌫",
+    51: "🌦", 53: "🌦", 55: "🌦",
+    56: "🌦", 57: "🌦",
+    61: "☔", 63: "☔", 65: "🌧",
+    71: "🌨", 73: "🌨", 75: "❄️", 77: "🌨",
+    80: "🌦", 81: "🌦", 82: "⛈",
+    85: "🌨", 86: "❄️",
+    95: "⛈", 96: "⛈", 99: "⛈",
+}
 
 
 # ============================================================
@@ -352,7 +369,8 @@ def _hourly_index(day_index: int, hour: int) -> int:
 def score_period(weather_data: dict, marine_data: dict, day_index: int,
                  period_label: str, start_h: int, end_h: int,
                  sea_bearing_deg, kisugo_score: float,
-                 fetch_km: float = 50, sst: float | None = None) -> dict:
+                 fetch_km: float = 50, sst: float | None = None,
+                 day_date: str | None = None) -> dict:
     """指定時間帯の気象データからスコアを計算する。"""
     hourly = weather_data.get("hourly", {})
     daily  = weather_data.get("daily",  {})
@@ -470,7 +488,16 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
         "temp_raw": temp_avg,
         "sst": tp["label"],
         "temp": at["label"],
-        "sky": weather_code_label(weather_code),
+        "sky": (
+            f"{WEATHER_EMOJI[weather_code]} {weather_code_label(weather_code)}"
+            if weather_code is not None and weather_code in WEATHER_EMOJI
+            else weather_code_label(weather_code)
+        ),
+        "wind_dir_compass": direction_label(wind_dir) if wind_dir is not None else "ー",
+        "tide": (
+            tide_label(__import__("datetime").date.fromisoformat(day_date))
+            if day_date else "ー"
+        ),
         "precip": f"{precip:.1f}mm" if precip is not None else "データなし",
         "rain_warning": (
             "大雨" if precip and precip > 5
@@ -501,6 +528,7 @@ def score_7days(spot: dict, weather_data: dict, marine_data: dict,
                 weather_data, marine_data, day_idx,
                 label, start_h, end_h,
                 sea_bearing, kisugo, fetch_km, sst,
+                day_date=date_str,
             )
             periods.append(p)
 
