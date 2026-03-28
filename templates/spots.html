@@ -54,8 +54,11 @@
 <script>
   const SPOTS = {{ spots | tojson }};
   document.addEventListener('DOMContentLoaded', function() {
-    initSpotListMap('map-spots', SPOTS);
-    fetch('/api/ranking')
+    try { initSpotListMap('map-spots', SPOTS); } catch(e) {}
+
+    const ctrl = new AbortController();
+    setTimeout(() => ctrl.abort(), 30000);
+    fetch('/api/ranking', { signal: ctrl.signal })
       .then(r => r.json())
       .then(data => {
         data.spots.forEach(s => {
