@@ -44,12 +44,25 @@ function _makeMarker(spot, map) {
 }
 
 /**
- * TOPページ: 全域マップ（26か所のマーカー）
+ * スポット群に合わせてマップの中心・ズームを自動調整する
+ */
+function _fitSpots(map, spots, opts) {
+  if (!spots || spots.length === 0) return;
+  const latlngs = spots.map(s => [
+    s.location?.latitude ?? s.lat,
+    s.location?.longitude ?? s.lon,
+  ]);
+  map.fitBounds(L.latLngBounds(latlngs), opts || { padding: [40, 40], maxZoom: 14 });
+}
+
+/**
+ * TOPページ: 全域マップ
  */
 function initTopMap(elementId, spots) {
   const map = L.map(elementId).setView([35.20, 139.65], 9);
   L.tileLayer(OSM_TILE, { attribution: OSM_ATTR }).addTo(map);
   spots.forEach(spot => _makeMarker(spot, map));
+  _fitSpots(map, spots);
 }
 
 /**
@@ -59,6 +72,7 @@ function initSpotListMap(elementId, spots) {
   const map = L.map(elementId).setView([35.20, 139.65], 9);
   L.tileLayer(OSM_TILE, { attribution: OSM_ATTR }).addTo(map);
   spots.forEach(spot => _makeMarker(spot, map));
+  _fitSpots(map, spots);
 }
 
 /**
