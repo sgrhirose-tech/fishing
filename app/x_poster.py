@@ -133,18 +133,7 @@ def get_area_weather(area_name_jp: str, date_str: str) -> dict:
 # Claude API による一言コメント生成
 # ============================================================
 
-_COMMENT_PROMPT = """\
-以下のエリア海況データをもとに釣り人向けの一言コメントを40文字以内で生成してください。
-親しみやすい口調。絵文字1つまで。
-良い条件なら前向きに、荒天・高波なら注意を促す内容にする。
-コメントのみ出力（説明不要）。
-
-エリア: {area}
-波高: {wave}m
-風速: {wind}m/s {wind_dir}
-天気: {weather}
-水温: {sst}°C
-"""
+_PROMPT_FILE = Path(__file__).parent.parent / "x_post_prompt.md"
 
 
 def generate_area_comment(area_name_jp: str, area_data: dict) -> str:
@@ -153,11 +142,16 @@ def generate_area_comment(area_name_jp: str, area_data: dict) -> str:
     if not api_key:
         return ""
 
+    if not _PROMPT_FILE.exists():
+        print(f"  [警告] プロンプトファイルが見つかりません: {_PROMPT_FILE}")
+        return ""
+    template = _PROMPT_FILE.read_text(encoding="utf-8")
+
     def _v(key, unit="", default="--"):
         val = area_data.get(key)
         return f"{val}{unit}" if val is not None else default
 
-    prompt = _COMMENT_PROMPT.format(
+    prompt = template.format(
         area=area_name_jp,
         wave=_v("wave_height"),
         wind=_v("wind_speed"),
