@@ -16,3 +16,25 @@ services:
         sync: false
       - key: WEATHERAPI_KEY
         sync: false
+
+  - type: cron
+    name: tsuricast-morning-post
+    runtime: python
+    repo: https://github.com/sgrhirose-tech/fishing
+    branch: claude/fishing-guide-website-BdGZB
+    schedule: "55 18 * * *"   # 3:55 AM JST (= 18:55 UTC)
+    buildCommand: pip install -r requirements.txt
+    startCommand: python scripts/post_morning_report.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: X_API_KEY
+        sync: false
+      - key: X_API_SECRET
+        sync: false
+      - key: X_ACCESS_TOKEN
+        sync: false
+      - key: X_ACCESS_TOKEN_SECRET
+        sync: false
