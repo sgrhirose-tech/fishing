@@ -86,10 +86,10 @@
 <section class="spot-info">
   <h2>基本情報</h2>
   <table class="info-table">
-    <tr><th>底質</th><td>{{ df.seabed_summary }}</td></tr>
+    <tr><th>底質</th><td>{{ df.seabed_summary or 'ー' }}</td></tr>
     <tr>
       <th>海底傾斜</th>
-      <td>{{ slope_type }}</td>
+      <td>{{ slope_type or 'ー' }}</td>
     </tr>
     <tr><th>アクセス</th><td>{{ spot.info.access }}</td></tr>
     <tr><th>メモ</th><td>{{ spot.info.notes }}</td></tr>
