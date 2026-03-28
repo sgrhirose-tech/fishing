@@ -19,16 +19,16 @@
     "東京湾": {
       "lat": 35.0,
       "lon": 140.0,
-      "center_lat": 35.28,
-      "center_lon": 139.73,
+      "center_lat": 35.40,
+      "center_lon": 139.85,
       "fetch_km": 30,
       "lat_min": 35.15, "lat_max": 35.75, "lon_min": 139.50, "lon_max": 140.15
     },
     "内房": {
       "lat": 35.0,
       "lon": 140.0,
-      "center_lat": 35.22,
-      "center_lon": 139.82,
+      "center_lat": 35.10,
+      "center_lon": 139.88,
       "fetch_km": 40,
       "lat_min": 34.95, "lat_max": 35.52, "lon_min": 139.65, "lon_max": 140.15
     },
