@@ -2,8 +2,8 @@
   "slug": "kurihama-ko",
   "name": "久里浜港",
   "location": {
-    "latitude": 35.2278,
-    "longitude": 139.7069
+    "latitude": 35.2208011,
+    "longitude": 139.7141647
   },
   "area": {
     "prefecture": "神奈川県",
@@ -14,7 +14,7 @@
     "city_slug": ""
   },
   "physical_features": {
-    "sea_bearing_deg": 61.8,
+    "sea_bearing_deg": 60,
     "seabed_type": "rock",
     "depth_near_m": null,
     "depth_far_m": null,
