@@ -120,7 +120,7 @@ def spot_terrain(s: dict) -> str:
 def classify_slope(dist_m) -> str:
     """20m等深線距離からslope_typeを返す。"""
     if dist_m is None:
-        return "不明"
+        return ""
     if dist_m < 1000:
         return "急深"
     if dist_m < 2000:
