@@ -44,6 +44,19 @@
   </div>
 </section>
 
+<!-- 都道府県別リンク -->
+<section class="area-links">
+  <h2>都道府県から探す</h2>
+  <div class="area-grid">
+    {% for pref_slug, info in prefs.items() %}
+    <a href="/{{ pref_slug }}/" class="area-card">
+      <h3>{{ info.name }}</h3>
+      <p>{{ info.count }}か所</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
 <section class="all-spots-link">
   <a href="/spots" class="btn-primary">全釣り場一覧を見る（{{ spots|length }}か所）</a>
 </section>
