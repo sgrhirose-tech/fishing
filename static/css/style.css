@@ -164,6 +164,17 @@ main {
 /* ---- ローディング ---- */
 .loading { color: #888; font-style: italic; padding: 1rem 0; }
 
+/* ---- ページ上に戻る ---- */
+#back-to-top {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  background: #1a3a50; color: white; border: none;
+  border-radius: 50%; width: 42px; height: 42px;
+  font-size: 1.1rem; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3); z-index: 200;
+  opacity: .85;
+}
+#back-to-top:hover { opacity: 1; }
+
 /* ---- サイト共通注意書き ---- */
 .site-notice {
   text-align: center;
