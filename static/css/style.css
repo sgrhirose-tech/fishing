@@ -169,6 +169,16 @@ footer {
 }
 footer a { color: #8bc; }
 
+/* ---- 安全ページ ---- */
+.safety-page h2 { margin-top: 2rem; }
+.safety-page ul { padding-left: 1.4rem; line-height: 1.9; }
+.safety-link-inline {
+  font-size: .82rem;
+  margin: .4rem 0 1rem;
+}
+.safety-link-inline a { color: #555; text-decoration: underline; }
+.safety-link-inline a:hover { color: #1a6b9e; }
+
 /* ---- 安全警告・AIコメント ---- */
 .ai-comment-section { margin: 1rem 0; }
 .safety-danger, .safety-caution {
