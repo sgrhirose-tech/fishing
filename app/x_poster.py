@@ -8,10 +8,12 @@ import os
 import re
 import unicodedata
 import urllib.request
+from pathlib import Path
 
 from .spots import _get_marine_cache
 from .weather import fetch_weather, fetch_marine_with_fallback, fetch_sst_noaa
 from .scoring import direction_label, weather_code_label, WEATHER_EMOJI
+from .lunar import tide_label
 
 # ============================================================
 # エリア定義（投稿順）
@@ -70,7 +72,7 @@ def count_weighted(text: str) -> int:
 # エリア気象データ取得
 # ============================================================
 
-def get_area_weather(area_name_jp: str, date_str: str) -> dict:
+def get_area_weather(area_name_jp: str, date_str: str, include_tide: bool = True) -> dict:
     """_marine_areas.json を使ってエリア代表地点の気象データを取得する。"""
     proxy_dict, _, area_centers = _get_marine_cache()
 
@@ -117,6 +119,10 @@ def get_area_weather(area_name_jp: str, date_str: str) -> dict:
         from .weather import estimate_wave_from_wind
         wave_height = round(estimate_wave_from_wind(wind_speed, fetch_km), 1)
 
+    # 潮回り
+    import datetime as _dt
+    tide = tide_label(_dt.date.fromisoformat(date_str)) if include_tide else "--"
+
     return {
         "wind_speed":    wind_speed,
         "wind_dir_deg":  wind_dir_deg,
@@ -126,6 +132,7 @@ def get_area_weather(area_name_jp: str, date_str: str) -> dict:
         "weather_label": weather_label,
         "weather_emoji": weather_emoji,
         "sst":           round(sst, 1) if sst is not None else None,
+        "tide":          tide,
     }
 
 
@@ -145,27 +152,39 @@ def generate_area_comment(area_name_jp: str, area_data: dict) -> str:
     if not _PROMPT_FILE.exists():
         print(f"  [警告] プロンプトファイルが見つかりません: {_PROMPT_FILE}")
         return ""
-    template = _PROMPT_FILE.read_text(encoding="utf-8")
+    content = _PROMPT_FILE.read_text(encoding="utf-8")
+    # ## SYSTEM / ## USER の2セクションに分割
+    if "## USER" in content:
+        sys_part, user_part = content.split("## USER", 1)
+        system_prompt = sys_part.replace("## SYSTEM", "").strip()
+        user_template = user_part.strip()
+    else:
+        system_prompt = ""
+        user_template = content.strip()
 
     def _v(key, unit="", default="--"):
         val = area_data.get(key)
         return f"{val}{unit}" if val is not None else default
 
-    prompt = template.format(
-        area=area_name_jp,
-        wave=_v("wave_height"),
-        wind=_v("wind_speed"),
-        wind_dir=area_data.get("wind_dir_label", "--"),
-        weather=area_data.get("weather_label", "--"),
-        sst=_v("sst"),
+    user_prompt = user_template.format(
+        エリア名=area_name_jp,
+        天気=area_data.get("weather_label", "--"),
+        波高=_v("wave_height"),
+        風速=_v("wind_speed"),
+        風向=area_data.get("wind_dir_label", "--"),
+        水温=_v("sst"),
+        潮回り=area_data.get("tide", "--"),
     )
 
     try:
-        body = json.dumps({
+        payload = {
             "model": "claude-haiku-4-5-20251001",
             "max_tokens": 100,
-            "messages": [{"role": "user", "content": prompt}],
-        }).encode("utf-8")
+            "messages": [{"role": "user", "content": user_prompt}],
+        }
+        if system_prompt:
+            payload["system"] = system_prompt
+        body = json.dumps(payload).encode("utf-8")
         req = urllib.request.Request(
             "https://api.anthropic.com/v1/messages",
             data=body,
