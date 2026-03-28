@@ -34,8 +34,26 @@ main {
   padding: 1.5rem 1.25rem 3rem;
 }
 
-/* ---- ヒーロー ---- */
-.hero { text-align: center; padding: 2rem 1rem; }
+/* ---- ヒーローバナー画像 ---- */
+.hero-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+/* ---- ヒーローキャプション（ナビ下のキャッチコピー） ---- */
+.hero-caption {
+  text-align: center;
+  padding: 1.25rem 1rem 0.25rem;
+  font-size: 1rem;
+  color: #334;
+  margin: 0;
+}
+
+/* ---- ヒーロー（旧スタイル） ---- */
+.hero { text-align: center; padding: 1.5rem 1rem 0.5rem; }
 .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #1a6b9e; }
 
 /* ---- マップ ---- */

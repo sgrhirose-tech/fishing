@@ -1,0 +1,98 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1100" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1686C9"/>
+      <stop offset="1" stop-color="#103B5C"/>
+    </linearGradient>
+    <linearGradient id="wave-fill" x1="200" y1="280" x2="900" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F4FCFF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <!-- Icon inner wave (512×512 coordinate space) -->
+    <linearGradient id="icon-wave-fill" x1="84" y1="360" x2="396" y2="156" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F4FCFF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <filter id="wave-shadow" x="-10%" y="-40%" width="125%" height="200%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0B2740" flood-opacity="0.20"/>
+    </filter>
+    <filter id="icon-shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0B2740" flood-opacity="0.20"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="300" fill="url(#bg)"/>
+
+  <!-- Sun (top right) -->
+  <circle cx="1080" cy="62" r="55" fill="#FFC84A"/>
+  <circle cx="1080" cy="62" r="24" fill="#FFFFFF" opacity="0.98"/>
+  <circle cx="1101" cy="41" r="10" fill="#FFD86E" opacity="0.95"/>
+
+  <!-- Large white wave (bottom) -->
+  <path filter="url(#wave-shadow)"
+        d="M0 248
+           C150 278, 350 290, 560 262
+           C720 242, 860 196, 960 142
+           C968 133, 988 126, 1006 133
+           C1024 140, 1032 155, 1024 168
+           C912 226, 760 274, 580 292
+           C360 312, 120 300, 0 272Z"
+        fill="url(#wave-fill)"/>
+
+  <!-- Teal wave (bottom) -->
+  <path d="M0 272
+           C130 295, 310 300, 490 270
+           C608 250, 710 218, 800 186
+           C814 178, 832 178, 840 188
+           C848 198, 846 212, 832 220
+           C736 256, 624 288, 490 305
+           C290 326, 80 316, 0 294Z"
+        fill="#31C7D8" opacity="0.96"/>
+
+  <!-- Fishing line decorations (upper left, behind logo) -->
+  <path d="M55 44 C115 22, 185 18, 250 36"
+        stroke="#F4FCFF" stroke-width="8" stroke-linecap="round" opacity="0.60"/>
+  <path d="M42 74 C110 48, 185 47, 260 66"
+        stroke="#FFC84A" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Logo mark: scale 0.26 of 512×512 → ~133px, placed at left -->
+  <g transform="translate(30, 72) scale(0.26)">
+    <rect x="24" y="24" width="464" height="464" rx="112"
+          fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.22)" stroke-width="3"/>
+    <path filter="url(#icon-shadow)"
+          d="M92 328
+             C142 374, 222 390, 302 350
+             C365 319, 407 253, 430 168
+             C434 153, 451 146, 466 152
+             C480 158, 487 173, 482 188
+             C455 281, 404 355, 327 399
+             C225 458, 112 440, 63 369
+             C55 357, 58 341, 70 333
+             C78 327, 86 326, 92 328Z"
+          fill="url(#icon-wave-fill)"/>
+    <path d="M134 300
+             C187 323, 247 321, 305 291
+             C328 279, 348 264, 366 247
+             C375 239, 389 239, 397 248
+             C405 257, 405 271, 396 279
+             C374 299, 350 317, 321 332
+             C250 370, 175 371, 111 343
+             C99 338, 94 324, 99 312
+             C104 300, 121 294, 134 300Z"
+          fill="#31C7D8" opacity="0.96"/>
+    <circle cx="417" cy="121" r="39" fill="#FFC84A"/>
+    <circle cx="417" cy="121" r="17" fill="#FFFFFF" opacity="0.98"/>
+    <circle cx="432" cy="106" r="7" fill="#FFD86E" opacity="0.95"/>
+    <path d="M118 140 C152 118, 193 113, 230 126"
+          stroke="#F4FCFF" stroke-width="18" stroke-linecap="round" opacity="0.78"/>
+    <path d="M104 188 C142 163, 193 161, 235 177"
+          stroke="#FFC84A" stroke-width="12" stroke-linecap="round" opacity="0.72"/>
+  </g>
+
+  <!-- Site name -->
+  <text x="200" y="158"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-size="88" font-weight="900" letter-spacing="-2"
+        fill="#FFFFFF">Tsuricast</text>
+</svg>
