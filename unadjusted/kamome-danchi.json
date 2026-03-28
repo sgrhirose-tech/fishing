@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 160,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 68.9
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "terrain_summary": "砂主体、貝殻混じり、近傍に石要素あり、急深"
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
     "notes": "足場広めの岸壁ポイント",
-    "access": "堀ノ内駅から徒歩20分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kamome-danchi.jpg"
+    "access": "堀ノ内駅から徒歩20分"
   }
 }

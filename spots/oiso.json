@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 124.0,
     "seabed_type": "sand_gravel",
-    "depth_near_m": 5,
-    "depth_far_m": 20,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 970.9
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "terrain_summary": "砂主体、近傍に石要素あり、遠浅"
+    "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
     "notes": "砂と砂利が混じる。サーファー少なめ。投げ釣りで好釣果が期待できる",
-    "access": "大磯駅から徒歩10分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/oiso.jpg"
+    "access": "大磯駅から徒歩10分"
   }
 }

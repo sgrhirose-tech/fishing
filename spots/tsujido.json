@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 180,
     "seabed_type": "sand",
-    "depth_near_m": 5,
-    "depth_far_m": 15,
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1576.9
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "terrain_summary": "砂主体、遠浅"
+    "seabed_summary": "砂主体"
   },
   "info": {
     "notes": "湘南の代表的な砂浜。サーファー多め。オフショア時は空きやすい",
-    "access": "辻堂駅から徒歩15分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/tsujido.jpg"
+    "access": "辻堂駅から徒歩15分"
   }
 }

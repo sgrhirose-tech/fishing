@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 40,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 644.0
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "terrain_summary": "砂主体、貝殻混じり、近傍に石要素あり、急深"
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
     "notes": "横須賀定番の護岸公園",
-    "access": "県立大学駅から徒歩15分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/umikaze-koen.jpg"
+    "access": "県立大学駅から徒歩15分"
   }
 }

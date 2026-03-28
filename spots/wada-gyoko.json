@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 195,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1441.2
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "terrain_summary": "砂主体、近傍に石要素あり、やや急深"
+    "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
     "notes": "港内中心の実績場",
-    "access": "和田浦駅から徒歩12分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/wada-gyoko.jpg"
+    "access": "和田浦駅から徒歩12分"
   }
 }

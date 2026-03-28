@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 85,
     "seabed_type": "unknown",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1870.6
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "terrain_summary": "やや急深"
+    "seabed_summary": ""
   },
   "info": {
     "notes": "砂浜中心で投げ釣り向き",
-    "access": "三浦海岸駅からバス10分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kaneda-kaigan.jpg"
+    "access": "三浦海岸駅からバス10分"
   }
 }

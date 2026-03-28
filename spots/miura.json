@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 120.6,
     "seabed_type": "sand",
-    "depth_near_m": 4,
-    "depth_far_m": 15,
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1704.0
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "terrain_summary": "砂主体、遠浅"
+    "seabed_summary": "砂主体"
   },
   "info": {
     "notes": "神奈川屈指の投げ釣りポイント。白い砂浜が1km以上続く",
-    "access": "三浦海岸駅から徒歩5分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/miura.jpg"
+    "access": "三浦海岸駅から徒歩5分"
   }
 }

@@ -114,8 +114,8 @@ def spot_kisugo(s: dict) -> float:
     return s.get("derived_features", {}).get("bottom_kisugo_score", 50)
 
 def spot_terrain(s: dict) -> str:
-    """地形サマリー文字列。"""
-    return s.get("derived_features", {}).get("terrain_summary", "")
+    """底質サマリー文字列。"""
+    return s.get("derived_features", {}).get("seabed_summary", "")
 
 def classify_slope(dist_m) -> str:
     """20m等深線距離からslope_typeを返す。"""
@@ -152,6 +152,15 @@ def get_marine_fallbacks() -> list:
 def get_area_centers() -> dict:
     _, _, centers = _get_marine_cache()
     return centers
+
+def get_photos(slug: str) -> list[str]:
+    """スポットの写真URLリストを返す（static/photos/{slug}*.jpg の命名規則）。"""
+    photos_dir = _ROOT / "static" / "photos"
+    if not photos_dir.exists():
+        return []
+    files = sorted(photos_dir.glob(f"{slug}*.jpg"))
+    return [f"/static/photos/{f.name}" for f in files]
+
 
 def assign_area(spot: dict) -> str:
     """スポット座標に最近傍のエリア名を返す。"""

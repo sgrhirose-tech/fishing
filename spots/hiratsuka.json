@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 179.7,
     "seabed_type": "sand",
-    "depth_near_m": 4,
-    "depth_far_m": 15,
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 969.4
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "terrain_summary": "砂主体、遠浅"
+    "seabed_summary": "砂主体"
   },
   "info": {
     "notes": "遠浅の砂浜。平塚新港も近く便利",
-    "access": "平塚駅からバス20分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/hiratsuka.jpg"
+    "access": "平塚駅からバス20分"
   }
 }

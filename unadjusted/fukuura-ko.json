@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 180,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 255.0
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "terrain_summary": "砂主体、近傍に石要素あり、急深"
+    "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
     "notes": "県境近くの港ポイント",
-    "access": "真鶴駅からバス15分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/fukuura-ko.jpg"
+    "access": "真鶴駅からバス15分"
   }
 }

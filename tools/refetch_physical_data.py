@@ -40,7 +40,7 @@ def process_file(src_path: Path) -> bool:
 
     spot.setdefault("derived_features", {})
     spot["derived_features"]["bottom_kisugo_score"] = phys.get("bottom_kisugo_score", 50)
-    spot["derived_features"]["terrain_summary"]     = phys.get("terrain_summary", "")
+    spot["derived_features"]["seabed_summary"]       = phys.get("seabed_summary", "")
 
     OUTPUT_DIR.mkdir(exist_ok=True)
     out_path = OUTPUT_DIR / src_path.name

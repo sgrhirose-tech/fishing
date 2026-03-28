@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 310,
     "seabed_type": "rock",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "terrain_summary": "石・岩主体、貝殻混じり、近傍に石要素あり、傾斜不明"
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
     "notes": "東京湾奥の定番公園",
-    "access": "新木場駅からバス15分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/wakasu-kaihin-koen.jpg"
+    "access": "新木場駅からバス15分"
   }
 }

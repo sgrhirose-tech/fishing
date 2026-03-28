@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 90,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "terrain_summary": "傾斜不明"
+    "seabed_summary": ""
   },
   "info": {
     "notes": "内湾気味で狙いやすい",
-    "access": "上総興津駅から徒歩10分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/okitsu-ko.jpg"
+    "access": "上総興津駅から徒歩10分"
   }
 }

@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 185,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1881.5
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "terrain_summary": "石・岩主体、近傍に石要素あり、やや急深"
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
     "notes": "磯混じりで変化が多い",
-    "access": "稲村ヶ崎駅から徒歩5分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/inamuragasaki.jpg"
+    "access": "稲村ヶ崎駅から徒歩5分"
   }
 }

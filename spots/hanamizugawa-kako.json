@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 165,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 958.0
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "terrain_summary": "砂主体、急深"
+    "seabed_summary": "砂主体"
   },
   "info": {
     "notes": "河口周辺の変化を狙える",
-    "access": "平塚駅からバス15分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/hanamizugawa-kako.jpg"
+    "access": "平塚駅からバス15分"
   }
 }

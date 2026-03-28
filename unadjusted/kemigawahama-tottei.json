@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 230,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1578.4
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "terrain_summary": "やや急深"
+    "seabed_summary": ""
   },
   "info": {
     "notes": "突堤先端が人気",
-    "access": "検見川浜駅から徒歩15分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kemigawahama-tottei.jpg"
+    "access": "検見川浜駅から徒歩15分"
   }
 }

@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 200,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "terrain_summary": "砂主体、近傍に石要素あり、傾斜不明"
+    "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
     "notes": "広い海岸で投げ釣り向き アニメ聖地",
-    "access": "七里ヶ浜駅から徒歩5分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/shichirigahama.jpg"
+    "access": "七里ヶ浜駅から徒歩5分"
   }
 }

@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 125,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 909.9
   },
   "derived_features": {
     "bottom_kisugo_score": 65,
-    "terrain_summary": "貝殻主体、貝殻混じり、急深"
+    "seabed_summary": "貝殻主体、貝殻混じり"
   },
   "info": {
     "notes": "定番の海釣り施設",
-    "access": "鶴見駅からバス25分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/daikoku-umizuri-shisetsu.jpg"
+    "access": "鶴見駅からバス25分"
   }
 }
