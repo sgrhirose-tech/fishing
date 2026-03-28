@@ -1,0 +1,114 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1100" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1686C9"/>
+      <stop offset="1" stop-color="#103B5C"/>
+    </linearGradient>
+    <linearGradient id="wave-fill" x1="200" y1="560" x2="900" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F4FCFF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <!-- Icon inner wave uses 512×512 coordinate space (applied inside scaled <g>) -->
+    <linearGradient id="icon-wave-fill" x1="84" y1="360" x2="396" y2="156" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F4FCFF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <filter id="wave-shadow" x="-10%" y="-40%" width="125%" height="200%">
+      <feDropShadow dx="0" dy="22" stdDeviation="28" flood-color="#0B2740" flood-opacity="0.22"/>
+    </filter>
+    <filter id="icon-shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0B2740" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Large white wave (bottom area) -->
+  <path filter="url(#wave-shadow)"
+        d="M0 540
+           C150 590, 350 610, 560 570
+           C720 538, 860 470, 960 370
+           C968 358, 988 350, 1006 358
+           C1024 366, 1032 384, 1024 402
+           C912 508, 760 580, 580 615
+           C360 655, 120 638, 0 580Z"
+        fill="url(#wave-fill)"/>
+
+  <!-- Teal wave -->
+  <path d="M0 590
+           C130 625, 310 630, 490 585
+           C608 556, 710 510, 800 462
+           C814 454, 832 455, 840 466
+           C848 478, 846 494, 832 502
+           C736 552, 624 596, 490 624
+           C290 660, 80 648, 0 615Z"
+        fill="#31C7D8" opacity="0.96"/>
+
+  <!-- Sun (top right) -->
+  <circle cx="1060" cy="100" r="80" fill="#FFC84A"/>
+  <circle cx="1060" cy="100" r="35" fill="#FFFFFF" opacity="0.98"/>
+  <circle cx="1090" cy="70" r="14" fill="#FFD86E" opacity="0.95"/>
+
+  <!-- Fishing line decoration (upper left, behind logo) -->
+  <path d="M60 90 C140 58, 230 53, 310 75"
+        stroke="#F4FCFF" stroke-width="12" stroke-linecap="round" opacity="0.60"/>
+  <path d="M40 148 C130 110, 230 108, 330 133"
+        stroke="#FFC84A" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Logo mark: icon.svg elements scaled 0.52× and placed at left -->
+  <!-- 512 * 0.52 ≈ 266px wide/tall, centered vertically in left area -->
+  <g transform="translate(55, 165) scale(0.52)">
+    <!-- Ghost rounded rect (subtle border) -->
+    <rect x="24" y="24" width="464" height="464" rx="112"
+          fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.20)" stroke-width="3"/>
+    <!-- White arc wave -->
+    <path filter="url(#icon-shadow)"
+          d="M92 328
+             C142 374, 222 390, 302 350
+             C365 319, 407 253, 430 168
+             C434 153, 451 146, 466 152
+             C480 158, 487 173, 482 188
+             C455 281, 404 355, 327 399
+             C225 458, 112 440, 63 369
+             C55 357, 58 341, 70 333
+             C78 327, 86 326, 92 328Z"
+          fill="url(#icon-wave-fill)"/>
+    <!-- Teal wave -->
+    <path d="M134 300
+             C187 323, 247 321, 305 291
+             C328 279, 348 264, 366 247
+             C375 239, 389 239, 397 248
+             C405 257, 405 271, 396 279
+             C374 299, 350 317, 321 332
+             C250 370, 175 371, 111 343
+             C99 338, 94 324, 99 312
+             C104 300, 121 294, 134 300Z"
+          fill="#31C7D8" opacity="0.96"/>
+    <!-- Sun -->
+    <circle cx="417" cy="121" r="39" fill="#FFC84A"/>
+    <circle cx="417" cy="121" r="17" fill="#FFFFFF" opacity="0.98"/>
+    <circle cx="432" cy="106" r="7" fill="#FFD86E" opacity="0.95"/>
+    <!-- Fishing lines -->
+    <path d="M118 140 C152 118, 193 113, 230 126"
+          stroke="#F4FCFF" stroke-width="18" stroke-linecap="round" opacity="0.78"/>
+    <path d="M104 188 C142 163, 193 161, 235 177"
+          stroke="#FFC84A" stroke-width="12" stroke-linecap="round" opacity="0.72"/>
+  </g>
+
+  <!-- Site name -->
+  <text x="400" y="272"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-size="118" font-weight="900" letter-spacing="-3"
+        fill="#FFFFFF">Tsuricast</text>
+
+  <!-- Tagline -->
+  <text x="414" y="365"
+        font-family="IPAGothic, 'Noto Sans CJK JP', 'Hiragino Sans', sans-serif"
+        font-size="40" font-weight="500" letter-spacing="3"
+        fill="#B8E4F5">千葉・東京・神奈川</text>
+  <text x="414" y="418"
+        font-family="IPAGothic, 'Noto Sans CJK JP', 'Hiragino Sans', sans-serif"
+        font-size="40" font-weight="500" letter-spacing="3"
+        fill="#B8E4F5">の釣り場天気情報</text>
+</svg>
