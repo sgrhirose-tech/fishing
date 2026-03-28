@@ -12,10 +12,10 @@ AMENITY_SEARCH_RADIUS_M = 1000
 
 # 取得対象の施設タイプ
 FACILITY_TYPES = [
-    {"key": "amenity", "value": "parking",     "label": "駐車場",   "color": "#2196F3"},
-    {"key": "amenity", "value": "toilets",     "label": "トイレ",   "color": "#4CAF50"},
-    {"key": "shop",    "value": "fishing",     "label": "釣具屋",   "color": "#FF9800"},
-    {"key": "shop",    "value": "convenience", "label": "コンビニ", "color": "#9C27B0"},
+    {"key": "amenity", "value": "parking",     "label": "駐車場",   "color": "#1565C0", "symbol": "P"},
+    {"key": "amenity", "value": "toilets",     "label": "トイレ",   "color": "#2E7D32", "symbol": "WC"},
+    {"key": "shop",    "value": "fishing",     "label": "釣具屋",   "color": "#E65100", "symbol": "釣"},
+    {"key": "shop",    "value": "convenience", "label": "コンビニ", "color": "#6A1B9A", "symbol": "C"},
 ]
 
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
@@ -85,6 +85,7 @@ def fetch_nearby_facilities(lat: float, lon: float,
                 "lat": el_lat,
                 "lon": el_lon,
                 "color": ft_info["color"],
+                "symbol": ft_info["symbol"],
             })
 
     except Exception as e:

@@ -22,7 +22,7 @@
       "center_lat": 35.28,
       "center_lon": 139.73,
       "fetch_km": 30,
-      "lat_min": 35.15, "lat_max": 35.55, "lon_min": 139.50, "lon_max": 139.95
+      "lat_min": 35.15, "lat_max": 35.75, "lon_min": 139.50, "lon_max": 140.15
     },
     "内房": {
       "lat": 35.0,
