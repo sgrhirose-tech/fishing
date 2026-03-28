@@ -1,0 +1,283 @@
+"""
+X（Twitter）への海況自動投稿モジュール。
+毎朝4:00から6エリア分を5分間隔で投稿する。
+"""
+
+import json
+import os
+import re
+import unicodedata
+import urllib.request
+
+from .spots import _get_marine_cache
+from .weather import fetch_weather, fetch_marine_with_fallback, fetch_sst_noaa
+from .scoring import direction_label, weather_code_label, WEATHER_EMOJI
+
+# ============================================================
+# エリア定義（投稿順）
+# ============================================================
+
+AREA_SCHEDULE = [
+    ("sagamibay", "相模湾",   "https://tsuricast.jp/spots?area=sagamibay"),
+    ("tokyobay",  "東京湾",   "https://tsuricast.jp/spots?area=tokyobay"),
+    ("uchibo",    "内房",     "https://tsuricast.jp/spots?area=uchibo"),
+    ("sotobo",    "外房",     "https://tsuricast.jp/spots?area=sotobo"),
+    ("kujukuri",  "九十九里", "https://tsuricast.jp/spots?area=kujukuri"),
+    ("miura",     "三浦半島", "https://tsuricast.jp/spots?area=miura"),
+]
+
+# エリア slug → 日本語名 マッピング（_marine_areas.json のキーと対応）
+_SLUG_TO_JP = {
+    "sagamibay": "相模湾",
+    "tokyobay":  "東京湾",
+    "uchibo":    "内房",
+    "sotobo":    "外房",
+    "kujukuri":  "九十九里",
+    "miura":     "三浦半島",
+}
+
+_URL_PATTERN = re.compile(r'https?://\S+')
+
+
+# ============================================================
+# 文字数カウント（X の重み付きルール）
+# ============================================================
+
+def count_weighted(text: str) -> int:
+    """X の重み付き文字数を返す。URL は t.co 換算で 23 文字固定。"""
+    # URL を 23 文字のプレースホルダーに置換してカウント
+    placeholder = "\x00" * 23  # ASCII null × 23 = 23 文字
+    replaced = _URL_PATTERN.sub(placeholder, text)
+
+    total = 0
+    for ch in replaced:
+        cat = unicodedata.category(ch)
+        name = unicodedata.name(ch, "")
+        # CJK・ひらがな・カタカナ・全角記号 → 2
+        if (
+            "\u3000" <= ch <= "\u9FFF"   # CJK / ひら / カタ / 全角記号
+            or "\uF900" <= ch <= "\uFAFF"  # CJK互換
+            or "\uFF00" <= ch <= "\uFFEF"  # 全角ASCII・半角カナ
+            or cat.startswith("S")         # Symbol (絵文字など)
+        ):
+            total += 2
+        else:
+            total += 1
+    return total
+
+
+# ============================================================
+# エリア気象データ取得
+# ============================================================
+
+def get_area_weather(area_name_jp: str, date_str: str) -> dict:
+    """_marine_areas.json を使ってエリア代表地点の気象データを取得する。"""
+    proxy_dict, _, area_centers = _get_marine_cache()
+
+    if area_name_jp not in area_centers:
+        return {}
+
+    center_lat, center_lon, fetch_km = area_centers[area_name_jp]
+    proxy_lat, proxy_lon = proxy_dict.get(area_name_jp, (center_lat, center_lon))
+
+    weather = fetch_weather(center_lat, center_lon, date_str)
+    marine = fetch_marine_with_fallback(proxy_lat, proxy_lon, date_str)
+    sst = fetch_sst_noaa(center_lat, center_lon, date_str)
+
+    daily = weather.get("daily", {})
+
+    # 風速・風向
+    wind_speed = None
+    wind_dir_deg = None
+    spd_list = daily.get("wind_speed_10m_max", [])
+    dir_list = daily.get("wind_direction_10m_dominant", [])
+    if spd_list and spd_list[0] is not None:
+        wind_speed = round(spd_list[0], 1)
+    if dir_list and dir_list[0] is not None:
+        wind_dir_deg = dir_list[0]
+    wind_dir_label = direction_label(wind_dir_deg) if wind_dir_deg is not None else "--"
+
+    # 天気コード
+    weather_code = None
+    wc_list = daily.get("weather_code", [])
+    if wc_list and wc_list[0] is not None:
+        weather_code = int(wc_list[0])
+    weather_label = weather_code_label(weather_code) if weather_code is not None else "--"
+    weather_emoji = WEATHER_EMOJI.get(weather_code, "🌡") if weather_code is not None else ""
+
+    # 波高（marine API → 風推定フォールバック）
+    wave_height = None
+    if marine and "daily" in marine:
+        wh_list = marine["daily"].get("wave_height_max", [])
+        if wh_list and wh_list[0] is not None:
+            wave_height = round(wh_list[0], 1)
+    if wave_height is None and marine.get("wave_height_max") is not None:
+        wave_height = round(marine["wave_height_max"], 1)
+    if wave_height is None and wind_speed is not None:
+        from .weather import estimate_wave_from_wind
+        wave_height = round(estimate_wave_from_wind(wind_speed, fetch_km), 1)
+
+    return {
+        "wind_speed":    wind_speed,
+        "wind_dir_deg":  wind_dir_deg,
+        "wind_dir_label": wind_dir_label,
+        "wave_height":   wave_height,
+        "weather_code":  weather_code,
+        "weather_label": weather_label,
+        "weather_emoji": weather_emoji,
+        "sst":           round(sst, 1) if sst is not None else None,
+    }
+
+
+# ============================================================
+# Claude API による一言コメント生成
+# ============================================================
+
+_COMMENT_PROMPT = """\
+以下のエリア海況データをもとに釣り人向けの一言コメントを40文字以内で生成してください。
+親しみやすい口調。絵文字1つまで。
+良い条件なら前向きに、荒天・高波なら注意を促す内容にする。
+コメントのみ出力（説明不要）。
+
+エリア: {area}
+波高: {wave}m
+風速: {wind}m/s {wind_dir}
+天気: {weather}
+水温: {sst}°C
+"""
+
+
+def generate_area_comment(area_name_jp: str, area_data: dict) -> str:
+    """Claude API でエリア海況の一言コメントを生成する（最大40文字）。"""
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        return ""
+
+    def _v(key, unit="", default="--"):
+        val = area_data.get(key)
+        return f"{val}{unit}" if val is not None else default
+
+    prompt = _COMMENT_PROMPT.format(
+        area=area_name_jp,
+        wave=_v("wave_height"),
+        wind=_v("wind_speed"),
+        wind_dir=area_data.get("wind_dir_label", "--"),
+        weather=area_data.get("weather_label", "--"),
+        sst=_v("sst"),
+    )
+
+    try:
+        body = json.dumps({
+            "model": "claude-haiku-4-5-20251001",
+            "max_tokens": 100,
+            "messages": [{"role": "user", "content": prompt}],
+        }).encode("utf-8")
+        req = urllib.request.Request(
+            "https://api.anthropic.com/v1/messages",
+            data=body,
+            headers={
+                "x-api-key": api_key,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+        text = result["content"][0]["text"].strip()
+        # 改行を取り除き 40 文字に切り捨て
+        text = text.replace("\n", " ")
+        return text[:40]
+    except Exception as e:
+        print(f"  [警告] AIコメント生成失敗 ({area_name_jp}): {e}")
+        return ""
+
+
+# ============================================================
+# ツイート本文フォーマット
+# ============================================================
+
+def format_tweet(area_name_jp: str, area_data: dict, comment: str, url: str) -> str:
+    """投稿用ツイートテキストを組み立てる。280文字超過時はコメントを短縮。"""
+
+    def _v(key, unit="", default="--"):
+        val = area_data.get(key)
+        return f"{val}{unit}" if val is not None else default
+
+    weather_str = (
+        f"{area_data['weather_emoji']} {area_data['weather_label']}"
+        if area_data.get("weather_emoji")
+        else area_data.get("weather_label", "--")
+    )
+
+    def _build(cmt: str) -> str:
+        parts = [
+            f"🌊 今朝の{area_name_jp}海況",
+            "",
+            f"波　: {_v('wave_height')}m",
+            f"風　: {_v('wind_speed')}m/s {_v('wind_dir_label')}",
+            f"天気: {weather_str}",
+            f"水温: {_v('sst')}°C",
+        ]
+        if cmt:
+            parts += ["", cmt]
+        parts += [
+            "",
+            f"{area_name_jp}の釣り場詳細👇",
+            url,
+            "",
+            f"#釣り #{area_name_jp} #海釣り",
+        ]
+        return "\n".join(parts)
+
+    tweet = _build(comment)
+
+    # 280文字を超えた場合、コメントを段階的に短縮
+    if count_weighted(tweet) > 280 and comment:
+        for length in (30, 20, 10, 0):
+            shorter = comment[:length] if length > 0 else ""
+            tweet = _build(shorter)
+            if count_weighted(tweet) <= 280:
+                break
+
+    return tweet
+
+
+# ============================================================
+# X API 投稿
+# ============================================================
+
+def _get_twitter_client():
+    """tweepy.Client を環境変数から生成して返す。"""
+    import tweepy  # noqa: PLC0415
+    return tweepy.Client(
+        consumer_key=os.environ["X_API_KEY"],
+        consumer_secret=os.environ["X_API_SECRET"],
+        access_token=os.environ["X_ACCESS_TOKEN"],
+        access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"],
+    )
+
+
+def post_tweet(text: str) -> None:
+    """X API v2 でツイートを投稿する。"""
+    client = _get_twitter_client()
+    client.create_tweet(text=text)
+
+
+# ============================================================
+# エリア1件分の投稿処理
+# ============================================================
+
+def post_area(area_slug: str, area_name_jp: str, url: str, date_str: str) -> bool:
+    """1エリア分のデータ取得・コメント生成・投稿を行う。失敗時はFalseを返す。"""
+    try:
+        area_data = get_area_weather(area_name_jp, date_str)
+        comment = generate_area_comment(area_name_jp, area_data)
+        tweet = format_tweet(area_name_jp, area_data, comment, url)
+        print(f"--- {area_name_jp} ({count_weighted(tweet)}文字) ---")
+        print(tweet)
+        print()
+        post_tweet(tweet)
+        return True
+    except Exception as e:
+        print(f"[ERROR] {area_name_jp}: {e}")
+        return False
