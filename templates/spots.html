@@ -56,19 +56,20 @@
   document.addEventListener('DOMContentLoaded', function() {
     try { initSpotListMap('map-spots', SPOTS); } catch(e) {}
 
-    const ctrl = new AbortController();
-    setTimeout(() => ctrl.abort(), 30000);
-    fetch('/api/ranking', { signal: ctrl.signal })
-      .then(r => r.json())
-      .then(data => {
-        data.spots.forEach(s => {
-          const el = document.getElementById('wb-' + s.slug);
-          if (!el) return;
-          const t = s.total;
-          el.textContent = t >= 70 ? '🎣' : t >= 50 ? '🌤' : t >= 30 ? '😐' : '🌧';
-        });
-      })
-      .catch(() => {});
+    // TODO: 負荷対策のため一時停止中。パフォーマンス改善後に再有効化。
+    // const ctrl = new AbortController();
+    // setTimeout(() => ctrl.abort(), 30000);
+    // fetch('/api/ranking', { signal: ctrl.signal })
+    //   .then(r => r.json())
+    //   .then(data => {
+    //     data.spots.forEach(s => {
+    //       const el = document.getElementById('wb-' + s.slug);
+    //       if (!el) return;
+    //       const t = s.total;
+    //       el.textContent = t >= 70 ? '🎣' : t >= 50 ? '🌤' : t >= 30 ? '😐' : '🌧';
+    //     });
+    //   })
+    //   .catch(() => {});
   });
 </script>
 {% endblock %}
