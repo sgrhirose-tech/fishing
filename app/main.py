@@ -15,7 +15,7 @@ except ImportError:
     pass
 
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -104,6 +104,55 @@ _BASE = pathlib.Path(__file__).parent.parent
 
 app.mount("/static", StaticFiles(directory=str(_BASE / "static")), name="static")
 templates = Jinja2Templates(directory=str(_BASE / "templates"))
+
+_ROBOTS_TXT = """\
+User-agent: *
+Allow: /
+
+# --- AI training crawlers: block ---
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+"""
+
+@app.get("/robots.txt", response_class=PlainTextResponse, include_in_schema=False)
+def robots_txt():
+    return _ROBOTS_TXT
 
 # ============================================================
 # API エンドポイント
