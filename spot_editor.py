@@ -16,8 +16,13 @@ import re
 import sys
 import urllib.parse
 
-SPOTS_DIR = os.path.join(os.path.dirname(__file__), "unadjusted")
-AREAS_FILE = os.path.join(os.path.dirname(__file__), "spots", "_marine_areas.json")
+REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+AREAS_FILE = os.path.join(REPO_ROOT, "spots", "_marine_areas.json")
+AVAILABLE_DIRS = {
+    "unadjusted": os.path.join(REPO_ROOT, "unadjusted"),
+    "spots":      os.path.join(REPO_ROOT, "spots"),
+}
+DEFAULT_DIR_KEY = "unadjusted"
 
 # slug バリデーション用定数（app/constants.py と同一の値を保つこと）
 _VALID_AREA_SLUGS = {"sagamibay", "miura", "tokyobay", "uchibo", "sotobo", "kujukuri"}
@@ -86,15 +91,27 @@ def _assign_marine_area(lat, lon):
     return best_name
 
 
-def load_spots():
+def _dir_key_for(path):
+    """絶対パスから AVAILABLE_DIRS のキーを逆引き。不明なら DEFAULT_DIR_KEY。"""
+    abs_path = os.path.abspath(path)
+    for k, v in AVAILABLE_DIRS.items():
+        if abs_path == os.path.abspath(v):
+            return k
+    return DEFAULT_DIR_KEY
+
+
+def load_spots(dir_path=None):
+    d = dir_path or AVAILABLE_DIRS[DEFAULT_DIR_KEY]
+    dir_key = _dir_key_for(d)
     spots = []
-    for fname in sorted(os.listdir(SPOTS_DIR)):
+    for fname in sorted(os.listdir(d)):
         if not fname.endswith(".json") or fname.startswith("_"):
             continue
-        path = os.path.join(SPOTS_DIR, fname)
+        path = os.path.join(d, fname)
         with open(path, encoding="utf-8") as f:
             spot = json.load(f)
         spot["_filename"] = fname
+        spot["_dir_key"]  = dir_key
         spots.append(spot)
     return spots
 
@@ -182,6 +199,9 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
 <div id="app">
   <div id="toolbar">
     <h1>🎣 スポットエディタ</h1>
+    <select id="dir-select" onchange="changeDir(this.value)" style="padding:4px 8px;border:1px solid #555;border-radius:4px;background:#2c4a6e;color:white;font-size:13px;cursor:pointer;">
+      __DIR_OPTIONS_HTML__
+    </select>
     <button id="btn-new" style="background:#27ae60;color:white;border:none;padding:5px 12px;border-radius:4px;cursor:pointer;font-size:13px;">＋新規</button>
   </div>
   <div id="js-error" style="display:none;background:#c0392b;color:white;padding:6px 12px;font-size:12px;"></div>
@@ -228,6 +248,7 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
 <script>
 // ---- data injected by Python ----
 var SAVE_MODE = '__SAVE_MODE__';
+var CURRENT_DIR_KEY = '__DIR_KEY__';
 var SPOTS = __SPOTS_JSON__;
 var AREA_SLUG_MAP = {
   "相模湾":   ["sagamibay",  "kanagawa", "神奈川県"],
@@ -246,6 +267,16 @@ window.onerror = function(msg, src, line) {
   if (el) { el.style.display = 'block'; el.textContent = 'JS Error: ' + msg + ' (line ' + line + ')'; }
   return false;
 };
+
+// ---- directory switch ----
+function changeDir(key) {
+  if (key === CURRENT_DIR_KEY) return;
+  if (SAVE_MODE === 'http') {
+    window.location.href = '/?dir=' + encodeURIComponent(key);
+  } else {
+    window.location.href = 'pythonista://changedir?dir=' + encodeURIComponent(key);
+  }
+}
 
 // ---- state ----
 var currentIdx = -1;
@@ -504,6 +535,7 @@ function saveChanges() {
 
   var payload = {
     _filename: s._filename,
+    _dir_key:  s._dir_key || CURRENT_DIR_KEY,
     name:      fv('name'),
     slug:      s.slug,
     location: {
@@ -585,7 +617,7 @@ function submitNewSpot() {
   if (SPOTS.find(function(s){ return s.slug === slug; })) { alert('そのスラッグは既に存在します: ' + slug); return; }
 
   closeModal();
-  var payload = { name: name, slug: slug, lat: lat, lon: lon };
+  var payload = { name: name, slug: slug, lat: lat, lon: lon, dir_key: CURRENT_DIR_KEY };
   if (SAVE_MODE === 'http') {
     fetch('/newspot', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
       .then(function(r){ return r.json(); })
@@ -664,7 +696,8 @@ def _save_spot(payload):
     if area_err:
         return {"ok": False, "error": area_err}
 
-    path = os.path.join(SPOTS_DIR, filename)
+    dir_path = AVAILABLE_DIRS.get(payload.get("_dir_key", ""), AVAILABLE_DIRS[DEFAULT_DIR_KEY])
+    path = os.path.join(dir_path, filename)
     if not os.path.exists(path):
         raise FileNotFoundError(f"file not found: {path}")
 
@@ -726,8 +759,10 @@ def _create_spot(payload):
     if not name or not slug:
         raise ValueError("missing name or slug")
 
+    dir_key  = payload.get("dir_key", DEFAULT_DIR_KEY)
+    dir_path = AVAILABLE_DIRS.get(dir_key, AVAILABLE_DIRS[DEFAULT_DIR_KEY])
     filename = f"{slug}.json"
-    path = os.path.join(SPOTS_DIR, filename)
+    path = os.path.join(dir_path, filename)
     if os.path.exists(path):
         return None  # 重複
 
@@ -770,6 +805,7 @@ def _create_spot(payload):
 
     print(f"[newspot] created: {path}")
     spot["_filename"] = filename
+    spot["_dir_key"]  = dir_key
     return spot
 
 
@@ -778,9 +814,10 @@ def _create_spot(payload):
 # ---------------------------------------------------------------------------
 
 class SpotDelegate(object):
-    def __init__(self, wv, spots):
+    def __init__(self, wv, spots, tmp_path):
         self.wv = wv
         self.spots = spots
+        self.tmp_path = tmp_path
 
     def webview_should_start_load(self, wv, url, nav_type):
         if url.startswith("pythonista://save?"):
@@ -795,7 +832,21 @@ class SpotDelegate(object):
             raw = params.get("data", ["{}"])[0]
             self._handle_newspot(raw)
             return False
+        if url.startswith("pythonista://changedir?"):
+            qs = url.split("?", 1)[1]
+            params = urllib.parse.parse_qs(qs)
+            dir_key = params.get("dir", [DEFAULT_DIR_KEY])[0]
+            if dir_key in AVAILABLE_DIRS:
+                self._reload(dir_key)
+            return False
         return True
+
+    def _reload(self, dir_key):
+        spots = load_spots(AVAILABLE_DIRS[dir_key])
+        html  = build_html(spots, save_mode='pythonista', dir_key=dir_key)
+        with open(self.tmp_path, "w", encoding="utf-8") as f:
+            f.write(html)
+        self.wv.load_url("file://" + self.tmp_path)
 
     def webview_did_finish_load(self, wv):
         pass
@@ -841,8 +892,14 @@ import http.server as _http_server
 
 class SpotHTTPHandler(_http_server.BaseHTTPRequestHandler):
     def do_GET(self):
-        if self.path in ('/', '/index.html'):
-            body = self.server.html_content.encode('utf-8')
+        parsed = urllib.parse.urlparse(self.path)
+        if parsed.path in ('/', '/index.html'):
+            params  = urllib.parse.parse_qs(parsed.query)
+            dir_key = params.get('dir', [DEFAULT_DIR_KEY])[0]
+            if dir_key not in AVAILABLE_DIRS:
+                dir_key = DEFAULT_DIR_KEY
+            spots = load_spots(AVAILABLE_DIRS[dir_key])
+            body  = build_html(spots, save_mode='http', dir_key=dir_key).encode('utf-8')
             self.send_response(200)
             self.send_header('Content-Type', 'text/html; charset=utf-8')
             self.send_header('Content-Length', str(len(body)))
@@ -895,13 +952,21 @@ class SpotHTTPHandler(_http_server.BaseHTTPRequestHandler):
 # Build HTML
 # ---------------------------------------------------------------------------
 
-def build_html(spots, save_mode='pythonista'):
+def build_html(spots, save_mode='pythonista', dir_key=None):
+    if dir_key is None:
+        dir_key = DEFAULT_DIR_KEY
     spots_js = json.dumps(spots, ensure_ascii=False)
     seabed_js = json.dumps([[v, l] for v, l in SEABED_TYPE_OPTIONS], ensure_ascii=False)
     bearing_js = json.dumps(BEARING_OPTIONS, ensure_ascii=False)
+    dir_opts = "".join(
+        f'<option value="{k}"{"" if k != dir_key else " selected"}>{k}</option>'
+        for k in AVAILABLE_DIRS
+    )
 
     html = HTML_TEMPLATE
     html = html.replace("__SAVE_MODE__",           save_mode)
+    html = html.replace("__DIR_KEY__",             dir_key)
+    html = html.replace("__DIR_OPTIONS_HTML__",    dir_opts)
     html = html.replace("__SPOTS_JSON__",          spots_js)
     html = html.replace("__SEABED_OPTIONS_JSON__",  seabed_js)
     html = html.replace("__BEARING_OPTIONS_JSON__", bearing_js)
@@ -928,7 +993,7 @@ def main():
 
         wv = ui.WebView(name="スポットエディタ")
         wv.flex = "WH"
-        delegate = SpotDelegate(wv, spots)
+        delegate = SpotDelegate(wv, spots, tmp_path)
         wv.delegate = delegate
         wv.load_url("file://" + tmp_path)
         wv.present("fullscreen")
@@ -938,14 +1003,11 @@ def main():
         import socket
         import webbrowser
 
-        html = build_html(spots, save_mode='http')
-
         with socket.socket() as _s:
             _s.bind(('', 0))
             port = _s.getsockname()[1]
 
         srv = _http_server.HTTPServer(('localhost', port), SpotHTTPHandler)
-        srv.html_content = html
 
         url = f'http://localhost:{port}/'
         print(f"スポットエディタ: {url}")
