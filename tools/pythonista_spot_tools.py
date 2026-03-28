@@ -481,7 +481,8 @@ def derive_kisugo_score(bottom_value):
     return 50
 
 
-def build_terrain_summary(bottom_value, dist_20m):
+def build_seabed_summary(bottom_value):
+    """底質テキストから seabed_summary を生成する（傾斜情報は含めない）。"""
     parts = []
     if bottom_value:
         primary = bottom_value.split("/")[0].strip()
@@ -491,16 +492,7 @@ def build_terrain_summary(bottom_value, dist_20m):
             parts.append("貝殻混じり")
         if "石・岩" in names:
             parts.append("近傍に石要素あり")
-    if dist_20m is not None:
-        if dist_20m >= 2000:
-            parts.append("遠浅")
-        elif dist_20m >= 1000:
-            parts.append("やや急深")
-        else:
-            parts.append("急深")
-    else:
-        parts.append("傾斜不明")
-    return "、".join(parts) if parts else "地形情報不足"
+    return "、".join(parts) if parts else ""
 
 
 # ──────────────────────────────────────────
@@ -514,7 +506,7 @@ def fetch_physical_data(lat, lon, sea_bearing=None):
 
     Returns dict with keys:
       sea_bearing_deg, seabed_type, nearest_20m_contour_distance_m,
-      bottom_kisugo_score, terrain_summary
+      bottom_kisugo_score, seabed_summary
     Or None if all API calls fail.
     """
     result = {
@@ -522,7 +514,7 @@ def fetch_physical_data(lat, lon, sea_bearing=None):
         "seabed_type": None,
         "nearest_20m_contour_distance_m": None,
         "bottom_kisugo_score": 50,
-        "terrain_summary": "地形情報不足",
+        "seabed_summary": "",
     }
 
     # 海方向
@@ -567,7 +559,7 @@ def fetch_physical_data(lat, lon, sea_bearing=None):
     result["seabed_type"] = derive_seabed_type(bottom_value)
     result["nearest_20m_contour_distance_m"] = dist_20m
     result["bottom_kisugo_score"] = derive_kisugo_score(bottom_value)
-    result["terrain_summary"] = build_terrain_summary(bottom_value, dist_20m)
+    result["seabed_summary"] = build_seabed_summary(bottom_value)
     return result
 
 
@@ -598,19 +590,16 @@ def build_spot_json(
         "physical_features": {
             "sea_bearing_deg":               phys.get("sea_bearing_deg"),
             "seabed_type":                   phys.get("seabed_type") or "unknown",
-            "depth_near_m":                  None,
-            "depth_far_m":                   None,
             "surfer_spot":                   False,
             "nearest_20m_contour_distance_m": phys.get("nearest_20m_contour_distance_m"),
         },
         "derived_features": {
             "bottom_kisugo_score": phys.get("bottom_kisugo_score", 50),
-            "terrain_summary":     phys.get("terrain_summary", "地形情報不足"),
+            "seabed_summary":      phys.get("seabed_summary", ""),
         },
         "info": {
-            "notes":     notes,
-            "access":    access,
-            "photo_url": f"https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/{slug}.jpg",
+            "notes":  notes,
+            "access": access,
         },
     }
 
@@ -676,7 +665,7 @@ def mode_create(spots_dir: Path):
             "seabed_type": "unknown",
             "nearest_20m_contour_distance_m": None,
             "bottom_kisugo_score": 50,
-            "terrain_summary": "地形情報不足",
+            "seabed_summary": "",
         }
 
     spot = build_spot_json(
@@ -744,8 +733,8 @@ def mode_edit(spots_dir: Path):
                                            lambda s: float(s) if s.lower() != "null" else None),
         ("bottom_kisugo_score",            lambda: df.get("bottom_kisugo_score"),
                                            lambda v: df.update({"bottom_kisugo_score": v}), int),
-        ("terrain_summary",                lambda: df.get("terrain_summary"),
-                                           lambda v: df.update({"terrain_summary": v}),     str),
+        ("seabed_summary",                 lambda: df.get("seabed_summary"),
+                                           lambda v: df.update({"seabed_summary": v}),      str),
         ("notes",                          lambda: info.get("notes"),
                                            lambda v: info.update({"notes": v}),         str),
         ("access",                         lambda: info.get("access"),
@@ -796,7 +785,7 @@ def mode_edit(spots_dir: Path):
             pf["seabed_type"]                   = phys["seabed_type"] or "unknown"
             pf["nearest_20m_contour_distance_m"] = phys["nearest_20m_contour_distance_m"]
             df["bottom_kisugo_score"]            = phys["bottom_kisugo_score"]
-            df["terrain_summary"]                = phys["terrain_summary"]
+            df["seabed_summary"]                 = phys["seabed_summary"]
             print("  再取得成功 — 物理データを更新しました")
         else:
             print("  再取得失敗 — 手動入力値を保持します")
@@ -913,7 +902,7 @@ def mode_batch_create(spots_dir: Path):
                     "seabed_type": "unknown",
                     "nearest_20m_contour_distance_m": None,
                     "bottom_kisugo_score": 50,
-                    "terrain_summary": "地形情報不足",
+                    "seabed_summary": "",
                 }
 
             spot = build_spot_json(

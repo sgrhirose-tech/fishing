@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 230.5,
     "seabed_type": "sand",
-    "depth_near_m": 5,
-    "depth_far_m": 20,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1343.1
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "terrain_summary": "石・岩主体、近傍に石要素あり、遠浅"
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
     "notes": "透明度高い砂浜。遠浅で投げ釣りの好ポイント",
-    "access": "勝浦駅から徒歩20分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/moriya.jpg"
+    "access": "勝浦駅から徒歩20分"
   }
 }

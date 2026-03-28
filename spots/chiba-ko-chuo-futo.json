@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 270,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "terrain_summary": "砂主体、傾斜不明"
+    "seabed_summary": "砂主体"
   },
   "info": {
     "notes": "港湾部を探れるポイント",
-    "access": "千葉みなと駅から徒歩18分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/chiba-ko-chuo-futo.jpg"
+    "access": "千葉みなと駅から徒歩18分"
   }
 }

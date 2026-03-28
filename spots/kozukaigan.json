@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 155,
     "seabed_type": "unknown",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 168.1
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "terrain_summary": "急深"
+    "seabed_summary": ""
   },
   "info": {
     "notes": "駅近の定番サーフ",
-    "access": "国府津駅から徒歩5分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kozukaigan.jpg"
+    "access": "国府津駅から徒歩5分"
   }
 }

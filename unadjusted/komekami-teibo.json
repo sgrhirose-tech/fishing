@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 90,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1275.5
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "terrain_summary": "やや急深"
+    "seabed_summary": ""
   },
   "info": {
     "notes": "小田原西側の実績堤防",
-    "access": "根府川駅から徒歩25分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/komekami-teibo.jpg"
+    "access": "根府川駅から徒歩25分"
   }
 }

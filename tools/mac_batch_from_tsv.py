@@ -223,7 +223,7 @@ def process_record(rec: dict, idx: int, total: int) -> dict:
             "seabed_type": "unknown",
             "nearest_20m_contour_distance_m": None,
             "bottom_kisugo_score": 50,
-            "terrain_summary": "地形情報不足",
+            "seabed_summary": "",
         }
 
     return build_spot_json(

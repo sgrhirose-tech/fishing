@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 305,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "terrain_summary": "砂主体、貝殻混じり、傾斜不明"
+    "seabed_summary": "砂主体、貝殻混じり"
   },
   "info": {
     "notes": "桟橋型で回遊魚も期待",
-    "access": "五井駅からバス20分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/ichihara-umizuri-shisetsu.jpg"
+    "access": "五井駅からバス20分"
   }
 }

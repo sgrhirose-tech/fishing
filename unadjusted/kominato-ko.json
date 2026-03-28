@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 245,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 554.9
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "terrain_summary": "砂主体、近傍に石要素あり、急深"
+    "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
     "notes": "港内で多魚種を狙える",
-    "access": "安房小湊駅から徒歩10分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kominato-ko.jpg"
+    "access": "安房小湊駅から徒歩10分"
   }
 }

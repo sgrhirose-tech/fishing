@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 110,
     "seabed_type": "unknown",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1756.1
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "terrain_summary": "やや急深"
+    "seabed_summary": ""
   },
   "info": {
     "notes": "浜と港が近い手軽な場",
-    "access": "千倉駅から徒歩20分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/setohama-kaigan.jpg"
+    "access": "千倉駅から徒歩20分"
   }
 }

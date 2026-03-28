@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 150.7,
     "seabed_type": "sand",
-    "depth_near_m": 5,
-    "depth_far_m": 20,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 72.0
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "terrain_summary": "砂主体、急深寄り"
+    "seabed_summary": "砂主体、急深寄り"
   },
   "info": {
     "notes": "砂地が広がる浜。駅至近で利便性が高い穴場",
-    "access": "国府津駅から徒歩3分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kozu.jpg"
+    "access": "国府津駅から徒歩3分"
   }
 }

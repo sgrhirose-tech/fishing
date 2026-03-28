@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 90,
     "seabed_type": "rock",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 580.7
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "terrain_summary": "石・岩主体、貝殻混じり、近傍に石要素あり、急深"
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
     "notes": "磯と堤防を楽しめる",
-    "access": "片瀬江ノ島駅から徒歩15分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/enoshima.jpg"
+    "access": "片瀬江ノ島駅から徒歩15分"
   }
 }

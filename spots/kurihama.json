@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 117.5,
     "seabed_type": "sand_mud",
-    "depth_near_m": 3,
-    "depth_far_m": 12,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1512.1
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "terrain_summary": "砂主体、貝殻混じり、近傍に石要素あり、遠浅"
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
     "notes": "東京湾口の砂泥浜。波は穏やか。ペリー来航の地",
-    "access": "京急久里浜駅から徒歩15分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kurihama.jpg"
+    "access": "京急久里浜駅から徒歩15分"
   }
 }

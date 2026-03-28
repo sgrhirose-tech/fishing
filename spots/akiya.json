@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 260.2,
     "seabed_type": "sand",
-    "depth_near_m": 5,
-    "depth_far_m": 18,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1127.4
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "terrain_summary": "砂主体、近傍に石要素あり、遠浅"
+    "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
     "notes": "横須賀市の砂浜。立石公園近く。比較的空いている穴場",
-    "access": "京急長沢駅から徒歩15分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/akiya.jpg"
+    "access": "京急長沢駅から徒歩15分"
   }
 }

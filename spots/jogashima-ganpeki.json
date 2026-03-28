@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 15,
     "seabed_type": "gravel",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 792.7
   },
   "derived_features": {
     "bottom_kisugo_score": 65,
-    "terrain_summary": "礫主体、貝殻混じり、近傍に石要素あり、急深"
+    "seabed_summary": "礫主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
     "notes": "岸壁で手軽に狙える",
-    "access": "三崎口駅からバス25分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/jogashima-ganpeki.jpg"
+    "access": "三崎口駅からバス25分"
   }
 }

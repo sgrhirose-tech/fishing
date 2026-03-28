@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 270,
     "seabed_type": "unknown",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "terrain_summary": "傾斜不明"
+    "seabed_summary": ""
   },
   "info": {
     "notes": "遠浅で干潟特有の狙い場",
-    "access": "巌根駅からバス20分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/banzu-higata.jpg"
+    "access": "巌根駅からバス20分"
   }
 }

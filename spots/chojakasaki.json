@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 290.4,
     "seabed_type": "sand_gravel",
-    "depth_near_m": 5,
-    "depth_far_m": 18,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 935.7
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "terrain_summary": "石・岩主体、近傍に石要素あり、遠浅"
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
     "notes": "葉山・横須賀境の岬周辺。砂礫混じり。眺望よく穴場的存在",
-    "access": "逗子駅からバス30分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/chojakasaki.jpg"
+    "access": "逗子駅からバス30分"
   }
 }

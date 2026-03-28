@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 120,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "terrain_summary": "砂主体、傾斜不明"
+    "seabed_summary": "砂主体"
   },
   "info": {
     "notes": "広い浜でキス狙い向き",
-    "access": "成東駅からバス20分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/motosuka-kaigan.jpg"
+    "access": "成東駅からバス20分"
   }
 }

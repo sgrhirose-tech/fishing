@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 125,
     "seabed_type": "rock",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1542.8
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "terrain_summary": "石・岩主体、近傍に石要素あり、やや急深"
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
     "notes": "投げ釣り向きの広い浜",
-    "access": "津久井浜駅から徒歩10分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/tsukuihama.jpg"
+    "access": "津久井浜駅から徒歩10分"
   }
 }

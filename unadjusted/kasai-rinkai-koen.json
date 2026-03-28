@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 20,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "terrain_summary": "傾斜不明"
+    "seabed_summary": ""
   },
   "info": {
     "notes": "湾奥の定番大型公園",
-    "access": "葛西臨海公園駅から徒歩5分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/kasai-rinkai-koen.jpg"
+    "access": "葛西臨海公園駅から徒歩5分"
   }
 }

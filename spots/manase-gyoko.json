@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 20,
     "seabed_type": "sand",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1056.9
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "terrain_summary": "砂主体、近傍に石要素あり、やや急深"
+    "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
     "notes": "葉山の小規模港",
-    "access": "逗子駅からバス20分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/manase-gyoko.jpg"
+    "access": "逗子駅からバス20分"
   }
 }

@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 225,
     "seabed_type": "rock",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1371.6
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "terrain_summary": "石・岩主体、近傍に石要素あり、やや急深"
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
     "notes": "広い砂浜で投げ釣り向き",
-    "access": "三崎口駅から徒歩20分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/wada-nagahama-kaigan.jpg"
+    "access": "三崎口駅から徒歩20分"
   }
 }

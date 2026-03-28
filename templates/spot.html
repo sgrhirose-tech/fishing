@@ -9,8 +9,8 @@
 
 {% block og_title %}{{ spot.name }}の釣り場情報 | {{ area.city }}{% endblock %}
 {% block og_desc %}{{ spot.name }}（{{ area.city }}）の釣り場。天気・波・風の情報。{% endblock %}
-{% if spot.info.photo_url %}
-{% block og_image %}<meta property="og:image" content="{{ spot.info.photo_url }}">{% endblock %}
+{% if photos %}
+{% block og_image %}<meta property="og:image" content="{{ photos[0] }}">{% endblock %}
 {% endif %}
 
 {% block jsonld %}
@@ -19,7 +19,7 @@
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
   "name": "{{ spot.name }}",
-  "description": "{{ spot.name }}（{{ area.city }}）の釣り場。{{ df.terrain_summary }}。",
+  "description": "{{ spot.name }}（{{ area.city }}）の釣り場。{{ df.seabed_summary }}。",
   "address": {
     "@type": "PostalAddress",
     "addressRegion": "{{ area.prefecture }}",
@@ -64,10 +64,10 @@
   {% endif %}
 </div>
 
-<!-- スポット写真（resources ブランチから参照） -->
-{% if spot.info.photo_url %}
+<!-- スポット写真 -->
+{% if photos %}
 <div class="spot-photo">
-  <img src="{{ spot.info.photo_url }}" alt="{{ spot.name }}" loading="lazy"
+  <img src="{{ photos[0] }}" alt="{{ spot.name }}" loading="lazy"
        onerror="this.parentElement.style.display='none'">
 </div>
 {% endif %}
@@ -86,7 +86,7 @@
 <section class="spot-info">
   <h2>基本情報</h2>
   <table class="info-table">
-    <tr><th>地形</th><td>{{ df.terrain_summary }}</td></tr>
+    <tr><th>底質</th><td>{{ df.seabed_summary }}</td></tr>
     <tr>
       <th>海底傾斜</th>
       <td>{{ slope_type }}</td>

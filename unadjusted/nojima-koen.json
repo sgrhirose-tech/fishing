@@ -16,18 +16,15 @@
   "physical_features": {
     "sea_bearing_deg": 25,
     "seabed_type": "rock",
-    "depth_near_m": null,
-    "depth_far_m": null,
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1894.7
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "terrain_summary": "石・岩主体、近傍に石要素あり、やや急深"
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
     "notes": "岸壁と浜がある公園",
-    "access": "野島公園駅から徒歩5分",
-    "photo_url": "https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/nojima-koen.jpg"
+    "access": "野島公園駅から徒歩5分"
   }
 }
