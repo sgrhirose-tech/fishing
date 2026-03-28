@@ -1,0 +1,103 @@
+<svg width="1500" height="500" viewBox="0 0 1500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1686C9"/>
+      <stop offset="1" stop-color="#103B5C"/>
+    </linearGradient>
+    <linearGradient id="wave-fill" x1="200" y1="460" x2="1100" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F4FCFF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="icon-wave-fill" x1="84" y1="360" x2="396" y2="156" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F4FCFF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <filter id="wave-shadow" x="-10%" y="-40%" width="125%" height="200%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#0B2740" flood-opacity="0.20"/>
+    </filter>
+    <filter id="icon-shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0B2740" flood-opacity="0.20"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1500" height="500" fill="url(#bg)"/>
+
+  <!-- Sun (top right) -->
+  <circle cx="1360" cy="110" r="90" fill="#FFC84A"/>
+  <circle cx="1360" cy="110" r="40" fill="#FFFFFF" opacity="0.98"/>
+  <circle cx="1392" cy="78" r="16" fill="#FFD86E" opacity="0.95"/>
+
+  <!-- Large white wave (bottom) -->
+  <path filter="url(#wave-shadow)"
+        d="M0 390
+           C200 445, 460 468, 720 428
+           C920 397, 1100 328, 1230 228
+           C1242 216, 1268 206, 1290 216
+           C1312 226, 1322 248, 1312 270
+           C1168 384, 980 458, 760 492
+           C480 534, 160 516, 0 462Z"
+        fill="url(#wave-fill)"/>
+
+  <!-- Teal wave -->
+  <path d="M0 446
+           C180 492, 420 500, 660 454
+           C820 420, 960 366, 1070 308
+           C1086 298, 1108 298, 1118 312
+           C1128 326, 1126 348, 1110 358
+           C992 424, 844 476, 660 510
+           C400 552, 120 538, 0 498Z"
+        fill="#31C7D8" opacity="0.96"/>
+
+  <!-- Fishing line decorations -->
+  <path d="M70 60 C170 28, 290 22, 400 52"
+        stroke="#F4FCFF" stroke-width="11" stroke-linecap="round" opacity="0.60"/>
+  <path d="M52 118 C168 76, 294 74, 420 108"
+        stroke="#FFC84A" stroke-width="7" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Logo mark: scale 0.35 of 512×512 → ~179px, placed at left -->
+  <g transform="translate(60, 140) scale(0.35)">
+    <rect x="24" y="24" width="464" height="464" rx="112"
+          fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.22)" stroke-width="3"/>
+    <path filter="url(#icon-shadow)"
+          d="M92 328
+             C142 374, 222 390, 302 350
+             C365 319, 407 253, 430 168
+             C434 153, 451 146, 466 152
+             C480 158, 487 173, 482 188
+             C455 281, 404 355, 327 399
+             C225 458, 112 440, 63 369
+             C55 357, 58 341, 70 333
+             C78 327, 86 326, 92 328Z"
+          fill="url(#icon-wave-fill)"/>
+    <path d="M134 300
+             C187 323, 247 321, 305 291
+             C328 279, 348 264, 366 247
+             C375 239, 389 239, 397 248
+             C405 257, 405 271, 396 279
+             C374 299, 350 317, 321 332
+             C250 370, 175 371, 111 343
+             C99 338, 94 324, 99 312
+             C104 300, 121 294, 134 300Z"
+          fill="#31C7D8" opacity="0.96"/>
+    <circle cx="417" cy="121" r="39" fill="#FFC84A"/>
+    <circle cx="417" cy="121" r="17" fill="#FFFFFF" opacity="0.98"/>
+    <circle cx="432" cy="106" r="7" fill="#FFD86E" opacity="0.95"/>
+    <path d="M118 140 C152 118, 193 113, 230 126"
+          stroke="#F4FCFF" stroke-width="18" stroke-linecap="round" opacity="0.78"/>
+    <path d="M104 188 C142 163, 193 161, 235 177"
+          stroke="#FFC84A" stroke-width="12" stroke-linecap="round" opacity="0.72"/>
+  </g>
+
+  <!-- Site name -->
+  <text x="300" y="252"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-size="110" font-weight="900" letter-spacing="-2"
+        fill="#FFFFFF">Tsuricast</text>
+
+  <!-- Tagline -->
+  <text x="312" y="318"
+        font-family="IPAGothic, 'Noto Sans CJK JP', 'Hiragino Sans', sans-serif"
+        font-size="36" font-weight="500" letter-spacing="3"
+        fill="#B8E4F5">千葉・東京・神奈川の釣り場天気情報</text>
+</svg>
