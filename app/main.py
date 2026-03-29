@@ -4,6 +4,7 @@ uvicorn app.main:app --reload で起動。
 """
 
 import os
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from contextlib import asynccontextmanager
@@ -17,7 +18,7 @@ except ImportError:
     pass
 
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import HTMLResponse, PlainTextResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -36,8 +37,9 @@ JST = timezone(timedelta(hours=9))
 # インメモリ TTL キャッシュ
 # ============================================================
 
-_ranking_cache: dict = {}   # date_str → (timestamp, scored_spots)
-_RANKING_TTL = 6 * 3600     # 6時間
+_ranking_cache: dict = {}       # date_str → (timestamp, scored_spots)
+_RANKING_TTL = 6 * 3600         # 6時間
+_refresh_in_progress: set = set()  # 二重更新防止
 
 
 def _score_one_spot(spot: dict, date_str: str, area_centers: dict) -> dict:
@@ -72,13 +74,37 @@ def _compute_ranking(date_str: str) -> list[dict]:
     return sorted(results, key=lambda x: x["total"], reverse=True)
 
 
+def _trigger_background_refresh(date_str: str) -> None:
+    """ランキングをバックグラウンドスレッドで再計算する。二重起動を防ぐ。"""
+    if date_str in _refresh_in_progress:
+        return
+    _refresh_in_progress.add(date_str)
+
+    def _do() -> None:
+        try:
+            data = _compute_ranking(date_str)
+            _ranking_cache[date_str] = (time.time(), data)
+            print(f"[更新] ランキングキャッシュ更新完了 ({date_str})")
+        finally:
+            _refresh_in_progress.discard(date_str)
+
+    threading.Thread(target=_do, daemon=True).start()
+
+
 def get_ranking(date_str: str) -> list[dict]:
-    """TTL キャッシュ付きランキング取得。"""
+    """Stale-While-Revalidate キャッシュ付きランキング取得。
+    キャッシュが新鮮なら即返す。期限切れなら古いデータを即返しつつバックグラウンドで更新。
+    キャッシュなし（コールドスタート）のみ同期計算する。
+    """
     now = time.time()
     if date_str in _ranking_cache:
         ts, data = _ranking_cache[date_str]
         if now - ts < _RANKING_TTL:
-            return data
+            return data                        # 新鮮: そのまま即返す
+        # 期限切れ: 古いデータを即返しバックグラウンドで更新
+        _trigger_background_refresh(date_str)
+        return data
+    # キャッシュなし（コールドスタート時のみ）: 同期計算
     data = _compute_ranking(date_str)
     _ranking_cache[date_str] = (now, data)
     return data
@@ -322,8 +348,10 @@ def api_ranking(date: str | None = None):
     """全スポットのランキング JSON を返す。date 未指定は翌日。"""
     date_str = date or _tomorrow()
     ranked = get_ranking(date_str)
-    return {
+    cache_ts = _ranking_cache.get(date_str, (0, None))[0]
+    payload = {
         "date": date_str,
+        "updated_at": datetime.fromtimestamp(cache_ts, tz=JST).isoformat() if cache_ts else None,
         "spots": [
             {
                 "rank": i + 1,
@@ -339,6 +367,9 @@ def api_ranking(date: str | None = None):
             for i, r in enumerate(ranked)
         ],
     }
+    response = JSONResponse(content=payload)
+    response.headers["Cache-Control"] = "public, max-age=1800, stale-while-revalidate=3600"
+    return response
 
 
 @app.get("/api/forecast/{slug}")

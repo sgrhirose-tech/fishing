@@ -14,9 +14,16 @@ from .spots import get_marine_proxy_dict, get_marine_fallbacks
 # ============================================================
 # キャッシュ（インメモリ・プロセス内）
 # ============================================================
-_WEATHER_CACHE: dict = {}      # (grid_lat, grid_lon, date_str) → result
-_SST_CACHE: dict = {}          # (grid_lat, grid_lon, date_str) → result
-_WEATHERAPI_CACHE: dict = {}   # (grid_lat, grid_lon, date_str) → result
+import time as _time
+
+_WEATHER_TTL    = 2 * 3600   # 天気データ: 2時間
+_SST_TTL        = 24 * 3600  # 水温データ: 24時間（日次更新）
+_MARINE_TTL     = 2 * 3600   # 波浪データ: 2時間
+
+_WEATHER_CACHE: dict = {}      # (grid_lat, grid_lon, start_date, end_date) → (ts, result)
+_SST_CACHE: dict = {}          # (grid_lat, grid_lon, date_str) → (ts, result)
+_WEATHERAPI_CACHE: dict = {}   # (grid_lat, grid_lon, date_str) → result（失敗はキャッシュしない）
+_MARINE_CACHE: dict = {}       # (grid_lat, grid_lon, start_date, end_date) → (ts, result)
 _MARINE_COORD_CACHE: dict = {} # (lat2, lon2) → (lat, lon, is_fallback)
 
 
@@ -40,7 +47,9 @@ def fetch_weather_range(lat: float, lon: float,
     grid_lon = round(round(lon * 10) / 10, 1)
     cache_key = (grid_lat, grid_lon, start_date, end_date)
     if cache_key in _WEATHER_CACHE:
-        return _WEATHER_CACHE[cache_key]
+        ts, cached = _WEATHER_CACHE[cache_key]
+        if _time.time() - ts < _WEATHER_TTL:
+            return cached
 
     base_url = "https://api.open-meteo.com/v1/forecast"
     params = [
@@ -67,7 +76,7 @@ def fetch_weather_range(lat: float, lon: float,
         full_url = base_url + "?" + urllib.parse.urlencode(params)
         with urllib.request.urlopen(full_url, timeout=15) as resp:
             result = json.loads(resp.read().decode("utf-8"))
-        _WEATHER_CACHE[cache_key] = result
+        _WEATHER_CACHE[cache_key] = (_time.time(), result)
         return result
     except Exception as e:
         print(f"  [警告] 気象データ取得失敗 ({lat},{lon}): {e}")
@@ -82,6 +91,14 @@ def fetch_marine(lat: float, lon: float, date_str: str) -> dict:
 def fetch_marine_range(lat: float, lon: float,
                        start_date: str, end_date: str) -> dict:
     """Open-Meteo Marine API から指定範囲の波高データを取得（最大7日）。"""
+    grid_lat = round(round(lat * 10) / 10, 1)
+    grid_lon = round(round(lon * 10) / 10, 1)
+    cache_key = (grid_lat, grid_lon, start_date, end_date)
+    if cache_key in _MARINE_CACHE:
+        ts, cached = _MARINE_CACHE[cache_key]
+        if _time.time() - ts < _MARINE_TTL:
+            return cached
+
     base_url = "https://marine-api.open-meteo.com/v1/marine"
     params = [
         ("latitude", lat),
@@ -96,10 +113,13 @@ def fetch_marine_range(lat: float, lon: float,
     try:
         full_url = base_url + "?" + urllib.parse.urlencode(params)
         with urllib.request.urlopen(full_url, timeout=15) as resp:
-            return json.loads(resp.read().decode("utf-8"))
+            result = json.loads(resp.read().decode("utf-8"))
+        _MARINE_CACHE[cache_key] = (_time.time(), result)
+        return result
     except urllib.error.HTTPError as e:
         if e.code == 400:
-            return {}   # 湾内・沿岸は対象外のため正常
+            _MARINE_CACHE[cache_key] = (_time.time(), {})  # 沿岸は対象外 → キャッシュして再試行を避ける
+            return {}
         print(f"  [警告] 波浪データ取得失敗 ({lat},{lon}): {e}")
         return {}
     except Exception as e:
@@ -194,7 +214,9 @@ def fetch_sst_noaa(lat: float, lon: float, date_str: str) -> float | None:
     grid_lon = round(round(lon * 10) / 10, 1)
     cache_key = (grid_lat, grid_lon, date_str)
     if cache_key in _SST_CACHE:
-        return _SST_CACHE[cache_key]
+        ts, cached = _SST_CACHE[cache_key]
+        if _time.time() - ts < _SST_TTL:
+            return cached
 
     lat_str = f"{lat:.4f}"
     lon_str = f"{lon:.4f}"
@@ -210,7 +232,7 @@ def fetch_sst_noaa(lat: float, lon: float, date_str: str) -> float | None:
         rows = data.get("table", {}).get("rows", [])
         if rows and rows[0] and rows[0][3] is not None:
             sst = float(rows[0][3])
-            _SST_CACHE[cache_key] = sst
+            _SST_CACHE[cache_key] = (_time.time(), sst)
             return sst
     except Exception as e:
         print(f"  [情報] NOAA水温取得失敗 ({lat},{lon}): {e}")
@@ -233,7 +255,7 @@ def fetch_sst_noaa(lat: float, lon: float, date_str: str) -> float | None:
         valid = [v for v in sst_list[6:16] if v is not None]
         if valid:
             sst = max(valid)
-            _SST_CACHE[cache_key] = sst
+            _SST_CACHE[cache_key] = (_time.time(), sst)
             return sst
     except Exception:
         pass
