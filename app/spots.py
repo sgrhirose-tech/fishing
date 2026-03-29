@@ -151,7 +151,7 @@ _TYPE_LABELS = {
     "sand_beach":       "砂浜",
     "rocky_shore":      "磯・岩場",
     "breakwater":       "堤防・防波堤",
-    "fishing_facility": "漁港・岸壁",
+    "fishing_facility": "漁港・岸壁・釣り施設",
 }
 
 # (min_conf, certain_conf, caveat_text)
