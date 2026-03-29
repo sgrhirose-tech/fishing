@@ -93,6 +93,10 @@
       <td>{{ slope_type or 'ー' }}</td>
     </tr>
     <tr><th>アクセス</th><td>{{ spot.info.access }}</td></tr>
+    <tr id="conbini-row" style="display:none;">
+      <th>最寄りコンビニ</th>
+      <td id="conbini-name"></td>
+    </tr>
     <tr><th>メモ</th><td>{{ spot.info.notes }}</td></tr>
   </table>
 </section>
@@ -200,6 +204,27 @@
             .addTo(map)
             .bindPopup(`<b>${f.type}</b><br>${f.name}`);
         });
+
+        // 最寄りコンビニ
+        const conbinis = (data.facilities || []).filter(f => f.type === 'コンビニ');
+        if (conbinis.length > 0) {
+          const slat = SPOT.location.latitude, slon = SPOT.location.longitude;
+          function _distM(lat, lon) {
+            const R = 6371000, d2r = Math.PI / 180;
+            const dlat = (lat - slat) * d2r, dlon = (lon - slon) * d2r;
+            const a = Math.sin(dlat/2)**2
+                    + Math.cos(slat*d2r)*Math.cos(lat*d2r)*Math.sin(dlon/2)**2;
+            return R * 2 * Math.asin(Math.sqrt(a));
+          }
+          const nearest = conbinis.reduce((best, c) => {
+            const d = _distM(c.lat, c.lon);
+            return (!best || d < best.d) ? {c, d} : best;
+          }, null);
+          const distM = Math.ceil(nearest.d / 100) * 100;
+          document.getElementById('conbini-name').textContent =
+            `${nearest.c.name}（直線およそ${distM}m）`;
+          document.getElementById('conbini-row').style.display = '';
+        }
       })
       .catch(() => {});  // 施設取得失敗は無視
 
