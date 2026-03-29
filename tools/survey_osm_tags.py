@@ -15,6 +15,7 @@ TERRAIN_TAGS の修正方針を決めるための調査に使う。
 import argparse
 import json
 import math
+import ssl
 import time
 import urllib.parse
 import urllib.request
@@ -30,6 +31,8 @@ OVERPASS_ENDPOINTS = [
 ]
 
 _sleep_sec = 2.0
+# HTTPS エンドポイント用: SSL 検証なし（ツールスクリプト専用）
+_SSL_CTX = ssl._create_unverified_context()
 
 
 def _overpass_post(query: str) -> dict:
@@ -40,13 +43,14 @@ def _overpass_post(query: str) -> dict:
     for endpoint in OVERPASS_ENDPOINTS:
         req = urllib.request.Request(endpoint, data=encoded, method="POST")
         req.add_header("User-Agent", "TsuricastTagSurvey/1.0 (personal-use)")
+        ctx = None if endpoint.startswith("http://") else _SSL_CTX
         try:
-            with urllib.request.urlopen(req, timeout=25) as resp:
+            with urllib.request.urlopen(req, timeout=25, context=ctx) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
             _sleep_sec = max(2.0, _sleep_sec * 0.8)
             return result
         except urllib.error.HTTPError as e:
-            if e.code in (429, 504):
+            if e.code in (403, 429, 504):
                 last_err = e
                 continue
             raise
