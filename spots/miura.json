@@ -26,5 +26,14 @@
   "info": {
     "notes": "神奈川屈指の投げ釣りポイント。白い砂浜が1km以上続く",
     "access": "三浦海岸駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
   }
 }

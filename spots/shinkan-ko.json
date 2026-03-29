@@ -26,5 +26,15 @@
   "info": {
     "notes": "小場所ながら魚影期待",
     "access": "勝浦駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@207m",
+      "waterway=dock@3m"
+    ]
   }
 }

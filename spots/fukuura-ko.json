@@ -26,5 +26,14 @@
   "info": {
     "notes": "県境近くの港ポイント",
     "access": "真鶴駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
   }
 }

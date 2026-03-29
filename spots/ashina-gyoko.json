@@ -26,5 +26,17 @@
   "info": {
     "notes": "港内と外向き両方狙える",
     "access": "逗子駅からバス30分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.95,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@118m",
+      "man_made=breakwater@1m"
+    ]
   }
 }

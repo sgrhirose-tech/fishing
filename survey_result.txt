@@ -1,0 +1,296 @@
+調査: 201件  半径: 300m
+
+[1/201] 安房崎 (abosaki)... 4件
+[2/201] 油壷 (aburatsubo)... 12件
+[3/201] アイクル (aikuru)... 28件
+[4/201] 暁ふ頭公園 (akatsuki-futo-koen)... 3件
+[5/201] 秋谷漁港 (akiya-gyoko)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[6/201] 秋谷海岸 (akiya)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[7/201] 天津港 (amatsu-ko)... 11件
+[8/201] 姉崎港 (anesaki-ko)... 5件
+[9/201] 荒井港 (arai-ko)...  [429 待機5s]13件
+[10/201] 荒崎 (arasaki)... 10件
+[11/201] 有明西ふ頭公園 (ariake-nishi-futo-koen)... 7件
+[12/201] 芦名漁港 (ashina-gyoko)... 11件
+[13/201] 番場浦 (banbaura)... 8件
+[14/201] 盤洲干潟 (banzu-higata)... 10件
+[15/201] 毘沙門天下 (bishamon-tenka)... 13件
+[16/201] 梵天の鼻（立石公園） (bonten-no-hana-tateishi-koen)... 17件
+[17/201] 千葉港中央ふ頭（千葉ポートパーク） (chiba-ko-chuo-futo)...  [429 待機5s]2件
+[18/201] 茅ヶ崎ヘッドランド (chigasaki-headland)... 8件
+[19/201] 千倉・平舘港 (chikura-ko)...  [429 待機5s]10件
+[20/201] 長者ヶ崎海岸 (chojakasaki)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[21/201] 銚子外港 (choshi-gaiko)... 1件
+[22/201] 銚子港 (choshi-ko)... 8件
+[23/201] 大黒海づり施設 (daikoku-umizuri-shisetsu)...  [429 待機5s] [429 待機10s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[24/201] 太夫崎港 (dayuzaki-ko)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[25/201] 道無 (domu)... 5件
+[26/201] 江川海岸 (egawa-kaigan)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[27/201] 江見海岸 (emi-kaigan)... 19件
+[28/201] 江見港 (emi-ko)...  [429 待機5s]14件
+[29/201] 江の島 (enoshima)...  [429 待機5s] [429 待機10s]122件
+[30/201] 江之浦漁港 (enoura-gyoko)... 6件
+[31/201] 不動堂海岸 (fudodo-kaigan)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[32/201] 福浦岸壁 (fukuura-ganpeki)... 6件
+[33/201] 福浦港 (fukuura-ko)... 5件
+[34/201] 二夕間海岸 (futoma-kaigan)...  [429 待機5s] [429 待機10s]5件
+[35/201] 太海港 (futomi-ko)... 15件
+[36/201] 富津海岸 (futtsu-kaigan)...  [429 待機5s]4件
+[37/201] 富津岬 (futtsu-misaki)... 4件
+[38/201] 富津新港 (futtsu-shinko)... 5件
+[39/201] 八景島対岸 (hakkeijima-taigan)... 4件
+[40/201] 浜荻港 (hamaogi-ko)... 7件
+[41/201] 浜荻の磯 (hamaogi-no-iso)... 3件
+[42/201] 花水川河口 (hanamizugawa-kako)... 4件
+[43/201] 花園海岸 (hanazono-kaigan)...  [429 待機5s]7件
+[44/201] 初声漁港 (hatsuse-gyoko)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[45/201] 早川港 (hayakawa-ko)... 6件
+[46/201] 葉山港 (hayama-ko)... 11件
+[47/201] 部原海岸 (hebara-kaigan)...  [429 待機5s] [429 待機10s]  [エラー] HTTP Error 429: Too Many Requests
+0件
+[48/201] 平作川河口 (heisakugawa-kako)...  [429 待機5s] [429 待機10s]23件
+[49/201] 平砂浦 (heisaura)... 2件
+[50/201] 東扇島西公園 (higashi-ogishima-nishi-koen)... 3件
+[51/201] 引地川河口 (hikichigawa-kako)...  [429 待機5s] [429 待機10s]10件
+[52/201] 日の出海岸 (hinode-kaigan)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[53/201] 平塚海岸 (hiratsuka-kaigan)... 4件
+[54/201] 平塚新港 (hiratsuka-shinko)... 9件
+[55/201] 平塚海岸 (hiratsuka)...  [429 待機5s] [429 待機10s]7件
+[56/201] 本牧海づり施設 (honmoku-umizuri-shisetsu)... 7件
+[57/201] 堀川浜 (horikawa-hama)...  [429 待機5s]1件
+[58/201] 市原海づり施設（オリジナルメーカー海づり公園） (ichihara-umizuri-shisetsu)... 4件
+[59/201] 市川港 (ichikawa-ko)...  [429 待機5s] [429 待機10s]3件
+[60/201] 一宮海岸 (ichinomiya-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[61/201] 一宮川河口 (ichinomiyagawa-kako)... 5件
+[62/201] 飯岡港 (iioka-ko)... 6件
+[63/201] 稲毛海浜公園 (inage-kaihin-koen)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[64/201] 稲村ヶ崎 (inamuragasaki)... 12件
+[65/201] 犬吠埼 (inubosaki)...  [429 待機5s]28件
+[66/201] 磯子海づり施設 (isogo-umizuri-shisetsu)... 6件
+[67/201] 一色海岸（葉山） (isshiki)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[68/201] 夷隅川河口 (isumigawa-kako)... 1件
+[69/201] 岩港 (iwa-ko)... 4件
+[70/201] 岩船港 (iwafune-ko)...  [429 待機5s]3件
+[71/201] 岩和田港 (iwawada-ko)... 4件
+[72/201] 和泉浦海岸 (izumiura-kaigan)... 6件
+[73/201] 城ヶ島岸壁 (jogashima-ganpeki)... 23件
+[74/201] 城南島海浜公園 (jonanjima-kaihin-koen)... 8件
+[75/201] 釜の口 (kama-no-kuchi)...  [429 待機5s] [429 待機10s]  [エラー] HTTP Error 429: Too Many Requests
+0件
+[76/201] 鴨川港 (kamogawa-ko)... 14件
+[77/201] 鴨居港 (kamoi-ko)...  [429 待機5s]14件
+[78/201] かもめ団地 (kamome-danchi)... 6件
+[79/201] 金田漁港 (kaneda-gyoko)...  [429 待機5s]2件
+[80/201] 金田海岸 (kaneda-kaigan)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[81/201] 金田みたて海岸 (kaneda-mitate-kaigan)... 5件
+[82/201] 観音山下 (kannonyama-shita)...  [429 待機5s]11件
+[83/201] 観音崎 (kannonzaki)...  [429 待機5s]20件
+[84/201] 葛西臨海公園 (kasai-rinkai-koen)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[85/201] 片貝港 (katakai-ko)... 7件
+[86/201] 片瀬漁港 (katase-gyoko)...  [429 待機5s]9件
+[87/201] 片瀬西浜（江ノ島） (katase)...  [429 待機5s] [429 待機10s]13件
+[88/201] 片瀬東浜（江ノ島） (katase_east)... 15件
+[89/201] 勝浦灯台下 (katsuura-todai-shita)... 4件
+[90/201] 川津港 (kawazu-ko)...  [429 待機5s] [429 待機10s]  [エラー] HTTP Error 429: Too Many Requests
+0件
+[91/201] 上総湊港 (kazusa-minato-ko)...  [429 待機5s]12件
+[92/201] 京浜島つばさ公園 (keihinjima-tsubasa-koen)... 14件
+[93/201] 検見川浜突堤 (kemigawahama-tottei)... 10件
+[94/201] 木戸浜海岸 (kidohama-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[95/201] 君ヶ浜 (kimigahama)... 3件
+[96/201] 木更津港 (kisarazu-ko)...  [429 待機5s] [429 待機10s]14件
+[97/201] 木更津潮浜公園 (kisarazu-shiohama-koen)... 3件
+[98/201] 米神堤防 (komekami-teibo)...  [429 待機5s] [429 待機10s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[99/201] 小湊港 (kominato-ko)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[100/201] 腰越漁港 (koshigoe-gyoko)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[101/201] 小坪漁港 (kotsubo-gyoko)... 19件
+[102/201] 国府津海岸 (kozu)... 1件
+[103/201] 久里浜海岸 (kurihama)...  [429 待機5s] [429 待機10s]10件
+[104/201] 黒生港 (kuromae-ko)... 19件
+[105/201] 黒崎の鼻 (kurosaki-no-hana)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[106/201] 久留和漁港 (kuruwa-gyoko)... 25件
+[107/201] 久津間海岸 (kuzuma-kaigan)... 8件
+[108/201] 旧吉田邸下 (kyu-yoshida-tei-shita)...  [429 待機5s]5件
+[109/201] 前原 (maebara)...  [429 待機5s]17件
+[110/201] 真亀海岸 (magame-kaigan)...  [429 待機5s] [429 待機10s]2件
+[111/201] 間口漁港 (maguchi-gyoko)... 5件
+[112/201] ママ岬 (mama-misaki)... 1件
+[113/201] 真名瀬漁港 (manase-gyoko)... 22件
+[114/201] 真鶴港 (manazuru-ko)...  [429 待機5s] [429 待機10s]7件
+[115/201] 布良港 (mera-ko)...  [429 待機5s]18件
+[116/201] 三崎港 (misaki-ko)... 13件
+[117/201] 三ツ石 (mitsuishi)...  [429 待機5s]3件
+[118/201] 三浦海岸 (miura)...  [429 待機5s] [429 待機10s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[119/201] 御幸の浜 (miyuki)... 7件
+[120/201] 水の広場公園 (mizu-no-hiroba-koen)... 7件
+[121/201] 森戸海岸 (morito)... 10件
+[122/201] 守谷海岸 (moriya)... 7件
+[123/201] 諸磯 (moroi-so)... 8件
+[124/201] 本須賀海岸 (motosuka-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[125/201] 名洗港 (nagaarai-ko)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[126/201] 長井港 (nagai-ko)... 21件
+[127/201] 長手鼻・ゴーシュ浦 (nagatebana-goshuura)... 8件
+[128/201] 長津呂崎 (nagatorozaki)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[129/201] 中の島公園 (nakanoshima-koen)... 4件
+[130/201] 中谷里海岸 (nakayazato-kaigan)... 2件
+[131/201] 根府川 (nebukawa)...  [429 待機5s] [429 待機10s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[132/201] 二宮海岸 (ninomiya)... 3件
+[133/201] 野島公園 (nojima-koen)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[134/201] 野島崎 (nojimasaki)... 29件
+[135/201] 野手浜 (note-hama)... 2件
+[136/201] 盗人狩 (nusuttogari)...  [429 待機5s] [429 待機10s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[137/201] 大浜海岸 (ohama)... 18件
+[138/201] 大井ふ頭中央海浜公園なぎさの森 (oi-futo-chuo-kaihin-koen-nagisa-no-mori)...  [429 待機5s]4件
+[139/201] 大磯町役場下 (oiso-choyakuba-shita)... 7件
+[140/201] 大磯港 (oiso-ko)... 15件
+[141/201] 大磯海岸 (oiso)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[142/201] 大川港 (okawa-ko)... 10件
+[143/201] 興津港 (okitsu-ko)...  [429 待機5s] [429 待機10s]3件
+[144/201] 御宿港 (onjuku-ko)... 6件
+[145/201] 御宿海岸 (onjuku)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[146/201] 大貫港 (onuki-ko)... 16件
+[147/201] 乙浜港 (otohama-ko)... 14件
+[148/201] 大津港新堤防 (otsu-ko-shinteibo)...  [429 待機5s]8件
+[149/201] 大浦海岸 (oura-kaigan)...  [429 待機5s]4件
+[150/201] 相模川河口 (sagamigawa-kako)... 9件
+[151/201] 酒匂海岸（小田原） (sakawa)... 12件
+[152/201] 作田海岸 (sakuda-kaigan)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[153/201] 猿島 (sarushima)... 12件
+[154/201] 千田港 (senda-ko)... 18件
+[155/201] 瀬戸浜海岸 (setohama-kaigan)...  [429 待機5s]5件
+[156/201] 七里ヶ浜 (shichirigahama)...  [429 待機5s]9件
+[157/201] 新宿港 (shinjuku-ko)...  [429 待機5s]24件
+[158/201] 新官港 (shinkan-ko)... 4件
+[159/201] 新舞子海岸 (shinmaiko-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[160/201] 白子港 (shirako-ko)... 34件
+[161/201] 白里海岸 (shirasato-kaigan)... 4件
+[162/201] 白渚海岸 (shirazu-kaigan)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[163/201] 白間津港 (shiromazu-ko)... 10件
+[164/201] 白間津の磯 (shiromazu-no-iso)... 22件
+[165/201] 城崎海岸 (shirosaki-kaigan)...  [429 待機5s]11件
+[166/201] 湘南大堤防 (shonan-dai-teibo)... 8件
+[167/201] 袖ケ浦海浜公園 (sodegaura-kaihin-koen)... 5件
+[168/201] 太東海岸 (taito-kaigan)... 5件
+[169/201] 太東崎 (taito-saki)...  [429 待機5s]3件
+[170/201] 高洲海浜公園 (takasu-kaihin-koen)...  [429 待機5s]16件
+[171/201] 東条海岸 (tojo-kaigan)...  [429 待機5s] [429 待機10s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[172/201] 東海ふ頭公園 (tokai-futo-koen)... 3件
+[173/201] トンビ磯 (tonbi-iso)...  [429 待機5s] [429 待機10s]26件
+[174/201] 豊浜港 (toyohama-ko)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[175/201] 豊洲ぐるり公園 (toyosu-gururi-koen)... 5件
+[176/201] 辻堂海岸 (tsujido)... 3件
+[177/201] 津久井浜 (tsukui)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[178/201] 剱崎 (tsurugizaki)... 5件
+[179/201] 内浦海岸 (uchiura-kaigan)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[180/201] 鵜原海岸 (uhara-kaigan)... 2件
+[181/201] 鵜原港 (uhara-ko)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[182/201] 梅沢海岸 (umezawa-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[183/201] 海の公園 (umi-no-koen)... 4件
+[184/201] 海辺つり公園 (umibe-tsuri-koen)...  [429 待機5s]7件
+[185/201] うみかぜ公園 (umikaze-koen)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[186/201] 浦賀港 (uraga-ko)... 12件
+[187/201] 漆山港 (urushiyama-ko)...  [429 待機5s] [429 待機10s]14件
+[188/201] 牛込海岸 (ushigome-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[189/201] 和田漁港 (wada-gyoko)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[190/201] 和田長浜海岸 (wada-nagahama-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[191/201] 和田浦海岸 (wadaura-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[192/201] 若洲海浜公園 (wakasu-kaihin-koen)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[193/201] 八幡岬 (yahata-misaki)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[194/201] 柳島海岸 (yanagishima-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[195/201] 屋志倉の磯 (yashikura-no-iso)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[196/201] 屋形海岸 (yokata-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[197/201] 吉崎浜 (yoshizaki-hama)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[198/201] 湯河原海浜公園 (yugawara-kaihin-koen)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[199/201] 由比ヶ浜 (yuigahama)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[200/201] 材木座海岸 (zaimokuza-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[201/201] 逗子海岸 (zushi)... 8件
+
+────────────────────────────────────────────────────────────
+調査完了: 201件  エラー: 0件  半径: 300m
+
+タグ出現ランキング（スポット数順）:
+
+  タグ                                   スポット数  ≤15m  ≤50m  ≤150m  >150m
+  ───────────────────────────────────  ──────────  ────  ────  ─────  ─────
+  natural=coastline                           144     2    23    199    645
+  amenity=parking                              89     0     4     54    163
+  natural=beach                                52     0     3     15     54
+  man_made=breakwater                          41     2     2     18     46
+  natural=water                                33     0     2     13     59
+  waterway=dock                                19    12     2      3      3
+  water=river                                  15     0     0      2     17
+  landuse=industrial                           13     0     0      3     26
+  man_made=pier                                12     0     1     10     13
+  natural=bare_rock                            11     2     0     10      9
+  leisure=marina                                9     0     1      4      7
+  sport=surfing                                 8     0     0      1     10
+  water=pond                                    7     0     0      6     30
+  leisure=swimming_area                         7     0     0      1      7
+  natural=cliff                                 5     0     4      8      7
+  leisure=fishing                               5     1     1      3      7
+  seamark:type=harbour                          5     0     1      1      5
+  natural=sand                                  5     0     0      4     11
+  landuse=harbour                               4     0     0      0      5
+  water=reservoir                               3     0     2      3      3
+  harbour=yes                                   3     2     0      1      0
+  natural=wetland                               3     0     0      0      4
+  water=canal                                   2     0     0      0      2
+  natural=rock                                  2     0     0      2      0
+  man_made=dyke                                 2     0     0      0      4
+  man_made=yes                                  1     0     0      0      2
+  leisure=beach_resort                          1     0     0      2      1
+  man_made=quay                                 1     0     1      1      0
+  waterway=canal                                1     0     0      0      1
+  water=basin                                   1     0     0      0      1
+  water=bay                                     1     0     0      0      1

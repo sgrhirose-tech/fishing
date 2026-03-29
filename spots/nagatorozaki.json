@@ -26,5 +26,14 @@
   "info": {
     "notes": "先端部で潮がよく通る",
     "access": "三崎口駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.55,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:崎"
+    ]
   }
 }

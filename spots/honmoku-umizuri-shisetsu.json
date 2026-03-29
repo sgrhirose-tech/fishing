@@ -26,5 +26,18 @@
   "info": {
     "notes": "桟橋で多魚種を狙える",
     "access": "根岸駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=fishing@142m",
+      "man_made=pier@128m"
+    ]
   }
 }

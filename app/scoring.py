@@ -409,6 +409,16 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
                  and hourly["temperature_2m"][i] is not None]
     temp_avg = sum(temp_vals) / len(temp_vals) if temp_vals else None
 
+    # 体感温度（時間帯平均）
+    apparent_temp_vals = [
+        hourly.get("apparent_temperature", [])[i]
+        for i in idxs
+        if i < len(hourly.get("apparent_temperature", []))
+        and hourly["apparent_temperature"][i] is not None
+    ]
+    apparent_temp_max = round(max(apparent_temp_vals), 1) if apparent_temp_vals else None
+    apparent_temp_min = round(min(apparent_temp_vals), 1) if apparent_temp_vals else None
+
     # 天気コード（時間帯最頻値）
     wc_vals = [int(hourly.get("weather_code", [])[i])
                for i in idxs
@@ -486,6 +496,8 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
         "wind_speed_raw": wind_speed,
         "sst_raw": sst,
         "temp_raw": temp_avg,
+        "apparent_temp_max_raw": apparent_temp_max,
+        "apparent_temp_min_raw": apparent_temp_min,
         "sst": tp["label"],
         "temp": at["label"],
         "sky": (

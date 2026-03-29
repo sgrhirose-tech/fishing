@@ -25,6 +25,15 @@
   },
   "info": {
     "notes": "砂地が広がる浜。駅至近で利便性が高い穴場",
-    "access": "国府津駅から徒歩3分"
+    "access": "国府津駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
   }
 }

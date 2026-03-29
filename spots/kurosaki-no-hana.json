@@ -26,5 +26,14 @@
   "info": {
     "notes": "景観抜群の磯浜エリア",
     "access": "三崎口駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.55,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@87m"
+    ]
   }
 }

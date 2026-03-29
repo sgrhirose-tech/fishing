@@ -26,5 +26,19 @@
   "info": {
     "notes": "景観抜群の磯場",
     "access": "逗子駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "cliff",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@67m",
+      "natural=cliff@99m",
+      "natural=rock@117m"
+    ]
   }
 }

@@ -26,5 +26,14 @@
   "info": {
     "notes": "港内中心の実績場",
     "access": "御宿駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.77,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@24m"
+    ]
   }
 }

@@ -26,18 +26,31 @@ TARGET_DIRS = [
 ]
 
 AREA_MAP = {
-    "相模湾":   ("sagamibay", "kanagawa"),
-    "三浦半島": ("miura",     "kanagawa"),
-    "東京湾":   ("tokyobay",  "kanagawa"),
-    "内房":     ("uchibo",    "chiba"),
-    "外房":     ("sotobo",    "chiba"),
-    "九十九里": ("kujukuri",  "chiba"),
+    "相模湾":     ("sagamibay",      "kanagawa"),
+    "三浦半島":   ("miura",          "kanagawa"),
+    "東京湾":     ("tokyobay",       "kanagawa"),
+    "内房":       ("uchibo",         "chiba"),
+    "外房":       ("sotobo",         "chiba"),
+    "九十九里":   ("kujukuri",       "chiba"),
+    "東伊豆":     ("higashi-izu",    "shizuoka"),
+    "南伊豆":     ("minami-izu",     "shizuoka"),
+    "西伊豆":     ("nishi-izu",      "shizuoka"),
+    "駿河":       ("suruga",         "shizuoka"),
+    "遠州":       ("enshu",          "shizuoka"),
+    "東三河":     ("higashi-mikawa", "aichi"),
+    "西三河":     ("nishi-mikawa",   "aichi"),
+    "尾張":       ("owari",          "aichi"),
+    "三重北中部": ("mie-north",      "mie"),
+    "三重南部":   ("mie-south",      "mie"),
 }
 
 PREF_SLUG_MAP = {
     "神奈川県": "kanagawa",
     "東京都":   "tokyo",
     "千葉県":   "chiba",
+    "静岡県":   "shizuoka",
+    "愛知県":   "aichi",
+    "三重県":   "mie",
 }
 
 

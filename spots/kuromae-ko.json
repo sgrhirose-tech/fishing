@@ -26,5 +26,14 @@
   "info": {
     "notes": "外洋向きで風波の影響大",
     "access": "笠上黒生駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
   }
 }

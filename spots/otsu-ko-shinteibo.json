@@ -26,5 +26,14 @@
   "info": {
     "notes": "港内で手軽に竿を出せる",
     "access": "京急大津駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:堤防"
+    ]
   }
 }

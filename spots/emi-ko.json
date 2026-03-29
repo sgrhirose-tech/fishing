@@ -26,5 +26,16 @@
   "info": {
     "notes": "南房総の人気港",
     "access": "江見駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@5m"
+    ]
   }
 }

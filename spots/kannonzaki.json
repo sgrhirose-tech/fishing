@@ -26,5 +26,14 @@
   "info": {
     "notes": "潮通し良い地磯エリア",
     "access": "浦賀駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.55,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:崎"
+    ]
   }
 }

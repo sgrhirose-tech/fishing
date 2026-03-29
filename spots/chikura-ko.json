@@ -26,5 +26,15 @@
   "info": {
     "notes": "南房総の代表的な港",
     "access": "千倉駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@269m",
+      "waterway=dock@56m"
+    ]
   }
 }

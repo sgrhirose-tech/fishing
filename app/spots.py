@@ -147,6 +147,49 @@ def spot_slope_type(s: dict) -> str:
     return classify_slope(dist)
 
 
+_TYPE_LABELS = {
+    "sand_beach":       "砂浜",
+    "rocky_shore":      "磯・岩場",
+    "breakwater":       "堤防・防波堤",
+    "fishing_facility": "漁港・岸壁",
+}
+
+# (min_conf, certain_conf, caveat_text)
+_TYPE_THRESHOLDS = {
+    "sand_beach":       (0.55, 0.75, "可能性あり"),
+    "rocky_shore":      (0.60, 0.75, "推定"),
+    "breakwater":       (0.70, 0.85, "推定"),
+    "fishing_facility": (0.70, 0.85, "推定"),
+}
+_FLAGS_PENALTY = 0.10  # secondary_flags 非空時に閾値を引き上げる量
+
+
+def spot_type_label(s: dict) -> dict | None:
+    """
+    表示用の釣り場タイプラベルを返す。
+    戻り値: {"label": "砂浜", "caveat": "可能性あり"} または None（非表示）
+    """
+    clf = s.get("classification")
+    if not clf:
+        return None
+    ptype = clf.get("primary_type", "unknown")
+    if ptype not in _TYPE_THRESHOLDS:
+        return None
+    if clf.get("source") == "manual":
+        return {"label": _TYPE_LABELS[ptype], "caveat": None}
+
+    conf = clf.get("confidence", 0.0)
+    flags = clf.get("secondary_flags", [])
+    penalty = _FLAGS_PENALTY if flags else 0.0
+    min_conf, certain_conf, caveat_text = _TYPE_THRESHOLDS[ptype]
+
+    if conf < min_conf + penalty:
+        return None
+    if conf >= certain_conf + penalty:
+        return {"label": _TYPE_LABELS[ptype], "caveat": None}
+    return {"label": _TYPE_LABELS[ptype], "caveat": caveat_text}
+
+
 # エリアユーティリティ
 def get_marine_proxy(lat: float, lon: float) -> tuple[float, float]:
     """最近傍の沖合代理座標を返す。"""

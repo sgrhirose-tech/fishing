@@ -26,5 +26,17 @@
   "info": {
     "notes": "夜景も楽しめる湾岸公園",
     "access": "東京ビッグサイト駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.38,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@229m"
+    ]
   }
 }

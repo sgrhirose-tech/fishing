@@ -26,5 +26,14 @@
   "info": {
     "notes": "広い海岸で投げ釣り向き アニメ聖地",
     "access": "七里ヶ浜駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.6,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:浜"
+    ]
   }
 }

@@ -4,11 +4,12 @@
 {% set pf = spot.physical_features %}
 {% set df = spot.derived_features %}
 
-<!-- {% block title %}{{ spot.name }}の釣り場情報 | {{ area.city }}・天気・波・風・駐車場情報{% endblock %} -->
-{% block description %}{{ spot.name }}（{{ area.city }}）の釣り場情報。天気・波・風の情報。アクセス: {{ spot.info.access }}{% endblock %}
+{% block title %}{{ spot.name }}の釣り場情報 | {{ area.city }}・天気・波・風{% endblock %}
+{% block description %}{{ spot.name }}（{{ area.prefecture }}{{ area.city }}）の釣り場情報。底質: {{ df.seabed_summary or 'ー' }}、海底傾斜: {{ slope_type or 'ー' }}。天気・波・風・水温を毎日更新。アクセス: {{ spot.info.access }}{% endblock %}
 
+{% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block og_title %}{{ spot.name }}の釣り場情報 | {{ area.city }}{% endblock %}
-{% block og_desc %}{{ spot.name }}（{{ area.city }}）の釣り場。天気・波・風の情報。{% endblock %}
+{% block og_desc %}{{ spot.name }}（{{ area.prefecture }}{{ area.city }}）の釣り場。底質: {{ df.seabed_summary or 'ー' }}。天気・波・風・水温を毎日更新。{% endblock %}
 {% if photos %}
 {% block og_image %}<meta property="og:image" content="{{ photos[0] }}">{% endblock %}
 {% endif %}
@@ -86,12 +87,22 @@
 <section class="spot-info">
   <h2>基本情報</h2>
   <table class="info-table">
+    {% if spot_type %}
+    <tr>
+      <th>釣り場タイプ</th>
+      <td>{{ spot_type.label }}{% if spot_type.caveat %}<span class="type-caveat">（{{ spot_type.caveat }}）</span>{% endif %}</td>
+    </tr>
+    {% endif %}
     <tr><th>底質</th><td>{{ df.seabed_summary or 'ー' }}</td></tr>
     <tr>
       <th>海底傾斜</th>
       <td>{{ slope_type or 'ー' }}</td>
     </tr>
     <tr><th>アクセス</th><td>{{ spot.info.access }}</td></tr>
+    <tr id="conbini-row" style="display:none;">
+      <th>最寄りコンビニ</th>
+      <td id="conbini-name"></td>
+    </tr>
     <tr><th>メモ</th><td>{{ spot.info.notes }}</td></tr>
   </table>
 </section>
@@ -178,9 +189,9 @@
 {% endblock %}
 
 {% block scripts %}
+<script>window.PRELOADED_FORECAST = {{ preloaded_forecast | tojson }};</script>
 <script>
   const SPOT = {{ spot | tojson }};
-  const TOMORROW = "{{ tomorrow }}";
 
   document.addEventListener('DOMContentLoaded', function() {
     // 単体スポットマップ
@@ -199,6 +210,27 @@
             .addTo(map)
             .bindPopup(`<b>${f.type}</b><br>${f.name}`);
         });
+
+        // 最寄りコンビニ
+        const conbinis = (data.facilities || []).filter(f => f.type === 'コンビニ');
+        if (conbinis.length > 0) {
+          const slat = SPOT.location.latitude, slon = SPOT.location.longitude;
+          function _distM(lat, lon) {
+            const R = 6371000, d2r = Math.PI / 180;
+            const dlat = (lat - slat) * d2r, dlon = (lon - slon) * d2r;
+            const a = Math.sin(dlat/2)**2
+                    + Math.cos(slat*d2r)*Math.cos(lat*d2r)*Math.sin(dlon/2)**2;
+            return R * 2 * Math.asin(Math.sqrt(a));
+          }
+          const nearest = conbinis.reduce((best, c) => {
+            const d = _distM(c.lat, c.lon);
+            return (!best || d < best.d) ? {c, d} : best;
+          }, null);
+          const distM = Math.ceil(nearest.d / 100) * 100;
+          document.getElementById('conbini-name').textContent =
+            `${nearest.c.name}（直線およそ${distM}m）`;
+          document.getElementById('conbini-row').style.display = '';
+        }
       })
       .catch(() => {});  // 施設取得失敗は無視
 
@@ -303,35 +335,40 @@
         b.classList.toggle('active', b.dataset.period === period));
       buildPeriodTable('today-table', todayData, period);
     }
-    fetch('/api/forecast/' + SPOT.slug)
-      .then(r => r.json())
-      .then(data => {
-        forecastDays = data.days || [];
-        todayData    = data.today  || null;
-        // 明日セクション
-        document.getElementById('weather-loading').style.display = 'none';
-        document.getElementById('weather-result').style.display = 'block';
-        renderTomorrowTab('朝');
-        document.querySelectorAll('.tab-tomorrow').forEach(b =>
-          b.addEventListener('click', () => renderTomorrowTab(b.dataset.period)));
-        // 今日セクション
-        document.getElementById('today-loading').style.display = 'none';
-        document.getElementById('today-result').style.display = 'block';
-        renderTodayTab('朝');
-        document.querySelectorAll('.tab-today').forEach(b =>
-          b.addEventListener('click', () => renderTodayTab(b.dataset.period)));
-        // 7日間セクション
-        document.getElementById('forecast-loading').style.display = 'none';
-        document.getElementById('forecast-result').style.display = 'block';
-        renderTab('朝');
-        document.querySelectorAll('.tab-btn:not(.tab-tomorrow):not(.tab-today)').forEach(b =>
-          b.addEventListener('click', () => renderTab(b.dataset.period)));
-      })
-      .catch(() => {
-        document.getElementById('weather-loading').textContent = '気象データの取得に失敗しました';
-        document.getElementById('today-loading').textContent = '気象データの取得に失敗しました';
-        document.getElementById('forecast-loading').textContent = '海況データの取得に失敗しました';
-      });
+    function renderForecast(data) {
+      forecastDays = data.days || [];
+      todayData    = data.today  || null;
+      // 明日セクション
+      document.getElementById('weather-loading').style.display = 'none';
+      document.getElementById('weather-result').style.display = 'block';
+      renderTomorrowTab('朝');
+      document.querySelectorAll('.tab-tomorrow').forEach(b =>
+        b.addEventListener('click', () => renderTomorrowTab(b.dataset.period)));
+      // 今日セクション
+      document.getElementById('today-loading').style.display = 'none';
+      document.getElementById('today-result').style.display = 'block';
+      renderTodayTab('朝');
+      document.querySelectorAll('.tab-today').forEach(b =>
+        b.addEventListener('click', () => renderTodayTab(b.dataset.period)));
+      // 7日間セクション
+      document.getElementById('forecast-loading').style.display = 'none';
+      document.getElementById('forecast-result').style.display = 'block';
+      renderTab('朝');
+      document.querySelectorAll('.tab-btn:not(.tab-tomorrow):not(.tab-today)').forEach(b =>
+        b.addEventListener('click', () => renderTab(b.dataset.period)));
+    }
+    if (window.PRELOADED_FORECAST) {
+      renderForecast(window.PRELOADED_FORECAST);
+    } else {
+      fetch('/api/forecast/' + SPOT.slug)
+        .then(r => r.json())
+        .then(data => renderForecast(data))
+        .catch(() => {
+          document.getElementById('weather-loading').textContent = '気象データの取得に失敗しました';
+          document.getElementById('today-loading').textContent = '気象データの取得に失敗しました';
+          document.getElementById('forecast-loading').textContent = '海況データの取得に失敗しました';
+        });
+    }
 
     // AIコメント
     document.getElementById('ai-comment-loading').style.display = 'block';

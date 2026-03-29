@@ -26,5 +26,12 @@
   "info": {
     "notes": "地磯混じりの景観地",
     "access": "勝浦駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

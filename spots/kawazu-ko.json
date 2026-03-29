@@ -24,7 +24,16 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "小規模港で実績あり",
+    "notes": "小規模港で実績あり 釣り禁止情報あり注意",
     "access": "勝浦駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@1m"
+    ]
   }
 }

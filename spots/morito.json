@@ -1,6 +1,6 @@
 {
   "slug": "morito",
-  "name": "森戸海岸（葉山）",
+  "name": "森戸海岸",
   "location": {
     "latitude": 35.275965441200434,
     "longitude": 139.5709562301636
@@ -26,5 +26,15 @@
   "info": {
     "notes": "葉山の砂礫浜。ヨット多いがサーファー少なめ。静かな環境",
     "access": "逗子駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@137m",
+      "natural=beach@73m"
+    ]
   }
 }

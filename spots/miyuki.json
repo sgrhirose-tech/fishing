@@ -1,6 +1,6 @@
 {
   "slug": "miyuki",
-  "name": "御幸の浜（小田原）",
+  "name": "御幸の浜",
   "location": {
     "latitude": 35.244917246361666,
     "longitude": 139.1598701477051
@@ -26,5 +26,17 @@
   "info": {
     "notes": "小田原漁港に隣接。比較的空いている砂浜。投げ釣りの好ポイント",
     "access": "小田原駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@186m",
+      "natural=beach@123m"
+    ]
   }
 }

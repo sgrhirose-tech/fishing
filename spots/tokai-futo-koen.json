@@ -26,5 +26,17 @@
   "info": {
     "notes": "湾奥の穴場感ある公園",
     "access": "流通センター駅から徒歩25分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.85,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@122m",
+      "natural=bare_rock@14m"
+    ]
   }
 }

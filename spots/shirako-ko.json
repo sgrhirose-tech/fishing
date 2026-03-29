@@ -26,5 +26,15 @@
   "info": {
     "notes": "南端寄りの小規模港",
     "access": "千倉駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@79m",
+      "waterway=dock@1m"
+    ]
   }
 }

@@ -26,5 +26,14 @@
   "info": {
     "notes": "磯場中心の実績エリア",
     "access": "安房天津駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:磯"
+    ]
   }
 }

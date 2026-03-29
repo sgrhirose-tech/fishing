@@ -26,5 +26,14 @@
   "info": {
     "notes": "干潟寄りで潮位の影響大",
     "access": "袖ケ浦駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
   }
 }

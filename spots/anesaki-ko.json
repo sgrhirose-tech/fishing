@@ -26,5 +26,14 @@
   "info": {
     "notes": "港内中心の実績場",
     "access": "姉ケ崎駅から徒歩25分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
   }
 }

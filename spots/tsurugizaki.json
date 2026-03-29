@@ -26,5 +26,14 @@
   "info": {
     "notes": "潮通し抜群の地磯場",
     "access": "三崎口駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.38,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@201m"
+    ]
   }
 }

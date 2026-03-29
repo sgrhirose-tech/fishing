@@ -26,5 +26,17 @@
   "info": {
     "notes": "景観良い海岸ポイント",
     "access": "根府川駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.41,
+    "secondary_flags": [
+      "cliff",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=cliff@188m"
+    ]
   }
 }
