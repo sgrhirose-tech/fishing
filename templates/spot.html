@@ -87,6 +87,12 @@
 <section class="spot-info">
   <h2>基本情報</h2>
   <table class="info-table">
+    {% if spot_type %}
+    <tr>
+      <th>釣り場タイプ</th>
+      <td>{{ spot_type.label }}{% if spot_type.caveat %}<span class="type-caveat">（{{ spot_type.caveat }}）</span>{% endif %}</td>
+    </tr>
+    {% endif %}
     <tr><th>底質</th><td>{{ df.seabed_summary or 'ー' }}</td></tr>
     <tr>
       <th>海底傾斜</th>

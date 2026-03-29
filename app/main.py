@@ -22,7 +22,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi import Request
 
 from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_slug
-from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, spot_slope_type, assign_area, get_area_centers, get_photos
+from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, spot_slope_type, spot_type_label, assign_area, get_area_centers, get_photos
 from .weather import (fetch_weather, fetch_weather_range,
                        fetch_marine_weatherapi, fetch_marine, fetch_marine_range,
                        fetch_sst_noaa)
@@ -498,6 +498,7 @@ def page_spot_detail(
         "today_jp":           _format_date_jp(today_str),
         "tomorrow_jp":        _format_date_jp(tomorrow_str),
         "slope_type":         spot_slope_type(spot),
+        "spot_type":          spot_type_label(spot),
         "photos":             get_photos(slug),
         "preloaded_forecast": _compute_forecast(spot),
     })
