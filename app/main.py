@@ -248,16 +248,11 @@ def api_spots():
 
 
 
-@app.get("/api/forecast/{slug}")
-def api_forecast(slug: str):
-    """スポットの7日分・4区分予報を返す。"""
-    spot = load_spot(slug)
-    if not spot:
-        raise HTTPException(status_code=404, detail="スポットが見つかりません")
-
+def _compute_forecast(spot) -> dict:
+    """スポットの7日分予報を計算して返す。page_spot_detail と api_forecast で共用。"""
     from datetime import date, timedelta
     today = date.today()
-    start = today.strftime("%Y-%m-%d")            # 今日から取得（days[0]=今日）
+    start = today.strftime("%Y-%m-%d")
     end   = (today + timedelta(days=7)).strftime("%Y-%m-%d")
 
     lat = spot_lat(spot)
@@ -276,7 +271,16 @@ def api_forecast(slug: str):
     all_days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
     today_data = all_days[0] if all_days else None   # days[0] = 今日
     forecast   = all_days[1:]                        # days[1:] = 明日+6日
-    return {"slug": slug, "days": forecast, "today": today_data}
+    return {"slug": spot_slug(spot), "days": forecast, "today": today_data}
+
+
+@app.get("/api/forecast/{slug}")
+def api_forecast(slug: str):
+    """スポットの7日分・4区分予報を返す。"""
+    spot = load_spot(slug)
+    if not spot:
+        raise HTTPException(status_code=404, detail="スポットが見つかりません")
+    return _compute_forecast(spot)
 
 
 @app.get("/api/ai-comment/{slug}")
@@ -488,9 +492,10 @@ def page_spot_detail(
     today_str    = _today()
     tomorrow_str = _tomorrow()
     return templates.TemplateResponse(request, "spot.html", {
-        "spot":         spot,
-        "today_jp":     _format_date_jp(today_str),
-        "tomorrow_jp":  _format_date_jp(tomorrow_str),
-        "slope_type":   spot_slope_type(spot),
-        "photos":       get_photos(slug),
+        "spot":               spot,
+        "today_jp":           _format_date_jp(today_str),
+        "tomorrow_jp":        _format_date_jp(tomorrow_str),
+        "slope_type":         spot_slope_type(spot),
+        "photos":             get_photos(slug),
+        "preloaded_forecast": _compute_forecast(spot),
     })
