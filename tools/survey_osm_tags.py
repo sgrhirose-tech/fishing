@@ -27,6 +27,7 @@ REPO_ROOT = Path(__file__).parent.parent
 OVERPASS_ENDPOINTS = [
     "http://overpass-api.de/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter",
+    "https://overpass.openstreetmap.fr/api/interpreter",
     "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ]
 
@@ -40,7 +41,9 @@ def _overpass_post(query: str) -> dict:
     global _sleep_sec
     encoded = urllib.parse.urlencode({"data": query}).encode("utf-8")
     last_err: Exception | None = None
-    for endpoint in OVERPASS_ENDPOINTS:
+    for i, endpoint in enumerate(OVERPASS_ENDPOINTS):
+        if i > 0:
+            time.sleep(2)
         req = urllib.request.Request(endpoint, data=encoded, method="POST")
         req.add_header("User-Agent", "TsuricastTagSurvey/1.0 (personal-use)")
         ctx = None if endpoint.startswith("http://") else _SSL_CTX
