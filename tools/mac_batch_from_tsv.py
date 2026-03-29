@@ -11,7 +11,8 @@ TSV フォーマット（ヘッダなし・タブ区切り・6〜7列）:
 
   第7列 area は任意。日本語エリア名（例: 外房）を指定すると自動判定を上書きする。
 
-エリア・都道府県・市区町村は緯度経度から自動導出する。
+エリア・都道府県・市区町村（city_slug含む）は緯度経度から自動導出する。
+底質・等深線・施設種別は tools/refetch_physical_data.py で別途取得する。
 審査・手修正後に spots/ へ移動して本番反映すること。
 
 使い方:
@@ -20,17 +21,17 @@ TSV フォーマット（ヘッダなし・タブ区切り・6〜7列）:
 
 import json
 import math
+import re
 import ssl
 import sys
 import time
-import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
-# ── tools/ ディレクトリにある pythonista_spot_tools から API 関数を再利用 ──
+# ── tools/ ディレクトリにある pythonista_spot_tools から OSM 海方向計算を再利用 ──
 sys.path.insert(0, str(Path(__file__).parent))
-from pythonista_spot_tools import fetch_physical_data, build_spot_json
+from pythonista_spot_tools import calculate_sea_bearing
 
 # ──────────────────────────────────────────
 # 定数
@@ -159,12 +160,13 @@ def assign_area(lat: float, lon: float) -> str:
 
 
 # ──────────────────────────────────────────
-# Nominatim 住所取得
+# Nominatim 住所取得 / city_slug 変換
 # ──────────────────────────────────────────
 
-def reverse_geocode(lat: float, lon: float) -> dict:
+def reverse_geocode(lat: float, lon: float, lang: str = "ja,en") -> dict:
     """
     Nominatim reverse geocode で prefecture / city を返す。
+    lang には "ja,en"（日本語優先）または "en,ja"（英語優先）を指定する。
     失敗時は空文字で返す。
     """
     params = {
@@ -172,7 +174,7 @@ def reverse_geocode(lat: float, lon: float) -> dict:
         "lon": lon,
         "format": "jsonv2",
         "addressdetails": 1,
-        "accept-language": "ja,en",
+        "accept-language": lang,
         "zoom": 14,
     }
     url = "https://nominatim.openstreetmap.org/reverse?" + urllib.parse.urlencode(params)
@@ -192,6 +194,14 @@ def reverse_geocode(lat: float, lon: float) -> dict:
     except Exception as e:
         print(f"  [警告] Nominatim 取得失敗: {e}")
         return {"prefecture": "", "city": ""}
+
+
+def _city_to_slug(name_en: str) -> str:
+    """英語の市区町村名をスラッグ形式に変換する。例: 'Tateyama' → 'tateyama'"""
+    s = name_en.lower().strip()
+    s = re.sub(r'[\s\-]+', '-', s)
+    s = re.sub(r'[^a-z0-9\-]', '', s)
+    return s.strip('-')
 
 
 # ──────────────────────────────────────────
@@ -215,38 +225,66 @@ def process_record(rec: dict, idx: int, total: int) -> dict:
     )
     print(f"    エリア自動判定: {area_name} ({area_slug})")
 
-    # 住所取得（Nominatim）
-    print("    住所取得 (Nominatim)...", end=" ", flush=True)
-    geo = reverse_geocode(lat, lon)
-    if not geo["prefecture"] and prefecture:
-        geo["prefecture"] = prefecture
-    print(f"→ {geo['prefecture']} {geo['city']}")
+    # 住所取得（Nominatim / 日本語）
+    print("    住所取得 (Nominatim/ja)...", end=" ", flush=True)
+    geo_ja = reverse_geocode(lat, lon, lang="ja,en")
+    if not geo_ja["prefecture"] and prefecture:
+        geo_ja["prefecture"] = prefecture
+    print(f"→ {geo_ja['prefecture']} {geo_ja['city']}")
+    time.sleep(1.1)  # Nominatim レート制限対策
+
+    # city_slug 取得（Nominatim / 英語）
+    print("    city_slug取得 (Nominatim/en)...", end=" ", flush=True)
+    geo_en = reverse_geocode(lat, lon, lang="en,ja")
+    city_slug = _city_to_slug(geo_en.get("city", ""))
+    print(f"→ {geo_en.get('city', '')} → {city_slug!r}")
     time.sleep(1.1)  # Nominatim レート制限対策
 
     # Nominatim の実際の都道府県から pref_slug を導出（AREA_MAP のフォールバックより優先）
-    actual_pref = geo["prefecture"] or prefecture
+    actual_pref = geo_ja["prefecture"] or prefecture
     actual_pref_slug = PREF_SLUG_MAP.get(actual_pref, pref_slug)
 
-    # 物理データ取得（OSM + 海しる）
-    phys = fetch_physical_data(lat, lon)
-    if phys is None:
-        print("    [警告] 物理データ API 取得失敗 — 空値で作成")
-        phys = {
-            "sea_bearing_deg": None,
-            "seabed_type": "unknown",
-            "nearest_20m_contour_distance_m": None,
-            "bottom_kisugo_score": 50,
-            "seabed_summary": "",
-        }
+    # 海方向計算（OSM海岸線から）
+    print("    海方向計算 (OSM)...", end=" ", flush=True)
+    try:
+        sea_bearing = calculate_sea_bearing(lat, lon)
+        print(f"→ {sea_bearing}°")
+    except Exception as e:
+        print(f"→ 失敗 ({e})")
+        sea_bearing = None
 
-    return build_spot_json(
-        slug, name, lat, lon,
-        area_name, area_slug,
-        actual_pref,
-        actual_pref_slug,
-        geo["city"], "",          # city_slug は空文字
-        phys, notes, access,
-    )
+    # JSON 組み立て
+    # 底質・等深線・施設種別は refetch_physical_data.py で後取得する
+    return {
+        "slug": slug,
+        "name": name,
+        "location": {
+            "latitude": lat,
+            "longitude": lon,
+        },
+        "area": {
+            "prefecture":  actual_pref,
+            "pref_slug":   actual_pref_slug,
+            "area_name":   area_name,
+            "area_slug":   area_slug,
+            "city":        geo_ja["city"],
+            "city_slug":   city_slug,
+        },
+        "physical_features": {
+            "sea_bearing_deg":              sea_bearing,
+            "seabed_type":                  None,   # refetch_physical_data.py で設定
+            "surfer_spot":                  False,
+            "nearest_20m_contour_distance_m": None, # refetch_physical_data.py で設定
+        },
+        "derived_features": {
+            "bottom_kisugo_score": None,  # refetch_physical_data.py で設定
+            "seabed_summary":      "",    # refetch_physical_data.py で設定
+        },
+        "info": {
+            "notes":  notes,
+            "access": access,
+        },
+    }
 
 
 # ──────────────────────────────────────────
@@ -291,7 +329,8 @@ def main():
             print(f"  {slug}: {reason}")
     if total_success:
         print(f"\n出力先: {OUTPUT_DIR}")
-        print("確認・手修正後に spots/ へコピーして本番反映してください。")
+        print("spot_editor.py で座標・海方向を確認・修正後、")
+        print("refetch_physical_data.py で底質・等深線・施設種別を取得してください。")
 
 
 if __name__ == "__main__":
