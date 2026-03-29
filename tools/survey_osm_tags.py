@@ -64,8 +64,18 @@ def _query(lat: float, lon: float, radius: int) -> list[dict]:
     data = urllib.parse.urlencode({"data": q}).encode("utf-8")
     req  = urllib.request.Request(OVERPASS_URL, data=data, method="POST")
     req.add_header("User-Agent", "TsuricastTagSurvey/1.0 (personal-use)")
-    with urllib.request.urlopen(req, timeout=25) as resp:
-        return json.loads(resp.read().decode("utf-8")).get("elements", [])
+    wait = 5
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=25) as resp:
+                return json.loads(resp.read().decode("utf-8")).get("elements", [])
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < 2:
+                print(f" [429 待機{wait}s]", end="", flush=True)
+                time.sleep(wait)
+                wait *= 2
+                continue
+            raise
 
 
 def _elem_coords(el: dict) -> tuple[float, float] | None:
@@ -151,7 +161,7 @@ def run_all(files: list[Path], radius: int) -> None:
                         break
 
         if i < total:
-            time.sleep(0.5)
+            time.sleep(2.0)
 
     # ── 集計結果表示 ──
     print(f"\n{'─'*60}")
