@@ -110,6 +110,8 @@ Disallow: /
 
 User-agent: omgilibot
 Disallow: /
+
+Sitemap: https://tsuricast.jp/sitemap.xml
 """
 
 @app.get("/robots.txt", response_class=PlainTextResponse, include_in_schema=False)
