@@ -47,6 +47,36 @@
       "center_lon": 140.65,
       "fetch_km": 120,
       "lat_min": 35.28, "lat_max": 35.80, "lon_min": 140.40, "lon_max": 141.05
+    },
+    "東伊豆": {
+      "center_lat": 34.85, "center_lon": 139.05, "fetch_km": 30
+    },
+    "南伊豆": {
+      "center_lat": 34.63, "center_lon": 138.73, "fetch_km": 30
+    },
+    "西伊豆": {
+      "center_lat": 34.85, "center_lon": 138.63, "fetch_km": 30
+    },
+    "駿河": {
+      "center_lat": 34.95, "center_lon": 138.45, "fetch_km": 50
+    },
+    "遠州": {
+      "center_lat": 34.73, "center_lon": 137.85, "fetch_km": 80
+    },
+    "東三河": {
+      "center_lat": 34.73, "center_lon": 137.25, "fetch_km": 40
+    },
+    "西三河": {
+      "center_lat": 34.85, "center_lon": 136.95, "fetch_km": 30
+    },
+    "尾張": {
+      "center_lat": 35.10, "center_lon": 136.75, "fetch_km": 30
+    },
+    "三重北中部": {
+      "center_lat": 34.80, "center_lon": 136.55, "fetch_km": 50
+    },
+    "三重南部": {
+      "center_lat": 34.10, "center_lon": 136.20, "fetch_km": 60
     }
   },
   "fallbacks": [

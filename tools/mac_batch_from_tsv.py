@@ -52,12 +52,22 @@ _SSL_CTX.verify_mode = ssl.CERT_NONE
 # area_name → (area_slug, pref_slug_fallback, prefecture_fallback)
 # pref_slug_fallback は Nominatim が失敗した場合のみ使用する
 AREA_MAP = {
-    "相模湾":   ("sagamibay", "kanagawa", "神奈川県"),
-    "三浦半島": ("miura",     "kanagawa", "神奈川県"),
-    "東京湾":   ("tokyobay",  "kanagawa", "神奈川県"),
-    "内房":     ("uchibo",    "chiba",    "千葉県"),
-    "外房":     ("sotobo",    "chiba",    "千葉県"),
-    "九十九里": ("kujukuri",  "chiba",    "千葉県"),
+    "相模湾":     ("sagamibay",      "kanagawa", "神奈川県"),
+    "三浦半島":   ("miura",          "kanagawa", "神奈川県"),
+    "東京湾":     ("tokyobay",       "kanagawa", "神奈川県"),
+    "内房":       ("uchibo",         "chiba",    "千葉県"),
+    "外房":       ("sotobo",         "chiba",    "千葉県"),
+    "九十九里":   ("kujukuri",       "chiba",    "千葉県"),
+    "東伊豆":     ("higashi-izu",    "shizuoka", "静岡県"),
+    "南伊豆":     ("minami-izu",     "shizuoka", "静岡県"),
+    "西伊豆":     ("nishi-izu",      "shizuoka", "静岡県"),
+    "駿河":       ("suruga",         "shizuoka", "静岡県"),
+    "遠州":       ("enshu",          "shizuoka", "静岡県"),
+    "東三河":     ("higashi-mikawa", "aichi",    "愛知県"),
+    "西三河":     ("nishi-mikawa",   "aichi",    "愛知県"),
+    "尾張":       ("owari",          "aichi",    "愛知県"),
+    "三重北中部": ("mie-north",      "mie",      "三重県"),
+    "三重南部":   ("mie-south",      "mie",      "三重県"),
 }
 
 # 都道府県名 → pref_slug（Nominatim の実際の都道府県から導出）
@@ -65,6 +75,9 @@ PREF_SLUG_MAP = {
     "神奈川県": "kanagawa",
     "東京都":   "tokyo",
     "千葉県":   "chiba",
+    "静岡県":   "shizuoka",
+    "愛知県":   "aichi",
+    "三重県":   "mie",
 }
 
 

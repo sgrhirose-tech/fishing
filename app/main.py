@@ -354,7 +354,7 @@ def page_top(request: Request):
         if p_slug:
             prefs.setdefault(p_slug, {"name": p_name, "count": 0})
             prefs[p_slug]["count"] += 1
-    _PREF_ORDER = ["chiba", "tokyo", "kanagawa"]
+    _PREF_ORDER = ["chiba", "tokyo", "kanagawa", "shizuoka", "aichi", "mie"]
     prefs = {k: prefs[k] for k in _PREF_ORDER if k in prefs}
     return templates.TemplateResponse(request, "top.html", {
         "spots": spots,
