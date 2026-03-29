@@ -31,6 +31,7 @@ def _load_marine_areas(spots_dir: Path | None = None) -> tuple[dict, list, dict]
         proxy = {
             name: (v["lat"], v["lon"])
             for name, v in data.get("areas", {}).items()
+            if "lat" in v and "lon" in v
         }
         fallbacks = [(v["lat"], v["lon"]) for v in data.get("fallbacks", [])]
         area_centers = {
