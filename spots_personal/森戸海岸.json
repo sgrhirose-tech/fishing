@@ -1,0 +1,182 @@
+{
+  "spot_id": "森戸海岸_17",
+  "name": "森戸海岸",
+  "official_name": "堀内, 葉山町, 三浦郡, 神奈川県, 240-0112, 日本",
+  "area": {
+    "major": null,
+    "minor": null,
+    "prefecture": "神奈川県",
+    "city": "葉山町",
+    "address": "堀内, 葉山町, 三浦郡, 神奈川県, 240-0112, 日本"
+  },
+  "location": {
+    "latitude": 35.275965441200434,
+    "longitude": 139.5709562301636,
+    "coordinate_source": "manual drag",
+    "reverse_geocode_source": "Nominatim Reverse API"
+  },
+  "physical_features": {
+    "shore_type": null,
+    "sea_bearing_deg": 270.4,
+    "sea_bearing_source": "OSM Overpass coastline",
+    "sea_bearing_status": "auto",
+    "bottom_type": {
+      "value": "砂",
+      "matched_layers": [
+        {
+          "sample_offset_m": 50,
+          "sample_lat": 35.27596858,
+          "sample_lon": 139.57040545,
+          "name": "砂",
+          "distance_m": 126.1,
+          "search_radius_m": 250,
+          "attributes_sample": {
+            "OBJECTID": 11271,
+            "nature": "砂(細かい)"
+          }
+        },
+        {
+          "sample_offset_m": 100,
+          "sample_lat": 35.27597171,
+          "sample_lon": 139.56985466,
+          "name": "砂",
+          "distance_m": 117.0,
+          "search_radius_m": 250,
+          "attributes_sample": {
+            "OBJECTID": 11271,
+            "nature": "砂(細かい)"
+          }
+        },
+        {
+          "sample_offset_m": 200,
+          "sample_lat": 35.27597798,
+          "sample_lon": 139.56875309,
+          "name": "砂",
+          "distance_m": 155.8,
+          "search_radius_m": 250,
+          "attributes_sample": {
+            "OBJECTID": 11271,
+            "nature": "砂(細かい)"
+          }
+        }
+      ],
+      "best_match": {
+        "sample_offset_m": 100,
+        "sample_lat": 35.27597171,
+        "sample_lon": 139.56985466,
+        "name": "砂",
+        "distance_m": 117.0,
+        "search_radius_m": 250,
+        "attributes_sample": {
+          "OBJECTID": 11271,
+          "nature": "砂(細かい)"
+        }
+      },
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T06:22:05+09:00"
+    },
+    "depth_profile": {
+      "depth_at_50m_from_shore_m": null,
+      "depth_at_100m_from_shore_m": null,
+      "depth_at_200m_from_shore_m": null,
+      "depth_points_source": "海しる等深線APIでは直接取得不可",
+      "shallow_profile_confirmed": true,
+      "shallow_profile_reason": "20m等深線が 1293.3m 先のため、近岸は遠浅傾向",
+      "contour_reference": {
+        "nearest_20m_contour_distance_m": 1293.3,
+        "nearest_50m_contour_distance_m": 2557.2,
+        "nearest_100m_contour_distance_m": 5490.4,
+        "nearest_150m_contour_distance_m": 5985.3,
+        "nearest_200m_contour_distance_m": 6251.4
+      },
+      "raw_contours": [
+        {
+          "depth_m": 20,
+          "distance_m": 1293.3,
+          "search_radius_m": 2000,
+          "attributes": {
+            "Depth": 20,
+            "OBJECTID": 7414,
+            "Shape_Length": 0.006947989420296933
+          }
+        },
+        {
+          "depth_m": 50,
+          "distance_m": 2557.2,
+          "search_radius_m": 5000,
+          "attributes": {
+            "Depth": 50,
+            "OBJECTID": 4789,
+            "Shape_Length": 79.68747476604443
+          }
+        },
+        {
+          "depth_m": 100,
+          "distance_m": 5490.4,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 100,
+            "OBJECTID": 2641,
+            "Shape_Length": 67.28742372793847
+          }
+        },
+        {
+          "depth_m": 150,
+          "distance_m": 5985.3,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 150,
+            "OBJECTID": 1219,
+            "Shape_Length": 61.08208186790016
+          }
+        },
+        {
+          "depth_m": 200,
+          "distance_m": 6251.4,
+          "search_radius_m": 10000,
+          "attributes": {
+            "Depth": 200,
+            "OBJECTID": 50,
+            "Shape_Length": 54.24935132341124
+          }
+        }
+      ],
+      "status": "取得済み",
+      "source_system": "海しる",
+      "last_updated": "2026-03-26T06:22:05+09:00"
+    }
+  },
+  "derived_features": {
+    "bottom_primary": "砂",
+    "bottom_secondary": [],
+    "bottom_is_sandy": true,
+    "bottom_has_shell": false,
+    "bottom_has_rock": false,
+    "bottom_kisugo_score": 85,
+    "slope_type": "遠浅",
+    "slope_score": 90,
+    "nearshore_depth_numeric_available": false,
+    "nearshore_depth_note": "20m等深線が 1293.3m 先のため、近岸は遠浅傾向",
+    "contour_distances_m": {
+      "20m": 1293.3,
+      "50m": 2557.2,
+      "100m": 5490.4,
+      "150m": 5985.3,
+      "200m": 6251.4
+    },
+    "terrain_confidence": "high",
+    "terrain_summary": "砂主体、遠浅。シロギス投げ釣り向きの地形"
+  },
+  "metadata": {
+    "created_at": "2026-03-24T06:44:01+09:00",
+    "updated_at": "2026-03-26T06:22:05+09:00",
+    "json_created_by": "build_spots_complete.py",
+    "notes": [
+      "座標付き入力から生成",
+      "海に向かう方位はOSM海岸線データから自動算出",
+      "住所系は reverse geocoding で取得",
+      "底質・等深線は海しるAPIで取得"
+    ]
+  }
+}
