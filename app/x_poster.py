@@ -175,7 +175,7 @@ def generate_area_comment(area_name_jp: str, area_data: dict, mode: str = "morni
         風向=area_data.get("wind_dir_label", "--"),
         水温=_v("sst"),
         潮回り=area_data.get("tide", "--"),
-        投稿時間帯=f"{時間帯}の{'実況' if mode == 'morning' else '予報'}",
+        投稿時間帯=f"{時間帯}の{'実況' if mode == 'morning' else '情報'}",
     )
 
     try:
@@ -229,8 +229,8 @@ def format_tweet(area_name_jp: str, area_data: dict, comment: str, url: str,
         title = f"🌊 今朝の{area_name_jp}海況"
         hashtags = f"#釣り #{area_name_jp} #海釣り"
     else:
-        title = f"🌅 明日の{area_name_jp}海況予報"
-        hashtags = f"#釣り #{area_name_jp} #海釣り #釣り予報"
+        title = f"🌅 明日の{area_name_jp}海況情報"
+        hashtags = f"#釣り #{area_name_jp} #海釣り #釣り情報"
 
     def _build(cmt: str) -> str:
         parts = [
