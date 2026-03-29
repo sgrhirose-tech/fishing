@@ -26,5 +26,14 @@
   "info": {
     "notes": "サーフで投げ釣り向き",
     "access": "勝浦駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@78m"
+    ]
   }
 }

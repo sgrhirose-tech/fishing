@@ -26,5 +26,17 @@
   "info": {
     "notes": "定番の海釣り施設",
     "access": "鶴見駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.95,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=fishing@7m",
+      "man_made=pier@19m"
+    ]
   }
 }

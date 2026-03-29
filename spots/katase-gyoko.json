@@ -26,5 +26,12 @@
   "info": {
     "notes": "駅近で手軽な港場",
     "access": "江ノ島駅から徒歩8分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

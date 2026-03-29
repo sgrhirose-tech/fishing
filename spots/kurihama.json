@@ -26,5 +26,16 @@
   "info": {
     "notes": "東京湾口の砂泥浜。波は穏やか。ペリー来航の地",
     "access": "京急久里浜駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.77,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@33m"
+    ]
   }
 }

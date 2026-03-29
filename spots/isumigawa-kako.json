@@ -26,5 +26,12 @@
   "info": {
     "notes": "河口絡みの変化が魅力",
     "access": "大原駅から徒歩25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

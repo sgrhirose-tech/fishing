@@ -26,5 +26,14 @@
   "info": {
     "notes": "港内で落ち着いて探れる",
     "access": "千倉駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@2m"
+    ]
   }
 }

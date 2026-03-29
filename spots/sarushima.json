@@ -26,5 +26,20 @@
   "info": {
     "notes": "島の護岸と磯を探れる",
     "access": "横須賀中央駅から徒歩15分と船10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@130m",
+      "man_made=pier@138m",
+      "man_made=pier@151m",
+      "natural=bare_rock@154m",
+      "natural=bare_rock@219m"
+    ]
   }
 }

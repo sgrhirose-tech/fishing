@@ -26,5 +26,14 @@
   "info": {
     "notes": "相模湾東端の砂浜。逗子マリーナ近く。サーファーも来る",
     "access": "逗子・葉山駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

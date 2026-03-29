@@ -26,5 +26,18 @@
   "info": {
     "notes": "外港寄りの実績場",
     "access": "銚子駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@132m",
+      "natural=beach@208m"
+    ]
   }
 }

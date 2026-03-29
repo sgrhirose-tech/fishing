@@ -1,6 +1,6 @@
 {
   "slug": "ohama",
-  "name": "大浜海岸（三浦）",
+  "name": "大浜海岸",
   "location": {
     "latitude": 35.2580417,
     "longitude": 139.5792023
@@ -26,5 +26,17 @@
   "info": {
     "notes": "三浦半島南端の砂浜。三崎漁港近く。比較的空いている",
     "access": "三崎口駅からバスまたは車15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@130m",
+      "natural=beach@114m"
+    ]
   }
 }

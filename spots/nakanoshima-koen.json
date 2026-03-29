@@ -26,5 +26,12 @@
   "info": {
     "notes": "港近くの実績スポット",
     "access": "木更津駅から徒歩18分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

@@ -28,5 +28,14 @@
     "notes": "足場が広くファミリー向き　P・WC・売店あり",
     "access": "川崎駅からバス35分",
     "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

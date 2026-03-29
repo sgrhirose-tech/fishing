@@ -26,5 +26,14 @@
   "info": {
     "notes": "港内中心の小場所",
     "access": "三崎口駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@182m"
+    ]
   }
 }

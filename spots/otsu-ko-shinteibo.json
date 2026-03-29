@@ -26,5 +26,14 @@
   "info": {
     "notes": "港内で手軽に竿を出せる",
     "access": "京急大津駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

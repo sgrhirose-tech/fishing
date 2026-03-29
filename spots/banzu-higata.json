@@ -26,5 +26,12 @@
   "info": {
     "notes": "遠浅で干潟特有の狙い場",
     "access": "巌根駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

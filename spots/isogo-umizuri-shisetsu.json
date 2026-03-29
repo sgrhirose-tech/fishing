@@ -26,5 +26,16 @@
   "info": {
     "notes": "足場安定で初心者向き",
     "access": "磯子駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.95,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=fishing@12m"
+    ]
   }
 }

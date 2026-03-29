@@ -26,5 +26,14 @@
   "info": {
     "notes": "手軽な海浜公園ポイント",
     "access": "木更津駅から徒歩25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

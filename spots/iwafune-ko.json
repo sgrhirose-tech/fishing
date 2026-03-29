@@ -26,5 +26,14 @@
   "info": {
     "notes": "外房の小規模港",
     "access": "御宿駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.77,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@31m"
+    ]
   }
 }

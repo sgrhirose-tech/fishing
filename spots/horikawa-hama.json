@@ -26,5 +26,12 @@
   "info": {
     "notes": "静かなサーフで探りやすい",
     "access": "旭駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

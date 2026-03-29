@@ -26,5 +26,17 @@
   "info": {
     "notes": "突堤先端が人気",
     "access": "検見川浜駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@123m",
+      "man_made=breakwater@295m",
+      "natural=beach@105m",
+      "natural=beach@127m"
+    ]
   }
 }

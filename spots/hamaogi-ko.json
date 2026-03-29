@@ -26,5 +26,15 @@
   "info": {
     "notes": "小規模港で手軽に探れる",
     "access": "安房天津駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@104m",
+      "waterway=dock@2m"
+    ]
   }
 }

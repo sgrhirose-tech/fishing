@@ -26,5 +26,16 @@
   "info": {
     "notes": "河口の変化を狙える",
     "access": "上総一ノ宮駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@261m"
+    ]
   }
 }

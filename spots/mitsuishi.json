@@ -26,5 +26,12 @@
   "info": {
     "notes": "景勝地の地磯ポイント",
     "access": "真鶴駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

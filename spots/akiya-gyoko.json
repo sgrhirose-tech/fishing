@@ -26,5 +26,12 @@
   "info": {
     "notes": "小場所ながら実績あり",
     "access": "逗子駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

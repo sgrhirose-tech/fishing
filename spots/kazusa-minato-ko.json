@@ -26,5 +26,18 @@
   "info": {
     "notes": "港内で手軽に竿を出せる",
     "access": "上総湊駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@105m",
+      "man_made=breakwater@212m",
+      "waterway=dock@121m"
+    ]
   }
 }

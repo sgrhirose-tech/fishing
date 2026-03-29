@@ -26,5 +26,20 @@
   "info": {
     "notes": "市街近くで手軽な護岸",
     "access": "安房鴨川駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "marina",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@290m",
+      "man_made=breakwater@134m",
+      "man_made=breakwater@254m",
+      "natural=beach@224m"
+    ]
   }
 }

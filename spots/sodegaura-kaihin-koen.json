@@ -26,5 +26,14 @@
   "info": {
     "notes": "東京湾を広く見渡せる",
     "access": "長浦駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

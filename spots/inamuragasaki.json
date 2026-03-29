@@ -26,5 +26,16 @@
   "info": {
     "notes": "磯混じりで変化が多い",
     "access": "稲村ヶ崎駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.41,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@238m"
+    ]
   }
 }

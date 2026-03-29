@@ -28,5 +28,12 @@
     "notes": "遠浅の定番海岸",
     "access": "青堀駅からバス15分",
     "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

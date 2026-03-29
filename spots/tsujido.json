@@ -26,5 +26,14 @@
   "info": {
     "notes": "湘南の代表的な砂浜。サーファー多め。オフショア時は空きやすい",
     "access": "辻堂駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.41,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@268m"
+    ]
   }
 }

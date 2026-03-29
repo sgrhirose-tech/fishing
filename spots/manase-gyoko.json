@@ -26,5 +26,18 @@
   "info": {
     "notes": "葉山の小規模港",
     "access": "逗子駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@115m",
+      "natural=bare_rock@118m",
+      "natural=beach@217m"
+    ]
   }
 }
