@@ -28,12 +28,12 @@
     "access": "木更津駅から徒歩20分"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
-    "secondary_flags": [
-      "parking_nearby"
-    ],
-    "source": "osm_rule",
-    "osm_evidence": []
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
   }
 }

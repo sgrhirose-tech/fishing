@@ -28,10 +28,12 @@
     "access": "津久井浜駅から徒歩10分"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "sand_beach",
+    "confidence": 0.6,
     "secondary_flags": [],
-    "source": "osm_rule",
-    "osm_evidence": []
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:浜"
+    ]
   }
 }
