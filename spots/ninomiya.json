@@ -28,10 +28,12 @@
     "access": "二宮駅から徒歩15分"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
     "secondary_flags": [],
-    "source": "osm_rule",
-    "osm_evidence": []
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
   }
 }

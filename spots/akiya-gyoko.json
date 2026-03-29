@@ -28,10 +28,12 @@
     "access": "逗子駅からバス25分"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
     "secondary_flags": [],
-    "source": "osm_rule",
-    "osm_evidence": []
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
   }
 }
