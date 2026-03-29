@@ -26,8 +26,43 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from pythonista_spot_tools import fetch_physical_data
 
-REPO_ROOT    = Path(__file__).parent.parent
-OVERPASS_URL = "http://overpass-api.de/api/interpreter"
+REPO_ROOT = Path(__file__).parent.parent
+
+OVERPASS_ENDPOINTS = [
+    "http://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+]
+
+# 動的スリープ: エラー後に延長、連続成功で短縮
+_sleep_sec = 1.0
+
+
+def _overpass_post(query: str, user_agent: str) -> dict:
+    """複数エンドポイントへフォールバックしながら Overpass にPOSTする。"""
+    global _sleep_sec
+    encoded = urllib.parse.urlencode({"data": query}).encode("utf-8")
+    last_err: Exception | None = None
+    for endpoint in OVERPASS_ENDPOINTS:
+        req = urllib.request.Request(endpoint, data=encoded, method="POST")
+        req.add_header("User-Agent", user_agent)
+        try:
+            with urllib.request.urlopen(req, timeout=25) as resp:
+                result = json.loads(resp.read().decode("utf-8"))
+            # 成功 → スリープを徐々に短縮（最小1秒）
+            _sleep_sec = max(1.0, _sleep_sec * 0.8)
+            return result
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 504):
+                last_err = e
+                continue   # 次のエンドポイントへ
+            raise
+        except Exception as e:
+            last_err = e
+            continue
+    # 全エンドポイント失敗 → スリープを延長（最大30秒）
+    _sleep_sec = min(30.0, _sleep_sec * 2)
+    raise last_err
 
 # ──────────────────────────────────────────
 # OSM 施設種別分類ルール
@@ -110,11 +145,7 @@ def classify_spot(lat: float, lon: float, verbose: bool = False) -> dict | None:
         ");\nout center;"
     )
     try:
-        data = urllib.parse.urlencode({"data": query}).encode("utf-8")
-        req = urllib.request.Request(OVERPASS_URL, data=data, method="POST")
-        req.add_header("User-Agent", "TsuricastSpotClassifier/1.0 (personal-use)")
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            result = json.loads(resp.read().decode("utf-8"))
+        result = _overpass_post(query, "TsuricastSpotClassifier/1.0 (personal-use)")
     except Exception as e:
         print(f"    [警告] Overpass 取得失敗: {e}")
         return None
@@ -212,7 +243,7 @@ def process_file(
         spot["classification"] = cls
         src_path.write_text(json.dumps(spot, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"→ {cls['primary_type']} (confidence={cls['confidence']})")
-        time.sleep(1.0)
+        time.sleep(_sleep_sec)
         return True
 
     # ── 通常モード: 海しる + Overpass ───────────────────
@@ -231,7 +262,7 @@ def process_file(
         print(f"→ {cls['primary_type']} (confidence={cls['confidence']})")
     else:
         print("失敗（分類スキップ）")
-    time.sleep(1.0)  # Overpass レート制限
+    time.sleep(_sleep_sec)  # Overpass レート制限（動的）
 
     if dry_run:
         print(f"    [ドライラン] seabed={phys.get('seabed_type')}  "

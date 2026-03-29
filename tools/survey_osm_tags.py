@@ -21,8 +21,40 @@ import urllib.request
 from collections import defaultdict
 from pathlib import Path
 
-REPO_ROOT    = Path(__file__).parent.parent
-OVERPASS_URL = "http://overpass-api.de/api/interpreter"
+REPO_ROOT = Path(__file__).parent.parent
+
+OVERPASS_ENDPOINTS = [
+    "http://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+]
+
+_sleep_sec = 2.0
+
+
+def _overpass_post(query: str) -> dict:
+    """複数エンドポイントへフォールバックしながら Overpass にPOSTする。"""
+    global _sleep_sec
+    encoded = urllib.parse.urlencode({"data": query}).encode("utf-8")
+    last_err: Exception | None = None
+    for endpoint in OVERPASS_ENDPOINTS:
+        req = urllib.request.Request(endpoint, data=encoded, method="POST")
+        req.add_header("User-Agent", "TsuricastTagSurvey/1.0 (personal-use)")
+        try:
+            with urllib.request.urlopen(req, timeout=25) as resp:
+                result = json.loads(resp.read().decode("utf-8"))
+            _sleep_sec = max(2.0, _sleep_sec * 0.8)
+            return result
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 504):
+                last_err = e
+                continue
+            raise
+        except Exception as e:
+            last_err = e
+            continue
+    _sleep_sec = min(30.0, _sleep_sec * 2)
+    raise last_err
 
 # 調査対象キー（TERRAIN_TAGS より広め）
 SURVEY_KEYS = (
@@ -61,21 +93,7 @@ def _query(lat: float, lon: float, radius: int) -> list[dict]:
         f'  way["amenity"="parking"](around:{r},{lat},{lon});\n'
         f");\nout center;"
     )
-    data = urllib.parse.urlencode({"data": q}).encode("utf-8")
-    req  = urllib.request.Request(OVERPASS_URL, data=data, method="POST")
-    req.add_header("User-Agent", "TsuricastTagSurvey/1.0 (personal-use)")
-    wait = 5
-    for attempt in range(3):
-        try:
-            with urllib.request.urlopen(req, timeout=25) as resp:
-                return json.loads(resp.read().decode("utf-8")).get("elements", [])
-        except urllib.error.HTTPError as e:
-            if e.code == 429 and attempt < 2:
-                print(f" [429 待機{wait}s]", end="", flush=True)
-                time.sleep(wait)
-                wait *= 2
-                continue
-            raise
+    return _overpass_post(q).get("elements", [])
 
 
 def _elem_coords(el: dict) -> tuple[float, float] | None:
@@ -161,7 +179,7 @@ def run_all(files: list[Path], radius: int) -> None:
                         break
 
         if i < total:
-            time.sleep(2.0)
+            time.sleep(_sleep_sec)
 
     # ── 集計結果表示 ──
     print(f"\n{'─'*60}")
