@@ -83,6 +83,8 @@ TERRAIN_TAGS = [
     ("leisure",  "fishing",    "fishing_facility", 0.95),
     ("leisure",  "marina",     "fishing_facility", 0.85),
     ("leisure",  "slipway",    "fishing_facility", 0.80),
+    ("waterway", "dock",       "fishing_facility", 0.90),
+    ("harbour",  "yes",        "fishing_facility", 0.85),
 ]
 
 # (OSMキー, OSM値, フラグ名)
@@ -96,7 +98,7 @@ SECONDARY_TAGS = [
 ]
 
 # 距離係数テーブル
-_DIST_FACTORS = [(15, 1.0), (50, 0.85), (150, 0.65)]
+_DIST_FACTORS = [(15, 1.0), (50, 0.85), (150, 0.65), (300, 0.45)]
 
 
 # ──────────────────────────────────────────
@@ -131,17 +133,21 @@ def classify_spot(lat: float, lon: float, verbose: bool = False) -> dict | None:
     API 失敗時は None を返す。
     """
     query = (
-        "[out:json][timeout:15];\n(\n"
-        f'  node["natural"~"^(beach|sand|shingle|cliff|rock|bare_rock)$"](around:150,{lat},{lon});\n'
-        f'  way["natural"~"^(beach|sand|shingle|cliff|rock|bare_rock)$"](around:150,{lat},{lon});\n'
-        f'  node["man_made"~"^(breakwater|seawall|quay|pier)$"](around:150,{lat},{lon});\n'
-        f'  way["man_made"~"^(breakwater|seawall|quay|pier)$"](around:150,{lat},{lon});\n'
-        f'  node["leisure"~"^(fishing|marina|slipway)$"](around:150,{lat},{lon});\n'
-        f'  way["leisure"~"^(fishing|marina|slipway)$"](around:150,{lat},{lon});\n'
-        f'  node["landuse"="harbour"](around:150,{lat},{lon});\n'
-        f'  way["landuse"="harbour"](around:150,{lat},{lon});\n'
-        f'  node["amenity"="parking"](around:200,{lat},{lon});\n'
-        f'  way["amenity"="parking"](around:200,{lat},{lon});\n'
+        "[out:json][timeout:20];\n(\n"
+        f'  node["natural"~"^(beach|sand|shingle|cliff|rock|bare_rock)$"](around:300,{lat},{lon});\n'
+        f'  way["natural"~"^(beach|sand|shingle|cliff|rock|bare_rock)$"](around:300,{lat},{lon});\n'
+        f'  node["man_made"~"^(breakwater|seawall|quay|pier)$"](around:300,{lat},{lon});\n'
+        f'  way["man_made"~"^(breakwater|seawall|quay|pier)$"](around:300,{lat},{lon});\n'
+        f'  node["leisure"~"^(fishing|marina|slipway)$"](around:300,{lat},{lon});\n'
+        f'  way["leisure"~"^(fishing|marina|slipway)$"](around:300,{lat},{lon});\n'
+        f'  node["landuse"="harbour"](around:300,{lat},{lon});\n'
+        f'  way["landuse"="harbour"](around:300,{lat},{lon});\n'
+        f'  node["waterway"="dock"](around:300,{lat},{lon});\n'
+        f'  way["waterway"="dock"](around:300,{lat},{lon});\n'
+        f'  node["harbour"="yes"](around:300,{lat},{lon});\n'
+        f'  way["harbour"="yes"](around:300,{lat},{lon});\n'
+        f'  node["amenity"="parking"](around:300,{lat},{lon});\n'
+        f'  way["amenity"="parking"](around:300,{lat},{lon});\n'
         ");\nout center;"
     )
     try:
