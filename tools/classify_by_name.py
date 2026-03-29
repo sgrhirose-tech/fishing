@@ -54,7 +54,7 @@ def match_name(name: str) -> tuple[str | None, float, list[str]]:
     hits: dict[str, tuple[float, list[str]]] = {}
 
     for kw, cls, conf in NAME_KEYWORDS:
-        if kw in name:
+        if name.endswith(kw):
             if cls not in hits or conf > hits[cls][0]:
                 hits[cls] = (conf, [kw])
             elif conf == hits[cls][0]:
