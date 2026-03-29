@@ -186,6 +186,7 @@ def process_file(
     dry_run: bool = True,
     skip_classified: bool = False,
     verbose: bool = False,
+    classification_only: bool = False,
 ) -> bool:
     spot        = json.loads(src_path.read_text(encoding="utf-8"))
     lat         = spot["location"]["latitude"]
@@ -201,6 +202,20 @@ def process_file(
 
     print(f"    座標: ({lat:.6f}, {lon:.6f})  海方向: {sea_bearing}°")
 
+    # ── classification-only モード ──────────────────────
+    if classification_only:
+        print("    施設種別推定 (Overpass)...", end=" ", flush=True)
+        cls = classify_spot(lat, lon, verbose=verbose)
+        if not cls:
+            print("失敗")
+            return False
+        spot["classification"] = cls
+        src_path.write_text(json.dumps(spot, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"→ {cls['primary_type']} (confidence={cls['confidence']})")
+        time.sleep(1.0)
+        return True
+
+    # ── 通常モード: 海しる + Overpass ───────────────────
     # 底質・等深線（海しる）
     print("    底質・等深線取得 (海しる)...", end=" ", flush=True)
     phys = fetch_physical_data(lat, lon, sea_bearing=sea_bearing)
@@ -273,11 +288,27 @@ def main():
         "--verbose", action="store_true",
         help="Overpass で取得した OSM タグを詳細表示（調査用）",
     )
+    parser.add_argument(
+        "--classification-only", action="store_true",
+        help="Overpass 分類のみ実行（spots/ を直接更新、海しる呼び出しなし・ファイル移動なし）",
+    )
+    parser.add_argument(
+        "--force", action="store_true",
+        help="分類済みスポットも上書き（--classification-only と併用）",
+    )
     args = parser.parse_args()
 
-    src_dir = REPO_ROOT / "unadjusted"
-    dst_dir = REPO_ROOT / "spots"
-    dry_run = not args.apply
+    if args.classification_only:
+        src_dir = REPO_ROOT / "spots"
+        dst_dir = None
+        dry_run = False
+        # --force なければ分類済みをスキップ
+        skip_classified = not args.force
+    else:
+        src_dir = REPO_ROOT / "unadjusted"
+        dst_dir = REPO_ROOT / "spots"
+        dry_run = not args.apply
+        skip_classified = args.skip_classified
 
     if args.slug:
         files = [src_dir / f"{args.slug}.json"]
@@ -292,7 +323,12 @@ def main():
         print(f"{src_dir} に JSON ファイルが見つかりません。")
         return
 
-    mode = "ドライラン" if dry_run else f"書き込みモード（→ spots/ ・元ファイル削除）"
+    if args.classification_only:
+        mode = f"分類のみモード（spots/ 直接更新{'・強制上書き' if args.force else '・未分類のみ'}）"
+    elif dry_run:
+        mode = "ドライラン"
+    else:
+        mode = "書き込みモード（→ spots/ ・元ファイル削除）"
     print(f"対象: {len(files)}件  モード: {mode}\n")
 
     ok = 0
@@ -304,19 +340,20 @@ def main():
             spot_name = path.stem
         print(f"[{i}/{len(files)}] {spot_name} ({path.stem})")
 
-        dst = None if dry_run else dst_dir / path.name
+        dst = None if (dry_run or args.classification_only) else dst_dir / path.name
 
         if process_file(
             path,
             dst_path=dst,
             dry_run=dry_run,
-            skip_classified=args.skip_classified,
+            skip_classified=skip_classified,
             verbose=args.verbose,
+            classification_only=args.classification_only,
         ):
             ok += 1
 
     print(f"\n── 完了 ── 成功: {ok}件 / 失敗: {len(files) - ok}件")
-    if dry_run:
+    if dry_run and not args.classification_only:
         print("\n実際に書き込むには --apply を指定してください。")
 
 
