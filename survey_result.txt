@@ -1,0 +1,74 @@
+調査: 205件  半径: 300m
+
+[1/205] 安房崎 (abosaki)... 4件
+[2/205] 油壷 (aburatsubo)... 12件
+[3/205] アイクル (aikuru)... 28件
+[4/205] 暁ふ頭公園 (akatsuki-futo-koen)...  [429 待機5s]3件
+[5/205] 秋谷漁港 (akiya-gyoko)... 5件
+[6/205] 秋谷海岸 (akiya)... 4件
+[7/205] 天津港 (amatsu-ko)...  [429 待機5s]11件
+[8/205] 姉崎港 (anesaki-ko)... 5件
+[9/205] 荒井港 (arai-ko)...  [429 待機5s]13件
+[10/205] 荒崎 (arasaki)...  [429 待機5s]10件
+[11/205] 有明西ふ頭公園 (ariake-nishi-futo-koen)... 7件
+[12/205] 芦名漁港 (ashina-gyoko)...  [429 待機5s]11件
+[13/205] 番場浦 (banbaura)...  [429 待機5s]8件
+[14/205] 盤洲干潟 (banzu-higata)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[15/205] 毘沙門天下 (bishamon-tenka)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[16/205] 梵天の鼻（立石公園） (bonten-no-hana-tateishi-koen)... 17件
+[17/205] 千葉港中央ふ頭（千葉ポートパーク） (chiba-ko-chuo-futo)... 2件
+[18/205] 茅ヶ崎ヘッドランド (chigasaki-headland)...  [429 待機5s] [429 待機10s]8件
+[19/205] 千倉・平舘港 (chikura-ko)... 10件
+[20/205] 長者ヶ崎海岸 (chojakasaki)...  [429 待機5s] [429 待機10s]26件
+[21/205] 銚子外港 (choshi-gaiko)... 1件
+[22/205] 銚子港 (choshi-ko)... 8件
+[23/205] 大黒海づり施設 (daikoku-umizuri-shisetsu)... 5件
+[24/205] 太夫崎港 (dayuzaki-ko)... 16件
+[25/205] 道無 (domu)... 5件
+[26/205] 江川海岸 (egawa-kaigan)... 5件
+[27/205] 江見海岸 (emi-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[28/205] 江見港 (emi-ko)... 14件
+[29/205] 江の島 (enoshima)...  [429 待機5s] [429 待機10s]122件
+[30/205] 江之浦漁港 (enoura-gyoko)... 6件
+[31/205] 不動堂海岸 (fudodo-kaigan)... 4件
+[32/205] 福浦岸壁 (fukuura-ganpeki)...  [429 待機5s] [429 待機10s]6件
+[33/205] 福浦港 (fukuura-ko)... 5件
+[34/205] 二夕間海岸 (futoma-kaigan)... 5件
+[35/205] 太海港 (futomi-ko)... 15件
+[36/205] 富津海岸 (futtsu-kaigan)... 4件
+[37/205] 富津岬 (futtsu-misaki)... 4件
+[38/205] 富津新港 (futtsu-shinko)...  [429 待機5s] [429 待機10s]5件
+[39/205] 八景島対岸 (hakkeijima-taigan)... 4件
+[40/205] 浜荻港 (hamaogi-ko)... 7件
+[41/205] 浜荻の磯 (hamaogi-no-iso)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[42/205] 花水川河口 (hanamizugawa-kako)... 4件
+[43/205] 花園海岸 (hanazono-kaigan)... 7件
+[44/205] 初声漁港 (hatsuse-gyoko)...  [429 待機5s] [429 待機10s]8件
+[45/205] 早川港 (hayakawa-ko)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[46/205] 葉山港 (hayama-ko)... 11件
+[47/205] 部原海岸 (hebara-kaigan)...  [429 待機5s]2件
+[48/205] 平作川河口 (heisakugawa-kako)...  [429 待機5s] [429 待機10s]23件
+[49/205] 平砂浦 (heisaura)... 2件
+[50/205] 東扇島西公園 (higashi-ogishima-nishi-koen)... 3件
+[51/205] 引地川河口 (hikichigawa-kako)... 10件
+[52/205] 日の出海岸 (hinode-kaigan)... 2件
+[53/205] 平塚海岸 (hiratsuka-kaigan)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[54/205] 平塚新港 (hiratsuka-shinko)... 9件
+[55/205] 平塚海岸 (hiratsuka)...  [429 待機5s]  [エラー] HTTP Error 504: Gateway Timeout
+0件
+[56/205] 本牧海づり施設 (honmoku-umizuri-shisetsu)... 7件
+[57/205] 堀川浜 (horikawa-hama)...  [429 待機5s] [429 待機10s]1件
+[58/205] 市原海づり施設（オリジナルメーカー海づり公園） (ichihara-umizuri-shisetsu)...   [エラー] HTTP Error 504: Gateway Timeout
+0件
+[59/205] 市川港 (ichikawa-ko)... 3件
+[60/205] 一宮海岸 (ichinomiya-kaigan)... 2件
+[61/205] 一宮川河口 (ichinomiyagawa-kako)...  [429 待機5s]5件
+[62/205] 飯岡港 (iioka-ko)... 6件
+[63/205] 稲毛海浜公園 (inage-kaihin-koen)...  [429 待機5s]3件
+[64/205] 稲村ヶ崎 (inamuragasaki)...  [429 待機5s] [429 待機10s]
