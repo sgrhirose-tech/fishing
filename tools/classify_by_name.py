@@ -34,8 +34,10 @@ NAME_KEYWORDS = [
     ("テトラ", "breakwater",       0.85),
     ("漁港",   "fishing_facility", 0.90),
     ("岸壁",   "fishing_facility", 0.85),
-    ("ふ頭",   "fishing_facility", 0.85),
-    ("埠頭",   "fishing_facility", 0.85),
+    ("ふ頭",     "fishing_facility", 0.85),
+    ("ふ頭公園", "fishing_facility", 0.85),
+    ("埠頭",     "fishing_facility", 0.85),
+    ("埠頭公園", "fishing_facility", 0.85),
     ("桟橋",   "fishing_facility", 0.80),
     ("港",     "fishing_facility", 0.75),
 ]
