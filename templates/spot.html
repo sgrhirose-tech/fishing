@@ -4,7 +4,7 @@
 {% set pf = spot.physical_features %}
 {% set df = spot.derived_features %}
 
-{% block title %}{{ spot.name }}の釣り場情報 | {{ area.city }}・天気・波・風・駐車場{% endblock %}
+{% block title %}{{ spot.name }}の釣り場情報 | {{ area.city }}・天気・波・風{% endblock %}
 {% block description %}{{ spot.name }}（{{ area.prefecture }}{{ area.city }}）の釣り場情報。底質: {{ df.seabed_summary or 'ー' }}、海底傾斜: {{ slope_type or 'ー' }}。天気・波・風・水温を毎日更新。アクセス: {{ spot.info.access }}{% endblock %}
 
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
