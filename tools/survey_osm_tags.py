@@ -50,7 +50,7 @@ def _overpass_post(query: str) -> dict:
             _sleep_sec = max(2.0, _sleep_sec * 0.8)
             return result
         except urllib.error.HTTPError as e:
-            if e.code in (403, 429, 504):
+            if e.code in (403, 429, 502, 503, 504):
                 last_err = e
                 continue
             raise
