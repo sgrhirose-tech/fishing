@@ -5,15 +5,13 @@
 
 spot_editor.py で座標と海方向を確認・修正した後に実行する。
 底質・等深線（海しる）と施設種別（OSM Overpass）をまとめて取得し、
-JSON を更新する。
+unadjusted/ → spots/ へ書き込む。書き込み成功後は unadjusted/ の元ファイルを削除する。
 
 使い方:
-  python tools/refetch_physical_data.py                        # ドライラン（unadjusted/）
-  python tools/refetch_physical_data.py --apply                # unadjusted/ → unadjusted-2/ に書き込み
-  python tools/refetch_physical_data.py --dir spots            # spots/ を対象
-  python tools/refetch_physical_data.py --dir spots --apply    # spots/ にインプレース書き込み
-  python tools/refetch_physical_data.py --slug kamogawa-ko     # 1件のみ処理
-  python tools/refetch_physical_data.py --skip-classified      # 分類済みをスキップ
+  python tools/refetch_physical_data.py               # ドライラン（全件）
+  python tools/refetch_physical_data.py --apply        # spots/ に書き込み・元ファイル削除
+  python tools/refetch_physical_data.py --slug kamogawa-ko  # 1件のみ処理
+  python tools/refetch_physical_data.py --skip-classified   # 分類済みをスキップ
 """
 
 import argparse
@@ -230,6 +228,12 @@ def process_file(
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps(spot, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"    → {out.relative_to(REPO_ROOT)}")
+
+    # 書き込み先が元ファイルと異なる場合（unadjusted/ → spots/）は元ファイルを削除
+    if out != src_path:
+        src_path.unlink()
+        print(f"    削除: {src_path.relative_to(REPO_ROOT)}")
+
     return True
 
 
@@ -243,15 +247,11 @@ def main():
     )
     parser.add_argument(
         "--apply", action="store_true",
-        help="実際に JSON を更新する（デフォルト: ドライラン）",
+        help="spots/ に書き込み、unadjusted/ の元ファイルを削除する（デフォルト: ドライラン）",
     )
     parser.add_argument(
         "--slug", metavar="SLUG",
         help="1件のみ処理するスラッグ",
-    )
-    parser.add_argument(
-        "--dir", default="unadjusted", choices=["unadjusted", "spots"],
-        help="対象ディレクトリ（デフォルト: unadjusted）",
     )
     parser.add_argument(
         "--skip-classified", action="store_true",
@@ -259,24 +259,25 @@ def main():
     )
     args = parser.parse_args()
 
-    target_dir = REPO_ROOT / args.dir
-    dry_run    = not args.apply
+    src_dir = REPO_ROOT / "unadjusted"
+    dst_dir = REPO_ROOT / "spots"
+    dry_run = not args.apply
 
     if args.slug:
-        files = [target_dir / f"{args.slug}.json"]
+        files = [src_dir / f"{args.slug}.json"]
         files = [f for f in files if f.exists()]
         if not files:
-            print(f"{args.slug}.json が見つかりません: {target_dir}")
+            print(f"{args.slug}.json が見つかりません: {src_dir}")
             return
     else:
-        files = sorted(f for f in target_dir.glob("*.json") if not f.name.startswith("_"))
+        files = sorted(f for f in src_dir.glob("*.json") if not f.name.startswith("_"))
 
     if not files:
-        print(f"{target_dir} に JSON ファイルが見つかりません。")
+        print(f"{src_dir} に JSON ファイルが見つかりません。")
         return
 
-    mode = "ドライラン" if dry_run else "書き込みモード"
-    print(f"対象: {len(files)}件  ディレクトリ: {args.dir}/  モード: {mode}\n")
+    mode = "ドライラン" if dry_run else f"書き込みモード（→ spots/ ・元ファイル削除）"
+    print(f"対象: {len(files)}件  モード: {mode}\n")
 
     ok = 0
     for i, path in enumerate(files, 1):
@@ -287,12 +288,7 @@ def main():
             spot_name = path.stem
         print(f"[{i}/{len(files)}] {spot_name} ({path.stem})")
 
-        # unadjusted/ の書き込みは unadjusted-2/ へ出力（既存の動作を維持）
-        # spots/ の書き込みはインプレース
-        if not dry_run and args.dir == "unadjusted":
-            dst = REPO_ROOT / "unadjusted-2" / path.name
-        else:
-            dst = None
+        dst = None if dry_run else dst_dir / path.name
 
         if process_file(
             path,
