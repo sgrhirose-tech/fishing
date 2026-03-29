@@ -26,5 +26,16 @@
   "info": {
     "notes": "江ノ島の東側の砂浜。西浜よりやや静かな日もある",
     "access": "片瀬江ノ島駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@126m"
+    ]
   }
 }

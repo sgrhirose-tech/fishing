@@ -26,5 +26,12 @@
   "info": {
     "notes": "景観良い地磯ポイント",
     "access": "三崎口駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

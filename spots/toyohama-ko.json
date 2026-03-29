@@ -26,5 +26,15 @@
   "info": {
     "notes": "港内中心で手軽に楽しめる",
     "access": "勝浦駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@209m",
+      "waterway=dock@2m"
+    ]
   }
 }

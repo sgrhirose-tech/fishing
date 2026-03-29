@@ -162,6 +162,7 @@ main {
 .info-table td { padding: .5rem .75rem; border-bottom: 1px solid #e0e8f0; text-align: left; }
 .info-table th { width: 8rem; color: #555; font-weight: normal; background: #f0f6fb; }
 .info-table .warn { color: #c00; font-weight: bold; }
+.type-caveat { font-size: 0.85em; color: #888; }
 
 /* ---- スコアバッジ ---- */
 .score-badge {

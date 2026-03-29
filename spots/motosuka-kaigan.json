@@ -26,5 +26,14 @@
   "info": {
     "notes": "広い浜でキス狙い向き",
     "access": "成東駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
   }
 }

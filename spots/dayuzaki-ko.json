@@ -26,5 +26,17 @@
   "info": {
     "notes": "外海に面した実績場",
     "access": "江見駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@202m",
+      "waterway=dock@2m"
+    ]
   }
 }

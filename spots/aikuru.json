@@ -26,5 +26,12 @@
   "info": {
     "notes": "足場が良く手軽に楽しめる",
     "access": "久里浜駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

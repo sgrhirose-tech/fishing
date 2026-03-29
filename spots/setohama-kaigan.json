@@ -26,5 +26,14 @@
   "info": {
     "notes": "浜と港が近い手軽な場",
     "access": "千倉駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
   }
 }

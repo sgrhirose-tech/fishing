@@ -26,5 +26,14 @@
   "info": {
     "notes": "静かな入り江の海岸",
     "access": "鵜原駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@112m"
+    ]
   }
 }

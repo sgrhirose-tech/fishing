@@ -26,5 +26,14 @@
   "info": {
     "notes": "大型港湾で回遊魚期待",
     "access": "銚子駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
   }
 }

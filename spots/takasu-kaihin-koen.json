@@ -26,5 +26,20 @@
   "info": {
     "notes": "新浦安の手軽な海浜公園",
     "access": "新浦安駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.52,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=sand@104m",
+      "natural=sand@111m",
+      "natural=sand@113m",
+      "natural=sand@131m",
+      "natural=sand@163m"
+    ]
   }
 }

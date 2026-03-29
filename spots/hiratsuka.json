@@ -26,5 +26,16 @@
   "info": {
     "notes": "遠浅の砂浜。平塚新港も近く便利",
     "access": "平塚駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@150m",
+      "natural=beach@247m",
+      "natural=beach@94m"
+    ]
   }
 }

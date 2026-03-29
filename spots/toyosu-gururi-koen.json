@@ -26,5 +26,17 @@
   "info": {
     "notes": "都心近くの人気護岸",
     "access": "市場前駅から徒歩8分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.38,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@206m",
+      "man_made=pier@259m"
+    ]
   }
 }

@@ -26,5 +26,18 @@
   "info": {
     "notes": "地磯主体で景観抜群",
     "access": "犬吠駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.77,
+    "secondary_flags": [
+      "cliff",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=cliff@131m",
+      "natural=cliff@21m"
+    ]
   }
 }

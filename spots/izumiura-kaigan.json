@@ -26,5 +26,15 @@
   "info": {
     "notes": "サーフで投げ釣り向き",
     "access": "大原駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@189m",
+      "man_made=breakwater@222m"
+    ]
   }
 }

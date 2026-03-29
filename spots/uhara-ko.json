@@ -26,5 +26,20 @@
   "info": {
     "notes": "外房の人気港ポイント",
     "access": "鵜原駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [
+      "harbour",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@198m",
+      "natural=bare_rock@222m",
+      "waterway=dock@126m",
+      "waterway=dock@13m"
+    ]
   }
 }

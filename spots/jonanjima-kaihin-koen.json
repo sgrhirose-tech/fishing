@@ -26,5 +26,14 @@
   "info": {
     "notes": "羽田近くの広い海浜公園",
     "access": "大森駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

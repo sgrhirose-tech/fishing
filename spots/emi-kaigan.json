@@ -26,5 +26,14 @@
   "info": {
     "notes": "港横の海岸で投げ向き",
     "access": "江見駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
   }
 }

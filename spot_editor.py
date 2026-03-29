@@ -57,12 +57,22 @@ BEARING_OPTIONS = list(range(0, 360, 5))
 
 # area_name → (area_slug, pref_slug, prefecture)
 AREA_MAP = {
-    "相模湾":   ("sagamibay",  "kanagawa", "神奈川県"),
-    "三浦半島": ("miura",      "kanagawa", "神奈川県"),
-    "東京湾":   ("tokyobay",   "kanagawa", "神奈川県"),
-    "内房":     ("uchibo",     "chiba",    "千葉県"),
-    "外房":     ("sotobo",     "chiba",    "千葉県"),
-    "九十九里": ("kujukuri",   "chiba",    "千葉県"),
+    "相模湾":     ("sagamibay",      "kanagawa", "神奈川県"),
+    "三浦半島":   ("miura",          "kanagawa", "神奈川県"),
+    "東京湾":     ("tokyobay",       "kanagawa", "神奈川県"),
+    "内房":       ("uchibo",         "chiba",    "千葉県"),
+    "外房":       ("sotobo",         "chiba",    "千葉県"),
+    "九十九里":   ("kujukuri",       "chiba",    "千葉県"),
+    "東伊豆":     ("higashi-izu",    "shizuoka", "静岡県"),
+    "南伊豆":     ("minami-izu",     "shizuoka", "静岡県"),
+    "西伊豆":     ("nishi-izu",      "shizuoka", "静岡県"),
+    "駿河":       ("suruga",         "shizuoka", "静岡県"),
+    "遠州":       ("enshu",          "shizuoka", "静岡県"),
+    "東三河":     ("higashi-mikawa", "aichi",    "愛知県"),
+    "西三河":     ("nishi-mikawa",   "aichi",    "愛知県"),
+    "尾張":       ("owari",          "aichi",    "愛知県"),
+    "三重北中部": ("mie-north",      "mie",      "三重県"),
+    "三重南部":   ("mie-south",      "mie",      "三重県"),
 }
 
 

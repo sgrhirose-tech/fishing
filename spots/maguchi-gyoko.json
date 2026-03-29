@@ -26,5 +26,15 @@
   "info": {
     "notes": "外洋寄りの漁港ポイント",
     "access": "三崎口駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@13m",
+      "natural=bare_rock@253m"
+    ]
   }
 }

@@ -26,5 +26,17 @@
   "info": {
     "notes": "港内で多魚種実績",
     "access": "三崎口駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@279m",
+      "man_made=breakwater@293m"
+    ]
   }
 }

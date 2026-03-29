@@ -26,5 +26,18 @@
   "info": {
     "notes": "河口絡みで変化を狙える",
     "access": "堀ノ内駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@117m",
+      "man_made=breakwater@72m",
+      "natural=beach@252m"
+    ]
   }
 }

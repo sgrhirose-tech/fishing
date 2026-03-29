@@ -26,5 +26,14 @@
   "info": {
     "notes": "河口絡みの変化を狙える",
     "access": "鵠沼海岸駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

@@ -26,5 +26,19 @@
   "info": {
     "notes": "地磯混じりの実績場",
     "access": "三崎口駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@163m",
+      "man_made=breakwater@197m",
+      "man_made=breakwater@245m",
+      "man_made=pier@250m"
+    ]
   }
 }

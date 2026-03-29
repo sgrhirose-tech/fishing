@@ -26,5 +26,18 @@
   "info": {
     "notes": "静かな港で手軽に狙える",
     "access": "逗子駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.95,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@107m",
+      "man_made=breakwater@115m",
+      "man_made=breakwater@7m",
+      "natural=bare_rock@117m",
+      "natural=beach@156m"
+    ]
   }
 }

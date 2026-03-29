@@ -26,5 +26,12 @@
   "info": {
     "notes": "港湾部を探れるポイント",
     "access": "千葉みなと駅から徒歩18分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

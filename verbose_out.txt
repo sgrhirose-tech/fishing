@@ -1,0 +1,56 @@
+対象: 205件  モード: ドライラン
+
+[1/205] 安房崎 (abosaki)
+    座標: (35.128894, 139.629364)  海方向: 120°
+    底質・等深線取得 (海しる)...   底質を取得中 (海しる)...
+  bottom = 石・岩/砂/貝殻 (取得済み)
+  等深線を取得中 (海しる)...
+  nearest_20m_contour_distance_m = 318.3
+完了
+    施設種別推定 (Overpass)... Traceback (most recent call last):
+  File "/Users/shigeru/fishing/tools/refetch_physical_data.py", line 324, in <module>
+    main()
+    ~~~~^^
+  File "/Users/shigeru/fishing/tools/refetch_physical_data.py", line 309, in main
+    if process_file(
+       ~~~~~~~~~~~~^
+        path,
+        ^^^^^
+    ...<3 lines>...
+        verbose=args.verbose,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/shigeru/fishing/tools/refetch_physical_data.py", line 214, in process_file
+    cls = classify_spot(lat, lon, verbose=verbose)
+  File "/Users/shigeru/fishing/tools/refetch_physical_data.py", line 116, in classify_spot
+    with urllib.request.urlopen(req, timeout=20) as resp:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1348, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1450, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+KeyboardInterrupt

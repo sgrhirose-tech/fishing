@@ -26,5 +26,14 @@
   "info": {
     "notes": "人気の広いサーフ",
     "access": "上総一ノ宮駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@58m"
+    ]
   }
 }

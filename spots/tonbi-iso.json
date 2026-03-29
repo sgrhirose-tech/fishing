@@ -26,5 +26,15 @@
   "info": {
     "notes": "小磯で変化を探れる",
     "access": "逗子駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@52m",
+      "natural=beach@126m"
+    ]
   }
 }

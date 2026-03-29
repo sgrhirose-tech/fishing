@@ -26,5 +26,14 @@
   "info": {
     "notes": "手軽に海辺を楽しめる",
     "access": "湯河原駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.81,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@44m"
+    ]
   }
 }

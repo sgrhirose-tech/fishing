@@ -26,5 +26,14 @@
   "info": {
     "notes": "鴨川市街近くの海岸",
     "access": "安房鴨川駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
   }
 }

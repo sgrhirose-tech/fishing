@@ -25,6 +25,15 @@
   },
   "info": {
     "notes": "ウィンドサーフィンで有名な砂浜。さまざまな魚が狙える好ポイント",
-    "access": "津久井浜駅から徒歩5分"
+    "access": "津久井浜駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.6,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:浜"
+    ]
   }
 }

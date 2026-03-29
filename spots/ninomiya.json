@@ -26,5 +26,14 @@
   "info": {
     "notes": "二宮町の遠浅砂浜。湘南西端の穴場。比較的空いている",
     "access": "二宮駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
   }
 }

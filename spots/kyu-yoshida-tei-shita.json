@@ -26,5 +26,14 @@
   "info": {
     "notes": "静かな海岸ポイント",
     "access": "二宮駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.77,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@22m"
+    ]
   }
 }

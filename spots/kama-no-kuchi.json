@@ -26,5 +26,12 @@
   "info": {
     "notes": "地磯混じりの先端部",
     "access": "真鶴駅から徒歩25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

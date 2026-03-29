@@ -26,5 +26,18 @@
   "info": {
     "notes": "九十九里中部の代表港",
     "access": "東金駅からバス30分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.72,
+    "secondary_flags": [
+      "marina"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@47m",
+      "man_made=breakwater@206m",
+      "natural=beach@259m"
+    ]
   }
 }

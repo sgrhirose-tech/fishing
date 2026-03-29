@@ -26,5 +26,14 @@
   "info": {
     "notes": "静かなサーフで探りやすい",
     "access": "旭駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.6,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:浜"
+    ]
   }
 }

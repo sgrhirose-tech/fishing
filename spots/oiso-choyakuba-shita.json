@@ -26,5 +26,14 @@
   "info": {
     "notes": "海岸線を手軽に探れる",
     "access": "大磯駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }
