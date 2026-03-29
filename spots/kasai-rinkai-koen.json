@@ -26,5 +26,18 @@
   "info": {
     "notes": "湾奥の定番大型公園",
     "access": "葛西臨海公園駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@99m",
+      "natural=beach@197m",
+      "natural=beach@80m"
+    ]
   }
 }

@@ -26,5 +26,16 @@
   "info": {
     "notes": "サーフで投げ釣り向き",
     "access": "君ヶ浜駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@107m"
+    ]
   }
 }

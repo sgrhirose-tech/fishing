@@ -26,5 +26,14 @@
   "info": {
     "notes": "運河寄りで短時間向き",
     "access": "新浦安駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

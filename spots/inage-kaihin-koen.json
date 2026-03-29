@@ -26,5 +26,14 @@
   "info": {
     "notes": "サーフと護岸を楽しめる",
     "access": "稲毛駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.41,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@271m"
+    ]
   }
 }

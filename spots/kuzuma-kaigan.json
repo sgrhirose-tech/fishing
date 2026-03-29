@@ -26,5 +26,14 @@
   "info": {
     "notes": "遠浅の浜で投げ釣り向き",
     "access": "巌根駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

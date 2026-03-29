@@ -26,5 +26,22 @@
   "info": {
     "notes": "磯と堤防を楽しめる",
     "access": "片瀬江ノ島駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.77,
+    "secondary_flags": [
+      "cliff",
+      "marina",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=fishing@147m",
+      "leisure=fishing@171m",
+      "leisure=fishing@196m",
+      "leisure=fishing@212m",
+      "leisure=fishing@240m"
+    ]
   }
 }

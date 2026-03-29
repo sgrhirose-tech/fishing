@@ -26,5 +26,12 @@
   "info": {
     "notes": "地磯好き向けの名所",
     "access": "真鶴駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

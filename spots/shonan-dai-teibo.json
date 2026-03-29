@@ -26,5 +26,20 @@
   "info": {
     "notes": "定番の堤防ポイント",
     "access": "片瀬江ノ島駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.72,
+    "secondary_flags": [
+      "marina",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@192m",
+      "man_made=breakwater@292m",
+      "man_made=pier@16m",
+      "man_made=pier@291m"
+    ]
   }
 }

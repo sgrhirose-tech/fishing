@@ -26,5 +26,17 @@
   "info": {
     "notes": "港内中心の実績場",
     "access": "和田浦駅から徒歩12分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@63m",
+      "waterway=dock@5m"
+    ]
   }
 }

@@ -26,5 +26,14 @@
   "info": {
     "notes": "地形変化で魚影期待",
     "access": "茅ケ崎駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@14m"
+    ]
   }
 }

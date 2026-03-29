@@ -26,5 +26,20 @@
   "info": {
     "notes": "足場安定の人気港",
     "access": "大磯駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.68,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@132m",
+      "man_made=breakwater@155m",
+      "man_made=breakwater@202m",
+      "man_made=quay@120m",
+      "man_made=quay@29m"
+    ]
   }
 }

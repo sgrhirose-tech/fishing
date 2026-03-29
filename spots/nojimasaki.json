@@ -26,5 +26,14 @@
   "info": {
     "notes": "房総先端の定番地磯",
     "access": "館山駅からバス40分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.41,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@294m"
+    ]
   }
 }

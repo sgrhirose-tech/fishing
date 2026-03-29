@@ -26,5 +26,15 @@
   "info": {
     "notes": "内湾気味で狙いやすい",
     "access": "上総興津駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@210m",
+      "waterway=dock@107m"
+    ]
   }
 }

@@ -1,6 +1,6 @@
 {
   "slug": "moriya",
-  "name": "守谷海岸（勝浦）",
+  "name": "守谷海岸",
   "location": {
     "latitude": 35.137457,
     "longitude": 140.262372
@@ -26,5 +26,17 @@
   "info": {
     "notes": "透明度高い砂浜。遠浅で投げ釣りの好ポイント",
     "access": "勝浦駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.81,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@290m",
+      "man_made=breakwater@46m",
+      "natural=bare_rock@73m",
+      "natural=beach@192m"
+    ]
   }
 }

@@ -26,5 +26,16 @@
   "info": {
     "notes": "観光地近くの定番海岸",
     "access": "鎌倉駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.41,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@228m"
+    ]
   }
 }

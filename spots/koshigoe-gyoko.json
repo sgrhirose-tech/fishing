@@ -26,5 +26,19 @@
   "info": {
     "notes": "小田急沿線の人気港",
     "access": "腰越駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.41,
+    "secondary_flags": [
+      "cliff",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@296m",
+      "natural=beach@278m",
+      "natural=cliff@294m"
+    ]
   }
 }

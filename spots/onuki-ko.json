@@ -26,5 +26,18 @@
   "info": {
     "notes": "内房南下の港ポイント",
     "access": "大貫駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@209m",
+      "natural=beach@292m",
+      "waterway=dock@160m"
+    ]
   }
 }

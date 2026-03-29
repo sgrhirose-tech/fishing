@@ -26,5 +26,14 @@
   "info": {
     "notes": "河口近くの投げ釣り場",
     "access": "茅ケ崎駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.41,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@169m"
+    ]
   }
 }

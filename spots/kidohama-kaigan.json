@@ -26,5 +26,12 @@
   "info": {
     "notes": "九十九里北部の定番浜",
     "access": "横芝駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

@@ -26,5 +26,12 @@
   "info": {
     "notes": "広いサーフで投げ釣り向き",
     "access": "平塚駅から徒歩25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

@@ -26,5 +26,14 @@
   "info": {
     "notes": "外房らしい景観の岬",
     "access": "太東駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

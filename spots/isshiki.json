@@ -26,5 +26,18 @@
   "info": {
     "notes": "葉山の砂浜。投げ釣りの有名ポイント。西向きで相模湾に面する",
     "access": "逗子駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@167m",
+      "natural=beach@149m",
+      "natural=beach@269m"
+    ]
   }
 }

@@ -26,5 +26,18 @@
   "info": {
     "notes": "館山側寄りの港場",
     "access": "館山駅からバス30分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "marina",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@81m",
+      "leisure=marina@185m"
+    ]
   }
 }

@@ -26,5 +26,14 @@
   "info": {
     "notes": "地磯で潮通しが良い",
     "access": "千倉駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

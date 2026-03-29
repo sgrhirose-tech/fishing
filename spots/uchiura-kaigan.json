@@ -26,5 +26,17 @@
   "info": {
     "notes": "入り江状の静かな海岸",
     "access": "安房小湊駅から徒歩8分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@110m",
+      "natural=beach@165m"
+    ]
   }
 }

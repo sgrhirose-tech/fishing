@@ -26,5 +26,18 @@
   "info": {
     "notes": "比較的空いている穴場。砂地が広がる",
     "access": "鴨宮駅から車10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@156m",
+      "natural=beach@250m",
+      "natural=beach@93m"
+    ]
   }
 }

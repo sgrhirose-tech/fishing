@@ -26,5 +26,16 @@
   "info": {
     "notes": "砂と砂利が混じる。サーファー少なめ。投げ釣りで好釣果が期待できる",
     "access": "大磯駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@254m",
+      "man_made=breakwater@266m",
+      "man_made=quay@283m"
+    ]
   }
 }

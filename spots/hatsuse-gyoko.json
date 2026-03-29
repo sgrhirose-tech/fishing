@@ -26,5 +26,12 @@
   "info": {
     "notes": "静かな港内ポイント",
     "access": "三崎口駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

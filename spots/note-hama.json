@@ -26,5 +26,12 @@
   "info": {
     "notes": "投げ釣り向きの広い浜",
     "access": "旭駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

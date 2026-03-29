@@ -26,5 +26,12 @@
   "info": {
     "notes": "潮干狩り場周辺の砂浜",
     "access": "袖ケ浦駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

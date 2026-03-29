@@ -26,5 +26,12 @@
   "info": {
     "notes": "磯場中心の名所",
     "access": "三崎口駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }

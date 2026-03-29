@@ -26,5 +26,12 @@
   "info": {
     "notes": "湾岸散策向きの護岸公園",
     "access": "青海駅から徒歩8分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
   }
 }
