@@ -4,9 +4,7 @@ uvicorn app.main:app --reload で起動。
 """
 
 import os
-import threading
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
 from email.utils import formatdate
@@ -18,7 +16,7 @@ except ImportError:
     pass
 
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
+from fastapi.responses import HTMLResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -32,82 +30,6 @@ from .scoring import score_spot, direction_label, score_7days
 from .osm import fetch_nearby_facilities
 
 JST = timezone(timedelta(hours=9))
-
-# ============================================================
-# インメモリ TTL キャッシュ
-# ============================================================
-
-_ranking_cache: dict = {}       # date_str → (timestamp, scored_spots)
-_RANKING_TTL = 6 * 3600         # 6時間
-_refresh_in_progress: set = set()  # 二重更新防止
-
-
-def _score_one_spot(spot: dict, date_str: str, area_centers: dict) -> dict:
-    """スポット1件分の気象取得・スコア計算を行う（スレッド内で実行）。"""
-    lat = spot_lat(spot)
-    lon = spot_lon(spot)
-    weather = fetch_weather(lat, lon, date_str)
-    marine = fetch_marine_weatherapi(lat, lon, date_str)
-    if not marine:
-        marine = fetch_marine(lat, lon, date_str)
-    area = assign_area(spot)
-    fetch_km = area_centers[area][2] if area in area_centers else 50
-    sst = fetch_sst_noaa(lat, lon, date_str)
-    return score_spot(spot, weather, marine, sst_noaa=sst, fetch_km=fetch_km)
-
-
-def _compute_ranking(date_str: str) -> list[dict]:
-    """全スポットのスコアを並列計算して降順に返す。"""
-    spots = load_spots()
-    area_centers = get_area_centers()
-    results = []
-    with ThreadPoolExecutor(max_workers=10) as executor:
-        futures = {
-            executor.submit(_score_one_spot, spot, date_str, area_centers): spot
-            for spot in spots
-        }
-        for future in as_completed(futures):
-            try:
-                results.append(future.result())
-            except Exception as e:
-                print(f"[警告] スコア計算失敗 ({futures[future].get('slug', '?')}): {e}")
-    return sorted(results, key=lambda x: x["total"], reverse=True)
-
-
-def _trigger_background_refresh(date_str: str) -> None:
-    """ランキングをバックグラウンドスレッドで再計算する。二重起動を防ぐ。"""
-    if date_str in _refresh_in_progress:
-        return
-    _refresh_in_progress.add(date_str)
-
-    def _do() -> None:
-        try:
-            data = _compute_ranking(date_str)
-            _ranking_cache[date_str] = (time.time(), data)
-            print(f"[更新] ランキングキャッシュ更新完了 ({date_str})")
-        finally:
-            _refresh_in_progress.discard(date_str)
-
-    threading.Thread(target=_do, daemon=True).start()
-
-
-def get_ranking(date_str: str) -> list[dict]:
-    """Stale-While-Revalidate キャッシュ付きランキング取得。
-    キャッシュが新鮮なら即返す。期限切れなら古いデータを即返しつつバックグラウンドで更新。
-    キャッシュなし（コールドスタート）のみ同期計算する。
-    """
-    now = time.time()
-    if date_str in _ranking_cache:
-        ts, data = _ranking_cache[date_str]
-        if now - ts < _RANKING_TTL:
-            return data                        # 新鮮: そのまま即返す
-        # 期限切れ: 古いデータを即返しバックグラウンドで更新
-        _trigger_background_refresh(date_str)
-        return data
-    # キャッシュなし（コールドスタート時のみ）: 同期計算
-    data = _compute_ranking(date_str)
-    _ranking_cache[date_str] = (now, data)
-    return data
 
 
 def _tomorrow() -> str:
@@ -133,25 +55,7 @@ def _format_date_jp(date_str: str) -> str:
 async def lifespan(app: FastAPI):
     # 起動時に spots をプリロード
     load_spots()
-    # ランキングキャッシュをバックグラウンドで事前計算
-    import asyncio
-    asyncio.create_task(_warm_ranking_cache())
     yield
-
-
-async def _warm_ranking_cache():
-    """サーバー起動後にランキングを事前計算してキャッシュを温める。
-    同期HTTPコールをスレッドプールで実行し、イベントループをブロックしない。
-    """
-    import asyncio
-    await asyncio.sleep(3)  # サーバーが完全に起動するまで待機
-    try:
-        date_str = _tomorrow()
-        loop = asyncio.get_event_loop()
-        await loop.run_in_executor(None, get_ranking, date_str)
-        print(f"[起動] ランキングキャッシュを事前計算しました ({date_str})")
-    except Exception as e:
-        print(f"[起動] ランキングキャッシュの事前計算に失敗: {e}")
 
 
 app = FastAPI(title="Tsuricast", lifespan=lifespan)
@@ -342,34 +246,6 @@ def api_spots():
         for s in spots
     ]
 
-
-@app.get("/api/ranking")
-def api_ranking(date: str | None = None):
-    """全スポットのランキング JSON を返す。date 未指定は翌日。"""
-    date_str = date or _tomorrow()
-    ranked = get_ranking(date_str)
-    cache_ts = _ranking_cache.get(date_str, (0, None))[0]
-    payload = {
-        "date": date_str,
-        "updated_at": datetime.fromtimestamp(cache_ts, tz=JST).isoformat() if cache_ts else None,
-        "spots": [
-            {
-                "rank": i + 1,
-                "slug": spot_slug(r["spot"]),
-                "name": spot_name(r["spot"]),
-                "total": r["total"],
-                "scores": r["scores"],
-                "details": {
-                    k: v for k, v in r["details"].items()
-                    if not k.startswith("_")
-                },
-            }
-            for i, r in enumerate(ranked)
-        ],
-    }
-    response = JSONResponse(content=payload)
-    response.headers["Cache-Control"] = "public, max-age=1800, stale-while-revalidate=3600"
-    return response
 
 
 @app.get("/api/forecast/{slug}")
