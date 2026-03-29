@@ -27,7 +27,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from pythonista_spot_tools import fetch_physical_data
 
 REPO_ROOT    = Path(__file__).parent.parent
-OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+OVERPASS_URL = "http://overpass-api.de/api/interpreter"
 
 # ──────────────────────────────────────────
 # OSM 施設種別分類ルール
