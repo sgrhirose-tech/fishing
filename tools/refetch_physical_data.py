@@ -89,7 +89,7 @@ def _dist_factor(dist_m: float) -> float:
 # OSM 施設種別推定
 # ──────────────────────────────────────────
 
-def classify_spot(lat: float, lon: float) -> dict | None:
+def classify_spot(lat: float, lon: float, verbose: bool = False) -> dict | None:
     """
     Overpass API でスポット周辺の地物タグを取得し、
     主分類・補助フラグ・信頼度を返す。
@@ -135,6 +135,17 @@ def classify_spot(lat: float, lon: float) -> dict | None:
 
         dist = _haversine_m(lat, lon, el_lat, el_lon)
         factor = _dist_factor(dist)
+
+        if verbose:
+            tag_str = ", ".join(
+                f"{k}={v}" for k, v in sorted(tags.items())
+                if k in ("natural", "man_made", "leisure", "landuse", "harbour",
+                         "waterway", "amenity", "seamark:type", "water")
+            )
+            if tag_str:
+                marker = "" if factor > 0.0 else " [範囲外]"
+                print(f"      [{el['type']}] dist={int(dist)}m{marker}  {tag_str}")
+
         if factor == 0.0:
             continue
 
@@ -174,6 +185,7 @@ def process_file(
     dst_path: Path | None = None,
     dry_run: bool = True,
     skip_classified: bool = False,
+    verbose: bool = False,
 ) -> bool:
     spot        = json.loads(src_path.read_text(encoding="utf-8"))
     lat         = spot["location"]["latitude"]
@@ -199,7 +211,7 @@ def process_file(
 
     # 施設種別推定（Overpass）
     print("    施設種別推定 (Overpass)...", end=" ", flush=True)
-    cls = classify_spot(lat, lon)
+    cls = classify_spot(lat, lon, verbose=verbose)
     if cls:
         print(f"→ {cls['primary_type']} (confidence={cls['confidence']})")
     else:
@@ -257,6 +269,10 @@ def main():
         "--skip-classified", action="store_true",
         help="既に classification が設定済みのスポットをスキップ",
     )
+    parser.add_argument(
+        "--verbose", action="store_true",
+        help="Overpass で取得した OSM タグを詳細表示（調査用）",
+    )
     args = parser.parse_args()
 
     src_dir = REPO_ROOT / "unadjusted"
@@ -295,6 +311,7 @@ def main():
             dst_path=dst,
             dry_run=dry_run,
             skip_classified=args.skip_classified,
+            verbose=args.verbose,
         ):
             ok += 1
 
