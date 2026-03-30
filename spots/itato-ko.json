@@ -1,0 +1,39 @@
+{
+  "slug": "itato-ko",
+  "name": "板戸港",
+  "location": {
+    "latitude": 34.7094403,
+    "longitude": 138.9830697
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "南伊豆",
+    "area_slug": "minami-izu",
+    "city": "下田市",
+    "city_slug": "shimoda"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 210,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 386.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "下田市北の小漁港、アジ・メジナ・アオリイカ向き",
+    "access": "蓮台寺駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  }
+}

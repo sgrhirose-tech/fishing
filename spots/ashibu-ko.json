@@ -1,0 +1,39 @@
+{
+  "slug": "ashibu-ko",
+  "name": "足保港",
+  "location": {
+    "latitude": 35.019159,
+    "longitude": 138.837769
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "伊豆市",
+    "city_slug": "izu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 45,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 66.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "内浦最南部の小漁港、アオリイカ・メジナ・アジ向き",
+    "access": "沼津駅からバス45分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  }
+}

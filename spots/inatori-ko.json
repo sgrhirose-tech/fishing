@@ -1,0 +1,39 @@
+{
+  "slug": "inatori-ko",
+  "name": "稲取港",
+  "location": {
+    "latitude": 34.7725869,
+    "longitude": 139.0438807
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "東伊豆町",
+    "city_slug": "higashiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 50,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 248.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "東伊豆町の主要漁港、アジ・ブリ系・アオリイカ向き",
+    "access": "伊豆稲取駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  }
+}

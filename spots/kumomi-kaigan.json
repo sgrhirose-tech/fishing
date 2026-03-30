@@ -1,0 +1,46 @@
+{
+  "slug": "kumomi-kaigan",
+  "name": "雲見海岸",
+  "location": {
+    "latitude": 34.726218,
+    "longitude": 138.7435913
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "南伊豆町",
+    "city_slug": "minamiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 0,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 428.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "松崎町南の地磯・海岸、メジナ・アオリイカ向き",
+    "access": "松崎方面バス利用"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.9,
+    "secondary_flags": [
+      "cliff",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@120m",
+      "man_made=breakwater@45m",
+      "man_made=breakwater@63m",
+      "natural=bare_rock@192m",
+      "natural=bare_rock@281m"
+    ]
+  }
+}

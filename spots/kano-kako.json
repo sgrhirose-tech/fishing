@@ -1,0 +1,40 @@
+{
+  "slug": "kano-kako",
+  "name": "狩野川河口",
+  "location": {
+    "latitude": 35.0788282,
+    "longitude": 138.8562441
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "沼津市",
+    "city_slug": "numazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 235,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 416.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "沼津港隣接、シーバス・クロダイ・ハゼ向き",
+    "access": "沼津駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@147m",
+      "natural=beach@292m"
+    ]
+  }
+}
