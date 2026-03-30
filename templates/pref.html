@@ -9,8 +9,9 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "ホーム",       "item": "https://tsuricast.jp/"},
-    {"@type": "ListItem", "position": 2, "name": "{{ pref_name }}"}
+    {"@type": "ListItem", "position": 1, "name": "ホーム",           "item": "https://tsuricast.jp/"},
+    {"@type": "ListItem", "position": 2, "name": "{{ region_name }}", "item": "https://tsuricast.jp/{{ region_slug }}/"},
+    {"@type": "ListItem", "position": 3, "name": "{{ pref_name }}"}
   ]
 }
 </script>
@@ -18,7 +19,9 @@
 
 {% block content %}
 <nav class="breadcrumb">
-  <a href="/">ホーム</a> &rsaquo; <span>{{ pref_name }}</span>
+  <a href="/">ホーム</a> &rsaquo;
+  <a href="/{{ region_slug }}/">{{ region_name }}</a> &rsaquo;
+  <span>{{ pref_name }}</span>
 </nav>
 
 <h1>{{ pref_name }}の釣り場</h1>

@@ -31,3 +31,25 @@ VALID_PREF_SLUGS: frozenset[str] = frozenset({
     "aichi",
     "mie",
 })
+
+REGIONS: list[dict] = [
+    {"slug": "hokkaido", "name": "北海道", "prefs": ["hokkaido"]},
+    {"slug": "tohoku",   "name": "東北",   "prefs": ["aomori", "iwate", "miyagi", "akita", "yamagata", "fukushima"]},
+    {"slug": "kanto",    "name": "関東",   "prefs": ["ibaraki", "tochigi", "gunma", "saitama", "chiba", "tokyo", "kanagawa"]},
+    {"slug": "hokuriku", "name": "北陸",   "prefs": ["niigata", "toyama", "ishikawa", "fukui"]},
+    {"slug": "tokai",    "name": "東海",   "prefs": ["shizuoka", "aichi", "mie", "gifu"]},
+    {"slug": "kansai",   "name": "関西",   "prefs": ["shiga", "kyoto", "osaka", "hyogo", "nara", "wakayama"]},
+    {"slug": "chugoku",  "name": "中国",   "prefs": ["tottori", "shimane", "okayama", "hiroshima", "yamaguchi"]},
+    {"slug": "shikoku",  "name": "四国",   "prefs": ["tokushima", "kagawa", "ehime", "kochi"]},
+    {"slug": "kyushu",   "name": "九州",   "prefs": ["fukuoka", "saga", "nagasaki", "kumamoto", "oita", "miyazaki", "kagoshima", "okinawa"]},
+]
+
+VALID_REGION_SLUGS: frozenset[str] = frozenset(r["slug"] for r in REGIONS)
+
+# 都道府県slug → 地方slug の逆引き
+PREF_TO_REGION: dict[str, str] = {
+    pref: r["slug"] for r in REGIONS for pref in r["prefs"]
+}
+
+# 地方slug → 地方名の逆引き
+REGION_NAMES: dict[str, str] = {r["slug"]: r["name"] for r in REGIONS}
