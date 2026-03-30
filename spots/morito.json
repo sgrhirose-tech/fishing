@@ -14,8 +14,8 @@
     "city_slug": "hayama"
   },
   "physical_features": {
-    "sea_bearing_deg": 270.4,
-    "seabed_type": "sand_gravel",
+    "sea_bearing_deg": 270,
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1293.3
   },
@@ -28,10 +28,10 @@
     "access": "逗子駅からバス15分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "sand_beach",
     "confidence": 0.62,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@137m",
       "natural=beach@73m"

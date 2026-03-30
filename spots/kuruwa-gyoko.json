@@ -14,7 +14,7 @@
     "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 45,
+    "sea_bearing_deg": 240,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1075.9
@@ -28,10 +28,10 @@
     "access": "逗子駅からバス20分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.95,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@107m",
       "man_made=breakwater@115m",

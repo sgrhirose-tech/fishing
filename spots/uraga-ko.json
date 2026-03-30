@@ -28,14 +28,14 @@
     "access": "浦賀駅から徒歩15分"
   },
   "classification": {
-    "primary_type": "rocky_shore",
+    "primary_type": "fishing_facility",
     "confidence": 0.59,
     "secondary_flags": [
       "cliff",
       "parking_nearby",
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=pier@197m",
       "man_made=pier@54m",

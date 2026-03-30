@@ -28,10 +28,10 @@
     "access": "浦賀駅からバス10分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.62,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@149m",
       "natural=beach@234m"
