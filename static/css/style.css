@@ -95,6 +95,16 @@ main {
 .area-card h3 { margin: 0 0 .25rem; color: #1a6b9e; }
 .area-card p  { margin: 0; font-size: .85rem; color: #555; }
 
+/* ---- 戻るリンク ---- */
+.back-link {
+  display: inline-block;
+  margin-bottom: .5rem;
+  color: #1a6b9e;
+  text-decoration: none;
+  font-size: .9rem;
+}
+.back-link:hover { text-decoration: underline; }
+
 /* ---- 地方グループ ---- */
 .region-group { margin-bottom: 1.5rem; }
 .region-group > h3 { margin: 0 0 .5rem; font-size: 1rem; color: #555; }
