@@ -212,7 +212,7 @@ def generate_area_comment(area_name_jp: str, area_data: dict, mode: str = "morni
         text = result["content"][0]["text"].strip()
         # 改行を取り除き 40 文字に切り捨て
         text = text.replace("\n", " ")
-        return text[:40]
+        return text[:30]
     except Exception as e:
         print(f"  [警告] AIコメント生成失敗 ({area_name_jp}): {e}")
         return ""
