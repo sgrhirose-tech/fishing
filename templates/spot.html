@@ -243,9 +243,9 @@
       var maxWind   = p.wind_speed_raw  != null ? p.wind_speed_raw  : null;
       var isDanger  = (maxWave   != null && maxWave   >  1.2)
                    || (maxPeriod != null && maxPeriod >  8)
-                   || (maxWind   != null && maxWind   >  7);
+                   || (maxWind   != null && maxWind   > 10);
       var isCaution = !isDanger && (
-                       (maxWave   != null && maxWave   >= 1.0)
+                       (maxWave   != null && maxWave   >= 0.8)
                     || (maxPeriod != null && maxPeriod >= 8)
                     || (maxWind   != null && maxWind   >= 7));
       if (isDanger) {
@@ -318,7 +318,7 @@
         ['気温',       fmtNum(p.temp_raw, '°C', 1),   false],
         ['潮',         p.tide || 'ー',                false],
         ['風速・風向', windVal,                         w != null && w >= 7],
-        ['波高',       fmtNum(wv, 'm',  1), wv != null && wv >= 1.0],
+        ['波高',       fmtNum(wv, 'm',  1), wv != null && wv >= 0.8],
         ['波周期',     fmtNum(wp, 's',  0), wp != null && wp >= 8],
         ['海水温',     fmtNum(p.sst_raw, '°C', 1),    false],
         ['降水量',     p.precip || 'データなし',       false],
