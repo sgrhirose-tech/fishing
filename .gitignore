@@ -1,5 +1,6 @@
 # APIキーや秘密情報 - Gitに含めない
 .env
+config.json
 
 # Python
 __pycache__/
