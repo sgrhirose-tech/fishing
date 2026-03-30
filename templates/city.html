@@ -9,10 +9,11 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "ホーム",         "item": "https://tsuricast.jp/"},
-    {"@type": "ListItem", "position": 2, "name": "{{ pref_name }}", "item": "https://tsuricast.jp/{{ pref_slug }}/"},
-    {"@type": "ListItem", "position": 3, "name": "{{ area_name }}", "item": "https://tsuricast.jp/{{ pref_slug }}/{{ area_slug }}/"},
-    {"@type": "ListItem", "position": 4, "name": "{{ city_name }}"}
+    {"@type": "ListItem", "position": 1, "name": "ホーム",            "item": "https://tsuricast.jp/"},
+    {"@type": "ListItem", "position": 2, "name": "{{ region_name }}", "item": "https://tsuricast.jp/{{ region_slug }}/"},
+    {"@type": "ListItem", "position": 3, "name": "{{ pref_name }}",   "item": "https://tsuricast.jp/{{ pref_slug }}/"},
+    {"@type": "ListItem", "position": 4, "name": "{{ area_name }}",   "item": "https://tsuricast.jp/{{ pref_slug }}/{{ area_slug }}/"},
+    {"@type": "ListItem", "position": 5, "name": "{{ city_name }}"}
   ]
 }
 </script>
@@ -21,6 +22,7 @@
 {% block content %}
 <nav class="breadcrumb">
   <a href="/">ホーム</a> &rsaquo;
+  <a href="/{{ region_slug }}/">{{ region_name }}</a> &rsaquo;
   <a href="/{{ pref_slug }}/">{{ pref_name }}</a> &rsaquo;
   <a href="/{{ pref_slug }}/{{ area_slug }}/">{{ area_name }}</a> &rsaquo;
   <span>{{ city_name }}</span>
