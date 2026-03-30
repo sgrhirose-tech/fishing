@@ -15,7 +15,7 @@
   },
   "physical_features": {
     "sea_bearing_deg": 180,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
@@ -28,10 +28,10 @@
     "access": "旭駅からバス20分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.62,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@78m",
       "natural=sand@229m"

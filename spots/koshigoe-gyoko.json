@@ -16,7 +16,7 @@
   "physical_features": {
     "sea_bearing_deg": 180,
     "seabed_type": "rock",
-    "surfer_spot": false,
+    "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1631.0
   },
   "derived_features": {
@@ -28,13 +28,13 @@
     "access": "腰越駅から徒歩5分"
   },
   "classification": {
-    "primary_type": "sand_beach",
+    "primary_type": "fishing_facility",
     "confidence": 0.41,
     "secondary_flags": [
       "cliff",
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=bare_rock@296m",
       "natural=beach@278m",
