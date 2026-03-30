@@ -1,0 +1,39 @@
+{
+  "slug": "tomiura-old-port",
+  "name": "富浦旧港",
+  "location": {
+    "latitude": 35.029,
+    "longitude": 139.834
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 195,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1353.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "小港で初心者も入りやすい",
+    "access": "富浦駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  }
+}

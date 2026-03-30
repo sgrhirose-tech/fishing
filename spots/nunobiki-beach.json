@@ -1,0 +1,39 @@
+{
+  "slug": "nunobiki-beach",
+  "name": "布引海岸",
+  "location": {
+    "latitude": 35.3065955,
+    "longitude": 139.8095046
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 200,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "遠浅の砂浜で投げ釣り向き",
+    "access": "青堀駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  }
+}
