@@ -1,0 +1,42 @@
+{
+  "slug": "imaihama-beach",
+  "name": "今井浜海岸",
+  "location": {
+    "latitude": 34.7518034,
+    "longitude": 139.0048599
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "東伊豆町",
+    "city_slug": "higashiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 135,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 542.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "河津町の砂浜・ゴロタ、キス・メジナ・アオリイカ向き",
+    "access": "今井浜海岸駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.52,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=sand@266m",
+      "natural=sand@81m"
+    ]
+  }
+}

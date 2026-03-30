@@ -1,0 +1,39 @@
+{
+  "slug": "shizuura-gyoko",
+  "name": "静浦漁港",
+  "location": {
+    "latitude": 35.0560144,
+    "longitude": 138.8816285
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "沼津市",
+    "city_slug": "numazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 245,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 142.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "カゴ釣り聖地、青物・マダイ・クロダイ・アジ向き",
+    "access": "沼津駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  }
+}
