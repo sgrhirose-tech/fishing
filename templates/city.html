@@ -20,7 +20,6 @@
 {% endblock %}
 
 {% block content %}
-<a href="/{{ pref_slug }}/{{ area_slug }}/" class="back-link">‹ 戻る</a>
 <nav class="breadcrumb">
   <a href="/">ホーム</a> &rsaquo;
   <a href="/{{ region_slug }}/">{{ region_name }}</a> &rsaquo;
@@ -55,6 +54,7 @@
   </article>
   {% endfor %}
 </section>
+<a href="/{{ pref_slug }}/{{ area_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
 
 {% block scripts %}

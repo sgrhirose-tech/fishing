@@ -47,7 +47,6 @@
 
 {% block content %}
 <!-- パンくずリスト -->
-<a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/" class="back-link">‹ 戻る</a>
 <nav class="breadcrumb">
   <a href="/">ホーム</a> &rsaquo;
   <a href="/{{ region_slug }}/">{{ region_name }}</a> &rsaquo;
@@ -188,6 +187,7 @@
   <ins class="adsbygoogle" ...></ins>
 </section>
 -->
+<a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
 
 {% block scripts %}
