@@ -59,17 +59,22 @@
   </div>
 </section>
 
-<!-- 都道府県別リンク -->
+<!-- 地方・都道府県別リンク -->
 <section class="area-links">
-  <h2>都道府県から探す</h2>
-  <div class="area-grid">
-    {% for pref_slug, info in prefs.items() %}
-    <a href="/{{ pref_slug }}/" class="area-card">
-      <h3>{{ info.name }}</h3>
-      <p>{{ info.count }}か所</p>
-    </a>
-    {% endfor %}
+  <h2>地方から探す</h2>
+  {% for rg in region_groups %}
+  <div class="region-group">
+    <h3><a href="/{{ rg.slug }}/">{{ rg.name }}</a></h3>
+    <div class="area-grid">
+      {% for pref_slug, info in rg.prefs.items() %}
+      <a href="/{{ pref_slug }}/" class="area-card">
+        <h4>{{ info.name }}</h4>
+        <p>{{ info.count }}か所</p>
+      </a>
+      {% endfor %}
+    </div>
   </div>
+  {% endfor %}
 </section>
 
 <section class="all-spots-link">
