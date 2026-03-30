@@ -1,0 +1,39 @@
+{
+  "slug": "shimosu-port",
+  "name": "下洲港",
+  "location": {
+    "latitude": 35.3028315,
+    "longitude": 139.8215312
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 205,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体、貝殻混じり"
+  },
+  "info": {
+    "notes": "赤灯周りが人気の漁港",
+    "access": "青堀駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@204m"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "maruyama-breakwater",
+  "name": "丸山堤防",
+  "location": {
+    "latitude": 35.0286846,
+    "longitude": 139.8379239
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 245,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1465.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "小堤防でクロダイ実績",
+    "access": "那古船形駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:堤防"
+    ]
+  }
+}

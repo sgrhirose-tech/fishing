@@ -1,0 +1,37 @@
+{
+  "slug": "futtsu-minato-park",
+  "name": "富津みなと公園",
+  "location": {
+    "latitude": 35.323185,
+    "longitude": 139.818566
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 245,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "護岸から手軽に狙える公園",
+    "access": "青堀駅から徒歩30分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  }
+}

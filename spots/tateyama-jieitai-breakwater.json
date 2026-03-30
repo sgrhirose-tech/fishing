@@ -1,0 +1,39 @@
+{
+  "slug": "tateyama-jieitai-breakwater",
+  "name": "館山自衛隊堤防",
+  "location": {
+    "latitude": 34.9894684,
+    "longitude": 139.8444557
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 355,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1488.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "人気の堤防で青物期待",
+    "access": "館山駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:堤防"
+    ]
+  }
+}

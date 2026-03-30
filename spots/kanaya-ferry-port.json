@@ -1,0 +1,39 @@
+{
+  "slug": "kanaya-ferry-port",
+  "name": "金谷フェリー港",
+  "location": {
+    "latitude": 35.1692,
+    "longitude": 139.817371
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 230,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 712.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "港内岸壁で回遊魚実績",
+    "access": "浜金谷駅から徒歩8分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@113m"
+    ]
+  }
+}

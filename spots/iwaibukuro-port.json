@@ -1,0 +1,39 @@
+{
+  "slug": "iwaibukuro-port",
+  "name": "岩井袋港",
+  "location": {
+    "latitude": 35.1019022,
+    "longitude": 139.8297049
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "鋸南町",
+    "city_slug": "kyonan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 255,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 852.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "公園下地磯も狙える",
+    "access": "安房勝山駅から徒歩25分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@52m"
+    ]
+  }
+}
