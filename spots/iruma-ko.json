@@ -1,0 +1,41 @@
+{
+  "slug": "iruma-ko",
+  "name": "入間港",
+  "location": {
+    "latitude": 34.6269311,
+    "longitude": 138.80849
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "南伊豆",
+    "area_slug": "minami-izu",
+    "city": "南伊豆町",
+    "city_slug": "minamiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 210,
+    "seabed_type": "gravel",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 866.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "礫主体、貝殻混じり"
+  },
+  "info": {
+    "notes": "南伊豆西岸の小漁港、メジナ・アオリイカ向き",
+    "access": "下田駅からバス40分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.41,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@185m"
+    ]
+  }
+}

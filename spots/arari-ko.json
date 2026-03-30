@@ -1,0 +1,41 @@
+{
+  "slug": "arari-ko",
+  "name": "安良里港",
+  "location": {
+    "latitude": 34.8274025,
+    "longitude": 138.7665939
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "西伊豆町",
+    "city_slug": "nishiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 265,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 736.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "西伊豆町の漁港、アジ・アオリイカ・クロダイ向き",
+    "access": "西伊豆町バス利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.38,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@195m"
+    ]
+  }
+}

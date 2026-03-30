@@ -1,0 +1,37 @@
+{
+  "slug": "shimotaga-ko",
+  "name": "下多賀港（池田港）",
+  "location": {
+    "latitude": 35.0501474,
+    "longitude": 139.0713358
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "熱海市",
+    "city_slug": "atami"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 65,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 458.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "熱海市の小漁港、アジ・メジナ・アオリイカ向き",
+    "access": "伊豆多賀駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  }
+}

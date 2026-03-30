@@ -1,0 +1,39 @@
+{
+  "slug": "ajiro-ko",
+  "name": "網代港",
+  "location": {
+    "latitude": 35.0449575,
+    "longitude": 139.0863062
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "熱海市",
+    "city_slug": "atami"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 340,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 285.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "温泉地に隣接、堤防でアジ・メジナ・クロダイ向き",
+    "access": "伊豆多賀駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  }
+}
