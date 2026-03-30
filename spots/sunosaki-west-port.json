@@ -1,0 +1,39 @@
+{
+  "slug": "sunosaki-west-port",
+  "name": "洲ノ崎西港",
+  "location": {
+    "latitude": 34.9694216,
+    "longitude": 139.7557544
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 280,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 922.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "南端寄りの小漁港",
+    "access": "館山駅からバス30分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@66m"
+    ]
+  }
+}

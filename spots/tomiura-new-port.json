@@ -1,0 +1,45 @@
+{
+  "slug": "tomiura-new-port",
+  "name": "富浦新港",
+  "location": {
+    "latitude": 35.0394455,
+    "longitude": 139.8220988
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "南房総市",
+    "city_slug": "minamiboso"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 355,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1436.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "東西の波止が定番",
+    "access": "富浦駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.77,
+    "secondary_flags": [
+      "cliff",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@155m",
+      "man_made=pier@74m",
+      "natural=cliff@269m",
+      "waterway=dock@49m"
+    ]
+  }
+}

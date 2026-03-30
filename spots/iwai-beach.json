@@ -1,0 +1,39 @@
+{
+  "slug": "iwai-beach",
+  "name": "岩井海岸",
+  "location": {
+    "latitude": 35.0908121,
+    "longitude": 139.8417306
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "南房総市",
+    "city_slug": "minamiboso"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 255,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1308.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "広い砂浜で投げ釣り向き",
+    "access": "岩井駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  }
+}

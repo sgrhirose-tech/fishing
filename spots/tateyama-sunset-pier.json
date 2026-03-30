@@ -1,0 +1,42 @@
+{
+  "slug": "tateyama-sunset-pier",
+  "name": "館山夕日桟橋",
+  "location": {
+    "latitude": 34.9903468,
+    "longitude": 139.8545304
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 355,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1554.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "長い桟橋で多魚種狙い",
+    "access": "館山駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.41,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=pier@245m",
+      "natural=beach@217m"
+    ]
+  }
+}

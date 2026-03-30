@@ -1,0 +1,39 @@
+{
+  "slug": "sunosaki-lighthouse-shita",
+  "name": "洲崎灯台下",
+  "location": {
+    "latitude": 34.9772235,
+    "longitude": 139.7552884
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 5,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 755.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "地磯で潮通しが良い",
+    "access": "館山駅からバス30分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@289m"
+    ]
+  }
+}

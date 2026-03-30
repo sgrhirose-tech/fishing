@@ -1,0 +1,39 @@
+{
+  "slug": "myojin-misaki",
+  "name": "明神岬",
+  "location": {
+    "latitude": 35.0431538,
+    "longitude": 139.8155482
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "南房総市",
+    "city_slug": "minamiboso"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 5,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 753.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "岬下の地磯を歩いて狙う",
+    "access": "富浦駅から徒歩30分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.38,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@266m"
+    ]
+  }
+}
