@@ -1,0 +1,37 @@
+{
+  "slug": "niekawa-beach",
+  "name": "熱川海水浴場前",
+  "location": {
+    "latitude": 34.8135214,
+    "longitude": 139.071722
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "伊東市",
+    "city_slug": "ito"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 115,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 116.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "ゴロタ浜護岸、メジナ・アオリイカ向き、温泉地隣接",
+    "access": "伊豆熱川駅から徒歩3分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  }
+}

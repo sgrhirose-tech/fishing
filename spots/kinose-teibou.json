@@ -1,0 +1,42 @@
+{
+  "slug": "kinose-teibou",
+  "name": "木負堤防",
+  "location": {
+    "latitude": 35.0262713,
+    "longitude": 138.8769293
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "沼津市",
+    "city_slug": "numazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 300,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 237.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "沖に300m突き出た人気堤防、青物・アオリイカ向き",
+    "access": "沼津駅からバス35分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.72,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@38m"
+    ]
+  }
+}

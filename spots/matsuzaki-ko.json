@@ -1,0 +1,37 @@
+{
+  "slug": "matsuzaki-ko",
+  "name": "松崎港・松崎新堤",
+  "location": {
+    "latitude": 34.7613232,
+    "longitude": 138.7751341
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "南伊豆町",
+    "city_slug": "minamiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 250,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 556.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "松崎町の主要港、堤防で多彩魚種、アジ・クロダイ",
+    "access": "松崎方面バス利用"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  }
+}

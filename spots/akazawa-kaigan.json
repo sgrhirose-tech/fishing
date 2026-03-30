@@ -1,0 +1,39 @@
+{
+  "slug": "akazawa-kaigan",
+  "name": "赤沢海岸",
+  "location": {
+    "latitude": 34.8584459,
+    "longitude": 139.0870053
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "伊東市",
+    "city_slug": "ito"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 155,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 259.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "ゴロタ浜中心、メジナ・クロダイ・アオリイカ向き",
+    "access": "伊豆高原駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  }
+}
