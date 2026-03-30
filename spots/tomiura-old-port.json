@@ -2,8 +2,8 @@
   "slug": "tomiura-old-port",
   "name": "富浦旧港",
   "location": {
-    "latitude": 35.029,
-    "longitude": 139.834
+    "latitude": 35.0490056,
+    "longitude": 139.8314738
   },
   "area": {
     "prefecture": "千葉県",
@@ -14,7 +14,7 @@
     "city_slug": "tateyama"
   },
   "physical_features": {
-    "sea_bearing_deg": 195,
+    "sea_bearing_deg": 270,
     "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1353.8
