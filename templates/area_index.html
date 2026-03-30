@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}都道府県から探す | Tsuricast{% endblock %}
+{% block description %}地方・都道府県別に釣り場を探す。千葉・東京・神奈川・静岡・愛知・三重の釣り場天気情報。{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "ホーム",             "item": "https://tsuricast.jp/"},
+    {"@type": "ListItem", "position": 2, "name": "都道府県から探す"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<a href="/" class="back-link">‹ 戻る</a>
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo; <span>都道府県から探す</span>
+</nav>
+
+<h1>都道府県から探す</h1>
+
+{% for rg in region_groups %}
+<section class="area-links">
+  <h2><a href="/{{ rg.slug }}/">{{ rg.name }}</a></h2>
+  <div class="area-grid">
+    {% for pref_slug, info in rg.prefs.items() %}
+    <a href="/{{ pref_slug }}/" class="area-card">
+      <h3>{{ info.name }}</h3>
+      <p>{{ info.count }}か所</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+{% endblock %}
