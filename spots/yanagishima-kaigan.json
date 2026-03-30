@@ -15,8 +15,8 @@
   },
   "physical_features": {
     "sea_bearing_deg": 175,
-    "seabed_type": "unknown",
-    "surfer_spot": false,
+    "seabed_type": "sand",
+    "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1156.6
   },
   "derived_features": {
@@ -28,10 +28,10 @@
     "access": "茅ケ崎駅からバス15分"
   },
   "classification": {
-    "primary_type": "sand_beach",
+    "primary_type": "breakwater",
     "confidence": 0.41,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=beach@169m"
     ]

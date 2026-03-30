@@ -15,7 +15,7 @@
   },
   "physical_features": {
     "sea_bearing_deg": 135,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
@@ -28,10 +28,10 @@
     "access": "新浦安駅から徒歩20分"
   },
   "classification": {
-    "primary_type": "sand_beach",
+    "primary_type": "breakwater",
     "confidence": 0.7,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:海岸"
     ]

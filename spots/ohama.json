@@ -14,7 +14,7 @@
     "city_slug": "miura"
   },
   "physical_features": {
-    "sea_bearing_deg": 255.4,
+    "sea_bearing_deg": 255,
     "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1093.3
@@ -28,12 +28,12 @@
     "access": "三崎口駅からバスまたは車15分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "sand_beach",
     "confidence": 0.62,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@130m",
       "natural=beach@114m"

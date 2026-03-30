@@ -16,7 +16,7 @@
   "physical_features": {
     "sea_bearing_deg": 200,
     "seabed_type": "sand",
-    "surfer_spot": false,
+    "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1797.2
   },
   "derived_features": {
