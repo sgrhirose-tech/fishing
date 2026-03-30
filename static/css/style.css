@@ -93,7 +93,7 @@ main {
 }
 .area-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.15); }
 .area-card h3 { margin: 0 0 .25rem; color: #1a6b9e; }
-.area-card h4 { margin: 0 0 .25rem; color: #1a6b9e; font-size: 1rem; }
+.area-card h4 { margin: 0 0 .25rem; color: #1a6b9e; font-size: 1.17rem; font-weight: bold; }
 .area-card p  { margin: 0; font-size: .85rem; color: #555; }
 
 /* ---- 地方グループ ---- */
