@@ -28,12 +28,12 @@
     "access": "大貫駅から徒歩15分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.43,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@209m",
       "natural=beach@292m",

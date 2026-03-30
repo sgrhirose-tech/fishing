@@ -28,13 +28,13 @@
     "access": "三崎口駅からバス15分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.62,
     "secondary_flags": [
       "parking_nearby",
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@243m",
       "man_made=breakwater@91m",

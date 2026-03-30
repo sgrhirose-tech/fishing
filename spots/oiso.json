@@ -14,8 +14,8 @@
     "city_slug": "oiso"
   },
   "physical_features": {
-    "sea_bearing_deg": 124.0,
-    "seabed_type": "sand_gravel",
+    "sea_bearing_deg": 125,
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 970.9
   },
@@ -24,14 +24,14 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "砂と砂利が混じる。サーファー少なめ。投げ釣りで好釣果が期待できる",
+    "notes": "砂と砂利が混じる。投げ釣りで好釣果が期待できる",
     "access": "大磯駅から徒歩10分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "sand_beach",
     "confidence": 0.43,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@254m",
       "man_made=breakwater@266m",
