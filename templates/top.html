@@ -68,7 +68,7 @@
     <div class="area-grid">
       {% for pref_slug, info in rg.prefs.items() %}
       <a href="/{{ pref_slug }}/" class="area-card">
-        <h4>{{ info.name }}</h4>
+        <h3>{{ info.name }}</h3>
         <p>{{ info.count }}か所</p>
       </a>
       {% endfor %}

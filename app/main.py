@@ -408,6 +408,29 @@ def page_contact(request: Request):
 def page_safety(request: Request):
     return templates.TemplateResponse(request, "static_pages/safety.html", {})
 
+@app.get("/area/", response_class=HTMLResponse)
+def page_area_index(request: Request):
+    spots = load_spots()
+    prefs: dict = {}
+    for s in spots:
+        p_slug = s.get("area", {}).get("pref_slug", "")
+        p_name = s.get("area", {}).get("prefecture", "")
+        if p_slug:
+            prefs.setdefault(p_slug, {"name": p_name, "count": 0})
+            prefs[p_slug]["count"] += 1
+    region_groups = []
+    for r in REGIONS:
+        region_prefs = {slug: prefs[slug] for slug in r["prefs"] if slug in prefs}
+        if region_prefs:
+            region_groups.append({
+                "slug": r["slug"],
+                "name": r["name"],
+                "prefs": region_prefs,
+            })
+    return templates.TemplateResponse(request, "area_index.html", {
+        "region_groups": region_groups,
+    })
+
 
 @app.get("/{slug}/", response_class=HTMLResponse)
 def page_pref_or_region(request: Request, slug: str):
