@@ -15,7 +15,7 @@
   },
   "physical_features": {
     "sea_bearing_deg": 105,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
@@ -28,10 +28,10 @@
     "access": "大原駅から徒歩20分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "sand_beach",
     "confidence": 0.43,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@189m",
       "man_made=breakwater@222m"

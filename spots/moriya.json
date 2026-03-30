@@ -14,7 +14,7 @@
     "city_slug": "katsuura"
   },
   "physical_features": {
-    "sea_bearing_deg": 230.5,
+    "sea_bearing_deg": 230,
     "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1343.1
@@ -28,10 +28,10 @@
     "access": "勝浦駅から徒歩20分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "sand_beach",
     "confidence": 0.81,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@290m",
       "man_made=breakwater@46m",
