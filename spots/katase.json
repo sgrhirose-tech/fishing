@@ -14,7 +14,7 @@
     "city_slug": "fujisawa"
   },
   "physical_features": {
-    "sea_bearing_deg": 225.0,
+    "sea_bearing_deg": 225,
     "seabed_type": "sand",
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1556.0
@@ -28,12 +28,12 @@
     "access": "片瀬江ノ島駅から徒歩5分"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "sand_beach",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   }
 }
