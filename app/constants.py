@@ -14,15 +14,13 @@ VALID_AREA_SLUGS: frozenset[str] = frozenset({
     "higashi-izu",
     "minami-izu",
     "nishi-izu",
-    "suruga",
-    "enshu",
+    "suruga-bay",   # 駿河湾
+    "enshu-nada",   # 遠州灘（静岡・愛知 共用）
     # 愛知県
-    "higashi-mikawa",
-    "nishi-mikawa",
-    "owari",
+    "mikawa-bay",   # 三河湾
+    "isewan",       # 伊勢湾（愛知・三重 共用）
     # 三重県
-    "mie-north",
-    "mie-south",
+    "kumano-nada",  # 熊野灘
 })
 
 VALID_PREF_SLUGS: frozenset[str] = frozenset({
