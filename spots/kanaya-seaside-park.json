@@ -1,0 +1,40 @@
+{
+  "slug": "kanaya-seaside-park",
+  "name": "金谷海浜公園",
+  "location": {
+    "latitude": 35.1663712,
+    "longitude": 139.8207879
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 230,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1051.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "河口横の小波止ポイント",
+    "access": "浜金谷駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "natural=beach@60m",
+      "waterway=dock@240m"
+    ]
+  }
+}

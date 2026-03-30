@@ -1,0 +1,40 @@
+{
+  "slug": "kazusa-minato-seaside-park",
+  "name": "上総湊港海浜公園",
+  "location": {
+    "latitude": 35.224041,
+    "longitude": 139.8705845
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 295,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "砂浜から投げやすい公園",
+    "access": "上総湊駅から徒歩12分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.41,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@188m",
+      "natural=beach@233m"
+    ]
+  }
+}

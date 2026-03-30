@@ -1,0 +1,40 @@
+{
+  "slug": "okinoshima",
+  "name": "沖ノ島",
+  "location": {
+    "latitude": 34.990575,
+    "longitude": 139.824868
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 5,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 752.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "陸続きの島で変化豊富",
+    "access": "館山駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "natural=beach@106m",
+      "natural=beach@230m"
+    ]
+  }
+}

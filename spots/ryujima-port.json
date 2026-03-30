@@ -1,0 +1,39 @@
+{
+  "slug": "ryujima-port",
+  "name": "龍島港",
+  "location": {
+    "latitude": 35.1183945,
+    "longitude": 139.8298695
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "鋸南町",
+    "city_slug": "kyonan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 310,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 457.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "竜ヶ崎堤防が人気",
+    "access": "安房勝山駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.41,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "natural=beach@256m"
+    ]
+  }
+}
