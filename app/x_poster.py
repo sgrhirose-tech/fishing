@@ -140,7 +140,17 @@ def get_area_weather(area_name_jp: str, date_str: str, include_tide: bool = True
 # Claude API による一言コメント生成
 # ============================================================
 
-_PROMPT_FILE = Path(__file__).parent.parent / "x_post_prompt.md"
+def _get_prompt_file(mode: str) -> Path:
+    """モードに対応するプロンプトファイルを返す。モード別ファイルを優先し、なければ共通ファイルにフォールバック。"""
+    base = Path(__file__).parent.parent
+    candidates = [
+        base / f"x_post_prompt_{mode}.md",
+        base / "x_post_prompt.md",
+    ]
+    for p in candidates:
+        if p.exists() and p.stat().st_size > 0:
+            return p
+    return candidates[0]
 
 
 def generate_area_comment(area_name_jp: str, area_data: dict, mode: str = "morning") -> str:
@@ -149,10 +159,11 @@ def generate_area_comment(area_name_jp: str, area_data: dict, mode: str = "morni
     if not api_key:
         return ""
 
-    if not _PROMPT_FILE.exists():
-        print(f"  [警告] プロンプトファイルが見つかりません: {_PROMPT_FILE}")
+    prompt_file = _get_prompt_file(mode)
+    if not prompt_file.exists():
+        print(f"  [警告] プロンプトファイルが見つかりません: {prompt_file}")
         return ""
-    content = _PROMPT_FILE.read_text(encoding="utf-8")
+    content = prompt_file.read_text(encoding="utf-8")
     # ## SYSTEM / ## USER の2セクションに分割
     if "## USER" in content:
         sys_part, user_part = content.split("## USER", 1)
@@ -270,13 +281,14 @@ def format_tweet(area_name_jp: str, area_data: dict, comment: str, url: str,
 # ============================================================
 
 def _get_twitter_client():
-    """tweepy.Client を環境変数から生成して返す。"""
+    """tweepy.Client を環境変数から生成して返す。X_POST_ENV=test でテストアカウントを使用。"""
     import tweepy  # noqa: PLC0415
+    suffix = "_TEST" if os.environ.get("X_POST_ENV") == "test" else ""
     return tweepy.Client(
-        consumer_key=os.environ["X_API_KEY"],
-        consumer_secret=os.environ["X_API_SECRET"],
-        access_token=os.environ["X_ACCESS_TOKEN"],
-        access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"],
+        consumer_key=os.environ[f"X_API_KEY{suffix}"],
+        consumer_secret=os.environ[f"X_API_SECRET{suffix}"],
+        access_token=os.environ[f"X_ACCESS_TOKEN{suffix}"],
+        access_token_secret=os.environ[f"X_ACCESS_TOKEN_SECRET{suffix}"],
     )
 
 
@@ -297,7 +309,8 @@ def post_area(area_slug: str, area_name_jp: str, url: str, date_str: str,
         area_data = get_area_weather(area_name_jp, date_str)
         comment = generate_area_comment(area_name_jp, area_data, mode=mode)
         tweet = format_tweet(area_name_jp, area_data, comment, url, mode=mode)
-        print(f"--- {area_name_jp} ({count_weighted(tweet)}文字) ---")
+        x_env = os.environ.get("X_POST_ENV", "production")
+        print(f"--- {area_name_jp} ({count_weighted(tweet)}文字) [{x_env}] ---")
         print(tweet)
         print()
         post_tweet(tweet)
