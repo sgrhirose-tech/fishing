@@ -1,0 +1,39 @@
+{
+  "slug": "yaizu-ko",
+  "name": "焼津港",
+  "location": {
+    "latitude": 34.8652069,
+    "longitude": 138.3280799
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "焼津市",
+    "city_slug": "yaizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 100,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 107.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "大型遠洋漁港、青物・クロダイ・アジなど",
+    "access": "焼津駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  }
+}

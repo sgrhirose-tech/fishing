@@ -1,0 +1,39 @@
+{
+  "slug": "sakaguchitani-hachinya",
+  "name": "坂口谷川・八軒屋海岸",
+  "location": {
+    "latitude": 34.7394084,
+    "longitude": 138.2432842
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "牧之原市",
+    "city_slug": "makinohara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 140,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "吉田町海岸、キス・ルアー向きサーフ",
+    "access": "吉田駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "fuki-ko",
+  "name": "富貴港",
+  "location": {
+    "latitude": 34.8291623,
+    "longitude": 136.9168041
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "武豊町",
+    "city_slug": "taketoyo"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "武豊町南の小漁港、クロダイ・カレイ向き",
+    "access": "武豊駅からバス利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  }
+}

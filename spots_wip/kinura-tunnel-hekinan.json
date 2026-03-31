@@ -1,0 +1,37 @@
+{
+  "slug": "kinura-tunnel-hekinan",
+  "name": "衣浦トンネル周辺（碧南側）",
+  "location": {
+    "latitude": 34.8775913,
+    "longitude": 136.9567569
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "半田市",
+    "city_slug": "handa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "衣浦港護岸、クロダイ・セイゴ向き",
+    "access": "碧南駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "slug": "suzaki-ko",
+  "name": "洲崎港",
+  "location": {
+    "latitude": 34.7859161,
+    "longitude": 137.1626762
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "西尾市",
+    "city_slug": "nishio"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "西尾市の港、クロダイ・キス・ハゼ向き、整備護岸",
+    "access": "西尾駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "harbour"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@175m",
+      "man_made=breakwater@195m"
+    ]
+  }
+}

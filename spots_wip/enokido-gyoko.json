@@ -1,0 +1,39 @@
+{
+  "slug": "enokido-gyoko",
+  "name": "榎戸漁港",
+  "location": {
+    "latitude": 34.9163581,
+    "longitude": 136.823131
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "常滑市",
+    "city_slug": "tokoname"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "常滑市南の漁港、クロダイ・カレイ・メバル向き",
+    "access": "常滑駅からバス利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  }
+}

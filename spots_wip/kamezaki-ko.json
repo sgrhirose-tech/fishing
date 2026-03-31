@@ -1,0 +1,43 @@
+{
+  "slug": "kamezaki-ko",
+  "name": "亀崎港・亀崎海浜緑地",
+  "location": {
+    "latitude": 34.9167018,
+    "longitude": 136.9702991
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "半田市",
+    "city_slug": "handa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "半田市の整備護岸、クロダイ・セイゴ・サヨリ向き",
+    "access": "亀崎駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "harbour"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@288m",
+      "natural=beach@184m",
+      "natural=beach@194m"
+    ]
+  }
+}

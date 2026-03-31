@@ -1,0 +1,41 @@
+{
+  "slug": "sagara-ko",
+  "name": "相良港・さがらサンビーチ",
+  "location": {
+    "latitude": 34.6825858,
+    "longitude": 138.2041279
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "牧之原市",
+    "city_slug": "makinohara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 115,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "穏やかな港と砂浜、キス・クロダイ・投げ釣り",
+    "access": "相良牧之原ICよりバス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@102m"
+    ]
+  }
+}

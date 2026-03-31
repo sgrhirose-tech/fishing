@@ -1,0 +1,41 @@
+{
+  "slug": "omaezaki-longbeach",
+  "name": "御前崎ロングビーチ",
+  "location": {
+    "latitude": 34.5996468,
+    "longitude": 138.2096761
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "御前崎市",
+    "city_slug": "omaezaki"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 190,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1826.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "御前崎周辺サーフ、ヒラメ・キス・ルアー向き",
+    "access": "御前崎市内バス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  }
+}

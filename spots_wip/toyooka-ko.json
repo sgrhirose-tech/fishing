@@ -1,0 +1,45 @@
+{
+  "slug": "toyooka-ko",
+  "name": "豊丘港",
+  "location": {
+    "latitude": 34.740324,
+    "longitude": 136.948579
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "南知多町",
+    "city_slug": "minamichita"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1841.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "南知多町の港、クロダイ・セイゴ・メバル向き",
+    "access": "河和駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@236m",
+      "man_made=breakwater@288m",
+      "man_made=breakwater@76m",
+      "man_made=pier@74m",
+      "man_made=pier@88m"
+    ]
+  }
+}
