@@ -38,5 +38,10 @@
     "osm_evidence": [
       "leisure=marina@121m"
     ]
-  }
+  },
+  "target_fish": [
+    "メジナ",
+    "クロダイ",
+    "アジ"
+  ]
 }

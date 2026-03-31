@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:漁港"
     ]
-  }
+  },
+  "target_fish": [
+    "マダイ",
+    "クロダイ",
+    "アジ"
+  ]
 }

@@ -38,5 +38,9 @@
       "man_made=pier@89m",
       "waterway=dock@195m"
     ]
-  }
+  },
+  "target_fish": [
+    "クロダイ",
+    "アジ"
+  ]
 }

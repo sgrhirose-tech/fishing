@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:堤防"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "メジナ",
+    "クロダイ"
+  ]
 }

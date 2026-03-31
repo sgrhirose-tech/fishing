@@ -22,6 +22,7 @@
 {
   "slug": "abosaki",
   "name": "安房崎",
+  "target_fish": ["メジナ", "クロダイ"],
 
   "location": {
     "latitude": 35.1288943,
@@ -74,6 +75,7 @@
 |-----------|-----|------|------|
 | `slug` | string | ◎ | URLの識別子。英数字とハイフンのみ。変更不可 |
 | `name` | string | ◎ | スポット名（日本語）。ウェブ画面に表示される |
+| `target_fish` | array | △ | 対象魚種の日本語名リスト（例: `["アジ", "メジナ"]`）。`data/fish_master.json` の魚名を使用。省略時は空配列として扱う |
 
 ### `location`
 

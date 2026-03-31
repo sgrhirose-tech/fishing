@@ -38,5 +38,10 @@
       "man_made=breakwater@118m",
       "man_made=breakwater@1m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "クロダイ",
+    "アジ"
+  ]
 }

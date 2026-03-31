@@ -40,5 +40,6 @@
       "natural=beach@213m",
       "natural=beach@245m"
     ]
-  }
+  },
+  "target_fish": []
 }

@@ -37,5 +37,10 @@
     "osm_evidence": [
       "natural=sand@52m"
     ]
-  }
+  },
+  "target_fish": [
+    "マゴチ",
+    "カレイ",
+    "シロギス"
+  ]
 }

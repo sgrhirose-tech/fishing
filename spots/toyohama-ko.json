@@ -36,5 +36,10 @@
       "waterway=dock@209m",
       "waterway=dock@2m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "クロダイ",
+    "アジ"
+  ]
 }

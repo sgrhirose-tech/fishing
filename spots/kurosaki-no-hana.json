@@ -35,5 +35,10 @@
     "osm_evidence": [
       "natural=bare_rock@87m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "メジナ",
+    "クロダイ"
+  ]
 }

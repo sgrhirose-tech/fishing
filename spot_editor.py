@@ -18,6 +18,7 @@ import urllib.parse
 
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 AREAS_FILE = os.path.join(REPO_ROOT, "spots", "_marine_areas.json")
+FISH_MASTER_FILE = os.path.join(REPO_ROOT, "data", "fish_master.json")
 AVAILABLE_DIRS = {
     "unadjusted": os.path.join(REPO_ROOT, "unadjusted"),
     "spots_wip":  os.path.join(REPO_ROOT, "spots_wip"),
@@ -90,6 +91,19 @@ AREA_MAP = {
 # ---------------------------------------------------------------------------
 # Data helpers
 # ---------------------------------------------------------------------------
+
+_FISH_NAMES: list[str] = []
+
+def _load_fish_master() -> list[str]:
+    """fish_master.json から魚名リストを読み込む。ファイルがなければ空リスト。"""
+    global _FISH_NAMES
+    if not os.path.exists(FISH_MASTER_FILE):
+        return []
+    with open(FISH_MASTER_FILE, encoding="utf-8") as f:
+        data = json.load(f)
+    _FISH_NAMES = list(data.keys())
+    return _FISH_NAMES
+
 
 def _load_marine_areas():
     with open(AREAS_FILE, encoding="utf-8") as f:
@@ -284,6 +298,7 @@ var AREA_SLUG_MAP = {
 var SEABED_OPTIONS = __SEABED_OPTIONS_JSON__;
 var BEARING_OPTIONS = __BEARING_OPTIONS_JSON__;
 var CLASSIFICATION_OPTIONS = __CLASSIFICATION_OPTIONS_JSON__;
+var FISH_NAMES = __FISH_NAMES_JSON__;
 
 // ---- error display (debug) ----
 window.onerror = function(msg, src, line) {
@@ -516,6 +531,20 @@ function showSpot(idx) {
     rowArea('notes',     '備考',       info.notes     || '') +
     row('access',        'アクセス',   'text',  info.access    || '') +
     row('photo_url',     '写真URL',    'text',  info.photo_url || '') +
+
+    '<div class="section-title">対象魚種</div>' +
+    (function() {
+      var currentFish = s.target_fish || [];
+      var checks = FISH_NAMES.map(function(name) {
+        var checked = currentFish.indexOf(name) >= 0 ? ' checked' : '';
+        return '<label style="display:inline-flex;align-items:center;gap:2px;margin:2px 4px;">' +
+          '<input type="checkbox" name="target_fish" value="' + escHtml(name) + '"' + checked + '>' +
+          escHtml(name) + '</label>';
+      }).join('');
+      return '<div class="field-row"><label>魚種</label>' +
+        '<div style="display:flex;flex-wrap:wrap;border:1px solid #ccc;padding:6px;border-radius:4px;">' +
+        checks + '</div></div>';
+    })() +
     '';
 
   // event listeners for live bearing update
@@ -619,7 +648,10 @@ function saveChanges() {
       access:    fv('access'),
       photo_url: fv('photo_url')
     },
-    primary_type: fv('primary_type')
+    primary_type: fv('primary_type'),
+    target_fish: Array.from(
+      document.querySelectorAll('input[name="target_fish"]:checked')
+    ).map(function(cb) { return cb.value; })
   };
 
   // update in-memory SPOTS
@@ -802,6 +834,9 @@ def _save_spot(payload):
     for key in ("notes", "access", "photo_url"):
         if info.get(key) is not None:
             inf[key] = info[key]
+
+    if "target_fish" in payload:
+        spot["target_fish"] = [f for f in payload["target_fish"] if isinstance(f, str)]
 
     with open(path, "w", encoding="utf-8") as f:
         json.dump(spot, f, ensure_ascii=False, indent=2)
@@ -1020,6 +1055,7 @@ def build_html(spots, save_mode='pythonista', dir_key=None):
     seabed_js = json.dumps([[v, l] for v, l in SEABED_TYPE_OPTIONS], ensure_ascii=False)
     bearing_js = json.dumps(BEARING_OPTIONS, ensure_ascii=False)
     classif_js = json.dumps([[v, l] for v, l in CLASSIFICATION_TYPE_OPTIONS], ensure_ascii=False)
+    fish_names_js = json.dumps(_load_fish_master(), ensure_ascii=False)
     dir_opts = "".join(
         f'<option value="{k}"{"" if k != dir_key else " selected"}>{k}</option>'
         for k in AVAILABLE_DIRS
@@ -1033,6 +1069,7 @@ def build_html(spots, save_mode='pythonista', dir_key=None):
     html = html.replace("__SEABED_OPTIONS_JSON__",          seabed_js)
     html = html.replace("__BEARING_OPTIONS_JSON__",         bearing_js)
     html = html.replace("__CLASSIFICATION_OPTIONS_JSON__",  classif_js)
+    html = html.replace("__FISH_NAMES_JSON__",              fish_names_js)
     return html
 
 

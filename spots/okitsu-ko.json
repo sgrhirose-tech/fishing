@@ -36,5 +36,11 @@
       "man_made=breakwater@210m",
       "waterway=dock@107m"
     ]
-  }
+  },
+  "target_fish": [
+    "メジナ",
+    "クロダイ",
+    "アジ",
+    "シロギス"
+  ]
 }

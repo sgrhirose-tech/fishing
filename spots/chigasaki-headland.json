@@ -35,5 +35,10 @@
     "osm_evidence": [
       "natural=bare_rock@14m"
     ]
-  }
+  },
+  "target_fish": [
+    "メジナ",
+    "ヒラメ",
+    "シロギス"
+  ]
 }

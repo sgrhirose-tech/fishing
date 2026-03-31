@@ -38,5 +38,10 @@
       "natural=bare_rock@122m",
       "natural=bare_rock@14m"
     ]
-  }
+  },
+  "target_fish": [
+    "カレイ",
+    "ハゼ",
+    "スズキ"
+  ]
 }

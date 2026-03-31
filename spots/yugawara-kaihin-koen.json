@@ -35,5 +35,10 @@
     "osm_evidence": [
       "man_made=breakwater@44m"
     ]
-  }
+  },
+  "target_fish": [
+    "メジナ",
+    "クロダイ",
+    "シロギス"
+  ]
 }
