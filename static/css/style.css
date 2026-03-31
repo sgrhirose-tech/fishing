@@ -56,7 +56,7 @@ main {
 .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #1a6b9e; }
 
 /* ---- マップ ---- */
-.map-container { height: 420px; border-radius: 8px; margin: 1.25rem 0; }
+.map-container { height: 460px; border-radius: 8px; margin: 1.25rem 0; }
 .map-detail { height: 350px; }
 .map-legend {
   display: flex; flex-wrap: wrap; gap: .5rem 1.2rem;
@@ -350,3 +350,106 @@ footer a { color: #8bc; }
 .score-high { background: #e6f4ea; color: #1a6b3a; font-weight: bold; }
 .score-mid  { background: #fff8e1; color: #7a5800; }
 .score-low  { background: #fce8e6; color: #8b1a1a; }
+
+/* ---- TOPページ: 検索窓 ---- */
+.search-box-container {
+  position: relative;
+  margin: 0 0 1.25rem;
+}
+#spot-search {
+  width: 100%;
+  padding: .75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #d0e4f0;
+  border-radius: 8px;
+  background: white;
+  box-sizing: border-box;
+}
+#spot-search:focus { outline: none; border-color: #1a6b9e; }
+.search-results {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: white;
+  border: 1px solid #d0e4f0;
+  border-radius: 0 0 8px 8px;
+  list-style: none;
+  margin: 0; padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+}
+.search-results li a {
+  display: flex;
+  flex-direction: column;
+  padding: .55rem 1rem;
+  text-decoration: none;
+  color: #334;
+  border-bottom: 1px solid #f0f4f8;
+}
+.search-results li a:hover { background: #f0f6fb; }
+.result-name { font-weight: bold; font-size: .95rem; }
+.result-area { font-size: .78rem; color: #777; margin-top: .1rem; }
+
+/* ---- TOPページ: エリアチップ ---- */
+.area-chips {
+  display: flex;
+  overflow-x: auto;
+  gap: .5rem;
+  padding: .5rem 0 .75rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.area-chips::-webkit-scrollbar { display: none; }
+.area-chip {
+  flex-shrink: 0;
+  white-space: nowrap;
+  background: white;
+  border: 2px solid #1a6b9e;
+  border-radius: 20px;
+  padding: .4rem .9rem;
+  text-decoration: none;
+  color: #1a6b9e;
+  font-size: .88rem;
+  font-weight: bold;
+  transition: background .15s, color .15s;
+}
+.area-chip:hover { background: #1a6b9e; color: white; }
+
+/* ---- TOPページ: 都道府県アコーディオン ---- */
+.pref-accordion { border: none; padding: 0; margin: 0; }
+.pref-accordion > summary {
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.05rem;
+  font-weight: bold;
+  padding: .7rem 0;
+  color: #334;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d0e4f0;
+}
+.pref-accordion > summary::after {
+  content: '▼';
+  font-size: .75rem;
+  color: #888;
+  transition: transform .2s;
+}
+.pref-accordion[open] > summary::after { transform: rotate(-180deg); }
+.pref-accordion > summary::-webkit-details-marker { display: none; }
+.pref-accordion > .region-group { padding-top: .5rem; }
+
+/* ---- TOPページ: PC 2カラムレイアウト ---- */
+.top-layout { display: block; }
+@media (min-width: 768px) {
+  .top-layout {
+    display: grid;
+    grid-template-columns: 60% 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .top-map-col .map-container { height: 560px; margin-top: 0; }
+  .top-sidebar-col { padding-top: .25rem; }
+}
