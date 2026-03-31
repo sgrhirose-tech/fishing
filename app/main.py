@@ -85,8 +85,6 @@ Disallow: /
 User-agent: anthropic-ai
 Disallow: /
 
-User-agent: Claude-Web
-Disallow: /
 
 User-agent: Bytespider
 Disallow: /
