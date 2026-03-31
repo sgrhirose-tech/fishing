@@ -111,7 +111,7 @@
       <td>
         <div class="fish-chips">
           {% for fish in spot.target_fish %}
-          <span class="fish-chip">{{ fish }}</span>
+          <a href="/fish/{{ fish }}" class="fish-chip">{{ fish }}</a>
           {% endfor %}
         </div>
       </td>

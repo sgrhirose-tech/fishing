@@ -430,7 +430,9 @@ footer a { color: #8bc; }
   padding: .2rem .7rem;
   font-size: .85rem;
   color: #1a6b9e;
+  text-decoration: none;
 }
+a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 
 /* ---- TOPページ: 検索窓 ---- */
 .search-box-container {
