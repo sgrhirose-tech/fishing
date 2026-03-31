@@ -20,9 +20,10 @@ REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 AREAS_FILE = os.path.join(REPO_ROOT, "spots", "_marine_areas.json")
 AVAILABLE_DIRS = {
     "unadjusted": os.path.join(REPO_ROOT, "unadjusted"),
+    "spots_wip":  os.path.join(REPO_ROOT, "spots_wip"),
     "spots":      os.path.join(REPO_ROOT, "spots"),
 }
-DEFAULT_DIR_KEY = "unadjusted"
+DEFAULT_DIR_KEY = "spots_wip"
 
 # slug バリデーション用定数（app/constants.py と同一の値を保つこと）
 _VALID_AREA_SLUGS = {"sagamibay", "miura", "tokyobay", "uchibo", "sotobo", "kujukuri"}

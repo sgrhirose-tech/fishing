@@ -25,7 +25,7 @@ PREF_SLUG_MAP = {
 
 TARGET_DIRS = [
     REPO_ROOT / "unadjusted",
-    REPO_ROOT / "spots",
+    REPO_ROOT / "spots_wip",
 ]
 
 
