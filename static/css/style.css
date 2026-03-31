@@ -427,6 +427,9 @@ footer a { color: #8bc; }
   user-select: none;
   padding: .7rem 0;
   color: #334;
+  /* フォントサイズをsummary自体に設定（iOS Safari対応） */
+  font-size: 1.5rem;
+  font-weight: bold;
   list-style: none;
   display: flex;
   align-items: baseline;
@@ -434,10 +437,11 @@ footer a { color: #8bc; }
   border-bottom: 1px solid #d0e4f0;
   gap: .75rem;
 }
-.pref-accordion-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
+/* デフォルト▶マーカーを全ブラウザで非表示 */
+.pref-accordion > summary::-webkit-details-marker { display: none; }
+.pref-accordion > summary::marker { display: none; }
+
+.pref-accordion-title { font-size: inherit; font-weight: bold; }
 
 /* エリアから探す h2 も同サイズで明示（ブラウザ差異を排除） */
 .area-links h2 { font-size: 1.5rem; margin: 0 0 .25rem; }
@@ -452,7 +456,6 @@ footer a { color: #8bc; }
   transition: transform .2s;
 }
 .pref-accordion[open] .pref-accordion-hint::after { transform: rotate(-180deg); }
-.pref-accordion > summary::-webkit-details-marker { display: none; }
 .pref-accordion > .region-group { padding-top: .5rem; }
 
 /* ---- TOPページ: PC 2カラムレイアウト ---- */
