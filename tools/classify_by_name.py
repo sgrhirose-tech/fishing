@@ -100,7 +100,7 @@ def load_spots(spots_dir: Path) -> list[tuple[Path, dict]]:
 
 
 def run(apply: bool, show_all: bool) -> None:
-    spots_dir = REPO_ROOT / "spots"
+    spots_dir = REPO_ROOT / "spots_wip"
     all_spots = load_spots(spots_dir)
 
     if not all_spots:

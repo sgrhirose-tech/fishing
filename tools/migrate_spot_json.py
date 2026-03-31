@@ -23,7 +23,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).parent.parent
 
 TARGET_DIRS = [
-    REPO_ROOT / "spots",
+    REPO_ROOT / "spots_wip",
     REPO_ROOT / "unadjusted",
 ]
 

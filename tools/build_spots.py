@@ -43,7 +43,7 @@ from pythonista_spot_tools import calculate_sea_bearing, fetch_physical_data
 
 REPO_ROOT  = Path(__file__).parent.parent
 AREAS_FILE = REPO_ROOT / "spots" / "_marine_areas.json"
-OUTPUT_DIR = REPO_ROOT / "spots"
+OUTPUT_DIR = REPO_ROOT / "spots_wip"
 TSV_DIR    = REPO_ROOT / "tsv"
 CONFIG_FILE = REPO_ROOT / "config.json"
 
