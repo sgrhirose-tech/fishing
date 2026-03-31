@@ -373,10 +373,16 @@ def page_top(request: Request):
                 "name": r["name"],
                 "prefs": region_prefs,
             })
+    area_counts: dict = {}
+    for s in spots:
+        a_slug = s.get("area", {}).get("area_slug", "")
+        if a_slug:
+            area_counts[a_slug] = area_counts.get(a_slug, 0) + 1
     return templates.TemplateResponse(request, "top.html", {
         "spots": spots,
         "tomorrow": _tomorrow(),
         "region_groups": region_groups,
+        "area_counts": area_counts,
     })
 
 

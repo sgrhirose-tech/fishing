@@ -35,24 +35,27 @@
     <section class="area-links">
       <h2>エリアから探す</h2>
       <div class="area-chips">
-        <a href="/spots?area=sagamibay"  class="area-chip">相模湾</a>
-        <a href="/spots?area=miura"      class="area-chip">三浦半島</a>
-        <a href="/spots?area=tokyobay"   class="area-chip">東京湾</a>
-        <a href="/spots?area=uchibo"     class="area-chip">内房</a>
-        <a href="/spots?area=sotobo"     class="area-chip">外房</a>
-        <a href="/spots?area=kujukuri"   class="area-chip">九十九里</a>
-        <a href="/spots?area=higashi-izu" class="area-chip">東伊豆</a>
-        <a href="/spots?area=minami-izu" class="area-chip">南伊豆</a>
-        <a href="/spots?area=nishi-izu"  class="area-chip">西伊豆</a>
-        <a href="/spots?area=suruga-bay" class="area-chip">駿河湾</a>
-        <a href="/spots?area=enshu-nada" class="area-chip">遠州灘</a>
+        <a href="/spots?area=sagamibay"  class="area-chip">相模湾（{{ area_counts.get('sagamibay', 0) }}）</a>
+        <a href="/spots?area=miura"      class="area-chip">三浦半島（{{ area_counts.get('miura', 0) }}）</a>
+        <a href="/spots?area=tokyobay"   class="area-chip">東京湾（{{ area_counts.get('tokyobay', 0) }}）</a>
+        <a href="/spots?area=uchibo"     class="area-chip">内房（{{ area_counts.get('uchibo', 0) }}）</a>
+        <a href="/spots?area=sotobo"     class="area-chip">外房（{{ area_counts.get('sotobo', 0) }}）</a>
+        <a href="/spots?area=kujukuri"   class="area-chip">九十九里（{{ area_counts.get('kujukuri', 0) }}）</a>
+        <a href="/spots?area=higashi-izu" class="area-chip">東伊豆（{{ area_counts.get('higashi-izu', 0) }}）</a>
+        <a href="/spots?area=minami-izu" class="area-chip">南伊豆（{{ area_counts.get('minami-izu', 0) }}）</a>
+        <a href="/spots?area=nishi-izu"  class="area-chip">西伊豆（{{ area_counts.get('nishi-izu', 0) }}）</a>
+        <a href="/spots?area=suruga-bay" class="area-chip">駿河湾（{{ area_counts.get('suruga-bay', 0) }}）</a>
+        <a href="/spots?area=enshu-nada" class="area-chip">遠州灘（{{ area_counts.get('enshu-nada', 0) }}）</a>
       </div>
     </section>
 
     <!-- ③ 都道府県から探す（アコーディオン） -->
     <section class="area-links">
       <details class="pref-accordion">
-        <summary>都道府県から探す</summary>
+        <summary>
+          <span class="pref-accordion-title">都道府県から探す</span>
+          <span class="pref-accordion-hint">タップで開閉</span>
+        </summary>
         {% for rg in region_groups %}
         <div class="region-group">
           <h3><a href="/{{ rg.slug }}/">{{ rg.name }}</a></h3>
@@ -113,11 +116,10 @@
           var url = (a.pref_slug && a.area_slug && a.city_slug && s.slug)
             ? '/' + a.pref_slug + '/' + a.area_slug + '/' + a.city_slug + '/' + s.slug
             : '#';
-          return '<li><a href="' + esc(url) + '">'
-            + '<span class="result-name">' + esc(s.name || '') + '</span>'
-            + '<span class="result-area">'
-            + esc(a.area_name || '') + ' / ' + esc(a.city || '')
-            + '</span></a></li>';
+          var label = esc(s.name || '')
+            + '<span class="result-sep"> / </span>'
+            + esc(a.area_name || '') + ' / ' + esc(a.city || '');
+          return '<li><a href="' + esc(url) + '">' + label + '</a></li>';
         }).join('');
         list.hidden = false;
       });
