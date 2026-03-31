@@ -343,14 +343,14 @@ def main():
     args = parser.parse_args()
 
     if args.classification_only:
-        src_dir = REPO_ROOT / "spots"
+        src_dir = REPO_ROOT / "spots_wip"
         dst_dir = None
         dry_run = False
         # --force なければ分類済みをスキップ
         skip_classified = not args.force
     else:
         src_dir = REPO_ROOT / "unadjusted"
-        dst_dir = REPO_ROOT / "spots"
+        dst_dir = REPO_ROOT / "spots_wip"
         dry_run = not args.apply
         skip_classified = args.skip_classified
 

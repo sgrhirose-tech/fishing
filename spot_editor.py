@@ -20,9 +20,10 @@ REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 AREAS_FILE = os.path.join(REPO_ROOT, "spots", "_marine_areas.json")
 AVAILABLE_DIRS = {
     "unadjusted": os.path.join(REPO_ROOT, "unadjusted"),
+    "spots_wip":  os.path.join(REPO_ROOT, "spots_wip"),
     "spots":      os.path.join(REPO_ROOT, "spots"),
 }
-DEFAULT_DIR_KEY = "unadjusted"
+DEFAULT_DIR_KEY = "spots_wip"
 
 # slug バリデーション用定数（app/constants.py と同一の値を保つこと）
 _VALID_AREA_SLUGS = {"sagamibay", "miura", "tokyobay", "uchibo", "sotobo", "kujukuri"}
@@ -63,16 +64,14 @@ AREA_MAP = {
     "内房":       ("uchibo",         "chiba",    "千葉県"),
     "外房":       ("sotobo",         "chiba",    "千葉県"),
     "九十九里":   ("kujukuri",       "chiba",    "千葉県"),
-    "東伊豆":     ("higashi-izu",    "shizuoka", "静岡県"),
-    "南伊豆":     ("minami-izu",     "shizuoka", "静岡県"),
-    "西伊豆":     ("nishi-izu",      "shizuoka", "静岡県"),
-    "駿河":       ("suruga",         "shizuoka", "静岡県"),
-    "遠州":       ("enshu",          "shizuoka", "静岡県"),
-    "東三河":     ("higashi-mikawa", "aichi",    "愛知県"),
-    "西三河":     ("nishi-mikawa",   "aichi",    "愛知県"),
-    "尾張":       ("owari",          "aichi",    "愛知県"),
-    "三重北中部": ("mie-north",      "mie",      "三重県"),
-    "三重南部":   ("mie-south",      "mie",      "三重県"),
+    "東伊豆":     ("higashi-izu",  "shizuoka", "静岡県"),
+    "南伊豆":     ("minami-izu",   "shizuoka", "静岡県"),
+    "西伊豆":     ("nishi-izu",    "shizuoka", "静岡県"),
+    "駿河湾":     ("suruga-bay",   "shizuoka", "静岡県"),
+    "遠州灘":     ("enshu-nada",   "shizuoka", "静岡県"),
+    "三河湾":     ("mikawa-bay",   "aichi",    "愛知県"),
+    "伊勢湾":     ("isewan",       "aichi",    "愛知県"),
+    "熊野灘":     ("kumano-nada",  "mie",      "三重県"),
 }
 
 
