@@ -28,7 +28,7 @@ from .weather import (fetch_weather, fetch_weather_range,
                        fetch_marine_weatherapi, fetch_marine, fetch_marine_range,
                        fetch_sst_noaa)
 from .scoring import score_spot, direction_label, score_7days
-from .osm import fetch_nearby_facilities
+from .osm import fetch_nearby_facilities, load_facilities_json, get_cached_facilities
 
 JST = timezone(timedelta(hours=9))
 
@@ -54,8 +54,8 @@ def _format_date_jp(date_str: str) -> str:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # 起動時に spots をプリロード
     load_spots()
+    load_facilities_json()
     yield
 
 
@@ -310,10 +310,15 @@ def api_ai_comment(slug: str):
 
 @app.get("/api/osm/{slug}")
 def api_osm(slug: str):
-    """スポット周辺の OSM 施設（駐車場・トイレ等）を返す。"""
+    """スポット周辺の OSM 施設（駐車場・トイレ等）を返す。
+    facilities.json にデータがあればそれを使用し、未収録の場合は Overpass API にフォールバックする。
+    """
     spot = load_spot(slug)
     if not spot:
         raise HTTPException(status_code=404, detail="スポットが見つかりません")
+    cached = get_cached_facilities(slug)
+    if cached is not None:
+        return {"slug": slug, "facilities": cached}
     facilities = fetch_nearby_facilities(spot_lat(spot), spot_lon(spot))
     return {"slug": slug, "facilities": facilities}
 
