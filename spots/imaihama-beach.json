@@ -38,5 +38,10 @@
       "natural=sand@266m",
       "natural=sand@81m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "メジナ",
+    "シロギス"
+  ]
 }

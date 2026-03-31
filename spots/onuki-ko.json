@@ -39,5 +39,11 @@
       "natural=beach@292m",
       "waterway=dock@160m"
     ]
-  }
+  },
+  "target_fish": [
+    "マゴチ",
+    "クロダイ",
+    "カレイ",
+    "シロギス"
+  ]
 }

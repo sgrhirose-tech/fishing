@@ -35,5 +35,10 @@
     "osm_evidence": [
       "waterway=dock@17m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "メジナ",
+    "アジ"
+  ]
 }

@@ -36,5 +36,10 @@
       "man_made=breakwater@247m",
       "natural=beach@257m"
     ]
-  }
+  },
+  "target_fish": [
+    "クロダイ",
+    "ヒラメ",
+    "シロギス"
+  ]
 }

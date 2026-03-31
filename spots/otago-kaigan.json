@@ -37,5 +37,9 @@
     "osm_evidence": [
       "natural=beach@91m"
     ]
-  }
+  },
+  "target_fish": [
+    "イシダイ",
+    "メジナ"
+  ]
 }

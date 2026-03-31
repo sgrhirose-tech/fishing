@@ -38,5 +38,9 @@
       "natural=beach@105m",
       "natural=beach@127m"
     ]
-  }
+  },
+  "target_fish": [
+    "タチウオ",
+    "スズキ"
+  ]
 }
