@@ -351,6 +351,76 @@ footer a { color: #8bc; }
 .score-mid  { background: #fff8e1; color: #7a5800; }
 .score-low  { background: #fce8e6; color: #8b1a1a; }
 
+/* ---- 魚種別ページ ---- */
+.fish-season-section { margin: 1.5rem 0 1rem; }
+.fish-season-legend {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  font-size: .82rem; color: #555; margin-bottom: .75rem;
+}
+.fish-legend-item { display: flex; align-items: center; gap: .35rem; }
+.fish-legend-dot {
+  width: 14px; height: 14px; border-radius: 3px; display: inline-block;
+}
+.fish-legend-dot.peak { background: #e8651a; }
+.fish-legend-dot.in   { background: #aad4ee; }
+.fish-legend-dot.off  { background: #e0e0e0; }
+
+.fish-season-bar {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4px;
+}
+.fish-month {
+  border-radius: 6px;
+  padding: .5rem .1rem .35rem;
+  text-align: center;
+}
+.fish-month.peak { background: #e8651a; }
+.fish-month.in   { background: #aad4ee; }
+.fish-month.off  { background: #e8e8e8; }
+.fish-month-label {
+  display: block;
+  font-size: .7rem;
+  font-weight: bold;
+}
+.fish-month.peak .fish-month-label { color: white; }
+.fish-month.in   .fish-month-label { color: #1a5a7e; }
+.fish-month.off  .fish-month-label { color: #999; }
+
+.fish-meta-section {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: .4rem; margin: .75rem 0 1.5rem; font-size: .9rem;
+}
+.fish-meta-label { color: #555; font-weight: bold; }
+.fish-method-chip {
+  background: #f0f0f0; border-radius: 12px;
+  padding: .2rem .7rem; font-size: .85rem; color: #444;
+}
+
+.fish-spots-section { margin-top: 1.5rem; }
+.fish-area-group { margin-bottom: 2rem; }
+.fish-area-name {
+  font-size: 1.1rem; font-weight: bold; color: #334;
+  margin: 0 0 .6rem; display: flex; align-items: baseline; gap: .5rem;
+}
+.fish-area-name a { color: #1a6b9e; text-decoration: none; }
+.fish-area-name a:hover { text-decoration: underline; }
+.fish-area-count { font-size: .8rem; color: #888; font-weight: normal; }
+.fish-spot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: .6rem;
+}
+.fish-spot-card {
+  background: white; border: 1px solid #d0e4f0; border-radius: 8px;
+  padding: .6rem .8rem; text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; gap: .15rem;
+  transition: box-shadow .15s;
+}
+.fish-spot-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.fish-spot-name { font-weight: bold; font-size: .9rem; color: #1a6b9e; }
+.fish-spot-city { font-size: .78rem; color: #777; }
+
 /* ---- 魚種チップ ---- */
 .fish-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
 .fish-chip {

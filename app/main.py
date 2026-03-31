@@ -3,6 +3,7 @@ FastAPI アプリケーション。
 uvicorn app.main:app --reload で起動。
 """
 
+import json
 import os
 import time
 from contextlib import asynccontextmanager
@@ -32,6 +33,19 @@ from .osm import fetch_nearby_facilities, load_facilities_json, get_cached_facil
 
 JST = timezone(timedelta(hours=9))
 
+# ── 魚種マスタ ────────────────────────────────────────────────
+_FISH_MASTER: dict = {}
+
+def _load_fish_master() -> None:
+    global _FISH_MASTER
+    path = _BASE / "data" / "fish_master.json"
+    try:
+        with open(path, encoding="utf-8") as f:
+            _FISH_MASTER = json.load(f)
+        print(f"[fish_master] {len(_FISH_MASTER)} 魚種を読み込みました")
+    except Exception as e:
+        print(f"[fish_master] 読み込みエラー: {e}")
+
 
 def _tomorrow() -> str:
     return (datetime.now(JST) + timedelta(days=1)).strftime("%Y-%m-%d")
@@ -56,6 +70,7 @@ def _format_date_jp(date_str: str) -> str:
 async def lifespan(app: FastAPI):
     load_spots()
     load_facilities_json()
+    _load_fish_master()
     yield
 
 
@@ -383,6 +398,29 @@ def page_top(request: Request):
         "tomorrow": _tomorrow(),
         "region_groups": region_groups,
         "area_counts": area_counts,
+    })
+
+
+@app.get("/fish/{fish_name}", response_class=HTMLResponse)
+def page_fish(request: Request, fish_name: str):
+    fish_data = _FISH_MASTER.get(fish_name)
+    if not fish_data:
+        raise HTTPException(status_code=404, detail="魚種が見つかりません")
+    all_spots = load_spots()
+    matched = [s for s in all_spots if fish_name in s.get("target_fish", [])]
+    # エリア別にグループ化
+    areas: dict = {}
+    for s in matched:
+        a = s.get("area", {})
+        key = a.get("area_slug", "")
+        if key not in areas:
+            areas[key] = {"name": a.get("area_name", ""), "spots": []}
+        areas[key]["spots"].append(s)
+    return templates.TemplateResponse(request, "fish.html", {
+        "fish_name": fish_name,
+        "fish_data": fish_data,
+        "areas": areas,
+        "total": len(matched),
     })
 
 
