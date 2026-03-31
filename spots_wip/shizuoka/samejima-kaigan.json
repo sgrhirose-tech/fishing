@@ -1,0 +1,41 @@
+{
+  "slug": "samejima-kaigan",
+  "name": "鮫島海岸",
+  "location": {
+    "latitude": 34.6586671,
+    "longitude": 137.8481526
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "磐田市",
+    "city_slug": "iwata"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 165,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1510.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "遠浅サーフ、投げ釣りでキス・イシモチ向き",
+    "access": "磐田駅からバス25分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "manual",
+    "osm_evidence": []
+  }
+}

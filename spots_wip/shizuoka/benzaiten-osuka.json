@@ -1,0 +1,41 @@
+{
+  "slug": "benzaiten-osuka",
+  "name": "弁財天海浜公園・大須賀海岸",
+  "location": {
+    "latitude": 34.6656524,
+    "longitude": 137.9723597
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "掛川市",
+    "city_slug": "kakegawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1716.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "掛川市の遠州灘サーフ、投げ釣り好適",
+    "access": "掛川駅からバス25分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.77,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@21m"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "kikugawa-daito",
+  "name": "菊川河口・大東海洋公園",
+  "location": {
+    "latitude": 34.6476527,
+    "longitude": 138.0668
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "掛川市",
+    "city_slug": "kakegawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 200,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1902.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "菊川河口、シーバス・キス・ルアー向き",
+    "access": "菊川駅からバス20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "manual",
+    "osm_evidence": []
+  }
+}

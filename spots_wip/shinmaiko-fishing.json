@@ -1,0 +1,37 @@
+{
+  "slug": "shinmaiko-fishing",
+  "name": "新舞子マリンパーク海釣り施設",
+  "location": {
+    "latitude": 34.9511744,
+    "longitude": 136.8176422
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "知多市",
+    "city_slug": "chita"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "柵付き整備施設、ファミリー向き、多彩魚種",
+    "access": "新舞子駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  }
+}
