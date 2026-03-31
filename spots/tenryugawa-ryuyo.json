@@ -1,0 +1,37 @@
+{
+  "slug": "tenryugawa-ryuyo",
+  "name": "天竜川河口・竜洋海洋公園",
+  "location": {
+    "latitude": 34.6512939,
+    "longitude": 137.8022671
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "unknown",
+    "city": "磐田市",
+    "city_slug": "iwata"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1932.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "天竜川河口でシーバス・ヒラメ・キス狙い",
+    "access": "磐田駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  }
+}
