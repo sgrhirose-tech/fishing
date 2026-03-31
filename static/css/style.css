@@ -92,7 +92,7 @@ main {
   transition: box-shadow .15s;
 }
 .area-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.15); }
-.area-card h3 { margin: 0 0 .25rem; color: #1a6b9e; }
+.area-card h3 { margin: 0 0 .25rem; color: #1a6b9e; font-size: 1.17rem; }
 .area-card p  { margin: 0; font-size: .85rem; color: #555; }
 
 /* ---- 戻るリンク ---- */
@@ -413,7 +413,7 @@ footer a { color: #8bc; }
   padding: .6rem 1.2rem;
   text-decoration: none;
   color: #1a6b9e;
-  font-size: 1.1rem;
+  font-size: 1.17rem;
   font-weight: bold;
   line-height: 1.4;
   transition: background .15s, color .15s;
@@ -438,6 +438,9 @@ footer a { color: #8bc; }
   font-size: 1.5rem;
   font-weight: bold;
 }
+
+/* エリアから探す h2 も同サイズで明示（ブラウザ差異を排除） */
+.area-links h2 { font-size: 1.5rem; margin: 0 0 .25rem; }
 .pref-accordion-hint {
   font-size: .78rem;
   color: #888;
