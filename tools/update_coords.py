@@ -206,8 +206,8 @@ def main():
         description="釣り場座標を Google Places API で精緻化する"
     )
     parser.add_argument(
-        "--spots-dir", default="./spots",
-        help="spots/ ディレクトリのパス (default: ./spots)",
+        "--spots-dir", default="./spots_wip",
+        help="spots/ ディレクトリのパス (default: ./spots_wip)",
     )
     parser.add_argument(
         "--config", default="./config.json",
