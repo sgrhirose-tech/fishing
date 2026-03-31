@@ -35,5 +35,8 @@
     "osm_evidence": [
       "natural=beach@126m"
     ]
-  }
+  },
+  "target_fish": [
+    "シロギス"
+  ]
 }

@@ -37,5 +37,10 @@
     "osm_evidence": [
       "harbour=yes@195m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "クロダイ",
+    "アジ"
+  ]
 }

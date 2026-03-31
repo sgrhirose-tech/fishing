@@ -36,5 +36,9 @@
       "man_made=breakwater@104m",
       "waterway=dock@2m"
     ]
-  }
+  },
+  "target_fish": [
+    "クロダイ",
+    "アジ"
+  ]
 }

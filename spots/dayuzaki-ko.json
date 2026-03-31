@@ -38,5 +38,6 @@
       "man_made=breakwater@202m",
       "waterway=dock@2m"
     ]
-  }
+  },
+  "target_fish": []
 }

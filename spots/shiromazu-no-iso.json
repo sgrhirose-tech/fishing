@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:磯"
     ]
-  }
+  },
+  "target_fish": [
+    "イシダイ",
+    "メジナ",
+    "クロダイ"
+  ]
 }

@@ -41,5 +41,10 @@
       "man_made=breakwater@254m",
       "man_made=pier@167m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "メバル",
+    "アジ"
+  ]
 }

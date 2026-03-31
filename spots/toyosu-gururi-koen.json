@@ -38,5 +38,9 @@
       "man_made=pier@206m",
       "man_made=pier@259m"
     ]
-  }
+  },
+  "target_fish": [
+    "タチウオ",
+    "スズキ"
+  ]
 }

@@ -39,5 +39,11 @@
       "natural=beach@149m",
       "natural=beach@269m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "マゴチ",
+    "クロダイ",
+    "シロギス"
+  ]
 }

@@ -39,5 +39,9 @@
       "man_made=pier@132m",
       "natural=beach@208m"
     ]
-  }
+  },
+  "target_fish": [
+    "ヒラメ",
+    "アジ"
+  ]
 }

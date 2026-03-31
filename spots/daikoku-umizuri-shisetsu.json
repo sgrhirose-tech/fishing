@@ -38,5 +38,11 @@
       "leisure=fishing@7m",
       "man_made=pier@19m"
     ]
-  }
+  },
+  "target_fish": [
+    "スズキ",
+    "イワシ",
+    "タコ",
+    "アジ"
+  ]
 }

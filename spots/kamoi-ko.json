@@ -36,5 +36,11 @@
       "man_made=breakwater@149m",
       "natural=beach@234m"
     ]
-  }
+  },
+  "target_fish": [
+    "クロダイ",
+    "ハゼ",
+    "アジ",
+    "スズキ"
+  ]
 }

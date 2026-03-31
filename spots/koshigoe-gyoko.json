@@ -40,5 +40,10 @@
       "natural=beach@278m",
       "natural=cliff@294m"
     ]
-  }
+  },
+  "target_fish": [
+    "ヒラメ",
+    "スズキ",
+    "シロギス"
+  ]
 }

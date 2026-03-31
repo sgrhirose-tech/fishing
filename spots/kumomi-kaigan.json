@@ -42,5 +42,9 @@
       "natural=bare_rock@192m",
       "natural=bare_rock@281m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "メジナ"
+  ]
 }

@@ -43,5 +43,10 @@
       "leisure=fishing@212m",
       "leisure=fishing@240m"
     ]
-  }
+  },
+  "target_fish": [
+    "メジナ",
+    "クロダイ",
+    "アジ"
+  ]
 }
