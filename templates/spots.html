@@ -39,7 +39,7 @@
       <span class="badge badge-warning">サーファーと仲良く</span>
       {% endif %}
     </div>
-    <p class="spot-seabed">底質: {{ spot.derived_features.seabed_summary }}</p>
+    <p class="spot-seabed">{{ spot.info.notes }}</p>
     <p class="spot-access">🚃 {{ spot.info.access }}</p>
     <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/{{ spot.slug }}" class="btn-detail">
       詳細・気象情報 →
