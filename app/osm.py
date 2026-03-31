@@ -22,6 +22,26 @@ OVERPASS_URL = "https://overpass-api.de/api/interpreter"
 
 _osm_cache: dict = {}
 
+# 起動時に facilities.json を読み込んだキャッシュ
+_facilities_cache: dict = {}  # slug → list[dict]
+
+
+def load_facilities_json(path: str = "data/facilities.json") -> None:
+    """起動時に facilities.json をメモリに読み込む。ファイルがなければ Overpass API フォールバック。"""
+    global _facilities_cache
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        _facilities_cache = {k: v for k, v in data.items() if k != "_meta"}
+        print(f"[施設キャッシュ] {len(_facilities_cache)} スポット読み込み完了")
+    except FileNotFoundError:
+        print("[施設キャッシュ] data/facilities.json が見つかりません。Overpass API フォールバックを使用")
+
+
+def get_cached_facilities(slug: str) -> list[dict] | None:
+    """キャッシュから施設リストを返す。未収録なら None。"""
+    return _facilities_cache.get(slug)
+
 
 def fetch_nearby_facilities(lat: float, lon: float,
                              radius_m: int = AMENITY_SEARCH_RADIUS_M) -> list[dict]:

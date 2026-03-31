@@ -38,3 +38,17 @@ services:
         sync: false
       - key: X_ACCESS_TOKEN_SECRET
         sync: false
+
+  - type: cron
+    name: tsuricast-facilities-weekly
+    runtime: python
+    repo: https://github.com/sgrhirose-tech/fishing
+    branch: master
+    schedule: "0 18 * * 0"   # JST月曜03:00（UTC日曜18:00）
+    buildCommand: pip install -r requirements.txt
+    startCommand: python scripts/fetch_facilities.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GITHUB_TOKEN
+        sync: false
