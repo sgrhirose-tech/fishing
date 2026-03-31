@@ -179,6 +179,7 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
 
 /* ---- sidebar ---- */
 #area-filter { width: 100%; padding: 8px; border: none; border-bottom: 1px solid #ddd; font-size: 13px; }
+#name-filter  { width: 100%; padding: 8px; border: none; border-bottom: 1px solid #ddd; font-size: 13px; box-sizing: border-box; }
 .spot-item { padding: 8px 10px; cursor: pointer; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
 .spot-item:hover { background: #e8f4fd; }
 .spot-item.active { background: #3498db; color: white; }
@@ -228,15 +229,8 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
   <div id="js-error" style="display:none;background:#c0392b;color:white;padding:6px 12px;font-size:12px;"></div>
   <div id="main">
     <div id="sidebar">
-      <select id="area-filter">
-        <option value="">全エリア</option>
-        <option value="相模湾">相模湾</option>
-        <option value="三浦半島">三浦半島</option>
-        <option value="東京湾">東京湾</option>
-        <option value="内房">内房</option>
-        <option value="外房">外房</option>
-        <option value="九十九里">九十九里</option>
-      </select>
+      <select id="area-filter"><option value="">全エリア</option></select>
+      <input type="text" id="name-filter" placeholder="スポット名で絞り込み">
       <div id="spot-list"></div>
     </div>
     <div id="map"></div>
@@ -341,13 +335,27 @@ window.addEventListener('load', function() {
   }
 });
 
+// ---- area-filter を AREA_SLUG_MAP から動的生成 ----
+(function() {
+  var sel = document.getElementById('area-filter');
+  Object.keys(AREA_SLUG_MAP).forEach(function(name) {
+    var opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    sel.appendChild(opt);
+  });
+})();
+
 // ---- sidebar list ----
-function buildList(filter) {
+function buildList() {
+  var areaFilter = document.getElementById('area-filter').value;
+  var nameFilter = document.getElementById('name-filter').value.trim();
   var list = document.getElementById('spot-list');
   list.innerHTML = '';
   SPOTS.forEach(function(s, i) {
     var areaName = (s.area && s.area.area_name) || '';
-    if (filter && areaName !== filter) return;
+    if (areaFilter && areaName !== areaFilter) return;
+    if (nameFilter && (s.name || s.slug || '').indexOf(nameFilter) === -1) return;
     var div = document.createElement('div');
     div.className = 'spot-item' + (i === currentIdx ? ' active' : '');
     div.dataset.idx = i;
@@ -358,7 +366,10 @@ function buildList(filter) {
 }
 
 document.getElementById('area-filter').addEventListener('change', function() {
-  buildList(this.value);
+  buildList();
+});
+document.getElementById('name-filter').addEventListener('input', function() {
+  buildList();
 });
 
 // ---- bearing arrow ----
@@ -401,7 +412,7 @@ function showSpot(idx) {
   currentIdx = idx;
   dirty = false;
   document.getElementById('save-bar').style.display = 'none';
-  buildList(document.getElementById('area-filter').value);
+  buildList();
 
   var s = SPOTS[idx];
   var loc = s.location || {};
@@ -622,7 +633,7 @@ function saveChanges() {
   dirty = false;
   document.getElementById('save-bar').style.display = 'none';
   document.getElementById('panel-header').textContent = payload.name || s.slug || '(無名)';
-  buildList(document.getElementById('area-filter').value);
+  buildList();
 
   if (SAVE_MODE === 'http') {
     fetch('/save', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
@@ -680,7 +691,7 @@ function onNewSpotComplete(spotJson) {
   SPOTS.push(spot);
   var newIdx = SPOTS.length - 1;
   showSpot(newIdx);
-  buildList(document.getElementById('area-filter').value);
+  buildList();
 }
 
 // ---- event delegation ----
@@ -719,7 +730,7 @@ document.getElementById('btn-modal-cancel').addEventListener('click', closeModal
 document.getElementById('btn-modal-ok').addEventListener('click', submitNewSpot);
 
 // ---- init ----
-buildList('');
+buildList();
 </script>
 </body>
 </html>
