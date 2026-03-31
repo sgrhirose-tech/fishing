@@ -446,7 +446,7 @@ footer a { color: #8bc; }
 /* エリアから探す h2 も同サイズで明示（ブラウザ差異を排除） */
 .area-links h2 { font-size: 1.5rem; margin: 0 0 .25rem; }
 .pref-accordion-hint {
-  font-size: .78rem;
+  font-size: .65rem;
   color: #888;
   white-space: nowrap;
 }
