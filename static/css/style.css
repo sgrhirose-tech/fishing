@@ -351,6 +351,17 @@ footer a { color: #8bc; }
 .score-mid  { background: #fff8e1; color: #7a5800; }
 .score-low  { background: #fce8e6; color: #8b1a1a; }
 
+/* ---- 魚種チップ ---- */
+.fish-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.fish-chip {
+  background: #e8f4fb;
+  border: 1px solid #aad4ee;
+  border-radius: 12px;
+  padding: .2rem .7rem;
+  font-size: .85rem;
+  color: #1a6b9e;
+}
+
 /* ---- TOPページ: 検索窓 ---- */
 .search-box-container {
   position: relative;
