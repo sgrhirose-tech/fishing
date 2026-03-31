@@ -1,0 +1,40 @@
+{
+  "slug": "yumigahama-aonogawa",
+  "name": "弓ヶ浜海水浴場・青野川河口",
+  "location": {
+    "latitude": 34.6339671,
+    "longitude": 138.8902009
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "南伊豆",
+    "area_slug": "minami-izu",
+    "city": "南伊豆町",
+    "city_slug": "minamiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 150,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 961.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "南伊豆最南部の広い砂浜、キス・河口シーバス向き",
+    "access": "下田駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.41,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@254m",
+      "natural=beach@161m"
+    ]
+  }
+}

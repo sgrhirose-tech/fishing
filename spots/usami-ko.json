@@ -1,0 +1,39 @@
+{
+  "slug": "usami-ko",
+  "name": "宇佐美港",
+  "location": {
+    "latitude": 35.0082981,
+    "longitude": 139.0909266
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "伊東市",
+    "city_slug": "ito"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 292.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "伊東市北の漁港、防波堤から多彩魚種が狙える",
+    "access": "宇佐美駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  }
+}

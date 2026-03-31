@@ -7,11 +7,15 @@ const OSM_TILE = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const OSM_ATTR = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 const AREA_COLORS = {
-  'sagamibay': '#2196F3',
-  'miura':     '#4CAF50',
-  'tokyobay':  '#FF9800',
-  'uchibo':    '#9C27B0',
-  'sotobo':    '#F44336',
+  'sagamibay':   '#2196F3',
+  'miura':       '#4CAF50',
+  'tokyobay':    '#FF9800',
+  'uchibo':      '#9C27B0',
+  'sotobo':      '#F44336',
+  'kujukuri':    '#FF5722',
+  'higashi-izu': '#E91E63',
+  'minami-izu':  '#00BCD4',
+  'nishi-izu':   '#8BC34A',
 };
 
 function _makeMarker(spot, map) {

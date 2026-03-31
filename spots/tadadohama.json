@@ -1,0 +1,39 @@
+{
+  "slug": "tadadohama",
+  "name": "多々戸浜海水浴場",
+  "location": {
+    "latitude": 34.6608077,
+    "longitude": 138.9310026
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "南伊豆",
+    "area_slug": "minami-izu",
+    "city": "下田市",
+    "city_slug": "shimoda"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 145,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 526.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "下田南側の砂浜、キス・ルアー向きサーフ",
+    "access": "下田駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@126m"
+    ]
+  }
+}

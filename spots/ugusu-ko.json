@@ -1,0 +1,45 @@
+{
+  "slug": "ugusu-ko",
+  "name": "宇久須港",
+  "location": {
+    "latitude": 34.8488009,
+    "longitude": 138.7704349
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "西伊豆町",
+    "city_slug": "nishiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 295,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 205.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "西伊豆町北の漁港、アジ・メジナ・アオリイカ向き",
+    "access": "西伊豆町バス利用"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.81,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@140m",
+      "man_made=breakwater@173m",
+      "man_made=breakwater@17m",
+      "man_made=breakwater@228m",
+      "man_made=pier@227m"
+    ]
+  }
+}

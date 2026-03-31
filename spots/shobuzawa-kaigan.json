@@ -1,0 +1,39 @@
+{
+  "slug": "shobuzawa-kaigan",
+  "name": "菖蒲沢海岸",
+  "location": {
+    "latitude": 34.7280521,
+    "longitude": 138.9927363
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "東伊豆町",
+    "city_slug": "higashiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 110,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 442.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "河津町のゴロタ浜、メジナ・クロダイ・アオリイカ向き",
+    "access": "河津駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  }
+}

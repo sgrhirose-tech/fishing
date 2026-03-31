@@ -1,0 +1,39 @@
+{
+  "slug": "mera-ko-izu",
+  "name": "妻良港",
+  "location": {
+    "latitude": 34.6602165,
+    "longitude": 138.789618
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "南伊豆",
+    "area_slug": "minami-izu",
+    "city": "南伊豆町",
+    "city_slug": "minamiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 305,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 981.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "静かな入り江の漁港、アジ・メジナ・アオリイカ向き",
+    "access": "下田駅からバス35分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.77,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@17m"
+    ]
+  }
+}

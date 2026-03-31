@@ -1,0 +1,42 @@
+{
+  "slug": "touji-beach",
+  "name": "田牛海水浴場",
+  "location": {
+    "latitude": 34.6401727,
+    "longitude": 138.9132142
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "南伊豆",
+    "area_slug": "minami-izu",
+    "city": "下田市",
+    "city_slug": "shimoda"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 115,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 725.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "下田南東の入り江、メジナ・アオリイカ・磯釣り向き",
+    "access": "下田駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@263m",
+      "natural=beach@56m"
+    ]
+  }
+}

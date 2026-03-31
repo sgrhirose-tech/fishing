@@ -1,0 +1,39 @@
+{
+  "slug": "shishihama-kaigan",
+  "name": "獅子浜海岸",
+  "location": {
+    "latitude": 35.0518513,
+    "longitude": 138.8840961
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "沼津市",
+    "city_slug": "numazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 255,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 127.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "静浦港隣接のサーフ、青物・キス向き",
+    "access": "沼津駅からバス25分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "slug": "numazu-ko",
+  "name": "沼津港",
+  "location": {
+    "latitude": 35.0810056,
+    "longitude": 138.8546562
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "沼津市",
+    "city_slug": "numazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 210,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 500.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "大型港、護岸・狩野川河口で釣り可能エリアあり",
+    "access": "沼津駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@230m",
+      "man_made=breakwater@266m"
+    ]
+  }
+}

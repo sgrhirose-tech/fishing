@@ -1,0 +1,37 @@
+{
+  "slug": "atami-fishing-facility",
+  "name": "熱海港海釣り施設",
+  "location": {
+    "latitude": 35.0921358,
+    "longitude": 139.079827
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "熱海市",
+    "city_slug": "atami"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 75,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 252.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "管理された公式施設、貸竿あり初心者向き",
+    "access": "熱海駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  }
+}

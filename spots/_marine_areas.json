@@ -57,25 +57,19 @@
     "西伊豆": {
       "center_lat": 34.85, "center_lon": 138.63, "fetch_km": 30
     },
-    "駿河": {
+    "駿河湾": {
       "center_lat": 34.95, "center_lon": 138.45, "fetch_km": 50
     },
-    "遠州": {
-      "center_lat": 34.73, "center_lon": 137.85, "fetch_km": 80
+    "遠州灘": {
+      "center_lat": 34.73, "center_lon": 137.55, "fetch_km": 100
     },
-    "東三河": {
-      "center_lat": 34.73, "center_lon": 137.25, "fetch_km": 40
+    "三河湾": {
+      "center_lat": 34.78, "center_lon": 137.05, "fetch_km": 35
     },
-    "西三河": {
-      "center_lat": 34.85, "center_lon": 136.95, "fetch_km": 30
+    "伊勢湾": {
+      "center_lat": 34.90, "center_lon": 136.65, "fetch_km": 60
     },
-    "尾張": {
-      "center_lat": 35.10, "center_lon": 136.75, "fetch_km": 30
-    },
-    "三重北中部": {
-      "center_lat": 34.80, "center_lon": 136.55, "fetch_km": 50
-    },
-    "三重南部": {
+    "熊野灘": {
       "center_lat": 34.10, "center_lon": 136.20, "fetch_km": 60
     }
   },
