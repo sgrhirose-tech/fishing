@@ -35,5 +35,10 @@
     ],
     "source": "manual",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "マゴチ",
+    "ヒラメ",
+    "シロギス"
+  ]
 }

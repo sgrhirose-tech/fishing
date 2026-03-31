@@ -35,5 +35,9 @@
     "osm_evidence": [
       "natural=beach@68m"
     ]
-  }
+  },
+  "target_fish": [
+    "クロダイ",
+    "シロギス"
+  ]
 }

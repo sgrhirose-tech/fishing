@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:港"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "アジ"
+  ]
 }

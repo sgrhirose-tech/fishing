@@ -37,5 +37,10 @@
     "osm_evidence": [
       "natural=beach@238m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "メジナ",
+    "クロダイ"
+  ]
 }
