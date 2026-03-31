@@ -1,0 +1,45 @@
+{
+  "slug": "kowa-gyoko",
+  "name": "河和漁港",
+  "location": {
+    "latitude": 34.7763637,
+    "longitude": 136.9152134
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "美浜町",
+    "city_slug": "mihama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "美浜町の漁港、クロダイ・セイゴ・メバル向き",
+    "access": "河和駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@155m",
+      "man_made=pier@151m",
+      "man_made=pier@171m",
+      "man_made=pier@194m",
+      "man_made=pier@204m"
+    ]
+  }
+}

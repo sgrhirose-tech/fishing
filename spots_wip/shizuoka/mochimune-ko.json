@@ -1,0 +1,43 @@
+{
+  "slug": "mochimune-ko",
+  "name": "用宗漁港",
+  "location": {
+    "latitude": 34.9247818,
+    "longitude": 138.3677754
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "静岡市",
+    "city_slug": "shizuoka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1959.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "駅から徒歩圏、汽水港で魚種多彩",
+    "access": "用宗駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "marina",
+      "slipway"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@136m",
+      "leisure=slipway@249m"
+    ]
+  }
+}

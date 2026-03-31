@@ -1,0 +1,41 @@
+{
+  "slug": "sakai-ko",
+  "name": "坂井港",
+  "location": {
+    "latitude": 34.7018796,
+    "longitude": 138.2146376
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "牧之原市",
+    "city_slug": "makinohara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "小規模漁港、静波海岸隣接、穴場ポイント",
+    "access": "相良牧之原ICよりバス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@80m"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "slug": "heisakairie-terazubashi",
+  "name": "平坂入江・寺津橋",
+  "location": {
+    "latitude": 34.8410603,
+    "longitude": 137.0052885
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "西尾市",
+    "city_slug": "nishio"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体、貝殻混じり"
+  },
+  "info": {
+    "notes": "入り江の護岸、セイゴ・ハゼ向き",
+    "access": "西尾駅からバス10分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "mano-ko",
+  "name": "真野港",
+  "location": {
+    "latitude": 35.2691084,
+    "longitude": 139.5698467
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "葉山町",
+    "city_slug": "hayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 17.5,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1098.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "西尾市の港、クロダイ・セイゴ・ハゼ向き",
+    "access": "西尾駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.55,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@66m",
+      "natural=bare_rock@91m",
+      "natural=beach@213m"
+    ]
+  }
+}

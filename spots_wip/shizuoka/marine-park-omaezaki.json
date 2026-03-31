@@ -1,0 +1,44 @@
+{
+  "slug": "marine-park-omaezaki",
+  "name": "マリンパーク御前崎",
+  "location": {
+    "latitude": 34.6067212,
+    "longitude": 138.2268788
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "御前崎市",
+    "city_slug": "omaezaki"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 50,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "整備された護岸・公園、初心者・ファミリー向き",
+    "access": "御前崎市内バス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.41,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@213m",
+      "natural=beach@245m"
+    ]
+  }
+}
