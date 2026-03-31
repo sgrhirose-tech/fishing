@@ -408,6 +408,10 @@ def page_contact(request: Request):
 def page_safety(request: Request):
     return templates.TemplateResponse(request, "static_pages/safety.html", {})
 
+@app.get("/april-fools", response_class=HTMLResponse)
+def page_april_fools(request: Request):
+    return templates.TemplateResponse(request, "events/april_fools.html", {})
+
 @app.get("/area/", response_class=HTMLResponse)
 def page_area_index(request: Request):
     spots = load_spots()
