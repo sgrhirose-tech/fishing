@@ -410,10 +410,10 @@ footer a { color: #8bc; }
   background: white;
   border: 2px solid #1a6b9e;
   border-radius: 20px;
-  padding: .55rem 1.1rem;
+  padding: .6rem 1.2rem;
   text-decoration: none;
   color: #1a6b9e;
-  font-size: .88rem;
+  font-size: 1.1rem;
   font-weight: bold;
   line-height: 1.4;
   transition: background .15s, color .15s;
@@ -435,7 +435,7 @@ footer a { color: #8bc; }
   gap: .75rem;
 }
 .pref-accordion-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 .pref-accordion-hint {
