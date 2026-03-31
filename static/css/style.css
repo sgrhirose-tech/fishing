@@ -380,23 +380,26 @@ footer a { color: #8bc; }
   box-shadow: 0 4px 12px rgba(0,0,0,.12);
 }
 .search-results li a {
-  display: flex;
-  flex-direction: column;
-  padding: .55rem 1rem;
+  display: block;
+  padding: .6rem 1rem;
   text-decoration: none;
   color: #334;
   border-bottom: 1px solid #f0f4f8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: .93rem;
 }
 .search-results li a:hover { background: #f0f6fb; }
-.result-name { font-weight: bold; font-size: .95rem; }
-.result-area { font-size: .78rem; color: #777; margin-top: .1rem; }
+.result-sep { color: #aaa; }
+.result-name { font-weight: bold; }
 
 /* ---- TOPページ: エリアチップ ---- */
 .area-chips {
   display: flex;
   overflow-x: auto;
-  gap: .5rem;
-  padding: .5rem 0 .75rem;
+  gap: .75rem;
+  padding: .6rem 0 1rem;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -407,11 +410,12 @@ footer a { color: #8bc; }
   background: white;
   border: 2px solid #1a6b9e;
   border-radius: 20px;
-  padding: .4rem .9rem;
+  padding: .55rem 1.1rem;
   text-decoration: none;
   color: #1a6b9e;
   font-size: .88rem;
   font-weight: bold;
+  line-height: 1.4;
   transition: background .15s, color .15s;
 }
 .area-chip:hover { background: #1a6b9e; color: white; }
@@ -421,23 +425,30 @@ footer a { color: #8bc; }
 .pref-accordion > summary {
   cursor: pointer;
   user-select: none;
-  font-size: 1.05rem;
-  font-weight: bold;
   padding: .7rem 0;
   color: #334;
   list-style: none;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   border-bottom: 1px solid #d0e4f0;
+  gap: .75rem;
 }
-.pref-accordion > summary::after {
-  content: '▼';
-  font-size: .75rem;
+.pref-accordion-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.pref-accordion-hint {
+  font-size: .78rem;
   color: #888;
+  white-space: nowrap;
+}
+.pref-accordion-hint::after {
+  content: ' ▼';
+  display: inline-block;
   transition: transform .2s;
 }
-.pref-accordion[open] > summary::after { transform: rotate(-180deg); }
+.pref-accordion[open] .pref-accordion-hint::after { transform: rotate(-180deg); }
 .pref-accordion > summary::-webkit-details-marker { display: none; }
 .pref-accordion > .region-group { padding-top: .5rem; }
 
