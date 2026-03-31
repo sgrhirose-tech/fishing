@@ -47,7 +47,7 @@ def main():
     parser.add_argument("--force",  action="store_true", help="既に true のスポットも再確認")
     args = parser.parse_args()
 
-    spots_dir = REPO_ROOT / "spots"
+    spots_dir = REPO_ROOT / "spots_wip"
 
     if args.slug:
         files = [spots_dir / f"{args.slug}.json"]
