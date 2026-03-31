@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}{{ region_name }}の釣り場・天気情報 | Tsuricast{% endblock %}
+{% block description %}{{ region_name }}の釣り場・天気情報。{{ prefs|length }}都道府県を掲載。{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "ホーム",          "item": "https://tsuricast.jp/"},
+    {"@type": "ListItem", "position": 2, "name": "{{ region_name }}"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo; <span>{{ region_name }}</span>
+</nav>
+
+<h1>{{ region_name }}の釣り場</h1>
+
+<section class="area-links">
+  <h2>都道府県から選ぶ</h2>
+  <div class="area-grid">
+    {% for pref_slug, info in prefs.items() %}
+    <a href="/{{ pref_slug }}/" class="area-card">
+      <h3>{{ info.name }}</h3>
+      <p>{{ info.count }}か所</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+<a href="/area/" class="back-link">‹ 戻る</a>
+{% endblock %}
