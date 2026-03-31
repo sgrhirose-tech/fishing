@@ -1,0 +1,39 @@
+{
+  "slug": "toi-beach",
+  "name": "土肥海水浴場",
+  "location": {
+    "latitude": 34.919807,
+    "longitude": 138.7855625
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "伊豆市",
+    "city_slug": "izu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 240,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 438.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "伊豆市の砂浜護岸、キス・アオリイカ・クロダイ向き",
+    "access": "土肥方面バス利用"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@13m"
+    ]
+  }
+}

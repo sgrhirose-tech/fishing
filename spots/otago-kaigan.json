@@ -1,0 +1,41 @@
+{
+  "slug": "otago-kaigan",
+  "name": "大田子海岸",
+  "location": {
+    "latitude": 34.8096016,
+    "longitude": 138.7656176
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "西伊豆町",
+    "city_slug": "nishiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 255,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 414.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "ダイナミックな地磯・ゴロタ、メジナ・イシダイ向き",
+    "access": "西伊豆町バス利用"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@91m"
+    ]
+  }
+}

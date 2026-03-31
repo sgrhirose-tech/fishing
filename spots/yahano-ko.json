@@ -1,0 +1,42 @@
+{
+  "slug": "yahano-ko",
+  "name": "八幡野港",
+  "location": {
+    "latitude": 34.8690405,
+    "longitude": 139.1031039
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "伊東市",
+    "city_slug": "ito"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 140,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 81.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "城ヶ崎南の漁港、アジ・メジナ・青物・アオリイカ",
+    "access": "伊豆高原駅から徒歩25分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.41,
+    "secondary_flags": [
+      "cliff",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=cliff@274m"
+    ]
+  }
+}

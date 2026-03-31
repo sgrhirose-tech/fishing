@@ -1,0 +1,39 @@
+{
+  "slug": "komezaki-ko",
+  "name": "米崎港",
+  "location": {
+    "latitude": 34.8711971,
+    "longitude": 138.7576461
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "伊豆市",
+    "city_slug": "izu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 285,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 166.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "伊豆市西岸の小漁港、アオリイカ・アジ向き",
+    "access": "土肥方面バス利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  }
+}

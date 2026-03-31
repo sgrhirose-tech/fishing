@@ -1,0 +1,39 @@
+{
+  "slug": "namikiri-ko",
+  "name": "波来港",
+  "location": {
+    "latitude": 34.7387913,
+    "longitude": 138.9997745
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "東伊豆町",
+    "city_slug": "higashiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 50,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 150.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "河津町の小漁港、アジ・メジナ・アオリイカ向き",
+    "access": "河津駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  }
+}

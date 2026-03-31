@@ -1,0 +1,39 @@
+{
+  "slug": "madogahama-park",
+  "name": "まどが浜海遊公園",
+  "location": {
+    "latitude": 34.6758067,
+    "longitude": 138.9551576
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "南伊豆",
+    "area_slug": "minami-izu",
+    "city": "下田市",
+    "city_slug": "shimoda"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 165,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1920.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "整備された護岸公園、ファミリー向き",
+    "access": "下田駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  }
+}

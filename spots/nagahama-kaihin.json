@@ -1,0 +1,43 @@
+{
+  "slug": "nagahama-kaihin",
+  "name": "長浜海浜公園",
+  "location": {
+    "latitude": 35.0564271,
+    "longitude": 139.0698981
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "熱海市",
+    "city_slug": "atami"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 105,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 569.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "熱海市の護岸公園、ゴロタ浜でメジナ・アオリイカ向き",
+    "access": "熱海駅からバス5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "cliff",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@78m",
+      "natural=cliff@279m"
+    ]
+  }
+}

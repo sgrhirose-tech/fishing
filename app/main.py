@@ -21,6 +21,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
 
+from .constants import REGIONS, VALID_REGION_SLUGS, PREF_TO_REGION, REGION_NAMES
 from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_slug
 from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, spot_slope_type, spot_type_label, assign_area, get_area_centers, get_photos
 from .weather import (fetch_weather, fetch_weather_range,
@@ -360,12 +361,19 @@ def page_top(request: Request):
         if p_slug:
             prefs.setdefault(p_slug, {"name": p_name, "count": 0})
             prefs[p_slug]["count"] += 1
-    _PREF_ORDER = ["chiba", "tokyo", "kanagawa", "shizuoka", "aichi", "mie"]
-    prefs = {k: prefs[k] for k in _PREF_ORDER if k in prefs}
+    region_groups = []
+    for r in REGIONS:
+        region_prefs = {slug: prefs[slug] for slug in r["prefs"] if slug in prefs}
+        if region_prefs:
+            region_groups.append({
+                "slug": r["slug"],
+                "name": r["name"],
+                "prefs": region_prefs,
+            })
     return templates.TemplateResponse(request, "top.html", {
         "spots": spots,
         "tomorrow": _tomorrow(),
-        "prefs": prefs,
+        "region_groups": region_groups,
     })
 
 
@@ -400,14 +408,60 @@ def page_contact(request: Request):
 def page_safety(request: Request):
     return templates.TemplateResponse(request, "static_pages/safety.html", {})
 
+@app.get("/area/", response_class=HTMLResponse)
+def page_area_index(request: Request):
+    spots = load_spots()
+    prefs: dict = {}
+    for s in spots:
+        p_slug = s.get("area", {}).get("pref_slug", "")
+        p_name = s.get("area", {}).get("prefecture", "")
+        if p_slug:
+            prefs.setdefault(p_slug, {"name": p_name, "count": 0})
+            prefs[p_slug]["count"] += 1
+    region_groups = []
+    for r in REGIONS:
+        region_prefs = {slug: prefs[slug] for slug in r["prefs"] if slug in prefs}
+        if region_prefs:
+            region_groups.append({
+                "slug": r["slug"],
+                "name": r["name"],
+                "prefs": region_prefs,
+            })
+    return templates.TemplateResponse(request, "area_index.html", {
+        "region_groups": region_groups,
+    })
 
-@app.get("/{pref_slug}/", response_class=HTMLResponse)
-def page_pref(request: Request, pref_slug: str):
+
+@app.get("/{slug}/", response_class=HTMLResponse)
+def page_pref_or_region(request: Request, slug: str):
+    # 地方ページ
+    if slug in VALID_REGION_SLUGS:
+        region = next(r for r in REGIONS if r["slug"] == slug)
+        all_spots = load_spots()
+        prefs: dict = {}
+        for s in all_spots:
+            p_slug = s.get("area", {}).get("pref_slug", "")
+            p_name = s.get("area", {}).get("prefecture", "")
+            if p_slug in region["prefs"]:
+                prefs.setdefault(p_slug, {"name": p_name, "count": 0})
+                prefs[p_slug]["count"] += 1
+        if not prefs:
+            raise HTTPException(status_code=404)
+        return templates.TemplateResponse(request, "region.html", {
+            "region_slug": slug,
+            "region_name": region["name"],
+            "prefs": prefs,
+        })
+
+    # 都道府県ページ
     all_spots = load_spots()
-    spots = [s for s in all_spots if s.get("area", {}).get("pref_slug") == pref_slug]
+    spots = [s for s in all_spots if s.get("area", {}).get("pref_slug") == slug]
     if not spots:
         raise HTTPException(status_code=404)
+    pref_slug = slug
     pref_name = spots[0]["area"]["prefecture"]
+    region_slug = PREF_TO_REGION.get(pref_slug, "")
+    region_name = REGION_NAMES.get(region_slug, "")
     areas: dict = {}
     for s in spots:
         a_slug = s["area"]["area_slug"]
@@ -425,6 +479,8 @@ def page_pref(request: Request, pref_slug: str):
     return templates.TemplateResponse(request, "pref.html", {
         "pref_slug": pref_slug,
         "pref_name": pref_name,
+        "region_slug": region_slug,
+        "region_name": region_name,
         "areas": areas,
         "cities": cities,
         "spots": spots,
@@ -441,6 +497,8 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
         raise HTTPException(status_code=404)
     pref_name = spots[0]["area"]["prefecture"]
     area_name = spots[0]["area"]["area_name"]
+    region_slug = PREF_TO_REGION.get(pref_slug, "")
+    region_name = REGION_NAMES.get(region_slug, "")
     cities: dict = {}
     for s in spots:
         c_slug = s["area"]["city_slug"]
@@ -452,6 +510,8 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
         "area_slug": area_slug,
         "pref_name": pref_name,
         "area_name": area_name,
+        "region_slug": region_slug,
+        "region_name": region_name,
         "cities": cities,
         "spots": spots,
     })
@@ -469,6 +529,8 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     pref_name = spots[0]["area"]["prefecture"]
     area_name = spots[0]["area"]["area_name"]
     city_name = spots[0]["area"]["city"]
+    region_slug = PREF_TO_REGION.get(pref_slug, "")
+    region_name = REGION_NAMES.get(region_slug, "")
     return templates.TemplateResponse(request, "city.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -476,6 +538,8 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "pref_name": pref_name,
         "area_name": area_name,
         "city_name": city_name,
+        "region_slug": region_slug,
+        "region_name": region_name,
         "spots": spots,
     })
 
@@ -493,6 +557,8 @@ def page_spot_detail(
         raise HTTPException(status_code=404, detail="スポットが見つかりません")
     today_str    = _today()
     tomorrow_str = _tomorrow()
+    region_slug = PREF_TO_REGION.get(pref_slug, "")
+    region_name = REGION_NAMES.get(region_slug, "")
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -501,4 +567,6 @@ def page_spot_detail(
         "spot_type":          spot_type_label(spot),
         "photos":             get_photos(slug),
         "preloaded_forecast": _compute_forecast(spot),
+        "region_slug":        region_slug,
+        "region_name":        region_name,
     })

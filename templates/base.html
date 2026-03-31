@@ -60,7 +60,7 @@
       <a href="/" class="site-title">🎣 Tsuricast</a>
       <ul>
         <li><a href="/">ホーム</a></li>
-        <li><a href="/spots">釣り場一覧</a></li>
+        <li><a href="/area/">釣り場を探す</a></li>
         <li><a href="/safety">安全のご注意</a></li>
       </ul>
     </nav>
@@ -102,5 +102,12 @@
   <script src="/static/js/map.js"></script>
   {% block scripts %}{% endblock %}
   <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="ページ上に戻る">▲</button>
+  <script>
+    document.querySelectorAll('.back-link').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        if (history.length > 1) { e.preventDefault(); history.back(); }
+      });
+    });
+  </script>
 </body>
 </html>

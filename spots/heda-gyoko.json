@@ -1,0 +1,41 @@
+{
+  "slug": "heda-gyoko",
+  "name": "戸田漁港",
+  "location": {
+    "latitude": 34.970964,
+    "longitude": 138.7767112
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "沼津市",
+    "city_slug": "numazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 290,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 476.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "深い湾内の大型漁港、アジ・クロダイ・マダイ向き",
+    "access": "沼津駅からバス50分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.85,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@14m"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "sotourahama",
+  "name": "外浦海水浴場",
+  "location": {
+    "latitude": 34.6752174,
+    "longitude": 138.9723945
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "下田市",
+    "city_slug": "shimoda"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1183.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "下田市の穏やかな砂浜・護岸、キス・ウキ釣り向き",
+    "access": "下田駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.77,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@34m"
+    ]
+  }
+}
