@@ -1,0 +1,40 @@
+{
+  "slug": "chigara-ko",
+  "name": "知柄港",
+  "location": {
+    "latitude": 34.7779665,
+    "longitude": 137.1766597
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "蒲郡市",
+    "city_slug": "gamagori"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "shell",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "貝殻主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "蒲郡市の小漁港、クロダイ・メバル向き",
+    "access": "蒲郡駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@108m",
+      "man_made=breakwater@265m"
+    ]
+  }
+}

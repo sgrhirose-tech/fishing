@@ -1,0 +1,39 @@
+{
+  "slug": "otanigawa-hosui",
+  "name": "大谷川河口・放水路記念公園",
+  "location": {
+    "latitude": 34.946757,
+    "longitude": 138.4282386
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "静岡市",
+    "city_slug": "shizuoka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 160,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "河口護岸、シーバス・ハゼ・投げ釣り向き",
+    "access": "静岡駅からバス15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  }
+}

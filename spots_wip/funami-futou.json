@@ -1,0 +1,39 @@
+{
+  "slug": "funami-futou",
+  "name": "船見埠頭",
+  "location": {
+    "latitude": 35.0744312,
+    "longitude": 136.8860804
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "名古屋市",
+    "city_slug": "nagoya"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "クロダイ・シーバスの落とし込み人気ポイント",
+    "access": "築地口駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:埠頭"
+    ]
+  }
+}

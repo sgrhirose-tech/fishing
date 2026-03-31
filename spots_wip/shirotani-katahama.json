@@ -1,0 +1,42 @@
+{
+  "slug": "shirotani-katahama",
+  "name": "白谷・片浜海浜公園",
+  "location": {
+    "latitude": 34.6862847,
+    "longitude": 137.2328961
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "田原市",
+    "city_slug": "tahara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "田原市の護岸公園、クロダイ・キス・サビキ向き",
+    "access": "豊橋方面から車利用"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@140m",
+      "man_made=breakwater@232m",
+      "man_made=breakwater@280m",
+      "natural=beach@89m"
+    ]
+  }
+}

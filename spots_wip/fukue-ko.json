@@ -1,0 +1,39 @@
+{
+  "slug": "fukue-ko",
+  "name": "福江港",
+  "location": {
+    "latitude": 32.6959841,
+    "longitude": 128.8512612
+  },
+  "area": {
+    "prefecture": "長崎県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "五島市",
+    "city_slug": "goto"
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 839.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "田原市の港、ウナギ・クロダイ・ハゼ向き",
+    "access": "豊橋方面から車利用"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@298m"
+    ]
+  }
+}

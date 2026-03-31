@@ -1,0 +1,49 @@
+{
+  "slug": "bentenjima-kaihin",
+  "name": "弁天島海浜公園",
+  "location": {
+    "latitude": 34.6889427,
+    "longitude": 137.602743
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "浜松市",
+    "city_slug": "hamamatsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 220,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "浜名湖南端、護岸・砂浜でクロダイ・キス狙い",
+    "access": "弁天島駅から徒歩5分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.72,
+    "secondary_flags": [
+      "marina",
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@217m",
+      "leisure=marina@240m",
+      "man_made=breakwater@101m",
+      "man_made=breakwater@152m",
+      "man_made=breakwater@275m"
+    ]
+  }
+}
