@@ -22,7 +22,7 @@ AREAS_FILE = REPO_ROOT / "spots" / "_marine_areas.json"
 
 TARGET_DIRS = [
     REPO_ROOT / "unadjusted",
-    REPO_ROOT / "spots",
+    REPO_ROOT / "spots_wip",
 ]
 
 AREA_MAP = {
