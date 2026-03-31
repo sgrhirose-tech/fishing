@@ -179,7 +179,7 @@ def convert_spot(old: dict) -> dict:
 
 
 def main():
-    spots_dir = Path(__file__).parent / "spots"
+    spots_dir = Path(__file__).parent / "spots_wip"
     spots_dir.mkdir(exist_ok=True)
 
     # 各スポットを個別JSONファイルに書き出す
