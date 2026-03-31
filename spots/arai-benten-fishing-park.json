@@ -44,5 +44,6 @@
       "leisure=fishing@67m",
       "man_made=breakwater@215m"
     ]
-  }
+  },
+  "target_fish": []
 }

@@ -35,5 +35,11 @@
     ],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "タチウオ",
+    "クロダイ",
+    "アジ",
+    "スズキ"
+  ]
 }

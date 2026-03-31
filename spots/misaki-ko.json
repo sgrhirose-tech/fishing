@@ -38,5 +38,10 @@
       "man_made=breakwater@279m",
       "man_made=breakwater@293m"
     ]
-  }
+  },
+  "target_fish": [
+    "メジナ",
+    "クロダイ",
+    "アジ"
+  ]
 }

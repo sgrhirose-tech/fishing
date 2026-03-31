@@ -36,5 +36,10 @@
       "man_made=breakwater@189m",
       "man_made=breakwater@222m"
     ]
-  }
+  },
+  "target_fish": [
+    "マゴチ",
+    "ヒラメ",
+    "シロギス"
+  ]
 }

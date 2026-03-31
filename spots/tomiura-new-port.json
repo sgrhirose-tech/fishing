@@ -41,5 +41,9 @@
       "natural=cliff@269m",
       "waterway=dock@49m"
     ]
-  }
+  },
+  "target_fish": [
+    "サバ",
+    "アジ"
+  ]
 }

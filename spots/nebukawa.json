@@ -38,5 +38,9 @@
     "osm_evidence": [
       "natural=cliff@188m"
     ]
-  }
+  },
+  "target_fish": [
+    "クロダイ",
+    "シロギス"
+  ]
 }

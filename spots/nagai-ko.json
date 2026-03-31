@@ -42,5 +42,11 @@
       "man_made=pier@108m",
       "man_made=pier@120m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "クロダイ",
+    "カレイ",
+    "アジ"
+  ]
 }
