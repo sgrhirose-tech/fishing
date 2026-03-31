@@ -1,15 +1,15 @@
 {
-  "slug": "omaezaki-ko",
-  "name": "御前崎港",
+  "slug": "marine-park-omaezaki",
+  "name": "マリンパーク御前崎",
   "location": {
-    "latitude": 34.6088857,
-    "longitude": 138.2168841
+    "latitude": 34.6067212,
+    "longitude": 138.2268788
   },
   "area": {
     "prefecture": "静岡県",
     "pref_slug": "shizuoka",
-    "area_name": "遠州灘",
-    "area_slug": "enshu-nada",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
     "city": "御前崎市",
     "city_slug": "omaezaki"
   },
@@ -25,15 +25,20 @@
     "terrain_summary": ""
   },
   "info": {
-    "notes": "大型港で多彩魚種、青物・アオリイカ・アジ",
+    "notes": "整備された護岸・公園、初心者・ファミリー向き",
     "access": "御前崎市内バス利用",
     "photo_url": ""
   },
   "classification": {
-    "primary_type": "fishing_facility",
+    "primary_type": "sand_beach",
     "confidence": 1.0,
-    "secondary_flags": [],
+    "secondary_flags": [
+      "parking_nearby"
+    ],
     "source": "manual",
-    "osm_evidence": []
+    "osm_evidence": [
+      "natural=beach@213m",
+      "natural=beach@245m"
+    ]
   }
 }
