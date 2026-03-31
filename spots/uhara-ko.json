@@ -41,5 +41,8 @@
       "waterway=dock@126m",
       "waterway=dock@13m"
     ]
-  }
+  },
+  "target_fish": [
+    "メジナ"
+  ]
 }

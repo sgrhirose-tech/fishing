@@ -41,5 +41,10 @@
       "man_made=breakwater@228m",
       "man_made=pier@227m"
     ]
-  }
+  },
+  "target_fish": [
+    "アオリイカ",
+    "メジナ",
+    "アジ"
+  ]
 }

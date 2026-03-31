@@ -45,5 +45,9 @@
       "man_made=breakwater@152m",
       "man_made=breakwater@275m"
     ]
-  }
+  },
+  "target_fish": [
+    "クロダイ",
+    "シロギス"
+  ]
 }

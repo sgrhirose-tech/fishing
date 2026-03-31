@@ -36,5 +36,10 @@
       "natural=beach@60m",
       "waterway=dock@240m"
     ]
-  }
+  },
+  "target_fish": [
+    "クロダイ",
+    "スズキ",
+    "シロギス"
+  ]
 }

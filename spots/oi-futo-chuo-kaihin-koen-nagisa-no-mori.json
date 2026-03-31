@@ -38,5 +38,10 @@
     "osm_evidence": [
       "man_made=pier@100m"
     ]
-  }
+  },
+  "target_fish": [
+    "クロダイ",
+    "ハゼ",
+    "スズキ"
+  ]
 }

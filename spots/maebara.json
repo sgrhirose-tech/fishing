@@ -41,5 +41,11 @@
       "man_made=breakwater@254m",
       "natural=beach@224m"
     ]
-  }
+  },
+  "target_fish": [
+    "アジ",
+    "スズキ",
+    "シロギス",
+    "ブリ"
+  ]
 }

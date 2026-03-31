@@ -41,5 +41,6 @@
       "natural=cliff@200m",
       "natural=cliff@289m"
     ]
-  }
+  },
+  "target_fish": []
 }
