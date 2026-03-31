@@ -349,7 +349,7 @@ def main():
         # --force なければ分類済みをスキップ
         skip_classified = not args.force
     else:
-        src_dir = REPO_ROOT / "unadjusted"
+        src_dir = REPO_ROOT / "spots_wip"
         dst_dir = REPO_ROOT / "spots_wip"
         dry_run = not args.apply
         skip_classified = args.skip_classified
