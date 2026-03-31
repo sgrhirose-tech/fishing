@@ -51,11 +51,9 @@
 
     <!-- ③ 都道府県から探す（アコーディオン） -->
     <section class="area-links">
+      <h2>都道府県から探す</h2>
       <details class="pref-accordion">
-        <summary>
-          <span class="pref-accordion-title">都道府県から探す</span>
-          <span class="pref-accordion-hint">ここをタップして開閉</span>
-        </summary>
+        <summary><span class="pref-accordion-hint">ここをタップして開閉</span></summary>
         {% for rg in region_groups %}
         <div class="region-group">
           <h3><a href="/{{ rg.slug }}/">{{ rg.name }}</a></h3>
