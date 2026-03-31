@@ -58,6 +58,14 @@ SEABED_TYPE_OPTIONS = [
     ("mixed",      "混合"),
 ]
 
+CLASSIFICATION_TYPE_OPTIONS = [
+    ("sand_beach",       "砂浜"),
+    ("rocky_shore",      "磯・岩場"),
+    ("breakwater",       "防波堤・堤防"),
+    ("fishing_facility", "漁港・釣り施設"),
+    ("unknown",          "不明"),
+]
+
 BEARING_OPTIONS = list(range(0, 360, 5))
 
 # area_name → (area_slug, pref_slug, prefecture)
@@ -281,6 +289,7 @@ var AREA_SLUG_MAP = {
 };
 var SEABED_OPTIONS = __SEABED_OPTIONS_JSON__;
 var BEARING_OPTIONS = __BEARING_OPTIONS_JSON__;
+var CLASSIFICATION_OPTIONS = __CLASSIFICATION_OPTIONS_JSON__;
 
 // ---- error display (debug) ----
 window.onerror = function(msg, src, line) {
@@ -430,6 +439,13 @@ function showSpot(idx) {
     '<option value="false"' + (phys.surfer_spot !== true ? ' selected' : '') + '>なし</option>'
   ].join('');
 
+  // classification select options
+  var currentType = (spot.classification && spot.classification.primary_type) ? spot.classification.primary_type : 'unknown';
+  var classifOpts = CLASSIFICATION_OPTIONS.map(function(o) {
+    var sel = o[0] === currentType ? ' selected' : '';
+    return '<option value="' + o[0] + '"' + sel + '>' + o[1] + '</option>';
+  }).join('');
+
   // area_name options
   var areaNames = Object.keys(AREA_SLUG_MAP);
   var areaNameOpts = areaNames.map(function(n) {
@@ -470,6 +486,11 @@ function showSpot(idx) {
     '</div>' +
     '<div class="field-row"><label>サーファー</label>' +
       '<select data-field="surfer_spot">' + surferOpts + '</select>' +
+    '</div>' +
+
+    '<div class="section-title">施設区分</div>' +
+    '<div class="field-row"><label>施設種別</label>' +
+      '<select data-field="primary_type">' + classifOpts + '</select>' +
     '</div>' +
 
     '<div class="section-title">水深</div>' +
@@ -586,7 +607,8 @@ function saveChanges() {
       notes:     fv('notes'),
       access:    fv('access'),
       photo_url: fv('photo_url')
-    }
+    },
+    primary_type: fv('primary_type')
   };
 
   // update in-memory SPOTS
@@ -756,6 +778,13 @@ def _save_spot(payload):
         df["bottom_kisugo_score"] = der["bottom_kisugo_score"]
     if der.get("terrain_summary") is not None:
         df["terrain_summary"] = der["terrain_summary"]
+
+    new_type = payload.get("primary_type")
+    if new_type:
+        clf = spot.setdefault("classification", {})
+        clf["primary_type"] = new_type
+        clf["source"]       = "manual"
+        clf["confidence"]   = 1.0
 
     info = payload.get("info", {})
     inf = spot.setdefault("info", {})
@@ -979,6 +1008,7 @@ def build_html(spots, save_mode='pythonista', dir_key=None):
     spots_js = json.dumps(spots, ensure_ascii=False)
     seabed_js = json.dumps([[v, l] for v, l in SEABED_TYPE_OPTIONS], ensure_ascii=False)
     bearing_js = json.dumps(BEARING_OPTIONS, ensure_ascii=False)
+    classif_js = json.dumps([[v, l] for v, l in CLASSIFICATION_TYPE_OPTIONS], ensure_ascii=False)
     dir_opts = "".join(
         f'<option value="{k}"{"" if k != dir_key else " selected"}>{k}</option>'
         for k in AVAILABLE_DIRS
@@ -989,8 +1019,9 @@ def build_html(spots, save_mode='pythonista', dir_key=None):
     html = html.replace("__DIR_KEY__",             dir_key)
     html = html.replace("__DIR_OPTIONS_HTML__",    dir_opts)
     html = html.replace("__SPOTS_JSON__",          spots_js)
-    html = html.replace("__SEABED_OPTIONS_JSON__",  seabed_js)
-    html = html.replace("__BEARING_OPTIONS_JSON__", bearing_js)
+    html = html.replace("__SEABED_OPTIONS_JSON__",          seabed_js)
+    html = html.replace("__BEARING_OPTIONS_JSON__",         bearing_js)
+    html = html.replace("__CLASSIFICATION_OPTIONS_JSON__",  classif_js)
     return html
 
 
