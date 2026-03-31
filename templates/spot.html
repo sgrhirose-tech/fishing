@@ -105,6 +105,18 @@
       <td id="conbini-name"></td>
     </tr>
     <tr><th>メモ</th><td>{{ spot.info.notes }}</td></tr>
+    {% if spot.target_fish %}
+    <tr>
+      <th>対象魚種</th>
+      <td>
+        <div class="fish-chips">
+          {% for fish in spot.target_fish %}
+          <span class="fish-chip">{{ fish }}</span>
+          {% endfor %}
+        </div>
+      </td>
+    </tr>
+    {% endif %}
   </table>
 </section>
 
