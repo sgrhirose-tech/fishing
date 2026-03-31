@@ -4,6 +4,7 @@ OpenStreetMap (Overpass API) 周辺施設取得モジュール。
 """
 
 import json
+import pathlib
 import urllib.parse
 import urllib.request
 
@@ -21,6 +22,30 @@ FACILITY_TYPES = [
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
 
 _osm_cache: dict = {}
+
+# ── facilities.json キャッシュ ──────────────────────────────────
+_FACILITIES_DATA: dict = {}  # slug -> list[dict]
+
+
+def load_facilities_json(path: str | None = None) -> None:
+    """起動時に data/facilities.json をメモリに読み込む。"""
+    global _FACILITIES_DATA
+    if path is None:
+        path = str(pathlib.Path(__file__).parent.parent / "data" / "facilities.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        _FACILITIES_DATA = {k: v for k, v in data.items() if k != "_meta"}
+        print(f"[facilities] {len(_FACILITIES_DATA)} スポット分の施設データを読み込みました")
+    except FileNotFoundError:
+        print(f"[facilities] {path} が見つかりません。Overpass API フォールバックを使用します")
+    except Exception as e:
+        print(f"[facilities] 読み込みエラー: {e}")
+
+
+def get_cached_facilities(slug: str) -> list[dict] | None:
+    """slug のキャッシュ済み施設リストを返す。未収録なら None。"""
+    return _FACILITIES_DATA.get(slug)
 
 
 def fetch_nearby_facilities(lat: float, lon: float,
