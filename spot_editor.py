@@ -451,7 +451,7 @@ function showSpot(idx) {
   ].join('');
 
   // classification select options
-  var currentType = (spot.classification && spot.classification.primary_type) ? spot.classification.primary_type : 'unknown';
+  var currentType = (s.classification && s.classification.primary_type) ? s.classification.primary_type : 'unknown';
   var classifOpts = CLASSIFICATION_OPTIONS.map(function(o) {
     var sel = o[0] === currentType ? ' selected' : '';
     return '<option value="' + o[0] + '"' + sel + '>' + o[1] + '</option>';
