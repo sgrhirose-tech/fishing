@@ -26,8 +26,12 @@ AVAILABLE_DIRS = {
 DEFAULT_DIR_KEY = "spots_wip"
 
 # slug バリデーション用定数（app/constants.py と同一の値を保つこと）
-_VALID_AREA_SLUGS = {"sagamibay", "miura", "tokyobay", "uchibo", "sotobo", "kujukuri"}
-_VALID_PREF_SLUGS = {"kanagawa", "tokyo", "chiba"}
+_VALID_AREA_SLUGS = {
+    "sagamibay", "miura", "tokyobay", "uchibo", "sotobo", "kujukuri",
+    "higashi-izu", "minami-izu", "nishi-izu",
+    "suruga-bay", "enshu-nada", "mikawa-bay", "isewan", "kumano-nada",
+}
+_VALID_PREF_SLUGS = {"kanagawa", "tokyo", "chiba", "shizuoka", "aichi", "mie"}
 _CITY_SLUG_RE = re.compile(r'^[a-z0-9\-]+$')
 
 
@@ -265,7 +269,15 @@ var AREA_SLUG_MAP = {
   "東京湾":   ["tokyobay",   "kanagawa", "神奈川県"],
   "内房":     ["uchibo",     "chiba",    "千葉県"],
   "外房":     ["sotobo",     "chiba",    "千葉県"],
-  "九十九里": ["kujukuri",   "chiba",    "千葉県"]
+  "九十九里": ["kujukuri",   "chiba",    "千葉県"],
+  "東伊豆":   ["higashi-izu", "shizuoka", "静岡県"],
+  "南伊豆":   ["minami-izu",  "shizuoka", "静岡県"],
+  "西伊豆":   ["nishi-izu",   "shizuoka", "静岡県"],
+  "駿河湾":   ["suruga-bay",  "shizuoka", "静岡県"],
+  "遠州灘":   ["enshu-nada",  "shizuoka", "静岡県"],
+  "三河湾":   ["mikawa-bay",  "aichi",    "愛知県"],
+  "伊勢湾":   ["isewan",      "aichi",    "愛知県"],
+  "熊野灘":   ["kumano-nada", "mie",      "三重県"]
 };
 var SEABED_OPTIONS = __SEABED_OPTIONS_JSON__;
 var BEARING_OPTIONS = __BEARING_OPTIONS_JSON__;
