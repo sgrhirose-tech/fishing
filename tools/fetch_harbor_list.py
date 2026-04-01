@@ -23,11 +23,17 @@ tide736.net から対象都県の港コードと座標を取得して data/harbo
 import argparse
 import json
 import re
+import ssl
 import sys
 import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
+
+# SSL 証明書検証を無効化（macOS の証明書ストア問題 / 自己署名証明書対策）
+_SSL_CTX = ssl.create_default_context()
+_SSL_CTX.check_hostname = False
+_SSL_CTX.verify_mode = ssl.CERT_NONE
 
 _REPO_ROOT = Path(__file__).parent.parent
 OUTPUT_PATH = _REPO_ROOT / "data" / "harbor_list.json"
@@ -65,7 +71,7 @@ def fetch_harbor_codes(pc: int) -> list[dict]:
     url = f"{TIDE_SITE}/?pc={pc}"
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
+        with urllib.request.urlopen(req, timeout=15, context=_SSL_CTX) as resp:
             html = resp.read().decode("utf-8", errors="replace")
     except Exception as e:
         print(f"  [警告] pc={pc} HTML取得失敗: {e}")
@@ -99,7 +105,7 @@ def fetch_harbor_codes(pc: int) -> list[dict]:
         for json_url in json_candidates:
             req = urllib.request.Request(json_url, headers={"User-Agent": USER_AGENT})
             try:
-                with urllib.request.urlopen(req, timeout=10) as resp:
+                with urllib.request.urlopen(req, timeout=10, context=_SSL_CTX) as resp:
                     body = resp.read().decode("utf-8", errors="replace")
                 data = json.loads(body)
                 # [{"hc": 1, "name": "小田原"}, ...] 形式を想定
@@ -136,7 +142,7 @@ def probe_harbor_codes(pc: int, max_hc: int = 99) -> list[dict]:
         )
         req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
         try:
-            with urllib.request.urlopen(req, timeout=10) as resp:
+            with urllib.request.urlopen(req, timeout=10, context=_SSL_CTX) as resp:
                 body = resp.read().decode("utf-8", errors="replace")
             data = json.loads(body)
             # データが入っていれば有効な港コード
@@ -146,8 +152,10 @@ def probe_harbor_codes(pc: int, max_hc: int = 99) -> list[dict]:
                 harbor_name = data.get("harbor_name") or data.get("name") or f"港{hc:02d}"
                 harbors.append({"pc": pc, "hc": hc, "harbor_name": harbor_name})
                 print(f"    hc={hc}: {harbor_name} ✓")
-        except Exception:
-            pass
+        except Exception as e:
+            if hc == 1:
+                # 最初のリクエストだけエラーを表示して原因把握に役立てる
+                print(f"    [hc=1 エラー] {e}")
         time.sleep(0.5)
 
     return harbors
@@ -184,7 +192,7 @@ def geocode_harbor(harbor_name: str, pref_name: str) -> tuple[float, float] | No
             "Accept-Language": "ja",
         })
         try:
-            with urllib.request.urlopen(req, timeout=10) as resp:
+            with urllib.request.urlopen(req, timeout=10, context=_SSL_CTX) as resp:
                 results = json.loads(resp.read().decode("utf-8"))
             if results:
                 lat = float(results[0]["lat"])
