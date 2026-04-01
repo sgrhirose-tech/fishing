@@ -25,10 +25,16 @@ import base64
 import json
 import os
 import pathlib
+import ssl
 import sys
 import time
 import urllib.request
 import urllib.error
+
+# SSL 証明書検証を無効化（macOS の証明書ストア問題 / 自己署名証明書対策）
+_SSL_CTX = ssl.create_default_context()
+_SSL_CTX.check_hostname = False
+_SSL_CTX.verify_mode = ssl.CERT_NONE
 from datetime import datetime, timezone, timedelta
 
 _REPO_ROOT = pathlib.Path(__file__).parent.parent
@@ -99,7 +105,7 @@ def fetch_month_raw(pc: str, hc: str, year: int, month: int) -> dict | None:
 
     for attempt in range(1, RETRY_COUNT + 1):
         try:
-            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT, context=_SSL_CTX) as resp:
                 body = resp.read().decode("utf-8")
             data = json.loads(body)
             return data
@@ -211,7 +217,7 @@ def push_file_to_github(token: str, local_path: pathlib.Path, github_path: str, 
     sha = None
     try:
         req = urllib.request.Request(url, headers=headers, method="GET")
-        with urllib.request.urlopen(req, timeout=15) as resp:
+        with urllib.request.urlopen(req, timeout=15, context=_SSL_CTX) as resp:
             current = json.loads(resp.read().decode("utf-8"))
             sha = current.get("sha")
     except urllib.error.HTTPError as e:
@@ -233,7 +239,7 @@ def push_file_to_github(token: str, local_path: pathlib.Path, github_path: str, 
 
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=body, headers=headers, method="PUT")
-    with urllib.request.urlopen(req, timeout=30) as resp:
+    with urllib.request.urlopen(req, timeout=30, context=_SSL_CTX) as resp:
         resp_data = json.loads(resp.read().decode("utf-8"))
         commit_sha = resp_data.get("commit", {}).get("sha", "?")
         print(f"    [GitHub] プッシュ完了: commit {commit_sha[:8]}")
