@@ -4,6 +4,12 @@
 {% block description %}{{ fish_name }}が釣れる釣り場一覧。千葉・東京・神奈川・静岡の{{ total }}か所のスポットを紹介。釣れる時期・釣法もチェック。{% endblock %}
 
 {% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <a href="/fish/">魚種から探す</a> &rsaquo;
+  <span>{{ fish_name }}</span>
+</nav>
+
 <h1>{{ fish_name }}が釣れる釣り場</h1>
 
 <!-- 釣れる時期 -->
@@ -44,6 +50,16 @@
 {% endif %}
 
 <!-- エリア別スポット一覧 -->
+{% if fish_data.photo %}
+<figure class="fish-photo">
+  <img src="/static/img/fish/{{ fish_data.photo.file }}" alt="{{ fish_name }}" loading="lazy">
+  <figcaption class="fish-photo-credit">
+    出典: <a href="{{ fish_data.photo.source_url }}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> /
+    作者: {{ fish_data.photo.author }} /
+    ライセンス: <a href="{{ fish_data.photo.license_url }}" target="_blank" rel="noopener noreferrer">{{ fish_data.photo.license }}</a>
+  </figcaption>
+</figure>
+{% endif %}
 <section class="fish-spots-section">
   <h2>釣り場一覧（{{ total }}か所）</h2>
   {% if areas %}
@@ -69,4 +85,5 @@
   <p>現在登録されているスポットはありません。</p>
   {% endif %}
 </section>
+<p class="back-link"><a href="/fish/">&lsaquo; 魚種一覧に戻る</a></p>
 {% endblock %}

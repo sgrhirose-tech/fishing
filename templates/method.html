@@ -98,4 +98,22 @@
   </div>
 </section>
 {% endif %}
+
+{% if data.videos %}
+<section class="method-videos-section">
+  <h2>参考動画</h2>
+  <div class="method-video-grid">
+    {% for v in data.videos %}
+    <a href="https://www.youtube.com/watch?v={{ v.youtube_id }}"
+       target="_blank" rel="noopener noreferrer"
+       class="method-video-card">
+      <img src="https://img.youtube.com/vi/{{ v.youtube_id }}/hqdefault.jpg"
+           alt="{{ v.title }}" loading="lazy">
+      <span class="method-video-title">{{ v.title }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+<p class="back-link"><a href="/method/">&lsaquo; 釣法一覧に戻る</a></p>
 {% endblock %}

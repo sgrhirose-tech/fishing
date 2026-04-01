@@ -486,6 +486,7 @@ def page_fish_index(request: Request):
             "count": count,
             "method": fish_data.get("method", []),
         })
+    fish_list = [f for f in fish_list if f["count"] > 0]
     fish_list.sort(key=lambda x: x["count"], reverse=True)
     return templates.TemplateResponse(request, "fish_index.html", {
         "fish_list": fish_list,
