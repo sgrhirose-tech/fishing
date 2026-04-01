@@ -41,6 +41,7 @@ _REPO_ROOT = pathlib.Path(__file__).parent.parent
 sys.path.insert(0, str(_REPO_ROOT))
 
 HARBOR_MAPPING_PATH = _REPO_ROOT / "data" / "harbor_mapping.json"
+HARBOR_LIST_PATH    = _REPO_ROOT / "data" / "harbor_list.json"
 TIDES_DIR = _REPO_ROOT / "data" / "tides"
 
 TIDE_API_BASE = "https://api.tide736.net/get_tide.php"
@@ -60,17 +61,32 @@ JST = timezone(timedelta(hours=9))
 
 
 # ─────────────────────────────────────────────────────────
-# harbor_mapping.json の読み込み
+# 港リストの読み込み
 # ─────────────────────────────────────────────────────────
 
-def load_harbor_mapping() -> dict:
-    """harbor_mapping.json を読み込んで返す。"""
+def load_all_harbors() -> list[dict]:
+    """
+    harbor_list.json から全港リストを返す（全国対応）。
+    harbor_list.json がなければ harbor_mapping.json にフォールバック。
+    """
+    if HARBOR_LIST_PATH.exists():
+        with open(HARBOR_LIST_PATH, encoding="utf-8") as f:
+            data = json.load(f)
+        harbors = []
+        for h in data.get("harbors", []):
+            code = h.get("harbor_code") or f"{h['pc']}-{h['hc']}"
+            pc, hc = code.split("-", 1)
+            harbors.append({
+                "harbor_code": code,
+                "harbor_name": h.get("harbor_name", code),
+                "pc": pc,
+                "hc": hc,
+            })
+        return harbors
+
+    # フォールバック: harbor_mapping.json から一意の港を抽出
     with open(HARBOR_MAPPING_PATH, encoding="utf-8") as f:
-        return json.load(f)
-
-
-def unique_harbors(mapping: dict) -> list[dict]:
-    """spot → harbor マッピングから重複を除いた港リストを返す。"""
+        mapping = json.load(f)
     seen: set[str] = set()
     harbors = []
     for spot_data in mapping.get("spots", {}).values():
@@ -289,18 +305,17 @@ def main() -> None:
 
     print("=== 潮汐データバッチ開始 ===")
 
-    mapping = load_harbor_mapping()
-    harbors = unique_harbors(mapping)
+    harbors = load_all_harbors()
 
     if not harbors:
-        print("[情報] harbor_mapping.json に港が登録されていません。終了します。")
-        print("  → data/harbor_mapping.json の spots に港コードを追加してください。")
+        print("[情報] 港リストが空です。終了します。")
+        print("  → python tools/fetch_harbor_list.py を実行して harbor_list.json を生成してください。")
         return
 
     if args.harbor:
         harbors = [h for h in harbors if h["harbor_code"] == args.harbor]
         if not harbors:
-            print(f"[エラー] 港コード '{args.harbor}' が harbor_mapping.json に存在しません")
+            print(f"[エラー] 港コード '{args.harbor}' が見つかりません")
             sys.exit(1)
 
     months = target_months(args.month)
