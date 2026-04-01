@@ -127,9 +127,62 @@ def fetch_harbor_codes(pc: int) -> list[dict]:
     return harbors
 
 
+def fetch_harbor_name_from_html(pc: int, hc: int) -> str | None:
+    """
+    tide736.net の HTML ページ（?pc=PC&hc=HC）から港名を取得する。
+    <select name="hc"> の selected option、またはページタイトルから抽出する。
+    """
+    url = f"{TIDE_SITE}/?pc={pc}&hc={hc}"
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=10, context=_SSL_CTX) as resp:
+            html = resp.read().decode("utf-8", errors="replace")
+    except Exception:
+        return None
+
+    # パターン1: <option value="hc" selected>港名</option>
+    m = re.search(
+        rf'<option[^>]*value=["\']?{hc}["\']?[^>]*selected[^>]*>(.*?)</option>',
+        html, re.IGNORECASE
+    )
+    if not m:
+        m = re.search(
+            rf'<option[^>]*selected[^>]*value=["\']?{hc}["\']?[^>]*>(.*?)</option>',
+            html, re.IGNORECASE
+        )
+    if m:
+        name = re.sub(r'<[^>]+>', '', m.group(1)).strip()
+        if name:
+            return name
+
+    # パターン2: JavaScript 変数 / JSON 配列に港名が埋め込まれているケース
+    # 例: ["小田原","真鶴",...] や {hc:1,name:"小田原"}
+    for pattern in [
+        rf'"hc"\s*:\s*{hc}\s*,\s*"name"\s*:\s*"([^"]+)"',
+        rf'\bname\s*:\s*["\']([^"\']+)["\'][^}}]*hc\s*:\s*{hc}\b',
+        rf'\[{hc}\s*,\s*["\']([^"\']+)["\']',
+    ]:
+        m = re.search(pattern, html, re.IGNORECASE)
+        if m:
+            return m.group(1).strip()
+
+    # パターン3: ページタイトルに港名が含まれる場合
+    m = re.search(r'<title>(.*?)</title>', html, re.IGNORECASE)
+    if m:
+        title = re.sub(r'<[^>]+>', '', m.group(1)).strip()
+        # "小田原 - tide736.net" のような形式を想定
+        if '-' in title:
+            candidate = title.split('-')[0].strip()
+            if candidate:
+                return candidate
+
+    return None
+
+
 def probe_harbor_codes(pc: int, max_hc: int = 99) -> list[dict]:
     """
     hc=1〜max_hc を試してデータが返る港コードを発見する（フォールバック）。
+    API レスポンスの tide.port フィールドから港名・緯度経度を直接取得する。
     1リクエストごとに0.5秒待機。
     """
     from datetime import datetime
@@ -145,16 +198,30 @@ def probe_harbor_codes(pc: int, max_hc: int = 99) -> list[dict]:
             with urllib.request.urlopen(req, timeout=10, context=_SSL_CTX) as resp:
                 body = resp.read().decode("utf-8", errors="replace")
             data = json.loads(body)
-            # データが入っていれば有効な港コード
             chart = data.get("tide", {}).get("chart", {})
             if chart:
-                # レスポンス内に港名が含まれることがある
-                harbor_name = data.get("harbor_name") or data.get("name") or f"港{hc:02d}"
-                harbors.append({"pc": pc, "hc": hc, "harbor_name": harbor_name})
-                print(f"    hc={hc}: {harbor_name} ✓")
+                # tide.port に港名・座標が含まれている
+                port = data.get("tide", {}).get("port", {})
+                harbor_name = (
+                    port.get("harbor_namej")  # 日本語港名
+                    or port.get("harbor_name")  # ローマ字港名（フォールバック）
+                    or f"港{hc:02d}"
+                )
+                entry = {"pc": pc, "hc": hc, "harbor_name": harbor_name}
+                # 座標も取得できれば付与（Nominatim 不要）
+                try:
+                    lat = float(port.get("latitude") or 0)
+                    lon = float(port.get("longitude") or 0)
+                    if lat != 0 and lon != 0:
+                        entry["lat"] = lat
+                        entry["lon"] = lon
+                except (TypeError, ValueError):
+                    pass
+                harbors.append(entry)
+                coord_str = f"  ({entry.get('lat', '?')}, {entry.get('lon', '?')})" if "lat" in entry else ""
+                print(f"    hc={hc}: {harbor_name} ✓{coord_str}")
         except Exception as e:
             if hc == 1:
-                # 最初のリクエストだけエラーを表示して原因把握に役立てる
                 print(f"    [hc=1 エラー] {e}")
         time.sleep(0.5)
 
@@ -230,22 +297,25 @@ def main() -> None:
         harbors = fetch_harbor_codes(pc)
         print(f"  → {len(harbors)} 港を発見")
 
-        if not args.no_geocode and harbors:
-            print(f"  ジオコーディング中（Nominatim, {GEOCODE_INTERVAL}秒間隔）...")
-            for i, h in enumerate(harbors, 1):
+        # API から座標を取得できなかった港のみ Nominatim でジオコーディング
+        missing_coords = [h for h in harbors if "lat" not in h]
+        if not args.no_geocode and missing_coords:
+            print(f"  座標未取得 {len(missing_coords)} 港を Nominatim でジオコーディング中...")
+            for i, h in enumerate(missing_coords, 1):
                 coords = geocode_harbor(h["harbor_name"], pref_name)
                 if coords:
                     h["lat"], h["lon"] = coords
-                    print(f"    [{i}/{len(harbors)}] {h['harbor_name']}: {coords[0]:.4f}, {coords[1]:.4f}")
+                    print(f"    [{i}/{len(missing_coords)}] {h['harbor_name']}: {coords[0]:.4f}, {coords[1]:.4f}")
                 else:
                     h["lat"] = None
                     h["lon"] = None
-                    print(f"    [{i}/{len(harbors)}] {h['harbor_name']}: 座標取得失敗")
+                    print(f"    [{i}/{len(missing_coords)}] {h['harbor_name']}: 座標取得失敗")
                 time.sleep(GEOCODE_INTERVAL)
         else:
             for h in harbors:
-                h["lat"] = None
-                h["lon"] = None
+                if "lat" not in h:
+                    h["lat"] = None
+                    h["lon"] = None
 
         all_harbors.extend(harbors)
         time.sleep(1.0)
