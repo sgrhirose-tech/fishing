@@ -52,3 +52,31 @@ services:
         value: 3.11.0
       - key: GITHUB_TOKEN
         sync: false
+
+  - type: cron
+    name: tsuricast-tides-monthly
+    runtime: python
+    repo: https://github.com/sgrhirose-tech/fishing
+    branch: master
+    schedule: "0 18 1 * *"   # 毎月2日 AM3:00 JST（当月分を取得）
+    buildCommand: pip install -r requirements.txt
+    startCommand: python scripts/fetch_tides.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GITHUB_TOKEN
+        sync: false
+
+  - type: cron
+    name: tsuricast-tides-prefetch
+    runtime: python
+    repo: https://github.com/sgrhirose-tech/fishing
+    branch: master
+    schedule: "0 18 24 * *"  # 毎月25日 AM3:00 JST（翌月分を先行取得）
+    buildCommand: pip install -r requirements.txt
+    startCommand: python scripts/fetch_tides.py --month next
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GITHUB_TOKEN
+        sync: false
