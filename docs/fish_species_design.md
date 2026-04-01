@@ -61,6 +61,36 @@ fishing/
 | `peak_season` | int[] | 最盛期の月。`season` の部分集合 |
 | `method` | string[] | 代表的な釣法 |
 | `bottom` | string[] | 適した底質（砂地 / 岩礁 / 藻場 / 泥地） |
+| `photo` | object \| なし | 写真情報（後述）。画像がない魚種はフィールドごと省略可 |
+
+### photo フィールド（Wikimedia Commons 帰属表示用）
+
+ウィキメディアコモンズの CC ライセンス画像を使用する場合、以下フィールドをすべて記載する。
+
+```json
+"photo": {
+  "file":        "aji.jpg",
+  "author":      "Uwe Kils",
+  "license":     "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "source_url":  "https://commons.wikimedia.org/wiki/File:Scomber_scombrus.jpg"
+}
+```
+
+| フィールド | 型 | 説明 |
+|-----------|-----|------|
+| `file` | string | 画像ファイル名。実体は `static/img/fish/` に配置 |
+| `author` | string | 著作者名（Wikimedia Commons の "Author" 欄から転記） |
+| `license` | string | ライセンス名（例: CC BY-SA 4.0） |
+| `license_url` | string | ライセンス全文 URL（creativecommons.org） |
+| `source_url` | string | Wikimedia Commons のファイルページ URL |
+
+**画像ファイルの追加手順:**
+
+1. Wikimedia Commons で対象魚種の画像を探す（CC BY / CC BY-SA / CC0 を選ぶ）
+2. ファイルページの "Author", "License" を確認し、上記フィールドに転記
+3. 画像をダウンロードして `static/img/fish/{slug}.jpg` に保存
+4. `fish_master.json` の該当エントリに `photo` フィールドを追記してデプロイ
 
 ### 収録魚種（25種）
 
