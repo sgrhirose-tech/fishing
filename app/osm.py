@@ -23,10 +23,10 @@ FACILITY_TYPES = [
 ]
 
 OVERPASS_ENDPOINTS = [
-    "https://overpass-api.de/api/interpreter",
+    "http://overpass-api.de/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter",
     "https://overpass.private.coffee/api/interpreter",
-    "https://overpass.openstreetmap.ru/api/interpreter",
+    "https://overpass.openstreetmap.fr/api/interpreter",
 ]
 
 USER_AGENT = "FishingSpotApp/1.0 (personal-use)"
@@ -108,7 +108,7 @@ def fetch_nearby_facilities(lat: float, lon: float,
             f'way["{ft["key"]}"="{ft["value"]}"](around:{radius_m},{lat},{lon});'
         )
     query = (
-        "[out:json][timeout:10];\n"
+        "[out:json][timeout:25];\n"
         "(\n"
         + "\n".join(conditions) +
         "\n);\n"
