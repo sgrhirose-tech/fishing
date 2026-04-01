@@ -35,12 +35,14 @@ fishing/
 ```json
 {
   "アジ": {
+    "slug":        "aji",
     "season":      [1,2,3,4,5,6,7,8,9,10,11,12],
     "peak_season": [5,6,7,8,9,10],
     "method":      ["サビキ釣り", "アジング", "カゴ釣り"],
     "bottom":      ["砂地", "岩礁"]
   },
   "シロギス": {
+    "slug":        "shirogisu",
     "season":      [4,5,6,7,8,9,10],
     "peak_season": [6,7,8],
     "method":      ["投げ釣り"],
@@ -54,6 +56,7 @@ fishing/
 
 | フィールド | 型 | 説明 |
 |-----------|-----|------|
+| `slug` | string | 魚種のローマ字スラッグ。URLルーティング等に使用 |
 | `season` | int[] | 釣れる月（1〜12）|
 | `peak_season` | int[] | 最盛期の月。`season` の部分集合 |
 | `method` | string[] | 代表的な釣法 |
