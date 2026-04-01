@@ -70,6 +70,16 @@
       </details>
     </section>
 
+    <!-- ④ 魚種から選ぶ -->
+    <section class="area-links">
+      <h2>魚種から選ぶ</h2>
+      <div class="area-chips">
+        {% for fish in fish_list %}
+        <a href="/fish/{{ fish.slug }}" class="area-chip">{{ fish.name }}</a>
+        {% endfor %}
+      </div>
+    </section>
+
     <section class="all-spots-link">
       <a href="/spots" class="btn-primary">全釣り場一覧を見る（{{ spots|length }}か所）</a>
     </section>
