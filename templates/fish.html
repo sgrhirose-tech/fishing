@@ -6,6 +6,17 @@
 {% block content %}
 <h1>{{ fish_name }}が釣れる釣り場</h1>
 
+{% if fish_data.photo %}
+<figure class="fish-photo">
+  <img src="/static/img/fish/{{ fish_data.photo.file }}" alt="{{ fish_name }}" loading="lazy">
+  <figcaption class="fish-photo-credit">
+    出典: <a href="{{ fish_data.photo.source_url }}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> /
+    作者: {{ fish_data.photo.author }} /
+    ライセンス: <a href="{{ fish_data.photo.license_url }}" target="_blank" rel="noopener noreferrer">{{ fish_data.photo.license }}</a>
+  </figcaption>
+</figure>
+{% endif %}
+
 <!-- 釣れる時期 -->
 <section class="fish-season-section">
   <h2>釣れる時期</h2>
