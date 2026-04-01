@@ -37,9 +37,9 @@
     "osm_evidence": []
   },
   "target_fish": [
-    "クロダイ",
-    "ハゼ",
-    "スズキ",
-    "シロギス"
+    "kurodai",
+    "haze",
+    "suzuki",
+    "shirogisu"
   ]
 }

@@ -14,6 +14,7 @@ import pathlib
 import re
 
 REPO_ROOT = pathlib.Path(__file__).parent.parent
+FISH_MASTER_FILE = REPO_ROOT / "data" / "fish_master.json"
 
 # -------------------------------------------------------------------------
 # 魚種パターン定義
@@ -60,28 +61,37 @@ FISH_NORMALIZE: dict[str, str] = {
     "キビレ":       "クロダイ",
 }
 
-# fish_master.json に含まれない追加エントリ（エイリアス解決後に登場しうるもの）
-_EXTRA_MASTER_FISH = {"カンパチ", "イシガキダイ"}
+
+def _load_name_to_slug() -> dict[str, str]:
+    """fish_master.json から {日本語名: slug} の辞書を返す。"""
+    if not FISH_MASTER_FILE.exists():
+        return {}
+    with open(FISH_MASTER_FILE, encoding="utf-8") as f:
+        data = json.load(f)
+    return {name: v["slug"] for name, v in data.items() if "slug" in v}
 
 
-def extract_fish_from_notes(notes: str) -> list[str]:
-    """notes テキストから魚種名を抽出し、正規名のリストを返す（重複なし・出現順）。"""
+def extract_fish_from_notes(notes: str, name_to_slug: dict[str, str]) -> list[str]:
+    """notes テキストから魚種を抽出し、スラッグのリストを返す（重複なし・出現順）。"""
     found: list[str] = []
     seen: set[str] = set()
     text = notes or ""
     for pattern, canonical in FISH_NORMALIZE.items():
-        if pattern in text and canonical not in seen:
-            found.append(canonical)
-            seen.add(canonical)
+        if pattern in text:
+            slug = name_to_slug.get(canonical)
+            if slug and slug not in seen:
+                found.append(slug)
+                seen.add(slug)
     return found
 
 
 def process_spots(spots_dir: pathlib.Path, dry_run: bool) -> dict[str, list[str]]:
     """
     指定ディレクトリの全スポット JSON を処理し、target_fish を書き込む。
-    戻り値: {slug: [魚種名, ...]}
+    戻り値: {slug: [魚種スラッグ, ...]}
     """
     result: dict[str, list[str]] = {}
+    name_to_slug = _load_name_to_slug()
 
     json_files = sorted(f for f in spots_dir.glob("*.json") if not f.name.startswith("_"))
     if not json_files:
@@ -97,7 +107,7 @@ def process_spots(spots_dir: pathlib.Path, dry_run: bool) -> dict[str, list[str]
 
         slug = spot.get("slug", path.stem)
         notes = spot.get("info", {}).get("notes", "")
-        fish_list = extract_fish_from_notes(notes)
+        fish_list = extract_fish_from_notes(notes, name_to_slug)
 
         result[slug] = fish_list
 
