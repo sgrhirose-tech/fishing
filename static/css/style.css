@@ -700,3 +700,33 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
   font-size: .9rem;
 }
 .back-link a:hover { text-decoration: underline; }
+
+/* タイドグラフ */
+.tide-section { margin: 24px 0; }
+.tide-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: .9rem;
+  margin-bottom: 12px;
+  align-items: center;
+}
+.tide-name {
+  font-weight: bold;
+  background: #e8f4fb;
+  color: #1a6b9e;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+.tide-sun { color: #888; font-size: .85rem; }
+.tide-graph-wrapper {
+  position: relative;
+  height: 180px;
+  max-width: 640px;
+}
+.tide-disclaimer {
+  font-size: .78rem;
+  color: #999;
+  margin-top: 8px;
+}
+.tide-disclaimer a { color: #999; }
