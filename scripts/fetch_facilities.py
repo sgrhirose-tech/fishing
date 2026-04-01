@@ -38,7 +38,7 @@ GITHUB_FILE_PATH = "data/facilities.json"
 GITHUB_BRANCH = "master"
 
 # スポット間の待機時間（秒）。Overpass API の負荷対策
-REQUEST_INTERVAL_SEC = 1.2
+REQUEST_INTERVAL_SEC = 2.5
 
 
 def load_all_spots() -> list[dict]:
