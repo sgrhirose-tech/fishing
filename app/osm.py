@@ -5,6 +5,8 @@ OpenStreetMap (Overpass API) 周辺施設取得モジュール。
 
 import json
 import pathlib
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -75,10 +77,30 @@ def fetch_nearby_facilities(lat: float, lon: float,
 
     facilities = []
     try:
-        data = urllib.parse.urlencode({"data": query}).encode("utf-8")
-        req = urllib.request.Request(OVERPASS_URL, data=data, method="POST")
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            result = json.loads(resp.read().decode("utf-8"))
+        # 429/504 発生時のリトライ設定
+        _retry_waits = [30, 60, 120]  # 秒: 1回目, 2回目, 3回目
+        last_exc = None
+        result = None
+        for attempt, wait in enumerate([0] + _retry_waits):
+            if wait:
+                print(f"  [リトライ] {wait}秒後に再試行 ({attempt}/3)")
+                time.sleep(wait)
+            try:
+                data = urllib.parse.urlencode({"data": query}).encode("utf-8")
+                req = urllib.request.Request(OVERPASS_URL, data=data, method="POST")
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    result = json.loads(resp.read().decode("utf-8"))
+                break  # 成功
+            except urllib.error.HTTPError as e:
+                if e.code in (429, 504):
+                    last_exc = e
+                    continue  # リトライ
+                raise
+            except Exception as e:
+                last_exc = e
+                break  # その他のエラーはリトライしない
+        if result is None:
+            raise last_exc or Exception("Overpass API 取得失敗")
 
         # タグ → 施設種別・色のマッピング
         tag_map = {(ft["key"], ft["value"]): ft for ft in FACILITY_TYPES}
