@@ -202,11 +202,10 @@ def probe_harbor_codes(pc: int, max_hc: int = 99) -> list[dict]:
             if chart:
                 # tide.port に港名・座標が含まれている
                 port = data.get("tide", {}).get("port", {})
-                harbor_name = (
-                    port.get("harbor_namej")  # 日本語港名
-                    or port.get("harbor_name")  # ローマ字港名（フォールバック）
-                    or f"港{hc:02d}"
-                )
+                harbor_name = port.get("harbor_namej") or port.get("harbor_name")
+                # 名前が取れない場合は実在しない港コードとみなしてスキップ
+                if not harbor_name:
+                    continue
                 entry = {"pc": pc, "hc": hc, "harbor_name": harbor_name}
                 # 座標も取得できれば付与（Nominatim 不要）
                 try:
