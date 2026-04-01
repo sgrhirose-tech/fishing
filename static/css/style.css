@@ -657,3 +657,27 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
   font-size: .85rem;
   color: #1a6b9e;
 }
+.method-videos-section { margin: 1.5rem 0; }
+.method-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: .5rem;
+}
+.method-video-card {
+  display: block;
+  text-decoration: none;
+  border: 1px solid #d0e4f0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow .15s;
+}
+.method-video-card:hover { box-shadow: 0 2px 10px rgba(26,107,158,.2); }
+.method-video-card img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+.method-video-title {
+  display: block;
+  padding: .5rem .7rem;
+  font-size: .85rem;
+  color: #334;
+  line-height: 1.4;
+}
