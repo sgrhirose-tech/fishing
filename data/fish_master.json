@@ -1,149 +1,174 @@
 {
   "アジ": {
+    "slug": "aji",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [5, 6, 7, 8, 9, 10],
     "method": ["サビキ釣り", "アジング", "カゴ釣り"],
     "bottom": ["砂地", "岩礁"]
   },
   "シロギス": {
+    "slug": "shirogisu",
     "season": [4, 5, 6, 7, 8, 9, 10],
     "peak_season": [6, 7, 8],
     "method": ["投げ釣り"],
     "bottom": ["砂地"]
   },
   "メジナ": {
+    "slug": "mejina",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [10, 11, 12, 1, 2],
     "method": ["ウキ釣り", "フカセ釣り"],
     "bottom": ["岩礁"]
   },
   "クロダイ": {
+    "slug": "kurodai",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [3, 4, 5, 10, 11],
     "method": ["フカセ釣り", "ヘチ釣り", "ダンゴ釣り"],
     "bottom": ["岩礁", "砂地"]
   },
   "アオリイカ": {
+    "slug": "aoriika",
     "season": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [9, 10, 11],
     "method": ["エギング"],
     "bottom": ["岩礁", "藻場"]
   },
   "カサゴ": {
+    "slug": "kasago",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [11, 12, 1, 2],
     "method": ["穴釣り", "胴突き仕掛け"],
     "bottom": ["岩礁"]
   },
   "メバル": {
+    "slug": "mebaru",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [2, 3, 4],
     "method": ["ウキ釣り", "メバリング"],
     "bottom": ["岩礁"]
   },
   "スズキ": {
+    "slug": "suzuki",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [5, 6, 7, 8, 9],
     "method": ["ルアー釣り", "エビ撒き"],
     "bottom": ["砂地", "岩礁"]
   },
   "ヒラメ": {
+    "slug": "hirame",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [10, 11, 12, 1],
     "method": ["泳がせ釣り", "ルアー釣り"],
     "bottom": ["砂地"]
   },
   "マゴチ": {
+    "slug": "magochi",
     "season": [4, 5, 6, 7, 8, 9, 10],
     "peak_season": [6, 7, 8],
     "method": ["泳がせ釣り", "ルアー釣り"],
     "bottom": ["砂地"]
   },
   "タコ": {
+    "slug": "tako",
     "season": [4, 5, 6, 7, 8, 9],
     "peak_season": [6, 7, 8],
     "method": ["タコエギ", "タコテンヤ"],
     "bottom": ["岩礁", "砂地"]
   },
   "サバ": {
+    "slug": "saba",
     "season": [4, 5, 6, 7, 8, 9, 10, 11],
     "peak_season": [7, 8, 9, 10],
     "method": ["サビキ釣り", "ジギング"],
     "bottom": ["砂地", "岩礁"]
   },
   "イワシ": {
+    "slug": "iwashi",
     "season": [4, 5, 6, 7, 8, 9, 10],
     "peak_season": [6, 7, 8],
     "method": ["サビキ釣り"],
     "bottom": ["砂地"]
   },
   "ウミタナゴ": {
+    "slug": "umitanago",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [10, 11, 12, 1, 2],
     "method": ["ウキ釣り"],
     "bottom": ["岩礁"]
   },
   "ハゼ": {
+    "slug": "haze",
     "season": [5, 6, 7, 8, 9, 10, 11],
     "peak_season": [8, 9, 10],
     "method": ["脈釣り", "ちょい投げ"],
     "bottom": ["砂地", "泥地"]
   },
   "コウイカ": {
+    "slug": "kouika",
     "season": [3, 4, 5, 6, 9, 10, 11],
     "peak_season": [4, 5],
     "method": ["エギング"],
     "bottom": ["砂地", "岩礁"]
   },
   "タチウオ": {
+    "slug": "tachiuo",
     "season": [7, 8, 9, 10, 11],
     "peak_season": [9, 10],
     "method": ["ウキ釣り", "ジギング", "ルアー釣り"],
     "bottom": ["砂地"]
   },
   "マダイ": {
+    "slug": "madai",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [3, 4, 5, 9, 10, 11],
     "method": ["カゴ釣り", "投げ釣り", "タイラバ"],
     "bottom": ["岩礁", "砂地"]
   },
   "カマス": {
+    "slug": "kamasu",
     "season": [8, 9, 10, 11, 12],
     "peak_season": [9, 10, 11],
     "method": ["ルアー釣り", "サビキ釣り"],
     "bottom": ["砂地", "岩礁"]
   },
   "ソウダガツオ": {
+    "slug": "soudagatsuo",
     "season": [6, 7, 8, 9, 10, 11],
     "peak_season": [7, 8, 9, 10],
     "method": ["カゴ釣り", "サビキ釣り", "ルアー釣り"],
     "bottom": ["砂地"]
   },
   "ブリ": {
+    "slug": "buri",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [10, 11, 12, 1],
     "method": ["ジギング", "カゴ釣り", "ルアー釣り"],
     "bottom": ["砂地", "岩礁"]
   },
   "イシダイ": {
+    "slug": "ishidai",
     "season": [4, 5, 6, 7, 8, 9, 10, 11],
     "peak_season": [7, 8, 9],
     "method": ["投げ釣り"],
     "bottom": ["岩礁"]
   },
   "サヨリ": {
+    "slug": "sayori",
     "season": [3, 4, 5, 6, 10, 11, 12],
     "peak_season": [3, 4, 5],
     "method": ["ウキ釣り"],
     "bottom": ["砂地"]
   },
   "カレイ": {
+    "slug": "karei",
     "season": [10, 11, 12, 1, 2, 3, 4],
     "peak_season": [11, 12, 1, 2],
     "method": ["投げ釣り"],
     "bottom": ["砂地"]
   },
   "シマアジ": {
+    "slug": "shimaaji",
     "season": [5, 6, 7, 8, 9, 10],
     "peak_season": [6, 7, 8, 9],
     "method": ["カゴ釣り", "サビキ釣り"],
