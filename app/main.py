@@ -35,13 +35,15 @@ JST = timezone(timedelta(hours=9))
 
 # ── 魚種マスタ ────────────────────────────────────────────────
 _FISH_MASTER: dict = {}
+_FISH_SLUG_TO_NAME: dict = {}  # {slug: 魚名}
 
 def _load_fish_master() -> None:
-    global _FISH_MASTER
+    global _FISH_MASTER, _FISH_SLUG_TO_NAME
     path = _BASE / "data" / "fish_master.json"
     try:
         with open(path, encoding="utf-8") as f:
             _FISH_MASTER = json.load(f)
+        _FISH_SLUG_TO_NAME = {v["slug"]: k for k, v in _FISH_MASTER.items() if "slug" in v}
         print(f"[fish_master] {len(_FISH_MASTER)} 魚種を読み込みました")
     except Exception as e:
         print(f"[fish_master] 読み込みエラー: {e}")
@@ -71,6 +73,9 @@ async def lifespan(app: FastAPI):
     load_spots()
     load_facilities_json()
     _load_fish_master()
+    templates.env.globals["fish_slug_map"] = {
+        k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v
+    }
     yield
 
 
@@ -198,8 +203,14 @@ def sitemap_xml():
     # 固定ページ
     urls.append((f"{_BASE_URL}/",       "daily",   "1.0"))
     urls.append((f"{_BASE_URL}/spots",  "daily",   "0.8"))
+    urls.append((f"{_BASE_URL}/fish/",  "weekly",  "0.7"))
     for s in ("safety", "privacy", "about", "contact"):
         urls.append((f"{_BASE_URL}/{s}", "monthly", "0.4"))
+    # 魚種別ページ
+    for _fn, _fd in _FISH_MASTER.items():
+        _fslug = _fd.get("slug")
+        if _fslug:
+            urls.append((f"{_BASE_URL}/fish/{_fslug}", "weekly", "0.6"))
 
     # スポットデータから動的ページを収集
     seen_prefs: set = set()
@@ -401,11 +412,31 @@ def page_top(request: Request):
     })
 
 
-@app.get("/fish/{fish_name}", response_class=HTMLResponse)
-def page_fish(request: Request, fish_name: str):
-    fish_data = _FISH_MASTER.get(fish_name)
-    if not fish_data:
+@app.get("/fish/", response_class=HTMLResponse)
+def page_fish_index(request: Request):
+    all_spots = load_spots()
+    fish_list = []
+    for fish_name, fish_data in _FISH_MASTER.items():
+        count = sum(1 for s in all_spots if fish_name in s.get("target_fish", []))
+        fish_list.append({
+            "name": fish_name,
+            "slug": fish_data.get("slug", ""),
+            "count": count,
+            "method": fish_data.get("method", []),
+        })
+    fish_list.sort(key=lambda x: x["count"], reverse=True)
+    return templates.TemplateResponse(request, "fish_index.html", {
+        "fish_list": fish_list,
+        "total_fish": len(fish_list),
+    })
+
+
+@app.get("/fish/{fish_slug}", response_class=HTMLResponse)
+def page_fish(request: Request, fish_slug: str):
+    fish_name = _FISH_SLUG_TO_NAME.get(fish_slug)
+    if not fish_name:
         raise HTTPException(status_code=404, detail="魚種が見つかりません")
+    fish_data = _FISH_MASTER[fish_name]
     all_spots = load_spots()
     matched = [s for s in all_spots if fish_name in s.get("target_fish", [])]
     # エリア別にグループ化
@@ -418,6 +449,7 @@ def page_fish(request: Request, fish_name: str):
         areas[key]["spots"].append(s)
     return templates.TemplateResponse(request, "fish.html", {
         "fish_name": fish_name,
+        "fish_slug": fish_slug,
         "fish_data": fish_data,
         "areas": areas,
         "total": len(matched),
