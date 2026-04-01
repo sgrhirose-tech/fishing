@@ -681,3 +681,20 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
   color: #334;
   line-height: 1.4;
 }
+.fish-photo {
+  margin: 1rem 0 1.5rem;
+  max-width: 480px;
+}
+.fish-photo img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+.fish-photo-credit {
+  margin-top: .35rem;
+  font-size: .75rem;
+  color: #778;
+  line-height: 1.4;
+}
+.fish-photo-credit a { color: #778; text-decoration: underline; }
+.fish-photo-credit a:hover { color: #1a6b9e; }
