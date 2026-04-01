@@ -18,21 +18,24 @@
     "season": [4, 5, 6, 7, 8, 9, 10],
     "peak_season": [6, 7, 8],
     "method": ["投げ釣り"],
-    "bottom": ["砂地"]
+    "bottom": ["砂地"],
+    "image": "/static/img/fish/shirogisu.jpg"
   },
   "メジナ": {
     "slug": "mejina",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [10, 11, 12, 1, 2],
     "method": ["ウキ釣り", "フカセ釣り"],
-    "bottom": ["岩礁"]
+    "bottom": ["岩礁"],
+    "image": "/static/img/fish/mejina.jpg"
   },
   "クロダイ": {
     "slug": "kurodai",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [3, 4, 5, 10, 11],
     "method": ["フカセ釣り", "ヘチ釣り", "ダンゴ釣り"],
-    "bottom": ["岩礁", "砂地"]
+    "bottom": ["岩礁", "砂地"],
+    "image": "/static/img/fish/kurodai.jpg"
   },
   "アオリイカ": {
     "slug": "aoriika",
@@ -67,7 +70,8 @@
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [2, 3, 4],
     "method": ["ウキ釣り", "メバリング"],
-    "bottom": ["岩礁"]
+    "bottom": ["岩礁"],
+    "image": "/static/img/fish/mebaru.jpg"
   },
   "スズキ": {
     "slug": "suzuki",
