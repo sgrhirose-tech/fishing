@@ -4,8 +4,22 @@
 {% set pf = spot.physical_features %}
 {% set df = spot.derived_features %}
 
-{% block title %}{% if fish_names_jp %}{{ spot.name }} | {{ fish_names_jp | join('・') }}が釣れる釣り場 天気・波高{% else %}{{ spot.name }}の釣り場情報 | {{ area.city }}・天気・波・風{% endif %}{% endblock %}
-{% block description %}{% if fish_names_jp %}{{ area.prefecture }}{{ area.area_name }}の{{ spot.name }}の釣り場情報。{{ fish_names_jp | join('・') }}が狙えます。波高・風向・水温・潮回りを時間帯別に確認できます。周辺の駐車場・施設情報も掲載。{% else %}{{ spot.name }}（{{ area.prefecture }}{{ area.city }}）の釣り場情報。底質: {{ df.seabed_summary or 'ー' }}、海底傾斜: {{ slope_type or 'ー' }}。天気・波・風・水温を毎日更新。アクセス: {{ spot.info.access }}{% endif %}{% endblock %}
+{# 施設タイトル用: 優先順に最大2個 #}
+{% set _fp = [] %}
+{% if facility_flags.parking %}{% set _fp = _fp + ['駐車場'] %}{% endif %}
+{% if facility_flags.toilet and _fp|length < 2 %}{% set _fp = _fp + ['トイレ'] %}{% endif %}
+{% if facility_flags.convenience and _fp|length < 2 %}{% set _fp = _fp + ['コンビニ'] %}{% endif %}
+{% set fac_title = '【' + _fp|join('・') + 'あり】' if _fp else '' %}
+
+{# 施設メタ用: 3要素すべて #}
+{% set _fm = [] %}
+{% if facility_flags.parking %}{% set _fm = _fm + ['駐車場'] %}{% endif %}
+{% if facility_flags.toilet %}{% set _fm = _fm + ['トイレ'] %}{% endif %}
+{% if facility_flags.convenience %}{% set _fm = _fm + ['コンビニ'] %}{% endif %}
+{% set fac_meta = '近隣に' + _fm|join('・') + 'あり。' if _fm else '周辺の施設情報も掲載。' %}
+
+{% block title %}{% if fish_names_jp %}{{ spot.name }} | {{ fish_names_jp | join('・') }}が釣れる釣り場{{ fac_title }} 天気・波高{% else %}{{ spot.name }}の釣り場情報{{ fac_title }} | {{ area.city }}・天気・波・風{% endif %}{% endblock %}
+{% block description %}{% if fish_names_jp %}{{ area.prefecture }}{{ area.area_name }}の{{ spot.name }}の釣り場情報。{{ fish_names_jp | join('・') }}が狙えます。波高・風向・水温・潮回りを時間帯別に確認できます。{{ fac_meta }}{% else %}{{ spot.name }}（{{ area.prefecture }}{{ area.city }}）の釣り場情報。底質: {{ df.seabed_summary or 'ー' }}、海底傾斜: {{ slope_type or 'ー' }}。天気・波・風・水温を毎日更新。{{ fac_meta }}アクセス: {{ spot.info.access }}{% endif %}{% endblock %}
 
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block og_title %}{{ spot.name }}の釣り場情報 | {{ area.city }}{% endblock %}

@@ -554,9 +554,6 @@ def page_contact(request: Request):
 def page_safety(request: Request):
     return templates.TemplateResponse(request, "static_pages/safety.html", {})
 
-@app.get("/mars", response_class=HTMLResponse)
-def page_april_fools(request: Request):
-    return templates.TemplateResponse(request, "events/april_fools.html", {})
 
 @app.get("/area/", response_class=HTMLResponse)
 def page_area_index(request: Request):
@@ -716,6 +713,13 @@ def page_spot_detail(
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     fish_name_map = {v: k for k, v in fish_slug_map.items()}
     fish_names_jp = [fish_name_map.get(s, s) for s in spot.get("target_fish", [])[:3]]
+    cached_facilities = get_cached_facilities(slug) or []
+    facility_types = {f["type"] for f in cached_facilities}
+    facility_flags = {
+        "parking":     "駐車場" in facility_types,
+        "toilet":      "トイレ" in facility_types,
+        "convenience": "コンビニ" in facility_types,
+    }
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -729,4 +733,5 @@ def page_spot_detail(
         "fish_slug_map":      fish_slug_map,
         "fish_name_map":      fish_name_map,
         "fish_names_jp":      fish_names_jp,
+        "facility_flags":     facility_flags,
     })
