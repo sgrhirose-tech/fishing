@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "公園下地磯も狙える",
+    "notes": "小規模港で水深あり、クロダイ・メジナ・アオリイカ向き",
     "access": "安房勝山駅から徒歩25分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "waterway=dock@52m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "kurodai"
+  ]
 }

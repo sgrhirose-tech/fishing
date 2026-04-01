@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "外房の小規模港",
+    "notes": "多彩な魚種が入る港、アジ・シマアジ・クロダイ・アイナメ向き",
     "access": "御宿駅からバス15分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "waterway=dock@31m"
     ]
-  }
+  },
+  "target_fish": [
+    "shimaaji",
+    "kurodai",
+    "aji"
+  ]
 }

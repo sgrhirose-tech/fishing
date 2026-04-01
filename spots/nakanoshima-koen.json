@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "港近くの実績スポット",
+    "notes": "木更津港内の島の護岸、ハゼ・シーバス向き、満潮狙い",
     "access": "木更津駅から徒歩18分"
   },
   "classification": {
@@ -33,5 +33,9 @@
     "secondary_flags": [],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "haze",
+    "suzuki"
+  ]
 }

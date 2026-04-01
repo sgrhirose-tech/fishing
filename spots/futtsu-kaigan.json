@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "遠浅の定番海岸",
+    "notes": "東京湾口の潮流速い遠浅サーフ、キス・シーバス向き投げ釣りのメッカ",
     "access": "青堀駅からバス15分",
     "photo_url": ""
   },
@@ -36,5 +36,9 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "suzuki",
+    "shirogisu"
+  ]
 }

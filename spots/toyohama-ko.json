@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "港内中心で手軽に楽しめる",
+    "notes": "新官港と隣接の穴場港、アジ・クロダイ・アオリイカ向き",
     "access": "勝浦駅から徒歩20分"
   },
   "classification": {
@@ -36,5 +36,10 @@
       "waterway=dock@209m",
       "waterway=dock@2m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ]
 }

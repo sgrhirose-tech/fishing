@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "神奈川屈指の投げ釣りポイント。白い砂浜が1km以上続く",
+    "notes": "1km以上の白砂ビーチ、キス・マゴチ・ヒラメ・カレイ向き",
     "access": "三浦海岸駅から徒歩5分"
   },
   "classification": {
@@ -35,5 +35,11 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "karei",
+    "hirame",
+    "shirogisu"
+  ]
 }

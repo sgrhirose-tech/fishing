@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "潮干狩り場横の手軽な砂浜",
+    "notes": "潮干狩りで有名な横浜の砂浜、キス・ハゼ・カレイ向き",
     "access": "海の公園南口駅から徒歩3分"
   },
   "classification": {
@@ -37,5 +37,10 @@
     "osm_evidence": [
       "natural=beach@52m"
     ]
-  }
+  },
+  "target_fish": [
+    "karei",
+    "haze",
+    "shirogisu"
+  ]
 }

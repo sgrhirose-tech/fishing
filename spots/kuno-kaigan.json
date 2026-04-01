@@ -1,0 +1,42 @@
+{
+  "slug": "kuno-kaigan",
+  "name": "久能海岸",
+  "location": {
+    "latitude": 34.9594422,
+    "longitude": 138.468053
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "静岡市",
+    "city_slug": "shizuoka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 155,
+    "seabed_type": "gravel",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "礫主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "いちご海岸沿いの礫浜、キス・投げ釣り向き",
+    "access": "JR静岡駅からバス30分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu"
+  ]
+}

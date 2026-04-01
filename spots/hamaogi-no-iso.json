@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "磯場中心の実績エリア",
+    "notes": "テトラ混じりの磯場、クロダイ・メジナ向き、足場注意",
     "access": "安房天津駅から徒歩20分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:磯"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ]
 }

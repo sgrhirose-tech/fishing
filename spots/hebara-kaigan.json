@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "サーフで投げ釣り向き",
+    "notes": "砂浜サーフ、キス・イシモチ・ヒラメ向き",
     "access": "勝浦駅からバス10分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "natural=beach@78m"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "大きめの港で足場良好",
+    "notes": "館山北側の中規模港、アジ・クロダイ・アオリイカ向き",
     "access": "那古船形駅から徒歩10分"
   },
   "classification": {
@@ -36,5 +36,10 @@
       "man_made=breakwater@258m",
       "waterway=dock@139m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ]
 }

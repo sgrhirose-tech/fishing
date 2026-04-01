@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "河口の流れ込みを狙える",
+    "notes": "シーバス狙いのルアーマン人気、ハゼ・マゴチも向き",
     "access": "上総湊駅から徒歩12分"
   },
   "classification": {
@@ -33,5 +33,10 @@
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "haze",
+    "suzuki"
+  ]
 }

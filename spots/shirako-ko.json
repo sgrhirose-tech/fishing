@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "南端寄りの小規模港",
+    "notes": "左堤防から沖堤向きがポイント、アジ・クロダイ向き",
     "access": "千倉駅からバス20分"
   },
   "classification": {
@@ -36,5 +36,9 @@
       "man_made=breakwater@79m",
       "waterway=dock@1m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "aji"
+  ]
 }

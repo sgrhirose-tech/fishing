@@ -1,0 +1,44 @@
+{
+  "slug": "miho-komagoe",
+  "name": "三保松原・駒越海岸",
+  "location": {
+    "latitude": 34.9947356,
+    "longitude": 138.5255305
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "静岡市",
+    "city_slug": "shizuoka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 130,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 411.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体、貝殻混じり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "松原に隣接する砂浜、キス・ルアー・青物向き",
+    "access": "清水駅からバス20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu"
+  ]
+}

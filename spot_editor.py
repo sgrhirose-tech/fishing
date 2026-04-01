@@ -18,6 +18,7 @@ import urllib.parse
 
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 AREAS_FILE = os.path.join(REPO_ROOT, "spots", "_marine_areas.json")
+FISH_MASTER_FILE = os.path.join(REPO_ROOT, "data", "fish_master.json")
 AVAILABLE_DIRS = {
     "unadjusted": os.path.join(REPO_ROOT, "unadjusted"),
     "spots_wip":  os.path.join(REPO_ROOT, "spots_wip"),
@@ -26,8 +27,12 @@ AVAILABLE_DIRS = {
 DEFAULT_DIR_KEY = "spots_wip"
 
 # slug バリデーション用定数（app/constants.py と同一の値を保つこと）
-_VALID_AREA_SLUGS = {"sagamibay", "miura", "tokyobay", "uchibo", "sotobo", "kujukuri"}
-_VALID_PREF_SLUGS = {"kanagawa", "tokyo", "chiba"}
+_VALID_AREA_SLUGS = {
+    "sagamibay", "miura", "tokyobay", "uchibo", "sotobo", "kujukuri",
+    "higashi-izu", "minami-izu", "nishi-izu",
+    "suruga-bay", "enshu-nada", "mikawa-bay", "isewan", "kumano-nada",
+}
+_VALID_PREF_SLUGS = {"kanagawa", "tokyo", "chiba", "shizuoka", "aichi", "mie"}
 _CITY_SLUG_RE = re.compile(r'^[a-z0-9\-]+$')
 
 
@@ -54,6 +59,14 @@ SEABED_TYPE_OPTIONS = [
     ("mixed",      "混合"),
 ]
 
+CLASSIFICATION_TYPE_OPTIONS = [
+    ("sand_beach",       "砂浜"),
+    ("rocky_shore",      "磯・岩場"),
+    ("breakwater",       "防波堤・堤防"),
+    ("fishing_facility", "漁港・釣り施設"),
+    ("unknown",          "不明"),
+]
+
 BEARING_OPTIONS = list(range(0, 360, 5))
 
 # area_name → (area_slug, pref_slug, prefecture)
@@ -78,6 +91,19 @@ AREA_MAP = {
 # ---------------------------------------------------------------------------
 # Data helpers
 # ---------------------------------------------------------------------------
+
+_FISH_LIST: list[list[str]] = []
+
+def _load_fish_master() -> list[list[str]]:
+    """fish_master.json から [[slug, name], ...] リストを読み込む。ファイルがなければ空リスト。"""
+    global _FISH_LIST
+    if not os.path.exists(FISH_MASTER_FILE):
+        return []
+    with open(FISH_MASTER_FILE, encoding="utf-8") as f:
+        data = json.load(f)
+    _FISH_LIST = [[v["slug"], name] for name, v in data.items() if "slug" in v]
+    return _FISH_LIST
+
 
 def _load_marine_areas():
     with open(AREAS_FILE, encoding="utf-8") as f:
@@ -167,6 +193,7 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
 
 /* ---- sidebar ---- */
 #area-filter { width: 100%; padding: 8px; border: none; border-bottom: 1px solid #ddd; font-size: 13px; }
+#name-filter  { width: 100%; padding: 8px; border: none; border-bottom: 1px solid #ddd; font-size: 13px; box-sizing: border-box; }
 .spot-item { padding: 8px 10px; cursor: pointer; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
 .spot-item:hover { background: #e8f4fd; }
 .spot-item.active { background: #3498db; color: white; }
@@ -216,15 +243,8 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
   <div id="js-error" style="display:none;background:#c0392b;color:white;padding:6px 12px;font-size:12px;"></div>
   <div id="main">
     <div id="sidebar">
-      <select id="area-filter">
-        <option value="">全エリア</option>
-        <option value="相模湾">相模湾</option>
-        <option value="三浦半島">三浦半島</option>
-        <option value="東京湾">東京湾</option>
-        <option value="内房">内房</option>
-        <option value="外房">外房</option>
-        <option value="九十九里">九十九里</option>
-      </select>
+      <select id="area-filter"><option value="">全エリア</option></select>
+      <input type="text" id="name-filter" placeholder="スポット名で絞り込み">
       <div id="spot-list"></div>
     </div>
     <div id="map"></div>
@@ -265,10 +285,20 @@ var AREA_SLUG_MAP = {
   "東京湾":   ["tokyobay",   "kanagawa", "神奈川県"],
   "内房":     ["uchibo",     "chiba",    "千葉県"],
   "外房":     ["sotobo",     "chiba",    "千葉県"],
-  "九十九里": ["kujukuri",   "chiba",    "千葉県"]
+  "九十九里": ["kujukuri",   "chiba",    "千葉県"],
+  "東伊豆":   ["higashi-izu", "shizuoka", "静岡県"],
+  "南伊豆":   ["minami-izu",  "shizuoka", "静岡県"],
+  "西伊豆":   ["nishi-izu",   "shizuoka", "静岡県"],
+  "駿河湾":   ["suruga-bay",  "shizuoka", "静岡県"],
+  "遠州灘":   ["enshu-nada",  "shizuoka", "静岡県"],
+  "三河湾":   ["mikawa-bay",  "aichi",    "愛知県"],
+  "伊勢湾":   ["isewan",      "aichi",    "愛知県"],
+  "熊野灘":   ["kumano-nada", "mie",      "三重県"]
 };
 var SEABED_OPTIONS = __SEABED_OPTIONS_JSON__;
 var BEARING_OPTIONS = __BEARING_OPTIONS_JSON__;
+var CLASSIFICATION_OPTIONS = __CLASSIFICATION_OPTIONS_JSON__;
+var FISH_LIST = __FISH_NAMES_JSON__; // [[slug, name], ...]
 
 // ---- error display (debug) ----
 window.onerror = function(msg, src, line) {
@@ -320,13 +350,27 @@ window.addEventListener('load', function() {
   }
 });
 
+// ---- area-filter を AREA_SLUG_MAP から動的生成 ----
+(function() {
+  var sel = document.getElementById('area-filter');
+  Object.keys(AREA_SLUG_MAP).forEach(function(name) {
+    var opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    sel.appendChild(opt);
+  });
+})();
+
 // ---- sidebar list ----
-function buildList(filter) {
+function buildList() {
+  var areaFilter = document.getElementById('area-filter').value;
+  var nameFilter = document.getElementById('name-filter').value.trim();
   var list = document.getElementById('spot-list');
   list.innerHTML = '';
   SPOTS.forEach(function(s, i) {
     var areaName = (s.area && s.area.area_name) || '';
-    if (filter && areaName !== filter) return;
+    if (areaFilter && areaName !== areaFilter) return;
+    if (nameFilter && (s.name || s.slug || '').indexOf(nameFilter) === -1) return;
     var div = document.createElement('div');
     div.className = 'spot-item' + (i === currentIdx ? ' active' : '');
     div.dataset.idx = i;
@@ -337,7 +381,10 @@ function buildList(filter) {
 }
 
 document.getElementById('area-filter').addEventListener('change', function() {
-  buildList(this.value);
+  buildList();
+});
+document.getElementById('name-filter').addEventListener('input', function() {
+  buildList();
 });
 
 // ---- bearing arrow ----
@@ -380,7 +427,7 @@ function showSpot(idx) {
   currentIdx = idx;
   dirty = false;
   document.getElementById('save-bar').style.display = 'none';
-  buildList(document.getElementById('area-filter').value);
+  buildList();
 
   var s = SPOTS[idx];
   var loc = s.location || {};
@@ -417,6 +464,13 @@ function showSpot(idx) {
     '<option value="true"' + (phys.surfer_spot === true ? ' selected' : '') + '>あり</option>',
     '<option value="false"' + (phys.surfer_spot !== true ? ' selected' : '') + '>なし</option>'
   ].join('');
+
+  // classification select options
+  var currentType = (s.classification && s.classification.primary_type) ? s.classification.primary_type : 'unknown';
+  var classifOpts = CLASSIFICATION_OPTIONS.map(function(o) {
+    var sel = o[0] === currentType ? ' selected' : '';
+    return '<option value="' + o[0] + '"' + sel + '>' + o[1] + '</option>';
+  }).join('');
 
   // area_name options
   var areaNames = Object.keys(AREA_SLUG_MAP);
@@ -460,6 +514,11 @@ function showSpot(idx) {
       '<select data-field="surfer_spot">' + surferOpts + '</select>' +
     '</div>' +
 
+    '<div class="section-title">施設区分</div>' +
+    '<div class="field-row"><label>施設種別</label>' +
+      '<select data-field="primary_type">' + classifOpts + '</select>' +
+    '</div>' +
+
     '<div class="section-title">水深</div>' +
     row('depth_near_m', '手前(m)',  'number', phys.depth_near_m != null ? phys.depth_near_m : '') +
     row('depth_far_m',  '沖合(m)',  'number', phys.depth_far_m  != null ? phys.depth_far_m  : '') +
@@ -472,6 +531,21 @@ function showSpot(idx) {
     rowArea('notes',     '備考',       info.notes     || '') +
     row('access',        'アクセス',   'text',  info.access    || '') +
     row('photo_url',     '写真URL',    'text',  info.photo_url || '') +
+
+    '<div class="section-title">対象魚種</div>' +
+    (function() {
+      var currentFish = s.target_fish || [];
+      var checks = FISH_LIST.map(function(pair) {
+        var slug = pair[0], name = pair[1];
+        var checked = currentFish.indexOf(slug) >= 0 ? ' checked' : '';
+        return '<label style="display:inline-flex;align-items:center;gap:2px;margin:2px 4px;">' +
+          '<input type="checkbox" name="target_fish" value="' + escHtml(slug) + '"' + checked + '>' +
+          escHtml(name) + '</label>';
+      }).join('');
+      return '<div class="field-row"><label>魚種</label>' +
+        '<div style="display:flex;flex-wrap:wrap;border:1px solid #ccc;padding:6px;border-radius:4px;">' +
+        checks + '</div></div>';
+    })() +
     '';
 
   // event listeners for live bearing update
@@ -574,7 +648,11 @@ function saveChanges() {
       notes:     fv('notes'),
       access:    fv('access'),
       photo_url: fv('photo_url')
-    }
+    },
+    primary_type: fv('primary_type'),
+    target_fish: Array.from(
+      document.querySelectorAll('input[name="target_fish"]:checked')
+    ).map(function(cb) { return cb.value; })
   };
 
   // update in-memory SPOTS
@@ -588,7 +666,7 @@ function saveChanges() {
   dirty = false;
   document.getElementById('save-bar').style.display = 'none';
   document.getElementById('panel-header').textContent = payload.name || s.slug || '(無名)';
-  buildList(document.getElementById('area-filter').value);
+  buildList();
 
   if (SAVE_MODE === 'http') {
     fetch('/save', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
@@ -646,7 +724,7 @@ function onNewSpotComplete(spotJson) {
   SPOTS.push(spot);
   var newIdx = SPOTS.length - 1;
   showSpot(newIdx);
-  buildList(document.getElementById('area-filter').value);
+  buildList();
 }
 
 // ---- event delegation ----
@@ -685,7 +763,7 @@ document.getElementById('btn-modal-cancel').addEventListener('click', closeModal
 document.getElementById('btn-modal-ok').addEventListener('click', submitNewSpot);
 
 // ---- init ----
-buildList('');
+buildList();
 </script>
 </body>
 </html>
@@ -745,11 +823,21 @@ def _save_spot(payload):
     if der.get("terrain_summary") is not None:
         df["terrain_summary"] = der["terrain_summary"]
 
+    new_type = payload.get("primary_type")
+    if new_type:
+        clf = spot.setdefault("classification", {})
+        clf["primary_type"] = new_type
+        clf["source"]       = "manual"
+        clf["confidence"]   = 1.0
+
     info = payload.get("info", {})
     inf = spot.setdefault("info", {})
     for key in ("notes", "access", "photo_url"):
         if info.get(key) is not None:
             inf[key] = info[key]
+
+    if "target_fish" in payload:
+        spot["target_fish"] = [f for f in payload["target_fish"] if isinstance(f, str)]
 
     with open(path, "w", encoding="utf-8") as f:
         json.dump(spot, f, ensure_ascii=False, indent=2)
@@ -967,6 +1055,8 @@ def build_html(spots, save_mode='pythonista', dir_key=None):
     spots_js = json.dumps(spots, ensure_ascii=False)
     seabed_js = json.dumps([[v, l] for v, l in SEABED_TYPE_OPTIONS], ensure_ascii=False)
     bearing_js = json.dumps(BEARING_OPTIONS, ensure_ascii=False)
+    classif_js = json.dumps([[v, l] for v, l in CLASSIFICATION_TYPE_OPTIONS], ensure_ascii=False)
+    fish_names_js = json.dumps(_load_fish_master(), ensure_ascii=False)  # [[slug, name], ...]
     dir_opts = "".join(
         f'<option value="{k}"{"" if k != dir_key else " selected"}>{k}</option>'
         for k in AVAILABLE_DIRS
@@ -977,8 +1067,10 @@ def build_html(spots, save_mode='pythonista', dir_key=None):
     html = html.replace("__DIR_KEY__",             dir_key)
     html = html.replace("__DIR_OPTIONS_HTML__",    dir_opts)
     html = html.replace("__SPOTS_JSON__",          spots_js)
-    html = html.replace("__SEABED_OPTIONS_JSON__",  seabed_js)
-    html = html.replace("__BEARING_OPTIONS_JSON__", bearing_js)
+    html = html.replace("__SEABED_OPTIONS_JSON__",          seabed_js)
+    html = html.replace("__BEARING_OPTIONS_JSON__",         bearing_js)
+    html = html.replace("__CLASSIFICATION_OPTIONS_JSON__",  classif_js)
+    html = html.replace("__FISH_NAMES_JSON__",              fish_names_js)
     return html
 
 

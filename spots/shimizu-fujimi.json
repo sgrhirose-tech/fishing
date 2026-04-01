@@ -1,0 +1,44 @@
+{
+  "slug": "shimizu-fujimi",
+  "name": "清水港富士見埠頭",
+  "location": {
+    "latitude": 34.9920517,
+    "longitude": 138.4999983
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "静岡市",
+    "city_slug": "shizuoka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 50,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "清水港内、アジ・クロダイ・アオリイカ向き",
+    "access": "清水駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ]
+}

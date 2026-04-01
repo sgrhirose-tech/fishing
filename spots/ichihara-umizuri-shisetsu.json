@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、貝殻混じり"
   },
   "info": {
-    "notes": "桟橋型で回遊魚も期待",
+    "notes": "有料桟橋型施設で道具レンタルあり、アジ・サヨリ・カレイ向き",
     "access": "五井駅からバス20分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     ],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "karei",
+    "sayori",
+    "aji"
+  ]
 }

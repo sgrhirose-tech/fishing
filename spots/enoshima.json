@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "磯と堤防を楽しめる",
+    "notes": "磯と湘南大堤防、夜22〜朝5時は島内立入禁止、メジナ・クロダイ・アジ・青物向き",
     "access": "片瀬江ノ島駅から徒歩15分"
   },
   "classification": {
@@ -43,5 +43,10 @@
       "leisure=fishing@212m",
       "leisure=fishing@240m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai",
+    "aji"
+  ]
 }

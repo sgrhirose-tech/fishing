@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "干潟寄りで潮位の影響大",
+    "notes": "盤洲干潟に面した遠浅、潮位変化で釣り場が変わる",
     "access": "袖ケ浦駅からバス20分"
   },
   "classification": {
@@ -35,5 +35,6 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": []
 }

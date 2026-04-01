@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "館山湾奥の投げ釣り場",
+    "notes": "館山湾奥の砂浜、キス・ヒラメ・クロダイ向き、夏は海水浴場",
     "access": "館山駅から徒歩10分"
   },
   "classification": {
@@ -36,5 +36,10 @@
       "man_made=breakwater@247m",
       "natural=beach@257m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "hirame",
+    "shirogisu"
+  ]
 }

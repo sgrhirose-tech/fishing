@@ -1,0 +1,42 @@
+{
+  "slug": "hirono-kaigankouen",
+  "name": "広野海岸公園",
+  "location": {
+    "latitude": 34.9239653,
+    "longitude": 138.376133
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "静岡市",
+    "city_slug": "shizuoka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 155,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1424.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "用宗港隣接の護岸公園、投げ釣り・ルアー向き",
+    "access": "用宗駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": []
+}

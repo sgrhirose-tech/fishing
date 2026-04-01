@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "広い砂浜。サーファー多い。江ノ島の西側で多少風が遮られる",
+    "notes": "江ノ島西側の広いサーフ、キス・マゴチ・ヒラメ・青物向き",
     "access": "片瀬江ノ島駅から徒歩5分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     ],
     "source": "manual",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "hirame",
+    "shirogisu"
+  ]
 }

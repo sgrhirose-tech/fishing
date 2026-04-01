@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "地磯混じりの景観地",
+    "notes": "ウェーダー必要の地磯、クロダイ・メジナ・イシダイ・ヒラスズキ向き",
     "access": "勝浦駅から徒歩20分"
   },
   "classification": {
@@ -33,5 +33,11 @@
     "secondary_flags": [],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "ishidai",
+    "mejina",
+    "kurodai",
+    "suzuki"
+  ]
 }

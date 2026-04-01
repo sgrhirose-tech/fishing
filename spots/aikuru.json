@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "足場が良く手軽に楽しめる",
+    "notes": "追浜の護岸、足場良く手軽、アイナメ・アジ・メバル・カサゴ向き",
     "access": "久里浜駅からバス15分"
   },
   "classification": {
@@ -33,5 +33,10 @@
     "secondary_flags": [],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "kasago",
+    "mebaru",
+    "aji"
+  ]
 }

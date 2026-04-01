@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、急深寄り"
   },
   "info": {
-    "notes": "二宮町の遠浅砂浜。湘南西端の穴場。比較的空いている",
+    "notes": "湘南西端の遠浅砂浜、キス・マゴチ向き、比較的空いた穴場",
     "access": "二宮駅から徒歩15分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "shirogisu"
+  ]
 }

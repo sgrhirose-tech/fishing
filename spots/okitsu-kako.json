@@ -1,0 +1,45 @@
+{
+  "slug": "okitsu-kako",
+  "name": "興津川河口",
+  "location": {
+    "latitude": 35.0550834,
+    "longitude": 138.5312247
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "静岡市",
+    "city_slug": "shizuoka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 145,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 99.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "清水区の河口、シーバス・ヒラメ向きポイント",
+    "access": "興津駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "hirame",
+    "suzuki"
+  ]
+}

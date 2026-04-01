@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "砂と砂利が混じる。投げ釣りで好釣果が期待できる",
+    "notes": "砂礫混じりのサーフ、キス・ヒラメ・マゴチ・弓角青物向き",
     "access": "大磯駅から徒歩10分"
   },
   "classification": {
@@ -37,5 +37,10 @@
       "man_made=breakwater@266m",
       "man_made=quay@283m"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "hirame",
+    "shirogisu"
+  ]
 }

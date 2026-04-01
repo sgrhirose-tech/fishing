@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "潮干狩り場周辺の砂浜",
+    "notes": "潮干狩り場に隣接の遠浅砂浜、ハゼ・キス向き",
     "access": "袖ケ浦駅からバス20分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "haze",
+    "shirogisu"
+  ]
 }

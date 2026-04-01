@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、急深寄り"
   },
   "info": {
-    "notes": "砂地が広がる浜。駅至近で利便性が高い穴場",
+    "notes": "駅至近の急深サーフ、キス・青物ショアジギング・アジ向き",
     "access": "国府津駅から徒歩5分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "aji",
+    "shirogisu"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "河口周辺の変化を狙える",
+    "notes": "平塚の河口、シーバス・クロダイ・キス・ハゼ向き",
     "access": "平塚駅からバス15分"
   },
   "classification": {
@@ -33,5 +33,11 @@
     "secondary_flags": [],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "haze",
+    "suzuki",
+    "shirogisu"
+  ]
 }

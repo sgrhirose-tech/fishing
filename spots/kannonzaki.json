@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "潮通し良い地磯エリア",
+    "notes": "東京湾口の潮流強い地磯、クロダイ・メジナ・青物向き",
     "access": "浦賀駅からバス15分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:崎"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ]
 }

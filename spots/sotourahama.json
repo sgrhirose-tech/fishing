@@ -35,5 +35,8 @@
     "osm_evidence": [
       "natural=beach@34m"
     ]
-  }
+  },
+  "target_fish": [
+    "shirogisu"
+  ]
 }

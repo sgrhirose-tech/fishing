@@ -1,0 +1,47 @@
+{
+  "slug": "sangenya-kaigan",
+  "name": "三軒屋海岸",
+  "location": {
+    "latitude": 34.6476136,
+    "longitude": 137.792244
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "磐田市",
+    "city_slug": "iwata"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 628.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "磐田市の遠州灘サーフ、キス・ヒラメ向き",
+    "access": "JR磐田駅からバス25分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "natural=beach@38m"
+    ]
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ]
+}

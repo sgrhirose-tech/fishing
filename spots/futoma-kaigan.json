@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "静かな海岸で投げ向き",
+    "notes": "キス中心の遠浅サーフ、サーファー多く要注意",
     "access": "安房天津駅から徒歩20分"
   },
   "classification": {
@@ -37,5 +37,8 @@
     "osm_evidence": [
       "natural=beach@52m"
     ]
-  }
+  },
+  "target_fish": [
+    "shirogisu"
+  ]
 }

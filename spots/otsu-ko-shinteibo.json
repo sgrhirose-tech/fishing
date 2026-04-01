@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "港内で手軽に竿を出せる",
+    "notes": "横須賀の護岸堤防、アジ・サバ・シーバス・クロダイ向き",
     "access": "京急大津駅から徒歩15分"
   },
   "classification": {
@@ -35,5 +35,11 @@
     "osm_evidence": [
       "keyword:堤防"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "saba",
+    "aji",
+    "suzuki"
+  ]
 }

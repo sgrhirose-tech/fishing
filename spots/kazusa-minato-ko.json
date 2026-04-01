@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "港内で手軽に竿を出せる",
+    "notes": "内房では珍しい大型港、回遊魚・コウイカ・クロダイ向き",
     "access": "上総湊駅から徒歩10分"
   },
   "classification": {
@@ -39,5 +39,9 @@
       "man_made=breakwater@212m",
       "waterway=dock@121m"
     ]
-  }
+  },
+  "target_fish": [
+    "kouika",
+    "kurodai"
+  ]
 }

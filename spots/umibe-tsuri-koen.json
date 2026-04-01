@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "横須賀の人気釣り公園",
+    "notes": "横須賀の無料釣り専用公園、アジ・サバ・カレイ・タチウオ向き",
     "access": "堀ノ内駅から徒歩25分"
   },
   "classification": {
@@ -37,5 +37,11 @@
     "osm_evidence": [
       "leisure=fishing@43m"
     ]
-  }
+  },
+  "target_fish": [
+    "tachiuo",
+    "karei",
+    "saba",
+    "aji"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "手軽に探れる護岸帯",
+    "notes": "八景島水族館対岸の護岸、アジ・シーバス・クロダイ向き",
     "access": "八景島駅から徒歩10分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     ],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "aji",
+    "suzuki"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "外海に面した実績場",
+    "notes": "鴨川市より全面釣り禁止の情報あり、行前に必ず確認",
     "access": "江見駅から徒歩20分"
   },
   "classification": {
@@ -38,5 +38,6 @@
       "man_made=breakwater@202m",
       "waterway=dock@2m"
     ]
-  }
+  },
+  "target_fish": []
 }

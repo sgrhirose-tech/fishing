@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "運河筋を狙える公園",
+    "notes": "潮通しよく水深5〜7m、シーバス・クロダイ・カレイ実績豊富",
     "access": "東京テレポート駅からバス15分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:ふ頭公園"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "karei",
+    "suzuki"
+  ]
 }

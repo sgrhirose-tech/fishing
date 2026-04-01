@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "港内で落ち着いて探れる",
+    "notes": "ウキフカセでクロダイの名ポイント、アジ・メジナも向き",
     "access": "千倉駅からバス20分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "waterway=dock@2m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai",
+    "aji"
+  ]
 }

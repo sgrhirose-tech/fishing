@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "河口の変化を狙える",
+    "notes": "ハゼ・キス・シーバス・ヒラメ向き、ファミリーにも人気",
     "access": "上総一ノ宮駅から徒歩20分"
   },
   "classification": {
@@ -37,5 +37,11 @@
     "osm_evidence": [
       "man_made=breakwater@261m"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "haze",
+    "suzuki",
+    "shirogisu"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "港内で多魚種を狙える",
+    "notes": "南堤防のみ可・投げ/エギ禁止、アジ・シマアジ・メジナ向き",
     "access": "安房小湊駅から徒歩10分"
   },
   "classification": {
@@ -38,5 +38,10 @@
       "man_made=breakwater@277m",
       "waterway=dock@15m"
     ]
-  }
+  },
+  "target_fish": [
+    "shimaaji",
+    "mejina",
+    "aji"
+  ]
 }

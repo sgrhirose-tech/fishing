@@ -39,5 +39,9 @@
       "natural=beach@78m",
       "natural=cliff@279m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina"
+  ]
 }

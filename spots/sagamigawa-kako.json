@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "河口の流れ込みが魅力",
+    "notes": "箱根駅伝中継所近くの大河口、シーバス・クロダイ・キス・アジ向き",
     "access": "平塚駅からバス15分"
   },
   "classification": {
@@ -38,5 +38,11 @@
       "natural=beach@259m",
       "natural=beach@264m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "aji",
+    "suzuki",
+    "shirogisu"
+  ]
 }

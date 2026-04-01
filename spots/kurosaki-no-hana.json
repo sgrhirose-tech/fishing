@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "景観抜群の磯浜エリア",
+    "notes": "三浦南部の地磯、クロダイ・メジナ・アオリイカ向き",
     "access": "三崎口駅からバス15分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "natural=bare_rock@87m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "kurodai"
+  ]
 }

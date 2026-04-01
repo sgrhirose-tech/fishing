@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "景勝地の地磯ポイント",
+    "notes": "真鶴半島の景勝地磯、クロダイ・メジナ・イシダイ向き",
     "access": "真鶴駅からバス10分"
   },
   "classification": {
@@ -33,5 +33,10 @@
     "secondary_flags": [],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "ishidai",
+    "mejina",
+    "kurodai"
+  ]
 }

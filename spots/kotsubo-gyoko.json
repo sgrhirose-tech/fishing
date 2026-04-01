@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "港内中心の実績場",
+    "notes": "港内は2020年11月より釣禁・立入禁止、外側テトラのみ可",
     "access": "逗子駅からバス15分"
   },
   "classification": {
@@ -41,5 +41,6 @@
       "natural=cliff@200m",
       "natural=cliff@289m"
     ]
-  }
+  },
+  "target_fish": []
 }

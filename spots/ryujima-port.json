@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "竜ヶ崎堤防が人気",
+    "notes": "ブロック護岸の小漁港、クロダイ・メジナ・アオリイカ向き",
     "access": "安房勝山駅から徒歩15分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "natural=beach@256m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "kurodai"
+  ]
 }

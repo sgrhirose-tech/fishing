@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "キス狙いで人気の砂浜",
+    "notes": "金谷南の砂浜、投げ釣りでキス中心",
     "access": "保田駅から徒歩10分"
   },
   "classification": {
@@ -35,5 +35,8 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "shirogisu"
+  ]
 }

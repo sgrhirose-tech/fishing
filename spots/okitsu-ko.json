@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "内湾気味で狙いやすい",
+    "notes": "アジ釣りの聖地と称される西港、アジ・クロダイ・メジナ・キス向き",
     "access": "上総興津駅から徒歩10分"
   },
   "classification": {
@@ -36,5 +36,11 @@
       "man_made=breakwater@210m",
       "waterway=dock@107m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai",
+    "aji",
+    "shirogisu"
+  ]
 }

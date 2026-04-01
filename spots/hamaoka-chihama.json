@@ -1,0 +1,45 @@
+{
+  "slug": "hamaoka-chihama",
+  "name": "浜岡砂丘・千浜海岸",
+  "location": {
+    "latitude": 34.6464921,
+    "longitude": 138.0667164
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "掛川市",
+    "city_slug": "kakegawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 195,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1778.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "大砂丘が続く豪快なサーフ、ヒラメ・キス向き",
+    "access": "御前崎市内バス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "maisaka-tsutsumi",
+  "name": "舞阪堤・網干場",
+  "location": {
+    "latitude": 34.6804569,
+    "longitude": 137.6036293
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "unknown",
+    "city": "浜松市",
+    "city_slug": "hamamatsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体、貝殻混じり"
+  },
+  "info": {
+    "notes": "今切口クロダイの名所、上級者向け急流ポイント",
+    "access": "弁天島駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "slipway"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=slipway@258m",
+      "man_made=breakwater@185m",
+      "man_made=breakwater@186m",
+      "man_made=breakwater@250m",
+      "man_made=breakwater@99m"
+    ]
+  }
+}

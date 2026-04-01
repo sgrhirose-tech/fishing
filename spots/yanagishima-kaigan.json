@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "河口近くの投げ釣り場",
+    "notes": "相模川河口東側の砂浜、キス・シーバス・ヒラメ向き",
     "access": "茅ケ崎駅からバス15分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "natural=beach@169m"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "suzuki",
+    "shirogisu"
+  ]
 }

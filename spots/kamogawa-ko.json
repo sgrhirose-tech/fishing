@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "駅近で多魚種が狙える",
+    "notes": "大型港で多魚種豊富、アジ・クロダイ・シーバス・青物向き",
     "access": "安房鴨川駅から徒歩15分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "waterway=dock@2m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "aji",
+    "suzuki"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "静かな浜で投げ釣り向き",
+    "notes": "油壷エリアの静かな砂浜、キス・マゴチ・アオリイカ向き",
     "access": "三崎口駅からバス15分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "magochi",
+    "shirogisu"
+  ]
 }

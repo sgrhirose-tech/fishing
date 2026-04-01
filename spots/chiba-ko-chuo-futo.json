@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "港湾部を探れるポイント",
+    "notes": "500m護岸で柵付き、アジ・サビキ・カレイ・シーバス向き",
     "access": "千葉みなと駅から徒歩18分"
   },
   "classification": {
@@ -33,5 +33,10 @@
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "karei",
+    "aji",
+    "suzuki"
+  ]
 }

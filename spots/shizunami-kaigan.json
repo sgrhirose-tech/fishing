@@ -1,0 +1,42 @@
+{
+  "slug": "shizunami-kaigan",
+  "name": "静波海水浴場・勝間田川河口",
+  "location": {
+    "latitude": 34.7311205,
+    "longitude": 138.2326519
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "牧之原市",
+    "city_slug": "makinohara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 125,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "遠浅の砂浜、キス・投げ釣りに定評あり",
+    "access": "相良牧之原ICよりバス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu"
+  ]
+}

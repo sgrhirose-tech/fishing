@@ -1,0 +1,46 @@
+{
+  "slug": "abegawa-kako",
+  "name": "安倍川河口",
+  "location": {
+    "latitude": 34.9311193,
+    "longitude": 138.4002686
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "静岡市",
+    "city_slug": "shizuoka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 170,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1521.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "安倍川河口、シーバス・ヒラメ・マゴチ向き",
+    "access": "用宗駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "magochi",
+    "hirame",
+    "suzuki"
+  ]
+}
