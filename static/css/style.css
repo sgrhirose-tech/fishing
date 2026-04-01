@@ -366,11 +366,13 @@ footer a { color: #8bc; }
 .fish-legend-dot.off  { background: #e0e0e0; }
 
 .fish-season-bar {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
   gap: 4px;
+  overflow-x: auto;
 }
 .fish-month {
+  flex: 1 1 0;
+  min-width: 0;
   border-radius: 6px;
   padding: .5rem .1rem .35rem;
   text-align: center;
