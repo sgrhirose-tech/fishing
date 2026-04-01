@@ -465,9 +465,11 @@ def page_spots(request: Request, area: str = Query(None)):
         if filtered:
             all_spots = filtered
             area_name = filtered[0]["area"]["area_name"]
+    fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     return templates.TemplateResponse(request, "spots.html", {
         "spots": all_spots,
         "area_name": area_name,
+        "fish_slug_map": fish_slug_map,
     })
 
 
@@ -614,6 +616,7 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     city_name = spots[0]["area"]["city"]
     region_slug = PREF_TO_REGION.get(pref_slug, "")
     region_name = REGION_NAMES.get(region_slug, "")
+    fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     return templates.TemplateResponse(request, "city.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -624,6 +627,7 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "region_slug": region_slug,
         "region_name": region_name,
         "spots": spots,
+        "fish_slug_map": fish_slug_map,
     })
 
 
@@ -642,6 +646,7 @@ def page_spot_detail(
     tomorrow_str = _tomorrow()
     region_slug = PREF_TO_REGION.get(pref_slug, "")
     region_name = REGION_NAMES.get(region_slug, "")
+    fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -652,4 +657,5 @@ def page_spot_detail(
         "preloaded_forecast": _compute_forecast(spot),
         "region_slug":        region_slug,
         "region_name":        region_name,
+        "fish_slug_map":      fish_slug_map,
     })
