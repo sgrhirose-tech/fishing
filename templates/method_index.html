@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}釣法から探す | Tsuricast{% endblock %}
+{% block description %}サビキ釣り・投げ釣り・フカセ釣りなど{{ total }}釣法の解説。難易度・必要な道具・ターゲット魚種を一覧で確認できます。{% endblock %}
+
+{% block og_url %}https://tsuricast.jp/method/{% endblock %}
+{% block og_title %}釣法から探す | Tsuricast{% endblock %}
+{% block og_desc %}サビキ釣り・投げ釣り・フカセ釣りなど{{ total }}釣法の解説。難易度・必要な道具・ターゲット魚種を一覧で確認。{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <span>釣法一覧</span>
+</nav>
+
+<h1>釣法から探す</h1>
+<p class="fish-index-lead">{{ total }}釣法の解説。難易度・必要な道具・ターゲット魚種を確認できます。</p>
+
+<div class="method-index-grid">
+  {% for m in methods %}
+  <a href="/method/{{ m.slug }}" class="method-index-card">
+    <span class="method-index-name">{{ m.name }}</span>
+    <span class="method-index-difficulty">
+      {% for i in range(m.difficulty) %}★{% endfor %}{% for i in range(3 - m.difficulty) %}☆{% endfor %}
+    </span>
+    <span class="method-index-desc">{{ m.short_desc }}</span>
+    {% if m.target_fish %}
+    <span class="method-index-fish">{{ m.target_fish | join('・') }}</span>
+    {% endif %}
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}
