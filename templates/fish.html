@@ -4,6 +4,12 @@
 {% block description %}{{ fish_name }}が釣れる釣り場一覧。千葉・東京・神奈川・静岡の{{ total }}か所のスポットを紹介。釣れる時期・釣法もチェック。{% endblock %}
 
 {% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <a href="/fish/">魚種から探す</a> &rsaquo;
+  <span>{{ fish_name }}</span>
+</nav>
+
 <h1>{{ fish_name }}が釣れる釣り場</h1>
 
 {% if fish_data.photo %}
@@ -80,4 +86,5 @@
   <p>現在登録されているスポットはありません。</p>
   {% endif %}
 </section>
+<p class="back-link"><a href="/fish/">&lsaquo; 魚種一覧に戻る</a></p>
 {% endblock %}

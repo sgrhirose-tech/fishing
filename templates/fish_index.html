@@ -8,6 +8,11 @@
 {% block og_desc %}アジ・シロギス・メジナなど{{ total_fish }}魚種の釣り場情報。釣れる時期・釣法・対応スポット数を一覧で確認できます。{% endblock %}
 
 {% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <span>魚種から探す</span>
+</nav>
+
 <h1>魚種から釣り場を探す</h1>
 <p class="fish-index-lead">{{ total_fish }}魚種の釣り場情報。釣れる時期・釣法・対応スポット数を一覧で確認できます。</p>
 
@@ -31,4 +36,5 @@
   </a>
   {% endfor %}
 </div>
+<p class="back-link"><a href="/">&lsaquo; トップに戻る</a></p>
 {% endblock %}
