@@ -21,7 +21,12 @@
     <span class="fish-index-count fish-index-count--zero">情報収集中</span>
     {% endif %}
     {% if f.method %}
+    {% set mslug = method_slug_map.get(f.method[0]) %}
+    {% if mslug %}
+    <span class="fish-index-method"><a href="/method/{{ mslug }}">{{ f.method[0] }}</a></span>
+    {% else %}
     <span class="fish-index-method">{{ f.method[0] }}</span>
+    {% endif %}
     {% endif %}
   </a>
   {% endfor %}
