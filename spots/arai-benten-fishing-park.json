@@ -1,0 +1,49 @@
+{
+  "slug": "arai-benten-fishing-park",
+  "name": "新居弁天海釣公園",
+  "location": {
+    "latitude": 34.6814177,
+    "longitude": 137.5912603
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "湖西市",
+    "city_slug": "kosai"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 25,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "T字堤防5基、初心者・ファミリー向け好適地",
+    "access": "新居町駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=fishing@114m",
+      "leisure=fishing@118m",
+      "leisure=fishing@203m",
+      "leisure=fishing@67m",
+      "man_made=breakwater@215m"
+    ]
+  },
+  "target_fish": []
+}

@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "港内岸壁で回遊魚実績",
+    "notes": "石積み護岸でクロダイ・アジ・回遊魚向き、要作業確認",
     "access": "浜金谷駅から徒歩8分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "waterway=dock@113m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "aji"
+  ]
 }

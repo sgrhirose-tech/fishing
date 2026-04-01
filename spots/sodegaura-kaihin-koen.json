@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "東京湾を広く見渡せる",
+    "notes": "2020年8月より釣り禁止、釣行不可",
     "access": "長浦駅からバス15分"
   },
   "classification": {
@@ -35,5 +35,6 @@
     ],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": []
 }

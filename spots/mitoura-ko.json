@@ -42,5 +42,10 @@
       "natural=beach@239m",
       "natural=cliff@151m"
     ]
-  }
+  },
+  "target_fish": [
+    "madai",
+    "kurodai",
+    "aji"
+  ]
 }

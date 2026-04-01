@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、急深寄り"
   },
   "info": {
-    "notes": "小田原漁港に隣接。比較的空いている砂浜。投げ釣りの好ポイント",
+    "notes": "小田原漁港隣接の砂浜、キス・マゴチ向き、比較的空いた穴場",
     "access": "小田原駅から徒歩20分"
   },
   "classification": {
@@ -38,5 +38,9 @@
       "man_made=breakwater@186m",
       "natural=beach@123m"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "shirogisu"
+  ]
 }

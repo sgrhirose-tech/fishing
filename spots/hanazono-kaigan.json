@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "静かな海岸で投げ向き",
+    "notes": "静かな砂浜、キス・ヒラメ向きサーフ",
     "access": "和田浦駅から徒歩20分"
   },
   "classification": {
@@ -37,5 +37,9 @@
     "osm_evidence": [
       "natural=beach@201m"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ]
 }

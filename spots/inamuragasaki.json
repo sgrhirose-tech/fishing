@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "磯混じりで変化が多い",
+    "notes": "景観の磯と護岸、クロダイ・メジナ・アオリイカ向き",
     "access": "稲村ヶ崎駅から徒歩5分"
   },
   "classification": {
@@ -37,5 +37,10 @@
     "osm_evidence": [
       "natural=beach@238m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "kurodai"
+  ]
 }

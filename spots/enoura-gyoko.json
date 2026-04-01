@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "小規模ながら人気の港",
+    "notes": "小田原西側の小漁港、アジ・カゴ釣り・アオリイカ・クロダイ向き",
     "access": "根府川駅から徒歩20分"
   },
   "classification": {
@@ -37,5 +37,10 @@
     "osm_evidence": [
       "man_made=breakwater@45m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "手軽な海浜公園ポイント",
+    "notes": "遠浅の小公園、満潮狙いでハゼ・シーバス・クロダイ向き",
     "access": "木更津駅から徒歩25分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     ],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "haze",
+    "suzuki"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "桟橋周りでキス実績",
+    "notes": "桟橋周辺は砂地、キス・ハゼ・サヨリ・クロダイ向き",
     "access": "富浦駅から徒歩15分"
   },
   "classification": {
@@ -38,5 +38,11 @@
       "man_made=pier@1m",
       "natural=beach@84m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "sayori",
+    "haze",
+    "shirogisu"
+  ]
 }

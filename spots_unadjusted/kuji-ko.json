@@ -1,0 +1,43 @@
+{
+  "slug": "kuji-ko",
+  "name": "くじ港（西浦漁港）",
+  "location": {
+    "latitude": 34.7830226,
+    "longitude": 137.1880452
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "蒲郡市",
+    "city_slug": "gamagori"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "蒲郡市のハゼ釣り名ポイント、クロダイも向き",
+    "access": "蒲郡駅からバス20分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@163m",
+      "man_made=pier@251m",
+      "man_made=pier@261m"
+    ]
+  }
+}

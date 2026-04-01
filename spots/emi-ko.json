@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "南房総の人気港",
+    "notes": "岩礁上の港で変化豊富、キス・アジ・イシダイ・アオリイカ向き",
     "access": "江見駅から徒歩10分"
   },
   "classification": {
@@ -37,5 +37,11 @@
     "osm_evidence": [
       "waterway=dock@5m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "ishidai",
+    "aji",
+    "shirogisu"
+  ]
 }

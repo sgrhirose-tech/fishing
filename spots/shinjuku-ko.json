@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "岸壁でのんびり楽しめる",
+    "notes": "長井地区の漁港、メバル・クロダイ・アジ向き",
     "access": "三崎口駅からバス20分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:港"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "aji"
+  ]
 }

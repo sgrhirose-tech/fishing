@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "河口絡みで変化を狙える",
+    "notes": "シーバス・アジングのメッカ、シーバス・ハゼ・クロダイ向き",
     "access": "堀ノ内駅から徒歩15分"
   },
   "classification": {
@@ -39,5 +39,11 @@
       "man_made=breakwater@72m",
       "natural=beach@252m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "haze",
+    "aji",
+    "suzuki"
+  ]
 }

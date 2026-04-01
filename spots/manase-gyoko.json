@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "葉山の小規模港",
+    "notes": "葉山の小漁港、左堤防立入禁止、クロダイ・アオリイカ・メバル向き",
     "access": "逗子駅からバス20分"
   },
   "classification": {
@@ -39,5 +39,10 @@
       "natural=bare_rock@118m",
       "natural=beach@217m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "mebaru"
+  ]
 }

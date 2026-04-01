@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "小港で初心者も入りやすい",
+    "notes": "常夜灯あり夜釣り向き、クロダイ・キス・アジ・メバル向き",
     "access": "富浦駅から徒歩10分"
   },
   "classification": {
@@ -35,5 +35,11 @@
     "osm_evidence": [
       "keyword:港"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "aji",
+    "shirogisu"
+  ]
 }

@@ -1,0 +1,42 @@
+{
+  "slug": "ishizuhama-park",
+  "name": "石津浜公園",
+  "location": {
+    "latitude": 34.8421039,
+    "longitude": 138.3345071
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "焼津市",
+    "city_slug": "yaizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 65,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 262.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "青物・アオリイカ好ポイント、潮当たり良好",
+    "access": "焼津駅からバス15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika"
+  ]
+}

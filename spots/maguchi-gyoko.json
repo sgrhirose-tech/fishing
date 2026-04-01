@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "外洋寄りの漁港ポイント",
+    "notes": "港内岸釣り禁止、剱崎隣の地磯・大浦海岸から入釣",
     "access": "三崎口駅からバス20分"
   },
   "classification": {
@@ -36,5 +36,6 @@
       "harbour=yes@13m",
       "natural=bare_rock@253m"
     ]
-  }
+  },
+  "target_fish": []
 }

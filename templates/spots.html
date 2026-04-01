@@ -39,7 +39,14 @@
       <span class="badge badge-warning">サーファーと仲良く</span>
       {% endif %}
     </div>
-    <p class="spot-seabed">底質: {{ spot.derived_features.seabed_summary }}</p>
+    <p class="spot-seabed">{{ spot.info.notes }}</p>
+    {% if spot.target_fish %}
+    <div class="fish-chips">
+      {% for fish in spot.target_fish %}
+      <a href="/fish/{{ fish }}" class="fish-chip">{{ fish_name_map.get(fish, fish) }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
     <p class="spot-access">🚃 {{ spot.info.access }}</p>
     <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/{{ spot.slug }}" class="btn-detail">
       詳細・気象情報 →

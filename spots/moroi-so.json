@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "小磯と港が混在する",
+    "notes": "小磯と護岸が混在、クロダイ・メジナ・アオリイカ向き",
     "access": "三崎口駅からバス20分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "man_made=breakwater@255m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "kurodai"
+  ]
 }

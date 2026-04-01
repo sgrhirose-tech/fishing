@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "遠浅の砂浜で投げ釣り向き",
+    "notes": "遠浅の砂浜、下洲港隣接の投げ釣り場",
     "access": "青堀駅からバス10分"
   },
   "classification": {
@@ -35,5 +35,6 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": []
 }

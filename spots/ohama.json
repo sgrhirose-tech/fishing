@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "三浦半島南端の砂浜。三崎漁港近く。比較的空いている",
+    "notes": "三崎漁港近く比較的空いた砂浜、キス・マゴチ向き",
     "access": "三崎口駅からバスまたは車15分"
   },
   "classification": {
@@ -38,5 +38,9 @@
       "man_made=breakwater@130m",
       "natural=beach@114m"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "shirogisu"
+  ]
 }

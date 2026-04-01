@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "景観抜群の磯場",
+    "notes": "奇岩地形の磯場、クロダイ・メジナ・カワハギ向き",
     "access": "逗子駅からバス25分"
   },
   "classification": {
@@ -40,5 +40,9 @@
       "natural=cliff@99m",
       "natural=rock@117m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "サーフと護岸を楽しめる",
+    "notes": "砂浜は釣禁、検見川浜突堤・小堤防がメイン、メバル・シーバス向き",
     "access": "稲毛駅からバス20分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "natural=beach@271m"
     ]
-  }
+  },
+  "target_fish": [
+    "mebaru",
+    "suzuki"
+  ]
 }

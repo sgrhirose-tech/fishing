@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "河口横の小波止ポイント",
+    "notes": "河口横の護岸、クロダイ・キス・シーバス向き",
     "access": "浜金谷駅から徒歩10分"
   },
   "classification": {
@@ -36,5 +36,10 @@
       "natural=beach@60m",
       "waterway=dock@240m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "shirogisu"
+  ]
 }

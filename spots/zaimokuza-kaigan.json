@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "投げ釣り向きの海岸",
+    "notes": "由比ヶ浜南側のサーフ、キス・マゴチ・シーバス向き",
     "access": "鎌倉駅から徒歩20分"
   },
   "classification": {
@@ -37,5 +37,10 @@
     "osm_evidence": [
       "natural=beach@137m"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "suzuki",
+    "shirogisu"
+  ]
 }

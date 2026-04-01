@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "静かなサーフで探りやすい",
+    "notes": "静かな遠浅サーフ、投げ釣りでキス・イシモチ向き",
     "access": "旭駅からバス25分"
   },
   "classification": {
@@ -35,5 +35,8 @@
     "osm_evidence": [
       "keyword:浜"
     ]
-  }
+  },
+  "target_fish": [
+    "shirogisu"
+  ]
 }

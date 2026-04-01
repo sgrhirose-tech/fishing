@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "広い砂浜で投げ釣り向き",
+    "notes": "岩礁と砂地が入り混じる広い海岸、クロダイ・キス・シーバス向き",
     "access": "岩井駅から徒歩10分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "shirogisu"
+  ]
 }

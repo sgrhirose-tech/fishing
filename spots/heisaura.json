@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "広大なサーフが続く",
+    "notes": "6kmに及ぶ広大サーフ、キス・ヒラメ・アオリイカ向き",
     "access": "館山駅からバス25分"
   },
   "classification": {
@@ -33,5 +33,10 @@
     "secondary_flags": [],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "hirame",
+    "shirogisu"
+  ]
 }

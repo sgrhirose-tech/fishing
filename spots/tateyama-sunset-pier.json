@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "長い桟橋で多魚種狙い",
+    "notes": "日本最長500m桟橋、北側釣禁・投げ釣り/コマセ禁、カレイ・アジ向き",
     "access": "館山駅から徒歩20分"
   },
   "classification": {
@@ -38,5 +38,9 @@
       "man_made=pier@245m",
       "natural=beach@217m"
     ]
-  }
+  },
+  "target_fish": [
+    "karei",
+    "aji"
+  ]
 }

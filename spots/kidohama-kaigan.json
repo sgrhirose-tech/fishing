@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "九十九里北部の定番浜",
+    "notes": "九十九里北部の遠浅サーフ、キス・ヒラメ向き投げ釣り場",
     "access": "横芝駅からバス20分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ]
 }

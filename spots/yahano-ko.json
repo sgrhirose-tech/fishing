@@ -38,5 +38,10 @@
     "osm_evidence": [
       "natural=cliff@274m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "aji"
+  ]
 }

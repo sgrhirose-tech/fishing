@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "小規模港でイカやクロダイ",
+    "notes": "リニューアル後に釣り解禁、クロダイ・シロギス・アオリイカ向き",
     "access": "安房勝山駅から徒歩20分"
   },
   "classification": {
@@ -38,5 +38,10 @@
       "man_made=pier@194m",
       "natural=beach@33m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "shirogisu",
+    "kurodai"
+  ]
 }

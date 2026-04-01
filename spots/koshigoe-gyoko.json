@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "小田急沿線の人気港",
+    "notes": "鎌倉の穴場漁港、キス・ヒラメ・シーバス向き",
     "access": "腰越駅から徒歩5分"
   },
   "classification": {
@@ -40,5 +40,10 @@
       "natural=beach@278m",
       "natural=cliff@294m"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "suzuki",
+    "shirogisu"
+  ]
 }

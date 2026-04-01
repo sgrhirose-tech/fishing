@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "都心近くの人気護岸",
+    "notes": "豊洲市場外周4.5km、サビキ・シーバス・タチウオ・青物と魚種豊富",
     "access": "市場前駅から徒歩8分"
   },
   "classification": {
@@ -38,5 +38,9 @@
       "man_made=pier@206m",
       "man_made=pier@259m"
     ]
-  }
+  },
+  "target_fish": [
+    "tachiuo",
+    "suzuki"
+  ]
 }

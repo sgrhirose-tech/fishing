@@ -24,7 +24,7 @@
     "seabed_summary": "礫主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "岸壁で手軽に狙える",
+    "notes": "城ヶ島北西の岸壁、アジ・メバル・アオリイカ・青物向き",
     "access": "三崎口駅からバス25分"
   },
   "classification": {
@@ -41,5 +41,10 @@
       "man_made=breakwater@254m",
       "man_made=pier@167m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mebaru",
+    "aji"
+  ]
 }

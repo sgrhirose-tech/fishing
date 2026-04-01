@@ -10,6 +10,7 @@ body {
   background: #f5f8fa;
   color: #222;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* ---- ナビ ---- */
@@ -56,7 +57,7 @@ main {
 .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #1a6b9e; }
 
 /* ---- マップ ---- */
-.map-container { height: 420px; border-radius: 8px; margin: 1.25rem 0; }
+.map-container { height: 460px; border-radius: 8px; margin: 1.25rem 0; }
 .map-detail { height: 350px; }
 .map-legend {
   display: flex; flex-wrap: wrap; gap: .5rem 1.2rem;
@@ -92,7 +93,7 @@ main {
   transition: box-shadow .15s;
 }
 .area-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.15); }
-.area-card h3 { margin: 0 0 .25rem; color: #1a6b9e; }
+.area-card h3 { margin: 0 0 .25rem; color: #1a6b9e; font-size: 1.17rem; }
 .area-card p  { margin: 0; font-size: .85rem; color: #555; }
 
 /* ---- 戻るリンク ---- */
@@ -350,3 +351,209 @@ footer a { color: #8bc; }
 .score-high { background: #e6f4ea; color: #1a6b3a; font-weight: bold; }
 .score-mid  { background: #fff8e1; color: #7a5800; }
 .score-low  { background: #fce8e6; color: #8b1a1a; }
+
+/* ---- 魚種別ページ ---- */
+.fish-season-section { margin: 1.5rem 0 1rem; }
+.fish-season-legend {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  font-size: .82rem; color: #555; margin-bottom: .75rem;
+}
+.fish-legend-item { display: flex; align-items: center; gap: .35rem; }
+.fish-legend-dot {
+  width: 14px; height: 14px; border-radius: 3px; display: inline-block;
+}
+.fish-legend-dot.peak { background: #e8651a; }
+.fish-legend-dot.in   { background: #aad4ee; }
+.fish-legend-dot.off  { background: #e0e0e0; }
+
+.fish-season-bar {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+}
+.fish-month {
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: 6px;
+  padding: .5rem .1rem .35rem;
+  text-align: center;
+}
+.fish-month.peak { background: #e8651a; }
+.fish-month.in   { background: #aad4ee; }
+.fish-month.off  { background: #e8e8e8; }
+.fish-month-label {
+  display: block;
+  font-size: .7rem;
+  font-weight: bold;
+}
+.fish-month.peak .fish-month-label { color: white; }
+.fish-month.in   .fish-month-label { color: #1a5a7e; }
+.fish-month.off  .fish-month-label { color: #999; }
+
+.fish-meta-section {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: .4rem; margin: .75rem 0 1.5rem; font-size: .9rem;
+}
+.fish-meta-label { color: #555; font-weight: bold; }
+.fish-method-chip {
+  background: #f0f0f0; border-radius: 12px;
+  padding: .2rem .7rem; font-size: .85rem; color: #444;
+}
+
+.fish-spots-section { margin-top: 1.5rem; }
+.fish-area-group { margin-bottom: 2rem; }
+.fish-area-name {
+  font-size: 1.1rem; font-weight: bold; color: #334;
+  margin: 0 0 .6rem; display: flex; align-items: baseline; gap: .5rem;
+}
+.fish-area-name a { color: #1a6b9e; text-decoration: none; }
+.fish-area-name a:hover { text-decoration: underline; }
+.fish-area-count { font-size: .8rem; color: #888; font-weight: normal; }
+.fish-spot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: .6rem;
+}
+.fish-spot-card {
+  background: white; border: 1px solid #d0e4f0; border-radius: 8px;
+  padding: .6rem .8rem; text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; gap: .15rem;
+  transition: box-shadow .15s;
+}
+.fish-spot-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.fish-spot-name { font-weight: bold; font-size: .9rem; color: #1a6b9e; }
+.fish-spot-city { font-size: .78rem; color: #777; }
+
+/* ---- 魚種チップ ---- */
+.fish-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.fish-chip {
+  background: #e8f4fb;
+  border: 1px solid #aad4ee;
+  border-radius: 12px;
+  padding: .2rem .7rem;
+  font-size: .85rem;
+  color: #1a6b9e;
+  text-decoration: none;
+}
+a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
+
+/* ---- 魚種一覧ページ ---- */
+.fish-index-lead { color: #556; margin: 0 0 1.5rem; }
+.fish-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+.fish-index-card {
+  display: flex; flex-direction: column;
+  padding: 1rem .9rem;
+  background: white; border: 2px solid #d0e4f0;
+  border-radius: 10px; text-decoration: none;
+  color: #334; transition: border-color .15s, box-shadow .15s;
+}
+.fish-index-card:hover {
+  border-color: #1a6b9e;
+  box-shadow: 0 2px 8px rgba(26,107,158,.15);
+}
+.fish-index-name { font-size: 1.1rem; font-weight: bold; color: #1a6b9e; }
+.fish-index-count { font-size: .82rem; color: #555; margin-top: .3rem; }
+.fish-index-count--zero { color: #aaa; }
+.fish-index-method { font-size: .78rem; color: #888; margin-top: .4rem; }
+
+/* ---- TOPページ: 検索窓 ---- */
+.search-box-container {
+  position: relative;
+  margin: 0 0 1.25rem;
+}
+#spot-search {
+  width: 100%;
+  padding: .75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #d0e4f0;
+  border-radius: 8px;
+  background: white;
+  box-sizing: border-box;
+}
+#spot-search:focus { outline: none; border-color: #1a6b9e; }
+.search-results {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: white;
+  border: 1px solid #d0e4f0;
+  border-radius: 0 0 8px 8px;
+  list-style: none;
+  margin: 0; padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+}
+.search-results li a {
+  display: block;
+  padding: .6rem 1rem;
+  text-decoration: none;
+  color: #334;
+  border-bottom: 1px solid #f0f4f8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: .93rem;
+}
+.search-results li a:hover { background: #f0f6fb; }
+.result-sep { color: #aaa; }
+.result-name { font-weight: bold; }
+
+/* ---- TOPページ: エリアチップ ---- */
+.area-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  padding: .6rem 0 1rem;
+}
+.area-chip {
+  white-space: nowrap;
+  background: white;
+  border: 2px solid #1a6b9e;
+  border-radius: 20px;
+  padding: .6rem 1.2rem;
+  text-decoration: none;
+  color: #1a6b9e;
+  font-size: 1.17rem;
+  font-weight: bold;
+  line-height: 1.4;
+  transition: background .15s, color .15s;
+}
+.area-chip:hover { background: #1a6b9e; color: white; }
+
+/* ---- TOPページ: 都道府県アコーディオン ---- */
+.pref-accordion { border: none; padding: 0; margin: 0; }
+.pref-accordion > summary {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  padding: .4rem 0 .7rem;
+  list-style: none;
+  border-bottom: 1px solid #d0e4f0;
+}
+.pref-accordion > summary::-webkit-details-marker { display: none; }
+.pref-accordion > summary::marker { display: none; }
+
+/* エリアから探す・都道府県から探す h2 を同サイズで明示 */
+.area-links h2 { font-size: 1.5rem; margin: 0 0 .25rem; }
+.pref-accordion-title { font-size: 1.5rem; font-weight: bold; color: #334; }
+.pref-accordion-hint {
+  font-size: 1.17rem;
+  font-weight: bold;
+  color: #1a6b9e;
+}
+.pref-accordion-hint::after {
+  content: ' ▼';
+  display: inline-block;
+  font-size: .85rem;
+  transition: transform .2s;
+}
+.pref-accordion[open] .pref-accordion-hint::after { transform: rotate(-180deg); }
+.pref-accordion > .region-group { padding-top: .5rem; }
+
+/* ---- TOPページ: レイアウト（1カラム） ---- */
+.top-layout { display: block; }

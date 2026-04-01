@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "港内中心の実績場",
+    "notes": "姉ヶ崎海岸の小漁港、ハゼ・キス・カレイ・夜アジングも向き",
     "access": "姉ケ崎駅から徒歩25分"
   },
   "classification": {
@@ -35,5 +35,11 @@
     "osm_evidence": [
       "keyword:港"
     ]
-  }
+  },
+  "target_fish": [
+    "karei",
+    "haze",
+    "aji",
+    "shirogisu"
+  ]
 }

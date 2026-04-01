@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "広めのサーフポイント",
+    "notes": "九十九里南端の広いサーフ、キス・ヒラメ・シーバス向き",
     "access": "太東駅から徒歩25分"
   },
   "classification": {
@@ -37,5 +37,10 @@
     "osm_evidence": [
       "natural=beach@149m"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "suzuki",
+    "shirogisu"
+  ]
 }

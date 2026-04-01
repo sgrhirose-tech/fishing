@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "広い浜でキス狙い向き",
+    "notes": "九十九里の典型的な遠浅サーフ、キス・ヒラメ向き",
     "access": "成東駅からバス20分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "小場所ながら実績あり",
+    "notes": "磯と砂地が混在の小漁港、メジナ・クロダイ・アオリイカ向き",
     "access": "逗子駅からバス25分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:漁港"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "kurodai"
+  ]
 }

@@ -1,0 +1,39 @@
+{
+  "slug": "tobeshima-futou",
+  "name": "飛島埠頭",
+  "location": {
+    "latitude": 35.0285512,
+    "longitude": 136.8182995
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "飛島村",
+    "city_slug": "tobishima"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "大型工業港の護岸、ハゼ・クロダイ・シーバス向き",
+    "access": "名古屋市内から車利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:埠頭"
+    ]
+  }
+}

@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "外房の人気港ポイント",
+    "notes": "天然の良港で大型メジナの魚影濃い、テトラ多く上級者向き",
     "access": "鵜原駅から徒歩10分"
   },
   "classification": {
@@ -41,5 +41,8 @@
       "waterway=dock@126m",
       "waterway=dock@13m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina"
+  ]
 }

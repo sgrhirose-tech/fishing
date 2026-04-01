@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:港"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ]
 }

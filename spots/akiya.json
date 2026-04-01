@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "横須賀市の砂浜。立石公園近く。比較的空いている穴場",
+    "notes": "立石公園近くの砂礫浜、キス・マゴチ・カレイ向き、比較的空いている",
     "access": "京急長沢駅から徒歩15分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "karei",
+    "shirogisu"
+  ]
 }

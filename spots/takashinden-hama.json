@@ -1,0 +1,42 @@
+{
+  "slug": "takashinden-hama",
+  "name": "高新田浜公園",
+  "location": {
+    "latitude": 34.7935347,
+    "longitude": 138.3089373
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "焼津市",
+    "city_slug": "yaizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 125,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1441.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "焼津市の護岸公園、青物・アジ・投げ釣り向き",
+    "access": "焼津駅からバス15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji"
+  ]
+}

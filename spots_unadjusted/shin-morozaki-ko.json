@@ -1,0 +1,41 @@
+{
+  "slug": "shin-morozaki-ko",
+  "name": "新師崎港",
+  "location": {
+    "latitude": 34.7036519,
+    "longitude": 136.9766962
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "南知多町",
+    "city_slug": "minamichita"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 433.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "師崎の新港、クロダイ・アジ・メバル向き",
+    "access": "師崎港バスターミナルから徒歩5分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.36,
+    "secondary_flags": [
+      "slipway"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=slipway@210m"
+    ]
+  }
+}

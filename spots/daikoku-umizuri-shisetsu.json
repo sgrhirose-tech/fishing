@@ -24,7 +24,7 @@
     "seabed_summary": "貝殻主体、貝殻混じり"
   },
   "info": {
-    "notes": "定番の海釣り施設",
+    "notes": "有料桟橋式施設、アジ・イワシ・タコ・スズキ向き、道具貸出あり",
     "access": "鶴見駅からバス25分"
   },
   "classification": {
@@ -38,5 +38,11 @@
       "leisure=fishing@7m",
       "man_made=pier@19m"
     ]
-  }
+  },
+  "target_fish": [
+    "suzuki",
+    "iwashi",
+    "tako",
+    "aji"
+  ]
 }

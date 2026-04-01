@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "サーフでのびのび探れる",
+    "notes": "片貝港隣接のサーフ、キス・ヒラメ・イシモチ向き",
     "access": "求名駅からバス25分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ]
 }

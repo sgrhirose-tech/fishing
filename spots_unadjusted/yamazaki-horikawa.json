@@ -1,0 +1,37 @@
+{
+  "slug": "yamazaki-horikawa",
+  "name": "山崎川・堀川河口",
+  "location": {
+    "latitude": 35.1157125,
+    "longitude": 136.9298363
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "名古屋市",
+    "city_slug": "nagoya"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "河口のシーバス・クロダイ向き、市内からアクセス良",
+    "access": "築地口駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  }
+}

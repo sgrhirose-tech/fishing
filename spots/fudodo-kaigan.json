@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体"
   },
   "info": {
-    "notes": "九十九里南部の定番浜",
+    "notes": "九十九里南部の遠浅サーフ、キス・イシモチ・ヒラメ向き",
     "access": "大網駅からバス30分"
   },
   "classification": {
@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ]
 }

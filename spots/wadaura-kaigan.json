@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "広い浜で投げ釣り向き",
+    "notes": "和田港南側の広い砂浜、キス・ヒラメ・マゴチ向き",
     "access": "和田浦駅から徒歩10分"
   },
   "classification": {
@@ -37,5 +37,10 @@
     "osm_evidence": [
       "natural=beach@119m"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "hirame",
+    "shirogisu"
+  ]
 }

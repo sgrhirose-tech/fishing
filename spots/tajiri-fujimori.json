@@ -1,0 +1,45 @@
+{
+  "slug": "tajiri-fujimori",
+  "name": "田尻浜海岸・藤守海岸",
+  "location": {
+    "latitude": 34.8223409,
+    "longitude": 138.3321713
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "焼津市",
+    "city_slug": "yaizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 115,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 755.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "焼津の砂浜、キス・ヒラメ向きサーフ",
+    "access": "焼津駅からバス15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ]
+}

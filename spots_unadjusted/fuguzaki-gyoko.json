@@ -1,0 +1,46 @@
+{
+  "slug": "fuguzaki-gyoko",
+  "name": "冨具崎漁港",
+  "location": {
+    "latitude": 34.7646962,
+    "longitude": 136.8417918
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "美浜町",
+    "city_slug": "mihama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1049.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "美浜町の漁港、アオリイカ・クロダイ向き",
+    "access": "河和駅からバス利用"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "marina",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@117m",
+      "man_made=breakwater@149m",
+      "man_made=breakwater@166m",
+      "man_made=breakwater@288m",
+      "man_made=pier@129m"
+    ]
+  }
+}

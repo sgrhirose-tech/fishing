@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "東京湾奥の定番公園",
+    "notes": "570m防波堤と人工磯、アジ・クロダイ・シーバス・カレイ向きの都内最人気公園",
     "access": "新木場駅からバス15分"
   },
   "classification": {
@@ -36,5 +36,11 @@
       "leisure=fishing@63m",
       "man_made=breakwater@20m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "karei",
+    "aji",
+    "suzuki"
+  ]
 }

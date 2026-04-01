@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "静かな入り江の海岸",
+    "notes": "リアス式の入り江、水深あり、クロダイ・メジナ・アオリイカ向き",
     "access": "鵜原駅から徒歩10分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "natural=beach@112m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "kurodai"
+  ]
 }

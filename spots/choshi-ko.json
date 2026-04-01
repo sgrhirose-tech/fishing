@@ -24,7 +24,7 @@
     "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
   },
   "info": {
-    "notes": "港内中心で足場が比較的安定",
+    "notes": "2023年9月より全面立入禁止（銚子市漁協）、釣行不可",
     "access": "銚子駅から徒歩20分"
   },
   "classification": {
@@ -35,5 +35,6 @@
     "osm_evidence": [
       "keyword:港"
     ]
-  }
+  },
+  "target_fish": []
 }

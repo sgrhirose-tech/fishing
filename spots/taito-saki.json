@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "外房らしい景観の岬",
+    "notes": "灯台下の地磯、クロダイ・メジナ・ヒラスズキ向き",
     "access": "太東駅からバス15分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:崎"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai",
+    "suzuki"
+  ]
 }

@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "駅近の港ポイント",
+    "notes": "赤灯・白灯立入禁止、港内のみ可、アジ・クロダイ・サヨリ向き",
     "access": "安房天津駅から徒歩10分"
   },
   "classification": {
@@ -38,5 +38,10 @@
       "man_made=breakwater@220m",
       "waterway=dock@3m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "sayori",
+    "aji"
+  ]
 }

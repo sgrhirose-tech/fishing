@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "河口絡みの変化が魅力",
+    "notes": "ハゼ・キス・シーバス・イシモチ向き、駐車場・トイレ整備済み",
     "access": "大原駅から徒歩25分"
   },
   "classification": {
@@ -33,5 +33,10 @@
     "secondary_flags": [],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "haze",
+    "suzuki",
+    "shirogisu"
+  ]
 }

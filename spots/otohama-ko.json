@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "外洋向きの人気港",
+    "notes": "黒潮の分流当たる大型港、アジ・クロダイ・アオリイカ・青物向き",
     "access": "千倉駅からバス25分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "waterway=dock@6m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ]
 }

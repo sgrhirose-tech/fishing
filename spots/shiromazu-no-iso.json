@@ -24,7 +24,7 @@
     "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
-    "notes": "地磯で潮通しが良い",
+    "notes": "乙浜〜白間津間の本格磯、イシダイ・クロダイ・メジナ向き",
     "access": "千倉駅からバス25分"
   },
   "classification": {
@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:磯"
     ]
-  }
+  },
+  "target_fish": [
+    "ishidai",
+    "mejina",
+    "kurodai"
+  ]
 }

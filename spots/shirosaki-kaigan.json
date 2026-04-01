@@ -24,7 +24,7 @@
     "seabed_summary": ""
   },
   "info": {
-    "notes": "磯混じりで変化が多い",
+    "notes": "磯と砂が混在、クロダイ・キス・ヒラメ向き",
     "access": "安房天津駅から徒歩20分"
   },
   "classification": {
@@ -37,5 +37,10 @@
     "osm_evidence": [
       "natural=beach@28m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "hirame",
+    "shirogisu"
+  ]
 }
