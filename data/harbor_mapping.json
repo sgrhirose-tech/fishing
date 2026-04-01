@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "description": "spot slug → tide736.net 港コード マッピング",
+    "harbor_code_format": "pc-hc（例: 神奈川=14, 千葉=12, 東京=13）",
+    "source": "https://tide736.net/",
+    "note": "spots は空の状態で初期作成。各スポットの最寄り港コードを随時追記する。"
+  },
+  "spots": {}
+}

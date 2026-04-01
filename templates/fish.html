@@ -50,14 +50,9 @@
 {% endif %}
 
 <!-- エリア別スポット一覧 -->
-{% if fish_data.photo %}
+{% if fish_data.image %}
 <figure class="fish-photo">
-  <img src="/static/img/fish/{{ fish_data.photo.file }}" alt="{{ fish_name }}" loading="lazy">
-  <figcaption class="fish-photo-credit">
-    出典: <a href="{{ fish_data.photo.source_url }}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> /
-    作者: {{ fish_data.photo.author }} /
-    ライセンス: <a href="{{ fish_data.photo.license_url }}" target="_blank" rel="noopener noreferrer">{{ fish_data.photo.license }}</a>
-  </figcaption>
+  <img src="{{ fish_data.image }}" alt="{{ fish_name }}" loading="lazy">
 </figure>
 {% endif %}
 <section class="fish-spots-section">
