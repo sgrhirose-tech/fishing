@@ -3,6 +3,7 @@
 **対象チーム:** フロント開発チーム
 **作成日:** 2026-03-31
 **ステータス:** 初期データ構築済み・フロント実装待ち
+**最終更新:** 2026-04-01（wikimedia 画像フィールド追加）
 
 ---
 
@@ -39,14 +40,14 @@ fishing/
     "season":      [1,2,3,4,5,6,7,8,9,10,11,12],
     "peak_season": [5,6,7,8,9,10],
     "method":      ["サビキ釣り", "アジング", "カゴ釣り"],
-    "bottom":      ["砂地", "岩礁"]
-  },
-  "シロギス": {
-    "slug":        "shirogisu",
-    "season":      [4,5,6,7,8,9,10],
-    "peak_season": [6,7,8],
-    "method":      ["投げ釣り"],
-    "bottom":      ["砂地"]
+    "bottom":      ["砂地", "岩礁"],
+    "wikimedia": {
+      "file":    "MaAji.jpg",
+      "url":     "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/MaAji.jpg/320px-MaAji.jpg",
+      "page":    "https://commons.wikimedia.org/wiki/File:MaAji.jpg",
+      "author":  "Izuzuki",
+      "license": "CC BY 3.0"
+    }
   },
   ...
 }
@@ -54,13 +55,36 @@ fishing/
 
 ### フィールド定義
 
+| フィールド | 型 | 必須 | 説明 |
+|-----------|-----|------|------|
+| `slug` | string | ✓ | 魚種のローマ字スラッグ。URLルーティング等に使用 |
+| `season` | int[] | ✓ | 釣れる月（1〜12）|
+| `peak_season` | int[] | ✓ | 最盛期の月。`season` の部分集合 |
+| `method` | string[] | ✓ | 代表的な釣法 |
+| `bottom` | string[] | ✓ | 適した底質（砂地 / 岩礁 / 藻場 / 泥地） |
+| `wikimedia` | object | △ | Wikimedia Commons の代表画像情報。フィールドなし＝画像未登録 |
+
+#### wikimedia オブジェクトのフィールド
+
 | フィールド | 型 | 説明 |
 |-----------|-----|------|
-| `slug` | string | 魚種のローマ字スラッグ。URLルーティング等に使用 |
-| `season` | int[] | 釣れる月（1〜12）|
-| `peak_season` | int[] | 最盛期の月。`season` の部分集合 |
-| `method` | string[] | 代表的な釣法 |
-| `bottom` | string[] | 適した底質（砂地 / 岩礁 / 藻場 / 泥地） |
+| `file` | string | Commons ファイル名（URL 再生成・参照用） |
+| `url` | string | 320px サムネイルの直接 URL（フロントで `<img src>` に使用） |
+| `page` | string | Commons ファイルページ URL（帰属表示リンク用） |
+| `author` | string | 著者名（帰属表示用） |
+| `license` | string | ライセンス識別子（例: CC BY 4.0, CC BY-SA 2.5） |
+
+> **帰属表示（フロント実装時の必須事項）**
+> Wikimedia Commons の画像は CC-BY 系ライセンスのため、**著者名とライセンスの表示が必須**。
+> 推奨する表示形式:
+> ```
+> 写真: {author} / Wikimedia Commons ({license})
+> ```
+> `page` URL を帰属表示のリンク先に使用すること。
+
+**現在の収録状況**: 25種中 15種に `wikimedia` フィールドを追加済み。
+未登録の10種（ヒラメ・マゴチ・イワシ・ハゼ・マダイ・カマス・ソウダガツオ・サヨリ・カレイ・シマアジ）は
+適切な CC ライセンス画像が確認できた時点で随時追加する。
 
 ### 収録魚種（25種）
 
