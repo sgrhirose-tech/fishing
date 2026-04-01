@@ -3,7 +3,7 @@
 **対象チーム:** フロント開発チーム
 **作成日:** 2026-03-31
 **ステータス:** 初期データ構築済み・フロント実装待ち
-**最終更新:** 2026-04-01（wikimedia 画像フィールド追加）
+**最終更新:** 2026-04-01（image / wikimedia 両対応）
 
 ---
 
@@ -24,9 +24,12 @@
 ```
 fishing/
 ├── data/
-│   └── fish_master.json     # 魚種マスタ（季節・釣法・底質）
+│   └── fish_master.json        # 魚種マスタ（季節・釣法・底質・画像）
+├── static/
+│   └── img/
+│       └── fish/               # 魚種画像置き場（{slug}.jpg を配置）
 └── spots/
-    └── *.json               # 各スポット（target_fish フィールドを追加済み）
+    └── *.json                  # 各スポット（target_fish フィールドを追加済み）
 ```
 
 ---
@@ -41,6 +44,7 @@ fishing/
     "peak_season": [5,6,7,8,9,10],
     "method":      ["サビキ釣り", "アジング", "カゴ釣り"],
     "bottom":      ["砂地", "岩礁"],
+    "image":       "/static/img/fish/aji.jpg",
     "wikimedia": {
       "file":    "MaAji.jpg",
       "url":     "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/MaAji.jpg/320px-MaAji.jpg",
@@ -62,7 +66,28 @@ fishing/
 | `peak_season` | int[] | ✓ | 最盛期の月。`season` の部分集合 |
 | `method` | string[] | ✓ | 代表的な釣法 |
 | `bottom` | string[] | ✓ | 適した底質（砂地 / 岩礁 / 藻場 / 泥地） |
-| `wikimedia` | object | △ | Wikimedia Commons の代表画像情報。フィールドなし＝画像未登録 |
+| `image` | string | △ | 自サーバに置いた画像の相対パス。`wikimedia` より優先される |
+| `wikimedia` | object | △ | Wikimedia Commons の代表画像情報。`image` がない場合のフォールバック |
+
+#### 画像の優先順位
+
+フロントは以下の順で画像ソースを選択する。
+
+```javascript
+const imgSrc = fish.image ?? fish.wikimedia?.url ?? null;
+```
+
+| 優先度 | ソース | 帰属表示 |
+|--------|--------|---------|
+| 1 | `image`（自サーバ画像） | 不要 |
+| 2 | `wikimedia.url`（Commons） | **必須**（後述） |
+| — | どちらもなし | 画像非表示 |
+
+#### image フィールドの運用
+
+- ファイルは `static/img/fish/{slug}.jpg` に配置する
+- `fish_master.json` の `image` フィールドに `/static/img/fish/{slug}.jpg` を記載する
+- 自サーバ画像は帰属表示不要
 
 #### wikimedia オブジェクトのフィールド
 
@@ -74,17 +99,19 @@ fishing/
 | `author` | string | 著者名（帰属表示用） |
 | `license` | string | ライセンス識別子（例: CC BY 4.0, CC BY-SA 2.5） |
 
-> **帰属表示（フロント実装時の必須事項）**
+> **帰属表示（`wikimedia` 画像使用時の必須事項）**
 > Wikimedia Commons の画像は CC-BY 系ライセンスのため、**著者名とライセンスの表示が必須**。
-> 推奨する表示形式:
+> `image` フィールドがある場合は自サーバ画像を使うため帰属表示は不要。
+> `wikimedia` のみの場合の推奨表示形式:
 > ```
 > 写真: {author} / Wikimedia Commons ({license})
 > ```
 > `page` URL を帰属表示のリンク先に使用すること。
 
-**現在の収録状況**: 25種中 15種に `wikimedia` フィールドを追加済み。
-未登録の10種（ヒラメ・マゴチ・イワシ・ハゼ・マダイ・カマス・ソウダガツオ・サヨリ・カレイ・シマアジ）は
-適切な CC ライセンス画像が確認できた時点で随時追加する。
+**現在の収録状況（2026-04-01時点）**:
+- `wikimedia` あり: 8種（アジ・アオリイカ・カサゴ・スズキ・タコ・サバ・コウイカ・ブリ）
+- `image` あり: 0種（画像追加次第随時更新）
+- 画像なし: 17種
 
 ### 収録魚種（25種）
 
@@ -175,6 +202,8 @@ def spot_target_fish(spot: dict) -> list[str]:
 | target_fish の手動修正 | spot_editor のチェックボックスから編集 | json 保守チーム |
 | 魚種マスタの更新 | `data/fish_master.json` を直接編集（初期は月1回、充実後は年1回程度） | json 保守チーム |
 | 魚種の追加 | `fish_master.json` に追記 → `extract_target_fish.py` の `FISH_NORMALIZE` にも追記 | json 保守チーム |
+| 自サーバ画像の追加 | `static/img/fish/{slug}.jpg` に配置 → `fish_master.json` の該当魚種に `"image": "/static/img/fish/{slug}.jpg"` を追記 | json 保守チーム |
+| wikimedia 画像の追加 | Commons でファイル名・URL・著者・ライセンスを確認 → `fish_master.json` に `wikimedia` フィールドを追記 | json 保守チーム |
 
 ---
 
