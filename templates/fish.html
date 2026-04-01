@@ -33,7 +33,12 @@
 <section class="fish-meta-section">
   <span class="fish-meta-label">代表的な釣法:</span>
   {% for m in fish_data.method %}
+  {% set mslug = method_slug_map.get(m) %}
+  {% if mslug %}
+  <a href="/method/{{ mslug }}" class="fish-method-chip">{{ m }}</a>
+  {% else %}
   <span class="fish-method-chip">{{ m }}</span>
+  {% endif %}
   {% endfor %}
 </section>
 {% endif %}

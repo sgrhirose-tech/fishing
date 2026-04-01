@@ -49,6 +49,21 @@ def _load_fish_master() -> None:
         print(f"[fish_master] 読み込みエラー: {e}")
 
 
+_METHOD_MASTER: dict = {}
+_METHOD_SLUG_TO_NAME: dict = {}  # {slug: 釣法名}
+
+def _load_method_master() -> None:
+    global _METHOD_MASTER, _METHOD_SLUG_TO_NAME
+    path = _BASE / "data" / "method_master.json"
+    try:
+        with open(path, encoding="utf-8") as f:
+            _METHOD_MASTER = json.load(f)
+        _METHOD_SLUG_TO_NAME = {v["slug"]: k for k, v in _METHOD_MASTER.items()}
+        print(f"[method_master] {len(_METHOD_MASTER)} 釣法を読み込みました")
+    except Exception as e:
+        print(f"[method_master] 読み込みエラー: {e}")
+
+
 def _tomorrow() -> str:
     return (datetime.now(JST) + timedelta(days=1)).strftime("%Y-%m-%d")
 
@@ -73,9 +88,11 @@ async def lifespan(app: FastAPI):
     load_spots()
     load_facilities_json()
     _load_fish_master()
+    _load_method_master()
     _slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     templates.env.globals["fish_slug_map"] = _slug_map
     templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
+    templates.env.globals["method_slug_map"] = {k: v["slug"] for k, v in _METHOD_MASTER.items()}
     yield
 
 
@@ -211,6 +228,10 @@ def sitemap_xml():
         _fslug = _fd.get("slug")
         if _fslug:
             urls.append((f"{_BASE_URL}/fish/{_fslug}", "weekly", "0.6"))
+    # 釣法ページ
+    urls.append((f"{_BASE_URL}/method/", "weekly", "0.7"))
+    for _mslug in _METHOD_SLUG_TO_NAME:
+        urls.append((f"{_BASE_URL}/method/{_mslug}", "weekly", "0.6"))
 
     # スポットデータから動的ページを収集
     seen_prefs: set = set()
@@ -417,6 +438,41 @@ def page_top(request: Request):
     })
 
 
+@app.get("/method/", response_class=HTMLResponse)
+def page_method_index(request: Request):
+    methods = []
+    for name, data in _METHOD_MASTER.items():
+        # この釣法を使う魚種を逆引き
+        target_fish = [fn for fn, fd in _FISH_MASTER.items() if name in fd.get("method", [])]
+        methods.append({
+            "name": name,
+            "slug": data["slug"],
+            "difficulty": data.get("difficulty", 1),
+            "short_desc": data.get("short_desc", ""),
+            "target_fish": target_fish,
+        })
+    return templates.TemplateResponse(request, "method_index.html", {
+        "methods": methods,
+        "total": len(methods),
+    })
+
+
+@app.get("/method/{method_slug}", response_class=HTMLResponse)
+def page_method(request: Request, method_slug: str):
+    method_name = _METHOD_SLUG_TO_NAME.get(method_slug)
+    if not method_name:
+        raise HTTPException(status_code=404, detail="釣法が見つかりません")
+    data = _METHOD_MASTER[method_name]
+    # この釣法を使う魚種を逆引き
+    target_fish = [fn for fn, fd in _FISH_MASTER.items() if method_name in fd.get("method", [])]
+    return templates.TemplateResponse(request, "method.html", {
+        "method_name": method_name,
+        "method_slug": method_slug,
+        "data": data,
+        "target_fish": target_fish,
+    })
+
+
 @app.get("/fish/", response_class=HTMLResponse)
 def page_fish_index(request: Request):
     all_spots = load_spots()
@@ -430,6 +486,7 @@ def page_fish_index(request: Request):
             "count": count,
             "method": fish_data.get("method", []),
         })
+    fish_list = [f for f in fish_list if f["count"] > 0]
     fish_list.sort(key=lambda x: x["count"], reverse=True)
     return templates.TemplateResponse(request, "fish_index.html", {
         "fish_list": fish_list,
