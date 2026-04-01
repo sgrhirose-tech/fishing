@@ -18,42 +18,21 @@
     "season": [4, 5, 6, 7, 8, 9, 10],
     "peak_season": [6, 7, 8],
     "method": ["投げ釣り"],
-    "bottom": ["砂地"],
-    "wikimedia": {
-      "file": "Sillago_japonica_by_OpenCage.jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Sillago_japonica_by_OpenCage.jpg/320px-Sillago_japonica_by_OpenCage.jpg",
-      "page": "https://commons.wikimedia.org/wiki/File:Sillago_japonica_by_OpenCage.jpg",
-      "author": "OpenCage",
-      "license": "CC BY-SA 2.5"
-    }
+    "bottom": ["砂地"]
   },
   "メジナ": {
     "slug": "mejina",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [10, 11, 12, 1, 2],
     "method": ["ウキ釣り", "フカセ釣り"],
-    "bottom": ["岩礁"],
-    "wikimedia": {
-      "file": "Girella_punctata_by_OpenCage.jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Girella_punctata_by_OpenCage.jpg/320px-Girella_punctata_by_OpenCage.jpg",
-      "page": "https://commons.wikimedia.org/wiki/File:Girella_punctata_by_OpenCage.jpg",
-      "author": "OpenCage",
-      "license": "CC BY-SA 2.5"
-    }
+    "bottom": ["岩礁"]
   },
   "クロダイ": {
     "slug": "kurodai",
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [3, 4, 5, 10, 11],
     "method": ["フカセ釣り", "ヘチ釣り", "ダンゴ釣り"],
-    "bottom": ["岩礁", "砂地"],
-    "wikimedia": {
-      "file": "Acanthopagrus_schlegelii_by_OpenCage.jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Acanthopagrus_schlegelii_by_OpenCage.jpg/320px-Acanthopagrus_schlegelii_by_OpenCage.jpg",
-      "page": "https://commons.wikimedia.org/wiki/File:Acanthopagrus_schlegelii_by_OpenCage.jpg",
-      "author": "OpenCage",
-      "license": "CC BY-SA 2.5"
-    }
+    "bottom": ["岩礁", "砂地"]
   },
   "アオリイカ": {
     "slug": "aoriika",
@@ -88,14 +67,7 @@
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [2, 3, 4],
     "method": ["ウキ釣り", "メバリング"],
-    "bottom": ["岩礁"],
-    "wikimedia": {
-      "file": "Sebastes_inermis_by_OpenCage.jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Sebastes_inermis_by_OpenCage.jpg/320px-Sebastes_inermis_by_OpenCage.jpg",
-      "page": "https://commons.wikimedia.org/wiki/File:Sebastes_inermis_by_OpenCage.jpg",
-      "author": "OpenCage",
-      "license": "CC BY-SA 2.5"
-    }
+    "bottom": ["岩礁"]
   },
   "スズキ": {
     "slug": "suzuki",
@@ -165,14 +137,7 @@
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [10, 11, 12, 1, 2],
     "method": ["ウキ釣り"],
-    "bottom": ["岩礁"],
-    "wikimedia": {
-      "file": "Ditrema_temminkii_by_OpenCage.jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ditrema_temminkii_by_OpenCage.jpg/320px-Ditrema_temminkii_by_OpenCage.jpg",
-      "page": "https://commons.wikimedia.org/wiki/File:Ditrema_temminkii_by_OpenCage.jpg",
-      "author": "OpenCage",
-      "license": "CC BY-SA 2.5"
-    }
+    "bottom": ["岩礁"]
   },
   "ハゼ": {
     "slug": "haze",
@@ -200,14 +165,7 @@
     "season": [7, 8, 9, 10, 11],
     "peak_season": [9, 10],
     "method": ["ウキ釣り", "ジギング", "ルアー釣り"],
-    "bottom": ["砂地"],
-    "wikimedia": {
-      "file": "Trichiurus_lepturus_by_OpenCage.jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Trichiurus_lepturus_by_OpenCage.jpg/320px-Trichiurus_lepturus_by_OpenCage.jpg",
-      "page": "https://commons.wikimedia.org/wiki/File:Trichiurus_lepturus_by_OpenCage.jpg",
-      "author": "OpenCage",
-      "license": "CC BY-SA 2.5"
-    }
+    "bottom": ["砂地"]
   },
   "マダイ": {
     "slug": "madai",
@@ -249,14 +207,7 @@
     "season": [4, 5, 6, 7, 8, 9, 10, 11],
     "peak_season": [7, 8, 9],
     "method": ["投げ釣り"],
-    "bottom": ["岩礁"],
-    "wikimedia": {
-      "file": "Oplegnathus_fasciatus_by_OpenCage.jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Oplegnathus_fasciatus_by_OpenCage.jpg/320px-Oplegnathus_fasciatus_by_OpenCage.jpg",
-      "page": "https://commons.wikimedia.org/wiki/File:Oplegnathus_fasciatus_by_OpenCage.jpg",
-      "author": "OpenCage",
-      "license": "CC BY-SA 2.5"
-    }
+    "bottom": ["岩礁"]
   },
   "サヨリ": {
     "slug": "sayori",
