@@ -50,7 +50,7 @@
     {% if spot.target_fish %}
     <div class="fish-chips">
       {% for fish in spot.target_fish %}
-      <a href="/fish/{{ fish_slug_map.get(fish, fish) }}" class="fish-chip">{{ fish }}</a>
+      <a href="/fish/{{ fish }}" class="fish-chip">{{ fish_name_map.get(fish, fish) }}</a>
       {% endfor %}
     </div>
     {% endif %}

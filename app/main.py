@@ -73,9 +73,9 @@ async def lifespan(app: FastAPI):
     load_spots()
     load_facilities_json()
     _load_fish_master()
-    templates.env.globals["fish_slug_map"] = {
-        k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v
-    }
+    _slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
+    templates.env.globals["fish_slug_map"] = _slug_map
+    templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
     yield
 
 
@@ -417,7 +417,8 @@ def page_fish_index(request: Request):
     all_spots = load_spots()
     fish_list = []
     for fish_name, fish_data in _FISH_MASTER.items():
-        count = sum(1 for s in all_spots if fish_name in s.get("target_fish", []))
+        slug = fish_data.get("slug", "")
+        count = sum(1 for s in all_spots if slug in s.get("target_fish", []))
         fish_list.append({
             "name": fish_name,
             "slug": fish_data.get("slug", ""),
@@ -438,7 +439,7 @@ def page_fish(request: Request, fish_slug: str):
         raise HTTPException(status_code=404, detail="魚種が見つかりません")
     fish_data = _FISH_MASTER[fish_name]
     all_spots = load_spots()
-    matched = [s for s in all_spots if fish_name in s.get("target_fish", [])]
+    matched = [s for s in all_spots if fish_slug in s.get("target_fish", [])]
     # エリア別にグループ化
     areas: dict = {}
     for s in matched:
@@ -466,10 +467,12 @@ def page_spots(request: Request, area: str = Query(None)):
             all_spots = filtered
             area_name = filtered[0]["area"]["area_name"]
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
+    fish_name_map = {v: k for k, v in fish_slug_map.items()}
     return templates.TemplateResponse(request, "spots.html", {
         "spots": all_spots,
         "area_name": area_name,
         "fish_slug_map": fish_slug_map,
+        "fish_name_map": fish_name_map,
     })
 
 
@@ -617,6 +620,7 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     region_slug = PREF_TO_REGION.get(pref_slug, "")
     region_name = REGION_NAMES.get(region_slug, "")
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
+    fish_name_map = {v: k for k, v in fish_slug_map.items()}
     return templates.TemplateResponse(request, "city.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -628,6 +632,7 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "region_name": region_name,
         "spots": spots,
         "fish_slug_map": fish_slug_map,
+        "fish_name_map": fish_name_map,
     })
 
 
@@ -647,6 +652,7 @@ def page_spot_detail(
     region_slug = PREF_TO_REGION.get(pref_slug, "")
     region_name = REGION_NAMES.get(region_slug, "")
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
+    fish_name_map = {v: k for k, v in fish_slug_map.items()}
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -658,4 +664,5 @@ def page_spot_detail(
         "region_slug":        region_slug,
         "region_name":        region_name,
         "fish_slug_map":      fish_slug_map,
+        "fish_name_map":      fish_name_map,
     })
