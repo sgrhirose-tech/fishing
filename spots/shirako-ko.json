@@ -36,5 +36,9 @@
       "man_made=breakwater@79m",
       "waterway=dock@1m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "aji"
+  ]
 }

@@ -38,5 +38,9 @@
       "man_made=breakwater@263m",
       "natural=beach@56m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina"
+  ]
 }

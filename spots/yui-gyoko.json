@@ -40,5 +40,9 @@
     "osm_evidence": [
       "natural=cliff@243m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai"
+  ]
 }

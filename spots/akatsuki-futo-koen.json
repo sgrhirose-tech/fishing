@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:ふ頭公園"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "karei",
+    "suzuki"
+  ]
 }

@@ -35,5 +35,9 @@
     "osm_evidence": [
       "natural=bare_rock@201m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ]
 }

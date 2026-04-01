@@ -35,5 +35,11 @@
     "osm_evidence": [
       "keyword:岸壁"
     ]
-  }
+  },
+  "target_fish": [
+    "tachiuo",
+    "kurodai",
+    "aji",
+    "suzuki"
+  ]
 }

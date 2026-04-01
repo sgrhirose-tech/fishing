@@ -39,5 +39,11 @@
       "man_made=breakwater@72m",
       "natural=beach@252m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "haze",
+    "aji",
+    "suzuki"
+  ]
 }

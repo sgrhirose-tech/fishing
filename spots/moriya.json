@@ -38,5 +38,8 @@
       "natural=bare_rock@73m",
       "natural=beach@192m"
     ]
-  }
+  },
+  "target_fish": [
+    "shirogisu"
+  ]
 }

@@ -38,5 +38,8 @@
       "man_made=breakwater@63m",
       "waterway=dock@5m"
     ]
-  }
+  },
+  "target_fish": [
+    "buri"
+  ]
 }

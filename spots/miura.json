@@ -35,5 +35,11 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "karei",
+    "hirame",
+    "shirogisu"
+  ]
 }

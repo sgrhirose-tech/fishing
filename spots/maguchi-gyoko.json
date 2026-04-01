@@ -36,5 +36,6 @@
       "harbour=yes@13m",
       "natural=bare_rock@253m"
     ]
-  }
+  },
+  "target_fish": []
 }

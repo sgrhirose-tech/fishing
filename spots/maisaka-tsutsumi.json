@@ -44,5 +44,8 @@
       "man_made=breakwater@250m",
       "man_made=breakwater@99m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai"
+  ]
 }

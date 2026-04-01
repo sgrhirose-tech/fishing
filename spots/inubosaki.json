@@ -39,5 +39,8 @@
       "natural=cliff@131m",
       "natural=cliff@21m"
     ]
-  }
+  },
+  "target_fish": [
+    "suzuki"
+  ]
 }

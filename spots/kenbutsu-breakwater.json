@@ -37,5 +37,11 @@
       "natural=beach@148m",
       "waterway=dock@89m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "hirame",
+    "shirogisu"
+  ]
 }

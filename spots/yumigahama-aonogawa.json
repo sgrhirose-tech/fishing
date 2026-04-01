@@ -36,5 +36,9 @@
       "harbour=yes@254m",
       "natural=beach@161m"
     ]
-  }
+  },
+  "target_fish": [
+    "suzuki",
+    "shirogisu"
+  ]
 }

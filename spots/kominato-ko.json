@@ -38,5 +38,10 @@
       "man_made=breakwater@277m",
       "waterway=dock@15m"
     ]
-  }
+  },
+  "target_fish": [
+    "shimaaji",
+    "mejina",
+    "aji"
+  ]
 }

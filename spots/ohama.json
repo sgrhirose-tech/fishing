@@ -38,5 +38,9 @@
       "man_made=breakwater@130m",
       "natural=beach@114m"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "shirogisu"
+  ]
 }

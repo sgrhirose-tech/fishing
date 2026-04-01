@@ -39,5 +39,6 @@
       "leisure=marina@136m",
       "leisure=slipway@249m"
     ]
-  }
+  },
+  "target_fish": []
 }

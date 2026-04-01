@@ -35,5 +35,9 @@
     "osm_evidence": [
       "keyword:磯"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ]
 }

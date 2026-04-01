@@ -36,5 +36,9 @@
       "natural=beach@188m",
       "natural=beach@233m"
     ]
-  }
+  },
+  "target_fish": [
+    "haze",
+    "shirogisu"
+  ]
 }

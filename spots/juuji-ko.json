@@ -42,5 +42,9 @@
       "man_made=pier@86m",
       "man_made=quay@164m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai"
+  ]
 }

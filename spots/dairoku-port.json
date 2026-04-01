@@ -38,5 +38,10 @@
       "man_made=pier@194m",
       "natural=beach@33m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "shirogisu",
+    "kurodai"
+  ]
 }

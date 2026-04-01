@@ -42,5 +42,11 @@
       "natural=cliff@121m",
       "natural=cliff@125m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "haze",
+    "aji",
+    "suzuki"
+  ]
 }

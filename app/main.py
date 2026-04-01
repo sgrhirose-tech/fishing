@@ -3,6 +3,7 @@ FastAPI アプリケーション。
 uvicorn app.main:app --reload で起動。
 """
 
+import json
 import os
 import time
 from contextlib import asynccontextmanager
@@ -28,9 +29,24 @@ from .weather import (fetch_weather, fetch_weather_range,
                        fetch_marine_weatherapi, fetch_marine, fetch_marine_range,
                        fetch_sst_noaa)
 from .scoring import score_spot, direction_label, score_7days
-from .osm import fetch_nearby_facilities
+from .osm import fetch_nearby_facilities, load_facilities_json, get_cached_facilities
 
 JST = timezone(timedelta(hours=9))
+
+# ── 魚種マスタ ────────────────────────────────────────────────
+_FISH_MASTER: dict = {}
+_FISH_SLUG_TO_NAME: dict = {}  # {slug: 魚名}
+
+def _load_fish_master() -> None:
+    global _FISH_MASTER, _FISH_SLUG_TO_NAME
+    path = _BASE / "data" / "fish_master.json"
+    try:
+        with open(path, encoding="utf-8") as f:
+            _FISH_MASTER = json.load(f)
+        _FISH_SLUG_TO_NAME = {v["slug"]: k for k, v in _FISH_MASTER.items() if "slug" in v}
+        print(f"[fish_master] {len(_FISH_MASTER)} 魚種を読み込みました")
+    except Exception as e:
+        print(f"[fish_master] 読み込みエラー: {e}")
 
 
 def _tomorrow() -> str:
@@ -54,8 +70,12 @@ def _format_date_jp(date_str: str) -> str:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # 起動時に spots をプリロード
     load_spots()
+    load_facilities_json()
+    _load_fish_master()
+    _slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
+    templates.env.globals["fish_slug_map"] = _slug_map
+    templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
     yield
 
 
@@ -85,8 +105,6 @@ Disallow: /
 User-agent: anthropic-ai
 Disallow: /
 
-User-agent: Claude-Web
-Disallow: /
 
 User-agent: Bytespider
 Disallow: /
@@ -185,8 +203,14 @@ def sitemap_xml():
     # 固定ページ
     urls.append((f"{_BASE_URL}/",       "daily",   "1.0"))
     urls.append((f"{_BASE_URL}/spots",  "daily",   "0.8"))
+    urls.append((f"{_BASE_URL}/fish/",  "weekly",  "0.7"))
     for s in ("safety", "privacy", "about", "contact"):
         urls.append((f"{_BASE_URL}/{s}", "monthly", "0.4"))
+    # 魚種別ページ
+    for _fn, _fd in _FISH_MASTER.items():
+        _fslug = _fd.get("slug")
+        if _fslug:
+            urls.append((f"{_BASE_URL}/fish/{_fslug}", "weekly", "0.6"))
 
     # スポットデータから動的ページを収集
     seen_prefs: set = set()
@@ -312,10 +336,15 @@ def api_ai_comment(slug: str):
 
 @app.get("/api/osm/{slug}")
 def api_osm(slug: str):
-    """スポット周辺の OSM 施設（駐車場・トイレ等）を返す。"""
+    """スポット周辺の OSM 施設（駐車場・トイレ等）を返す。
+    facilities.json にデータがあればそれを使用し、未収録の場合は Overpass API にフォールバックする。
+    """
     spot = load_spot(slug)
     if not spot:
         raise HTTPException(status_code=404, detail="スポットが見つかりません")
+    cached = get_cached_facilities(slug)
+    if cached is not None:
+        return {"slug": slug, "facilities": cached}
     facilities = fetch_nearby_facilities(spot_lat(spot), spot_lon(spot))
     return {"slug": slug, "facilities": facilities}
 
@@ -370,10 +399,66 @@ def page_top(request: Request):
                 "name": r["name"],
                 "prefs": region_prefs,
             })
+    area_counts: dict = {}
+    for s in spots:
+        a_slug = s.get("area", {}).get("area_slug", "")
+        if a_slug:
+            area_counts[a_slug] = area_counts.get(a_slug, 0) + 1
     return templates.TemplateResponse(request, "top.html", {
         "spots": spots,
         "tomorrow": _tomorrow(),
         "region_groups": region_groups,
+        "area_counts": area_counts,
+        "fish_list": [
+            {"name": name, "slug": data["slug"]}
+            for name, data in _FISH_MASTER.items()
+            if data.get("slug")
+        ],
+    })
+
+
+@app.get("/fish/", response_class=HTMLResponse)
+def page_fish_index(request: Request):
+    all_spots = load_spots()
+    fish_list = []
+    for fish_name, fish_data in _FISH_MASTER.items():
+        slug = fish_data.get("slug", "")
+        count = sum(1 for s in all_spots if slug in s.get("target_fish", []))
+        fish_list.append({
+            "name": fish_name,
+            "slug": fish_data.get("slug", ""),
+            "count": count,
+            "method": fish_data.get("method", []),
+        })
+    fish_list.sort(key=lambda x: x["count"], reverse=True)
+    return templates.TemplateResponse(request, "fish_index.html", {
+        "fish_list": fish_list,
+        "total_fish": len(fish_list),
+    })
+
+
+@app.get("/fish/{fish_slug}", response_class=HTMLResponse)
+def page_fish(request: Request, fish_slug: str):
+    fish_name = _FISH_SLUG_TO_NAME.get(fish_slug)
+    if not fish_name:
+        raise HTTPException(status_code=404, detail="魚種が見つかりません")
+    fish_data = _FISH_MASTER[fish_name]
+    all_spots = load_spots()
+    matched = [s for s in all_spots if fish_slug in s.get("target_fish", [])]
+    # エリア別にグループ化
+    areas: dict = {}
+    for s in matched:
+        a = s.get("area", {})
+        key = a.get("area_slug", "")
+        if key not in areas:
+            areas[key] = {"name": a.get("area_name", ""), "spots": []}
+        areas[key]["spots"].append(s)
+    return templates.TemplateResponse(request, "fish.html", {
+        "fish_name": fish_name,
+        "fish_slug": fish_slug,
+        "fish_data": fish_data,
+        "areas": areas,
+        "total": len(matched),
     })
 
 
@@ -386,9 +471,13 @@ def page_spots(request: Request, area: str = Query(None)):
         if filtered:
             all_spots = filtered
             area_name = filtered[0]["area"]["area_name"]
+    fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
+    fish_name_map = {v: k for k, v in fish_slug_map.items()}
     return templates.TemplateResponse(request, "spots.html", {
         "spots": all_spots,
         "area_name": area_name,
+        "fish_slug_map": fish_slug_map,
+        "fish_name_map": fish_name_map,
     })
 
 
@@ -535,6 +624,8 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     city_name = spots[0]["area"]["city"]
     region_slug = PREF_TO_REGION.get(pref_slug, "")
     region_name = REGION_NAMES.get(region_slug, "")
+    fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
+    fish_name_map = {v: k for k, v in fish_slug_map.items()}
     return templates.TemplateResponse(request, "city.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -545,6 +636,8 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "region_slug": region_slug,
         "region_name": region_name,
         "spots": spots,
+        "fish_slug_map": fish_slug_map,
+        "fish_name_map": fish_name_map,
     })
 
 
@@ -563,6 +656,9 @@ def page_spot_detail(
     tomorrow_str = _tomorrow()
     region_slug = PREF_TO_REGION.get(pref_slug, "")
     region_name = REGION_NAMES.get(region_slug, "")
+    fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
+    fish_name_map = {v: k for k, v in fish_slug_map.items()}
+    fish_names_jp = [fish_name_map.get(s, s) for s in spot.get("target_fish", [])[:3]]
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -573,4 +669,7 @@ def page_spot_detail(
         "preloaded_forecast": _compute_forecast(spot),
         "region_slug":        region_slug,
         "region_name":        region_name,
+        "fish_slug_map":      fish_slug_map,
+        "fish_name_map":      fish_name_map,
+        "fish_names_jp":      fish_names_jp,
     })

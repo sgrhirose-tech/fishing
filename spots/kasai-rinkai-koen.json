@@ -39,5 +39,10 @@
       "natural=beach@197m",
       "natural=beach@80m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "karei",
+    "haze"
+  ]
 }

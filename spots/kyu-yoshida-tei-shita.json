@@ -35,5 +35,9 @@
     "osm_evidence": [
       "natural=beach@22m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ]
 }

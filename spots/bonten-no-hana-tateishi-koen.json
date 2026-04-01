@@ -40,5 +40,9 @@
       "natural=cliff@99m",
       "natural=rock@117m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ]
 }

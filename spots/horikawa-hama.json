@@ -35,5 +35,8 @@
     "osm_evidence": [
       "keyword:浜"
     ]
-  }
+  },
+  "target_fish": [
+    "shirogisu"
+  ]
 }

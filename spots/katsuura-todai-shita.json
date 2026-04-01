@@ -33,5 +33,11 @@
     "secondary_flags": [],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "ishidai",
+    "mejina",
+    "kurodai",
+    "suzuki"
+  ]
 }

@@ -36,5 +36,11 @@
       "leisure=fishing@63m",
       "man_made=breakwater@20m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "karei",
+    "aji",
+    "suzuki"
+  ]
 }

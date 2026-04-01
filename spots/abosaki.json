@@ -35,5 +35,10 @@
     "osm_evidence": [
       "keyword:崎"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "kurodai"
+  ]
 }
