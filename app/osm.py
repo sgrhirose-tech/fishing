@@ -82,14 +82,14 @@ def fetch_nearby_facilities(lat: float, lon: float,
 
     facilities = []
     try:
-        # 全エンドポイントを順に試す。429/504 なら次へ切り替え
+        # 全エンドポイントを順に試す。429/504/タイムアウトなら次へ切り替え
         last_exc = None
         result = None
         for ep in OVERPASS_ENDPOINTS:
             try:
                 data = urllib.parse.urlencode({"data": query}).encode("utf-8")
                 req = urllib.request.Request(ep, data=data, method="POST")
-                with urllib.request.urlopen(req, timeout=15) as resp:
+                with urllib.request.urlopen(req, timeout=30) as resp:
                     result = json.loads(resp.read().decode("utf-8"))
                 break  # 成功
             except urllib.error.HTTPError as e:
@@ -98,9 +98,9 @@ def fetch_nearby_facilities(lat: float, lon: float,
                     time.sleep(2)
                     continue  # 次のエンドポイントへ
                 raise
-            except Exception as e:
+            except (TimeoutError, OSError) as e:
                 last_exc = e
-                break  # ネットワークエラー等はリトライしない
+                continue  # タイムアウト/接続エラーも次のエンドポイントへ
         if result is None:
             raise last_exc or Exception("全エンドポイントで取得失敗")
 
