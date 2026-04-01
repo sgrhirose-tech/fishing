@@ -1,0 +1,5945 @@
+{
+  "_meta": {
+    "description": "tide736.net 港コードリスト（fetch_harbor_list.py で自動生成）",
+    "target_prefectures": {
+      "0": "千島列島",
+      "1": "北海道",
+      "2": "青森県",
+      "3": "岩手県",
+      "4": "宮城県",
+      "5": "秋田県",
+      "6": "山形県",
+      "7": "福島県",
+      "8": "茨城県",
+      "12": "千葉県",
+      "13": "東京都",
+      "14": "神奈川県",
+      "15": "新潟県",
+      "16": "富山県",
+      "17": "石川県",
+      "18": "福井県",
+      "22": "静岡県",
+      "23": "愛知県",
+      "24": "三重県",
+      "26": "京都府",
+      "27": "大阪府",
+      "28": "兵庫県",
+      "30": "和歌山県",
+      "31": "鳥取県",
+      "32": "島根県",
+      "33": "岡山県",
+      "34": "広島県",
+      "35": "山口県",
+      "36": "徳島県",
+      "37": "香川県",
+      "38": "愛媛県",
+      "39": "高知県",
+      "40": "福岡県",
+      "41": "佐賀県",
+      "42": "長崎県",
+      "43": "熊本県",
+      "44": "大分県",
+      "45": "宮崎県",
+      "46": "鹿児島県",
+      "47": "沖縄県"
+    },
+    "fields": {
+      "harbor_code": "pc-hc 形式（例: 14-5）",
+      "pc": "都道府県コード（tide736.net）",
+      "hc": "港コード（tide736.net）",
+      "harbor_name": "港名",
+      "lat": "緯度（Nominatim ジオコーディング）",
+      "lon": "経度（Nominatim ジオコーディング）"
+    }
+  },
+  "harbors": [
+    {
+      "pc": 0,
+      "hc": 1,
+      "harbor_name": "小泊",
+      "lat": 50.49,
+      "lon": 156.3,
+      "harbor_code": "0-1"
+    },
+    {
+      "pc": 0,
+      "hc": 2,
+      "harbor_name": "中川湾",
+      "lat": 50.39,
+      "lon": 156.24,
+      "harbor_code": "0-2"
+    },
+    {
+      "pc": 0,
+      "hc": 3,
+      "harbor_name": "片岡湾",
+      "lat": 50.43,
+      "lon": 156.12,
+      "harbor_code": "0-3"
+    },
+    {
+      "pc": 0,
+      "hc": 4,
+      "harbor_name": "阿頼度島",
+      "lat": 50.5,
+      "lon": 155.39,
+      "harbor_code": "0-4"
+    },
+    {
+      "pc": 0,
+      "hc": 5,
+      "harbor_name": "磐城埼",
+      "lat": 50.45,
+      "lon": 156.08,
+      "harbor_code": "0-5"
+    },
+    {
+      "pc": 0,
+      "hc": 6,
+      "harbor_name": "加熊別湾",
+      "lat": 50.23,
+      "lon": 155.35,
+      "harbor_code": "0-6"
+    },
+    {
+      "pc": 0,
+      "hc": 7,
+      "harbor_name": "鯨湾",
+      "lat": 50.17,
+      "lon": 155.2,
+      "harbor_code": "0-7"
+    },
+    {
+      "pc": 0,
+      "hc": 8,
+      "harbor_name": "四岩",
+      "lat": 50.17,
+      "lon": 155.55,
+      "harbor_code": "0-8"
+    },
+    {
+      "pc": 0,
+      "hc": 9,
+      "harbor_name": "乙前湾",
+      "lat": 50.11,
+      "lon": 155.39,
+      "harbor_code": "0-9"
+    },
+    {
+      "pc": 0,
+      "hc": 10,
+      "harbor_name": "樺里埼",
+      "lat": 50.04,
+      "lon": 155.13,
+      "harbor_code": "0-10"
+    },
+    {
+      "pc": 0,
+      "hc": 11,
+      "harbor_name": "潮見浦",
+      "lat": 49.31,
+      "lon": 154.44,
+      "harbor_code": "0-11"
+    },
+    {
+      "pc": 0,
+      "hc": 12,
+      "harbor_name": "黒石湾",
+      "lat": 49.29,
+      "lon": 154.5,
+      "harbor_code": "0-12"
+    },
+    {
+      "pc": 0,
+      "hc": 13,
+      "harbor_name": "春牟古丹島",
+      "lat": 49.1,
+      "lon": 154.29,
+      "harbor_code": "0-13"
+    },
+    {
+      "pc": 0,
+      "hc": 14,
+      "harbor_name": "乙女湾",
+      "lat": 48.47,
+      "lon": 154.03,
+      "harbor_code": "0-14"
+    },
+    {
+      "pc": 0,
+      "hc": 15,
+      "harbor_name": "東浦",
+      "lat": 48.47,
+      "lon": 154.05,
+      "harbor_code": "0-15"
+    },
+    {
+      "pc": 0,
+      "hc": 16,
+      "harbor_name": "松輪島",
+      "lat": 48.05,
+      "lon": 153.16,
+      "harbor_code": "0-16"
+    },
+    {
+      "pc": 0,
+      "hc": 17,
+      "harbor_name": "宇志知島",
+      "lat": 47.32,
+      "lon": 152.49,
+      "harbor_code": "0-17"
+    },
+    {
+      "pc": 0,
+      "hc": 18,
+      "harbor_name": "武魯頓湾",
+      "lat": 47.09,
+      "lon": 152.15,
+      "harbor_code": "0-18"
+    },
+    {
+      "pc": 0,
+      "hc": 19,
+      "harbor_name": "新知湾",
+      "lat": 46.52,
+      "lon": 151.53,
+      "harbor_code": "0-19"
+    },
+    {
+      "pc": 0,
+      "hc": 20,
+      "harbor_name": "沙湾",
+      "lat": 46.32,
+      "lon": 150.54,
+      "harbor_code": "0-20"
+    },
+    {
+      "pc": 0,
+      "hc": 21,
+      "harbor_name": "鐘湾",
+      "lat": 46.06,
+      "lon": 150.1,
+      "harbor_code": "0-21"
+    },
+    {
+      "pc": 0,
+      "hc": 22,
+      "harbor_name": "床丹島",
+      "lat": 45.51,
+      "lon": 149.44,
+      "harbor_code": "0-22"
+    },
+    {
+      "pc": 0,
+      "hc": 23,
+      "harbor_name": "吉野浜",
+      "lat": 46.12,
+      "lon": 150.31,
+      "harbor_code": "0-23"
+    },
+    {
+      "pc": 0,
+      "hc": 24,
+      "harbor_name": "伽藍埼",
+      "lat": 45.49,
+      "lon": 149.57,
+      "harbor_code": "0-24"
+    },
+    {
+      "pc": 1,
+      "hc": 1,
+      "harbor_name": "蘂取",
+      "lat": 45.3,
+      "lon": 148.37,
+      "harbor_code": "1-1"
+    },
+    {
+      "pc": 1,
+      "hc": 2,
+      "harbor_name": "紗万部",
+      "lat": 45.2,
+      "lon": 148.01,
+      "harbor_code": "1-2"
+    },
+    {
+      "pc": 1,
+      "hc": 3,
+      "harbor_name": "内岡",
+      "lat": 45.16,
+      "lon": 147.52,
+      "harbor_code": "1-3"
+    },
+    {
+      "pc": 1,
+      "hc": 4,
+      "harbor_name": "内保湾",
+      "lat": 44.46,
+      "lon": 147.12,
+      "harbor_code": "1-4"
+    },
+    {
+      "pc": 1,
+      "hc": 5,
+      "harbor_name": "茂世路湾",
+      "lat": 45.26,
+      "lon": 148.51,
+      "harbor_code": "1-5"
+    },
+    {
+      "pc": 1,
+      "hc": 6,
+      "harbor_name": "単冠湾",
+      "lat": 44.56,
+      "lon": 147.38,
+      "harbor_code": "1-6"
+    },
+    {
+      "pc": 1,
+      "hc": 7,
+      "harbor_name": "入里節",
+      "lat": 44.43,
+      "lon": 147.21,
+      "harbor_code": "1-7"
+    },
+    {
+      "pc": 1,
+      "hc": 8,
+      "harbor_name": "ニキシヨロ",
+      "lat": 44.03,
+      "lon": 145.44,
+      "harbor_code": "1-8"
+    },
+    {
+      "pc": 1,
+      "hc": 9,
+      "harbor_name": "古釜府湾",
+      "lat": 44.02,
+      "lon": 145.51,
+      "harbor_code": "1-9"
+    },
+    {
+      "pc": 1,
+      "hc": 10,
+      "harbor_name": "泊湾",
+      "lat": 43.44,
+      "lon": 145.27,
+      "harbor_code": "1-10"
+    },
+    {
+      "pc": 1,
+      "hc": 11,
+      "harbor_name": "水晶島",
+      "lat": 43.25,
+      "lon": 145.54,
+      "harbor_code": "1-11"
+    },
+    {
+      "pc": 1,
+      "hc": 12,
+      "harbor_name": "多楽島",
+      "lat": 43.38,
+      "lon": 146.22,
+      "harbor_code": "1-12"
+    },
+    {
+      "pc": 1,
+      "hc": 13,
+      "harbor_name": "斜古丹",
+      "lat": 43.52,
+      "lon": 146.49,
+      "harbor_code": "1-13"
+    },
+    {
+      "pc": 1,
+      "hc": 14,
+      "harbor_name": "根室",
+      "lat": 43.2,
+      "lon": 145.35,
+      "harbor_code": "1-14"
+    },
+    {
+      "pc": 1,
+      "hc": 15,
+      "harbor_name": "尾岱沼",
+      "lat": 43.34,
+      "lon": 145.14,
+      "harbor_code": "1-15"
+    },
+    {
+      "pc": 1,
+      "hc": 16,
+      "harbor_name": "羅臼",
+      "lat": 44.01,
+      "lon": 145.12,
+      "harbor_code": "1-16"
+    },
+    {
+      "pc": 1,
+      "hc": 17,
+      "harbor_name": "コイセボイ",
+      "lat": 44.03,
+      "lon": 144.57,
+      "harbor_code": "1-17"
+    },
+    {
+      "pc": 1,
+      "hc": 18,
+      "harbor_name": "網走",
+      "lat": 44.01,
+      "lon": 144.17,
+      "harbor_code": "1-18"
+    },
+    {
+      "pc": 1,
+      "hc": 19,
+      "harbor_name": "紋別",
+      "lat": 44.21,
+      "lon": 143.22,
+      "harbor_code": "1-19"
+    },
+    {
+      "pc": 1,
+      "hc": 20,
+      "harbor_name": "雄武",
+      "lat": 44.35,
+      "lon": 142.58,
+      "harbor_code": "1-20"
+    },
+    {
+      "pc": 1,
+      "hc": 21,
+      "harbor_name": "枝幸",
+      "lat": 44.56,
+      "lon": 142.36,
+      "harbor_code": "1-21"
+    },
+    {
+      "pc": 1,
+      "hc": 22,
+      "harbor_name": "浜鬼志別",
+      "lat": 45.2,
+      "lon": 142.1,
+      "harbor_code": "1-22"
+    },
+    {
+      "pc": 1,
+      "hc": 23,
+      "harbor_name": "宗谷岬",
+      "lat": 45.31,
+      "lon": 141.57,
+      "harbor_code": "1-23"
+    },
+    {
+      "pc": 1,
+      "hc": 24,
+      "harbor_name": "稚内",
+      "lat": 45.25,
+      "lon": 141.41,
+      "harbor_code": "1-24"
+    },
+    {
+      "pc": 1,
+      "hc": 25,
+      "harbor_name": "抜海",
+      "lat": 45.19,
+      "lon": 141.37,
+      "harbor_code": "1-25"
+    },
+    {
+      "pc": 1,
+      "hc": 26,
+      "harbor_name": "鴛泊",
+      "lat": 45.14,
+      "lon": 141.14,
+      "harbor_code": "1-26"
+    },
+    {
+      "pc": 1,
+      "hc": 27,
+      "harbor_name": "沓形",
+      "lat": 45.11,
+      "lon": 141.08,
+      "harbor_code": "1-27"
+    },
+    {
+      "pc": 1,
+      "hc": 28,
+      "harbor_name": "船泊",
+      "lat": 45.27,
+      "lon": 141.02,
+      "harbor_code": "1-28"
+    },
+    {
+      "pc": 1,
+      "hc": 29,
+      "harbor_name": "苫前",
+      "lat": 44.19,
+      "lon": 141.39,
+      "harbor_code": "1-29"
+    },
+    {
+      "pc": 1,
+      "hc": 30,
+      "harbor_name": "留萌",
+      "lat": 43.57,
+      "lon": 141.38,
+      "harbor_code": "1-30"
+    },
+    {
+      "pc": 1,
+      "hc": 31,
+      "harbor_name": "浜益",
+      "lat": 43.36,
+      "lon": 141.23,
+      "harbor_code": "1-31"
+    },
+    {
+      "pc": 1,
+      "hc": 32,
+      "harbor_name": "小樽",
+      "lat": 43.13,
+      "lon": 141.01,
+      "harbor_code": "1-32"
+    },
+    {
+      "pc": 1,
+      "hc": 33,
+      "harbor_name": "忍路",
+      "lat": 43.13,
+      "lon": 140.51,
+      "harbor_code": "1-33"
+    },
+    {
+      "pc": 1,
+      "hc": 34,
+      "harbor_name": "神威岬",
+      "lat": 43.2,
+      "lon": 140.21,
+      "harbor_code": "1-34"
+    },
+    {
+      "pc": 1,
+      "hc": 35,
+      "harbor_name": "岩内",
+      "lat": 42.59,
+      "lon": 140.3,
+      "harbor_code": "1-35"
+    },
+    {
+      "pc": 1,
+      "hc": 36,
+      "harbor_name": "寿都",
+      "lat": 42.47,
+      "lon": 140.16,
+      "harbor_code": "1-36"
+    },
+    {
+      "pc": 1,
+      "hc": 37,
+      "harbor_name": "瀬棚",
+      "lat": 42.28,
+      "lon": 139.51,
+      "harbor_code": "1-37"
+    },
+    {
+      "pc": 1,
+      "hc": 38,
+      "harbor_name": "奥尻",
+      "lat": 42.1,
+      "lon": 139.31,
+      "harbor_code": "1-38"
+    },
+    {
+      "pc": 1,
+      "hc": 39,
+      "harbor_name": "青苗",
+      "lat": 42.04,
+      "lon": 139.27,
+      "harbor_code": "1-39"
+    },
+    {
+      "pc": 1,
+      "hc": 40,
+      "harbor_name": "江差",
+      "lat": 41.52,
+      "lon": 140.06,
+      "harbor_code": "1-40"
+    },
+    {
+      "pc": 1,
+      "hc": 41,
+      "harbor_name": "清部",
+      "lat": 41.32,
+      "lon": 140.0,
+      "harbor_code": "1-41"
+    },
+    {
+      "pc": 1,
+      "hc": 42,
+      "harbor_name": "松前",
+      "lat": 41.25,
+      "lon": 140.05,
+      "harbor_code": "1-42"
+    },
+    {
+      "pc": 1,
+      "hc": 43,
+      "harbor_name": "吉岡",
+      "lat": 41.27,
+      "lon": 140.15,
+      "harbor_code": "1-43"
+    },
+    {
+      "pc": 1,
+      "hc": 44,
+      "harbor_name": "湧元",
+      "lat": 41.34,
+      "lon": 140.25,
+      "harbor_code": "1-44"
+    },
+    {
+      "pc": 1,
+      "hc": 45,
+      "harbor_name": "函館",
+      "lat": 41.47,
+      "lon": 140.43,
+      "harbor_code": "1-45"
+    },
+    {
+      "pc": 1,
+      "hc": 46,
+      "harbor_name": "汐首岬",
+      "lat": 41.43,
+      "lon": 140.58,
+      "harbor_code": "1-46"
+    },
+    {
+      "pc": 1,
+      "hc": 47,
+      "harbor_name": "戸井",
+      "lat": 41.43,
+      "lon": 141.0,
+      "harbor_code": "1-47"
+    },
+    {
+      "pc": 1,
+      "hc": 48,
+      "harbor_name": "古武井",
+      "lat": 41.46,
+      "lon": 141.08,
+      "harbor_code": "1-48"
+    },
+    {
+      "pc": 1,
+      "hc": 49,
+      "harbor_name": "臼尻",
+      "lat": 41.56,
+      "lon": 140.57,
+      "harbor_code": "1-49"
+    },
+    {
+      "pc": 1,
+      "hc": 50,
+      "harbor_name": "森",
+      "lat": 42.07,
+      "lon": 140.36,
+      "harbor_code": "1-50"
+    },
+    {
+      "pc": 1,
+      "hc": 51,
+      "harbor_name": "有珠湾",
+      "lat": 42.31,
+      "lon": 140.46,
+      "harbor_code": "1-51"
+    },
+    {
+      "pc": 1,
+      "hc": 52,
+      "harbor_name": "室蘭",
+      "lat": 42.21,
+      "lon": 140.57,
+      "harbor_code": "1-52"
+    },
+    {
+      "pc": 1,
+      "hc": 53,
+      "harbor_name": "苫小牧",
+      "lat": 42.38,
+      "lon": 141.38,
+      "harbor_code": "1-53"
+    },
+    {
+      "pc": 1,
+      "hc": 54,
+      "harbor_name": "東静内",
+      "lat": 42.17,
+      "lon": 142.28,
+      "harbor_code": "1-54"
+    },
+    {
+      "pc": 1,
+      "hc": 55,
+      "harbor_name": "三石",
+      "lat": 42.15,
+      "lon": 142.33,
+      "harbor_code": "1-55"
+    },
+    {
+      "pc": 1,
+      "hc": 56,
+      "harbor_name": "浦河",
+      "lat": 42.1,
+      "lon": 142.46,
+      "harbor_code": "1-56"
+    },
+    {
+      "pc": 1,
+      "hc": 57,
+      "harbor_name": "えりも",
+      "lat": 42.01,
+      "lon": 143.09,
+      "harbor_code": "1-57"
+    },
+    {
+      "pc": 1,
+      "hc": 58,
+      "harbor_name": "歌露",
+      "lat": 41.58,
+      "lon": 143.12,
+      "harbor_code": "1-58"
+    },
+    {
+      "pc": 1,
+      "hc": 59,
+      "harbor_name": "襟裳岬",
+      "lat": 41.56,
+      "lon": 143.14,
+      "harbor_code": "1-59"
+    },
+    {
+      "pc": 1,
+      "hc": 60,
+      "harbor_name": "庶野",
+      "lat": 42.01,
+      "lon": 143.17,
+      "harbor_code": "1-60"
+    },
+    {
+      "pc": 1,
+      "hc": 61,
+      "harbor_name": "ルベシベツ",
+      "lat": 42.12,
+      "lon": 143.2,
+      "harbor_code": "1-61"
+    },
+    {
+      "pc": 1,
+      "hc": 62,
+      "harbor_name": "音調津",
+      "lat": 42.13,
+      "lon": 143.19,
+      "harbor_code": "1-62"
+    },
+    {
+      "pc": 1,
+      "hc": 63,
+      "harbor_name": "十勝",
+      "lat": 42.17,
+      "lon": 143.2,
+      "harbor_code": "1-63"
+    },
+    {
+      "pc": 1,
+      "hc": 64,
+      "harbor_name": "釧路",
+      "lat": 42.58,
+      "lon": 144.23,
+      "harbor_code": "1-64"
+    },
+    {
+      "pc": 1,
+      "hc": 65,
+      "harbor_name": "厚岸",
+      "lat": 43.02,
+      "lon": 144.51,
+      "harbor_code": "1-65"
+    },
+    {
+      "pc": 1,
+      "hc": 66,
+      "harbor_name": "厚岸湖",
+      "lat": 43.02,
+      "lon": 144.52,
+      "harbor_code": "1-66"
+    },
+    {
+      "pc": 1,
+      "hc": 67,
+      "harbor_name": "霧多布",
+      "lat": 43.05,
+      "lon": 145.08,
+      "harbor_code": "1-67"
+    },
+    {
+      "pc": 1,
+      "hc": 68,
+      "harbor_name": "落石",
+      "lat": 43.11,
+      "lon": 145.31,
+      "harbor_code": "1-68"
+    },
+    {
+      "pc": 1,
+      "hc": 69,
+      "harbor_name": "花咲",
+      "lat": 43.17,
+      "lon": 145.35,
+      "harbor_code": "1-69"
+    },
+    {
+      "pc": 1,
+      "hc": 70,
+      "harbor_name": "香深",
+      "lat": 45.18,
+      "lon": 141.03,
+      "harbor_code": "1-70"
+    },
+    {
+      "pc": 1,
+      "hc": 71,
+      "harbor_name": "常呂",
+      "lat": 44.07,
+      "lon": 144.06,
+      "harbor_code": "1-71"
+    },
+    {
+      "pc": 1,
+      "hc": 72,
+      "harbor_name": "湧別",
+      "lat": 44.14,
+      "lon": 143.38,
+      "harbor_code": "1-72"
+    },
+    {
+      "pc": 1,
+      "hc": 73,
+      "harbor_name": "利尻",
+      "lat": 45.08,
+      "lon": 141.19,
+      "harbor_code": "1-73"
+    },
+    {
+      "pc": 2,
+      "hc": 1,
+      "harbor_name": "竜飛埼",
+      "lat": 41.16,
+      "lon": 140.2,
+      "harbor_code": "2-1"
+    },
+    {
+      "pc": 2,
+      "hc": 2,
+      "harbor_name": "三厩",
+      "lat": 41.12,
+      "lon": 140.25,
+      "harbor_code": "2-2"
+    },
+    {
+      "pc": 2,
+      "hc": 3,
+      "harbor_name": "袰月",
+      "lat": 41.13,
+      "lon": 140.33,
+      "harbor_code": "2-3"
+    },
+    {
+      "pc": 2,
+      "hc": 4,
+      "harbor_name": "青森",
+      "lat": 40.5,
+      "lon": 140.46,
+      "harbor_code": "2-4"
+    },
+    {
+      "pc": 2,
+      "hc": 5,
+      "harbor_name": "茂浦",
+      "lat": 40.57,
+      "lon": 140.52,
+      "harbor_code": "2-5"
+    },
+    {
+      "pc": 2,
+      "hc": 6,
+      "harbor_name": "小湊",
+      "lat": 40.57,
+      "lon": 140.59,
+      "harbor_code": "2-6"
+    },
+    {
+      "pc": 2,
+      "hc": 7,
+      "harbor_name": "野辺地",
+      "lat": 40.52,
+      "lon": 141.07,
+      "harbor_code": "2-7"
+    },
+    {
+      "pc": 2,
+      "hc": 8,
+      "harbor_name": "大湊",
+      "lat": 41.15,
+      "lon": 141.09,
+      "harbor_code": "2-8"
+    },
+    {
+      "pc": 2,
+      "hc": 9,
+      "harbor_name": "大間",
+      "lat": 41.32,
+      "lon": 140.54,
+      "harbor_code": "2-9"
+    },
+    {
+      "pc": 2,
+      "hc": 10,
+      "harbor_name": "大畑",
+      "lat": 41.25,
+      "lon": 141.1,
+      "harbor_code": "2-10"
+    },
+    {
+      "pc": 2,
+      "hc": 11,
+      "harbor_name": "尻屋岬",
+      "lat": 41.25,
+      "lon": 141.26,
+      "harbor_code": "2-11"
+    },
+    {
+      "pc": 2,
+      "hc": 12,
+      "harbor_name": "尻屋",
+      "lat": 41.24,
+      "lon": 141.27,
+      "harbor_code": "2-12"
+    },
+    {
+      "pc": 2,
+      "hc": 13,
+      "harbor_name": "白糠",
+      "lat": 41.08,
+      "lon": 141.24,
+      "harbor_code": "2-13"
+    },
+    {
+      "pc": 2,
+      "hc": 14,
+      "harbor_name": "泊",
+      "lat": 41.06,
+      "lon": 141.23,
+      "harbor_code": "2-14"
+    },
+    {
+      "pc": 2,
+      "hc": 15,
+      "harbor_name": "八戸",
+      "lat": 40.32,
+      "lon": 141.32,
+      "harbor_code": "2-15"
+    },
+    {
+      "pc": 2,
+      "hc": 16,
+      "harbor_name": "岩崎",
+      "lat": 40.35,
+      "lon": 139.54,
+      "harbor_code": "2-16"
+    },
+    {
+      "pc": 2,
+      "hc": 17,
+      "harbor_name": "深浦",
+      "lat": 40.39,
+      "lon": 139.56,
+      "harbor_code": "2-17"
+    },
+    {
+      "pc": 2,
+      "hc": 18,
+      "harbor_name": "鯵ヶ沢",
+      "lat": 40.47,
+      "lon": 140.13,
+      "harbor_code": "2-18"
+    },
+    {
+      "pc": 2,
+      "hc": 19,
+      "harbor_name": "小泊",
+      "lat": 41.08,
+      "lon": 140.18,
+      "harbor_code": "2-19"
+    },
+    {
+      "pc": 2,
+      "hc": 20,
+      "harbor_name": "関根浜",
+      "lat": 41.22,
+      "lon": 141.14,
+      "harbor_code": "2-20"
+    },
+    {
+      "pc": 2,
+      "hc": 21,
+      "harbor_name": "浅虫",
+      "lat": 40.54,
+      "lon": 140.52,
+      "harbor_code": "2-21"
+    },
+    {
+      "pc": 2,
+      "hc": 22,
+      "harbor_name": "竜飛",
+      "lat": 41.14,
+      "lon": 140.24,
+      "harbor_code": "2-22"
+    },
+    {
+      "pc": 3,
+      "hc": 1,
+      "harbor_name": "久慈",
+      "lat": 40.11,
+      "lon": 141.49,
+      "harbor_code": "3-1"
+    },
+    {
+      "pc": 3,
+      "hc": 2,
+      "harbor_name": "宮古",
+      "lat": 39.38,
+      "lon": 141.59,
+      "harbor_code": "3-2"
+    },
+    {
+      "pc": 3,
+      "hc": 3,
+      "harbor_name": "山田",
+      "lat": 39.28,
+      "lon": 141.58,
+      "harbor_code": "3-3"
+    },
+    {
+      "pc": 3,
+      "hc": 4,
+      "harbor_name": "釜石",
+      "lat": 39.16,
+      "lon": 141.54,
+      "harbor_code": "3-4"
+    },
+    {
+      "pc": 3,
+      "hc": 5,
+      "harbor_name": "大船渡",
+      "lat": 39.03,
+      "lon": 141.44,
+      "harbor_code": "3-5"
+    },
+    {
+      "pc": 3,
+      "hc": 6,
+      "harbor_name": "八木",
+      "lat": 40.21,
+      "lon": 141.46,
+      "harbor_code": "3-6"
+    },
+    {
+      "pc": 3,
+      "hc": 7,
+      "harbor_name": "茂師",
+      "lat": 39.5,
+      "lon": 141.59,
+      "harbor_code": "3-7"
+    },
+    {
+      "pc": 4,
+      "hc": 1,
+      "harbor_name": "気仙沼",
+      "lat": 38.53,
+      "lon": 141.37,
+      "harbor_code": "4-1"
+    },
+    {
+      "pc": 4,
+      "hc": 2,
+      "harbor_name": "船越湾",
+      "lat": 38.32,
+      "lon": 141.31,
+      "harbor_code": "4-2"
+    },
+    {
+      "pc": 4,
+      "hc": 3,
+      "harbor_name": "女川",
+      "lat": 38.26,
+      "lon": 141.28,
+      "harbor_code": "4-3"
+    },
+    {
+      "pc": 4,
+      "hc": 4,
+      "harbor_name": "鮎川",
+      "lat": 38.18,
+      "lon": 141.31,
+      "harbor_code": "4-4"
+    },
+    {
+      "pc": 4,
+      "hc": 5,
+      "harbor_name": "荻浜",
+      "lat": 38.22,
+      "lon": 141.27,
+      "harbor_code": "4-5"
+    },
+    {
+      "pc": 4,
+      "hc": 6,
+      "harbor_name": "石巻",
+      "lat": 38.25,
+      "lon": 141.19,
+      "harbor_code": "4-6"
+    },
+    {
+      "pc": 4,
+      "hc": 7,
+      "harbor_name": "野蒜湾",
+      "lat": 38.21,
+      "lon": 141.09,
+      "harbor_code": "4-7"
+    },
+    {
+      "pc": 4,
+      "hc": 8,
+      "harbor_name": "石浜",
+      "lat": 38.19,
+      "lon": 141.07,
+      "harbor_code": "4-8"
+    },
+    {
+      "pc": 4,
+      "hc": 9,
+      "harbor_name": "港橋",
+      "lat": 38.19,
+      "lon": 141.02,
+      "harbor_code": "4-9"
+    },
+    {
+      "pc": 4,
+      "hc": 10,
+      "harbor_name": "花淵浜",
+      "lat": 38.18,
+      "lon": 141.05,
+      "harbor_code": "4-10"
+    },
+    {
+      "pc": 4,
+      "hc": 11,
+      "harbor_name": "仙台",
+      "lat": 38.16,
+      "lon": 141.02,
+      "harbor_code": "4-11"
+    },
+    {
+      "pc": 4,
+      "hc": 12,
+      "harbor_name": "閖上",
+      "lat": 38.1,
+      "lon": 140.58,
+      "harbor_code": "4-12"
+    },
+    {
+      "pc": 4,
+      "hc": 13,
+      "harbor_name": "志津川",
+      "lat": 38.4,
+      "lon": 141.27,
+      "harbor_code": "4-13"
+    },
+    {
+      "pc": 5,
+      "hc": 1,
+      "harbor_name": "金浦",
+      "lat": 39.15,
+      "lon": 139.55,
+      "harbor_code": "5-1"
+    },
+    {
+      "pc": 5,
+      "hc": 2,
+      "harbor_name": "秋田",
+      "lat": 39.45,
+      "lon": 140.04,
+      "harbor_code": "5-2"
+    },
+    {
+      "pc": 5,
+      "hc": 3,
+      "harbor_name": "船川",
+      "lat": 39.53,
+      "lon": 139.51,
+      "harbor_code": "5-3"
+    },
+    {
+      "pc": 5,
+      "hc": 4,
+      "harbor_name": "能代",
+      "lat": 40.13,
+      "lon": 140.0,
+      "harbor_code": "5-4"
+    },
+    {
+      "pc": 5,
+      "hc": 5,
+      "harbor_name": "岩館",
+      "lat": 40.24,
+      "lon": 139.59,
+      "harbor_code": "5-5"
+    },
+    {
+      "pc": 5,
+      "hc": 6,
+      "harbor_name": "男鹿",
+      "lat": 39.56,
+      "lon": 139.42,
+      "harbor_code": "5-6"
+    },
+    {
+      "pc": 6,
+      "hc": 1,
+      "harbor_name": "鼠ヶ関",
+      "lat": 38.34,
+      "lon": 139.33,
+      "harbor_code": "6-1"
+    },
+    {
+      "pc": 6,
+      "hc": 2,
+      "harbor_name": "由良",
+      "lat": 38.43,
+      "lon": 139.41,
+      "harbor_code": "6-2"
+    },
+    {
+      "pc": 6,
+      "hc": 3,
+      "harbor_name": "加茂",
+      "lat": 38.46,
+      "lon": 139.44,
+      "harbor_code": "6-3"
+    },
+    {
+      "pc": 6,
+      "hc": 4,
+      "harbor_name": "酒田",
+      "lat": 38.55,
+      "lon": 139.5,
+      "harbor_code": "6-4"
+    },
+    {
+      "pc": 7,
+      "hc": 1,
+      "harbor_name": "相馬",
+      "lat": 37.5,
+      "lon": 140.58,
+      "harbor_code": "7-1"
+    },
+    {
+      "pc": 7,
+      "hc": 2,
+      "harbor_name": "松川浦",
+      "lat": 37.49,
+      "lon": 140.59,
+      "harbor_code": "7-2"
+    },
+    {
+      "pc": 7,
+      "hc": 3,
+      "harbor_name": "夫沢",
+      "lat": 37.25,
+      "lon": 141.02,
+      "harbor_code": "7-3"
+    },
+    {
+      "pc": 7,
+      "hc": 4,
+      "harbor_name": "富岡",
+      "lat": 37.19,
+      "lon": 141.02,
+      "harbor_code": "7-4"
+    },
+    {
+      "pc": 7,
+      "hc": 5,
+      "harbor_name": "四倉",
+      "lat": 37.06,
+      "lon": 141.0,
+      "harbor_code": "7-5"
+    },
+    {
+      "pc": 7,
+      "hc": 6,
+      "harbor_name": "小名浜",
+      "lat": 36.56,
+      "lon": 140.54,
+      "harbor_code": "7-6"
+    },
+    {
+      "pc": 8,
+      "hc": 1,
+      "harbor_name": "大津",
+      "lat": 36.5,
+      "lon": 140.48,
+      "harbor_code": "8-1"
+    },
+    {
+      "pc": 8,
+      "hc": 2,
+      "harbor_name": "日立",
+      "lat": 36.3,
+      "lon": 140.38,
+      "harbor_code": "8-2"
+    },
+    {
+      "pc": 8,
+      "hc": 3,
+      "harbor_name": "那珂湊",
+      "lat": 36.2,
+      "lon": 140.35,
+      "harbor_code": "8-3"
+    },
+    {
+      "pc": 8,
+      "hc": 4,
+      "harbor_name": "鹿島",
+      "lat": 35.56,
+      "lon": 140.42,
+      "harbor_code": "8-4"
+    },
+    {
+      "pc": 8,
+      "hc": 5,
+      "harbor_name": "大洗",
+      "lat": 36.19,
+      "lon": 140.35,
+      "harbor_code": "8-5"
+    },
+    {
+      "pc": 12,
+      "hc": 1,
+      "harbor_name": "新地",
+      "lat": 35.44,
+      "lon": 140.51,
+      "harbor_code": "12-1"
+    },
+    {
+      "pc": 12,
+      "hc": 2,
+      "harbor_name": "銚子漁港",
+      "lat": 35.44,
+      "lon": 140.52,
+      "harbor_code": "12-2"
+    },
+    {
+      "pc": 12,
+      "hc": 3,
+      "harbor_name": "犬吠埼",
+      "lat": 35.42,
+      "lon": 140.52,
+      "harbor_code": "12-3"
+    },
+    {
+      "pc": 12,
+      "hc": 4,
+      "harbor_name": "名洗",
+      "lat": 35.42,
+      "lon": 140.51,
+      "harbor_code": "12-4"
+    },
+    {
+      "pc": 12,
+      "hc": 5,
+      "harbor_name": "上総勝浦",
+      "lat": 35.08,
+      "lon": 140.15,
+      "harbor_code": "12-5"
+    },
+    {
+      "pc": 12,
+      "hc": 6,
+      "harbor_name": "鴨川",
+      "lat": 35.05,
+      "lon": 140.07,
+      "harbor_code": "12-6"
+    },
+    {
+      "pc": 12,
+      "hc": 7,
+      "harbor_name": "白浜",
+      "lat": 34.55,
+      "lon": 139.56,
+      "harbor_code": "12-7"
+    },
+    {
+      "pc": 12,
+      "hc": 8,
+      "harbor_name": "布良",
+      "lat": 34.55,
+      "lon": 139.5,
+      "harbor_code": "12-8"
+    },
+    {
+      "pc": 12,
+      "hc": 9,
+      "harbor_name": "船形",
+      "lat": 35.01,
+      "lon": 139.51,
+      "harbor_code": "12-9"
+    },
+    {
+      "pc": 12,
+      "hc": 10,
+      "harbor_name": "岩井袋",
+      "lat": 35.06,
+      "lon": 139.5,
+      "harbor_code": "12-10"
+    },
+    {
+      "pc": 12,
+      "hc": 11,
+      "harbor_name": "第１海堡",
+      "lat": 35.19,
+      "lon": 139.46,
+      "harbor_code": "12-11"
+    },
+    {
+      "pc": 12,
+      "hc": 12,
+      "harbor_name": "君津",
+      "lat": 35.21,
+      "lon": 139.52,
+      "harbor_code": "12-12"
+    },
+    {
+      "pc": 12,
+      "hc": 13,
+      "harbor_name": "姉崎",
+      "lat": 35.29,
+      "lon": 140.02,
+      "harbor_code": "12-13"
+    },
+    {
+      "pc": 12,
+      "hc": 14,
+      "harbor_name": "市原",
+      "lat": 35.32,
+      "lon": 140.07,
+      "harbor_code": "12-14"
+    },
+    {
+      "pc": 12,
+      "hc": 15,
+      "harbor_name": "寒川",
+      "lat": 35.35,
+      "lon": 140.07,
+      "harbor_code": "12-15"
+    },
+    {
+      "pc": 12,
+      "hc": 16,
+      "harbor_name": "千葉灯標",
+      "lat": 35.34,
+      "lon": 140.03,
+      "harbor_code": "12-16"
+    },
+    {
+      "pc": 12,
+      "hc": 17,
+      "harbor_name": "市川",
+      "lat": 35.41,
+      "lon": 139.57,
+      "harbor_code": "12-17"
+    },
+    {
+      "pc": 12,
+      "hc": 18,
+      "harbor_name": "船橋",
+      "lat": 35.41,
+      "lon": 139.59,
+      "harbor_code": "12-18"
+    },
+    {
+      "pc": 12,
+      "hc": 19,
+      "harbor_name": "館山",
+      "lat": 34.59,
+      "lon": 139.51,
+      "harbor_code": "12-19"
+    },
+    {
+      "pc": 13,
+      "hc": 1,
+      "harbor_name": "築地",
+      "lat": 35.4,
+      "lon": 139.46,
+      "harbor_code": "13-1"
+    },
+    {
+      "pc": 13,
+      "hc": 2,
+      "harbor_name": "芝浦",
+      "lat": 35.38,
+      "lon": 139.45,
+      "harbor_code": "13-2"
+    },
+    {
+      "pc": 13,
+      "hc": 3,
+      "harbor_name": "羽田",
+      "lat": 35.33,
+      "lon": 139.46,
+      "harbor_code": "13-3"
+    },
+    {
+      "pc": 13,
+      "hc": 4,
+      "harbor_name": "岡田",
+      "lat": 34.47,
+      "lon": 139.24,
+      "harbor_code": "13-4"
+    },
+    {
+      "pc": 13,
+      "hc": 5,
+      "harbor_name": "波浮",
+      "lat": 34.41,
+      "lon": 139.26,
+      "harbor_code": "13-5"
+    },
+    {
+      "pc": 13,
+      "hc": 6,
+      "harbor_name": "式根島",
+      "lat": 34.19,
+      "lon": 139.13,
+      "harbor_code": "13-6"
+    },
+    {
+      "pc": 13,
+      "hc": 7,
+      "harbor_name": "神津島",
+      "lat": 34.12,
+      "lon": 139.08,
+      "harbor_code": "13-7"
+    },
+    {
+      "pc": 13,
+      "hc": 8,
+      "harbor_name": "阿古",
+      "lat": 34.04,
+      "lon": 139.29,
+      "harbor_code": "13-8"
+    },
+    {
+      "pc": 13,
+      "hc": 9,
+      "harbor_name": "神湊",
+      "lat": 33.08,
+      "lon": 139.48,
+      "harbor_code": "13-9"
+    },
+    {
+      "pc": 13,
+      "hc": 10,
+      "harbor_name": "鳥島",
+      "lat": 30.29,
+      "lon": 140.19,
+      "harbor_code": "13-10"
+    },
+    {
+      "pc": 13,
+      "hc": 11,
+      "harbor_name": "二見",
+      "lat": 27.05,
+      "lon": 142.11,
+      "harbor_code": "13-11"
+    },
+    {
+      "pc": 13,
+      "hc": 12,
+      "harbor_name": "沖",
+      "lat": 26.38,
+      "lon": 142.09,
+      "harbor_code": "13-12"
+    },
+    {
+      "pc": 13,
+      "hc": 13,
+      "harbor_name": "西",
+      "lat": 24.48,
+      "lon": 141.18,
+      "harbor_code": "13-13"
+    },
+    {
+      "pc": 13,
+      "hc": 14,
+      "harbor_name": "晴海",
+      "lat": 35.39,
+      "lon": 139.46,
+      "harbor_code": "13-14"
+    },
+    {
+      "pc": 13,
+      "hc": 15,
+      "harbor_name": "八重根",
+      "lat": 33.06,
+      "lon": 139.46,
+      "harbor_code": "13-15"
+    },
+    {
+      "pc": 13,
+      "hc": 16,
+      "harbor_name": "沖ノ鳥島",
+      "lat": 20.25,
+      "lon": 136.03,
+      "harbor_code": "13-16"
+    },
+    {
+      "pc": 14,
+      "hc": 1,
+      "harbor_name": "塩浜運河",
+      "lat": 35.31,
+      "lon": 139.45,
+      "harbor_code": "14-1"
+    },
+    {
+      "pc": 14,
+      "hc": 2,
+      "harbor_name": "末広",
+      "lat": 35.29,
+      "lon": 139.42,
+      "harbor_code": "14-2"
+    },
+    {
+      "pc": 14,
+      "hc": 3,
+      "harbor_name": "新港",
+      "lat": 35.27,
+      "lon": 139.38,
+      "harbor_code": "14-3"
+    },
+    {
+      "pc": 14,
+      "hc": 4,
+      "harbor_name": "新山下",
+      "lat": 35.26,
+      "lon": 139.4,
+      "harbor_code": "14-4"
+    },
+    {
+      "pc": 14,
+      "hc": 5,
+      "harbor_name": "根岸",
+      "lat": 35.24,
+      "lon": 139.38,
+      "harbor_code": "14-5"
+    },
+    {
+      "pc": 14,
+      "hc": 6,
+      "harbor_name": "長浦",
+      "lat": 35.19,
+      "lon": 139.39,
+      "harbor_code": "14-6"
+    },
+    {
+      "pc": 14,
+      "hc": 7,
+      "harbor_name": "横須賀",
+      "lat": 35.17,
+      "lon": 139.39,
+      "harbor_code": "14-7"
+    },
+    {
+      "pc": 14,
+      "hc": 8,
+      "harbor_name": "走水",
+      "lat": 35.15,
+      "lon": 139.44,
+      "harbor_code": "14-8"
+    },
+    {
+      "pc": 14,
+      "hc": 9,
+      "harbor_name": "浦賀",
+      "lat": 35.14,
+      "lon": 139.43,
+      "harbor_code": "14-9"
+    },
+    {
+      "pc": 14,
+      "hc": 10,
+      "harbor_name": "久里浜",
+      "lat": 35.13,
+      "lon": 139.43,
+      "harbor_code": "14-10"
+    },
+    {
+      "pc": 14,
+      "hc": 11,
+      "harbor_name": "金田湾",
+      "lat": 35.12,
+      "lon": 139.41,
+      "harbor_code": "14-11"
+    },
+    {
+      "pc": 14,
+      "hc": 12,
+      "harbor_name": "間口",
+      "lat": 35.09,
+      "lon": 139.41,
+      "harbor_code": "14-12"
+    },
+    {
+      "pc": 14,
+      "hc": 13,
+      "harbor_name": "城ヶ島",
+      "lat": 35.08,
+      "lon": 139.37,
+      "harbor_code": "14-13"
+    },
+    {
+      "pc": 14,
+      "hc": 14,
+      "harbor_name": "向ヶ崎",
+      "lat": 35.08,
+      "lon": 139.37,
+      "harbor_code": "14-14"
+    },
+    {
+      "pc": 14,
+      "hc": 15,
+      "harbor_name": "諸磯",
+      "lat": 35.09,
+      "lon": 139.37,
+      "harbor_code": "14-15"
+    },
+    {
+      "pc": 14,
+      "hc": 16,
+      "harbor_name": "油壷",
+      "lat": 35.09,
+      "lon": 139.37,
+      "harbor_code": "14-16"
+    },
+    {
+      "pc": 14,
+      "hc": 17,
+      "harbor_name": "小田和湾",
+      "lat": 35.13,
+      "lon": 139.37,
+      "harbor_code": "14-17"
+    },
+    {
+      "pc": 14,
+      "hc": 18,
+      "harbor_name": "新宿湾",
+      "lat": 35.17,
+      "lon": 139.34,
+      "harbor_code": "14-18"
+    },
+    {
+      "pc": 14,
+      "hc": 19,
+      "harbor_name": "江ノ島",
+      "lat": 35.18,
+      "lon": 139.29,
+      "harbor_code": "14-19"
+    },
+    {
+      "pc": 14,
+      "hc": 20,
+      "harbor_name": "真鶴",
+      "lat": 35.09,
+      "lon": 139.09,
+      "harbor_code": "14-20"
+    },
+    {
+      "pc": 15,
+      "hc": 1,
+      "harbor_name": "能生",
+      "lat": 37.06,
+      "lon": 138.0,
+      "harbor_code": "15-1"
+    },
+    {
+      "pc": 15,
+      "hc": 2,
+      "harbor_name": "直江津",
+      "lat": 37.11,
+      "lon": 138.15,
+      "harbor_code": "15-2"
+    },
+    {
+      "pc": 15,
+      "hc": 3,
+      "harbor_name": "柏崎",
+      "lat": 37.21,
+      "lon": 138.31,
+      "harbor_code": "15-3"
+    },
+    {
+      "pc": 15,
+      "hc": 4,
+      "harbor_name": "出雲崎",
+      "lat": 37.33,
+      "lon": 138.4,
+      "harbor_code": "15-4"
+    },
+    {
+      "pc": 15,
+      "hc": 5,
+      "harbor_name": "寺泊",
+      "lat": 37.38,
+      "lon": 138.46,
+      "harbor_code": "15-5"
+    },
+    {
+      "pc": 15,
+      "hc": 6,
+      "harbor_name": "新潟西港",
+      "lat": 37.56,
+      "lon": 139.04,
+      "harbor_code": "15-6"
+    },
+    {
+      "pc": 15,
+      "hc": 7,
+      "harbor_name": "二見",
+      "lat": 37.58,
+      "lon": 138.16,
+      "harbor_code": "15-7"
+    },
+    {
+      "pc": 15,
+      "hc": 8,
+      "harbor_name": "小木",
+      "lat": 37.49,
+      "lon": 138.17,
+      "harbor_code": "15-8"
+    },
+    {
+      "pc": 15,
+      "hc": 9,
+      "harbor_name": "両津",
+      "lat": 38.05,
+      "lon": 138.26,
+      "harbor_code": "15-9"
+    },
+    {
+      "pc": 15,
+      "hc": 10,
+      "harbor_name": "鷲崎",
+      "lat": 38.19,
+      "lon": 138.31,
+      "harbor_code": "15-10"
+    },
+    {
+      "pc": 15,
+      "hc": 11,
+      "harbor_name": "岩船",
+      "lat": 38.11,
+      "lon": 139.26,
+      "harbor_code": "15-11"
+    },
+    {
+      "pc": 15,
+      "hc": 12,
+      "harbor_name": "粟島",
+      "lat": 38.28,
+      "lon": 139.15,
+      "harbor_code": "15-12"
+    },
+    {
+      "pc": 15,
+      "hc": 13,
+      "harbor_name": "新潟東港",
+      "lat": 37.59,
+      "lon": 139.13,
+      "harbor_code": "15-13"
+    },
+    {
+      "pc": 16,
+      "hc": 1,
+      "harbor_name": "阿尾",
+      "lat": 36.53,
+      "lon": 136.59,
+      "harbor_code": "16-1"
+    },
+    {
+      "pc": 16,
+      "hc": 2,
+      "harbor_name": "伏木",
+      "lat": 36.47,
+      "lon": 137.04,
+      "harbor_code": "16-2"
+    },
+    {
+      "pc": 16,
+      "hc": 3,
+      "harbor_name": "富山",
+      "lat": 36.46,
+      "lon": 137.14,
+      "harbor_code": "16-3"
+    },
+    {
+      "pc": 16,
+      "hc": 4,
+      "harbor_name": "生地",
+      "lat": 36.53,
+      "lon": 137.25,
+      "harbor_code": "16-4"
+    },
+    {
+      "pc": 16,
+      "hc": 5,
+      "harbor_name": "宮崎",
+      "lat": 36.58,
+      "lon": 137.35,
+      "harbor_code": "16-5"
+    },
+    {
+      "pc": 17,
+      "hc": 1,
+      "harbor_name": "金沢",
+      "lat": 36.37,
+      "lon": 136.36,
+      "harbor_code": "17-1"
+    },
+    {
+      "pc": 17,
+      "hc": 2,
+      "harbor_name": "滝",
+      "lat": 36.56,
+      "lon": 136.46,
+      "harbor_code": "17-2"
+    },
+    {
+      "pc": 17,
+      "hc": 3,
+      "harbor_name": "寺家",
+      "lat": 37.3,
+      "lon": 137.21,
+      "harbor_code": "17-3"
+    },
+    {
+      "pc": 17,
+      "hc": 4,
+      "harbor_name": "輪島",
+      "lat": 37.24,
+      "lon": 136.54,
+      "harbor_code": "17-4"
+    },
+    {
+      "pc": 17,
+      "hc": 5,
+      "harbor_name": "松波",
+      "lat": 37.21,
+      "lon": 137.15,
+      "harbor_code": "17-5"
+    },
+    {
+      "pc": 17,
+      "hc": 6,
+      "harbor_name": "曾良",
+      "lat": 37.11,
+      "lon": 137.01,
+      "harbor_code": "17-6"
+    },
+    {
+      "pc": 17,
+      "hc": 7,
+      "harbor_name": "中居入",
+      "lat": 37.14,
+      "lon": 136.57,
+      "harbor_code": "17-7"
+    },
+    {
+      "pc": 17,
+      "hc": 8,
+      "harbor_name": "七尾",
+      "lat": 37.03,
+      "lon": 136.58,
+      "harbor_code": "17-8"
+    },
+    {
+      "pc": 17,
+      "hc": 9,
+      "harbor_name": "穴水",
+      "lat": 37.13,
+      "lon": 136.55,
+      "harbor_code": "17-9"
+    },
+    {
+      "pc": 18,
+      "hc": 1,
+      "harbor_name": "内浦湾",
+      "lat": 35.33,
+      "lon": 135.3,
+      "harbor_code": "18-1"
+    },
+    {
+      "pc": 18,
+      "hc": 2,
+      "harbor_name": "和田",
+      "lat": 35.3,
+      "lon": 135.35,
+      "harbor_code": "18-2"
+    },
+    {
+      "pc": 18,
+      "hc": 3,
+      "harbor_name": "小浜",
+      "lat": 35.3,
+      "lon": 135.44,
+      "harbor_code": "18-3"
+    },
+    {
+      "pc": 18,
+      "hc": 4,
+      "harbor_name": "丹生",
+      "lat": 35.43,
+      "lon": 135.58,
+      "harbor_code": "18-4"
+    },
+    {
+      "pc": 18,
+      "hc": 5,
+      "harbor_name": "敦賀",
+      "lat": 35.4,
+      "lon": 136.04,
+      "harbor_code": "18-5"
+    },
+    {
+      "pc": 18,
+      "hc": 6,
+      "harbor_name": "福井",
+      "lat": 36.12,
+      "lon": 136.08,
+      "harbor_code": "18-6"
+    },
+    {
+      "pc": 18,
+      "hc": 7,
+      "harbor_name": "三国",
+      "lat": 36.13,
+      "lon": 136.08,
+      "harbor_code": "18-7"
+    },
+    {
+      "pc": 22,
+      "hc": 1,
+      "harbor_name": "網代",
+      "lat": 35.03,
+      "lon": 139.05,
+      "harbor_code": "22-1"
+    },
+    {
+      "pc": 22,
+      "hc": 2,
+      "harbor_name": "伊東",
+      "lat": 34.58,
+      "lon": 139.07,
+      "harbor_code": "22-2"
+    },
+    {
+      "pc": 22,
+      "hc": 3,
+      "harbor_name": "川奈",
+      "lat": 34.57,
+      "lon": 139.08,
+      "harbor_code": "22-3"
+    },
+    {
+      "pc": 22,
+      "hc": 4,
+      "harbor_name": "白浜",
+      "lat": 34.43,
+      "lon": 138.59,
+      "harbor_code": "22-4"
+    },
+    {
+      "pc": 22,
+      "hc": 5,
+      "harbor_name": "下田",
+      "lat": 34.4,
+      "lon": 138.57,
+      "harbor_code": "22-5"
+    },
+    {
+      "pc": 22,
+      "hc": 6,
+      "harbor_name": "南伊豆",
+      "lat": 34.37,
+      "lon": 138.53,
+      "harbor_code": "22-6"
+    },
+    {
+      "pc": 22,
+      "hc": 7,
+      "harbor_name": "妻良子浦",
+      "lat": 34.4,
+      "lon": 138.47,
+      "harbor_code": "22-7"
+    },
+    {
+      "pc": 22,
+      "hc": 8,
+      "harbor_name": "田子",
+      "lat": 34.48,
+      "lon": 138.46,
+      "harbor_code": "22-8"
+    },
+    {
+      "pc": 22,
+      "hc": 9,
+      "harbor_name": "宇久須",
+      "lat": 34.51,
+      "lon": 138.46,
+      "harbor_code": "22-9"
+    },
+    {
+      "pc": 22,
+      "hc": 10,
+      "harbor_name": "三津",
+      "lat": 35.01,
+      "lon": 138.54,
+      "harbor_code": "22-10"
+    },
+    {
+      "pc": 22,
+      "hc": 11,
+      "harbor_name": "田子の浦",
+      "lat": 35.08,
+      "lon": 138.42,
+      "harbor_code": "22-11"
+    },
+    {
+      "pc": 22,
+      "hc": 12,
+      "harbor_name": "興津",
+      "lat": 35.03,
+      "lon": 138.31,
+      "harbor_code": "22-12"
+    },
+    {
+      "pc": 22,
+      "hc": 13,
+      "harbor_name": "清水",
+      "lat": 35.01,
+      "lon": 138.3,
+      "harbor_code": "22-13"
+    },
+    {
+      "pc": 22,
+      "hc": 14,
+      "harbor_name": "三保",
+      "lat": 35.0,
+      "lon": 138.31,
+      "harbor_code": "22-14"
+    },
+    {
+      "pc": 22,
+      "hc": 15,
+      "harbor_name": "焼津",
+      "lat": 34.52,
+      "lon": 138.2,
+      "harbor_code": "22-15"
+    },
+    {
+      "pc": 22,
+      "hc": 16,
+      "harbor_name": "相良",
+      "lat": 34.41,
+      "lon": 138.14,
+      "harbor_code": "22-16"
+    },
+    {
+      "pc": 22,
+      "hc": 17,
+      "harbor_name": "御前崎",
+      "lat": 34.36,
+      "lon": 138.14,
+      "harbor_code": "22-17"
+    },
+    {
+      "pc": 22,
+      "hc": 18,
+      "harbor_name": "舞阪",
+      "lat": 34.41,
+      "lon": 137.37,
+      "harbor_code": "22-18"
+    },
+    {
+      "pc": 22,
+      "hc": 19,
+      "harbor_name": "熱海",
+      "lat": 35.05,
+      "lon": 139.05,
+      "harbor_code": "22-19"
+    },
+    {
+      "pc": 23,
+      "hc": 1,
+      "harbor_name": "伊良湖",
+      "lat": 34.35,
+      "lon": 137.01,
+      "harbor_code": "23-1"
+    },
+    {
+      "pc": 23,
+      "hc": 2,
+      "harbor_name": "神島",
+      "lat": 34.33,
+      "lon": 136.59,
+      "harbor_code": "23-2"
+    },
+    {
+      "pc": 23,
+      "hc": 3,
+      "harbor_name": "篠島",
+      "lat": 34.41,
+      "lon": 137.0,
+      "harbor_code": "23-3"
+    },
+    {
+      "pc": 23,
+      "hc": 4,
+      "harbor_name": "佐久島",
+      "lat": 34.44,
+      "lon": 137.03,
+      "harbor_code": "23-4"
+    },
+    {
+      "pc": 23,
+      "hc": 5,
+      "harbor_name": "立馬埼",
+      "lat": 34.4,
+      "lon": 137.05,
+      "harbor_code": "23-5"
+    },
+    {
+      "pc": 23,
+      "hc": 6,
+      "harbor_name": "福江",
+      "lat": 34.38,
+      "lon": 137.07,
+      "harbor_code": "23-6"
+    },
+    {
+      "pc": 23,
+      "hc": 7,
+      "harbor_name": "豊橋",
+      "lat": 34.43,
+      "lon": 137.2,
+      "harbor_code": "23-7"
+    },
+    {
+      "pc": 23,
+      "hc": 8,
+      "harbor_name": "三谷",
+      "lat": 34.49,
+      "lon": 137.15,
+      "harbor_code": "23-8"
+    },
+    {
+      "pc": 23,
+      "hc": 9,
+      "harbor_name": "蒲郡",
+      "lat": 34.49,
+      "lon": 137.14,
+      "harbor_code": "23-9"
+    },
+    {
+      "pc": 23,
+      "hc": 10,
+      "harbor_name": "形原",
+      "lat": 34.47,
+      "lon": 137.11,
+      "harbor_code": "23-10"
+    },
+    {
+      "pc": 23,
+      "hc": 11,
+      "harbor_name": "洲崎",
+      "lat": 34.47,
+      "lon": 137.1,
+      "harbor_code": "23-11"
+    },
+    {
+      "pc": 23,
+      "hc": 12,
+      "harbor_name": "寺津",
+      "lat": 34.49,
+      "lon": 137.0,
+      "harbor_code": "23-12"
+    },
+    {
+      "pc": 23,
+      "hc": 13,
+      "harbor_name": "武豊",
+      "lat": 34.51,
+      "lon": 136.56,
+      "harbor_code": "23-13"
+    },
+    {
+      "pc": 23,
+      "hc": 14,
+      "harbor_name": "師崎",
+      "lat": 34.42,
+      "lon": 136.59,
+      "harbor_code": "23-14"
+    },
+    {
+      "pc": 23,
+      "hc": 15,
+      "harbor_name": "常滑",
+      "lat": 34.52,
+      "lon": 136.5,
+      "harbor_code": "23-15"
+    },
+    {
+      "pc": 23,
+      "hc": 16,
+      "harbor_name": "鬼崎",
+      "lat": 34.54,
+      "lon": 136.5,
+      "harbor_code": "23-16"
+    },
+    {
+      "pc": 23,
+      "hc": 17,
+      "harbor_name": "名古屋",
+      "lat": 35.05,
+      "lon": 136.53,
+      "harbor_code": "23-17"
+    },
+    {
+      "pc": 23,
+      "hc": 18,
+      "harbor_name": "赤羽根",
+      "lat": 34.36,
+      "lon": 137.12,
+      "harbor_code": "23-18"
+    },
+    {
+      "pc": 24,
+      "hc": 1,
+      "harbor_name": "四日市",
+      "lat": 34.57,
+      "lon": 136.38,
+      "harbor_code": "24-1"
+    },
+    {
+      "pc": 24,
+      "hc": 2,
+      "harbor_name": "津",
+      "lat": 34.43,
+      "lon": 136.32,
+      "harbor_code": "24-2"
+    },
+    {
+      "pc": 24,
+      "hc": 3,
+      "harbor_name": "松阪",
+      "lat": 34.36,
+      "lon": 136.34,
+      "harbor_code": "24-3"
+    },
+    {
+      "pc": 24,
+      "hc": 4,
+      "harbor_name": "宇治山田",
+      "lat": 34.31,
+      "lon": 136.45,
+      "harbor_code": "24-4"
+    },
+    {
+      "pc": 24,
+      "hc": 5,
+      "harbor_name": "鳥羽",
+      "lat": 34.29,
+      "lon": 136.51,
+      "harbor_code": "24-5"
+    },
+    {
+      "pc": 24,
+      "hc": 6,
+      "harbor_name": "的矢",
+      "lat": 34.22,
+      "lon": 136.52,
+      "harbor_code": "24-6"
+    },
+    {
+      "pc": 24,
+      "hc": 7,
+      "harbor_name": "浜島",
+      "lat": 34.18,
+      "lon": 136.46,
+      "harbor_code": "24-7"
+    },
+    {
+      "pc": 24,
+      "hc": 8,
+      "harbor_name": "五ヶ所",
+      "lat": 34.19,
+      "lon": 136.4,
+      "harbor_code": "24-8"
+    },
+    {
+      "pc": 24,
+      "hc": 9,
+      "harbor_name": "吉津",
+      "lat": 34.16,
+      "lon": 136.3,
+      "harbor_code": "24-9"
+    },
+    {
+      "pc": 24,
+      "hc": 10,
+      "harbor_name": "長島",
+      "lat": 34.12,
+      "lon": 136.2,
+      "harbor_code": "24-10"
+    },
+    {
+      "pc": 24,
+      "hc": 11,
+      "harbor_name": "尾鷲",
+      "lat": 34.04,
+      "lon": 136.13,
+      "harbor_code": "24-11"
+    },
+    {
+      "pc": 24,
+      "hc": 12,
+      "harbor_name": "古江",
+      "lat": 33.58,
+      "lon": 136.12,
+      "harbor_code": "24-12"
+    },
+    {
+      "pc": 24,
+      "hc": 13,
+      "harbor_name": "二木島",
+      "lat": 33.56,
+      "lon": 136.11,
+      "harbor_code": "24-13"
+    },
+    {
+      "pc": 24,
+      "hc": 14,
+      "harbor_name": "鵜殿",
+      "lat": 33.44,
+      "lon": 136.01,
+      "harbor_code": "24-14"
+    },
+    {
+      "pc": 24,
+      "hc": 15,
+      "harbor_name": "錦",
+      "lat": 34.13,
+      "lon": 136.24,
+      "harbor_code": "24-15"
+    },
+    {
+      "pc": 26,
+      "hc": 1,
+      "harbor_name": "伊根",
+      "lat": 35.4,
+      "lon": 135.17,
+      "harbor_code": "26-1"
+    },
+    {
+      "pc": 26,
+      "hc": 2,
+      "harbor_name": "島埼",
+      "lat": 35.32,
+      "lon": 135.12,
+      "harbor_code": "26-2"
+    },
+    {
+      "pc": 26,
+      "hc": 3,
+      "harbor_name": "獅子崎",
+      "lat": 35.33,
+      "lon": 135.12,
+      "harbor_code": "26-3"
+    },
+    {
+      "pc": 26,
+      "hc": 4,
+      "harbor_name": "田井",
+      "lat": 35.35,
+      "lon": 135.14,
+      "harbor_code": "26-4"
+    },
+    {
+      "pc": 26,
+      "hc": 5,
+      "harbor_name": "舞鶴東港",
+      "lat": 35.29,
+      "lon": 135.24,
+      "harbor_code": "26-5"
+    },
+    {
+      "pc": 26,
+      "hc": 6,
+      "harbor_name": "舞鶴西港",
+      "lat": 35.27,
+      "lon": 135.19,
+      "harbor_code": "26-6"
+    },
+    {
+      "pc": 27,
+      "hc": 1,
+      "harbor_name": "深日",
+      "lat": 34.19,
+      "lon": 135.08,
+      "harbor_code": "27-1"
+    },
+    {
+      "pc": 27,
+      "hc": 2,
+      "harbor_name": "淡輪",
+      "lat": 34.2,
+      "lon": 135.11,
+      "harbor_code": "27-2"
+    },
+    {
+      "pc": 27,
+      "hc": 3,
+      "harbor_name": "岸和田",
+      "lat": 34.28,
+      "lon": 135.22,
+      "harbor_code": "27-3"
+    },
+    {
+      "pc": 27,
+      "hc": 4,
+      "harbor_name": "泉大津",
+      "lat": 34.3,
+      "lon": 135.24,
+      "harbor_code": "27-4"
+    },
+    {
+      "pc": 27,
+      "hc": 5,
+      "harbor_name": "堺",
+      "lat": 34.35,
+      "lon": 135.28,
+      "harbor_code": "27-5"
+    },
+    {
+      "pc": 27,
+      "hc": 6,
+      "harbor_name": "大阪",
+      "lat": 34.39,
+      "lon": 135.26,
+      "harbor_code": "27-6"
+    },
+    {
+      "pc": 28,
+      "hc": 1,
+      "harbor_name": "福良",
+      "lat": 34.15,
+      "lon": 134.42,
+      "harbor_code": "28-1"
+    },
+    {
+      "pc": 28,
+      "hc": 2,
+      "harbor_name": "阿那賀浦",
+      "lat": 34.16,
+      "lon": 134.4,
+      "harbor_code": "28-2"
+    },
+    {
+      "pc": 28,
+      "hc": 3,
+      "harbor_name": "由良",
+      "lat": 34.16,
+      "lon": 134.57,
+      "harbor_code": "28-3"
+    },
+    {
+      "pc": 28,
+      "hc": 4,
+      "harbor_name": "洲本",
+      "lat": 34.2,
+      "lon": 134.55,
+      "harbor_code": "28-4"
+    },
+    {
+      "pc": 28,
+      "hc": 5,
+      "harbor_name": "仮屋",
+      "lat": 34.31,
+      "lon": 135.0,
+      "harbor_code": "28-5"
+    },
+    {
+      "pc": 28,
+      "hc": 6,
+      "harbor_name": "尼崎",
+      "lat": 34.42,
+      "lon": 135.24,
+      "harbor_code": "28-6"
+    },
+    {
+      "pc": 28,
+      "hc": 7,
+      "harbor_name": "神戸",
+      "lat": 34.41,
+      "lon": 135.12,
+      "harbor_code": "28-7"
+    },
+    {
+      "pc": 28,
+      "hc": 8,
+      "harbor_name": "苅藻島",
+      "lat": 34.39,
+      "lon": 135.1,
+      "harbor_code": "28-8"
+    },
+    {
+      "pc": 28,
+      "hc": 9,
+      "harbor_name": "明石",
+      "lat": 34.39,
+      "lon": 135.0,
+      "harbor_code": "28-9"
+    },
+    {
+      "pc": 28,
+      "hc": 10,
+      "harbor_name": "岩屋",
+      "lat": 34.36,
+      "lon": 135.01,
+      "harbor_code": "28-10"
+    },
+    {
+      "pc": 28,
+      "hc": 11,
+      "harbor_name": "江崎",
+      "lat": 34.36,
+      "lon": 134.59,
+      "harbor_code": "28-11"
+    },
+    {
+      "pc": 28,
+      "hc": 12,
+      "harbor_name": "室津",
+      "lat": 34.32,
+      "lon": 134.52,
+      "harbor_code": "28-12"
+    },
+    {
+      "pc": 28,
+      "hc": 13,
+      "harbor_name": "江井",
+      "lat": 34.28,
+      "lon": 134.49,
+      "harbor_code": "28-13"
+    },
+    {
+      "pc": 28,
+      "hc": 14,
+      "harbor_name": "家島",
+      "lat": 34.41,
+      "lon": 134.32,
+      "harbor_code": "28-14"
+    },
+    {
+      "pc": 28,
+      "hc": 15,
+      "harbor_name": "二見",
+      "lat": 34.42,
+      "lon": 134.54,
+      "harbor_code": "28-15"
+    },
+    {
+      "pc": 28,
+      "hc": 16,
+      "harbor_name": "高砂",
+      "lat": 34.44,
+      "lon": 134.48,
+      "harbor_code": "28-16"
+    },
+    {
+      "pc": 28,
+      "hc": 17,
+      "harbor_name": "飾磨",
+      "lat": 34.47,
+      "lon": 134.4,
+      "harbor_code": "28-17"
+    },
+    {
+      "pc": 28,
+      "hc": 18,
+      "harbor_name": "広畑",
+      "lat": 34.47,
+      "lon": 134.37,
+      "harbor_code": "28-18"
+    },
+    {
+      "pc": 28,
+      "hc": 19,
+      "harbor_name": "相生",
+      "lat": 34.48,
+      "lon": 134.28,
+      "harbor_code": "28-19"
+    },
+    {
+      "pc": 28,
+      "hc": 20,
+      "harbor_name": "赤穂",
+      "lat": 34.45,
+      "lon": 134.22,
+      "harbor_code": "28-20"
+    },
+    {
+      "pc": 28,
+      "hc": 21,
+      "harbor_name": "香住",
+      "lat": 35.39,
+      "lon": 134.38,
+      "harbor_code": "28-21"
+    },
+    {
+      "pc": 28,
+      "hc": 22,
+      "harbor_name": "柴山",
+      "lat": 35.39,
+      "lon": 134.4,
+      "harbor_code": "28-22"
+    },
+    {
+      "pc": 28,
+      "hc": 23,
+      "harbor_name": "津居山",
+      "lat": 35.39,
+      "lon": 134.5,
+      "harbor_code": "28-23"
+    },
+    {
+      "pc": 28,
+      "hc": 24,
+      "harbor_name": "垂水",
+      "lat": 34.37,
+      "lon": 135.04,
+      "harbor_code": "28-24"
+    },
+    {
+      "pc": 30,
+      "hc": 1,
+      "harbor_name": "紀伊勝浦",
+      "lat": 33.38,
+      "lon": 135.57,
+      "harbor_code": "30-1"
+    },
+    {
+      "pc": 30,
+      "hc": 2,
+      "harbor_name": "浦神",
+      "lat": 33.33,
+      "lon": 135.54,
+      "harbor_code": "30-2"
+    },
+    {
+      "pc": 30,
+      "hc": 3,
+      "harbor_name": "串本",
+      "lat": 33.28,
+      "lon": 135.47,
+      "harbor_code": "30-3"
+    },
+    {
+      "pc": 30,
+      "hc": 4,
+      "harbor_name": "周参見",
+      "lat": 33.33,
+      "lon": 135.3,
+      "harbor_code": "30-4"
+    },
+    {
+      "pc": 30,
+      "hc": 5,
+      "harbor_name": "田辺（旧）",
+      "lat": 33.43,
+      "lon": 135.22,
+      "harbor_code": "30-5"
+    },
+    {
+      "pc": 30,
+      "hc": 6,
+      "harbor_name": "三尾",
+      "lat": 33.53,
+      "lon": 135.05,
+      "harbor_code": "30-6"
+    },
+    {
+      "pc": 30,
+      "hc": 7,
+      "harbor_name": "比井湾",
+      "lat": 33.55,
+      "lon": 135.06,
+      "harbor_code": "30-7"
+    },
+    {
+      "pc": 30,
+      "hc": 8,
+      "harbor_name": "由良",
+      "lat": 33.57,
+      "lon": 135.07,
+      "harbor_code": "30-8"
+    },
+    {
+      "pc": 30,
+      "hc": 9,
+      "harbor_name": "下津",
+      "lat": 34.07,
+      "lon": 135.08,
+      "harbor_code": "30-9"
+    },
+    {
+      "pc": 30,
+      "hc": 10,
+      "harbor_name": "海南",
+      "lat": 34.09,
+      "lon": 135.12,
+      "harbor_code": "30-10"
+    },
+    {
+      "pc": 30,
+      "hc": 11,
+      "harbor_name": "和歌山",
+      "lat": 34.13,
+      "lon": 135.09,
+      "harbor_code": "30-11"
+    },
+    {
+      "pc": 30,
+      "hc": 12,
+      "harbor_name": "沖ノ島",
+      "lat": 34.17,
+      "lon": 135.01,
+      "harbor_code": "30-12"
+    },
+    {
+      "pc": 30,
+      "hc": 13,
+      "harbor_name": "田辺",
+      "lat": 33.41,
+      "lon": 135.23,
+      "harbor_code": "30-13"
+    },
+    {
+      "pc": 31,
+      "hc": 1,
+      "harbor_name": "米子",
+      "lat": 35.26,
+      "lon": 133.19,
+      "harbor_code": "31-1"
+    },
+    {
+      "pc": 31,
+      "hc": 2,
+      "harbor_name": "境",
+      "lat": 35.33,
+      "lon": 133.15,
+      "harbor_code": "31-2"
+    },
+    {
+      "pc": 31,
+      "hc": 3,
+      "harbor_name": "淀江",
+      "lat": 35.28,
+      "lon": 133.26,
+      "harbor_code": "31-3"
+    },
+    {
+      "pc": 31,
+      "hc": 4,
+      "harbor_name": "赤碕",
+      "lat": 35.3,
+      "lon": 133.4,
+      "harbor_code": "31-4"
+    },
+    {
+      "pc": 31,
+      "hc": 5,
+      "harbor_name": "因幡網代",
+      "lat": 35.35,
+      "lon": 134.18,
+      "harbor_code": "31-5"
+    },
+    {
+      "pc": 31,
+      "hc": 6,
+      "harbor_name": "田後",
+      "lat": 35.35,
+      "lon": 134.19,
+      "harbor_code": "31-6"
+    },
+    {
+      "pc": 32,
+      "hc": 1,
+      "harbor_name": "外ノ浦",
+      "lat": 34.54,
+      "lon": 132.04,
+      "harbor_code": "32-1"
+    },
+    {
+      "pc": 32,
+      "hc": 2,
+      "harbor_name": "江津",
+      "lat": 35.01,
+      "lon": 132.14,
+      "harbor_code": "32-2"
+    },
+    {
+      "pc": 32,
+      "hc": 3,
+      "harbor_name": "温泉津",
+      "lat": 35.06,
+      "lon": 132.21,
+      "harbor_code": "32-3"
+    },
+    {
+      "pc": 32,
+      "hc": 4,
+      "harbor_name": "大社",
+      "lat": 35.24,
+      "lon": 132.4,
+      "harbor_code": "32-4"
+    },
+    {
+      "pc": 32,
+      "hc": 5,
+      "harbor_name": "鷺",
+      "lat": 35.27,
+      "lon": 132.41,
+      "harbor_code": "32-5"
+    },
+    {
+      "pc": 32,
+      "hc": 6,
+      "harbor_name": "河下",
+      "lat": 35.27,
+      "lon": 132.45,
+      "harbor_code": "32-6"
+    },
+    {
+      "pc": 32,
+      "hc": 7,
+      "harbor_name": "恵曇",
+      "lat": 35.31,
+      "lon": 132.59,
+      "harbor_code": "32-7"
+    },
+    {
+      "pc": 32,
+      "hc": 8,
+      "harbor_name": "加賀",
+      "lat": 35.34,
+      "lon": 133.03,
+      "harbor_code": "32-8"
+    },
+    {
+      "pc": 32,
+      "hc": 9,
+      "harbor_name": "七類",
+      "lat": 35.34,
+      "lon": 133.14,
+      "harbor_code": "32-9"
+    },
+    {
+      "pc": 32,
+      "hc": 10,
+      "harbor_name": "大根島",
+      "lat": 35.3,
+      "lon": 133.1,
+      "harbor_code": "32-10"
+    },
+    {
+      "pc": 32,
+      "hc": 11,
+      "harbor_name": "安来",
+      "lat": 35.26,
+      "lon": 133.16,
+      "harbor_code": "32-11"
+    },
+    {
+      "pc": 32,
+      "hc": 12,
+      "harbor_name": "浦郷",
+      "lat": 36.05,
+      "lon": 133.01,
+      "harbor_code": "32-12"
+    },
+    {
+      "pc": 32,
+      "hc": 13,
+      "harbor_name": "日ノ津浦",
+      "lat": 36.05,
+      "lon": 133.04,
+      "harbor_code": "32-13"
+    },
+    {
+      "pc": 32,
+      "hc": 14,
+      "harbor_name": "菱浦",
+      "lat": 36.06,
+      "lon": 133.05,
+      "harbor_code": "32-14"
+    },
+    {
+      "pc": 32,
+      "hc": 15,
+      "harbor_name": "知々井",
+      "lat": 36.05,
+      "lon": 133.07,
+      "harbor_code": "32-15"
+    },
+    {
+      "pc": 32,
+      "hc": 16,
+      "harbor_name": "西郷",
+      "lat": 36.12,
+      "lon": 133.2,
+      "harbor_code": "32-16"
+    },
+    {
+      "pc": 32,
+      "hc": 17,
+      "harbor_name": "松江",
+      "lat": 35.27,
+      "lon": 133.08,
+      "harbor_code": "32-17"
+    },
+    {
+      "pc": 33,
+      "hc": 1,
+      "harbor_name": "片上",
+      "lat": 34.44,
+      "lon": 134.13,
+      "harbor_code": "33-1"
+    },
+    {
+      "pc": 33,
+      "hc": 2,
+      "harbor_name": "大多府島",
+      "lat": 34.41,
+      "lon": 134.18,
+      "harbor_code": "33-2"
+    },
+    {
+      "pc": 33,
+      "hc": 3,
+      "harbor_name": "牛窓",
+      "lat": 34.37,
+      "lon": 134.1,
+      "harbor_code": "33-3"
+    },
+    {
+      "pc": 33,
+      "hc": 4,
+      "harbor_name": "宝伝",
+      "lat": 34.35,
+      "lon": 134.06,
+      "harbor_code": "33-4"
+    },
+    {
+      "pc": 33,
+      "hc": 5,
+      "harbor_name": "小串",
+      "lat": 34.36,
+      "lon": 134.02,
+      "harbor_code": "33-5"
+    },
+    {
+      "pc": 33,
+      "hc": 6,
+      "harbor_name": "宇野",
+      "lat": 34.3,
+      "lon": 133.57,
+      "harbor_code": "33-6"
+    },
+    {
+      "pc": 33,
+      "hc": 7,
+      "harbor_name": "下津井",
+      "lat": 34.26,
+      "lon": 133.48,
+      "harbor_code": "33-7"
+    },
+    {
+      "pc": 33,
+      "hc": 8,
+      "harbor_name": "水島",
+      "lat": 34.31,
+      "lon": 133.45,
+      "harbor_code": "33-8"
+    },
+    {
+      "pc": 33,
+      "hc": 9,
+      "harbor_name": "笠岡",
+      "lat": 34.3,
+      "lon": 133.3,
+      "harbor_code": "33-9"
+    },
+    {
+      "pc": 33,
+      "hc": 10,
+      "harbor_name": "玉島",
+      "lat": 34.31,
+      "lon": 133.4,
+      "harbor_code": "33-10"
+    },
+    {
+      "pc": 34,
+      "hc": 1,
+      "harbor_name": "福山",
+      "lat": 34.29,
+      "lon": 133.25,
+      "harbor_code": "34-1"
+    },
+    {
+      "pc": 34,
+      "hc": 2,
+      "harbor_name": "鞆",
+      "lat": 34.23,
+      "lon": 133.23,
+      "harbor_code": "34-2"
+    },
+    {
+      "pc": 34,
+      "hc": 3,
+      "harbor_name": "常石",
+      "lat": 34.23,
+      "lon": 133.18,
+      "harbor_code": "34-3"
+    },
+    {
+      "pc": 34,
+      "hc": 4,
+      "harbor_name": "尾道",
+      "lat": 34.24,
+      "lon": 133.12,
+      "harbor_code": "34-4"
+    },
+    {
+      "pc": 34,
+      "hc": 5,
+      "harbor_name": "糸崎",
+      "lat": 34.23,
+      "lon": 133.07,
+      "harbor_code": "34-5"
+    },
+    {
+      "pc": 34,
+      "hc": 6,
+      "harbor_name": "江之浦",
+      "lat": 34.21,
+      "lon": 133.12,
+      "harbor_code": "34-6"
+    },
+    {
+      "pc": 34,
+      "hc": 7,
+      "harbor_name": "小佐木島",
+      "lat": 34.22,
+      "lon": 133.06,
+      "harbor_code": "34-7"
+    },
+    {
+      "pc": 34,
+      "hc": 8,
+      "harbor_name": "忠海",
+      "lat": 34.2,
+      "lon": 133.0,
+      "harbor_code": "34-8"
+    },
+    {
+      "pc": 34,
+      "hc": 9,
+      "harbor_name": "土生",
+      "lat": 34.16,
+      "lon": 133.12,
+      "harbor_code": "34-9"
+    },
+    {
+      "pc": 34,
+      "hc": 10,
+      "harbor_name": "瀬戸田",
+      "lat": 34.18,
+      "lon": 133.05,
+      "harbor_code": "34-10"
+    },
+    {
+      "pc": 34,
+      "hc": 11,
+      "harbor_name": "御手洗",
+      "lat": 34.11,
+      "lon": 132.52,
+      "harbor_code": "34-11"
+    },
+    {
+      "pc": 34,
+      "hc": 12,
+      "harbor_name": "小用",
+      "lat": 34.14,
+      "lon": 132.43,
+      "harbor_code": "34-12"
+    },
+    {
+      "pc": 34,
+      "hc": 13,
+      "harbor_name": "長浜",
+      "lat": 34.13,
+      "lon": 132.37,
+      "harbor_code": "34-13"
+    },
+    {
+      "pc": 34,
+      "hc": 14,
+      "harbor_name": "奥ノ内",
+      "lat": 34.09,
+      "lon": 132.32,
+      "harbor_code": "34-14"
+    },
+    {
+      "pc": 34,
+      "hc": 15,
+      "harbor_name": "鹿老渡小瀬戸",
+      "lat": 34.04,
+      "lon": 132.33,
+      "harbor_code": "34-15"
+    },
+    {
+      "pc": 34,
+      "hc": 16,
+      "harbor_name": "室尾",
+      "lat": 34.06,
+      "lon": 132.33,
+      "harbor_code": "34-16"
+    },
+    {
+      "pc": 34,
+      "hc": 17,
+      "harbor_name": "美能",
+      "lat": 34.15,
+      "lon": 132.23,
+      "harbor_code": "34-17"
+    },
+    {
+      "pc": 34,
+      "hc": 18,
+      "harbor_name": "江田内",
+      "lat": 34.15,
+      "lon": 132.28,
+      "harbor_code": "34-18"
+    },
+    {
+      "pc": 34,
+      "hc": 19,
+      "harbor_name": "広島",
+      "lat": 34.21,
+      "lon": 132.28,
+      "harbor_code": "34-19"
+    },
+    {
+      "pc": 34,
+      "hc": 20,
+      "harbor_name": "呉",
+      "lat": 34.14,
+      "lon": 132.33,
+      "harbor_code": "34-20"
+    },
+    {
+      "pc": 34,
+      "hc": 21,
+      "harbor_name": "音戸瀬戸",
+      "lat": 34.11,
+      "lon": 132.32,
+      "harbor_code": "34-21"
+    },
+    {
+      "pc": 34,
+      "hc": 22,
+      "harbor_name": "早瀬瀬戸",
+      "lat": 34.09,
+      "lon": 132.29,
+      "harbor_code": "34-22"
+    },
+    {
+      "pc": 34,
+      "hc": 23,
+      "harbor_name": "厳島",
+      "lat": 34.18,
+      "lon": 132.19,
+      "harbor_code": "34-23"
+    },
+    {
+      "pc": 34,
+      "hc": 24,
+      "harbor_name": "大野瀬戸",
+      "lat": 34.16,
+      "lon": 132.16,
+      "harbor_code": "34-24"
+    },
+    {
+      "pc": 34,
+      "hc": 25,
+      "harbor_name": "竹原",
+      "lat": 34.2,
+      "lon": 132.58,
+      "harbor_code": "34-25"
+    },
+    {
+      "pc": 35,
+      "hc": 1,
+      "harbor_name": "岩国",
+      "lat": 34.12,
+      "lon": 132.14,
+      "harbor_code": "35-1"
+    },
+    {
+      "pc": 35,
+      "hc": 2,
+      "harbor_name": "土居",
+      "lat": 33.55,
+      "lon": 132.18,
+      "harbor_code": "35-2"
+    },
+    {
+      "pc": 35,
+      "hc": 3,
+      "harbor_name": "情島",
+      "lat": 33.57,
+      "lon": 132.28,
+      "harbor_code": "35-3"
+    },
+    {
+      "pc": 35,
+      "hc": 4,
+      "harbor_name": "大畠",
+      "lat": 33.57,
+      "lon": 132.1,
+      "harbor_code": "35-4"
+    },
+    {
+      "pc": 35,
+      "hc": 5,
+      "harbor_name": "東安下庄",
+      "lat": 33.54,
+      "lon": 132.17,
+      "harbor_code": "35-5"
+    },
+    {
+      "pc": 35,
+      "hc": 6,
+      "harbor_name": "沖家室島",
+      "lat": 33.51,
+      "lon": 132.22,
+      "harbor_code": "35-6"
+    },
+    {
+      "pc": 35,
+      "hc": 7,
+      "harbor_name": "室津",
+      "lat": 33.5,
+      "lon": 132.07,
+      "harbor_code": "35-7"
+    },
+    {
+      "pc": 35,
+      "hc": 8,
+      "harbor_name": "平生",
+      "lat": 33.55,
+      "lon": 132.03,
+      "harbor_code": "35-8"
+    },
+    {
+      "pc": 35,
+      "hc": 9,
+      "harbor_name": "下松",
+      "lat": 34.0,
+      "lon": 131.5,
+      "harbor_code": "35-9"
+    },
+    {
+      "pc": 35,
+      "hc": 10,
+      "harbor_name": "徳山",
+      "lat": 34.02,
+      "lon": 131.48,
+      "harbor_code": "35-10"
+    },
+    {
+      "pc": 35,
+      "hc": 11,
+      "harbor_name": "三田尻",
+      "lat": 34.02,
+      "lon": 131.35,
+      "harbor_code": "35-11"
+    },
+    {
+      "pc": 35,
+      "hc": 12,
+      "harbor_name": "宇部",
+      "lat": 33.56,
+      "lon": 131.15,
+      "harbor_code": "35-12"
+    },
+    {
+      "pc": 35,
+      "hc": 13,
+      "harbor_name": "苅屋",
+      "lat": 33.57,
+      "lon": 131.1,
+      "harbor_code": "35-13"
+    },
+    {
+      "pc": 35,
+      "hc": 14,
+      "harbor_name": "小野田",
+      "lat": 33.58,
+      "lon": 131.11,
+      "harbor_code": "35-14"
+    },
+    {
+      "pc": 35,
+      "hc": 15,
+      "harbor_name": "長府",
+      "lat": 34.01,
+      "lon": 131.0,
+      "harbor_code": "35-15"
+    },
+    {
+      "pc": 35,
+      "hc": 16,
+      "harbor_name": "岩黒",
+      "lat": 33.58,
+      "lon": 130.59,
+      "harbor_code": "35-16"
+    },
+    {
+      "pc": 35,
+      "hc": 17,
+      "harbor_name": "前田",
+      "lat": 33.58,
+      "lon": 130.58,
+      "harbor_code": "35-17"
+    },
+    {
+      "pc": 35,
+      "hc": 18,
+      "harbor_name": "壇之浦",
+      "lat": 33.58,
+      "lon": 130.57,
+      "harbor_code": "35-18"
+    },
+    {
+      "pc": 35,
+      "hc": 19,
+      "harbor_name": "下関第１突堤",
+      "lat": 33.57,
+      "lon": 130.56,
+      "harbor_code": "35-19"
+    },
+    {
+      "pc": 35,
+      "hc": 20,
+      "harbor_name": "弟子待",
+      "lat": 33.55,
+      "lon": 130.56,
+      "harbor_code": "35-20"
+    },
+    {
+      "pc": 35,
+      "hc": 21,
+      "harbor_name": "田の首",
+      "lat": 33.55,
+      "lon": 130.55,
+      "harbor_code": "35-21"
+    },
+    {
+      "pc": 35,
+      "hc": 22,
+      "harbor_name": "南風泊",
+      "lat": 33.57,
+      "lon": 130.53,
+      "harbor_code": "35-22"
+    },
+    {
+      "pc": 35,
+      "hc": 23,
+      "harbor_name": "伊崎",
+      "lat": 33.57,
+      "lon": 130.55,
+      "harbor_code": "35-23"
+    },
+    {
+      "pc": 35,
+      "hc": 24,
+      "harbor_name": "吉母",
+      "lat": 34.05,
+      "lon": 130.52,
+      "harbor_code": "35-24"
+    },
+    {
+      "pc": 35,
+      "hc": 25,
+      "harbor_name": "特牛",
+      "lat": 34.19,
+      "lon": 130.54,
+      "harbor_code": "35-25"
+    },
+    {
+      "pc": 35,
+      "hc": 26,
+      "harbor_name": "油谷",
+      "lat": 34.24,
+      "lon": 130.57,
+      "harbor_code": "35-26"
+    },
+    {
+      "pc": 35,
+      "hc": 27,
+      "harbor_name": "宇津",
+      "lat": 34.47,
+      "lon": 131.09,
+      "harbor_code": "35-27"
+    },
+    {
+      "pc": 35,
+      "hc": 28,
+      "harbor_name": "大泊",
+      "lat": 34.24,
+      "lon": 131.11,
+      "harbor_code": "35-28"
+    },
+    {
+      "pc": 35,
+      "hc": 29,
+      "harbor_name": "萩",
+      "lat": 34.26,
+      "lon": 131.25,
+      "harbor_code": "35-29"
+    },
+    {
+      "pc": 35,
+      "hc": 30,
+      "harbor_name": "江崎",
+      "lat": 34.38,
+      "lon": 131.39,
+      "harbor_code": "35-30"
+    },
+    {
+      "pc": 35,
+      "hc": 31,
+      "harbor_name": "大山ノ鼻",
+      "lat": 33.55,
+      "lon": 130.54,
+      "harbor_code": "35-31"
+    },
+    {
+      "pc": 36,
+      "hc": 1,
+      "harbor_name": "日和佐",
+      "lat": 33.44,
+      "lon": 134.33,
+      "harbor_code": "36-1"
+    },
+    {
+      "pc": 36,
+      "hc": 2,
+      "harbor_name": "橘",
+      "lat": 33.52,
+      "lon": 134.39,
+      "harbor_code": "36-2"
+    },
+    {
+      "pc": 36,
+      "hc": 3,
+      "harbor_name": "富岡",
+      "lat": 33.55,
+      "lon": 134.42,
+      "harbor_code": "36-3"
+    },
+    {
+      "pc": 36,
+      "hc": 4,
+      "harbor_name": "小松島",
+      "lat": 34.0,
+      "lon": 134.35,
+      "harbor_code": "36-4"
+    },
+    {
+      "pc": 36,
+      "hc": 5,
+      "harbor_name": "土佐泊",
+      "lat": 34.11,
+      "lon": 134.38,
+      "harbor_code": "36-5"
+    },
+    {
+      "pc": 36,
+      "hc": 6,
+      "harbor_name": "堂ノ浦",
+      "lat": 34.13,
+      "lon": 134.35,
+      "harbor_code": "36-6"
+    },
+    {
+      "pc": 36,
+      "hc": 7,
+      "harbor_name": "北泊",
+      "lat": 34.14,
+      "lon": 134.35,
+      "harbor_code": "36-7"
+    },
+    {
+      "pc": 36,
+      "hc": 8,
+      "harbor_name": "孫埼",
+      "lat": 34.14,
+      "lon": 134.39,
+      "harbor_code": "36-8"
+    },
+    {
+      "pc": 36,
+      "hc": 9,
+      "harbor_name": "網代",
+      "lat": 34.14,
+      "lon": 134.38,
+      "harbor_code": "36-9"
+    },
+    {
+      "pc": 36,
+      "hc": 10,
+      "harbor_name": "粟津",
+      "lat": 34.08,
+      "lon": 134.37,
+      "harbor_code": "36-10"
+    },
+    {
+      "pc": 37,
+      "hc": 1,
+      "harbor_name": "引田",
+      "lat": 34.14,
+      "lon": 134.24,
+      "harbor_code": "37-1"
+    },
+    {
+      "pc": 37,
+      "hc": 2,
+      "harbor_name": "坂手",
+      "lat": 34.27,
+      "lon": 134.19,
+      "harbor_code": "37-2"
+    },
+    {
+      "pc": 37,
+      "hc": 3,
+      "harbor_name": "大部",
+      "lat": 34.33,
+      "lon": 134.17,
+      "harbor_code": "37-3"
+    },
+    {
+      "pc": 37,
+      "hc": 4,
+      "harbor_name": "地蔵埼",
+      "lat": 34.26,
+      "lon": 134.14,
+      "harbor_code": "37-4"
+    },
+    {
+      "pc": 37,
+      "hc": 5,
+      "harbor_name": "入部",
+      "lat": 34.29,
+      "lon": 134.12,
+      "harbor_code": "37-5"
+    },
+    {
+      "pc": 37,
+      "hc": 6,
+      "harbor_name": "宮ノ浦",
+      "lat": 34.27,
+      "lon": 133.58,
+      "harbor_code": "37-6"
+    },
+    {
+      "pc": 37,
+      "hc": 7,
+      "harbor_name": "男木島",
+      "lat": 34.26,
+      "lon": 134.03,
+      "harbor_code": "37-7"
+    },
+    {
+      "pc": 37,
+      "hc": 8,
+      "harbor_name": "高松",
+      "lat": 34.21,
+      "lon": 134.03,
+      "harbor_code": "37-8"
+    },
+    {
+      "pc": 37,
+      "hc": 9,
+      "harbor_name": "坂出",
+      "lat": 34.19,
+      "lon": 133.51,
+      "harbor_code": "37-9"
+    },
+    {
+      "pc": 37,
+      "hc": 10,
+      "harbor_name": "丸亀",
+      "lat": 34.18,
+      "lon": 133.48,
+      "harbor_code": "37-10"
+    },
+    {
+      "pc": 37,
+      "hc": 11,
+      "harbor_name": "鍋島",
+      "lat": 34.23,
+      "lon": 133.49,
+      "harbor_code": "37-11"
+    },
+    {
+      "pc": 37,
+      "hc": 12,
+      "harbor_name": "与島",
+      "lat": 34.23,
+      "lon": 133.49,
+      "harbor_code": "37-12"
+    },
+    {
+      "pc": 37,
+      "hc": 13,
+      "harbor_name": "青木",
+      "lat": 34.22,
+      "lon": 133.41,
+      "harbor_code": "37-13"
+    },
+    {
+      "pc": 37,
+      "hc": 14,
+      "harbor_name": "佐柳",
+      "lat": 34.2,
+      "lon": 133.38,
+      "harbor_code": "37-14"
+    },
+    {
+      "pc": 37,
+      "hc": 15,
+      "harbor_name": "粟島",
+      "lat": 34.16,
+      "lon": 133.38,
+      "harbor_code": "37-15"
+    },
+    {
+      "pc": 37,
+      "hc": 16,
+      "harbor_name": "観音寺",
+      "lat": 34.08,
+      "lon": 133.38,
+      "harbor_code": "37-16"
+    },
+    {
+      "pc": 38,
+      "hc": 1,
+      "harbor_name": "三島",
+      "lat": 33.59,
+      "lon": 133.33,
+      "harbor_code": "38-1"
+    },
+    {
+      "pc": 38,
+      "hc": 2,
+      "harbor_name": "多喜浜",
+      "lat": 33.59,
+      "lon": 133.21,
+      "harbor_code": "38-2"
+    },
+    {
+      "pc": 38,
+      "hc": 3,
+      "harbor_name": "新居浜",
+      "lat": 33.58,
+      "lon": 133.16,
+      "harbor_code": "38-3"
+    },
+    {
+      "pc": 38,
+      "hc": 4,
+      "harbor_name": "西条",
+      "lat": 33.56,
+      "lon": 133.1,
+      "harbor_code": "38-4"
+    },
+    {
+      "pc": 38,
+      "hc": 5,
+      "harbor_name": "家ノ島",
+      "lat": 34.06,
+      "lon": 133.11,
+      "harbor_code": "38-5"
+    },
+    {
+      "pc": 38,
+      "hc": 6,
+      "harbor_name": "今治",
+      "lat": 34.04,
+      "lon": 133.0,
+      "harbor_code": "38-6"
+    },
+    {
+      "pc": 38,
+      "hc": 7,
+      "harbor_name": "来島",
+      "lat": 34.07,
+      "lon": 132.58,
+      "harbor_code": "38-7"
+    },
+    {
+      "pc": 38,
+      "hc": 8,
+      "harbor_name": "波止浜",
+      "lat": 34.07,
+      "lon": 132.58,
+      "harbor_code": "38-8"
+    },
+    {
+      "pc": 38,
+      "hc": 9,
+      "harbor_name": "菊間",
+      "lat": 34.02,
+      "lon": 132.5,
+      "harbor_code": "38-9"
+    },
+    {
+      "pc": 38,
+      "hc": 10,
+      "harbor_name": "宇和間",
+      "lat": 33.58,
+      "lon": 132.35,
+      "harbor_code": "38-10"
+    },
+    {
+      "pc": 38,
+      "hc": 11,
+      "harbor_name": "大浦",
+      "lat": 33.59,
+      "lon": 132.38,
+      "harbor_code": "38-11"
+    },
+    {
+      "pc": 38,
+      "hc": 12,
+      "harbor_name": "興居島",
+      "lat": 33.55,
+      "lon": 132.41,
+      "harbor_code": "38-12"
+    },
+    {
+      "pc": 38,
+      "hc": 13,
+      "harbor_name": "松山",
+      "lat": 33.52,
+      "lon": 132.43,
+      "harbor_code": "38-13"
+    },
+    {
+      "pc": 38,
+      "hc": 14,
+      "harbor_name": "青島",
+      "lat": 33.44,
+      "lon": 132.29,
+      "harbor_code": "38-14"
+    },
+    {
+      "pc": 38,
+      "hc": 15,
+      "harbor_name": "長浜",
+      "lat": 33.37,
+      "lon": 132.29,
+      "harbor_code": "38-15"
+    },
+    {
+      "pc": 38,
+      "hc": 16,
+      "harbor_name": "三机",
+      "lat": 33.27,
+      "lon": 132.14,
+      "harbor_code": "38-16"
+    },
+    {
+      "pc": 38,
+      "hc": 17,
+      "harbor_name": "与侈",
+      "lat": 33.23,
+      "lon": 132.05,
+      "harbor_code": "38-17"
+    },
+    {
+      "pc": 38,
+      "hc": 18,
+      "harbor_name": "内ノ浦",
+      "lat": 33.22,
+      "lon": 132.03,
+      "harbor_code": "38-18"
+    },
+    {
+      "pc": 38,
+      "hc": 19,
+      "harbor_name": "八幡浜",
+      "lat": 33.27,
+      "lon": 132.24,
+      "harbor_code": "38-19"
+    },
+    {
+      "pc": 38,
+      "hc": 20,
+      "harbor_name": "奥地湾",
+      "lat": 33.2,
+      "lon": 132.23,
+      "harbor_code": "38-20"
+    },
+    {
+      "pc": 38,
+      "hc": 21,
+      "harbor_name": "宇和島",
+      "lat": 33.14,
+      "lon": 132.33,
+      "harbor_code": "38-21"
+    },
+    {
+      "pc": 38,
+      "hc": 22,
+      "harbor_name": "能登",
+      "lat": 33.1,
+      "lon": 132.16,
+      "harbor_code": "38-22"
+    },
+    {
+      "pc": 38,
+      "hc": 23,
+      "harbor_name": "柏崎",
+      "lat": 33.01,
+      "lon": 132.29,
+      "harbor_code": "38-23"
+    },
+    {
+      "pc": 38,
+      "hc": 24,
+      "harbor_name": "小島",
+      "lat": 34.07,
+      "lon": 132.59,
+      "harbor_code": "38-24"
+    },
+    {
+      "pc": 38,
+      "hc": 25,
+      "harbor_name": "鼻栗瀬戸",
+      "lat": 34.13,
+      "lon": 133.04,
+      "harbor_code": "38-25"
+    },
+    {
+      "pc": 39,
+      "hc": 1,
+      "harbor_name": "甲浦",
+      "lat": 33.33,
+      "lon": 134.18,
+      "harbor_code": "39-1"
+    },
+    {
+      "pc": 39,
+      "hc": 2,
+      "harbor_name": "室戸岬",
+      "lat": 33.16,
+      "lon": 134.1,
+      "harbor_code": "39-2"
+    },
+    {
+      "pc": 39,
+      "hc": 3,
+      "harbor_name": "室津",
+      "lat": 33.17,
+      "lon": 134.09,
+      "harbor_code": "39-3"
+    },
+    {
+      "pc": 39,
+      "hc": 4,
+      "harbor_name": "高知",
+      "lat": 33.3,
+      "lon": 133.34,
+      "harbor_code": "39-4"
+    },
+    {
+      "pc": 39,
+      "hc": 5,
+      "harbor_name": "須崎",
+      "lat": 33.24,
+      "lon": 133.17,
+      "harbor_code": "39-5"
+    },
+    {
+      "pc": 39,
+      "hc": 6,
+      "harbor_name": "土佐清水",
+      "lat": 32.47,
+      "lon": 132.58,
+      "harbor_code": "39-6"
+    },
+    {
+      "pc": 39,
+      "hc": 7,
+      "harbor_name": "片島",
+      "lat": 32.55,
+      "lon": 132.42,
+      "harbor_code": "39-7"
+    },
+    {
+      "pc": 40,
+      "hc": 1,
+      "harbor_name": "宇島",
+      "lat": 33.38,
+      "lon": 131.08,
+      "harbor_code": "40-1"
+    },
+    {
+      "pc": 40,
+      "hc": 2,
+      "harbor_name": "苅田",
+      "lat": 33.47,
+      "lon": 130.59,
+      "harbor_code": "40-2"
+    },
+    {
+      "pc": 40,
+      "hc": 3,
+      "harbor_name": "新門司",
+      "lat": 33.52,
+      "lon": 130.59,
+      "harbor_code": "40-3"
+    },
+    {
+      "pc": 40,
+      "hc": 4,
+      "harbor_name": "青浜",
+      "lat": 33.57,
+      "lon": 131.01,
+      "harbor_code": "40-4"
+    },
+    {
+      "pc": 40,
+      "hc": 5,
+      "harbor_name": "田野浦",
+      "lat": 33.57,
+      "lon": 130.59,
+      "harbor_code": "40-5"
+    },
+    {
+      "pc": 40,
+      "hc": 6,
+      "harbor_name": "旧門司",
+      "lat": 33.57,
+      "lon": 130.58,
+      "harbor_code": "40-6"
+    },
+    {
+      "pc": 40,
+      "hc": 7,
+      "harbor_name": "西海岸",
+      "lat": 33.56,
+      "lon": 130.58,
+      "harbor_code": "40-7"
+    },
+    {
+      "pc": 40,
+      "hc": 8,
+      "harbor_name": "砂津",
+      "lat": 33.53,
+      "lon": 130.54,
+      "harbor_code": "40-8"
+    },
+    {
+      "pc": 40,
+      "hc": 9,
+      "harbor_name": "製鉄戸畑泊地",
+      "lat": 33.55,
+      "lon": 130.51,
+      "harbor_code": "40-9"
+    },
+    {
+      "pc": 40,
+      "hc": 10,
+      "harbor_name": "若松",
+      "lat": 33.54,
+      "lon": 130.49,
+      "harbor_code": "40-10"
+    },
+    {
+      "pc": 40,
+      "hc": 11,
+      "harbor_name": "戸畑",
+      "lat": 33.54,
+      "lon": 130.49,
+      "harbor_code": "40-11"
+    },
+    {
+      "pc": 40,
+      "hc": 12,
+      "harbor_name": "八幡",
+      "lat": 33.52,
+      "lon": 130.48,
+      "harbor_code": "40-12"
+    },
+    {
+      "pc": 40,
+      "hc": 13,
+      "harbor_name": "沖",
+      "lat": 33.52,
+      "lon": 130.45,
+      "harbor_code": "40-13"
+    },
+    {
+      "pc": 40,
+      "hc": 14,
+      "harbor_name": "白島",
+      "lat": 34.01,
+      "lon": 130.44,
+      "harbor_code": "40-14"
+    },
+    {
+      "pc": 40,
+      "hc": 15,
+      "harbor_name": "岩屋",
+      "lat": 33.56,
+      "lon": 130.41,
+      "harbor_code": "40-15"
+    },
+    {
+      "pc": 40,
+      "hc": 16,
+      "harbor_name": "鐘崎",
+      "lat": 33.53,
+      "lon": 130.32,
+      "harbor_code": "40-16"
+    },
+    {
+      "pc": 40,
+      "hc": 17,
+      "harbor_name": "神湊",
+      "lat": 33.51,
+      "lon": 130.29,
+      "harbor_code": "40-17"
+    },
+    {
+      "pc": 40,
+      "hc": 18,
+      "harbor_name": "津屋崎",
+      "lat": 33.47,
+      "lon": 130.27,
+      "harbor_code": "40-18"
+    },
+    {
+      "pc": 40,
+      "hc": 19,
+      "harbor_name": "西戸埼",
+      "lat": 33.39,
+      "lon": 130.22,
+      "harbor_code": "40-19"
+    },
+    {
+      "pc": 40,
+      "hc": 20,
+      "harbor_name": "博多船だまり",
+      "lat": 33.36,
+      "lon": 130.24,
+      "harbor_code": "40-20"
+    },
+    {
+      "pc": 40,
+      "hc": 21,
+      "harbor_name": "福岡船だまり",
+      "lat": 33.36,
+      "lon": 130.23,
+      "harbor_code": "40-21"
+    },
+    {
+      "pc": 40,
+      "hc": 22,
+      "harbor_name": "若松（響灘）",
+      "lat": 33.56,
+      "lon": 130.51,
+      "harbor_code": "40-22"
+    },
+    {
+      "pc": 40,
+      "hc": 23,
+      "harbor_name": "三池",
+      "lat": 33.01,
+      "lon": 130.25,
+      "harbor_code": "40-23"
+    },
+    {
+      "pc": 40,
+      "hc": 24,
+      "harbor_name": "筑前大島",
+      "lat": 33.54,
+      "lon": 130.26,
+      "harbor_code": "40-24"
+    },
+    {
+      "pc": 40,
+      "hc": 25,
+      "harbor_name": "柏原",
+      "lat": 33.54,
+      "lon": 130.4,
+      "harbor_code": "40-25"
+    },
+    {
+      "pc": 40,
+      "hc": 26,
+      "harbor_name": "脇田",
+      "lat": 33.56,
+      "lon": 130.44,
+      "harbor_code": "40-26"
+    },
+    {
+      "pc": 40,
+      "hc": 27,
+      "harbor_name": "日明",
+      "lat": 33.54,
+      "lon": 130.53,
+      "harbor_code": "40-27"
+    },
+    {
+      "pc": 40,
+      "hc": 28,
+      "harbor_name": "小呂島",
+      "lat": 33.52,
+      "lon": 130.02,
+      "harbor_code": "40-28"
+    },
+    {
+      "pc": 41,
+      "hc": 1,
+      "harbor_name": "唐津",
+      "lat": 33.28,
+      "lon": 129.58,
+      "harbor_code": "41-1"
+    },
+    {
+      "pc": 41,
+      "hc": 2,
+      "harbor_name": "呼子",
+      "lat": 33.33,
+      "lon": 129.53,
+      "harbor_code": "41-2"
+    },
+    {
+      "pc": 41,
+      "hc": 3,
+      "harbor_name": "名護屋浦",
+      "lat": 33.32,
+      "lon": 129.52,
+      "harbor_code": "41-3"
+    },
+    {
+      "pc": 41,
+      "hc": 4,
+      "harbor_name": "仮屋",
+      "lat": 33.28,
+      "lon": 129.51,
+      "harbor_code": "41-4"
+    },
+    {
+      "pc": 41,
+      "hc": 5,
+      "harbor_name": "波瀬",
+      "lat": 33.19,
+      "lon": 129.49,
+      "harbor_code": "41-5"
+    },
+    {
+      "pc": 41,
+      "hc": 6,
+      "harbor_name": "竹崎島",
+      "lat": 32.57,
+      "lon": 130.13,
+      "harbor_code": "41-6"
+    },
+    {
+      "pc": 41,
+      "hc": 7,
+      "harbor_name": "住ノ江",
+      "lat": 33.12,
+      "lon": 130.12,
+      "harbor_code": "41-7"
+    },
+    {
+      "pc": 41,
+      "hc": 8,
+      "harbor_name": "若津",
+      "lat": 33.13,
+      "lon": 130.21,
+      "harbor_code": "41-8"
+    },
+    {
+      "pc": 42,
+      "hc": 1,
+      "harbor_name": "新御厨",
+      "lat": 33.22,
+      "lon": 129.4,
+      "harbor_code": "42-1"
+    },
+    {
+      "pc": 42,
+      "hc": 2,
+      "harbor_name": "大飛島",
+      "lat": 33.24,
+      "lon": 129.47,
+      "harbor_code": "42-2"
+    },
+    {
+      "pc": 42,
+      "hc": 3,
+      "harbor_name": "郷ノ浦",
+      "lat": 33.44,
+      "lon": 129.41,
+      "harbor_code": "42-3"
+    },
+    {
+      "pc": 42,
+      "hc": 4,
+      "harbor_name": "勝本",
+      "lat": 33.51,
+      "lon": 129.42,
+      "harbor_code": "42-4"
+    },
+    {
+      "pc": 42,
+      "hc": 5,
+      "harbor_name": "芦辺",
+      "lat": 33.49,
+      "lon": 129.46,
+      "harbor_code": "42-5"
+    },
+    {
+      "pc": 42,
+      "hc": 6,
+      "harbor_name": "厳原",
+      "lat": 34.12,
+      "lon": 129.18,
+      "harbor_code": "42-6"
+    },
+    {
+      "pc": 42,
+      "hc": 7,
+      "harbor_name": "高浜",
+      "lat": 34.15,
+      "lon": 129.19,
+      "harbor_code": "42-7"
+    },
+    {
+      "pc": 42,
+      "hc": 8,
+      "harbor_name": "大船越",
+      "lat": 34.17,
+      "lon": 129.21,
+      "harbor_code": "42-8"
+    },
+    {
+      "pc": 42,
+      "hc": 9,
+      "harbor_name": "茂土浦",
+      "lat": 34.18,
+      "lon": 129.23,
+      "harbor_code": "42-9"
+    },
+    {
+      "pc": 42,
+      "hc": 10,
+      "harbor_name": "鴨居瀬",
+      "lat": 34.2,
+      "lon": 129.23,
+      "harbor_code": "42-10"
+    },
+    {
+      "pc": 42,
+      "hc": 11,
+      "harbor_name": "千尋藻",
+      "lat": 34.24,
+      "lon": 129.23,
+      "harbor_code": "42-11"
+    },
+    {
+      "pc": 42,
+      "hc": 12,
+      "harbor_name": "佐賀",
+      "lat": 34.27,
+      "lon": 129.23,
+      "harbor_code": "42-12"
+    },
+    {
+      "pc": 42,
+      "hc": 13,
+      "harbor_name": "小鹿湾",
+      "lat": 34.31,
+      "lon": 129.27,
+      "harbor_code": "42-13"
+    },
+    {
+      "pc": 42,
+      "hc": 14,
+      "harbor_name": "網代",
+      "lat": 34.39,
+      "lon": 129.29,
+      "harbor_code": "42-14"
+    },
+    {
+      "pc": 42,
+      "hc": 15,
+      "harbor_name": "泉",
+      "lat": 34.4,
+      "lon": 129.29,
+      "harbor_code": "42-15"
+    },
+    {
+      "pc": 42,
+      "hc": 16,
+      "harbor_name": "大河内湾",
+      "lat": 34.41,
+      "lon": 129.25,
+      "harbor_code": "42-16"
+    },
+    {
+      "pc": 42,
+      "hc": 17,
+      "harbor_name": "佐須奈",
+      "lat": 34.38,
+      "lon": 129.24,
+      "harbor_code": "42-17"
+    },
+    {
+      "pc": 42,
+      "hc": 18,
+      "harbor_name": "伊奈",
+      "lat": 34.33,
+      "lon": 129.19,
+      "harbor_code": "42-18"
+    },
+    {
+      "pc": 42,
+      "hc": 19,
+      "harbor_name": "狩尾",
+      "lat": 34.27,
+      "lon": 129.18,
+      "harbor_code": "42-19"
+    },
+    {
+      "pc": 42,
+      "hc": 20,
+      "harbor_name": "綱湾",
+      "lat": 34.25,
+      "lon": 129.16,
+      "harbor_code": "42-20"
+    },
+    {
+      "pc": 42,
+      "hc": 21,
+      "harbor_name": "廻",
+      "lat": 34.22,
+      "lon": 129.15,
+      "harbor_code": "42-21"
+    },
+    {
+      "pc": 42,
+      "hc": 22,
+      "harbor_name": "尾崎浦",
+      "lat": 34.19,
+      "lon": 129.13,
+      "harbor_code": "42-22"
+    },
+    {
+      "pc": 42,
+      "hc": 23,
+      "harbor_name": "箕形",
+      "lat": 34.17,
+      "lon": 129.16,
+      "harbor_code": "42-23"
+    },
+    {
+      "pc": 42,
+      "hc": 24,
+      "harbor_name": "昼ヶ浦",
+      "lat": 34.19,
+      "lon": 129.17,
+      "harbor_code": "42-24"
+    },
+    {
+      "pc": 42,
+      "hc": 25,
+      "harbor_name": "竹敷",
+      "lat": 34.18,
+      "lon": 129.18,
+      "harbor_code": "42-25"
+    },
+    {
+      "pc": 42,
+      "hc": 26,
+      "harbor_name": "島山",
+      "lat": 34.19,
+      "lon": 129.19,
+      "harbor_code": "42-26"
+    },
+    {
+      "pc": 42,
+      "hc": 27,
+      "harbor_name": "大山浦",
+      "lat": 34.2,
+      "lon": 129.21,
+      "harbor_code": "42-27"
+    },
+    {
+      "pc": 42,
+      "hc": 28,
+      "harbor_name": "万関瀬戸東口",
+      "lat": 34.18,
+      "lon": 129.22,
+      "harbor_code": "42-28"
+    },
+    {
+      "pc": 42,
+      "hc": 29,
+      "harbor_name": "万関瀬戸西口",
+      "lat": 34.18,
+      "lon": 129.22,
+      "harbor_code": "42-29"
+    },
+    {
+      "pc": 42,
+      "hc": 30,
+      "harbor_name": "小茂田",
+      "lat": 34.14,
+      "lon": 129.12,
+      "harbor_code": "42-30"
+    },
+    {
+      "pc": 42,
+      "hc": 31,
+      "harbor_name": "久根浜",
+      "lat": 34.1,
+      "lon": 129.11,
+      "harbor_code": "42-31"
+    },
+    {
+      "pc": 42,
+      "hc": 32,
+      "harbor_name": "豆酘",
+      "lat": 34.07,
+      "lon": 129.11,
+      "harbor_code": "42-32"
+    },
+    {
+      "pc": 42,
+      "hc": 33,
+      "harbor_name": "黒子島",
+      "lat": 33.22,
+      "lon": 129.34,
+      "harbor_code": "42-33"
+    },
+    {
+      "pc": 42,
+      "hc": 34,
+      "harbor_name": "薄香湾",
+      "lat": 33.23,
+      "lon": 129.32,
+      "harbor_code": "42-34"
+    },
+    {
+      "pc": 42,
+      "hc": 35,
+      "harbor_name": "志々伎湾",
+      "lat": 33.12,
+      "lon": 129.23,
+      "harbor_code": "42-35"
+    },
+    {
+      "pc": 42,
+      "hc": 36,
+      "harbor_name": "楠泊",
+      "lat": 33.13,
+      "lon": 129.35,
+      "harbor_code": "42-36"
+    },
+    {
+      "pc": 42,
+      "hc": 37,
+      "harbor_name": "相ノ浦",
+      "lat": 33.11,
+      "lon": 129.38,
+      "harbor_code": "42-37"
+    },
+    {
+      "pc": 42,
+      "hc": 38,
+      "harbor_name": "高後埼",
+      "lat": 33.06,
+      "lon": 129.41,
+      "harbor_code": "42-38"
+    },
+    {
+      "pc": 42,
+      "hc": 39,
+      "harbor_name": "俵ヶ浦",
+      "lat": 33.07,
+      "lon": 129.4,
+      "harbor_code": "42-39"
+    },
+    {
+      "pc": 42,
+      "hc": 40,
+      "harbor_name": "佐世保",
+      "lat": 33.09,
+      "lon": 129.44,
+      "harbor_code": "42-40"
+    },
+    {
+      "pc": 42,
+      "hc": 41,
+      "harbor_name": "巣喰ノ浦",
+      "lat": 33.05,
+      "lon": 129.43,
+      "harbor_code": "42-41"
+    },
+    {
+      "pc": 42,
+      "hc": 42,
+      "harbor_name": "鯛ノ浦",
+      "lat": 33.05,
+      "lon": 129.45,
+      "harbor_code": "42-42"
+    },
+    {
+      "pc": 42,
+      "hc": 43,
+      "harbor_name": "小鯛",
+      "lat": 33.04,
+      "lon": 129.45,
+      "harbor_code": "42-43"
+    },
+    {
+      "pc": 42,
+      "hc": 44,
+      "harbor_name": "畑下",
+      "lat": 33.04,
+      "lon": 129.44,
+      "harbor_code": "42-44"
+    },
+    {
+      "pc": 42,
+      "hc": 45,
+      "harbor_name": "名倉",
+      "lat": 33.04,
+      "lon": 129.46,
+      "harbor_code": "42-45"
+    },
+    {
+      "pc": 42,
+      "hc": 46,
+      "harbor_name": "伊ノ浦",
+      "lat": 33.03,
+      "lon": 129.45,
+      "harbor_code": "42-46"
+    },
+    {
+      "pc": 42,
+      "hc": 47,
+      "harbor_name": "早岐突堤（北側）",
+      "lat": 33.08,
+      "lon": 129.48,
+      "harbor_code": "42-47"
+    },
+    {
+      "pc": 42,
+      "hc": 48,
+      "harbor_name": "早岐突堤（南側）",
+      "lat": 33.08,
+      "lon": 129.48,
+      "harbor_code": "42-48"
+    },
+    {
+      "pc": 42,
+      "hc": 49,
+      "harbor_name": "小串湾",
+      "lat": 33.04,
+      "lon": 129.49,
+      "harbor_code": "42-49"
+    },
+    {
+      "pc": 42,
+      "hc": 50,
+      "harbor_name": "大村",
+      "lat": 32.54,
+      "lon": 129.57,
+      "harbor_code": "42-50"
+    },
+    {
+      "pc": 42,
+      "hc": 51,
+      "harbor_name": "面高湾",
+      "lat": 33.04,
+      "lon": 129.4,
+      "harbor_code": "42-51"
+    },
+    {
+      "pc": 42,
+      "hc": 52,
+      "harbor_name": "肥前大島",
+      "lat": 33.02,
+      "lon": 129.37,
+      "harbor_code": "42-52"
+    },
+    {
+      "pc": 42,
+      "hc": 53,
+      "harbor_name": "崎戸",
+      "lat": 33.01,
+      "lon": 129.34,
+      "harbor_code": "42-53"
+    },
+    {
+      "pc": 42,
+      "hc": 54,
+      "harbor_name": "松島",
+      "lat": 32.56,
+      "lon": 129.37,
+      "harbor_code": "42-54"
+    },
+    {
+      "pc": 42,
+      "hc": 55,
+      "harbor_name": "小江",
+      "lat": 32.45,
+      "lon": 129.49,
+      "harbor_code": "42-55"
+    },
+    {
+      "pc": 42,
+      "hc": 56,
+      "harbor_name": "伊王島",
+      "lat": 32.42,
+      "lon": 129.47,
+      "harbor_code": "42-56"
+    },
+    {
+      "pc": 42,
+      "hc": 57,
+      "harbor_name": "鼠島",
+      "lat": 32.43,
+      "lon": 129.5,
+      "harbor_code": "42-57"
+    },
+    {
+      "pc": 42,
+      "hc": 58,
+      "harbor_name": "女神",
+      "lat": 32.43,
+      "lon": 129.51,
+      "harbor_code": "42-58"
+    },
+    {
+      "pc": 42,
+      "hc": 59,
+      "harbor_name": "松ケ枝",
+      "lat": 32.44,
+      "lon": 129.52,
+      "harbor_code": "42-59"
+    },
+    {
+      "pc": 42,
+      "hc": 60,
+      "harbor_name": "水ノ浦",
+      "lat": 32.45,
+      "lon": 129.52,
+      "harbor_code": "42-60"
+    },
+    {
+      "pc": 42,
+      "hc": 61,
+      "harbor_name": "深堀",
+      "lat": 32.41,
+      "lon": 129.49,
+      "harbor_code": "42-61"
+    },
+    {
+      "pc": 42,
+      "hc": 62,
+      "harbor_name": "高島",
+      "lat": 32.39,
+      "lon": 129.45,
+      "harbor_code": "42-62"
+    },
+    {
+      "pc": 42,
+      "hc": 63,
+      "harbor_name": "樺島水道",
+      "lat": 32.33,
+      "lon": 129.47,
+      "harbor_code": "42-63"
+    },
+    {
+      "pc": 42,
+      "hc": 64,
+      "harbor_name": "神ノ浦",
+      "lat": 33.16,
+      "lon": 129.05,
+      "harbor_code": "42-64"
+    },
+    {
+      "pc": 42,
+      "hc": 65,
+      "harbor_name": "笛吹",
+      "lat": 33.11,
+      "lon": 129.03,
+      "harbor_code": "42-65"
+    },
+    {
+      "pc": 42,
+      "hc": 66,
+      "harbor_name": "有川",
+      "lat": 32.59,
+      "lon": 129.07,
+      "harbor_code": "42-66"
+    },
+    {
+      "pc": 42,
+      "hc": 67,
+      "harbor_name": "鯛之浦",
+      "lat": 32.57,
+      "lon": 129.06,
+      "harbor_code": "42-67"
+    },
+    {
+      "pc": 42,
+      "hc": 68,
+      "harbor_name": "荒川",
+      "lat": 32.55,
+      "lon": 129.03,
+      "harbor_code": "42-68"
+    },
+    {
+      "pc": 42,
+      "hc": 69,
+      "harbor_name": "若松",
+      "lat": 32.53,
+      "lon": 129.01,
+      "harbor_code": "42-69"
+    },
+    {
+      "pc": 42,
+      "hc": 70,
+      "harbor_name": "船廻湾",
+      "lat": 32.52,
+      "lon": 128.56,
+      "harbor_code": "42-70"
+    },
+    {
+      "pc": 42,
+      "hc": 71,
+      "harbor_name": "戸岐浦",
+      "lat": 32.45,
+      "lon": 128.5,
+      "harbor_code": "42-71"
+    },
+    {
+      "pc": 42,
+      "hc": 72,
+      "harbor_name": "福江",
+      "lat": 32.42,
+      "lon": 128.51,
+      "harbor_code": "42-72"
+    },
+    {
+      "pc": 42,
+      "hc": 73,
+      "harbor_name": "富江",
+      "lat": 32.37,
+      "lon": 128.46,
+      "harbor_code": "42-73"
+    },
+    {
+      "pc": 42,
+      "hc": 74,
+      "harbor_name": "玉之浦",
+      "lat": 32.37,
+      "lon": 128.37,
+      "harbor_code": "42-74"
+    },
+    {
+      "pc": 42,
+      "hc": 75,
+      "harbor_name": "三井楽",
+      "lat": 32.45,
+      "lon": 128.42,
+      "harbor_code": "42-75"
+    },
+    {
+      "pc": 42,
+      "hc": 76,
+      "harbor_name": "水之浦",
+      "lat": 32.45,
+      "lon": 128.45,
+      "harbor_code": "42-76"
+    },
+    {
+      "pc": 42,
+      "hc": 77,
+      "harbor_name": "女島",
+      "lat": 32.0,
+      "lon": 128.21,
+      "harbor_code": "42-77"
+    },
+    {
+      "pc": 42,
+      "hc": 78,
+      "harbor_name": "網場",
+      "lat": 32.45,
+      "lon": 129.57,
+      "harbor_code": "42-78"
+    },
+    {
+      "pc": 42,
+      "hc": 79,
+      "harbor_name": "口之津",
+      "lat": 32.36,
+      "lon": 130.12,
+      "harbor_code": "42-79"
+    },
+    {
+      "pc": 42,
+      "hc": 80,
+      "harbor_name": "須川",
+      "lat": 32.39,
+      "lon": 130.18,
+      "harbor_code": "42-80"
+    },
+    {
+      "pc": 42,
+      "hc": 81,
+      "harbor_name": "島原",
+      "lat": 32.46,
+      "lon": 130.22,
+      "harbor_code": "42-81"
+    },
+    {
+      "pc": 42,
+      "hc": 82,
+      "harbor_name": "荒川",
+      "lat": 32.4,
+      "lon": 128.41,
+      "harbor_code": "42-82"
+    },
+    {
+      "pc": 42,
+      "hc": 83,
+      "harbor_name": "飯ノ瀬戸",
+      "lat": 32.57,
+      "lon": 129.0,
+      "harbor_code": "42-83"
+    },
+    {
+      "pc": 42,
+      "hc": 84,
+      "harbor_name": "神部",
+      "lat": 32.52,
+      "lon": 129.02,
+      "harbor_code": "42-84"
+    },
+    {
+      "pc": 42,
+      "hc": 85,
+      "harbor_name": "島原新港",
+      "lat": 32.49,
+      "lon": 130.22,
+      "harbor_code": "42-85"
+    },
+    {
+      "pc": 42,
+      "hc": 86,
+      "harbor_name": "万関瀬戸中央部",
+      "lat": 34.18,
+      "lon": 129.21,
+      "harbor_code": "42-86"
+    },
+    {
+      "pc": 42,
+      "hc": 87,
+      "harbor_name": "青方",
+      "lat": 33.0,
+      "lon": 129.03,
+      "harbor_code": "42-87"
+    },
+    {
+      "pc": 42,
+      "hc": 88,
+      "harbor_name": "松浦",
+      "lat": 33.21,
+      "lon": 129.41,
+      "harbor_code": "42-88"
+    },
+    {
+      "pc": 43,
+      "hc": 1,
+      "harbor_name": "本渡",
+      "lat": 32.27,
+      "lon": 130.12,
+      "harbor_code": "43-1"
+    },
+    {
+      "pc": 43,
+      "hc": 2,
+      "harbor_name": "長洲",
+      "lat": 32.55,
+      "lon": 130.27,
+      "harbor_code": "43-2"
+    },
+    {
+      "pc": 43,
+      "hc": 3,
+      "harbor_name": "熊本",
+      "lat": 32.45,
+      "lon": 130.34,
+      "harbor_code": "43-3"
+    },
+    {
+      "pc": 43,
+      "hc": 4,
+      "harbor_name": "三角",
+      "lat": 32.37,
+      "lon": 130.27,
+      "harbor_code": "43-4"
+    },
+    {
+      "pc": 43,
+      "hc": 5,
+      "harbor_name": "蔵々ノ瀬戸",
+      "lat": 32.35,
+      "lon": 130.28,
+      "harbor_code": "43-5"
+    },
+    {
+      "pc": 43,
+      "hc": 6,
+      "harbor_name": "柳ノ瀬戸",
+      "lat": 32.32,
+      "lon": 130.25,
+      "harbor_code": "43-6"
+    },
+    {
+      "pc": 43,
+      "hc": 7,
+      "harbor_name": "八代",
+      "lat": 32.31,
+      "lon": 130.34,
+      "harbor_code": "43-7"
+    },
+    {
+      "pc": 43,
+      "hc": 8,
+      "harbor_name": "加賀島",
+      "lat": 32.31,
+      "lon": 130.32,
+      "harbor_code": "43-8"
+    },
+    {
+      "pc": 43,
+      "hc": 9,
+      "harbor_name": "池ノ浦",
+      "lat": 32.23,
+      "lon": 130.21,
+      "harbor_code": "43-9"
+    },
+    {
+      "pc": 43,
+      "hc": 10,
+      "harbor_name": "水俣",
+      "lat": 32.12,
+      "lon": 130.23,
+      "harbor_code": "43-10"
+    },
+    {
+      "pc": 43,
+      "hc": 11,
+      "harbor_name": "袋浦",
+      "lat": 32.11,
+      "lon": 130.22,
+      "harbor_code": "43-11"
+    },
+    {
+      "pc": 43,
+      "hc": 12,
+      "harbor_name": "富岡",
+      "lat": 32.32,
+      "lon": 130.02,
+      "harbor_code": "43-12"
+    },
+    {
+      "pc": 43,
+      "hc": 13,
+      "harbor_name": "崎津湾",
+      "lat": 32.19,
+      "lon": 130.01,
+      "harbor_code": "43-13"
+    },
+    {
+      "pc": 43,
+      "hc": 14,
+      "harbor_name": "牛深",
+      "lat": 32.12,
+      "lon": 130.01,
+      "harbor_code": "43-14"
+    },
+    {
+      "pc": 43,
+      "hc": 15,
+      "harbor_name": "大門",
+      "lat": 32.26,
+      "lon": 130.13,
+      "harbor_code": "43-15"
+    },
+    {
+      "pc": 44,
+      "hc": 1,
+      "harbor_name": "佐賀関",
+      "lat": 33.15,
+      "lon": 131.53,
+      "harbor_code": "44-1"
+    },
+    {
+      "pc": 44,
+      "hc": 2,
+      "harbor_name": "鶴崎",
+      "lat": 33.16,
+      "lon": 131.41,
+      "harbor_code": "44-2"
+    },
+    {
+      "pc": 44,
+      "hc": 3,
+      "harbor_name": "西大分",
+      "lat": 33.15,
+      "lon": 131.35,
+      "harbor_code": "44-3"
+    },
+    {
+      "pc": 44,
+      "hc": 4,
+      "harbor_name": "亀川",
+      "lat": 33.2,
+      "lon": 131.3,
+      "harbor_code": "44-4"
+    },
+    {
+      "pc": 44,
+      "hc": 5,
+      "harbor_name": "日出",
+      "lat": 33.22,
+      "lon": 131.32,
+      "harbor_code": "44-5"
+    },
+    {
+      "pc": 44,
+      "hc": 6,
+      "harbor_name": "姫島",
+      "lat": 33.44,
+      "lon": 131.39,
+      "harbor_code": "44-6"
+    },
+    {
+      "pc": 44,
+      "hc": 7,
+      "harbor_name": "香々地",
+      "lat": 33.41,
+      "lon": 131.31,
+      "harbor_code": "44-7"
+    },
+    {
+      "pc": 44,
+      "hc": 8,
+      "harbor_name": "高田",
+      "lat": 33.35,
+      "lon": 131.26,
+      "harbor_code": "44-8"
+    },
+    {
+      "pc": 44,
+      "hc": 9,
+      "harbor_name": "中津",
+      "lat": 33.36,
+      "lon": 131.15,
+      "harbor_code": "44-9"
+    },
+    {
+      "pc": 44,
+      "hc": 10,
+      "harbor_name": "下浦",
+      "lat": 33.14,
+      "lon": 131.53,
+      "harbor_code": "44-10"
+    },
+    {
+      "pc": 44,
+      "hc": 11,
+      "harbor_name": "泊ヶ内",
+      "lat": 33.08,
+      "lon": 131.54,
+      "harbor_code": "44-11"
+    },
+    {
+      "pc": 44,
+      "hc": 12,
+      "harbor_name": "津久見",
+      "lat": 33.04,
+      "lon": 131.52,
+      "harbor_code": "44-12"
+    },
+    {
+      "pc": 44,
+      "hc": 13,
+      "harbor_name": "葛",
+      "lat": 32.59,
+      "lon": 131.54,
+      "harbor_code": "44-13"
+    },
+    {
+      "pc": 44,
+      "hc": 14,
+      "harbor_name": "長島",
+      "lat": 32.58,
+      "lon": 131.55,
+      "harbor_code": "44-14"
+    },
+    {
+      "pc": 44,
+      "hc": 15,
+      "harbor_name": "大島",
+      "lat": 32.58,
+      "lon": 132.04,
+      "harbor_code": "44-15"
+    },
+    {
+      "pc": 44,
+      "hc": 16,
+      "harbor_name": "猪串",
+      "lat": 32.48,
+      "lon": 131.54,
+      "harbor_code": "44-16"
+    },
+    {
+      "pc": 44,
+      "hc": 17,
+      "harbor_name": "蒲江",
+      "lat": 32.47,
+      "lon": 131.55,
+      "harbor_code": "44-17"
+    },
+    {
+      "pc": 44,
+      "hc": 18,
+      "harbor_name": "米水津泊地",
+      "lat": 32.53,
+      "lon": 132.0,
+      "harbor_code": "44-18"
+    },
+    {
+      "pc": 45,
+      "hc": 1,
+      "harbor_name": "福島",
+      "lat": 31.27,
+      "lon": 131.12,
+      "harbor_code": "45-1"
+    },
+    {
+      "pc": 45,
+      "hc": 2,
+      "harbor_name": "外浦",
+      "lat": 31.31,
+      "lon": 131.22,
+      "harbor_code": "45-2"
+    },
+    {
+      "pc": 45,
+      "hc": 3,
+      "harbor_name": "油津",
+      "lat": 31.35,
+      "lon": 131.25,
+      "harbor_code": "45-3"
+    },
+    {
+      "pc": 45,
+      "hc": 4,
+      "harbor_name": "内海",
+      "lat": 31.45,
+      "lon": 131.28,
+      "harbor_code": "45-4"
+    },
+    {
+      "pc": 45,
+      "hc": 5,
+      "harbor_name": "折生迫",
+      "lat": 31.47,
+      "lon": 131.28,
+      "harbor_code": "45-5"
+    },
+    {
+      "pc": 45,
+      "hc": 6,
+      "harbor_name": "細島",
+      "lat": 32.26,
+      "lon": 131.4,
+      "harbor_code": "45-6"
+    },
+    {
+      "pc": 45,
+      "hc": 7,
+      "harbor_name": "美々津",
+      "lat": 32.2,
+      "lon": 131.37,
+      "harbor_code": "45-7"
+    },
+    {
+      "pc": 45,
+      "hc": 8,
+      "harbor_name": "土々呂",
+      "lat": 32.3,
+      "lon": 131.41,
+      "harbor_code": "45-8"
+    },
+    {
+      "pc": 45,
+      "hc": 9,
+      "harbor_name": "宮崎",
+      "lat": 31.54,
+      "lon": 131.28,
+      "harbor_code": "45-9"
+    },
+    {
+      "pc": 46,
+      "hc": 1,
+      "harbor_name": "阿久根",
+      "lat": 32.01,
+      "lon": 130.12,
+      "harbor_code": "46-1"
+    },
+    {
+      "pc": 46,
+      "hc": 2,
+      "harbor_name": "川内",
+      "lat": 31.51,
+      "lon": 130.13,
+      "harbor_code": "46-2"
+    },
+    {
+      "pc": 46,
+      "hc": 3,
+      "harbor_name": "浦内湾",
+      "lat": 31.51,
+      "lon": 129.51,
+      "harbor_code": "46-3"
+    },
+    {
+      "pc": 46,
+      "hc": 4,
+      "harbor_name": "串木野",
+      "lat": 31.43,
+      "lon": 130.16,
+      "harbor_code": "46-4"
+    },
+    {
+      "pc": 46,
+      "hc": 5,
+      "harbor_name": "戸崎",
+      "lat": 31.39,
+      "lon": 130.18,
+      "harbor_code": "46-5"
+    },
+    {
+      "pc": 46,
+      "hc": 6,
+      "harbor_name": "坊泊",
+      "lat": 31.17,
+      "lon": 130.13,
+      "harbor_code": "46-6"
+    },
+    {
+      "pc": 46,
+      "hc": 7,
+      "harbor_name": "枕崎",
+      "lat": 31.16,
+      "lon": 130.18,
+      "harbor_code": "46-7"
+    },
+    {
+      "pc": 46,
+      "hc": 8,
+      "harbor_name": "山川",
+      "lat": 31.12,
+      "lon": 130.38,
+      "harbor_code": "46-8"
+    },
+    {
+      "pc": 46,
+      "hc": 9,
+      "harbor_name": "喜入",
+      "lat": 31.23,
+      "lon": 130.33,
+      "harbor_code": "46-9"
+    },
+    {
+      "pc": 46,
+      "hc": 10,
+      "harbor_name": "鹿児島",
+      "lat": 31.36,
+      "lon": 130.34,
+      "harbor_code": "46-10"
+    },
+    {
+      "pc": 46,
+      "hc": 11,
+      "harbor_name": "麓",
+      "lat": 31.33,
+      "lon": 130.44,
+      "harbor_code": "46-11"
+    },
+    {
+      "pc": 46,
+      "hc": 12,
+      "harbor_name": "園山",
+      "lat": 31.37,
+      "lon": 130.42,
+      "harbor_code": "46-12"
+    },
+    {
+      "pc": 46,
+      "hc": 13,
+      "harbor_name": "垂水",
+      "lat": 31.3,
+      "lon": 130.42,
+      "harbor_code": "46-13"
+    },
+    {
+      "pc": 46,
+      "hc": 14,
+      "harbor_name": "鹿屋",
+      "lat": 31.24,
+      "lon": 130.46,
+      "harbor_code": "46-14"
+    },
+    {
+      "pc": 46,
+      "hc": 15,
+      "harbor_name": "伊座敷",
+      "lat": 31.06,
+      "lon": 130.42,
+      "harbor_code": "46-15"
+    },
+    {
+      "pc": 46,
+      "hc": 16,
+      "harbor_name": "大泊",
+      "lat": 31.01,
+      "lon": 130.41,
+      "harbor_code": "46-16"
+    },
+    {
+      "pc": 46,
+      "hc": 17,
+      "harbor_name": "志布志",
+      "lat": 31.28,
+      "lon": 131.07,
+      "harbor_code": "46-17"
+    },
+    {
+      "pc": 46,
+      "hc": 18,
+      "harbor_name": "硫黄島",
+      "lat": 30.47,
+      "lon": 130.17,
+      "harbor_code": "46-18"
+    },
+    {
+      "pc": 46,
+      "hc": 19,
+      "harbor_name": "西之表",
+      "lat": 30.44,
+      "lon": 131.0,
+      "harbor_code": "46-19"
+    },
+    {
+      "pc": 46,
+      "hc": 20,
+      "harbor_name": "田ノ脇",
+      "lat": 30.41,
+      "lon": 131.04,
+      "harbor_code": "46-20"
+    },
+    {
+      "pc": 46,
+      "hc": 21,
+      "harbor_name": "大浦",
+      "lat": 30.27,
+      "lon": 130.58,
+      "harbor_code": "46-21"
+    },
+    {
+      "pc": 46,
+      "hc": 22,
+      "harbor_name": "一湊",
+      "lat": 30.28,
+      "lon": 130.3,
+      "harbor_code": "46-22"
+    },
+    {
+      "pc": 46,
+      "hc": 23,
+      "harbor_name": "口永良部島",
+      "lat": 30.28,
+      "lon": 130.11,
+      "harbor_code": "46-23"
+    },
+    {
+      "pc": 46,
+      "hc": 24,
+      "harbor_name": "臥蛇島",
+      "lat": 29.54,
+      "lon": 129.33,
+      "harbor_code": "46-24"
+    },
+    {
+      "pc": 46,
+      "hc": 25,
+      "harbor_name": "中之島",
+      "lat": 29.5,
+      "lon": 129.51,
+      "harbor_code": "46-25"
+    },
+    {
+      "pc": 46,
+      "hc": 26,
+      "harbor_name": "宝島",
+      "lat": 29.09,
+      "lon": 129.12,
+      "harbor_code": "46-26"
+    },
+    {
+      "pc": 46,
+      "hc": 27,
+      "harbor_name": "笠利湾",
+      "lat": 28.27,
+      "lon": 129.39,
+      "harbor_code": "46-27"
+    },
+    {
+      "pc": 46,
+      "hc": 28,
+      "harbor_name": "名瀬",
+      "lat": 28.23,
+      "lon": 129.3,
+      "harbor_code": "46-28"
+    },
+    {
+      "pc": 46,
+      "hc": 29,
+      "harbor_name": "宇検",
+      "lat": 28.17,
+      "lon": 129.14,
+      "harbor_code": "46-29"
+    },
+    {
+      "pc": 46,
+      "hc": 30,
+      "harbor_name": "西古見湾",
+      "lat": 28.15,
+      "lon": 129.1,
+      "harbor_code": "46-30"
+    },
+    {
+      "pc": 46,
+      "hc": 31,
+      "harbor_name": "久慈湾",
+      "lat": 28.14,
+      "lon": 129.15,
+      "harbor_code": "46-31"
+    },
+    {
+      "pc": 46,
+      "hc": 32,
+      "harbor_name": "古仁屋",
+      "lat": 28.09,
+      "lon": 129.19,
+      "harbor_code": "46-32"
+    },
+    {
+      "pc": 46,
+      "hc": 33,
+      "harbor_name": "住用湾",
+      "lat": 28.14,
+      "lon": 129.25,
+      "harbor_code": "46-33"
+    },
+    {
+      "pc": 46,
+      "hc": 34,
+      "harbor_name": "請島",
+      "lat": 28.02,
+      "lon": 129.14,
+      "harbor_code": "46-34"
+    },
+    {
+      "pc": 46,
+      "hc": 35,
+      "harbor_name": "山村湾",
+      "lat": 27.52,
+      "lon": 128.58,
+      "harbor_code": "46-35"
+    },
+    {
+      "pc": 46,
+      "hc": 36,
+      "harbor_name": "和泊",
+      "lat": 27.24,
+      "lon": 128.4,
+      "harbor_code": "46-36"
+    },
+    {
+      "pc": 46,
+      "hc": 37,
+      "harbor_name": "茶花",
+      "lat": 27.03,
+      "lon": 128.25,
+      "harbor_code": "46-37"
+    },
+    {
+      "pc": 46,
+      "hc": 38,
+      "harbor_name": "波見",
+      "lat": 31.21,
+      "lon": 131.01,
+      "harbor_code": "46-38"
+    },
+    {
+      "pc": 47,
+      "hc": 1,
+      "harbor_name": "我喜屋",
+      "lat": 27.02,
+      "lon": 127.58,
+      "harbor_code": "47-1"
+    },
+    {
+      "pc": 47,
+      "hc": 2,
+      "harbor_name": "伊江",
+      "lat": 26.42,
+      "lon": 127.48,
+      "harbor_code": "47-2"
+    },
+    {
+      "pc": 47,
+      "hc": 3,
+      "harbor_name": "運天",
+      "lat": 26.4,
+      "lon": 128.01,
+      "harbor_code": "47-3"
+    },
+    {
+      "pc": 47,
+      "hc": 4,
+      "harbor_name": "渡久地",
+      "lat": 26.39,
+      "lon": 127.54,
+      "harbor_code": "47-4"
+    },
+    {
+      "pc": 47,
+      "hc": 5,
+      "harbor_name": "那覇",
+      "lat": 26.13,
+      "lon": 127.4,
+      "harbor_code": "47-5"
+    },
+    {
+      "pc": 47,
+      "hc": 6,
+      "harbor_name": "糸満",
+      "lat": 26.08,
+      "lon": 127.4,
+      "harbor_code": "47-6"
+    },
+    {
+      "pc": 47,
+      "hc": 7,
+      "harbor_name": "石川",
+      "lat": 26.25,
+      "lon": 127.51,
+      "harbor_code": "47-7"
+    },
+    {
+      "pc": 47,
+      "hc": 8,
+      "harbor_name": "馬天",
+      "lat": 26.11,
+      "lon": 127.47,
+      "harbor_code": "47-8"
+    },
+    {
+      "pc": 47,
+      "hc": 9,
+      "harbor_name": "楚久",
+      "lat": 26.33,
+      "lon": 128.02,
+      "harbor_code": "47-9"
+    },
+    {
+      "pc": 47,
+      "hc": 10,
+      "harbor_name": "座間味",
+      "lat": 26.13,
+      "lon": 127.18,
+      "harbor_code": "47-10"
+    },
+    {
+      "pc": 47,
+      "hc": 11,
+      "harbor_name": "儀間",
+      "lat": 26.2,
+      "lon": 126.46,
+      "harbor_code": "47-11"
+    },
+    {
+      "pc": 47,
+      "hc": 12,
+      "harbor_name": "南大東島",
+      "lat": 25.49,
+      "lon": 131.14,
+      "harbor_code": "47-12"
+    },
+    {
+      "pc": 47,
+      "hc": 13,
+      "harbor_name": "平良",
+      "lat": 24.48,
+      "lon": 125.17,
+      "harbor_code": "47-13"
+    },
+    {
+      "pc": 47,
+      "hc": 14,
+      "harbor_name": "長山",
+      "lat": 24.48,
+      "lon": 125.12,
+      "harbor_code": "47-14"
+    },
+    {
+      "pc": 47,
+      "hc": 15,
+      "harbor_name": "石垣",
+      "lat": 24.2,
+      "lon": 124.1,
+      "harbor_code": "47-15"
+    },
+    {
+      "pc": 47,
+      "hc": 16,
+      "harbor_name": "船浮",
+      "lat": 24.2,
+      "lon": 123.44,
+      "harbor_code": "47-16"
+    },
+    {
+      "pc": 47,
+      "hc": 17,
+      "harbor_name": "比川",
+      "lat": 24.25,
+      "lon": 123.0,
+      "harbor_code": "47-17"
+    },
+    {
+      "pc": 47,
+      "hc": 18,
+      "harbor_name": "黄尾嶼",
+      "lat": 25.56,
+      "lon": 123.41,
+      "harbor_code": "47-18"
+    },
+    {
+      "pc": 47,
+      "hc": 19,
+      "harbor_name": "魚釣島",
+      "lat": 25.44,
+      "lon": 123.28,
+      "harbor_code": "47-19"
+    },
+    {
+      "pc": 47,
+      "hc": 20,
+      "harbor_name": "白浜",
+      "lat": 24.21,
+      "lon": 123.45,
+      "harbor_code": "47-20"
+    },
+    {
+      "pc": 47,
+      "hc": 21,
+      "harbor_name": "安田",
+      "lat": 26.44,
+      "lon": 128.19,
+      "harbor_code": "47-21"
+    },
+    {
+      "pc": 47,
+      "hc": 22,
+      "harbor_name": "辺土名",
+      "lat": 26.45,
+      "lon": 128.11,
+      "harbor_code": "47-22"
+    },
+    {
+      "pc": 47,
+      "hc": 23,
+      "harbor_name": "都屋",
+      "lat": 26.23,
+      "lon": 127.44,
+      "harbor_code": "47-23"
+    },
+    {
+      "pc": 47,
+      "hc": 24,
+      "harbor_name": "平敷屋",
+      "lat": 26.18,
+      "lon": 127.55,
+      "harbor_code": "47-24"
+    },
+    {
+      "pc": 47,
+      "hc": 25,
+      "harbor_name": "奥武島",
+      "lat": 26.08,
+      "lon": 127.47,
+      "harbor_code": "47-25"
+    },
+    {
+      "pc": 47,
+      "hc": 26,
+      "harbor_name": "仲里",
+      "lat": 26.21,
+      "lon": 126.49,
+      "harbor_code": "47-26"
+    },
+    {
+      "pc": 47,
+      "hc": 27,
+      "harbor_name": "池間",
+      "lat": 24.55,
+      "lon": 125.15,
+      "harbor_code": "47-27"
+    },
+    {
+      "pc": 47,
+      "hc": 28,
+      "harbor_name": "佐良浜",
+      "lat": 24.5,
+      "lon": 125.13,
+      "harbor_code": "47-28"
+    },
+    {
+      "pc": 47,
+      "hc": 29,
+      "harbor_name": "波照間",
+      "lat": 24.04,
+      "lon": 123.46,
+      "harbor_code": "47-29"
+    },
+    {
+      "pc": 47,
+      "hc": 30,
+      "harbor_name": "久部良",
+      "lat": 24.27,
+      "lon": 122.56,
+      "harbor_code": "47-30"
+    },
+    {
+      "pc": 47,
+      "hc": 31,
+      "harbor_name": "渡嘉敷",
+      "lat": 26.12,
+      "lon": 127.22,
+      "harbor_code": "47-31"
+    },
+    {
+      "pc": 47,
+      "hc": 32,
+      "harbor_name": "泡瀬",
+      "lat": 26.19,
+      "lon": 127.51,
+      "harbor_code": "47-32"
+    },
+    {
+      "pc": 47,
+      "hc": 33,
+      "harbor_name": "東",
+      "lat": 26.37,
+      "lon": 128.1,
+      "harbor_code": "47-33"
+    },
+    {
+      "pc": 47,
+      "hc": 34,
+      "harbor_name": "宜名真",
+      "lat": 26.51,
+      "lon": 128.15,
+      "harbor_code": "47-34"
+    },
+    {
+      "pc": 47,
+      "hc": 35,
+      "harbor_name": "兼城",
+      "lat": 26.2,
+      "lon": 126.45,
+      "harbor_code": "47-35"
+    }
+  ]
+}
