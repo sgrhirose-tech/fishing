@@ -5,6 +5,7 @@ OpenStreetMap (Overpass API) 周辺施設取得モジュール。
 
 import json
 import pathlib
+import ssl
 import time
 import urllib.error
 import urllib.parse
@@ -28,7 +29,14 @@ OVERPASS_ENDPOINTS = [
     "https://overpass.openstreetmap.ru/api/interpreter",
 ]
 
+USER_AGENT = "FishingSpotApp/1.0 (personal-use)"
+
+_SSL_CTX = ssl.create_default_context()
+_SSL_CTX.check_hostname = False
+_SSL_CTX.verify_mode = ssl.CERT_NONE
+
 _osm_cache: dict = {}
+_overpass_sleep: float = 1.0
 
 # ── facilities.json キャッシュ ──────────────────────────────────
 _FACILITIES_DATA: dict = {}  # slug -> list[dict]
@@ -53,6 +61,33 @@ def load_facilities_json(path: str | None = None) -> None:
 def get_cached_facilities(slug: str) -> list[dict] | None:
     """slug のキャッシュ済み施設リストを返す。未収録なら None。"""
     return _FACILITIES_DATA.get(slug)
+
+
+def _overpass_post(query: str) -> dict:
+    global _overpass_sleep
+    encoded = urllib.parse.urlencode({"data": query}).encode("utf-8")
+    last_err = None
+    for i, endpoint in enumerate(OVERPASS_ENDPOINTS):
+        if i > 0:
+            time.sleep(2)
+        req = urllib.request.Request(endpoint, data=encoded, method="POST")
+        req.add_header("User-Agent", USER_AGENT)
+        ctx = None if endpoint.startswith("http://") else _SSL_CTX
+        try:
+            with urllib.request.urlopen(req, timeout=25, context=ctx) as resp:
+                result = json.loads(resp.read().decode("utf-8"))
+            _overpass_sleep = max(1.0, _overpass_sleep * 0.8)
+            return result
+        except urllib.error.HTTPError as e:
+            if e.code in (403, 429, 502, 503, 504):
+                last_err = e
+                continue
+            raise
+        except Exception as e:
+            last_err = e
+            continue
+    _overpass_sleep = min(30.0, _overpass_sleep * 2)
+    raise last_err or Exception("全エンドポイントで取得失敗")
 
 
 def fetch_nearby_facilities(lat: float, lon: float,
@@ -82,27 +117,7 @@ def fetch_nearby_facilities(lat: float, lon: float,
 
     facilities = []
     try:
-        # 全エンドポイントを順に試す。429/504/タイムアウトなら次へ切り替え
-        last_exc = None
-        result = None
-        for ep in OVERPASS_ENDPOINTS:
-            try:
-                data = urllib.parse.urlencode({"data": query}).encode("utf-8")
-                req = urllib.request.Request(ep, data=data, method="POST")
-                with urllib.request.urlopen(req, timeout=30) as resp:
-                    result = json.loads(resp.read().decode("utf-8"))
-                break  # 成功
-            except urllib.error.HTTPError as e:
-                if e.code in (429, 504):
-                    last_exc = e
-                    time.sleep(2)
-                    continue  # 次のエンドポイントへ
-                raise
-            except (TimeoutError, OSError) as e:
-                last_exc = e
-                continue  # タイムアウト/接続エラーも次のエンドポイントへ
-        if result is None:
-            raise last_exc or Exception("全エンドポイントで取得失敗")
+        result = _overpass_post(query)
 
         # タグ → 施設種別・色のマッピング
         tag_map = {(ft["key"], ft["value"]): ft for ft in FACILITY_TYPES}
