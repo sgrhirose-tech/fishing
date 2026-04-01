@@ -434,6 +434,29 @@ footer a { color: #8bc; }
 }
 a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 
+/* ---- 魚種一覧ページ ---- */
+.fish-index-lead { color: #556; margin: 0 0 1.5rem; }
+.fish-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+.fish-index-card {
+  display: flex; flex-direction: column;
+  padding: 1rem .9rem;
+  background: white; border: 2px solid #d0e4f0;
+  border-radius: 10px; text-decoration: none;
+  color: #334; transition: border-color .15s, box-shadow .15s;
+}
+.fish-index-card:hover {
+  border-color: #1a6b9e;
+  box-shadow: 0 2px 8px rgba(26,107,158,.15);
+}
+.fish-index-name { font-size: 1.1rem; font-weight: bold; color: #1a6b9e; }
+.fish-index-count { font-size: .82rem; color: #555; margin-top: .3rem; }
+.fish-index-count--zero { color: #aaa; }
+.fish-index-method { font-size: .78rem; color: #888; margin-top: .4rem; }
+
 /* ---- TOPページ: 検索窓 ---- */
 .search-box-container {
   position: relative;
