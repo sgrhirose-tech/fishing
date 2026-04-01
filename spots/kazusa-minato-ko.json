@@ -39,5 +39,9 @@
       "man_made=breakwater@212m",
       "waterway=dock@121m"
     ]
-  }
+  },
+  "target_fish": [
+    "kouika",
+    "kurodai"
+  ]
 }

@@ -39,5 +39,10 @@
       "natural=beach@250m",
       "natural=beach@93m"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "suzuki",
+    "shirogisu"
+  ]
 }

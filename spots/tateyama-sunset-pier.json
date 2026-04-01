@@ -38,5 +38,9 @@
       "man_made=pier@245m",
       "natural=beach@217m"
     ]
-  }
+  },
+  "target_fish": [
+    "karei",
+    "aji"
+  ]
 }

@@ -41,5 +41,12 @@
       "man_made=quay@120m",
       "man_made=quay@29m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai",
+    "kamasu",
+    "saba",
+    "aji"
+  ]
 }

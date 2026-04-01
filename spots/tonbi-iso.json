@@ -36,5 +36,9 @@
       "natural=bare_rock@52m",
       "natural=beach@126m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ]
 }

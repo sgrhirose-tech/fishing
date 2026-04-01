@@ -37,5 +37,6 @@
     "osm_evidence": [
       "natural=beach@21m"
     ]
-  }
+  },
+  "target_fish": []
 }

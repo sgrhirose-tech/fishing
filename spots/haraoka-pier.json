@@ -38,5 +38,11 @@
       "man_made=pier@1m",
       "natural=beach@84m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "sayori",
+    "haze",
+    "shirogisu"
+  ]
 }

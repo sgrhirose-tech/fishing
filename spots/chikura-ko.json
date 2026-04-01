@@ -36,5 +36,11 @@
       "man_made=breakwater@269m",
       "waterway=dock@56m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "saba",
+    "aji"
+  ]
 }

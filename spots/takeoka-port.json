@@ -35,5 +35,6 @@
     "osm_evidence": [
       "waterway=dock@73m"
     ]
-  }
+  },
+  "target_fish": []
 }

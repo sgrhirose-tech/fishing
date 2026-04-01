@@ -36,5 +36,10 @@
       "man_made=breakwater@78m",
       "natural=sand@229m"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "aji",
+    "shirogisu"
+  ]
 }

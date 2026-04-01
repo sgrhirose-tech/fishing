@@ -38,5 +38,10 @@
       "man_made=breakwater@271m",
       "natural=beach@295m"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "karei",
+    "shirogisu"
+  ]
 }

@@ -39,5 +39,11 @@
       "leisure=fishing@142m",
       "man_made=pier@128m"
     ]
-  }
+  },
+  "target_fish": [
+    "karei",
+    "suzuki",
+    "tako",
+    "aji"
+  ]
 }

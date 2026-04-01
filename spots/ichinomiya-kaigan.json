@@ -35,5 +35,10 @@
     "osm_evidence": [
       "natural=beach@58m"
     ]
-  }
+  },
+  "target_fish": [
+    "magochi",
+    "hirame",
+    "suzuki"
+  ]
 }

@@ -35,5 +35,10 @@
     "osm_evidence": [
       "waterway=dock@294m"
     ]
-  }
+  },
+  "target_fish": [
+    "ishidai",
+    "mejina",
+    "kurodai"
+  ]
 }

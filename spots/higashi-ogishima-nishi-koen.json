@@ -36,5 +36,12 @@
     ],
     "source": "osm_rule",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "tachiuo",
+    "kurodai",
+    "saba",
+    "tako",
+    "aji"
+  ]
 }

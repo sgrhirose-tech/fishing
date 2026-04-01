@@ -38,5 +38,6 @@
       "harbour=yes@230m",
       "man_made=breakwater@266m"
     ]
-  }
+  },
+  "target_fish": []
 }

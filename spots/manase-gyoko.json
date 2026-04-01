@@ -39,5 +39,10 @@
       "natural=bare_rock@118m",
       "natural=beach@217m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "mebaru"
+  ]
 }

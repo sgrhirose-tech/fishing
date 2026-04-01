@@ -37,5 +37,6 @@
     "osm_evidence": [
       "harbour=yes@80m"
     ]
-  }
+  },
+  "target_fish": []
 }

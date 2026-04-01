@@ -35,5 +35,10 @@
     "osm_evidence": [
       "waterway=dock@14m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ]
 }

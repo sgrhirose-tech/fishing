@@ -40,5 +40,9 @@
       "man_made=breakwater@245m",
       "man_made=pier@250m"
     ]
-  }
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ]
 }

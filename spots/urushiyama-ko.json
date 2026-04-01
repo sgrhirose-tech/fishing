@@ -35,5 +35,10 @@
     "osm_evidence": [
       "man_made=breakwater@182m"
     ]
-  }
+  },
+  "target_fish": [
+    "karei",
+    "mebaru",
+    "shirogisu"
+  ]
 }

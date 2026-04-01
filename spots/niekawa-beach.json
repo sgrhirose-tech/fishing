@@ -33,5 +33,9 @@
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina"
+  ]
 }

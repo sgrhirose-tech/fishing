@@ -37,5 +37,11 @@
     "osm_evidence": [
       "man_made=breakwater@261m"
     ]
-  }
+  },
+  "target_fish": [
+    "hirame",
+    "haze",
+    "suzuki",
+    "shirogisu"
+  ]
 }

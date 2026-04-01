@@ -41,5 +41,10 @@
       "natural=sand@131m",
       "natural=sand@163m"
     ]
-  }
+  },
+  "target_fish": [
+    "haze",
+    "suzuki",
+    "shirogisu"
+  ]
 }

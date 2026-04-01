@@ -38,5 +38,9 @@
       "natural=beach@110m",
       "natural=beach@165m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "shirogisu"
+  ]
 }

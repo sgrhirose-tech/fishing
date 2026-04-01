@@ -36,5 +36,10 @@
       "waterway=dock@207m",
       "waterway=dock@3m"
     ]
-  }
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ]
 }

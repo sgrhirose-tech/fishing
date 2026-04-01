@@ -35,5 +35,10 @@
     "osm_evidence": [
       "man_made=breakwater@227m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "aji"
+  ]
 }

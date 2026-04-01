@@ -36,5 +36,9 @@
     "osm_evidence": [
       "keyword:海岸"
     ]
-  }
+  },
+  "target_fish": [
+    "suzuki",
+    "shirogisu"
+  ]
 }

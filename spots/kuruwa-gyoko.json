@@ -39,5 +39,10 @@
       "natural=bare_rock@117m",
       "natural=beach@156m"
     ]
-  }
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "aji"
+  ]
 }

@@ -37,5 +37,9 @@
     ],
     "source": "manual",
     "osm_evidence": []
-  }
+  },
+  "target_fish": [
+    "suzuki",
+    "shirogisu"
+  ]
 }
