@@ -21,7 +21,12 @@ FACILITY_TYPES = [
     {"key": "shop",    "value": "convenience", "label": "コンビニ", "color": "#6A1B9A", "symbol": "C"},
 ]
 
-OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+OVERPASS_ENDPOINTS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://overpass.private.coffee/api/interpreter",
+    "https://overpass.openstreetmap.ru/api/interpreter",
+]
 
 _osm_cache: dict = {}
 
@@ -77,30 +82,27 @@ def fetch_nearby_facilities(lat: float, lon: float,
 
     facilities = []
     try:
-        # 429/504 発生時のリトライ設定
-        _retry_waits = [30, 60, 120]  # 秒: 1回目, 2回目, 3回目
+        # 全エンドポイントを順に試す。429/504 なら次へ切り替え
         last_exc = None
         result = None
-        for attempt, wait in enumerate([0] + _retry_waits):
-            if wait:
-                print(f"  [リトライ] {wait}秒後に再試行 ({attempt}/3)")
-                time.sleep(wait)
+        for ep in OVERPASS_ENDPOINTS:
             try:
                 data = urllib.parse.urlencode({"data": query}).encode("utf-8")
-                req = urllib.request.Request(OVERPASS_URL, data=data, method="POST")
+                req = urllib.request.Request(ep, data=data, method="POST")
                 with urllib.request.urlopen(req, timeout=15) as resp:
                     result = json.loads(resp.read().decode("utf-8"))
                 break  # 成功
             except urllib.error.HTTPError as e:
                 if e.code in (429, 504):
                     last_exc = e
-                    continue  # リトライ
+                    time.sleep(2)
+                    continue  # 次のエンドポイントへ
                 raise
             except Exception as e:
                 last_exc = e
-                break  # その他のエラーはリトライしない
+                break  # ネットワークエラー等はリトライしない
         if result is None:
-            raise last_exc or Exception("Overpass API 取得失敗")
+            raise last_exc or Exception("全エンドポイントで取得失敗")
 
         # タグ → 施設種別・色のマッピング
         tag_map = {(ft["key"], ft["value"]): ft for ft in FACILITY_TYPES}
