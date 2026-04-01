@@ -698,3 +698,12 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 }
 .fish-photo-credit a { color: #778; text-decoration: underline; }
 .fish-photo-credit a:hover { color: #1a6b9e; }
+.back-link {
+  margin: 1.5rem 0 .5rem;
+}
+.back-link a {
+  color: #1a6b9e;
+  text-decoration: none;
+  font-size: .9rem;
+}
+.back-link a:hover { text-decoration: underline; }
