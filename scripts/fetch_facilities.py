@@ -26,6 +26,7 @@ import urllib.request
 _REPO_ROOT = pathlib.Path(__file__).parent.parent
 sys.path.insert(0, str(_REPO_ROOT))
 
+import app.osm as _osm
 from app.osm import fetch_nearby_facilities, AMENITY_SEARCH_RADIUS_M
 
 SPOTS_DIR = _REPO_ROOT / "spots"
@@ -36,9 +37,6 @@ GITHUB_OWNER = "sgrhirose-tech"
 GITHUB_REPO = "fishing"
 GITHUB_FILE_PATH = "data/facilities.json"
 GITHUB_BRANCH = "master"
-
-# スポット間の待機時間（秒）。Overpass API の負荷対策
-REQUEST_INTERVAL_SEC = 1.2
 
 
 def load_all_spots() -> list[dict]:
@@ -80,7 +78,7 @@ def fetch_all(spots: list[dict]) -> dict:
             print(f"失敗: {e}")
             result[slug] = []
         if i < total:
-            time.sleep(REQUEST_INTERVAL_SEC)
+            time.sleep(_osm._overpass_sleep)
 
     result["_meta"] = {
         "generated_at": datetime.now(JST).isoformat(),

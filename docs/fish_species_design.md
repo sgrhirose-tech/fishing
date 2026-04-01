@@ -3,6 +3,7 @@
 **対象チーム:** フロント開発チーム
 **作成日:** 2026-03-31
 **ステータス:** 初期データ構築済み・フロント実装待ち
+**最終更新:** 2026-04-01（image / wikimedia 両対応）
 
 ---
 
@@ -23,9 +24,12 @@
 ```
 fishing/
 ├── data/
-│   └── fish_master.json     # 魚種マスタ（季節・釣法・底質）
+│   └── fish_master.json        # 魚種マスタ（季節・釣法・底質・画像）
+├── static/
+│   └── img/
+│       └── fish/               # 魚種画像置き場（{slug}.jpg を配置）
 └── spots/
-    └── *.json               # 各スポット（target_fish フィールドを追加済み）
+    └── *.json                  # 各スポット（target_fish フィールドを追加済み）
 ```
 
 ---
@@ -39,20 +43,53 @@ fishing/
     "season":      [1,2,3,4,5,6,7,8,9,10,11,12],
     "peak_season": [5,6,7,8,9,10],
     "method":      ["サビキ釣り", "アジング", "カゴ釣り"],
-    "bottom":      ["砂地", "岩礁"]
-  },
-  "シロギス": {
-    "slug":        "shirogisu",
-    "season":      [4,5,6,7,8,9,10],
-    "peak_season": [6,7,8],
-    "method":      ["投げ釣り"],
-    "bottom":      ["砂地"]
+    "bottom":      ["砂地", "岩礁"],
+    "image":       "/static/img/fish/aji.jpg",
+    "wikimedia": {
+      "file":    "MaAji.jpg",
+      "url":     "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/MaAji.jpg/320px-MaAji.jpg",
+      "page":    "https://commons.wikimedia.org/wiki/File:MaAji.jpg",
+      "author":  "Izuzuki",
+      "license": "CC BY 3.0"
+    }
   },
   ...
 }
 ```
 
 ### フィールド定義
+
+| フィールド | 型 | 必須 | 説明 |
+|-----------|-----|------|------|
+| `slug` | string | ✓ | 魚種のローマ字スラッグ。URLルーティング等に使用 |
+| `season` | int[] | ✓ | 釣れる月（1〜12）|
+| `peak_season` | int[] | ✓ | 最盛期の月。`season` の部分集合 |
+| `method` | string[] | ✓ | 代表的な釣法 |
+| `bottom` | string[] | ✓ | 適した底質（砂地 / 岩礁 / 藻場 / 泥地） |
+| `image` | string | △ | 自サーバに置いた画像の相対パス。`wikimedia` より優先される |
+| `wikimedia` | object | △ | Wikimedia Commons の代表画像情報。`image` がない場合のフォールバック |
+
+#### 画像の優先順位
+
+フロントは以下の順で画像ソースを選択する。
+
+```javascript
+const imgSrc = fish.image ?? fish.wikimedia?.url ?? null;
+```
+
+| 優先度 | ソース | 帰属表示 |
+|--------|--------|---------|
+| 1 | `image`（自サーバ画像） | 不要 |
+| 2 | `wikimedia.url`（Commons） | **必須**（後述） |
+| — | どちらもなし | 画像非表示 |
+
+#### image フィールドの運用
+
+- ファイルは `static/img/fish/{slug}.jpg` に配置する
+- `fish_master.json` の `image` フィールドに `/static/img/fish/{slug}.jpg` を記載する
+- 自サーバ画像は帰属表示不要
+
+#### wikimedia オブジェクトのフィールド
 
 | フィールド | 型 | 説明 |
 |-----------|-----|------|
@@ -61,6 +98,36 @@ fishing/
 | `peak_season` | int[] | 最盛期の月。`season` の部分集合 |
 | `method` | string[] | 代表的な釣法 |
 | `bottom` | string[] | 適した底質（砂地 / 岩礁 / 藻場 / 泥地） |
+| `photo` | object \| なし | 写真情報（後述）。画像がない魚種はフィールドごと省略可 |
+
+### photo フィールド（Wikimedia Commons 帰属表示用）
+
+ウィキメディアコモンズの CC ライセンス画像を使用する場合、以下フィールドをすべて記載する。
+
+```json
+"photo": {
+  "file":        "aji.jpg",
+  "author":      "Uwe Kils",
+  "license":     "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "source_url":  "https://commons.wikimedia.org/wiki/File:Scomber_scombrus.jpg"
+}
+```
+
+| フィールド | 型 | 説明 |
+|-----------|-----|------|
+| `file` | string | 画像ファイル名。実体は `static/img/fish/` に配置 |
+| `author` | string | 著作者名（Wikimedia Commons の "Author" 欄から転記） |
+| `license` | string | ライセンス名（例: CC BY-SA 4.0） |
+| `license_url` | string | ライセンス全文 URL（creativecommons.org） |
+| `source_url` | string | Wikimedia Commons のファイルページ URL |
+
+**画像ファイルの追加手順:**
+
+1. Wikimedia Commons で対象魚種の画像を探す（CC BY / CC BY-SA / CC0 を選ぶ）
+2. ファイルページの "Author", "License" を確認し、上記フィールドに転記
+3. 画像をダウンロードして `static/img/fish/{slug}.jpg` に保存
+4. `fish_master.json` の該当エントリに `photo` フィールドを追記してデプロイ
 
 ### 収録魚種（25種）
 
@@ -151,6 +218,8 @@ def spot_target_fish(spot: dict) -> list[str]:
 | target_fish の手動修正 | spot_editor のチェックボックスから編集 | json 保守チーム |
 | 魚種マスタの更新 | `data/fish_master.json` を直接編集（初期は月1回、充実後は年1回程度） | json 保守チーム |
 | 魚種の追加 | `fish_master.json` に追記 → `extract_target_fish.py` の `FISH_NORMALIZE` にも追記 | json 保守チーム |
+| 自サーバ画像の追加 | `static/img/fish/{slug}.jpg` に配置 → `fish_master.json` の該当魚種に `"image": "/static/img/fish/{slug}.jpg"` を追記 | json 保守チーム |
+| wikimedia 画像の追加 | Commons でファイル名・URL・著者・ライセンスを確認 → `fish_master.json` に `wikimedia` フィールドを追記 | json 保守チーム |
 
 ---
 
