@@ -125,6 +125,28 @@ main {
 }
 .btn-primary:hover { background: #155480; }
 
+.all-spots-link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .5rem;
+  margin: .5rem 0;
+}
+.all-spots-link .btn-primary,
+.all-spots-link .btn-secondary { margin: 0; }
+
+.btn-secondary {
+  display: inline-block;
+  background: #3d82b5;
+  color: white;
+  padding: .7rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: .4rem 0;
+}
+.btn-secondary:hover { background: #2d6a98; }
+
 .btn-detail {
   display: inline-block;
   background: #e8f4fd;
