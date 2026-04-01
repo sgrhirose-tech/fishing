@@ -127,10 +127,62 @@ def fetch_harbor_codes(pc: int) -> list[dict]:
     return harbors
 
 
+def fetch_harbor_name_from_html(pc: int, hc: int) -> str | None:
+    """
+    tide736.net の HTML ページ（?pc=PC&hc=HC）から港名を取得する。
+    <select name="hc"> の selected option、またはページタイトルから抽出する。
+    """
+    url = f"{TIDE_SITE}/?pc={pc}&hc={hc}"
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=10, context=_SSL_CTX) as resp:
+            html = resp.read().decode("utf-8", errors="replace")
+    except Exception:
+        return None
+
+    # パターン1: <option value="hc" selected>港名</option>
+    m = re.search(
+        rf'<option[^>]*value=["\']?{hc}["\']?[^>]*selected[^>]*>(.*?)</option>',
+        html, re.IGNORECASE
+    )
+    if not m:
+        m = re.search(
+            rf'<option[^>]*selected[^>]*value=["\']?{hc}["\']?[^>]*>(.*?)</option>',
+            html, re.IGNORECASE
+        )
+    if m:
+        name = re.sub(r'<[^>]+>', '', m.group(1)).strip()
+        if name:
+            return name
+
+    # パターン2: JavaScript 変数 / JSON 配列に港名が埋め込まれているケース
+    # 例: ["小田原","真鶴",...] や {hc:1,name:"小田原"}
+    for pattern in [
+        rf'"hc"\s*:\s*{hc}\s*,\s*"name"\s*:\s*"([^"]+)"',
+        rf'\bname\s*:\s*["\']([^"\']+)["\'][^}}]*hc\s*:\s*{hc}\b',
+        rf'\[{hc}\s*,\s*["\']([^"\']+)["\']',
+    ]:
+        m = re.search(pattern, html, re.IGNORECASE)
+        if m:
+            return m.group(1).strip()
+
+    # パターン3: ページタイトルに港名が含まれる場合
+    m = re.search(r'<title>(.*?)</title>', html, re.IGNORECASE)
+    if m:
+        title = re.sub(r'<[^>]+>', '', m.group(1)).strip()
+        # "小田原 - tide736.net" のような形式を想定
+        if '-' in title:
+            candidate = title.split('-')[0].strip()
+            if candidate:
+                return candidate
+
+    return None
+
+
 def probe_harbor_codes(pc: int, max_hc: int = 99) -> list[dict]:
     """
     hc=1〜max_hc を試してデータが返る港コードを発見する（フォールバック）。
-    1リクエストごとに0.5秒待機。
+    1リクエストごとに0.5秒待機。有効なコードが見つかったら HTML から港名を取得する。
     """
     from datetime import datetime
     now = datetime.now()
@@ -145,16 +197,20 @@ def probe_harbor_codes(pc: int, max_hc: int = 99) -> list[dict]:
             with urllib.request.urlopen(req, timeout=10, context=_SSL_CTX) as resp:
                 body = resp.read().decode("utf-8", errors="replace")
             data = json.loads(body)
-            # データが入っていれば有効な港コード
             chart = data.get("tide", {}).get("chart", {})
             if chart:
-                # レスポンス内に港名が含まれることがある
-                harbor_name = data.get("harbor_name") or data.get("name") or f"港{hc:02d}"
+                # API レスポンスに港名があればそれを使う
+                harbor_name = data.get("harbor_name") or data.get("name")
+                if not harbor_name:
+                    # HTML ページから港名を取得
+                    harbor_name = fetch_harbor_name_from_html(pc, hc)
+                    time.sleep(0.3)
+                if not harbor_name:
+                    harbor_name = f"港{hc:02d}"
                 harbors.append({"pc": pc, "hc": hc, "harbor_name": harbor_name})
                 print(f"    hc={hc}: {harbor_name} ✓")
         except Exception as e:
             if hc == 1:
-                # 最初のリクエストだけエラーを表示して原因把握に役立てる
                 print(f"    [hc=1 エラー] {e}")
         time.sleep(0.5)
 
