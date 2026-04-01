@@ -177,6 +177,19 @@
   </div>
 </section>
 
+<!-- タイドグラフ（今日） -->
+<section class="tide-section" id="tide-section" style="display:none;">
+  <h2>本日の潮汐</h2>
+  <div id="tide-summary" class="tide-summary"></div>
+  <div class="tide-graph-wrapper">
+    <canvas id="tide-chart"></canvas>
+  </div>
+  <p class="tide-disclaimer">
+    潮汐データは <a href="https://tide736.net/" target="_blank" rel="noopener">tide736.net</a> の推算値です。
+    実際の潮位と異なる場合があります。航海には海上保安庁発行の潮汐表をご使用ください。
+  </p>
+</section>
+
 <!-- 7日間予報 -->
 <section class="forecast-section">
   <h2>7日間の海況・気象情報</h2>
@@ -219,6 +232,7 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>window.PRELOADED_FORECAST = {{ preloaded_forecast | tojson }};</script>
 <script>
   const SPOT = {{ spot | tojson }};
@@ -399,6 +413,79 @@
           document.getElementById('forecast-loading').textContent = '海況データの取得に失敗しました';
         });
     }
+
+    // タイドグラフ
+    (function() {
+      function getTodayJST() {
+        return new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+      }
+      fetch('/api/spots/' + SPOT.slug + '/tide?date=' + getTodayJST())
+        .then(r => r.json())
+        .then(function(data) {
+          if (!data || !data.hourly || data.hourly.length === 0) return;
+          renderTideSection(data);
+        })
+        .catch(function() {});
+
+      function renderTideSection(d) {
+        // サマリー
+        var floodStr = d.flood.map(function(f) { return f.time + '（' + f.cm + 'cm）'; }).join('・');
+        var ebbStr   = d.ebb.map(function(e)   { return e.time + '（' + e.cm + 'cm）'; }).join('・');
+        var harborPart = d.harbor_name ? '<span class="tide-sun">' + d.harbor_name + '港</span>' : '';
+        document.getElementById('tide-summary').innerHTML =
+          '<span class="tide-name">' + d.tide_name + '</span>' +
+          '<span>▲ 満潮: ' + floodStr + '</span>' +
+          '<span>▽ 干潮: ' + ebbStr + '</span>' +
+          harborPart +
+          '<span class="tide-sun">日の出 ' + d.sunrise + '&ensp;日の入 ' + d.sunset + '</span>';
+
+        // グラフ
+        var floodTimes = new Set(d.flood.map(function(f) { return f.time; }));
+        var ebbTimes   = new Set(d.ebb.map(function(e)   { return e.time; }));
+        var pointRadius = d.hourly.map(function(h) {
+          return (floodTimes.has(h.time) || ebbTimes.has(h.time)) ? 5 : 0;
+        });
+        var pointBg = d.hourly.map(function(h) {
+          return floodTimes.has(h.time) ? '#1565C0' : ebbTimes.has(h.time) ? '#E65100' : 'transparent';
+        });
+        var maxCm = Math.max.apply(null, d.hourly.map(function(h) { return h.cm; }));
+        var ctx = document.getElementById('tide-chart').getContext('2d');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: d.hourly.map(function(h) { return h.time; }),
+            datasets: [{
+              data: d.hourly.map(function(h) { return h.cm; }),
+              borderColor: '#1a6b9e',
+              backgroundColor: 'rgba(26,107,158,0.12)',
+              fill: true,
+              tension: 0.4,
+              pointRadius: pointRadius,
+              pointBackgroundColor: pointBg,
+              pointBorderColor: pointBg,
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { ticks: { maxTicksLimit: 8, font: { size: 11 } } },
+              y: {
+                min: 0,
+                suggestedMax: Math.ceil(maxCm * 1.2 / 50) * 50,
+                ticks: { font: { size: 11 } },
+                title: { display: true, text: 'cm', font: { size: 11 } }
+              }
+            },
+            plugins: {
+              legend: { display: false },
+              tooltip: { callbacks: { label: function(c) { return c.parsed.y + ' cm'; } } }
+            }
+          }
+        });
+        document.getElementById('tide-section').style.display = '';
+      }
+    })();
 
     // AIコメント
     document.getElementById('ai-comment-loading').style.display = 'block';
