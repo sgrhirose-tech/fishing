@@ -528,6 +528,7 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 /* ---- TOPページ: 都道府県アコーディオン ---- */
 .pref-accordion { border: none; padding: 0; margin: 0; }
 .pref-accordion > summary {
+  display: block;
   cursor: pointer;
   user-select: none;
   padding: .4rem 0 .7rem;
@@ -556,3 +557,81 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 
 /* ---- TOPページ: レイアウト（1カラム） ---- */
 .top-layout { display: block; }
+
+/* ---- 釣法一覧ページ ---- */
+.method-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.method-index-card {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  background: white;
+  border: 1px solid #d0e4f0;
+  border-radius: 10px;
+  padding: .9rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .15s, border-color .15s;
+}
+.method-index-card:hover { box-shadow: 0 2px 10px rgba(26,107,158,.15); border-color: #1a6b9e; }
+.method-index-name { font-size: 1.1rem; font-weight: bold; color: #1a3a5c; }
+.method-index-difficulty { font-size: .9rem; color: #e08020; letter-spacing: .05em; }
+.method-index-desc { font-size: .85rem; color: #556; line-height: 1.5; }
+.method-index-fish { font-size: .78rem; color: #888; margin-top: .1rem; }
+
+/* ---- 釣法詳細ページ ---- */
+.method-difficulty {
+  font-size: 1rem;
+  color: #e08020;
+  margin: .4rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.method-difficulty-label { font-size: .9rem; color: #556; font-weight: normal; }
+.method-desc-section { margin: 1rem 0 1.5rem; }
+.method-description { font-size: 1rem; line-height: 1.8; color: #334; }
+.method-gear-section,
+.method-fish-section,
+.method-season-section,
+.method-spot-type-section { margin: 1.5rem 0; }
+.method-gear-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: .5rem 0 0;
+}
+.method-gear-item {
+  background: #f0f6fb;
+  border: 1px solid #c8dff0;
+  border-radius: 6px;
+  padding: .3rem .8rem;
+  font-size: .9rem;
+  color: #334;
+}
+.method-fish-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .5rem;
+}
+.method-spot-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .5rem;
+}
+.method-spot-chip {
+  background: #f0f6fb;
+  border: 1px solid #c8dff0;
+  border-radius: 12px;
+  padding: .25rem .75rem;
+  font-size: .85rem;
+  color: #1a6b9e;
+}
