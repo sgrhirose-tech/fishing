@@ -409,6 +409,11 @@ def page_top(request: Request):
         "tomorrow": _tomorrow(),
         "region_groups": region_groups,
         "area_counts": area_counts,
+        "fish_list": [
+            {"name": name, "slug": data["slug"]}
+            for name, data in _FISH_MASTER.items()
+            if data.get("slug")
+        ],
     })
 
 
