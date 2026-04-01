@@ -506,15 +506,11 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 /* ---- TOPページ: エリアチップ ---- */
 .area-chips {
   display: flex;
-  overflow-x: auto;
+  flex-wrap: wrap;
   gap: .75rem;
   padding: .6rem 0 1rem;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
-.area-chips::-webkit-scrollbar { display: none; }
 .area-chip {
-  flex-shrink: 0;
   white-space: nowrap;
   background: white;
   border: 2px solid #1a6b9e;
@@ -558,17 +554,5 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .pref-accordion[open] .pref-accordion-hint::after { transform: rotate(-180deg); }
 .pref-accordion > .region-group { padding-top: .5rem; }
 
-/* ---- TOPページ: PC 2カラムレイアウト ---- */
+/* ---- TOPページ: レイアウト（1カラム） ---- */
 .top-layout { display: block; }
-@media (min-width: 768px) {
-  .top-layout {
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    gap: 1.5rem;
-    align-items: start;
-  }
-  .top-map-col,
-  .top-sidebar-col { min-width: 0; }
-  .top-map-col .map-container { height: 560px; margin-top: 0; }
-  .top-sidebar-col { padding-top: .25rem; overflow-x: clip; }
-}
