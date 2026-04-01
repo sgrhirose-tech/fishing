@@ -397,6 +397,20 @@ def api_weather(slug: str, date: str | None = None):
     }
 
 
+@app.get("/api/spots/{slug}/tide")
+def api_tide(slug: str, date: str | None = None):
+    """スポットの潮汐データを返す。data/tides/ のキャッシュから読み込む。
+    キャッシュが存在しない場合は tide: null を返す（エラーにしない）。
+    潮汐データは scripts/fetch_tides.py の月次バッチで生成される。
+    """
+    from .tides import get_tide_data
+    date_str = date or datetime.now(JST).strftime("%Y-%m-%d")
+    data = get_tide_data(slug, date_str)
+    if data is None:
+        return {"tide": None, "tide_unavailable_reason": "data_not_fetched"}
+    return data
+
+
 # ============================================================
 # ページルート
 # ============================================================
