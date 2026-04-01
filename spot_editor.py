@@ -92,17 +92,17 @@ AREA_MAP = {
 # Data helpers
 # ---------------------------------------------------------------------------
 
-_FISH_NAMES: list[str] = []
+_FISH_LIST: list[list[str]] = []
 
-def _load_fish_master() -> list[str]:
-    """fish_master.json から魚名リストを読み込む。ファイルがなければ空リスト。"""
-    global _FISH_NAMES
+def _load_fish_master() -> list[list[str]]:
+    """fish_master.json から [[slug, name], ...] リストを読み込む。ファイルがなければ空リスト。"""
+    global _FISH_LIST
     if not os.path.exists(FISH_MASTER_FILE):
         return []
     with open(FISH_MASTER_FILE, encoding="utf-8") as f:
         data = json.load(f)
-    _FISH_NAMES = list(data.keys())
-    return _FISH_NAMES
+    _FISH_LIST = [[v["slug"], name] for name, v in data.items() if "slug" in v]
+    return _FISH_LIST
 
 
 def _load_marine_areas():
@@ -298,7 +298,7 @@ var AREA_SLUG_MAP = {
 var SEABED_OPTIONS = __SEABED_OPTIONS_JSON__;
 var BEARING_OPTIONS = __BEARING_OPTIONS_JSON__;
 var CLASSIFICATION_OPTIONS = __CLASSIFICATION_OPTIONS_JSON__;
-var FISH_NAMES = __FISH_NAMES_JSON__;
+var FISH_LIST = __FISH_NAMES_JSON__; // [[slug, name], ...]
 
 // ---- error display (debug) ----
 window.onerror = function(msg, src, line) {
@@ -535,10 +535,11 @@ function showSpot(idx) {
     '<div class="section-title">対象魚種</div>' +
     (function() {
       var currentFish = s.target_fish || [];
-      var checks = FISH_NAMES.map(function(name) {
-        var checked = currentFish.indexOf(name) >= 0 ? ' checked' : '';
+      var checks = FISH_LIST.map(function(pair) {
+        var slug = pair[0], name = pair[1];
+        var checked = currentFish.indexOf(slug) >= 0 ? ' checked' : '';
         return '<label style="display:inline-flex;align-items:center;gap:2px;margin:2px 4px;">' +
-          '<input type="checkbox" name="target_fish" value="' + escHtml(name) + '"' + checked + '>' +
+          '<input type="checkbox" name="target_fish" value="' + escHtml(slug) + '"' + checked + '>' +
           escHtml(name) + '</label>';
       }).join('');
       return '<div class="field-row"><label>魚種</label>' +
@@ -1055,7 +1056,7 @@ def build_html(spots, save_mode='pythonista', dir_key=None):
     seabed_js = json.dumps([[v, l] for v, l in SEABED_TYPE_OPTIONS], ensure_ascii=False)
     bearing_js = json.dumps(BEARING_OPTIONS, ensure_ascii=False)
     classif_js = json.dumps([[v, l] for v, l in CLASSIFICATION_TYPE_OPTIONS], ensure_ascii=False)
-    fish_names_js = json.dumps(_load_fish_master(), ensure_ascii=False)
+    fish_names_js = json.dumps(_load_fish_master(), ensure_ascii=False)  # [[slug, name], ...]
     dir_opts = "".join(
         f'<option value="{k}"{"" if k != dir_key else " selected"}>{k}</option>'
         for k in AVAILABLE_DIRS
