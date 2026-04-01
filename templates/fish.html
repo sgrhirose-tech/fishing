@@ -54,15 +54,6 @@
 <figure class="fish-photo">
   <img src="{{ fish_data.image }}" alt="{{ fish_name }}" loading="lazy">
 </figure>
-{% elif fish_data.wikimedia %}
-<figure class="fish-photo">
-  <img src="{{ fish_data.wikimedia.url }}" alt="{{ fish_name }}" loading="lazy">
-  <figcaption class="fish-photo-credit">
-    出典: <a href="{{ fish_data.wikimedia.page }}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> /
-    作者: {{ fish_data.wikimedia.author }} /
-    ライセンス: {{ fish_data.wikimedia.license }}
-  </figcaption>
-</figure>
 {% endif %}
 <section class="fish-spots-section">
   <h2>釣り場一覧（{{ total }}か所）</h2>
