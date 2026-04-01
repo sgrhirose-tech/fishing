@@ -653,6 +653,7 @@ def page_spot_detail(
     region_name = REGION_NAMES.get(region_slug, "")
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     fish_name_map = {v: k for k, v in fish_slug_map.items()}
+    fish_names_jp = [fish_name_map.get(s, s) for s in spot.get("target_fish", [])[:3]]
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -665,4 +666,5 @@ def page_spot_detail(
         "region_name":        region_name,
         "fish_slug_map":      fish_slug_map,
         "fish_name_map":      fish_name_map,
+        "fish_names_jp":      fish_names_jp,
     })
