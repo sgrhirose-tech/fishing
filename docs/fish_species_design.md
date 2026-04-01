@@ -93,25 +93,41 @@ const imgSrc = fish.image ?? fish.wikimedia?.url ?? null;
 
 | フィールド | 型 | 説明 |
 |-----------|-----|------|
-| `file` | string | Commons ファイル名（URL 再生成・参照用） |
-| `url` | string | 320px サムネイルの直接 URL（フロントで `<img src>` に使用） |
-| `page` | string | Commons ファイルページ URL（帰属表示リンク用） |
-| `author` | string | 著者名（帰属表示用） |
-| `license` | string | ライセンス識別子（例: CC BY 4.0, CC BY-SA 2.5） |
+| `slug` | string | 魚種のローマ字スラッグ。URLルーティング等に使用 |
+| `season` | int[] | 釣れる月（1〜12）|
+| `peak_season` | int[] | 最盛期の月。`season` の部分集合 |
+| `method` | string[] | 代表的な釣法 |
+| `bottom` | string[] | 適した底質（砂地 / 岩礁 / 藻場 / 泥地） |
+| `photo` | object \| なし | 写真情報（後述）。画像がない魚種はフィールドごと省略可 |
 
-> **帰属表示（`wikimedia` 画像使用時の必須事項）**
-> Wikimedia Commons の画像は CC-BY 系ライセンスのため、**著者名とライセンスの表示が必須**。
-> `image` フィールドがある場合は自サーバ画像を使うため帰属表示は不要。
-> `wikimedia` のみの場合の推奨表示形式:
-> ```
-> 写真: {author} / Wikimedia Commons ({license})
-> ```
-> `page` URL を帰属表示のリンク先に使用すること。
+### photo フィールド（Wikimedia Commons 帰属表示用）
 
-**現在の収録状況（2026-04-01時点）**:
-- `wikimedia` あり: 8種（アジ・アオリイカ・カサゴ・スズキ・タコ・サバ・コウイカ・ブリ）
-- `image` あり: 0種（画像追加次第随時更新）
-- 画像なし: 17種
+ウィキメディアコモンズの CC ライセンス画像を使用する場合、以下フィールドをすべて記載する。
+
+```json
+"photo": {
+  "file":        "aji.jpg",
+  "author":      "Uwe Kils",
+  "license":     "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "source_url":  "https://commons.wikimedia.org/wiki/File:Scomber_scombrus.jpg"
+}
+```
+
+| フィールド | 型 | 説明 |
+|-----------|-----|------|
+| `file` | string | 画像ファイル名。実体は `static/img/fish/` に配置 |
+| `author` | string | 著作者名（Wikimedia Commons の "Author" 欄から転記） |
+| `license` | string | ライセンス名（例: CC BY-SA 4.0） |
+| `license_url` | string | ライセンス全文 URL（creativecommons.org） |
+| `source_url` | string | Wikimedia Commons のファイルページ URL |
+
+**画像ファイルの追加手順:**
+
+1. Wikimedia Commons で対象魚種の画像を探す（CC BY / CC BY-SA / CC0 を選ぶ）
+2. ファイルページの "Author", "License" を確認し、上記フィールドに転記
+3. 画像をダウンロードして `static/img/fish/{slug}.jpg` に保存
+4. `fish_master.json` の該当エントリに `photo` フィールドを追記してデプロイ
 
 ### 収録魚種（25種）
 
