@@ -40,6 +40,13 @@
       {% endif %}
     </div>
     <p class="spot-seabed">{{ spot.info.notes }}</p>
+    {% if spot.target_fish %}
+    <div class="fish-chips">
+      {% for fish in spot.target_fish %}
+      <a href="/fish/{{ fish_slug_map.get(fish, fish) }}" class="fish-chip">{{ fish }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
     <p class="spot-access">🚃 {{ spot.info.access }}</p>
     <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/{{ spot.slug }}" class="btn-detail">
       詳細・気象情報 →
