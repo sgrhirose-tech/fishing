@@ -177,9 +177,9 @@
   </div>
 </section>
 
-<!-- タイドグラフ（7日間） -->
+<!-- タイドグラフ（一週間） -->
 <section class="tide-section" id="tide-section" style="display:none;">
-  <h2>7日間の潮汐</h2>
+  <h2>一週間の潮汐</h2>
   <div class="tide-nav">
     <button class="tide-nav-btn" id="tide-prev">‹ 前日</button>
     <span id="tide-date-label" class="tide-date-label"></span>
@@ -195,9 +195,9 @@
   </p>
 </section>
 
-<!-- 7日間予報 -->
+<!-- 一週間予報 -->
 <section class="forecast-section">
-  <h2>7日間の海況・気象情報</h2>
+  <h2>一週間の海況・気象情報</h2>
   <div id="forecast-loading" class="loading">海況データを取得中...</div>
   <div id="forecast-result" style="display:none;">
     <div class="forecast-tabs">
@@ -419,12 +419,14 @@
         });
     }
 
-    // タイドグラフ（7日間）
+    // タイドグラフ（一週間）
     (function() {
-      var DAYS = 7;
+      var DAYS = 8;
       var tideCache = [];
       var currentIdx = 0;
       var tideChart = null;
+      var sunriseIdx = 0;
+      var sunsetIdx  = 0;
 
       function getTodayJST() {
         return new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
@@ -442,6 +444,39 @@
         var d = new Date(+p[0], +p[1]-1, +p[2]);
         return (d.getMonth()+1) + '/' + d.getDate() + '（' + DOW[d.getDay()] + '）';
       }
+      function timeToMin(t) {
+        var p = t.split(':');
+        return parseInt(p[0], 10) * 60 + parseInt(p[1], 10);
+      }
+      function nearestIdx(timeStr, labels) {
+        var target = timeToMin(timeStr), best = 0, bestDiff = Infinity;
+        for (var i = 0; i < labels.length; i++) {
+          var diff = Math.abs(timeToMin(labels[i]) - target);
+          if (diff < bestDiff) { bestDiff = diff; best = i; }
+        }
+        return best;
+      }
+
+      // 日の出・日の入り 縦線プラグイン
+      var sunLinePlugin = {
+        id: 'sunLines',
+        afterDatasetsDraw: function(chart) {
+          var ctx = chart.ctx;
+          var xScale = chart.scales.x;
+          var yScale = chart.scales.y;
+          [sunriseIdx, sunsetIdx].forEach(function(idx) {
+            var x = xScale.getPixelForValue(idx);
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(x, yScale.top);
+            ctx.lineTo(x, yScale.bottom);
+            ctx.strokeStyle = 'rgba(220, 50, 50, 0.75)';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+            ctx.restore();
+          });
+        }
+      };
 
       var today = getTodayJST();
       var slug = SPOT.slug;
@@ -510,6 +545,10 @@
           return floodTimes.has(h.time) ? '#1565C0' : ebbTimes.has(h.time) ? '#E65100' : 'transparent';
         });
 
+        // 日の出・日の入り インデックス更新
+        sunriseIdx = nearestIdx(d.sunrise, labels);
+        sunsetIdx  = nearestIdx(d.sunset,  labels);
+
         if (tideChart) {
           tideChart.data.labels = labels;
           tideChart.data.datasets[0].data = values;
@@ -539,7 +578,25 @@
               responsive: true,
               maintainAspectRatio: false,
               scales: {
-                x: { ticks: { maxTicksLimit: 8, font: { size: 11 } } },
+                x: {
+                  ticks: {
+                    autoSkip: false,
+                    maxRotation: 0,
+                    callback: function(val) {
+                      var label = this.getLabelForValue(val);
+                      if (!label || !label.endsWith(':00')) return null;
+                      var hour = parseInt(label.split(':')[0], 10);
+                      return (hour % 3 === 0) ? label : null;
+                    },
+                    font: { size: 11 }
+                  },
+                  grid: {
+                    color: function(context) {
+                      var label = context.chart.data.labels[context.index];
+                      return (label && label.endsWith(':00')) ? 'rgba(0,0,0,0.08)' : 'rgba(0,0,0,0)';
+                    }
+                  }
+                },
                 y: {
                   min: 0,
                   suggestedMax: sugMax,
@@ -551,7 +608,8 @@
                 legend: { display: false },
                 tooltip: { callbacks: { label: function(c) { return c.parsed.y + ' cm'; } } }
               }
-            }
+            },
+            plugins: [sunLinePlugin]
           });
         }
       }
