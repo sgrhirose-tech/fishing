@@ -36,5 +36,7 @@
     "source": "osm_rule",
     "osm_evidence": []
   },
-  "target_fish": []
+  "target_fish": [],
+  "harbor_code": "12-12",
+  "harbor_name": "君津"
 }

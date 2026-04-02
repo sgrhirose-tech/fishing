@@ -37,6 +37,16 @@ import requests  # Google Places のみ（requirements.txt: requests>=2.31.0）
 sys.path.insert(0, str(Path(__file__).parent))
 from pythonista_spot_tools import calculate_sea_bearing, fetch_physical_data
 
+# spot_editor から魚種抽出ロジックを import
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from spot_editor import FISH_NORMALIZE, extract_fish_from_notes, _load_name_to_slug
+
+# 魚種名→slug マップ（起動時に一度だけロード）
+_NAME_TO_SLUG: dict = {}
+
+# 港リスト（最近傍港計算用、起動時に一度だけロード）
+_HARBOR_LIST: list = []
+
 # ──────────────────────────────────────────
 # パス定数
 # ──────────────────────────────────────────
@@ -46,6 +56,7 @@ AREAS_FILE = REPO_ROOT / "spots" / "_marine_areas.json"
 OUTPUT_DIR = REPO_ROOT / "spots_wip"
 TSV_DIR    = REPO_ROOT / "tsv"
 CONFIG_FILE = REPO_ROOT / "config.json"
+HARBOR_LIST_PATH = REPO_ROOT / "data" / "harbor_list.json"
 
 # ──────────────────────────────────────────
 # 定数
@@ -70,8 +81,9 @@ AREA_MAP = {
     "駿河湾":     ("suruga-bay",   "shizuoka", "静岡県"),
     "遠州灘":     ("enshu-nada",   "shizuoka", "静岡県"),
     "三河湾":     ("mikawa-bay",   "aichi",    "愛知県"),
-    "伊勢湾":     ("isewan",       "aichi",    "愛知県"),
-    "熊野灘":     ("kumano-nada",  "mie",      "三重県"),
+    "伊勢湾":         ("isewan",            "aichi",    "愛知県"),
+    "志摩・南伊勢":   ("shima-minami-ise", "mie",      "三重県"),
+    "熊野灘":         ("kumano-nada",       "mie",      "三重県"),
 }
 
 PREF_SLUG_MAP = {
@@ -150,6 +162,38 @@ NAME_KEYWORDS = [
 
 # Overpass 動的スリープ（エラー後に延長、連続成功で短縮）
 _overpass_sleep = 1.0
+
+
+# ──────────────────────────────────────────
+# 最近傍港計算
+# ──────────────────────────────────────────
+
+def _haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    R = 6371.0
+    phi1, phi2 = math.radians(lat1), math.radians(lat2)
+    dphi = math.radians(lat2 - lat1)
+    dlambda = math.radians(lon2 - lon1)
+    a = math.sin(dphi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(dlambda / 2) ** 2
+    return 2 * R * math.asin(math.sqrt(a))
+
+
+def _find_nearest_harbor(lat: float, lon: float, harbors: list) -> dict | None:
+    best, best_dist = None, float("inf")
+    for h in harbors:
+        d = _haversine_km(lat, lon, h["lat"], h["lon"])
+        if d < best_dist:
+            best_dist = d
+            best = h
+    return best
+
+
+def _load_harbor_list() -> list:
+    if not HARBOR_LIST_PATH.exists():
+        print(f"[警告] {HARBOR_LIST_PATH} が見つかりません。harbor_code は設定されません。")
+        return []
+    with open(HARBOR_LIST_PATH, encoding="utf-8") as f:
+        data = json.load(f)
+    return [h for h in data.get("harbors", []) if h.get("lat") is not None and h.get("lon") is not None]
 
 
 # ──────────────────────────────────────────
@@ -668,7 +712,14 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
             "access": access,
         },
         "classification": classification,
+        "target_fish": extract_fish_from_notes(notes, _NAME_TO_SLUG),
     }
+
+    # 最近傍港コードを埋め込み
+    nearest = _find_nearest_harbor(lat, lon, _HARBOR_LIST)
+    if nearest:
+        spot["harbor_code"] = nearest["harbor_code"]
+        spot["harbor_name"] = nearest["harbor_name"]
 
     if dry_run:
         print(f"  [DRY RUN] 書き出しなし ({slug}.json)")
@@ -685,6 +736,10 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
 # ──────────────────────────────────────────
 
 def main():
+    global _NAME_TO_SLUG, _HARBOR_LIST
+    _NAME_TO_SLUG = _load_name_to_slug()
+    _HARBOR_LIST = _load_harbor_list()
+
     parser = argparse.ArgumentParser(
         description="TSV からスポット JSON を一括生成するパイプライン"
     )

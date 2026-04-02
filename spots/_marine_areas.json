@@ -69,6 +69,10 @@
     "伊勢湾": {
       "center_lat": 34.90, "center_lon": 136.65, "fetch_km": 60
     },
+    "志摩・南伊勢": {
+      "center_lat": 34.32, "center_lon": 136.75, "fetch_km": 50,
+      "lat_min": 34.10, "lat_max": 34.55, "lon_min": 136.25, "lon_max": 137.00
+    },
     "熊野灘": {
       "center_lat": 34.10, "center_lon": 136.20, "fetch_km": 60
     }

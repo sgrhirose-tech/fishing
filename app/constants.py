@@ -20,6 +20,7 @@ VALID_AREA_SLUGS: frozenset[str] = frozenset({
     "mikawa-bay",   # 三河湾
     "isewan",       # 伊勢湾（愛知・三重 共用）
     # 三重県
+    "shima-minami-ise",  # 志摩・南伊勢（志摩市・南伊勢町・大紀町）
     "kumano-nada",  # 熊野灘
 })
 
