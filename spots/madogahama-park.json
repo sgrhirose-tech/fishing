@@ -36,5 +36,7 @@
     "source": "osm_rule",
     "osm_evidence": []
   },
-  "target_fish": []
+  "target_fish": [],
+  "harbor_code": "22-2",
+  "harbor_name": "伊東"
 }

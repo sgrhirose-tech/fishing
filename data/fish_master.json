@@ -31,7 +31,8 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/aji.jpg"
   },
   "シロギス": {
     "slug": "shirogisu",
@@ -240,7 +241,8 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/suzuki.jpg"
   },
   "ヒラメ": {
     "slug": "hirame",
@@ -525,7 +527,8 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/kamasu.jpg"
   },
   "ソウダガツオ": {
     "slug": "soudagatsuo",
@@ -653,7 +656,8 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "image": "/static/img/fish/karei.jpg"
   },
   "シマアジ": {
     "slug": "shimaaji",

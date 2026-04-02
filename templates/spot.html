@@ -177,9 +177,27 @@
   </div>
 </section>
 
-<!-- 7日間予報 -->
+<!-- タイドグラフ（一週間） -->
+<section class="tide-section" id="tide-section" style="display:none;">
+  <h2>一週間の潮汐</h2>
+  <div class="tide-nav">
+    <button class="tide-nav-btn" id="tide-prev">‹ 前日</button>
+    <span id="tide-date-label" class="tide-date-label"></span>
+    <button class="tide-nav-btn" id="tide-next">翌日 ›</button>
+  </div>
+  <div id="tide-summary" class="tide-summary"></div>
+  <div class="tide-graph-wrapper">
+    <canvas id="tide-chart"></canvas>
+  </div>
+  <p class="tide-disclaimer">
+    潮汐データは <a href="https://tide736.net/" target="_blank" rel="noopener">tide736.net</a> の推算値です。
+    実際の潮位と異なる場合があります。航海には海上保安庁発行の潮汐表をご使用ください。
+  </p>
+</section>
+
+<!-- 一週間予報 -->
 <section class="forecast-section">
-  <h2>7日間の海況・気象情報</h2>
+  <h2>一週間の海況・気象情報</h2>
   <div id="forecast-loading" class="loading">海況データを取得中...</div>
   <div id="forecast-result" style="display:none;">
     <div class="forecast-tabs">
@@ -219,6 +237,7 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>window.PRELOADED_FORECAST = {{ preloaded_forecast | tojson }};</script>
 <script>
   const SPOT = {{ spot | tojson }};
@@ -399,6 +418,202 @@
           document.getElementById('forecast-loading').textContent = '海況データの取得に失敗しました';
         });
     }
+
+    // タイドグラフ（一週間）
+    (function() {
+      var DAYS = 8;
+      var tideCache = [];
+      var currentIdx = 0;
+      var tideChart = null;
+      var sunriseIdx = 0;
+      var sunsetIdx  = 0;
+
+      function getTodayJST() {
+        return new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+      }
+      function addDays(base, n) {
+        var p = base.split('-');
+        var d = new Date(+p[0], +p[1]-1, +p[2]+n);
+        return d.getFullYear() + '-'
+          + String(d.getMonth()+1).padStart(2,'0') + '-'
+          + String(d.getDate()).padStart(2,'0');
+      }
+      function fmtDateJP(dateStr) {
+        var DOW = ['日','月','火','水','木','金','土'];
+        var p = dateStr.split('-');
+        var d = new Date(+p[0], +p[1]-1, +p[2]);
+        return (d.getMonth()+1) + '/' + d.getDate() + '（' + DOW[d.getDay()] + '）';
+      }
+      function timeToMin(t) {
+        var p = t.split(':');
+        return parseInt(p[0], 10) * 60 + parseInt(p[1], 10);
+      }
+      function nearestIdx(timeStr, labels) {
+        var target = timeToMin(timeStr), best = 0, bestDiff = Infinity;
+        for (var i = 0; i < labels.length; i++) {
+          var diff = Math.abs(timeToMin(labels[i]) - target);
+          if (diff < bestDiff) { bestDiff = diff; best = i; }
+        }
+        return best;
+      }
+
+      // 日の出・日の入り 縦線プラグイン
+      var sunLinePlugin = {
+        id: 'sunLines',
+        afterDatasetsDraw: function(chart) {
+          var ctx = chart.ctx;
+          var xScale = chart.scales.x;
+          var yScale = chart.scales.y;
+          [sunriseIdx, sunsetIdx].forEach(function(idx) {
+            var x = xScale.getPixelForValue(idx);
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(x, yScale.top);
+            ctx.lineTo(x, yScale.bottom);
+            ctx.strokeStyle = 'rgba(220, 50, 50, 0.75)';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+            ctx.restore();
+          });
+        }
+      };
+
+      var today = getTodayJST();
+      var slug = SPOT.slug;
+
+      // 7日分並列fetch
+      var promises = [];
+      for (var i = 0; i < DAYS; i++) {
+        (function(idx) {
+          var dateStr = addDays(today, idx);
+          promises.push(
+            fetch('/api/spots/' + slug + '/tide?date=' + dateStr)
+              .then(function(r) { return r.json(); })
+              .then(function(data) {
+                tideCache[idx] = (data && data.hourly && data.hourly.length) ? data : null;
+              })
+              .catch(function() { tideCache[idx] = null; })
+          );
+        })(i);
+      }
+
+      Promise.all(promises).then(function() {
+        if (!tideCache[0]) return;
+        document.getElementById('tide-section').style.display = '';
+        renderDay(0);
+        document.getElementById('tide-prev').addEventListener('click', function() {
+          if (currentIdx > 0) renderDay(currentIdx - 1);
+        });
+        document.getElementById('tide-next').addEventListener('click', function() {
+          if (currentIdx < DAYS - 1 && tideCache[currentIdx + 1]) renderDay(currentIdx + 1);
+        });
+      });
+
+      function renderDay(idx) {
+        currentIdx = idx;
+        var d = tideCache[idx];
+        if (!d) return;
+
+        // ナビ状態
+        var dateStr = addDays(today, idx);
+        document.getElementById('tide-date-label').textContent = fmtDateJP(dateStr);
+        document.getElementById('tide-prev').disabled = (idx === 0);
+        document.getElementById('tide-next').disabled = (idx >= DAYS-1 || !tideCache[idx+1]);
+
+        // サマリー
+        var floodStr = d.flood.map(function(f) { return f.time + '（' + f.cm + 'cm）'; }).join('・');
+        var ebbStr   = d.ebb.map(function(e)   { return e.time + '（' + e.cm + 'cm）'; }).join('・');
+        var harborPart = d.harbor_name ? '<span class="tide-sun">' + d.harbor_name + '港</span>' : '';
+        document.getElementById('tide-summary').innerHTML =
+          '<span class="tide-name">' + d.tide_name + '</span>' +
+          '<span>▲ 満潮: ' + floodStr + '</span>' +
+          '<span>▽ 干潮: ' + ebbStr + '</span>' +
+          harborPart +
+          '<span class="tide-sun">日の出 ' + d.sunrise + '&ensp;日の入 ' + d.sunset + '</span>';
+
+        // グラフデータ
+        var floodTimes = new Set(d.flood.map(function(f) { return f.time; }));
+        var ebbTimes   = new Set(d.ebb.map(function(e)   { return e.time; }));
+        var maxCm = Math.max.apply(null, d.hourly.map(function(h) { return h.cm; }));
+        var sugMax = Math.ceil(maxCm * 1.2 / 50) * 50;
+        var labels = d.hourly.map(function(h) { return h.time; });
+        var values = d.hourly.map(function(h) { return h.cm; });
+        var ptR = d.hourly.map(function(h) {
+          return (floodTimes.has(h.time) || ebbTimes.has(h.time)) ? 5 : 0;
+        });
+        var ptBg = d.hourly.map(function(h) {
+          return floodTimes.has(h.time) ? '#1565C0' : ebbTimes.has(h.time) ? '#E65100' : 'transparent';
+        });
+
+        // 日の出・日の入り インデックス更新
+        sunriseIdx = nearestIdx(d.sunrise, labels);
+        sunsetIdx  = nearestIdx(d.sunset,  labels);
+
+        if (tideChart) {
+          tideChart.data.labels = labels;
+          tideChart.data.datasets[0].data = values;
+          tideChart.data.datasets[0].pointRadius = ptR;
+          tideChart.data.datasets[0].pointBackgroundColor = ptBg;
+          tideChart.data.datasets[0].pointBorderColor = ptBg;
+          tideChart.options.scales.y.suggestedMax = sugMax;
+          tideChart.update();
+        } else {
+          var ctx = document.getElementById('tide-chart').getContext('2d');
+          tideChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [{
+                data: values,
+                borderColor: '#1a6b9e',
+                backgroundColor: 'rgba(26,107,158,0.12)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: ptR,
+                pointBackgroundColor: ptBg,
+                pointBorderColor: ptBg,
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                x: {
+                  ticks: {
+                    autoSkip: false,
+                    maxRotation: 0,
+                    callback: function(val) {
+                      var label = this.getLabelForValue(val);
+                      if (!label || !label.endsWith(':00')) return null;
+                      var hour = parseInt(label.split(':')[0], 10);
+                      return (hour % 3 === 0) ? label : null;
+                    },
+                    font: { size: 11 }
+                  },
+                  grid: {
+                    color: function(context) {
+                      var label = context.chart.data.labels[context.index];
+                      return (label && label.endsWith(':00')) ? 'rgba(0,0,0,0.08)' : 'rgba(0,0,0,0)';
+                    }
+                  }
+                },
+                y: {
+                  min: 0,
+                  suggestedMax: sugMax,
+                  ticks: { font: { size: 11 } },
+                  title: { display: true, text: 'cm', font: { size: 11 } }
+                }
+              },
+              plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { label: function(c) { return c.parsed.y + ' cm'; } } }
+              }
+            },
+            plugins: [sunLinePlugin]
+          });
+        }
+      }
+    })();
 
     // AIコメント
     document.getElementById('ai-comment-loading').style.display = 'block';

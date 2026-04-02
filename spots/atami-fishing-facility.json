@@ -34,5 +34,7 @@
     "source": "osm_rule",
     "osm_evidence": []
   },
-  "target_fish": []
+  "target_fish": [],
+  "harbor_code": "14-20",
+  "harbor_name": "真鶴"
 }
