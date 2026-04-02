@@ -2,7 +2,7 @@
 """
 潮汐データ 月次バッチスクリプト。
 
-harbor_mapping.json に登録された全港の潮汐データを tide736.net API から取得し、
+harbor_list.json に登録された全港の潮汐データを tide736.net API から取得し、
 data/tides/{harbor_code}_{YYYY-MM}.json に保存して GitHub REST API 経由でプッシュする。
 
 tide736.net は個人運営の無料サービスのため、アクセス頻度を最小化する設計とする。
@@ -40,8 +40,7 @@ from datetime import datetime, timezone, timedelta
 _REPO_ROOT = pathlib.Path(__file__).parent.parent
 sys.path.insert(0, str(_REPO_ROOT))
 
-HARBOR_MAPPING_PATH = _REPO_ROOT / "data" / "harbor_mapping.json"
-HARBOR_LIST_PATH    = _REPO_ROOT / "data" / "harbor_list.json"
+HARBOR_LIST_PATH = _REPO_ROOT / "data" / "harbor_list.json"
 TIDES_DIR = _REPO_ROOT / "data" / "tides"
 
 TIDE_API_BASE = "https://api.tide736.net/get_tide.php"
@@ -65,41 +64,19 @@ JST = timezone(timedelta(hours=9))
 # ─────────────────────────────────────────────────────────
 
 def load_all_harbors() -> list[dict]:
-    """
-    harbor_list.json から全港リストを返す（全国対応）。
-    harbor_list.json がなければ harbor_mapping.json にフォールバック。
-    """
-    if HARBOR_LIST_PATH.exists():
-        with open(HARBOR_LIST_PATH, encoding="utf-8") as f:
-            data = json.load(f)
-        harbors = []
-        for h in data.get("harbors", []):
-            code = h.get("harbor_code") or f"{h['pc']}-{h['hc']}"
-            pc, hc = code.split("-", 1)
-            harbors.append({
-                "harbor_code": code,
-                "harbor_name": h.get("harbor_name", code),
-                "pc": pc,
-                "hc": hc,
-            })
-        return harbors
-
-    # フォールバック: harbor_mapping.json から一意の港を抽出
-    with open(HARBOR_MAPPING_PATH, encoding="utf-8") as f:
-        mapping = json.load(f)
-    seen: set[str] = set()
+    """harbor_list.json から全港リストを返す（全国対応）。"""
+    with open(HARBOR_LIST_PATH, encoding="utf-8") as f:
+        data = json.load(f)
     harbors = []
-    for spot_data in mapping.get("spots", {}).values():
-        code = spot_data["harbor_code"]
-        if code not in seen:
-            seen.add(code)
-            pc, hc = code.split("-", 1)
-            harbors.append({
-                "harbor_code": code,
-                "harbor_name": spot_data["harbor_name"],
-                "pc": pc,
-                "hc": hc,
-            })
+    for h in data.get("harbors", []):
+        code = h.get("harbor_code") or f"{h['pc']}-{h['hc']}"
+        pc, hc = code.split("-", 1)
+        harbors.append({
+            "harbor_code": code,
+            "harbor_name": h.get("harbor_name", code),
+            "pc": pc,
+            "hc": hc,
+        })
     return harbors
 
 
