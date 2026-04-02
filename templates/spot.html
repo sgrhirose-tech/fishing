@@ -177,9 +177,9 @@
   </div>
 </section>
 
-<!-- タイドグラフ（7日間） -->
+<!-- タイドグラフ（一週間） -->
 <section class="tide-section" id="tide-section" style="display:none;">
-  <h2>7日間の潮汐</h2>
+  <h2>一週間の潮汐</h2>
   <div class="tide-nav">
     <button class="tide-nav-btn" id="tide-prev">‹ 前日</button>
     <span id="tide-date-label" class="tide-date-label"></span>
@@ -195,9 +195,9 @@
   </p>
 </section>
 
-<!-- 7日間予報 -->
+<!-- 一週間予報 -->
 <section class="forecast-section">
-  <h2>7日間の海況・気象情報</h2>
+  <h2>一週間の海況・気象情報</h2>
   <div id="forecast-loading" class="loading">海況データを取得中...</div>
   <div id="forecast-result" style="display:none;">
     <div class="forecast-tabs">
@@ -419,9 +419,9 @@
         });
     }
 
-    // タイドグラフ（7日間）
+    // タイドグラフ（一週間）
     (function() {
-      var DAYS = 7;
+      var DAYS = 8;
       var tideCache = [];
       var currentIdx = 0;
       var tideChart = null;
