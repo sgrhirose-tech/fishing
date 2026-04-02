@@ -18,6 +18,7 @@ access は空欄（refetch_access.py が Directions API で補完）。
 
 import argparse
 import csv
+import json
 import sys
 from pathlib import Path
 from typing import List
@@ -25,8 +26,15 @@ from typing import List
 import anthropic
 from pydantic import BaseModel
 
-REPO_ROOT = Path(__file__).parent.parent
-TSV_DIR   = REPO_ROOT / "tsv"
+REPO_ROOT        = Path(__file__).parent.parent
+TSV_DIR          = REPO_ROOT / "tsv"
+FISH_MASTER_PATH = REPO_ROOT / "data" / "fish_master.json"
+
+
+def load_fish_names() -> List[str]:
+    """fish_master.json から標準和名一覧を読み込む。"""
+    with open(FISH_MASTER_PATH, encoding="utf-8") as f:
+        return list(json.load(f).keys())
 
 # build_spots.py と共通のエリアマップ
 AREA_MAP = {
@@ -68,7 +76,7 @@ class SpotList(BaseModel):
 # プロンプト
 # ──────────────────────────────────────────
 
-SYSTEM_PROMPT = """\
+_SYSTEM_PROMPT_TEMPLATE = """\
 あなたは日本の海釣りスポットに詳しい専門家です。
 指定されたエリアの実在する海釣りスポットを正確に列挙してください。
 
@@ -78,7 +86,17 @@ SYSTEM_PROMPT = """\
 - slug は名称のローマ字表記をハイフン区切り・小文字で（例: kamogawa-ko）
 - notes は釣り場の特徴と主なターゲット魚種を100字以内で簡潔に
 - 同じ場所の別名・重複は避ける
+
+魚種名は必ず以下の標準和名を使うこと（俗称・別名・略称は不可）:
+{fish_list}
+
+例: 「シーバス」→「スズキ」、「チヌ」→「クロダイ」、「タイ」→「マダイ」
 """
+
+def build_system_prompt(fish_names: List[str]) -> str:
+    fish_list = "、".join(fish_names)
+    return _SYSTEM_PROMPT_TEMPLATE.format(fish_list=fish_list)
+
 
 def build_user_prompt(area_name: str, prefecture: str, count: int) -> str:
     return (
@@ -93,12 +111,13 @@ def build_user_prompt(area_name: str, prefecture: str, count: int) -> str:
 
 def generate_spots(area_name: str, prefecture: str,
                    count: int, model: str) -> List[SpotEntry]:
-    client = anthropic.Anthropic()  # ANTHROPIC_API_KEY を環境変数から読む
+    client     = anthropic.Anthropic()  # ANTHROPIC_API_KEY を環境変数から読む
+    fish_names = load_fish_names()
 
     response = client.messages.parse(
         model=model,
         max_tokens=4096,
-        system=SYSTEM_PROMPT,
+        system=build_system_prompt(fish_names),
         messages=[{
             "role": "user",
             "content": build_user_prompt(area_name, prefecture, count),
