@@ -1,0 +1,44 @@
+{
+  "slug": "tokoname-maejima",
+  "name": "常滑港・前島港",
+  "location": {
+    "latitude": 34.88047540000001,
+    "longitude": 136.8375395
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "常滑市",
+    "city_slug": "tokoname"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 200,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "常滑港の護岸・岸壁、カレイ・ハゼ・クロダイ向き",
+    "access": "常滑駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "karei",
+    "haze"
+  ]
+}

@@ -317,9 +317,23 @@ def _compute_forecast(spot) -> dict:
     sst = fetch_sst_noaa(lat, lon, start)
 
     all_days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
+
+    # 潮名を tide736.net キャッシュデータで上書き（フォールバックなし・データなしは "ー"）
+    from .tides import get_tide_data
+    slug = spot_slug(spot)
+    for day in all_days:
+        tide_info = get_tide_data(slug, day["date"])
+        if tide_info and tide_info.get("tide_name"):
+            moon_str = f"（月齢{tide_info['moon_age']:.1f}）" if tide_info.get("moon_age") is not None else ""
+            tide_str = f"{tide_info['tide_name']}{moon_str}"
+        else:
+            tide_str = "ー"
+        for period in day["periods"]:
+            period["tide"] = tide_str
+
     today_data = all_days[0] if all_days else None   # days[0] = 今日
     forecast   = all_days[1:]                        # days[1:] = 明日+6日
-    return {"slug": spot_slug(spot), "days": forecast, "today": today_data}
+    return {"slug": slug, "days": forecast, "today": today_data}
 
 
 @app.get("/api/forecast/{slug}")
@@ -395,6 +409,20 @@ def api_weather(slug: str, date: str | None = None):
         "scores": result["scores"],
         "details": {k: v for k, v in result["details"].items() if not k.startswith("_")},
     }
+
+
+@app.get("/api/spots/{slug}/tide")
+def api_tide(slug: str, date: str | None = None):
+    """スポットの潮汐データを返す。data/tides/ のキャッシュから読み込む。
+    キャッシュが存在しない場合は tide: null を返す（エラーにしない）。
+    潮汐データは scripts/fetch_tides.py の月次バッチで生成される。
+    """
+    from .tides import get_tide_data
+    date_str = date or datetime.now(JST).strftime("%Y-%m-%d")
+    data = get_tide_data(slug, date_str)
+    if data is None:
+        return {"tide": None, "tide_unavailable_reason": "data_not_fetched"}
+    return data
 
 
 # ============================================================
@@ -554,9 +582,6 @@ def page_contact(request: Request):
 def page_safety(request: Request):
     return templates.TemplateResponse(request, "static_pages/safety.html", {})
 
-@app.get("/mars", response_class=HTMLResponse)
-def page_april_fools(request: Request):
-    return templates.TemplateResponse(request, "events/april_fools.html", {})
 
 @app.get("/area/", response_class=HTMLResponse)
 def page_area_index(request: Request):
@@ -716,6 +741,13 @@ def page_spot_detail(
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     fish_name_map = {v: k for k, v in fish_slug_map.items()}
     fish_names_jp = [fish_name_map.get(s, s) for s in spot.get("target_fish", [])[:3]]
+    cached_facilities = get_cached_facilities(slug) or []
+    facility_types = {f["type"] for f in cached_facilities}
+    facility_flags = {
+        "parking":     "駐車場" in facility_types,
+        "toilet":      "トイレ" in facility_types,
+        "convenience": "コンビニ" in facility_types,
+    }
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -729,4 +761,5 @@ def page_spot_detail(
         "fish_slug_map":      fish_slug_map,
         "fish_name_map":      fish_name_map,
         "fish_names_jp":      fish_names_jp,
+        "facility_flags":     facility_flags,
     })

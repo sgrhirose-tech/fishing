@@ -690,14 +690,7 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
   border-radius: 8px;
   display: block;
 }
-.fish-photo-credit {
-  margin-top: .35rem;
-  font-size: .75rem;
-  color: #778;
-  line-height: 1.4;
-}
-.fish-photo-credit a { color: #778; text-decoration: underline; }
-.fish-photo-credit a:hover { color: #1a6b9e; }
+
 .back-link {
   margin: 1.5rem 0 .5rem;
 }
@@ -707,3 +700,59 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
   font-size: .9rem;
 }
 .back-link a:hover { text-decoration: underline; }
+
+/* タイドグラフ */
+.tide-section { margin: 24px 0; }
+.tide-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: .9rem;
+  margin-bottom: 12px;
+  align-items: center;
+}
+.tide-name {
+  font-weight: bold;
+  background: #e8f4fb;
+  color: #1a6b9e;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+.tide-sun { color: #888; font-size: .85rem; }
+.tide-graph-wrapper {
+  position: relative;
+  height: 180px;
+  max-width: 640px;
+}
+.tide-disclaimer {
+  font-size: .78rem;
+  color: #999;
+  margin-top: 8px;
+}
+.tide-disclaimer a { color: #999; }
+
+/* 潮汐ナビゲーション */
+.tide-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.tide-nav-btn {
+  background: #f0f6fa;
+  border: 1px solid #b0cce0;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: .88rem;
+  cursor: pointer;
+  color: #1a6b9e;
+  transition: background .15s;
+}
+.tide-nav-btn:hover:not(:disabled) { background: #d8edf8; }
+.tide-nav-btn:disabled { color: #bbb; border-color: #ddd; cursor: default; }
+.tide-date-label {
+  font-weight: bold;
+  font-size: .95rem;
+  min-width: 90px;
+  text-align: center;
+}
