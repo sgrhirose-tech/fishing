@@ -1,0 +1,47 @@
+{
+  "slug": "terabe-ko",
+  "name": "寺部港・寺部海水浴場",
+  "location": {
+    "latitude": 34.7827778,
+    "longitude": 137.1291667
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "西尾市",
+    "city_slug": "nishio"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 190,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "西尾市の海水浴場隣接、キス・クロダイ向き",
+    "access": "東幡豆駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@159m",
+      "man_made=breakwater@202m",
+      "natural=beach@9m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "shirogisu"
+  ]
+}

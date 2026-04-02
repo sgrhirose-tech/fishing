@@ -1,0 +1,44 @@
+{
+  "slug": "katahara-gyoko",
+  "name": "形原漁港",
+  "location": {
+    "latitude": 34.7924674,
+    "longitude": 137.1873522
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "蒲郡市",
+    "city_slug": "gamagori"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 50,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "蒲郡市の大型漁港、クロダイ・アジ・メバル向き",
+    "access": "蒲郡駅からバス10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "aji"
+  ]
+}
