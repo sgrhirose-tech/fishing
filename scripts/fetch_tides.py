@@ -197,6 +197,28 @@ def save_local(data: dict, harbor_code: str, month_str: str) -> pathlib.Path:
 # GitHub API プッシュ（facilities.py と同じ方式）
 # ─────────────────────────────────────────────────────────
 
+def delete_file_from_github(token: str, github_path: str, sha: str, commit_message: str) -> None:
+    """GitHub REST API でファイルを削除する。"""
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "Content-Type": "application/json",
+    }
+    url = f"{GITHUB_API}/repos/{GITHUB_OWNER}/{GITHUB_REPO}/contents/{github_path}"
+    payload = {
+        "message": commit_message,
+        "sha": sha,
+        "branch": GITHUB_BRANCH,
+    }
+    body = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(url, data=body, headers=headers, method="DELETE")
+    with urllib.request.urlopen(req, timeout=30, context=_SSL_CTX) as resp:
+        resp_data = json.loads(resp.read().decode("utf-8"))
+        commit_sha = resp_data.get("commit", {}).get("sha", "?")
+        print(f"    [GitHub] 削除完了: commit {commit_sha[:8]}")
+
+
 def push_file_to_github(token: str, local_path: pathlib.Path, github_path: str, commit_message: str) -> None:
     """GitHub REST API でファイルをコミット・プッシュする。"""
     headers = {
@@ -239,6 +261,107 @@ def push_file_to_github(token: str, local_path: pathlib.Path, github_path: str, 
 
 
 # ─────────────────────────────────────────────────────────
+# 古いキャッシュの削除
+# ─────────────────────────────────────────────────────────
+
+def cleanup_old_tides(token: str | None, dry_run: bool) -> None:
+    """
+    当月より古い data/tides/*.json をローカルと GitHub から削除する。
+
+    dry_run=True の場合は削除対象を表示するだけで削除しない。
+    token=None の場合はローカル削除のみ（GitHub 削除はスキップ）。
+    """
+    now = datetime.now(JST)
+    # 当月の YYYY-MM（これより古いファイルを削除）
+    current_month_str = f"{now.year}-{now.month:02d}"
+
+    if not TIDES_DIR.exists():
+        return
+
+    targets: list[pathlib.Path] = []
+    for p in sorted(TIDES_DIR.glob("*.json")):
+        # ファイル名: {harbor_code}_{YYYY-MM}.json
+        # harbor_code は "-" を含む（例: 12-6）ので末尾から月を取る
+        stem = p.stem  # e.g. "12-6_2026-02"
+        parts = stem.rsplit("_", 1)
+        if len(parts) != 2:
+            continue
+        month_str = parts[1]  # "YYYY-MM"
+        if month_str < current_month_str:
+            targets.append(p)
+
+    if not targets:
+        print("[クリーンアップ] 削除対象なし")
+        return
+
+    print(f"[クリーンアップ] {len(targets)} ファイルを削除します（{current_month_str} より古い月）")
+
+    deleted_local = 0
+    deleted_github = 0
+    error_count = 0
+
+    for p in targets:
+        github_path = f"data/tides/{p.name}"
+        month_label = p.stem.rsplit("_", 1)[-1]
+        print(f"  削除: {p.name}", end=" ... ", flush=True)
+
+        if dry_run:
+            print("(dry-run)")
+            continue
+
+        # ローカル削除
+        try:
+            p.unlink()
+            deleted_local += 1
+        except OSError as e:
+            print(f"[ローカル削除エラー] {e}")
+            error_count += 1
+            continue
+
+        # GitHub 削除
+        if token is None:
+            print("ローカル削除済み（GitHub スキップ）")
+            continue
+
+        headers = {
+            "Authorization": f"token {token}",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+        url = f"{GITHUB_API}/repos/{GITHUB_OWNER}/{GITHUB_REPO}/contents/{github_path}"
+        sha = None
+        try:
+            req = urllib.request.Request(url, headers=headers, method="GET")
+            with urllib.request.urlopen(req, timeout=15, context=_SSL_CTX) as resp:
+                sha = json.loads(resp.read().decode("utf-8")).get("sha")
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                print("ローカル削除済み（GitHub に存在しない）")
+                continue
+            else:
+                print(f"[GitHub 取得エラー {e.code}]")
+                error_count += 1
+                continue
+        except Exception as e:
+            print(f"[GitHub 取得エラー] {e}")
+            error_count += 1
+            continue
+
+        try:
+            delete_file_from_github(
+                token, github_path, sha,
+                f"chore: 潮汐キャッシュ削除 {p.stem.rsplit('_', 1)[0]} {month_label}（月次クリーンアップ）",
+            )
+            deleted_github += 1
+        except Exception as e:
+            print(f"[GitHub 削除エラー] {e}")
+            error_count += 1
+
+    if not dry_run:
+        print(f"[クリーンアップ完了] ローカル: {deleted_local} 件, GitHub: {deleted_github} 件, エラー: {error_count} 件")
+
+
+# ─────────────────────────────────────────────────────────
 # 対象月リストの決定
 # ─────────────────────────────────────────────────────────
 
@@ -278,6 +401,8 @@ def main() -> None:
                         help="特定港のみ取得（デバッグ用）。例: --harbor 14-5")
     parser.add_argument("--dry-run", action="store_true",
                         help="取得・保存のみ実行。GitHub へのプッシュはしない")
+    parser.add_argument("--skip-cleanup", action="store_true",
+                        help="古いキャッシュファイルの削除をスキップする")
     args = parser.parse_args()
 
     print("=== 潮汐データバッチ開始 ===")
@@ -351,6 +476,9 @@ def main() -> None:
 
     if args.dry_run:
         print("[dry-run] GitHub プッシュをスキップしました")
+        if not args.skip_cleanup:
+            print()
+            cleanup_old_tides(None, dry_run=True)
         print("=== 潮汐データバッチ完了 ===")
         return
 
@@ -377,6 +505,11 @@ def main() -> None:
 
     if push_errors:
         print(f"[警告] {push_errors} ファイルのプッシュに失敗しました")
+
+    if not args.skip_cleanup:
+        print()
+        cleanup_old_tides(token, dry_run=False)
+
     print("=== 潮汐データバッチ完了 ===")
 
 

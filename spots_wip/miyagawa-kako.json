@@ -1,0 +1,43 @@
+{
+  "slug": "miyagawa-kako",
+  "name": "宮川河口",
+  "location": {
+    "latitude": 34.5326038,
+    "longitude": 136.7338993
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "伊勢市",
+    "city_slug": "ise"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 23.3,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "伊勢市の一級河川河口、シーバス・クロダイ向き",
+    "access": "近鉄二見浦駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki"
+  ],
+  "harbor_code": "23-13",
+  "harbor_name": "武豊"
+}

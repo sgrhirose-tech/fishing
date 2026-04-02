@@ -1,0 +1,46 @@
+{
+  "slug": "oka-oike",
+  "name": "相賀浦・大池付近",
+  "location": {
+    "latitude": 34.2909897,
+    "longitude": 136.6508271
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "南伊勢町",
+    "city_slug": "minamiise"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 55,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 915.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "南伊勢町北端、クロダイ・アオリイカ・グレ向き",
+    "access": "伊勢市駅からバス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai",
+    "aoriika"
+  ],
+  "harbor_code": "23-2",
+  "harbor_name": "神島"
+}

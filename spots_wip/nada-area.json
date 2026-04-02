@@ -1,0 +1,45 @@
+{
+  "slug": "nada-area",
+  "name": "名田エリア",
+  "location": {
+    "latitude": 34.2922639,
+    "longitude": 136.8933177
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 35,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "志摩市大王町の磯・護岸、グレ・アオリイカ向き",
+    "access": "鵜方駅からバス25分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "mejina",
+    "aoriika"
+  ],
+  "harbor_code": "47-30",
+  "harbor_name": "久部良"
+}

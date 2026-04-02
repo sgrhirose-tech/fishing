@@ -1,0 +1,51 @@
+{
+  "slug": "koshika-kaigan",
+  "name": "越賀海岸",
+  "location": {
+    "latitude": 34.261048,
+    "longitude": 136.7821317
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "志摩市",
+    "city_slug": "shima"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 195,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1670.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "志摩市の地磯・小港、メバル・グレ向き",
+    "access": "鵜方駅からバス35分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@105m",
+      "man_made=breakwater@185m",
+      "man_made=breakwater@232m",
+      "man_made=breakwater@279m",
+      "natural=beach@91m"
+    ]
+  },
+  "target_fish": [
+    "mejina",
+    "mebaru"
+  ],
+  "harbor_code": "23-2",
+  "harbor_name": "神島"
+}

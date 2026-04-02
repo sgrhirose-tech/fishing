@@ -1,0 +1,45 @@
+{
+  "slug": "kii-nagashima-ko",
+  "name": "紀伊長島港",
+  "location": {
+    "latitude": 34.1999761,
+    "longitude": 136.3411558
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "紀北町",
+    "city_slug": "kihoku"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 204.8,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 803.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "紀北町の大型港、アジ・クロダイ・グレ向き",
+    "access": "紀伊長島駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@210m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "aji"
+  ],
+  "harbor_code": "24-8",
+  "harbor_name": "五ヶ所"
+}
