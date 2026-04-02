@@ -5,7 +5,9 @@ spots/ の info.access を監査し、疑わしいエントリをレポートす
 
 チェック内容:
   1. 書式チェック: "○○駅から徒歩○分" / "○○駅からバス○分" に合致するか
-  2. 駅存在チェック: Google Places Nearby Search でスポット付近に実在するか
+  2. 駅存在チェック:
+     - 徒歩: Google Places Nearby Search でスポット付近に実在するか
+     - バス: Google Places Text Search で駅名を直接検索（出発駅はスポットから遠い）
   3. 所要時間の妥当性: 直線距離から推定時間と申告時間を比較
      - 徒歩: 80m/分 換算で乖離が大きければフラグ
      - バス: 直線距離2km未満でバス表記はフラグ
@@ -34,13 +36,15 @@ CONFIG_FILE = REPO_ROOT / "config.json"
 OUTPUT_FILE = REPO_ROOT / "access_audit.tsv"
 
 NEARBY_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+TEXT_SEARCH_URL   = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 
 # 徒歩速度（m/分）
 WALK_SPEED_MPM = 80
 # 直線距離に対する道路距離の補正係数（一般的に道路距離は直線の1.3〜1.5倍）
 ROAD_FACTOR    = 1.4
 # 乖離を許容する倍率（この倍率以内なら OK 扱い）
-TOLERANCE_RATIO = 1.8
+# 海沿いは道が曲がりくねるため 2.5 程度が現実的
+TOLERANCE_RATIO = 2.5
 # バス表記でこの距離未満なら「近すぎる」フラグ
 BUS_MIN_KM = 1.0
 # 駅名照合で使う部分一致の最短文字数
@@ -96,8 +100,12 @@ def search_nearby_stations(lat: float, lon: float, api_key: str,
                 loc = r.get("geometry", {}).get("location", {})
                 if "lat" not in loc:
                     continue
+                name = r.get("name", "")
+                # バス停（名前に「駅」を含まない）は除外
+                if "駅" not in name:
+                    continue
                 stations.append({
-                    "name": r.get("name", ""),
+                    "name": name,
                     "lat":  loc["lat"],
                     "lon":  loc["lng"],
                 })
@@ -110,6 +118,51 @@ def search_nearby_stations(lat: float, lon: float, api_key: str,
                 print(f"  [警告] Places Nearby 失敗: {e}", file=sys.stderr)
                 return []
     return []
+
+
+def search_station_by_name(station_name: str, area_hint: str,
+                            api_key: str) -> dict | None:
+    """
+    Google Places Text Search で駅名を直接検索し、最初の結果を返す。
+    バス出発駅の存在確認に使用（スポットから遠い場合がある）。
+    """
+    query = f"{station_name} {area_hint}".strip()
+    params = {
+        "query":    query,
+        "type":     "transit_station",
+        "language": "ja",
+        "key":      api_key,
+    }
+    wait = 1.0
+    for attempt in range(4):
+        try:
+            resp = requests.get(TEXT_SEARCH_URL, params=params, timeout=10)
+            if resp.status_code == 429:
+                if attempt < 3:
+                    time.sleep(wait)
+                    wait *= 2
+                    continue
+                return None
+            resp.raise_for_status()
+            results = resp.json().get("results", [])
+            for r in results:
+                name = r.get("name", "")
+                # 駅名の部分一致チェック
+                q_bare = re.sub(r"駅$", "", station_name)
+                r_bare = re.sub(r"駅$", "", name)
+                if q_bare in r_bare or r_bare in q_bare:
+                    loc = r.get("geometry", {}).get("location", {})
+                    if "lat" in loc:
+                        return {"name": name, "lat": loc["lat"], "lon": loc["lng"]}
+            return None
+        except requests.RequestException as e:
+            if attempt < 3:
+                time.sleep(wait)
+                wait *= 2
+            else:
+                print(f"  [警告] Text Search 失敗: {e}", file=sys.stderr)
+                return None
+    return None
 
 
 # "○○駅から徒歩○分" / "○○駅からバス○分" / "○○方面から車利用"
@@ -204,45 +257,42 @@ def audit_spot(spot_data: dict, api_key: str | None,
         row["reason"] = "書式 OK（API チェックなし）"
         return row
 
-    # Google Places Nearby Search
-    stations = search_nearby_stations(lat, lon, api_key)
-    time.sleep(request_delay)
-
-    if stations:
-        nearest = min(stations, key=lambda s: haversine_km(lat, lon, s["lat"], s["lon"]))
-        nearest_dist = haversine_km(lat, lon, nearest["lat"], nearest["lon"])
-        row["nearest_station"] = nearest["name"]
-        row["nearest_dist_km"] = f"{nearest_dist:.2f}"
-    else:
-        nearest = None
-        nearest_dist = None
-
-    # 申告駅の存在チェック
-    found_st = station_name_match(parsed["station"], stations) if stations else None
-    if found_st:
-        found_dist_km = haversine_km(lat, lon, found_st["lat"], found_st["lon"])
-        row["station_found"]  = found_st["name"]
-        row["found_dist_km"]  = f"{found_dist_km:.2f}"
-    else:
-        found_dist_km = nearest_dist  # フォールバックとして最近傍を使う
-
-    if not stations:
-        row["flag"]   = "API_NO_RESULT"
-        row["reason"] = "5km 圏内に駅なし（要確認）"
-        return row
-
-    if not found_st:
-        nearest_name = nearest["name"] if nearest else "不明"
-        row["flag"]   = "STATION_MISMATCH"
-        row["reason"] = f"申告駅「{parsed['station']}」が周辺に見当たらない（最寄: {nearest_name}）"
-        return row
-
-    # 所要時間の妥当性チェック
-    dist_m = found_dist_km * 1000 * ROAD_FACTOR
-
+    # ── 徒歩モード: Nearby Search でスポット付近の駅を確認 ──────────────
     if parsed["mode"] == "徒歩":
+        stations = search_nearby_stations(lat, lon, api_key)
+        time.sleep(request_delay)
+
+        if stations:
+            nearest = min(stations, key=lambda s: haversine_km(lat, lon, s["lat"], s["lon"]))
+            nearest_dist = haversine_km(lat, lon, nearest["lat"], nearest["lon"])
+            row["nearest_station"] = nearest["name"]
+            row["nearest_dist_km"] = f"{nearest_dist:.2f}"
+        else:
+            nearest = None
+
+        found_st = station_name_match(parsed["station"], stations) if stations else None
+        if found_st:
+            found_dist_km = haversine_km(lat, lon, found_st["lat"], found_st["lon"])
+            row["station_found"] = found_st["name"]
+            row["found_dist_km"] = f"{found_dist_km:.2f}"
+        else:
+            found_dist_km = None
+
+        if not stations:
+            row["flag"]   = "API_NO_RESULT"
+            row["reason"] = "5km 圏内に駅なし（要確認）"
+            return row
+
+        if not found_st:
+            nearest_name = nearest["name"] if nearest else "不明"
+            row["flag"]   = "STATION_MISMATCH"
+            row["reason"] = f"申告駅「{parsed['station']}」が周辺に見当たらない（最寄: {nearest_name}）"
+            return row
+
+        # 所要時間の妥当性チェック（徒歩）
+        dist_m       = found_dist_km * 1000 * ROAD_FACTOR
         expected_min = dist_m / WALK_SPEED_MPM
-        ratio = parsed["minutes"] / max(expected_min, 1)
+        ratio        = parsed["minutes"] / max(expected_min, 1)
         if ratio > TOLERANCE_RATIO or ratio < (1 / TOLERANCE_RATIO):
             row["flag"]   = "TIME_IMPLAUSIBLE"
             row["reason"] = (
@@ -251,7 +301,22 @@ def audit_spot(spot_data: dict, api_key: str | None,
             )
             return row
 
+    # ── バスモード: Text Search で出発駅を直接検索 ────────────────────
     elif parsed["mode"] == "バス":
+        area_hint = (spot_data.get("area", {}).get("prefecture", "")
+                     or spot_data.get("area", {}).get("area_name", ""))
+        found_st = search_station_by_name(parsed["station"], area_hint, api_key)
+        time.sleep(request_delay)
+
+        if not found_st:
+            row["flag"]   = "STATION_NOT_FOUND"
+            row["reason"] = f"申告駅「{parsed['station']}」が Text Search で見つからない"
+            return row
+
+        found_dist_km = haversine_km(lat, lon, found_st["lat"], found_st["lon"])
+        row["station_found"] = found_st["name"]
+        row["found_dist_km"] = f"{found_dist_km:.2f}"
+
         if found_dist_km < BUS_MIN_KM:
             row["flag"]   = "BUS_TOO_CLOSE"
             row["reason"] = (
