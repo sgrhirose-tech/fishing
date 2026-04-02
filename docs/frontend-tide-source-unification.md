@@ -109,8 +109,20 @@
 
 ## 関連バックエンド変更
 
-バックエンドは別途以下を予定（バックエンドチームで対応）:
-- 事前バッチ廃止（`scripts/fetch_tides.py` → 削除）
-- `/api/spots/{slug}/tide` をオンデマンド呼び出しに変更（インターフェース変わらず）
-- `harbor_mapping.json` / `data/tides/` を廃止
-- **フロントへの影響なし**（レスポンス構造は現状維持）
+バックエンドは別途以下を予定（バックエンドチームで対応）。
+**フロントへの影響なし**（`/api/spots/{slug}/tide` のレスポンス構造は現状維持）。
+
+| 変更内容 | 詳細 |
+|----------|------|
+| `data/harbor_mapping.json` を廃止 | スポット JSON に `harbor_code` を直接埋め込む方式に変更 |
+| `tools/assign_harbor_mapping.py` を削除 | `build_spots.py` にロジックを統合 |
+
+### 維持するもの（変更なし）
+
+- `scripts/fetch_tides.py` の月次バッチ — 引き続き月次で実行
+- `data/tides/*.json` のプリフェッチ済み JSON — 引き続き使用
+- `/api/spots/{slug}/tide` のレスポンス構造
+
+### 変更タイミング
+
+**フロント改修が完了・マージされた後**にバックエンド側の整理を実施する。
