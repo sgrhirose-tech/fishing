@@ -381,11 +381,14 @@ def refine_coords(name: str, city: str, lat: float, lon: float, cfg: dict,
         print(f"  [Google] NOT_FOUND — TSV 座標を使用")
         return lat, lon, "tsv"
 
-    # lat=0, lon=0 は「座標未入力」として無条件採用（都道府県一致候補を優先）
+    # lat=0, lon=0 は「座標未入力」として無条件採用（都道府県一致候補のみ使用）
     if lat == 0.0 and lon == 0.0:
         pref_cands = [c for c in candidates
                       if pref_hint and pref_hint in c.get("address", "")]
-        chosen = pref_cands[0] if pref_cands else candidates[0]
+        if not pref_cands:
+            print(f"  [Google] NOT_FOUND in {pref_hint} — フォールバック座標を使用")
+            return 35.3435, 139.4926, "fallback"
+        chosen = pref_cands[0]
         print(f"  [Google] 直接取得: → '{chosen['name']}' "
               f"({chosen['lat']:.5f}, {chosen['lon']:.5f})")
         return chosen["lat"], chosen["lon"], "google_direct"
