@@ -84,6 +84,11 @@ AREA_MAP = {
     "伊勢湾":         ("isewan",            "aichi",    "愛知県"),
     "志摩・南伊勢":   ("shima-minami-ise", "mie",      "三重県"),
     "熊野灘":         ("kumano-nada",       "mie",      "三重県"),
+    "大阪湾":         ("osakawan",          "osaka",    "大阪府"),
+    "播磨灘":         ("harimanada",        "hyogo",    "兵庫県"),
+    "淡路島":         ("awajishima",        "hyogo",    "兵庫県"),
+    "紀伊水道（和歌山）": ("kii-suido-wakayama", "wakayama", "和歌山県"),
+    "紀伊水道（徳島）":   ("kii-suido-tokushima", "tokushima", "徳島県"),
 }
 
 PREF_SLUG_MAP = {
@@ -93,6 +98,10 @@ PREF_SLUG_MAP = {
     "静岡県":   "shizuoka",
     "愛知県":   "aichi",
     "三重県":   "mie",
+    "大阪府":   "osaka",
+    "兵庫県":   "hyogo",
+    "和歌山県": "wakayama",
+    "徳島県":   "tokushima",
 }
 
 # ファイル名プレフィックス → 都道府県名（PREF_SLUG_MAP の逆引き）
@@ -106,6 +115,10 @@ _PREF_TO_ENGLISH = {
     "静岡県":   "Shizuoka",
     "愛知県":   "Aichi",
     "三重県":   "Mie",
+    "大阪府":   "Osaka",
+    "兵庫県":   "Hyogo",
+    "和歌山県": "Wakayama",
+    "徳島県":   "Tokushima",
 }
 
 # Google Places
