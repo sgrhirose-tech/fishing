@@ -808,8 +808,8 @@ def main():
     all_records = []
     for tsv_path in tsv_files:
         recs = parse_tsv_file(tsv_path)
-        # ファイル名プレフィックス（最初の "_" より前、またはステム全体）から都道府県を判定
-        prefix = tsv_path.stem.split("_")[0]
+        # ファイル名プレフィックス（"_" またはスペースで区切られた最初の単語）から都道府県を判定
+        prefix = tsv_path.stem.split("_")[0].split()[0]
         pref_from_file = _SLUG_TO_PREF.get(prefix, "")
         if pref_from_file:
             for r in recs:
