@@ -2,19 +2,19 @@
   "slug": "miyazaki-ko",
   "name": "宮崎港・宮崎西港",
   "location": {
-    "latitude": 31.9109105,
-    "longitude": 131.4577932
+    "latitude": 34.778986,
+    "longitude": 137.0846343
   },
   "area": {
     "prefecture": "宮崎県",
     "pref_slug": "aichi",
     "area_name": "三河湾",
     "area_slug": "mikawa-bay",
-    "city": "宮崎市",
-    "city_slug": "miyazaki"
+    "city": "西尾市",
+    "city_slug": "nishio"
   },
   "physical_features": {
-    "sea_bearing_deg": 80,
+    "sea_bearing_deg": 250,
     "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
@@ -31,11 +31,11 @@
   },
   "classification": {
     "primary_type": "unknown",
-    "confidence": 0.0,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
