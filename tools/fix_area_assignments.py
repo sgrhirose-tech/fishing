@@ -38,8 +38,9 @@ AREA_MAP = {
     "駿河湾":     ("suruga-bay",   "shizuoka"),
     "遠州灘":     ("enshu-nada",   "shizuoka"),
     "三河湾":     ("mikawa-bay",   "aichi"),
-    "伊勢湾":     ("isewan",       "aichi"),
-    "熊野灘":     ("kumano-nada",  "mie"),
+    "伊勢湾":         ("isewan",            "aichi"),
+    "志摩・南伊勢":   ("shima-minami-ise", "mie"),
+    "熊野灘":         ("kumano-nada",       "mie"),
 }
 
 PREF_SLUG_MAP = {
