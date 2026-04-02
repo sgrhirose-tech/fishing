@@ -317,9 +317,23 @@ def _compute_forecast(spot) -> dict:
     sst = fetch_sst_noaa(lat, lon, start)
 
     all_days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
+
+    # 潮名を tide736.net キャッシュデータで上書き（フォールバックなし・データなしは "ー"）
+    from .tides import get_tide_data
+    slug = spot_slug(spot)
+    for day in all_days:
+        tide_info = get_tide_data(slug, day["date"])
+        if tide_info and tide_info.get("tide_name"):
+            moon_str = f"（月齢{tide_info['moon_age']:.1f}）" if tide_info.get("moon_age") is not None else ""
+            tide_str = f"{tide_info['tide_name']}{moon_str}"
+        else:
+            tide_str = "ー"
+        for period in day["periods"]:
+            period["tide"] = tide_str
+
     today_data = all_days[0] if all_days else None   # days[0] = 今日
     forecast   = all_days[1:]                        # days[1:] = 明日+6日
-    return {"slug": spot_slug(spot), "days": forecast, "today": today_data}
+    return {"slug": slug, "days": forecast, "today": today_data}
 
 
 @app.get("/api/forecast/{slug}")
