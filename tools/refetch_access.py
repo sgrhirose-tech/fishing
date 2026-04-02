@@ -116,8 +116,12 @@ def search_nearby_stations(lat: float, lon: float, api_key: str) -> list[dict]:
         loc = r.get("geometry", {}).get("location", {})
         if "lat" not in loc:
             continue
+        name = r.get("name", "")
+        # 「駅」を含むか「（バス）」付きのものだけ採用（コンビニ等の誤ヒットを除外）
+        if "駅" not in name and "（バス）" not in name and "(バス)" not in name:
+            continue
         stations.append({
-            "name": r.get("name", ""),
+            "name": name,
             "lat":  loc["lat"],
             "lon":  loc["lng"],
         })
