@@ -106,6 +106,126 @@ def _load_fish_master() -> list[list[str]]:
     return _FISH_LIST
 
 
+def _load_name_to_slug() -> dict:
+    """fish_master.json から {日本語名: slug} の辞書を返す。"""
+    if not os.path.exists(FISH_MASTER_FILE):
+        return {}
+    with open(FISH_MASTER_FILE, encoding="utf-8") as f:
+        data = json.load(f)
+    return {name: v["slug"] for name, v in data.items() if "slug" in v}
+
+
+# ---------------------------------------------------------------------------
+# target_fish 抽出バッチ（notes テキストから魚種を自動タグ付け）
+# ---------------------------------------------------------------------------
+
+# 検索対象の表記（正規名 or エイリアス）→ 正規名 のマッピング。
+# リスト順に検索するため、長い名前を先に記載すること（部分マッチ防止）。
+FISH_NORMALIZE: dict = {
+    "アオリイカ":   "アオリイカ",
+    "ソウダガツオ": "ソウダガツオ",
+    "ウミタナゴ":   "ウミタナゴ",
+    "イシガキダイ": "イシガキダイ",
+    "コウイカ":     "コウイカ",
+    "イシダイ":     "イシダイ",
+    "シマアジ":     "シマアジ",
+    "シロギス":     "シロギス",
+    "タチウオ":     "タチウオ",
+    "マゴチ":       "マゴチ",
+    "マダイ":       "マダイ",
+    "メジナ":       "メジナ",
+    "クロダイ":     "クロダイ",
+    "カサゴ":       "カサゴ",
+    "カレイ":       "カレイ",
+    "カマス":       "カマス",
+    "メバル":       "メバル",
+    "ヒラメ":       "ヒラメ",
+    "サヨリ":       "サヨリ",
+    "スズキ":       "スズキ",
+    "イワシ":       "イワシ",
+    "サバ":         "サバ",
+    "ハゼ":         "ハゼ",
+    "タコ":         "タコ",
+    "アジ":         "アジ",
+    "ブリ":         "ブリ",
+    # エイリアス
+    "チヌ":         "クロダイ",
+    "シーバス":     "スズキ",
+    "キス":         "シロギス",
+    "イナダ":       "ブリ",
+    "ワラサ":       "ブリ",
+    "ワカシ":       "ブリ",
+    "ショゴ":       "カンパチ",
+    "キビレ":       "クロダイ",
+}
+
+
+def extract_fish_from_notes(notes: str, name_to_slug: dict) -> list:
+    """notes テキストから魚種を抽出し、スラッグのリストを返す（重複なし・出現順）。"""
+    found = []
+    seen = set()
+    text = notes or ""
+    for pattern, canonical in FISH_NORMALIZE.items():
+        if pattern in text:
+            slug = name_to_slug.get(canonical)
+            if slug and slug not in seen:
+                found.append(slug)
+                seen.add(slug)
+    return found
+
+
+def run_extract_fish(dir_key: str = "spots", dry_run: bool = False) -> None:
+    """
+    spots/ または spots_wip/ 内の全スポット JSON を対象に notes から魚種を抽出し、
+    target_fish フィールドを更新する。
+
+    使い方（CLI）:
+      python spot_editor.py --extract-fish
+      python spot_editor.py --extract-fish --dir spots_wip
+      python spot_editor.py --extract-fish --dry-run
+    """
+    spots_dir = AVAILABLE_DIRS.get(dir_key)
+    if not spots_dir or not os.path.isdir(spots_dir):
+        print(f"[エラー] ディレクトリが見つかりません: {dir_key}")
+        return
+
+    name_to_slug = _load_name_to_slug()
+    json_files = sorted(
+        p for p in os.listdir(spots_dir)
+        if p.endswith(".json") and not p.startswith("_")
+    )
+    if not json_files:
+        print(f"[WARN] {spots_dir} に JSON ファイルが見つかりません")
+        return
+
+    updated = skipped = 0
+    for filename in json_files:
+        path = os.path.join(spots_dir, filename)
+        with open(path, encoding="utf-8") as f:
+            spot = json.load(f)
+
+        slug = spot.get("slug", filename[:-5])
+        notes = spot.get("info", {}).get("notes", "")
+        fish_list = extract_fish_from_notes(notes, name_to_slug)
+
+        if spot.get("target_fish") == fish_list:
+            skipped += 1
+            continue
+
+        if dry_run:
+            print(f"  [DRY] {slug}: {fish_list}")
+        else:
+            spot["target_fish"] = fish_list
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(spot, f, ensure_ascii=False, indent=2)
+                f.write("\n")
+            print(f"  [OK]  {slug}: {fish_list}")
+        updated += 1
+
+    label = "更新予定" if dry_run else "更新"
+    print(f"\n{label}: {updated} 件 / スキップ（変更なし）: {skipped} 件")
+
+
 def _load_marine_areas():
     with open(AREAS_FILE, encoding="utf-8") as f:
         data = json.load(f)
@@ -1081,6 +1201,18 @@ def build_html(spots, save_mode='pythonista', dir_key=None):
 # ---------------------------------------------------------------------------
 
 def main():
+    # --extract-fish モード: WebUI を起動せずバッチ処理して終了
+    if "--extract-fish" in sys.argv:
+        dir_key  = "spots"
+        dry_run  = "--dry-run" in sys.argv
+        if "--dir" in sys.argv:
+            idx = sys.argv.index("--dir")
+            if idx + 1 < len(sys.argv):
+                dir_key = sys.argv[idx + 1]
+        print(f"[開始] target_fish 抽出  dir={dir_key}  dry-run={dry_run}")
+        run_extract_fish(dir_key=dir_key, dry_run=dry_run)
+        return
+
     spots = load_spots()
 
     if sys.platform == 'ios':
