@@ -92,34 +92,59 @@ BOTTOM_TYPE_MAP = {
 DEFAULT_SPOTS_DIR = Path(__file__).parent.parent / "spots"
 
 # ──────────────────────────────────────────
-# 海岸線ローカルキャッシュ
+# 海岸線ローカルキャッシュ（エリア別複数ファイル対応）
 # ──────────────────────────────────────────
 
-_COASTLINE_CACHE_PATH = Path(__file__).parent / "data" / "coastline_elements.json"
-_coastline_cache = None  # None=未試行, []=失敗/空, list=ロード済み
+_COASTLINE_DATA_DIR = Path(__file__).parent / "data"
+_COASTLINE_INDEX_PATH = _COASTLINE_DATA_DIR / "coastline_index.json"
+# slug → list[way]。None=未ロード、[]=ロード試行済み（データなし）
+_coastline_cache: dict[str, list] = {}
+_coastline_index: dict | None = None  # None=未ロード
 
 
-def _load_coastline_cache():
-    global _coastline_cache
-    if _coastline_cache is not None:
-        return _coastline_cache
-    if not _COASTLINE_CACHE_PATH.exists():
-        _coastline_cache = []
-        return _coastline_cache
+def _load_index() -> dict:
+    global _coastline_index
+    if _coastline_index is not None:
+        return _coastline_index
+    if not _COASTLINE_INDEX_PATH.exists():
+        _coastline_index = {}
+        return _coastline_index
     try:
-        with _COASTLINE_CACHE_PATH.open(encoding="utf-8") as f:
-            _coastline_cache = json.load(f)
-        print(f"  [cache] 海岸線キャッシュ: {len(_coastline_cache)}ウェイ読み込み")
+        _coastline_index = json.loads(_COASTLINE_INDEX_PATH.read_text(encoding="utf-8"))
     except Exception as e:
-        print(f"  [cache] 読み込み失敗: {e}")
-        _coastline_cache = []
-    return _coastline_cache
+        print(f"  [cache] インデックス読み込み失敗: {e}")
+        _coastline_index = {}
+    return _coastline_index
+
+
+def _load_coastline_for(lat: float, lon: float) -> list:
+    """
+    座標 (lat, lon) をカバーするエリアファイルをロードして返す。
+    境界付近のスポットのため bbox を 0.3° 広げて判定する。
+    """
+    index = _load_index()
+    margin = 0.3
+    ways: list = []
+    for slug, info in index.items():
+        s, w, n, e = info["bbox"]
+        if not (s - margin <= lat <= n + margin and w - margin <= lon <= e + margin):
+            continue
+        if slug not in _coastline_cache:
+            path = _COASTLINE_DATA_DIR / info["file"]
+            try:
+                _coastline_cache[slug] = json.loads(path.read_text(encoding="utf-8"))
+                print(f"  [cache] {info['file']}: {len(_coastline_cache[slug])}ウェイ読み込み")
+            except Exception as ex:
+                print(f"  [cache] {info['file']} 読み込み失敗: {ex}")
+                _coastline_cache[slug] = []
+        ways.extend(_coastline_cache[slug])
+    return ways
 
 
 def _filter_coastline_local(lat, lon, distance_m):
-    """キャッシュから distance_m 以内にノードを持つウェイを返す（粗フィルタ）。"""
+    """座標に対応するキャッシュから distance_m 以内にノードを持つウェイを返す（粗フィルタ）。"""
     result = []
-    for way in _load_coastline_cache():
+    for way in _load_coastline_for(lat, lon):
         for node in way.get("geometry", []):
             if haversine_m(lat, lon, node["lat"], node["lon"]) <= distance_m:
                 result.append(way)
@@ -214,7 +239,7 @@ def _overpass_get(query, _retries=2):
 
 def calculate_sea_bearing(lat, lon, search_radius_m=10000):
     # ── キャッシュ優先（download_coastline.py でキャッシュ構築済みなら Overpass 不要）──
-    cache = _load_coastline_cache()
+    cache = _load_coastline_for(lat, lon)
     if cache:
         elements = _filter_coastline_local(lat, lon, search_radius_m * 1.5)
         if not elements:
