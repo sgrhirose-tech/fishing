@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+  <defs>
+    <!-- 体のグラデーション -->
+    <radialGradient id="bodyGrad" cx="42%" cy="45%" r="55%">
+      <stop offset="0%"   stop-color="#ff8fa0"/>
+      <stop offset="60%"  stop-color="#e8475f"/>
+      <stop offset="100%" stop-color="#b52040"/>
+    </radialGradient>
+    <!-- 腹のグラデーション -->
+    <radialGradient id="bellyGrad" cx="50%" cy="30%" r="60%">
+      <stop offset="0%"   stop-color="#ffd6dc"/>
+      <stop offset="100%" stop-color="#f0829a"/>
+    </radialGradient>
+    <!-- 鱗のクリップ -->
+    <clipPath id="bodyClip">
+      <ellipse cx="90" cy="62" rx="68" ry="36"/>
+    </clipPath>
+  </defs>
+
+  <!-- 尾びれ -->
+  <path d="M152 42 L178 24 L174 62 L178 100 L152 82 Z"
+        fill="#c43055" stroke="#8a1a35" stroke-width="1.2"/>
+  <!-- 尾びれの切れ込み -->
+  <path d="M156 62 Q170 56 174 62 Q170 68 156 62Z"
+        fill="#8a1a35" opacity="0.5"/>
+
+  <!-- 体（メイン楕円） -->
+  <ellipse cx="90" cy="62" rx="68" ry="36" fill="url(#bodyGrad)"/>
+
+  <!-- 腹面（白っぽい下側） -->
+  <ellipse cx="88" cy="80" rx="52" ry="16" fill="url(#bellyGrad)" opacity="0.7"/>
+
+  <!-- 鱗模様（体にクリップ） -->
+  <g clip-path="url(#bodyClip)" opacity="0.18">
+    <!-- 列1 -->
+    <ellipse cx="60"  cy="52" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="80"  cy="48" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="100" cy="46" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="120" cy="48" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="138" cy="52" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <!-- 列2 -->
+    <ellipse cx="50"  cy="66" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="70"  cy="62" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="90"  cy="60" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="110" cy="62" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="130" cy="64" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <!-- 列3 -->
+    <ellipse cx="60"  cy="76" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="80"  cy="74" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="100" cy="74" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+    <ellipse cx="118" cy="76" rx="11" ry="8" fill="none" stroke="#fff" stroke-width="1"/>
+  </g>
+
+  <!-- マダイ特有の青い光沢スポット -->
+  <circle cx="75"  cy="48" r="2.5" fill="#7ad4f5" opacity="0.85"/>
+  <circle cx="90"  cy="44" r="2"   fill="#7ad4f5" opacity="0.85"/>
+  <circle cx="105" cy="46" r="2.5" fill="#7ad4f5" opacity="0.85"/>
+  <circle cx="118" cy="50" r="2"   fill="#7ad4f5" opacity="0.75"/>
+  <circle cx="68"  cy="55" r="1.8" fill="#7ad4f5" opacity="0.7"/>
+
+  <!-- 背びれ -->
+  <path d="M58 26 Q68 18 80 16 Q96 12 110 16 Q124 20 130 28 L126 34 Q110 24 96 24 Q82 25 70 32 Z"
+        fill="#c43055" stroke="#8a1a35" stroke-width="1"/>
+  <!-- 背びれのトゲ線 -->
+  <line x1="66"  y1="32" x2="64"  y2="20" stroke="#8a1a35" stroke-width="0.8" opacity="0.7"/>
+  <line x1="76"  y1="29" x2="74"  y2="17" stroke="#8a1a35" stroke-width="0.8" opacity="0.7"/>
+  <line x1="86"  y1="27" x2="84"  y2="15" stroke="#8a1a35" stroke-width="0.8" opacity="0.7"/>
+  <line x1="96"  y1="26" x2="95"  y2="14" stroke="#8a1a35" stroke-width="0.8" opacity="0.7"/>
+  <line x1="106" y1="27" x2="106" y2="16" stroke="#8a1a35" stroke-width="0.8" opacity="0.7"/>
+  <line x1="116" y1="29" x2="118" y2="19" stroke="#8a1a35" stroke-width="0.8" opacity="0.7"/>
+
+  <!-- 腹びれ -->
+  <path d="M82 90 Q86 104 78 110 Q70 106 72 94 Z"
+        fill="#d04060" stroke="#8a1a35" stroke-width="0.8"/>
+
+  <!-- 尻びれ -->
+  <path d="M100 90 Q110 100 118 96 Q114 86 104 84 Z"
+        fill="#c43055" stroke="#8a1a35" stroke-width="0.8"/>
+
+  <!-- 胸びれ -->
+  <path d="M54 62 Q44 52 42 68 Q48 78 58 74 Z"
+        fill="#e06080" stroke="#8a1a35" stroke-width="0.8" opacity="0.9"/>
+
+  <!-- 体の輪郭（重ね描き） -->
+  <ellipse cx="90" cy="62" rx="68" ry="36"
+           fill="none" stroke="#8a1a35" stroke-width="1.5"/>
+
+  <!-- 頭部の盛り上がり（マダイ特有のおでこ） -->
+  <path d="M30 62 Q22 46 32 36 Q40 28 52 30 Q44 44 38 62Z"
+        fill="#e05070" stroke="#8a1a35" stroke-width="1"/>
+
+  <!-- 口 -->
+  <path d="M22 64 Q26 60 30 62" fill="none" stroke="#6a1020" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- 目 -->
+  <circle cx="40" cy="54" r="7"   fill="#1a1a2e"/>
+  <circle cx="40" cy="54" r="5.5" fill="#2a3a7e"/>
+  <circle cx="40" cy="54" r="3.5" fill="#0a0a1a"/>
+  <!-- 目のハイライト -->
+  <circle cx="42" cy="52" r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="38" cy="56" r="0.8" fill="white" opacity="0.5"/>
+
+  <!-- えら線 -->
+  <path d="M50 36 Q44 50 44 64 Q46 76 52 86"
+        fill="none" stroke="#8a1a35" stroke-width="1.2" opacity="0.6"/>
+
+  <!-- 側線 -->
+  <path d="M54 60 Q90 54 148 60"
+        fill="none" stroke="#8a1a35" stroke-width="0.8"
+        stroke-dasharray="3,3" opacity="0.4"/>
+</svg>
