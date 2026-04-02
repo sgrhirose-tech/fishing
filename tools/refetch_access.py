@@ -242,7 +242,7 @@ def fetch_access_for_spot(spot: dict, api_key: str,
     time.sleep(delay)
 
     if not stations:
-        area = (spot.get("area", {}).get("area_name", "")
+        area = (spot.get("area", {}).get("city", "")
                 or spot.get("area", {}).get("prefecture", ""))
         return {
             "access":  f"{area}方面から車利用" if area else "車利用",
