@@ -8,14 +8,14 @@
   "area": {
     "prefecture": "愛知県",
     "pref_slug": "aichi",
-    "area_name": "三河湾",
-    "area_slug": "mikawa-bay",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
     "city": "美浜町",
     "city_slug": "mihama"
   },
   "physical_features": {
     "sea_bearing_deg": 270,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1049.2
   },
@@ -31,13 +31,13 @@
   },
   "classification": {
     "primary_type": "breakwater",
-    "confidence": 0.62,
+    "confidence": 1.0,
     "secondary_flags": [
       "marina",
       "parking_nearby",
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "leisure=marina@117m",
       "man_made=breakwater@149m",
@@ -47,7 +47,7 @@
     ]
   },
   "target_fish": [
-    "aoriika",
-    "kurodai"
+    "kurodai",
+    "aoriika"
   ]
 }
