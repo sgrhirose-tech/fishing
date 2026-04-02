@@ -12,7 +12,8 @@
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [3, 4, 5, 9, 10, 11],
     "method": ["カゴ釣り", "投げ釣り", "タイラバ"],
-    "bottom": ["岩礁", "砂地"]
+    "bottom": ["岩礁", "砂地"],
+    "image": "/static/img/fish/madai.png"
   },
   "ブリ": {
     "slug": "buri",
