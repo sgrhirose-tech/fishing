@@ -1,0 +1,43 @@
+{
+  "slug": "mitaki-haneage",
+  "name": "三滝川河口・跳ね上げ橋",
+  "location": {
+    "latitude": 34.9546327,
+    "longitude": 136.6331538
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "四日市市",
+    "city_slug": "yokkaichi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 87.1,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "河口のシーバス・クロダイ向き人気ポイント",
+    "access": "近鉄四日市駅からバス15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "funakoshi-maehama",
+  "name": "船越前浜小公園",
+  "location": {
+    "latitude": 34.273506,
+    "longitude": 136.8696831
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "志摩市",
+    "city_slug": "shima"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 175,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1565.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "志摩市の小公園護岸、アジ・キス向き",
+    "access": "鵜方駅からバス25分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "shirogisu"
+  ],
+  "harbor_code": "23-1",
+  "harbor_name": "伊良湖"
+}

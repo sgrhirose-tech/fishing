@@ -1,0 +1,45 @@
+{
+  "slug": "hiike-kaigan",
+  "name": "比幾海岸",
+  "location": {
+    "latitude": 34.1798307,
+    "longitude": 136.3105427
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "紀北町",
+    "city_slug": "kihoku"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 164.2,
+    "seabed_type": "gravel",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 776.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "礫主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "紀北町の海水浴場護岸、キス・メバル向き",
+    "access": "三野瀬駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  },
+  "target_fish": [
+    "mebaru",
+    "shirogisu"
+  ],
+  "harbor_code": "24-9",
+  "harbor_name": "吉津"
+}

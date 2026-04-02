@@ -1,0 +1,46 @@
+{
+  "kanto": {
+    "file": "coastline_kanto.json",
+    "bbox": [
+      34.7,
+      138.4,
+      36.0,
+      141.5
+    ],
+    "label": "関東（相模湾・三浦・東京湾・内房・外房・九十九里）",
+    "ways": 4701
+  },
+  "tokai": {
+    "file": "coastline_tokai.json",
+    "bbox": [
+      33.7,
+      136.0,
+      35.1,
+      138.4
+    ],
+    "label": "東海（三重・愛知・静岡西部）",
+    "ways": 6040
+  },
+  "kinki_pacific": {
+    "file": "coastline_kinki_pacific.json",
+    "bbox": [
+      33.3,
+      134.4,
+      34.9,
+      136.0
+    ],
+    "label": "近畿太平洋側（和歌山・大阪湾・兵庫瀬戸内・淡路島）",
+    "ways": 5770
+  },
+  "hyogo_sea": {
+    "file": "coastline_hyogo_sea.json",
+    "bbox": [
+      35.2,
+      134.2,
+      35.8,
+      135.1
+    ],
+    "label": "兵庫日本海側",
+    "ways": 2033
+  }
+}
