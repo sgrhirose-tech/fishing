@@ -1,0 +1,51 @@
+{
+  "slug": "nishi-no-hama",
+  "name": "西の浜・休暇村下",
+  "location": {
+    "latitude": 34.6066234,
+    "longitude": 137.0335007
+  },
+  "area": {
+    "prefecture": "兵庫県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "豊岡市",
+    "city_slug": "toyooka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 295,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 423.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "三河湾側の広大なサーフ、キス・カレイ向き",
+    "access": "豊橋方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@168m",
+      "man_made=breakwater@176m",
+      "man_made=breakwater@275m",
+      "man_made=breakwater@54m",
+      "man_made=breakwater@83m"
+    ]
+  },
+  "target_fish": [
+    "karei",
+    "shirogisu"
+  ]
+}

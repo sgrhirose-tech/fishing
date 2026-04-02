@@ -1,0 +1,50 @@
+{
+  "slug": "nishiura-beach",
+  "name": "西浦海水浴場",
+  "location": {
+    "latitude": 34.7664261,
+    "longitude": 137.1741041
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "蒲郡市",
+    "city_slug": "gamagori"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 185,
+    "seabed_type": "shell",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "貝殻主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "蒲郡市の海水浴場護岸、クロダイ・キス向き",
+    "access": "蒲郡駅からバス20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@127m",
+      "man_made=breakwater@181m",
+      "man_made=breakwater@281m",
+      "natural=beach@96m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "shirogisu"
+  ]
+}

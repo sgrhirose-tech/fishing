@@ -1,0 +1,46 @@
+{
+  "slug": "kasugaura-tottei",
+  "name": "春日浦突堤・春日浦公園",
+  "location": {
+    "latitude": 34.80251,
+    "longitude": 137.1916652
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "蒲郡市",
+    "city_slug": "gamagori"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 110,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "蒲郡市の突堤、ハゼ・クロダイ・ウキ釣り向き",
+    "access": "蒲郡駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@295m",
+      "natural=beach@108m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "haze"
+  ]
+}

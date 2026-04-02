@@ -1,0 +1,45 @@
+{
+  "slug": "fuki-ko",
+  "name": "富貴港",
+  "location": {
+    "latitude": 34.8284949,
+    "longitude": 136.9226503
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "武豊町",
+    "city_slug": "taketoyo"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "武豊町南の小漁港、クロダイ・カレイ向き",
+    "access": "武豊駅からバス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "karei"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "slug": "mitsuya-gyoko",
+  "name": "三谷漁港",
+  "location": {
+    "latitude": 34.8114864,
+    "longitude": 137.2487219
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "蒲郡市",
+    "city_slug": "gamagori"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 235,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "蒲郡市の漁港、クロダイ・キス・アジ向き",
+    "access": "三河三谷駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "marina",
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@114m",
+      "man_made=breakwater@238m",
+      "man_made=pier@84m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "aji",
+    "shirogisu"
+  ]
+}
