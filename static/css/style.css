@@ -730,3 +730,29 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
   margin-top: 8px;
 }
 .tide-disclaimer a { color: #999; }
+
+/* 潮汐ナビゲーション */
+.tide-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.tide-nav-btn {
+  background: #f0f6fa;
+  border: 1px solid #b0cce0;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: .88rem;
+  cursor: pointer;
+  color: #1a6b9e;
+  transition: background .15s;
+}
+.tide-nav-btn:hover:not(:disabled) { background: #d8edf8; }
+.tide-nav-btn:disabled { color: #bbb; border-color: #ddd; cursor: default; }
+.tide-date-label {
+  font-weight: bold;
+  font-size: .95rem;
+  min-width: 90px;
+  text-align: center;
+}
