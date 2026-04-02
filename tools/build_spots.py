@@ -98,6 +98,16 @@ PREF_SLUG_MAP = {
 # ファイル名プレフィックス → 都道府県名（PREF_SLUG_MAP の逆引き）
 _SLUG_TO_PREF = {v: k for k, v in PREF_SLUG_MAP.items()}
 
+# 都道府県名 → Google Places の formatted_address に現れる英語表記
+_PREF_TO_ENGLISH = {
+    "神奈川県": "Kanagawa",
+    "東京都":   "Tokyo",
+    "千葉県":   "Chiba",
+    "静岡県":   "Shizuoka",
+    "愛知県":   "Aichi",
+    "三重県":   "Mie",
+}
+
 # Google Places
 PLACES_TEXT_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 
@@ -386,8 +396,10 @@ def refine_coords(name: str, city: str, lat: float, lon: float, cfg: dict,
 
     # lat=0, lon=0 は「座標未入力」として無条件採用（都道府県一致候補のみ使用）
     if lat == 0.0 and lon == 0.0:
+        pref_en = _PREF_TO_ENGLISH.get(pref_hint, "")
         pref_cands = [c for c in candidates
-                      if pref_hint and pref_hint in c.get("address", "")]
+                      if pref_hint and (pref_hint in c.get("address", "")
+                                        or (pref_en and pref_en in c.get("address", "")))]
         if not pref_cands:
             print(f"  [Google] NOT_FOUND in {pref_hint} — フォールバック座標を使用")
             return 35.3435, 139.4926, "fallback"
@@ -405,7 +417,9 @@ def refine_coords(name: str, city: str, lat: float, lon: float, cfg: dict,
     else:
         # 名称完全一致 かつ 都道府県一致なら距離閾値を無視して補正
         name_match = best["name"] == name
-        pref_match = pref_hint and pref_hint in best.get("address", "")
+        pref_en = _PREF_TO_ENGLISH.get(pref_hint, "")
+        pref_match = pref_hint and (pref_hint in best.get("address", "")
+                                    or (pref_en and pref_en in best.get("address", "")))
         if name_match and pref_match:
             print(f"  [Google] 補正(完全一致・{pref_hint}): {dist:.2f}km → '{best['name']}'")
             return best["lat"], best["lon"], "google_exact"
