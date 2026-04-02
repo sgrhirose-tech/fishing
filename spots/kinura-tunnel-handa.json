@@ -1,0 +1,43 @@
+{
+  "slug": "kinura-tunnel-handa",
+  "name": "衣浦トンネル周辺（半田側）",
+  "location": {
+    "latitude": 34.8767074,
+    "longitude": 136.9555664
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "半田市",
+    "city_slug": "handa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 155,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "衣浦港の護岸、クロダイ・メバル・サッパ向き",
+    "access": "亀崎駅からバス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru"
+  ]
+}

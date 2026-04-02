@@ -1,0 +1,46 @@
+{
+  "slug": "kariya-gyoko",
+  "name": "苅屋漁港",
+  "location": {
+    "latitude": 34.8544686,
+    "longitude": 136.8578314
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "常滑市",
+    "city_slug": "tokoname"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 240,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "常滑南、小漁港でアオリイカ・クロダイ向き",
+    "access": "常滑駅からバス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@108m",
+      "man_made=breakwater@233m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai"
+  ]
+}
