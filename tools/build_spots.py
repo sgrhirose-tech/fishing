@@ -121,6 +121,57 @@ _PREF_TO_ENGLISH = {
     "徳島県":   "Tokushima",
 }
 
+# 都道府県庁所在地の座標（Places NOT_FOUND 時のフォールバック）
+_PREF_CAPITAL_COORDS = {
+    "北海道":   (43.0642, 141.3469),  # 札幌
+    "青森県":   (40.8244, 140.7400),
+    "岩手県":   (39.7036, 141.1527),
+    "宮城県":   (38.2688, 140.8721),
+    "秋田県":   (39.7186, 140.1024),
+    "山形県":   (38.2404, 140.3633),
+    "福島県":   (37.7500, 140.4678),
+    "茨城県":   (36.3418, 140.4468),
+    "栃木県":   (36.5658, 139.8836),
+    "群馬県":   (36.3911, 139.0608),
+    "埼玉県":   (35.8570, 139.6489),
+    "千葉県":   (35.6073, 140.1064),
+    "東京都":   (35.6895, 139.6917),
+    "神奈川県": (35.4478, 139.6425),
+    "新潟県":   (37.9026, 139.0232),
+    "富山県":   (36.6953, 137.2113),
+    "石川県":   (36.5947, 136.6256),
+    "福井県":   (36.0652, 136.2216),
+    "山梨県":   (35.6642, 138.5681),
+    "長野県":   (36.6513, 138.1810),
+    "岐阜県":   (35.3912, 136.7223),
+    "静岡県":   (34.9769, 138.3831),
+    "愛知県":   (35.1802, 136.9066),
+    "三重県":   (34.7303, 136.5086),
+    "滋賀県":   (35.0045, 135.8686),
+    "京都府":   (35.0211, 135.7556),
+    "大阪府":   (34.6937, 135.5022),
+    "兵庫県":   (34.6913, 135.1830),
+    "奈良県":   (34.6851, 135.8325),
+    "和歌山県": (34.2260, 135.1675),
+    "鳥取県":   (35.5011, 134.2351),
+    "島根県":   (35.4723, 133.0505),
+    "岡山県":   (34.6618, 133.9344),
+    "広島県":   (34.3853, 132.4553),
+    "山口県":   (34.1861, 131.4706),
+    "徳島県":   (34.0658, 134.5593),
+    "香川県":   (34.3401, 134.0434),
+    "愛媛県":   (33.8417, 132.7657),
+    "高知県":   (33.5597, 133.5311),
+    "福岡県":   (33.5904, 130.4017),
+    "佐賀県":   (33.2494, 130.2988),
+    "長崎県":   (32.7448, 129.8737),
+    "熊本県":   (32.7898, 130.7417),
+    "大分県":   (33.2382, 131.6126),
+    "宮崎県":   (31.9077, 131.4202),
+    "鹿児島県": (31.5602, 130.5581),
+    "沖縄県":   (26.2124, 127.6809),
+}
+
 # Google Places
 PLACES_TEXT_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 
@@ -414,8 +465,9 @@ def refine_coords(name: str, city: str, lat: float, lon: float, cfg: dict,
                       if pref_hint and (pref_hint in c.get("address", "")
                                         or (pref_en and pref_en in c.get("address", "")))]
         if not pref_cands:
-            print(f"  [Google] NOT_FOUND in {pref_hint} — フォールバック座標を使用")
-            return 35.3435, 139.4926, "fallback"
+            cap = _PREF_CAPITAL_COORDS.get(pref_hint, (35.3435, 139.4926))
+            print(f"  [Google] NOT_FOUND in {pref_hint} — 県庁座標を使用 ({cap[0]}, {cap[1]})")
+            return cap[0], cap[1], "fallback"
         chosen = pref_cands[0]
         print(f"  [Google] 直接取得: → '{chosen['name']}' "
               f"({chosen['lat']:.5f}, {chosen['lon']:.5f})")
@@ -624,25 +676,34 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
                                                 pref_hint=pref_hint)
         time.sleep(cfg["request_delay_sec"])
 
+    is_fallback = (coord_source == "fallback")
+
     # ── ② Nominatim 逆ジオコーディング（確定済み座標で取得）────
-    print("  住所取得 (Nominatim)...", end=" ", flush=True)
-    geo_ja = reverse_geocode(lat, lon, lang="ja,en")
-    if not geo_ja["prefecture"]:
-        geo_ja["prefecture"] = pref_hint
-    print(f"→ {geo_ja['prefecture']} {geo_ja['city']}")
-    time.sleep(1.1)
+    if is_fallback:
+        print(f"  住所取得... スキップ（フォールバック座標）→ {pref_hint}")
+        actual_pref      = pref_hint
+        actual_pref_slug = PREF_SLUG_MAP.get(pref_hint, pref_slug_fallback)
+        city      = ""
+        city_slug = ""
+    else:
+        print("  住所取得 (Nominatim)...", end=" ", flush=True)
+        geo_ja = reverse_geocode(lat, lon, lang="ja,en")
+        if not geo_ja["prefecture"]:
+            geo_ja["prefecture"] = pref_hint
+        print(f"→ {geo_ja['prefecture']} {geo_ja['city']}")
+        time.sleep(1.1)
 
-    geo_en = reverse_geocode(lat, lon, lang="en,ja")
-    city_slug = _city_to_slug(geo_en.get("city", ""))
-    time.sleep(1.1)
+        geo_en = reverse_geocode(lat, lon, lang="en,ja")
+        city_slug = _city_to_slug(geo_en.get("city", ""))
+        time.sleep(1.1)
 
-    actual_pref      = geo_ja["prefecture"] or pref_hint
-    actual_pref_slug = PREF_SLUG_MAP.get(actual_pref, pref_slug_fallback)
-    city             = geo_ja["city"]
+        actual_pref      = geo_ja["prefecture"] or pref_hint
+        actual_pref_slug = PREF_SLUG_MAP.get(actual_pref, pref_slug_fallback)
+        city             = geo_ja["city"]
 
     # ── ④ 海方向計算（確定座標から）──────────────────────────
-    if skip_google:
-        print("  海方向計算... スキップ（--skip-google）")
+    if skip_google or is_fallback:
+        print("  海方向計算... スキップ（" + ("フォールバック座標" if is_fallback else "--skip-google") + "）")
         sea_bearing = None
     else:
         print("  海方向計算 (OSM)...", end=" ", flush=True)
@@ -654,8 +715,8 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
             sea_bearing = None
 
     # ── ⑤ 底質・等深線取得（海しる）────────────────────────
-    if skip_google:
-        print("  底質・等深線取得... スキップ（--skip-google）")
+    if skip_google or is_fallback:
+        print("  底質・等深線取得... スキップ（" + ("フォールバック座標" if is_fallback else "--skip-google") + "）")
         phys = None
     else:
         print("  底質・等深線取得 (海しる)...", end=" ", flush=True)
@@ -670,19 +731,23 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
             phys = None
 
     # ── ⑥ OSM 施設分類 ──────────────────────────────────────
-    print("  施設分類 (Overpass)...", end=" ", flush=True)
-    try:
-        classification = classify_spot(lat, lon)
-        if classification:
-            print(f"→ {classification['primary_type']} (conf={classification['confidence']})")
-        else:
-            print("→ 失敗")
-    except Exception as e:
-        print(f"→ エラー ({e})")
+    if is_fallback:
+        print("  施設分類 (Overpass)... スキップ（フォールバック座標）")
         classification = None
-    time.sleep(_overpass_sleep)
+    else:
+        print("  施設分類 (Overpass)...", end=" ", flush=True)
+        try:
+            classification = classify_spot(lat, lon)
+            if classification:
+                print(f"→ {classification['primary_type']} (conf={classification['confidence']})")
+            else:
+                print("→ 失敗")
+        except Exception as e:
+            print(f"→ エラー ({e})")
+            classification = None
+        time.sleep(_overpass_sleep)
 
-    # unknown 残りにキーワード補完を試みる
+    # unknown 残りにキーワード補完を試みる（フォールバック時も実行）
     if classification is None or classification["primary_type"] == "unknown":
         kw_cls = classify_by_keyword(name)
         if kw_cls:
@@ -701,9 +766,9 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
     # ── ⑥-b サーフスポット判定 (OSM sport=surfing) ─────────────
     # 砂浜スポットに限定（漁港・磯など非砂浜での誤判定を防ぐ）
     _cls_type = classification.get("primary_type", "unknown") if classification else "unknown"
-    if skip_google or _cls_type != "sand_beach":
+    if skip_google or is_fallback or _cls_type != "sand_beach":
         surfer_spot = False
-        if not skip_google and _cls_type != "sand_beach":
+        if not skip_google and not is_fallback and _cls_type != "sand_beach":
             print(f"  サーフスポット判定... スキップ（{_cls_type}）")
     else:
         print("  サーフスポット判定 (OSM)...", end=" ", flush=True)
