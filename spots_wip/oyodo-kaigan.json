@@ -1,0 +1,47 @@
+{
+  "slug": "oyodo-kaigan",
+  "name": "大淀漁港・大淀海岸",
+  "location": {
+    "latitude": 34.5591597,
+    "longitude": 136.665287
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "明和町",
+    "city_slug": "meiwa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 60,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "松阪市南の砂浜・漁港、キス・マゴチ向き",
+    "access": "松阪駅からバス利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "magochi"
+  ],
+  "harbor_code": "23-13",
+  "harbor_name": "武豊"
+}

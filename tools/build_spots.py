@@ -95,6 +95,19 @@ PREF_SLUG_MAP = {
     "三重県":   "mie",
 }
 
+# ファイル名プレフィックス → 都道府県名（PREF_SLUG_MAP の逆引き）
+_SLUG_TO_PREF = {v: k for k, v in PREF_SLUG_MAP.items()}
+
+# 都道府県名 → Google Places の formatted_address に現れる英語表記
+_PREF_TO_ENGLISH = {
+    "神奈川県": "Kanagawa",
+    "東京都":   "Tokyo",
+    "千葉県":   "Chiba",
+    "静岡県":   "Shizuoka",
+    "愛知県":   "Aichi",
+    "三重県":   "Mie",
+}
+
 # Google Places
 PLACES_TEXT_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 
@@ -381,11 +394,16 @@ def refine_coords(name: str, city: str, lat: float, lon: float, cfg: dict,
         print(f"  [Google] NOT_FOUND — TSV 座標を使用")
         return lat, lon, "tsv"
 
-    # lat=0, lon=0 は「座標未入力」として無条件採用（都道府県一致候補を優先）
+    # lat=0, lon=0 は「座標未入力」として無条件採用（都道府県一致候補のみ使用）
     if lat == 0.0 and lon == 0.0:
+        pref_en = _PREF_TO_ENGLISH.get(pref_hint, "")
         pref_cands = [c for c in candidates
-                      if pref_hint and pref_hint in c.get("address", "")]
-        chosen = pref_cands[0] if pref_cands else candidates[0]
+                      if pref_hint and (pref_hint in c.get("address", "")
+                                        or (pref_en and pref_en in c.get("address", "")))]
+        if not pref_cands:
+            print(f"  [Google] NOT_FOUND in {pref_hint} — フォールバック座標を使用")
+            return 35.3435, 139.4926, "fallback"
+        chosen = pref_cands[0]
         print(f"  [Google] 直接取得: → '{chosen['name']}' "
               f"({chosen['lat']:.5f}, {chosen['lon']:.5f})")
         return chosen["lat"], chosen["lon"], "google_direct"
@@ -399,7 +417,9 @@ def refine_coords(name: str, city: str, lat: float, lon: float, cfg: dict,
     else:
         # 名称完全一致 かつ 都道府県一致なら距離閾値を無視して補正
         name_match = best["name"] == name
-        pref_match = pref_hint and pref_hint in best.get("address", "")
+        pref_en = _PREF_TO_ENGLISH.get(pref_hint, "")
+        pref_match = pref_hint and (pref_hint in best.get("address", "")
+                                    or (pref_en and pref_en in best.get("address", "")))
         if name_match and pref_match:
             print(f"  [Google] 補正(完全一致・{pref_hint}): {dist:.2f}km → '{best['name']}'")
             return best["lat"], best["lon"], "google_exact"
@@ -580,20 +600,22 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
     print(f"  エリア: {area_name} ({area_slug})")
 
     # ── ③ Google Places 座標補正（Nominatim より先に確定座標を得る）──
+    # ファイル名プレフィックス由来の都道府県を優先。なければエリアマップ由来。
+    pref_hint = rec.get("pref_from_file") or pref_fallback
     if skip_google:
         print("  [Google] スキップ（--skip-google）")
         coord_source = "tsv"
     else:
         print("  座標補正 (Google Places)...", end=" ", flush=True)
         lat, lon, coord_source = refine_coords(name, "", lat, lon, cfg,
-                                                pref_hint=pref_fallback)
+                                                pref_hint=pref_hint)
         time.sleep(cfg["request_delay_sec"])
 
     # ── ② Nominatim 逆ジオコーディング（確定済み座標で取得）────
     print("  住所取得 (Nominatim)...", end=" ", flush=True)
     geo_ja = reverse_geocode(lat, lon, lang="ja,en")
     if not geo_ja["prefecture"]:
-        geo_ja["prefecture"] = pref_fallback
+        geo_ja["prefecture"] = pref_hint
     print(f"→ {geo_ja['prefecture']} {geo_ja['city']}")
     time.sleep(1.1)
 
@@ -601,7 +623,7 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
     city_slug = _city_to_slug(geo_en.get("city", ""))
     time.sleep(1.1)
 
-    actual_pref      = geo_ja["prefecture"] or pref_fallback
+    actual_pref      = geo_ja["prefecture"] or pref_hint
     actual_pref_slug = PREF_SLUG_MAP.get(actual_pref, pref_slug_fallback)
     city             = geo_ja["city"]
 
@@ -786,7 +808,13 @@ def main():
     all_records = []
     for tsv_path in tsv_files:
         recs = parse_tsv_file(tsv_path)
-        print(f"読み込み: {tsv_path.name}  ({len(recs)}件)")
+        # ファイル名プレフィックス（"_" またはスペースで区切られた最初の単語）から都道府県を判定
+        prefix = tsv_path.stem.split("_")[0].split()[0]
+        pref_from_file = _SLUG_TO_PREF.get(prefix, "")
+        if pref_from_file:
+            for r in recs:
+                r["pref_from_file"] = pref_from_file
+        print(f"読み込み: {tsv_path.name}  ({len(recs)}件){f'  [{pref_from_file}]' if pref_from_file else ''}")
         all_records.extend(recs)
 
     # --slug フィルタ

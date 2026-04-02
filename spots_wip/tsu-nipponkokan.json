@@ -1,0 +1,45 @@
+{
+  "slug": "tsu-nipponkokan",
+  "name": "日本鋼管（津市）護岸・テトラ",
+  "location": {
+    "latitude": 34.676036,
+    "longitude": 136.553697
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "津市",
+    "city_slug": "tsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 56.5,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "埋立地テトラ、メバル・クロダイ・グレ向き",
+    "access": "津駅からバス利用"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:テトラ"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru"
+  ],
+  "harbor_code": "23-16",
+  "harbor_name": "鬼崎"
+}
