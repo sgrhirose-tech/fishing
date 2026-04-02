@@ -29,6 +29,23 @@ from pydantic import BaseModel
 REPO_ROOT        = Path(__file__).parent.parent
 TSV_DIR          = REPO_ROOT / "tsv"
 FISH_MASTER_PATH = REPO_ROOT / "data" / "fish_master.json"
+CONFIG_FILE      = REPO_ROOT / "config.json"
+
+
+def load_anthropic_key() -> str:
+    """config.json から anthropic_api_key を読む。なければ環境変数にフォールバック。"""
+    if CONFIG_FILE.exists():
+        with open(CONFIG_FILE, encoding="utf-8") as f:
+            cfg = json.load(f)
+        key = cfg.get("anthropic_api_key", "")
+        if key and not key.startswith("sk-ant-..."):
+            return key
+    import os
+    key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not key:
+        print("[エラー] config.json の anthropic_api_key、または環境変数 ANTHROPIC_API_KEY が未設定です。")
+        sys.exit(1)
+    return key
 
 
 def load_fish_names() -> List[str]:
@@ -53,6 +70,11 @@ AREA_MAP = {
     "伊勢湾":       ("isewan",            "aichi",    "愛知県"),
     "志摩・南伊勢": ("shima-minami-ise",  "mie",      "三重県"),
     "熊野灘":       ("kumano-nada",       "mie",      "三重県"),
+    "大阪湾":       ("osakawan",          "osaka",    "大阪府"),
+    "播磨灘":       ("harimanada",        "hyogo",    "兵庫県"),
+    "淡路島":       ("awajishima",        "hyogo",    "兵庫県"),
+    "紀伊水道（和歌山）": ("kii-suido-wakayama", "wakayama", "和歌山県"),
+    "紀伊水道（徳島）":   ("kii-suido-tokushima", "tokushima", "徳島県"),
 }
 
 DEFAULT_MODEL = "claude-haiku-4-5"
@@ -111,7 +133,7 @@ def build_user_prompt(area_name: str, prefecture: str, count: int) -> str:
 
 def generate_spots(area_name: str, prefecture: str,
                    count: int, model: str) -> List[SpotEntry]:
-    client     = anthropic.Anthropic()  # ANTHROPIC_API_KEY を環境変数から読む
+    client     = anthropic.Anthropic(api_key=load_anthropic_key())
     fish_names = load_fish_names()
 
     response = client.messages.parse(
