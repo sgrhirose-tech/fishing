@@ -29,6 +29,23 @@ from pydantic import BaseModel
 REPO_ROOT        = Path(__file__).parent.parent
 TSV_DIR          = REPO_ROOT / "tsv"
 FISH_MASTER_PATH = REPO_ROOT / "data" / "fish_master.json"
+CONFIG_FILE      = REPO_ROOT / "config.json"
+
+
+def load_anthropic_key() -> str:
+    """config.json から anthropic_api_key を読む。なければ環境変数にフォールバック。"""
+    if CONFIG_FILE.exists():
+        with open(CONFIG_FILE, encoding="utf-8") as f:
+            cfg = json.load(f)
+        key = cfg.get("anthropic_api_key", "")
+        if key and not key.startswith("sk-ant-..."):
+            return key
+    import os
+    key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not key:
+        print("[エラー] config.json の anthropic_api_key、または環境変数 ANTHROPIC_API_KEY が未設定です。")
+        sys.exit(1)
+    return key
 
 
 def load_fish_names() -> List[str]:
@@ -116,7 +133,7 @@ def build_user_prompt(area_name: str, prefecture: str, count: int) -> str:
 
 def generate_spots(area_name: str, prefecture: str,
                    count: int, model: str) -> List[SpotEntry]:
-    client     = anthropic.Anthropic()  # ANTHROPIC_API_KEY を環境変数から読む
+    client     = anthropic.Anthropic(api_key=load_anthropic_key())
     fish_names = load_fish_names()
 
     response = client.messages.parse(
