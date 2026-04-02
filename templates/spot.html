@@ -177,9 +177,14 @@
   </div>
 </section>
 
-<!-- タイドグラフ（今日） -->
+<!-- タイドグラフ（7日間） -->
 <section class="tide-section" id="tide-section" style="display:none;">
-  <h2>本日の潮汐</h2>
+  <h2>7日間の潮汐</h2>
+  <div class="tide-nav">
+    <button class="tide-nav-btn" id="tide-prev">‹ 前日</button>
+    <span id="tide-date-label" class="tide-date-label"></span>
+    <button class="tide-nav-btn" id="tide-next">翌日 ›</button>
+  </div>
   <div id="tide-summary" class="tide-summary"></div>
   <div class="tide-graph-wrapper">
     <canvas id="tide-chart"></canvas>
@@ -414,20 +419,72 @@
         });
     }
 
-    // タイドグラフ
+    // タイドグラフ（7日間）
     (function() {
+      var DAYS = 7;
+      var tideCache = [];
+      var currentIdx = 0;
+      var tideChart = null;
+
       function getTodayJST() {
         return new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
       }
-      fetch('/api/spots/' + SPOT.slug + '/tide?date=' + getTodayJST())
-        .then(r => r.json())
-        .then(function(data) {
-          if (!data || !data.hourly || data.hourly.length === 0) return;
-          renderTideSection(data);
-        })
-        .catch(function() {});
+      function addDays(base, n) {
+        var p = base.split('-');
+        var d = new Date(+p[0], +p[1]-1, +p[2]+n);
+        return d.getFullYear() + '-'
+          + String(d.getMonth()+1).padStart(2,'0') + '-'
+          + String(d.getDate()).padStart(2,'0');
+      }
+      function fmtDateJP(dateStr) {
+        var DOW = ['日','月','火','水','木','金','土'];
+        var p = dateStr.split('-');
+        var d = new Date(+p[0], +p[1]-1, +p[2]);
+        return (d.getMonth()+1) + '/' + d.getDate() + '（' + DOW[d.getDay()] + '）';
+      }
 
-      function renderTideSection(d) {
+      var today = getTodayJST();
+      var slug = SPOT.slug;
+
+      // 7日分並列fetch
+      var promises = [];
+      for (var i = 0; i < DAYS; i++) {
+        (function(idx) {
+          var dateStr = addDays(today, idx);
+          promises.push(
+            fetch('/api/spots/' + slug + '/tide?date=' + dateStr)
+              .then(function(r) { return r.json(); })
+              .then(function(data) {
+                tideCache[idx] = (data && data.hourly && data.hourly.length) ? data : null;
+              })
+              .catch(function() { tideCache[idx] = null; })
+          );
+        })(i);
+      }
+
+      Promise.all(promises).then(function() {
+        if (!tideCache[0]) return;
+        document.getElementById('tide-section').style.display = '';
+        renderDay(0);
+        document.getElementById('tide-prev').addEventListener('click', function() {
+          if (currentIdx > 0) renderDay(currentIdx - 1);
+        });
+        document.getElementById('tide-next').addEventListener('click', function() {
+          if (currentIdx < DAYS - 1 && tideCache[currentIdx + 1]) renderDay(currentIdx + 1);
+        });
+      });
+
+      function renderDay(idx) {
+        currentIdx = idx;
+        var d = tideCache[idx];
+        if (!d) return;
+
+        // ナビ状態
+        var dateStr = addDays(today, idx);
+        document.getElementById('tide-date-label').textContent = fmtDateJP(dateStr);
+        document.getElementById('tide-prev').disabled = (idx === 0);
+        document.getElementById('tide-next').disabled = (idx >= DAYS-1 || !tideCache[idx+1]);
+
         // サマリー
         var floodStr = d.flood.map(function(f) { return f.time + '（' + f.cm + 'cm）'; }).join('・');
         var ebbStr   = d.ebb.map(function(e)   { return e.time + '（' + e.cm + 'cm）'; }).join('・');
@@ -439,51 +496,64 @@
           harborPart +
           '<span class="tide-sun">日の出 ' + d.sunrise + '&ensp;日の入 ' + d.sunset + '</span>';
 
-        // グラフ
+        // グラフデータ
         var floodTimes = new Set(d.flood.map(function(f) { return f.time; }));
         var ebbTimes   = new Set(d.ebb.map(function(e)   { return e.time; }));
-        var pointRadius = d.hourly.map(function(h) {
+        var maxCm = Math.max.apply(null, d.hourly.map(function(h) { return h.cm; }));
+        var sugMax = Math.ceil(maxCm * 1.2 / 50) * 50;
+        var labels = d.hourly.map(function(h) { return h.time; });
+        var values = d.hourly.map(function(h) { return h.cm; });
+        var ptR = d.hourly.map(function(h) {
           return (floodTimes.has(h.time) || ebbTimes.has(h.time)) ? 5 : 0;
         });
-        var pointBg = d.hourly.map(function(h) {
+        var ptBg = d.hourly.map(function(h) {
           return floodTimes.has(h.time) ? '#1565C0' : ebbTimes.has(h.time) ? '#E65100' : 'transparent';
         });
-        var maxCm = Math.max.apply(null, d.hourly.map(function(h) { return h.cm; }));
-        var ctx = document.getElementById('tide-chart').getContext('2d');
-        new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: d.hourly.map(function(h) { return h.time; }),
-            datasets: [{
-              data: d.hourly.map(function(h) { return h.cm; }),
-              borderColor: '#1a6b9e',
-              backgroundColor: 'rgba(26,107,158,0.12)',
-              fill: true,
-              tension: 0.4,
-              pointRadius: pointRadius,
-              pointBackgroundColor: pointBg,
-              pointBorderColor: pointBg,
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              x: { ticks: { maxTicksLimit: 8, font: { size: 11 } } },
-              y: {
-                min: 0,
-                suggestedMax: Math.ceil(maxCm * 1.2 / 50) * 50,
-                ticks: { font: { size: 11 } },
-                title: { display: true, text: 'cm', font: { size: 11 } }
-              }
+
+        if (tideChart) {
+          tideChart.data.labels = labels;
+          tideChart.data.datasets[0].data = values;
+          tideChart.data.datasets[0].pointRadius = ptR;
+          tideChart.data.datasets[0].pointBackgroundColor = ptBg;
+          tideChart.data.datasets[0].pointBorderColor = ptBg;
+          tideChart.options.scales.y.suggestedMax = sugMax;
+          tideChart.update();
+        } else {
+          var ctx = document.getElementById('tide-chart').getContext('2d');
+          tideChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [{
+                data: values,
+                borderColor: '#1a6b9e',
+                backgroundColor: 'rgba(26,107,158,0.12)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: ptR,
+                pointBackgroundColor: ptBg,
+                pointBorderColor: ptBg,
+              }]
             },
-            plugins: {
-              legend: { display: false },
-              tooltip: { callbacks: { label: function(c) { return c.parsed.y + ' cm'; } } }
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                x: { ticks: { maxTicksLimit: 8, font: { size: 11 } } },
+                y: {
+                  min: 0,
+                  suggestedMax: sugMax,
+                  ticks: { font: { size: 11 } },
+                  title: { display: true, text: 'cm', font: { size: 11 } }
+                }
+              },
+              plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { label: function(c) { return c.parsed.y + ' cm'; } } }
+              }
             }
-          }
-        });
-        document.getElementById('tide-section').style.display = '';
+          });
+        }
       }
     })();
 
