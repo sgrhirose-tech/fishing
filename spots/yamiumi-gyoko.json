@@ -8,8 +8,8 @@
   "area": {
     "prefecture": "愛知県",
     "pref_slug": "aichi",
-    "area_name": "三河湾",
-    "area_slug": "mikawa-bay",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
     "city": "南知多町",
     "city_slug": "minamichita"
   },
@@ -31,11 +31,11 @@
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.72,
+    "confidence": 1.0,
     "secondary_flags": [
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@136m",
       "man_made=breakwater@171m",
@@ -45,8 +45,8 @@
     ]
   },
   "target_fish": [
+    "aji",
     "kurodai",
-    "mebaru",
-    "aji"
+    "mebaru"
   ]
 }
