@@ -121,8 +121,11 @@ def search_nearby_stations(lat: float, lon: float, api_key: str) -> list[dict]:
             "lat":  loc["lat"],
             "lon":  loc["lng"],
         })
-    # 距離順にソートして上位 MAX_STATIONS 件を返す
-    stations.sort(key=lambda s: haversine_km(lat, lon, s["lat"], s["lon"]))
+    # 駅（名前に「駅」を含む）を優先し、同順位は距離順にソート
+    stations.sort(key=lambda s: (
+        0 if "駅" in s["name"] else 1,
+        haversine_km(lat, lon, s["lat"], s["lon"]),
+    ))
     return stations[:MAX_STATIONS]
 
 
@@ -188,14 +191,29 @@ def classify_route(route: dict, transit_mode: str) -> tuple[str, int]:
     return "徒歩", duration_min
 
 
+def round_up_5(minutes: int) -> int:
+    """所要時間を5分単位に切り上げる。"""
+    return math.ceil(minutes / 5) * 5
+
+
+def is_bus_stop(name: str) -> bool:
+    """Google Places の名前からバス停かどうかを判定する。"""
+    return "（バス）" in name or "(バス)" in name or "駅" not in name
+
+
 def format_access(station_name: str, mode: str, minutes: int,
                   area_hint: str = "") -> str:
-    """アクセス文字列を書式化する。"""
+    """アクセス文字列を書式化する。所要時間は5分単位に切り上げ。"""
     if mode == "車利用":
         hint = area_hint or station_name
         return f"{hint}方面から車利用"
+    mins = round_up_5(minutes)
+    if is_bus_stop(station_name):
+        # 「（バス）」などを除去してバス停名を整形
+        stop_name = re.sub(r"[（(]バス[）)]", "", station_name).strip()
+        return f"{stop_name}バス停から{mode}{mins}分"
     station = station_name if station_name.endswith("駅") else station_name + "駅"
-    return f"{station}から{mode}{minutes}分"
+    return f"{station}から{mode}{mins}分"
 
 
 def fetch_access_for_spot(spot: dict, api_key: str,
