@@ -1,0 +1,45 @@
+{
+  "slug": "niishika-kaigan",
+  "name": "新鹿海岸",
+  "location": {
+    "latitude": 33.9285943,
+    "longitude": 136.1472928
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "熊野市",
+    "city_slug": "kumano"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 108.7,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1093.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "熊野市の砂浜、キス・クロダイ向き",
+    "access": "新鹿駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "shirogisu"
+  ],
+  "harbor_code": "24-11",
+  "harbor_name": "尾鷲"
+}

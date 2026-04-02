@@ -1,0 +1,49 @@
+{
+  "slug": "atawa-asuka-gyoko",
+  "name": "阿田和・飛鳥漁港",
+  "location": {
+    "latitude": 35.0602662,
+    "longitude": 136.7018535
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "桑名市",
+    "city_slug": "kuwana"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 157.3,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "御浜町の漁港、アジ・クロダイ・グレ向き",
+    "access": "阿田和駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@191m",
+      "man_made=breakwater@194m",
+      "man_made=breakwater@202m",
+      "man_made=breakwater@223m",
+      "man_made=breakwater@235m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "aji"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "fusou-ryokuchi",
+  "name": "富双緑地公園",
+  "location": {
+    "latitude": 35.0012133,
+    "longitude": 136.6590163
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "四日市市",
+    "city_slug": "yokkaichi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 125,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "護岸公園、クロダイ・セイゴ・ハゼ向き",
+    "access": "近鉄霞ヶ浦駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

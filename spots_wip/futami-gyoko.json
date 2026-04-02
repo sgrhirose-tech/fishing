@@ -1,0 +1,52 @@
+{
+  "slug": "futami-gyoko",
+  "name": "二見浦・二見漁港",
+  "location": {
+    "latitude": 34.504042,
+    "longitude": 136.7942369
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "伊勢市",
+    "city_slug": "ise"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 340,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 927.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "伊勢市の漁港・砂浜、キス・ハゼ・クロダイ向き",
+    "access": "近鉄二見浦駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@110m",
+      "natural=beach@170m",
+      "natural=beach@238m",
+      "natural=rock@61m",
+      "natural=rock@69m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
+}

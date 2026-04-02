@@ -1,0 +1,48 @@
+{
+  "slug": "hamajima-nanbari",
+  "name": "浜島港・南張海水浴場",
+  "location": {
+    "latitude": 34.3043043,
+    "longitude": 136.7207701
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "志摩市",
+    "city_slug": "shima"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 150,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1858.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "志摩市の港と砂浜、キス・クロダイ・アジ向き",
+    "access": "鵜方駅からバス20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@280m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "shirogisu",
+    "kurodai"
+  ],
+  "harbor_code": "23-2",
+  "harbor_name": "神島"
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "toba-nakanogou",
+  "name": "鳥羽港・中之郷",
+  "location": {
+    "latitude": 34.4794627,
+    "longitude": 136.8469691
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "鳥羽市",
+    "city_slug": "toba"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 70,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1596.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "鳥羽市の港護岸、アジ・クロダイ・メバル向き",
+    "access": "近鉄鳥羽駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "cliff",
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=pier@228m",
+      "man_made=pier@237m",
+      "natural=cliff@274m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "mebaru"
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
+}
