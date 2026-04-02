@@ -38,5 +38,7 @@
     "source": "manual",
     "osm_evidence": []
   },
-  "target_fish": []
+  "target_fish": [],
+  "harbor_code": "22-14",
+  "harbor_name": "三保"
 }

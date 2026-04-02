@@ -3,8 +3,8 @@
 tide736.net から対象都県の港コードと座標を取得して data/harbor_list.json を生成する。
 
 このスクリプトは tide736.net への初回セットアップ用ツール。
-一度実行して harbor_list.json を生成したら、以降は assign_harbor_mapping.py で
-自動割り当てが可能になる。
+harbor_list.json を生成・更新する際に実行する。
+build_spots.py および backfill_harbor_code.py で最近傍港計算に利用される。
 
 処理:
   1. tide736.net HTML から指定都県の港コード（pc, hc）と港名を取得
@@ -399,7 +399,7 @@ def main() -> None:
         json.dump(output, f, ensure_ascii=False, indent=2)
     print(f"\n[保存] {OUTPUT_PATH}  ({len(all_harbors)} 港)")
     print("\n次のステップ:")
-    print("  python tools/assign_harbor_mapping.py")
+    print("  python tools/backfill_harbor_code.py  # 既存スポットに harbor_code を追記")
 
 
 if __name__ == "__main__":
