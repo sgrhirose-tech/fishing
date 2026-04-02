@@ -37,6 +37,13 @@ import requests  # Google Places のみ（requirements.txt: requests>=2.31.0）
 sys.path.insert(0, str(Path(__file__).parent))
 from pythonista_spot_tools import calculate_sea_bearing, fetch_physical_data
 
+# spot_editor から魚種抽出ロジックを import
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from spot_editor import FISH_NORMALIZE, extract_fish_from_notes, _load_name_to_slug
+
+# 魚種名→slug マップ（起動時に一度だけロード）
+_NAME_TO_SLUG: dict = {}
+
 # ──────────────────────────────────────────
 # パス定数
 # ──────────────────────────────────────────
@@ -669,6 +676,7 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
             "access": access,
         },
         "classification": classification,
+        "target_fish": extract_fish_from_notes(notes, _NAME_TO_SLUG),
     }
 
     if dry_run:
@@ -686,6 +694,9 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
 # ──────────────────────────────────────────
 
 def main():
+    global _NAME_TO_SLUG
+    _NAME_TO_SLUG = _load_name_to_slug()
+
     parser = argparse.ArgumentParser(
         description="TSV からスポット JSON を一括生成するパイプライン"
     )
