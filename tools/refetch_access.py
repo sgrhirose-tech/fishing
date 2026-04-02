@@ -277,7 +277,7 @@ def fetch_access_for_spot(spot: dict, api_key: str,
         km = haversine_km(lat, lon, st["lat"], st["lon"])
         est_min = round(km * 1000 * 1.4 / 80)
         if est_min > MAX_WALK_MIN:
-            area = (spot.get("area", {}).get("area_name", "")
+            area = (spot.get("area", {}).get("city", "")
                     or spot.get("area", {}).get("prefecture", ""))
             return {
                 "access":  f"{area}方面から車利用",
@@ -298,7 +298,7 @@ def fetch_access_for_spot(spot: dict, api_key: str,
 
     travel_mode, minutes = classify_route(best, best_transit_mode)
     station_name = best_station["name"]
-    area = (spot.get("area", {}).get("area_name", "")
+    area = (spot.get("area", {}).get("city", "")
             or spot.get("area", {}).get("prefecture", ""))
 
     if travel_mode == "車利用":
