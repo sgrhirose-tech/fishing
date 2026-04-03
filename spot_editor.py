@@ -326,7 +326,11 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
 .spot-item.active small { color: #cce; }
 
 /* ---- panel ---- */
-#panel-header { background: #2c3e50; color: white; padding: 10px 12px; font-size: 14px; font-weight: bold; flex-shrink: 0; }
+#panel-header { background: #2c3e50; color: white; padding: 8px 12px; font-size: 14px; font-weight: bold; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; }
+#panel-header-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#panel-header-links { display: none; gap: 4px; flex-shrink: 0; margin-left: 8px; }
+#panel-header-links a { background: rgba(255,255,255,0.15); color: white; text-decoration: none; padding: 2px 7px; border-radius: 3px; font-size: 11px; font-weight: normal; white-space: nowrap; }
+#panel-header-links a:hover { background: rgba(255,255,255,0.3); }
 #save-bar { background: #e67e22; color: white; padding: 8px 12px; display: none; justify-content: space-between; align-items: center; font-size: 13px; flex-shrink: 0; }
 #save-bar button { background: white; color: #e67e22; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
 #action-bar { background: #f8f9fa; border-bottom: 1px solid #ddd; padding: 6px 10px; display: none; gap: 6px; align-items: center; flex-shrink: 0; }
@@ -382,7 +386,13 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
     </div>
     <div id="map"></div>
     <div id="panel">
-      <div id="panel-header">スポットを選択してください</div>
+      <div id="panel-header">
+        <span id="panel-header-name">スポットを選択してください</span>
+        <div id="panel-header-links">
+          <a id="gmap-coord-link" href="#" target="_blank">📍 地図</a>
+          <a id="gmap-search-link" href="#" target="_blank">🔍 検索</a>
+        </div>
+      </div>
       <div id="save-bar">
         <span>未保存の変更があります</span>
         <button id="btn-save" data-action="save">保存</button>
@@ -590,7 +600,12 @@ function showSpot(idx) {
     updateMapArrow(phys.sea_bearing_deg || 0);
   }
 
-  document.getElementById('panel-header').textContent = s.name || s.slug || '(無名)';
+  document.getElementById('panel-header-name').textContent = s.name || s.slug || '(無名)';
+  var gmapCoord = document.getElementById('gmap-coord-link');
+  var gmapSearch = document.getElementById('gmap-search-link');
+  gmapCoord.href = 'https://www.google.com/maps?q=' + lat + ',' + lon + '&z=15';
+  gmapSearch.href = 'https://www.google.com/maps/search/' + encodeURIComponent((s.name || s.slug) + ' 釣り場');
+  document.getElementById('panel-header-links').style.display = 'flex';
   document.getElementById('action-bar').style.display = 'flex';
   document.getElementById('delete-bar').style.display = 'block';
 
@@ -813,7 +828,7 @@ function saveChanges() {
 
   dirty = false;
   document.getElementById('save-bar').style.display = 'none';
-  document.getElementById('panel-header').textContent = payload.name || s.slug || '(無名)';
+  document.getElementById('panel-header-name').textContent = payload.name || s.slug || '(無名)';
   buildList();
 
   if (SAVE_MODE === 'http') {
@@ -880,7 +895,8 @@ function deleteSpot() {
       SPOTS.splice(currentIdx, 1);
       currentIdx = -1;
       dirty = false;
-      document.getElementById('panel-header').textContent = 'スポットを選択してください';
+      document.getElementById('panel-header-name').textContent = 'スポットを選択してください';
+      document.getElementById('panel-header-links').style.display = 'none';
       document.getElementById('action-bar').style.display = 'none';
       document.getElementById('delete-bar').style.display = 'none';
       document.getElementById('save-bar').style.display = 'none';
