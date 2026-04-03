@@ -81,6 +81,7 @@
   <span class="badge badge-warning">サーファーと仲良く</span>
   {% endif %}
 </div>
+<div id="fav-btn-container"></div>
 
 <!-- スポット写真 -->
 {% if photos %}
@@ -631,6 +632,8 @@
       .catch(() => {
         document.getElementById('ai-comment-loading').style.display = 'none';
       });
+
+    initFavoriteButton(SPOT.slug);
   });
 </script>
 {% endblock %}

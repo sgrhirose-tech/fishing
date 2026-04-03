@@ -17,6 +17,10 @@
   <div class="top-map-col">
     <section class="map-section">
       <div id="map-top" class="map-container"></div>
+      <div id="favorites-panel" style="display:none;">
+        <span class="fav-panel-label">⭐ お気に入り</span>
+        <ul id="favorites-list"></ul>
+      </div>
     </section>
   </div>
 
@@ -143,6 +147,8 @@
         if (!e.target.closest('.search-box-container')) list.hidden = true;
       });
     })();
+
+    renderFavoritesSection(SPOTS);
   });
 </script>
 {% endblock %}
