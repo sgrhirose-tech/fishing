@@ -1,0 +1,52 @@
+{
+  "slug": "shimoso-ko",
+  "name": "下荘漁港",
+  "location": {
+    "latitude": 34.3427605,
+    "longitude": 135.2063256
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "阪南市",
+    "city_slug": "hannan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 48.5,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "クロダイ、ハゼ、タチウオが釣れる。堤防釣りに最適。初心者向けスポット。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@131m",
+      "man_made=breakwater@227m",
+      "man_made=breakwater@93m",
+      "man_made=pier@128m",
+      "man_made=pier@155m"
+    ]
+  },
+  "target_fish": [
+    "tachiuo",
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "27-4",
+  "harbor_name": "泉大津"
+}

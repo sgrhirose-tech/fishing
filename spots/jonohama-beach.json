@@ -1,0 +1,46 @@
+{
+  "slug": "jonohama-beach",
+  "name": "城ノ浜海水浴場",
+  "location": {
+    "latitude": 34.19863960000001,
+    "longitude": 136.3589908
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "紀北町",
+    "city_slug": "kihoku"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 225,
+    "seabed_type": "gravel",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 925.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "礫主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "紀北町の砂浜、キス・クロダイ・アジ向き",
+    "access": "紀北町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "shirogisu",
+    "kurodai"
+  ],
+  "harbor_code": "24-8",
+  "harbor_name": "五ヶ所"
+}

@@ -1,0 +1,51 @@
+{
+  "slug": "goza-ko",
+  "name": "御座港",
+  "location": {
+    "latitude": 34.27773,
+    "longitude": 136.76994
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "志摩市",
+    "city_slug": "shima"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 0,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 571.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "半島最南端の漁港、グレ・アオリイカ向き",
+    "access": "志摩市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@157m",
+      "man_made=breakwater@178m",
+      "man_made=breakwater@205m",
+      "man_made=breakwater@279m",
+      "man_made=breakwater@97m"
+    ]
+  },
+  "target_fish": [
+    "mejina",
+    "aoriika"
+  ],
+  "harbor_code": "23-2",
+  "harbor_name": "神島"
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "maishima-deruta",
+  "name": "舞洲スラッジ干潟",
+  "location": {
+    "latitude": 34.6691532,
+    "longitude": 135.4061703
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "大阪市",
+    "city_slug": "osaka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 38.3,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "干潟でシロギス、クロダイ、ハゼが狙える。潮時を選ぶ必要があるが好実績の穴場。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu",
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

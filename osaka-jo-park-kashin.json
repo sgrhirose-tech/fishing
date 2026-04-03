@@ -1,0 +1,43 @@
+{
+  "slug": "osaka-jo-park-kashin",
+  "name": "大阪城公園下河岸",
+  "location": {
+    "latitude": 34.6864797,
+    "longitude": 135.5262114
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "大阪市",
+    "city_slug": "osaka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 232.4,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "スズキ、アユ、ハゼが狙える。都心近くで利便性高い釣り場。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

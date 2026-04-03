@@ -1,0 +1,45 @@
+{
+  "slug": "ojiro-park",
+  "name": "大白公園",
+  "location": {
+    "latitude": 34.1381829,
+    "longitude": 136.2758742
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "紀北町",
+    "city_slug": "kihoku"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 85,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 905.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "紀北町の公園護岸、グレ・アオリイカ向き",
+    "access": "紀北町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina"
+  ],
+  "harbor_code": "24-9",
+  "harbor_name": "吉津"
+}

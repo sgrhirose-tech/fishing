@@ -1,0 +1,44 @@
+{
+  "slug": "amagasaki-dashi-tei",
+  "name": "尼崎出し堤",
+  "location": {
+    "latitude": 34.6937,
+    "longitude": 135.5022
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "タチウオ、シロギス、アジが狙える。夜間の出し堤でタチウオ実績豊富。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu",
+    "tachiuo",
+    "aji"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

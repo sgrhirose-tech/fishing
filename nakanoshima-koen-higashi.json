@@ -1,0 +1,47 @@
+{
+  "slug": "nakanoshima-koen-higashi",
+  "name": "中之島公園東側",
+  "location": {
+    "latitude": 34.6924709,
+    "longitude": 135.507323
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "大阪市",
+    "city_slug": "osaka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 205.8,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "スズキ、ハゼが狙える。都市公園内。設備充実。夜釣り人気。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.38,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@191m"
+    ]
+  },
+  "target_fish": [
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}
