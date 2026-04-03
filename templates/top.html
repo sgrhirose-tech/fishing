@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Tsuricast | 千葉・東京・神奈川・静岡・愛知の釣り場天気情報{% endblock %}
+{% block title %}Tsuricast | 千葉・東京・神奈川・静岡・愛知・三重・大阪の釣り場天気情報{% endblock %}
 
 {% block hero_image %}
 <img src="/static/img/hero.png"
-     alt="Tsuricast - 千葉・東京・神奈川・静岡・愛知の釣り場天気情報"
+     alt="Tsuricast - 千葉・東京・神奈川・静岡・愛知・三重・大阪の釣り場天気情報"
      class="hero-banner">
 {% endblock %}
 
 {% block content %}
-<p class="hero-caption">千葉・東京・神奈川・静岡・愛知の釣り場天気・波高情報。天気・風・海況をチェックしよう。</p>
+<p class="hero-caption">千葉・東京・神奈川・静岡・愛知・三重・大阪の釣り場天気・波高情報。天気・風・海況をチェックしよう。</p>
 
 <div class="top-layout">
 
@@ -47,7 +47,10 @@
         <a href="/spots?area=suruga-bay" class="area-chip">駿河湾（{{ area_counts.get('suruga-bay', 0) }}）</a>
         <a href="/spots?area=enshu-nada" class="area-chip">遠州灘（{{ area_counts.get('enshu-nada', 0) }}）</a>
         <a href="/spots?area=mikawa-bay" class="area-chip">三河湾（{{ area_counts.get('mikawa-bay', 0) }}）</a>
-        <a href="/spots?area=isewan"     class="area-chip">伊勢湾（{{ area_counts.get('isewan', 0) }}）</a>
+        <a href="/spots?area=isewan"          class="area-chip">伊勢湾（{{ area_counts.get('isewan', 0) }}）</a>
+        <a href="/spots?area=shima-minami-ise" class="area-chip">志摩・南伊勢（{{ area_counts.get('shima-minami-ise', 0) }}）</a>
+        <a href="/spots?area=kumano-nada"      class="area-chip">熊野灘（{{ area_counts.get('kumano-nada', 0) }}）</a>
+        <a href="/spots?area=osakawan"         class="area-chip">大阪湾（{{ area_counts.get('osakawan', 0) }}）</a>
       </div>
     </section>
 
