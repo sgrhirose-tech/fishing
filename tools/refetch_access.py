@@ -125,9 +125,26 @@ def search_nearby_stations(lat: float, lon: float, api_key: str) -> list[dict]:
             "lat":  loc["lat"],
             "lon":  loc["lng"],
         })
-    # 駅（名前に「駅」を含む）を優先し、同順位は距離順にソート
+    # 「XX駅前」バス停に対応する「XX駅」が同リストにあれば除外（駅を優先）
+    _DIRECTION_SUFFIXES = ("前", "口", "入口", "西口", "東口", "南口", "北口", "正面", "広場")
+    station_names = {s["name"] for s in stations}
+    filtered = []
+    for s in stations:
+        name = s["name"]
+        dominated = False
+        for suf in _DIRECTION_SUFFIXES:
+            if name.endswith("駅" + suf):
+                base = name[: -len(suf)]  # 「熊野市駅前」→「熊野市駅」
+                if base in station_names:
+                    dominated = True
+                    break
+        if not dominated:
+            filtered.append(s)
+    stations = filtered
+
+    # 駅（名前が「駅」で終わる）を優先し、同順位は距離順にソート
     stations.sort(key=lambda s: (
-        0 if "駅" in s["name"] else 1,
+        0 if s["name"].endswith("駅") else 1,
         haversine_km(lat, lon, s["lat"], s["lon"]),
     ))
     return stations[:MAX_STATIONS]
@@ -202,7 +219,15 @@ def round_up_5(minutes: int) -> int:
 
 def is_bus_stop(name: str) -> bool:
     """Google Places の名前からバス停かどうかを判定する。"""
-    return "（バス）" in name or "(バス)" in name or "駅" not in name
+    if "（バス）" in name or "(バス)" in name:
+        return True
+    if "駅" not in name:
+        return True
+    # 「熊野市駅前」「新大阪駅西口」など、駅名＋方向・出口のバス停
+    _BUS_SUFFIXES = ("駅前", "駅口", "駅入口",
+                     "駅西口", "駅東口", "駅南口", "駅北口",
+                     "駅正面", "駅広場")
+    return any(name.endswith(s) for s in _BUS_SUFFIXES)
 
 
 def format_access(station_name: str, mode: str, minutes: int,
