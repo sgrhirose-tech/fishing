@@ -1,0 +1,47 @@
+{
+  "slug": "ohori-gyoko",
+  "name": "大堀漁港",
+  "location": {
+    "latitude": 34.5626612,
+    "longitude": 136.6580343
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "明和町",
+    "city_slug": "meiwa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 60,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "明和町の小漁港、ハゼ・クロダイ・投げ釣り向き",
+    "access": "明和町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "13-3",
+  "harbor_name": "羽田"
+}

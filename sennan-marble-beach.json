@@ -1,0 +1,45 @@
+{
+  "slug": "sennan-marble-beach",
+  "name": "泉南マーブルビーチ",
+  "location": {
+    "latitude": 34.384538,
+    "longitude": 135.2679832
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "泉南市",
+    "city_slug": "sennan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 317.5,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "ハゼ、クロダイが狙える。砂浜から堤防へアクセス可。有料施設。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@136m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "27-6",
+  "harbor_name": "大阪"
+}

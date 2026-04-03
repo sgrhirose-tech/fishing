@@ -1,0 +1,49 @@
+{
+  "slug": "sennan-ko",
+  "name": "泉南漁港",
+  "location": {
+    "latitude": 34.42041,
+    "longitude": 135.315189
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "泉佐野市",
+    "city_slug": "izumisano"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 312.8,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "タチウオ、シロギス、アジが主なターゲット。秋のタチウオが特に実績豊富。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "marina"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@247m",
+      "man_made=breakwater@133m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "tachiuo",
+    "aji"
+  ],
+  "harbor_code": "27-6",
+  "harbor_name": "大阪"
+}

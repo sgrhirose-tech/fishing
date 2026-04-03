@@ -1,0 +1,47 @@
+{
+  "slug": "hoza-gyoko",
+  "name": "方座浦漁港",
+  "location": {
+    "latitude": 34.2809621,
+    "longitude": 136.5530094
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "南伊勢町",
+    "city_slug": "minamiise"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 190,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1111.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "南伊勢町の漁港、グレ・クロダイ・筏釣り向き",
+    "access": "南伊勢町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ],
+  "harbor_code": "24-5",
+  "harbor_name": "鳥羽"
+}

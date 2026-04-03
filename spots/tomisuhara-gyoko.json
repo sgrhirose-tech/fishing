@@ -1,0 +1,44 @@
+{
+  "slug": "tomisuhara-gyoko",
+  "name": "富洲原漁港",
+  "location": {
+    "latitude": 35.0023036,
+    "longitude": 136.6615068
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "四日市市",
+    "city_slug": "yokkaichi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 140.7,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "四日市市北端の漁港、クロダイ・セイゴ向き",
+    "access": "富田駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  },
+  "target_fish": [
+    "kurodai"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

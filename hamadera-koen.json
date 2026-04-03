@@ -1,0 +1,44 @@
+{
+  "slug": "hamadera-koen",
+  "name": "浜寺公園",
+  "location": {
+    "latitude": 34.5420623,
+    "longitude": 135.4407418
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "堺市",
+    "city_slug": "sakai"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 20.2,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "ハゼ、クロダイ、ウミタナゴが釣れる。公園施設充実。有料駐車場。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "umitanago",
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

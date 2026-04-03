@@ -1,0 +1,45 @@
+{
+  "slug": "iwata-kako",
+  "name": "岩田川河口",
+  "location": {
+    "latitude": 34.7085038,
+    "longitude": 136.5231514
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "藤沢市",
+    "city_slug": "fujisawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 110,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "津市の河口、シーバス・クロダイ向き",
+    "access": "藤沢市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki"
+  ],
+  "harbor_code": "13-3",
+  "harbor_name": "羽田"
+}
