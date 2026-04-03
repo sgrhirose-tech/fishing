@@ -1,0 +1,46 @@
+{
+  "slug": "nishiki-no-hama-park",
+  "name": "二色の浜海浜公園",
+  "location": {
+    "latitude": 34.4474861,
+    "longitude": 135.3327056
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "貝塚市",
+    "city_slug": "kaizuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 226.5,
+    "seabed_type": "gravel",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1083.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "礫主体、貝殻混じり"
+  },
+  "info": {
+    "notes": "貝塚市の海浜公園。シロギス・ハゼ・イシモチ・メバルが狙える。家族向け釣り場。",
+    "access": "二色浜駅から徒歩40分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu",
+    "mebaru",
+    "haze"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}
