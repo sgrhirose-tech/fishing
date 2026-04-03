@@ -1,0 +1,54 @@
+{
+  "slug": "tannowa-fishing-port",
+  "name": "淡輪漁港",
+  "location": {
+    "latitude": 34.3363691,
+    "longitude": 135.1713389
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "岬町",
+    "city_slug": "misaki"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 324.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "岬町の漁港。アジ・クロダイ・メバル・アオリイカ・スズキが狙える和歌山県境近くの漁港。",
+    "access": "淡輪駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.72,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@179m",
+      "man_made=pier@154m",
+      "man_made=pier@168m",
+      "man_made=pier@46m",
+      "man_made=pier@91m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "mebaru",
+    "suzuki",
+    "aji"
+  ],
+  "harbor_code": "27-4",
+  "harbor_name": "泉大津"
+}

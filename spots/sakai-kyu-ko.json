@@ -1,0 +1,54 @@
+{
+  "slug": "sakai-kyu-ko",
+  "name": "堺旧港（堺旧港緑地）",
+  "location": {
+    "latitude": 34.5831297,
+    "longitude": 135.4643923
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "堺市",
+    "city_slug": "sakai"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 110.0,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "堺市堺区の旧港緑地。アジ・スズキ・クロダイ・ハゼが狙える。市街地近く。",
+    "access": "堺駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@139m",
+      "man_made=pier@112m",
+      "man_made=pier@113m",
+      "man_made=pier@120m",
+      "man_made=pier@134m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze",
+    "aji"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}
