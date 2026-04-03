@@ -1,0 +1,53 @@
+{
+  "slug": "ozaki-fishing-port",
+  "name": "尾崎漁港",
+  "location": {
+    "latitude": 34.3667652,
+    "longitude": 135.240794
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "阪南市",
+    "city_slug": "hannan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 311.3,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "阪南市の漁港。アジ・クロダイ・スズキ・メバル・アオリイカが狙える。",
+    "access": "尾崎駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@279m",
+      "man_made=pier@126m",
+      "man_made=pier@177m",
+      "man_made=pier@92m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "mebaru",
+    "suzuki",
+    "aji"
+  ],
+  "harbor_code": "27-6",
+  "harbor_name": "大阪"
+}

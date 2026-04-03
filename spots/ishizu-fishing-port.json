@@ -1,0 +1,53 @@
+{
+  "slug": "ishizu-fishing-port",
+  "name": "石津漁港",
+  "location": {
+    "latitude": 34.5558191,
+    "longitude": 135.4457631
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "堺市",
+    "city_slug": "sakai"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 20.2,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "堺市西区の漁港。アジ・クロダイ・スズキ・ハゼが釣れる。ファミリー向き。",
+    "access": "石津駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@202m",
+      "man_made=breakwater@162m",
+      "man_made=breakwater@268m",
+      "man_made=pier@139m",
+      "man_made=pier@142m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze",
+    "aji"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}
