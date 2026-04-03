@@ -10,8 +10,8 @@
     "pref_slug": "mie",
     "area_name": "志摩・南伊勢",
     "area_slug": "shima-minami-ise",
-    "city": "",
-    "city_slug": ""
+    "city": "志摩市",
+    "city_slug": "shima"
   },
   "physical_features": {
     "sea_bearing_deg": 35,
@@ -37,8 +37,8 @@
     "osm_evidence": []
   },
   "target_fish": [
-    "mejina",
-    "aoriika"
+    "aoriika",
+    "mejina"
   ],
   "harbor_code": "47-30",
   "harbor_name": "久部良"
