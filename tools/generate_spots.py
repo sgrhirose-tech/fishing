@@ -77,7 +77,7 @@ AREA_MAP = {
     "紀伊水道（徳島）":   ("kii-suido-tokushima", "tokushima", "徳島県"),
 }
 
-DEFAULT_MODEL = "claude-haiku-4-5"
+DEFAULT_MODEL = "claude-sonnet-4-6"
 
 
 # ──────────────────────────────────────────
