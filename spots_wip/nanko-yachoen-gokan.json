@@ -1,0 +1,44 @@
+{
+  "slug": "nanko-yachoen-gokan",
+  "name": "南港野鳥園周辺護岸",
+  "location": {
+    "latitude": 34.6352341,
+    "longitude": 135.4009959
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "大阪市",
+    "city_slug": "osaka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 270.1,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "大阪市住之江区。アジ・スズキ・クロダイが釣れる護岸。周辺環境への配慮が必要。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "aji"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "tanagawa-kojima-port",
+  "name": "多奈川小島漁港",
+  "location": {
+    "latitude": 34.31444219999999,
+    "longitude": 135.0919458
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "岬町",
+    "city_slug": "misaki"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 269.6,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 174.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "岬町の小漁港。アジ・メバル・カサゴ・クロダイが釣れる。落ち着いた釣り環境。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@109m",
+      "man_made=breakwater@127m",
+      "man_made=breakwater@166m",
+      "man_made=breakwater@195m",
+      "man_made=breakwater@63m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "kasago",
+    "mebaru",
+    "aji"
+  ],
+  "harbor_code": "28-24",
+  "harbor_name": "垂水"
+}
