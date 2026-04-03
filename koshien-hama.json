@@ -1,0 +1,45 @@
+{
+  "slug": "koshien-hama",
+  "name": "甲子園浜",
+  "location": {
+    "latitude": 34.6937,
+    "longitude": 135.5022
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "シロギス、クロダイが狙える砂浜。春から秋が好シーズン。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.6,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:浜"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "kurodai"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

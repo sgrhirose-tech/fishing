@@ -1,0 +1,44 @@
+{
+  "slug": "nanko-yachou-koen",
+  "name": "南港野鳥公園",
+  "location": {
+    "latitude": 34.634979,
+    "longitude": 135.400943
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "大阪市",
+    "city_slug": "osaka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 270.1,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "ハゼ、クロダイ、メバルが釣れる。公園内で環境良好。トイレあり有料公園。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "haze"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

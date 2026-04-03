@@ -1,0 +1,53 @@
+{
+  "slug": "chiyozaki-surf",
+  "name": "千代崎サーフ",
+  "location": {
+    "latitude": 34.85271609999999,
+    "longitude": 136.6142096
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "鈴鹿市",
+    "city_slug": "suzuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 130,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "鈴鹿市の遠浅サーフ、キス・マゴチ向き",
+    "access": "千代崎駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "slipway"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "leisure=slipway@221m",
+      "leisure=slipway@280m",
+      "man_made=breakwater@208m",
+      "man_made=breakwater@243m",
+      "natural=beach@157m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "magochi"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

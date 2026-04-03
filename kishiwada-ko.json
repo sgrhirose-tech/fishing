@@ -1,0 +1,47 @@
+{
+  "slug": "kishiwada-ko",
+  "name": "岸和田漁港",
+  "location": {
+    "latitude": 34.4657113,
+    "longitude": 135.3640373
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "岸和田市",
+    "city_slug": "kishiwada"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 303.1,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "アジ、イサキ、タチウオが狙える大型漁港。堤防からのアクセス良好で初心者向け。混雑時は駐車場確保困難。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@118m"
+    ]
+  },
+  "target_fish": [
+    "tachiuo",
+    "aji"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

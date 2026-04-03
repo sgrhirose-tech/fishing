@@ -1,0 +1,47 @@
+{
+  "slug": "onigajo-chiso",
+  "name": "鬼ヶ城周辺地磯",
+  "location": {
+    "latitude": 33.8903126,
+    "longitude": 136.1163139
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "熊野市",
+    "city_slug": "kumano"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 145,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 91.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "熊野市の一級地磯、グレ・青物・アオリイカ向き",
+    "access": "熊野市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:磯"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina"
+  ],
+  "harbor_code": "24-11",
+  "harbor_name": "尾鷲"
+}
