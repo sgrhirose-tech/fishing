@@ -1,0 +1,46 @@
+{
+  "slug": "kaizuka-jinto",
+  "name": "貝塚人工島",
+  "location": {
+    "latitude": 34.4470011,
+    "longitude": 135.336401
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "貝塚市",
+    "city_slug": "kaizuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 140.5,
+    "seabed_type": "gravel",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1343.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "礫主体"
+  },
+  "info": {
+    "notes": "貝塚沖の人工島。アジ・クロダイ・スズキ・ヒラメ・アオリイカが狙える好ポイント。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "hirame",
+    "suzuki",
+    "aji"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

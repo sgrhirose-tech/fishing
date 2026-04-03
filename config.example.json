@@ -1,9 +1,0 @@
-{
-  "api_key": "AIza...",
-  "anthropic_api_key": "sk-ant-...",
-  "threshold_km": 1.0,
-  "search_language": "ja",
-  "search_region": "jp",
-  "request_delay_sec": 0.5,
-  "max_candidates": 3
-}

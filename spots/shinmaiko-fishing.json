@@ -38,5 +38,7 @@
     "source": "osm_rule",
     "osm_evidence": []
   },
-  "target_fish": []
+  "target_fish": [],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
 }
