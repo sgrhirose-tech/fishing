@@ -6,8 +6,8 @@
     "longitude": 139.629364
   },
   "area": {
-    "prefecture": "神奈川県",
-    "pref_slug": "kanagawa",
+    "prefecture": "三重県",
+    "pref_slug": "mie",
     "area_name": "三浦半島",
     "area_slug": "miura",
     "city": "三浦市",
@@ -21,25 +21,27 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "城ヶ島南西端の地磯、クロダイ・メジナ・アオリイカ・青物向き",
-    "access": "白秋碑前バス停から徒歩25分"
+    "access": "白秋碑前バス停から徒歩25分",
+    "photo_url": ""
   },
   "classification": {
     "primary_type": "rocky_shore",
-    "confidence": 0.55,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:崎"
     ]
   },
   "target_fish": [
     "aoriika",
-    "mejina",
-    "kurodai"
+    "kurodai",
+    "mejina"
   ],
   "harbor_code": "12-12",
   "harbor_name": "君津"

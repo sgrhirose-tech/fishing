@@ -6,12 +6,12 @@
     "longitude": 136.8344378
   },
   "area": {
-    "prefecture": "神奈川県",
-    "pref_slug": "kanagawa",
+    "prefecture": "三重県",
+    "pref_slug": "mie",
     "area_name": "志摩・南伊勢",
     "area_slug": "shima-minami-ise",
-    "city": "藤沢市",
-    "city_slug": "fujisawa"
+    "city": "鳥羽市",
+    "city_slug": "toba"
   },
   "physical_features": {
     "sea_bearing_deg": 85,
@@ -42,6 +42,6 @@
     "aji",
     "kurodai"
   ],
-  "harbor_code": "13-3",
-  "harbor_name": "羽田"
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
 }
