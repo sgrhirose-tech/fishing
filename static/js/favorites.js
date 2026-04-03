@@ -44,6 +44,10 @@
 
     update();
     container.appendChild(btn);
+    var note = document.createElement('span');
+    note.className = 'fav-note';
+    note.textContent = '※このブラウザのみ';
+    container.appendChild(note);
   };
 
   /* ---- TOPページ用（地図上パネル） ---- */
