@@ -369,21 +369,27 @@ def main():
                         help="access_audit.tsv で NG フラグのスポットのみ処理")
     parser.add_argument("--skip-ok",      action="store_true",
                         help="既存 access が正しい書式のスポットをスキップ")
+    parser.add_argument("--spots-dir",    metavar="DIR",
+                        help="spots/ の代わりに使うディレクトリ（例: spots_wip）")
     args = parser.parse_args()
 
     cfg   = load_config()
     key   = cfg["api_key"]
     delay = cfg.get("request_delay_sec", 0.5)
 
+    spots_dir = Path(args.spots_dir) if args.spots_dir else SPOTS_DIR
+    if not spots_dir.is_absolute():
+        spots_dir = REPO_ROOT / spots_dir
+
     # 対象ファイルの決定
     if args.slug:
-        files = [SPOTS_DIR / f"{args.slug}.json"]
+        files = [spots_dir / f"{args.slug}.json"]
         files = [f for f in files if f.exists()]
         if not files:
             print(f"[エラー] {args.slug}.json が見つかりません")
             return
     else:
-        all_files = sorted(f for f in SPOTS_DIR.glob("*.json")
+        all_files = sorted(f for f in spots_dir.glob("*.json")
                            if not f.name.startswith("_"))
         if args.flagged_only:
             flagged = load_flagged_slugs()

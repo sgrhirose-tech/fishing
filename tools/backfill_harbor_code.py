@@ -53,13 +53,19 @@ def load_harbor_list() -> list:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="spots/*.json に harbor_code を一括追記")
-    parser.add_argument("--dry-run", action="store_true", help="表示のみ（ファイル保存しない）")
-    parser.add_argument("--slug", metavar="SLUG", help="1スポットのみ処理")
+    parser.add_argument("--dry-run",   action="store_true", help="表示のみ（ファイル保存しない）")
+    parser.add_argument("--slug",      metavar="SLUG", help="1スポットのみ処理")
+    parser.add_argument("--spots-dir", metavar="DIR",
+                        help="spots/ の代わりに使うディレクトリ（例: spots_wip）")
     args = parser.parse_args()
 
     harbors = load_harbor_list()
 
-    paths = sorted(SPOTS_DIR.glob("*.json"))
+    spots_dir = Path(args.spots_dir) if args.spots_dir else SPOTS_DIR
+    if not spots_dir.is_absolute():
+        spots_dir = REPO_ROOT / spots_dir
+
+    paths = sorted(spots_dir.glob("*.json"))
     if args.slug:
         paths = [p for p in paths if p.stem == args.slug]
         if not paths:
