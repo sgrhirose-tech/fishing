@@ -31,8 +31,12 @@ _VALID_AREA_SLUGS = {
     "sagamibay", "miura", "tokyobay", "uchibo", "sotobo", "kujukuri",
     "higashi-izu", "minami-izu", "nishi-izu",
     "suruga-bay", "enshu-nada", "mikawa-bay", "isewan", "shima-minami-ise", "kumano-nada",
+    "osakawan", "harimanada", "awajishima", "kii-suido-wakayama", "kii-suido-tokushima",
 }
-_VALID_PREF_SLUGS = {"kanagawa", "tokyo", "chiba", "shizuoka", "aichi", "mie"}
+_VALID_PREF_SLUGS = {
+    "kanagawa", "tokyo", "chiba", "shizuoka", "aichi", "mie",
+    "osaka", "hyogo", "wakayama", "tokushima",
+}
 _CITY_SLUG_RE = re.compile(r'^[a-z0-9\-]+$')
 
 
@@ -329,8 +333,10 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
 #action-bar button { border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; }
 #btn-refetch-access { background: #3498db; color: white; }
 #btn-refetch-physical { background: #27ae60; color: white; }
-#btn-delete-spot { background: #e74c3c; color: white; margin-left: auto; }
 #action-bar button:disabled { opacity: 0.5; cursor: not-allowed; }
+#delete-bar { display: none; padding: 10px; border-top: 2px solid #e74c3c; flex-shrink: 0; }
+#btn-delete-spot { background: white; color: #e74c3c; border: 1px solid #e74c3c; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 12px; width: 100%; }
+#btn-delete-spot:hover { background: #e74c3c; color: white; }
 #info-table { flex: 1; padding: 10px; overflow-y: auto; }
 .field-row { margin-bottom: 10px; }
 .field-row label { display: block; font-size: 11px; color: #888; margin-bottom: 2px; text-transform: uppercase; }
@@ -384,9 +390,11 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
       <div id="action-bar">
         <button id="btn-refetch-access" data-action="refetch-access">アクセス再取得</button>
         <button id="btn-refetch-physical" data-action="refetch-physical">物理データ再取得</button>
-        <button id="btn-delete-spot" data-action="delete-spot">🗑 削除</button>
       </div>
       <div id="info-table"></div>
+      <div id="delete-bar">
+        <button id="btn-delete-spot" data-action="delete-spot">🗑 このスポットを削除</button>
+      </div>
     </div>
   </div>
 </div>
@@ -425,8 +433,13 @@ var AREA_SLUG_MAP = {
   "遠州灘":   ["enshu-nada",  "shizuoka", "静岡県"],
   "三河湾":   ["mikawa-bay",  "aichi",    "愛知県"],
   "伊勢湾":         ["isewan",            "aichi",    "愛知県"],
-  "志摩・南伊勢":   ["shima-minami-ise", "mie",      "三重県"],
-  "熊野灘":         ["kumano-nada",       "mie",      "三重県"]
+  "志摩・南伊勢":   ["shima-minami-ise",     "mie",       "三重県"],
+  "熊野灘":         ["kumano-nada",           "mie",       "三重県"],
+  "大阪湾":         ["osakawan",              "osaka",     "大阪府"],
+  "播磨灘":         ["harimanada",            "hyogo",     "兵庫県"],
+  "淡路島":         ["awajishima",            "hyogo",     "兵庫県"],
+  "紀伊水道（和歌山）": ["kii-suido-wakayama", "wakayama",  "和歌山県"],
+  "紀伊水道（徳島）":   ["kii-suido-tokushima","tokushima", "徳島県"]
 };
 var SEABED_OPTIONS = __SEABED_OPTIONS_JSON__;
 var BEARING_OPTIONS = __BEARING_OPTIONS_JSON__;
@@ -579,6 +592,7 @@ function showSpot(idx) {
 
   document.getElementById('panel-header').textContent = s.name || s.slug || '(無名)';
   document.getElementById('action-bar').style.display = 'flex';
+  document.getElementById('delete-bar').style.display = 'block';
 
   // seabed select options
   var seabedOpts = SEABED_OPTIONS.map(function(o) {
@@ -868,6 +882,7 @@ function deleteSpot() {
       dirty = false;
       document.getElementById('panel-header').textContent = 'スポットを選択してください';
       document.getElementById('action-bar').style.display = 'none';
+      document.getElementById('delete-bar').style.display = 'none';
       document.getElementById('save-bar').style.display = 'none';
       document.getElementById('info-table').innerHTML = '';
       buildList();

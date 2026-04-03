@@ -6,12 +6,12 @@
     "longitude": 136.8858182
   },
   "area": {
-    "prefecture": "神奈川県",
-    "pref_slug": "kanagawa",
+    "prefecture": "三重県",
+    "pref_slug": "mie",
     "area_name": "志摩・南伊勢",
     "area_slug": "shima-minami-ise",
-    "city": "藤沢市",
-    "city_slug": "fujisawa"
+    "city": "志摩市",
+    "city_slug": "shima"
   },
   "physical_features": {
     "sea_bearing_deg": 90,
@@ -39,10 +39,10 @@
     ]
   },
   "target_fish": [
-    "shirogisu",
     "aoriika",
+    "shirogisu",
     "mebaru"
   ],
-  "harbor_code": "13-3",
-  "harbor_name": "羽田"
+  "harbor_code": "23-1",
+  "harbor_name": "伊良湖"
 }
