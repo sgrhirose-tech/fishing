@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "弥富市の港、カレイ・ハゼ・クロダイ向き",
-    "access": "弥富駅から車利用",
+    "access": "弥富市方面から車利用",
     "photo_url": ""
   },
   "classification": {
@@ -42,5 +42,7 @@
     "kurodai",
     "karei",
     "haze"
-  ]
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
 }

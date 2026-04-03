@@ -1,0 +1,47 @@
+{
+  "slug": "sukematsu-futo",
+  "name": "助松埠頭",
+  "location": {
+    "latitude": 34.523887,
+    "longitude": 135.3955728
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "泉大津市",
+    "city_slug": "izumiotsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 301.4,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "泉大津市の埠頭。アジ・クロダイ・スズキ・タチウオが狙える。夜釣りでタチウオが好調。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:埠頭"
+    ]
+  },
+  "target_fish": [
+    "tachiuo",
+    "kurodai",
+    "suzuki",
+    "aji"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "常滑市の小漁港、アイナメ・カレイ向き",
-    "access": "りんくう常滑駅からバス利用",
+    "access": "蒲池駅から徒歩5分",
     "photo_url": ""
   },
   "classification": {
@@ -38,5 +38,7 @@
   },
   "target_fish": [
     "karei"
-  ]
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
 }

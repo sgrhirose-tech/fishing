@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "南知多町の港、クロダイ・セイゴ・メバル向き",
-    "access": "河和駅からバス15分",
+    "access": "南知多町方面から車利用",
     "photo_url": ""
   },
   "classification": {
@@ -47,5 +47,7 @@
   "target_fish": [
     "kurodai",
     "mebaru"
-  ]
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
 }

@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "半田市の港湾岸壁、クロダイ・ハゼ・セイゴ向き",
-    "access": "亀崎駅から徒歩10分",
+    "access": "半田市方面から車利用",
     "photo_url": ""
   },
   "classification": {
@@ -39,5 +39,7 @@
   "target_fish": [
     "kurodai",
     "haze"
-  ]
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
 }

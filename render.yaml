@@ -3,10 +3,12 @@ services:
     name: tsuricast
     runtime: python
     repo: https://github.com/sgrhirose-tech/fishing
-    branch: claude/fishing-guide-website-BdGZB
+    branch: master
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app.main:app -w 1 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
     healthCheckPath: /
+    previews:
+      generation: automatic
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -21,7 +23,7 @@ services:
     name: tsuricast-morning-post
     runtime: python
     repo: https://github.com/sgrhirose-tech/fishing
-    branch: claude/fishing-guide-website-BdGZB
+    branch: master
     schedule: "55 10,18 * * *"   # 3:55 AM JST (18:55 UTC) + 7:55 PM JST (10:55 UTC)
     buildCommand: pip install -r requirements.txt
     startCommand: python scripts/post_morning_report.py

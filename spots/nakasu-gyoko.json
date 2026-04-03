@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "南知多町の漁港、クロダイ・キス・メバル向き",
-    "access": "師崎港バスターミナルから徒歩20分",
+    "access": "南知多町方面から車利用",
     "photo_url": ""
   },
   "classification": {
@@ -46,5 +46,7 @@
     "kurodai",
     "mebaru",
     "shirogisu"
-  ]
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
 }

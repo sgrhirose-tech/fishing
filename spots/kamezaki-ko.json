@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "半田市の整備護岸、クロダイ・セイゴ・サヨリ向き",
-    "access": "亀崎駅から徒歩10分",
+    "access": "亀崎駅から徒歩15分",
     "photo_url": ""
   },
   "classification": {
@@ -46,5 +46,7 @@
   "target_fish": [
     "kurodai",
     "sayori"
-  ]
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
 }

@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "南知多町の小漁港、クロダイ・メバル・アジ向き",
-    "access": "河和駅からバス25分",
+    "access": "南知多町方面から車利用",
     "photo_url": ""
   },
   "classification": {
@@ -48,5 +48,7 @@
     "aji",
     "kurodai",
     "mebaru"
-  ]
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
 }

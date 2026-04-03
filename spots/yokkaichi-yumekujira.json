@@ -1,0 +1,45 @@
+{
+  "slug": "yokkaichi-yumekujira",
+  "name": "四日市港・ゆめくじら周辺",
+  "location": {
+    "latitude": 34.9906461,
+    "longitude": 136.6501379
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "四日市市",
+    "city_slug": "yokkaichi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 95,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "港内護岸、ハゼ・クロダイ・サッパ向き",
+    "access": "富田浜駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

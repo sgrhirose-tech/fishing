@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "河口のシーバス・クロダイ向き、市内からアクセス良",
-    "access": "築地口駅から徒歩15分",
+    "access": "東名古屋港駅から徒歩20分",
     "photo_url": ""
   },
   "classification": {
@@ -39,5 +39,7 @@
   "target_fish": [
     "kurodai",
     "suzuki"
-  ]
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
 }

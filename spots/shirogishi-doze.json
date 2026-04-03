@@ -1,0 +1,45 @@
+{
+  "slug": "shirogishi-doze",
+  "name": "白石湖周辺（道瀬漁港）",
+  "location": {
+    "latitude": 34.1098919,
+    "longitude": 136.2345886
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "紀北町",
+    "city_slug": "kihoku"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 200,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 981.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "紀北町の湾内漁港、筏クロダイ・グレ向き",
+    "access": "相賀駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "24-9",
+  "harbor_name": "吉津"
+}

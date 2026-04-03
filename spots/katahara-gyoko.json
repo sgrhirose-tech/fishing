@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "蒲郡市の大型漁港、クロダイ・アジ・メバル向き",
-    "access": "蒲郡駅からバス10分",
+    "access": "形原駅前バス停から徒歩20分",
     "photo_url": ""
   },
   "classification": {
@@ -40,5 +40,7 @@
     "kurodai",
     "mebaru",
     "aji"
-  ]
+  ],
+  "harbor_code": "23-8",
+  "harbor_name": "三谷"
 }

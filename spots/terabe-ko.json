@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "西尾市の海水浴場隣接、キス・クロダイ向き",
-    "access": "東幡豆駅から徒歩15分",
+    "access": "西幡豆駅から徒歩25分",
     "photo_url": ""
   },
   "classification": {
@@ -43,5 +43,7 @@
   "target_fish": [
     "kurodai",
     "shirogisu"
-  ]
+  ],
+  "harbor_code": "23-9",
+  "harbor_name": "蒲郡"
 }

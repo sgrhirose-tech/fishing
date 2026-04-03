@@ -31,8 +31,12 @@ _VALID_AREA_SLUGS = {
     "sagamibay", "miura", "tokyobay", "uchibo", "sotobo", "kujukuri",
     "higashi-izu", "minami-izu", "nishi-izu",
     "suruga-bay", "enshu-nada", "mikawa-bay", "isewan", "shima-minami-ise", "kumano-nada",
+    "osakawan", "harimanada", "awajishima", "kii-suido-wakayama", "kii-suido-tokushima",
 }
-_VALID_PREF_SLUGS = {"kanagawa", "tokyo", "chiba", "shizuoka", "aichi", "mie"}
+_VALID_PREF_SLUGS = {
+    "kanagawa", "tokyo", "chiba", "shizuoka", "aichi", "mie",
+    "osaka", "hyogo", "wakayama", "tokushima",
+}
 _CITY_SLUG_RE = re.compile(r'^[a-z0-9\-]+$')
 
 
@@ -325,6 +329,14 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
 #panel-header { background: #2c3e50; color: white; padding: 10px 12px; font-size: 14px; font-weight: bold; flex-shrink: 0; }
 #save-bar { background: #e67e22; color: white; padding: 8px 12px; display: none; justify-content: space-between; align-items: center; font-size: 13px; flex-shrink: 0; }
 #save-bar button { background: white; color: #e67e22; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+#action-bar { background: #f8f9fa; border-bottom: 1px solid #ddd; padding: 6px 10px; display: none; gap: 6px; align-items: center; flex-shrink: 0; }
+#action-bar button { border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; }
+#btn-refetch-access { background: #3498db; color: white; }
+#btn-refetch-physical { background: #27ae60; color: white; }
+#action-bar button:disabled { opacity: 0.5; cursor: not-allowed; }
+#delete-bar { display: none; padding: 10px; border-top: 2px solid #e74c3c; flex-shrink: 0; }
+#btn-delete-spot { background: white; color: #e74c3c; border: 1px solid #e74c3c; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 12px; width: 100%; }
+#btn-delete-spot:hover { background: #e74c3c; color: white; }
 #info-table { flex: 1; padding: 10px; overflow-y: auto; }
 .field-row { margin-bottom: 10px; }
 .field-row label { display: block; font-size: 11px; color: #888; margin-bottom: 2px; text-transform: uppercase; }
@@ -375,7 +387,14 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
         <span>未保存の変更があります</span>
         <button id="btn-save" data-action="save">保存</button>
       </div>
+      <div id="action-bar">
+        <button id="btn-refetch-access" data-action="refetch-access">アクセス再取得</button>
+        <button id="btn-refetch-physical" data-action="refetch-physical">物理データ再取得</button>
+      </div>
       <div id="info-table"></div>
+      <div id="delete-bar">
+        <button id="btn-delete-spot" data-action="delete-spot">🗑 このスポットを削除</button>
+      </div>
     </div>
   </div>
 </div>
@@ -414,8 +433,13 @@ var AREA_SLUG_MAP = {
   "遠州灘":   ["enshu-nada",  "shizuoka", "静岡県"],
   "三河湾":   ["mikawa-bay",  "aichi",    "愛知県"],
   "伊勢湾":         ["isewan",            "aichi",    "愛知県"],
-  "志摩・南伊勢":   ["shima-minami-ise", "mie",      "三重県"],
-  "熊野灘":         ["kumano-nada",       "mie",      "三重県"]
+  "志摩・南伊勢":   ["shima-minami-ise",     "mie",       "三重県"],
+  "熊野灘":         ["kumano-nada",           "mie",       "三重県"],
+  "大阪湾":         ["osakawan",              "osaka",     "大阪府"],
+  "播磨灘":         ["harimanada",            "hyogo",     "兵庫県"],
+  "淡路島":         ["awajishima",            "hyogo",     "兵庫県"],
+  "紀伊水道（和歌山）": ["kii-suido-wakayama", "wakayama",  "和歌山県"],
+  "紀伊水道（徳島）":   ["kii-suido-tokushima","tokushima", "徳島県"]
 };
 var SEABED_OPTIONS = __SEABED_OPTIONS_JSON__;
 var BEARING_OPTIONS = __BEARING_OPTIONS_JSON__;
@@ -567,6 +591,8 @@ function showSpot(idx) {
   }
 
   document.getElementById('panel-header').textContent = s.name || s.slug || '(無名)';
+  document.getElementById('action-bar').style.display = 'flex';
+  document.getElementById('delete-bar').style.display = 'block';
 
   // seabed select options
   var seabedOpts = SEABED_OPTIONS.map(function(o) {
@@ -801,6 +827,69 @@ function saveChanges() {
   }
 }
 
+// ---- refetch / delete ----
+function refetchAccess() {
+  if (currentIdx < 0) return;
+  var s = SPOTS[currentIdx];
+  var btn = document.getElementById('btn-refetch-access');
+  btn.disabled = true;
+  btn.textContent = '取得中…';
+  fetch('/refetch_access', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({slug: s.slug, dir_key: s._dir_key || CURRENT_DIR_KEY})})
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      btn.disabled = false;
+      btn.textContent = 'アクセス再取得';
+      if (!res.ok) { alert('エラー: ' + (res.error || '')); return; }
+      if (res.access !== undefined) {
+        var el = document.querySelector('[data-field="access"]');
+        if (el) { el.value = res.access; markDirty(); }
+      }
+      alert('アクセス情報を更新しました');
+    })
+    .catch(function(e){ btn.disabled = false; btn.textContent = 'アクセス再取得'; alert('失敗: ' + e); });
+}
+
+function refetchPhysical() {
+  if (currentIdx < 0) return;
+  var s = SPOTS[currentIdx];
+  var btn = document.getElementById('btn-refetch-physical');
+  btn.disabled = true;
+  btn.textContent = '取得中…';
+  fetch('/refetch_physical', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({slug: s.slug, dir_key: s._dir_key || CURRENT_DIR_KEY})})
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      btn.disabled = false;
+      btn.textContent = '物理データ再取得';
+      if (!res.ok) { alert('エラー: ' + (res.error || '')); return; }
+      alert('物理データを更新しました。リロードして確認してください。');
+    })
+    .catch(function(e){ btn.disabled = false; btn.textContent = '物理データ再取得'; alert('失敗: ' + e); });
+}
+
+function deleteSpot() {
+  if (currentIdx < 0) return;
+  var s = SPOTS[currentIdx];
+  if (!confirm('「' + (s.name || s.slug) + '」を削除しますか？\nこの操作は取り消せません。')) return;
+  fetch('/delete', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({filename: s._filename, dir_key: s._dir_key || CURRENT_DIR_KEY})})
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (!res.ok) { alert('削除エラー: ' + (res.error || '')); return; }
+      SPOTS.splice(currentIdx, 1);
+      currentIdx = -1;
+      dirty = false;
+      document.getElementById('panel-header').textContent = 'スポットを選択してください';
+      document.getElementById('action-bar').style.display = 'none';
+      document.getElementById('delete-bar').style.display = 'none';
+      document.getElementById('save-bar').style.display = 'none';
+      document.getElementById('info-table').innerHTML = '';
+      buildList();
+    })
+    .catch(function(e){ alert('削除失敗: ' + e); });
+}
+
 // ---- new spot modal ----
 function openNewSpotModal() {
   document.getElementById('new-name').value = '';
@@ -865,9 +954,12 @@ document.addEventListener('click', function(e) {
     showSpot(idx);
     return;
   }
-  if (action === 'save')          { saveChanges(); return; }
-  if (action === 'bearing-minus') { adjustBearing(-5); return; }
-  if (action === 'bearing-plus')  { adjustBearing(+5); return; }
+  if (action === 'save')             { saveChanges(); return; }
+  if (action === 'bearing-minus')    { adjustBearing(-5); return; }
+  if (action === 'bearing-plus')     { adjustBearing(+5); return; }
+  if (action === 'refetch-access')   { refetchAccess(); return; }
+  if (action === 'refetch-physical') { refetchPhysical(); return; }
+  if (action === 'delete-spot')      { deleteSpot(); return; }
 });
 
 document.getElementById('info-table').addEventListener('input', function(e) {
@@ -1029,6 +1121,60 @@ def _create_spot(payload):
 
 
 # ---------------------------------------------------------------------------
+# refetch / delete ヘルパー（HTTP モード専用）
+# ---------------------------------------------------------------------------
+
+def _run_refetch_access(payload):
+    import subprocess
+    slug = payload.get("slug", "")
+    if not slug:
+        return {"ok": False, "error": "slug が指定されていません"}
+    result = subprocess.run(
+        [sys.executable, os.path.join(REPO_ROOT, "tools", "refetch_access.py"),
+         "--slug", slug, "--apply"],
+        capture_output=True, text=True, cwd=REPO_ROOT
+    )
+    if result.returncode != 0:
+        return {"ok": False, "error": result.stderr.strip() or result.stdout.strip()}
+    # 更新後のファイルから access を読み返す
+    spot_path = os.path.join(REPO_ROOT, "spots", f"{slug}.json")
+    if os.path.exists(spot_path):
+        with open(spot_path, encoding="utf-8") as f:
+            updated = json.load(f)
+        return {"ok": True, "access": updated.get("info", {}).get("access", "")}
+    return {"ok": True}
+
+
+def _run_refetch_physical(payload):
+    import subprocess
+    slug = payload.get("slug", "")
+    if not slug:
+        return {"ok": False, "error": "slug が指定されていません"}
+    result = subprocess.run(
+        [sys.executable, os.path.join(REPO_ROOT, "tools", "refetch_physical_data.py"),
+         "--slug", slug, "--apply"],
+        capture_output=True, text=True, cwd=REPO_ROOT
+    )
+    if result.returncode != 0:
+        return {"ok": False, "error": result.stderr.strip() or result.stdout.strip()}
+    return {"ok": True}
+
+
+def _delete_spot(payload):
+    filename = payload.get("filename", "")
+    dir_key  = payload.get("dir_key", DEFAULT_DIR_KEY)
+    if not filename:
+        return {"ok": False, "error": "filename が指定されていません"}
+    dir_path = AVAILABLE_DIRS.get(dir_key, AVAILABLE_DIRS[DEFAULT_DIR_KEY])
+    path = os.path.join(dir_path, filename)
+    if not os.path.exists(path):
+        return {"ok": False, "error": f"ファイルが見つかりません: {filename}"}
+    os.remove(path)
+    print(f"[delete] {path}")
+    return {"ok": True}
+
+
+# ---------------------------------------------------------------------------
 # Pythonista delegate
 # ---------------------------------------------------------------------------
 
@@ -1150,6 +1296,24 @@ class SpotHTTPHandler(_http_server.BaseHTTPRequestHandler):
                     self._respond(200, {'ok': True, 'spot': spot})
                 else:
                     self._respond(400, {'ok': False, 'error': 'スラッグが重複しています'})
+            except Exception as e:
+                self._respond(500, {'ok': False, 'error': str(e)})
+        elif self.path == '/refetch_access':
+            try:
+                result = _run_refetch_access(payload)
+                self._respond(200, result)
+            except Exception as e:
+                self._respond(500, {'ok': False, 'error': str(e)})
+        elif self.path == '/refetch_physical':
+            try:
+                result = _run_refetch_physical(payload)
+                self._respond(200, result)
+            except Exception as e:
+                self._respond(500, {'ok': False, 'error': str(e)})
+        elif self.path == '/delete':
+            try:
+                result = _delete_spot(payload)
+                self._respond(200, result)
             except Exception as e:
                 self._respond(500, {'ok': False, 'error': str(e)})
         else:

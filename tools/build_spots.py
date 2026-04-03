@@ -84,6 +84,11 @@ AREA_MAP = {
     "伊勢湾":         ("isewan",            "aichi",    "愛知県"),
     "志摩・南伊勢":   ("shima-minami-ise", "mie",      "三重県"),
     "熊野灘":         ("kumano-nada",       "mie",      "三重県"),
+    "大阪湾":         ("osakawan",          "osaka",    "大阪府"),
+    "播磨灘":         ("harimanada",        "hyogo",    "兵庫県"),
+    "淡路島":         ("awajishima",        "hyogo",    "兵庫県"),
+    "紀伊水道（和歌山）": ("kii-suido-wakayama", "wakayama", "和歌山県"),
+    "紀伊水道（徳島）":   ("kii-suido-tokushima", "tokushima", "徳島県"),
 }
 
 PREF_SLUG_MAP = {
@@ -93,6 +98,78 @@ PREF_SLUG_MAP = {
     "静岡県":   "shizuoka",
     "愛知県":   "aichi",
     "三重県":   "mie",
+    "大阪府":   "osaka",
+    "兵庫県":   "hyogo",
+    "和歌山県": "wakayama",
+    "徳島県":   "tokushima",
+}
+
+# ファイル名プレフィックス → 都道府県名（PREF_SLUG_MAP の逆引き）
+_SLUG_TO_PREF = {v: k for k, v in PREF_SLUG_MAP.items()}
+
+# 都道府県名 → Google Places の formatted_address に現れる英語表記
+_PREF_TO_ENGLISH = {
+    "神奈川県": "Kanagawa",
+    "東京都":   "Tokyo",
+    "千葉県":   "Chiba",
+    "静岡県":   "Shizuoka",
+    "愛知県":   "Aichi",
+    "三重県":   "Mie",
+    "大阪府":   "Osaka",
+    "兵庫県":   "Hyogo",
+    "和歌山県": "Wakayama",
+    "徳島県":   "Tokushima",
+}
+
+# 都道府県庁所在地の座標（Places NOT_FOUND 時のフォールバック）
+_PREF_CAPITAL_COORDS = {
+    "北海道":   (43.0642, 141.3469),  # 札幌
+    "青森県":   (40.8244, 140.7400),
+    "岩手県":   (39.7036, 141.1527),
+    "宮城県":   (38.2688, 140.8721),
+    "秋田県":   (39.7186, 140.1024),
+    "山形県":   (38.2404, 140.3633),
+    "福島県":   (37.7500, 140.4678),
+    "茨城県":   (36.3418, 140.4468),
+    "栃木県":   (36.5658, 139.8836),
+    "群馬県":   (36.3911, 139.0608),
+    "埼玉県":   (35.8570, 139.6489),
+    "千葉県":   (35.6073, 140.1064),
+    "東京都":   (35.6895, 139.6917),
+    "神奈川県": (35.4478, 139.6425),
+    "新潟県":   (37.9026, 139.0232),
+    "富山県":   (36.6953, 137.2113),
+    "石川県":   (36.5947, 136.6256),
+    "福井県":   (36.0652, 136.2216),
+    "山梨県":   (35.6642, 138.5681),
+    "長野県":   (36.6513, 138.1810),
+    "岐阜県":   (35.3912, 136.7223),
+    "静岡県":   (34.9769, 138.3831),
+    "愛知県":   (35.1802, 136.9066),
+    "三重県":   (34.7303, 136.5086),
+    "滋賀県":   (35.0045, 135.8686),
+    "京都府":   (35.0211, 135.7556),
+    "大阪府":   (34.6937, 135.5022),
+    "兵庫県":   (34.6913, 135.1830),
+    "奈良県":   (34.6851, 135.8325),
+    "和歌山県": (34.2260, 135.1675),
+    "鳥取県":   (35.5011, 134.2351),
+    "島根県":   (35.4723, 133.0505),
+    "岡山県":   (34.6618, 133.9344),
+    "広島県":   (34.3853, 132.4553),
+    "山口県":   (34.1861, 131.4706),
+    "徳島県":   (34.0658, 134.5593),
+    "香川県":   (34.3401, 134.0434),
+    "愛媛県":   (33.8417, 132.7657),
+    "高知県":   (33.5597, 133.5311),
+    "福岡県":   (33.5904, 130.4017),
+    "佐賀県":   (33.2494, 130.2988),
+    "長崎県":   (32.7448, 129.8737),
+    "熊本県":   (32.7898, 130.7417),
+    "大分県":   (33.2382, 131.6126),
+    "宮崎県":   (31.9077, 131.4202),
+    "鹿児島県": (31.5602, 130.5581),
+    "沖縄県":   (26.2124, 127.6809),
 }
 
 # Google Places
@@ -381,11 +458,17 @@ def refine_coords(name: str, city: str, lat: float, lon: float, cfg: dict,
         print(f"  [Google] NOT_FOUND — TSV 座標を使用")
         return lat, lon, "tsv"
 
-    # lat=0, lon=0 は「座標未入力」として無条件採用（都道府県一致候補を優先）
+    # lat=0, lon=0 は「座標未入力」として無条件採用（都道府県一致候補のみ使用）
     if lat == 0.0 and lon == 0.0:
+        pref_en = _PREF_TO_ENGLISH.get(pref_hint, "")
         pref_cands = [c for c in candidates
-                      if pref_hint and pref_hint in c.get("address", "")]
-        chosen = pref_cands[0] if pref_cands else candidates[0]
+                      if pref_hint and (pref_hint in c.get("address", "")
+                                        or (pref_en and pref_en in c.get("address", "")))]
+        if not pref_cands:
+            cap = _PREF_CAPITAL_COORDS.get(pref_hint, (35.3435, 139.4926))
+            print(f"  [Google] NOT_FOUND in {pref_hint} — 県庁座標を使用 ({cap[0]}, {cap[1]})")
+            return cap[0], cap[1], "fallback"
+        chosen = pref_cands[0]
         print(f"  [Google] 直接取得: → '{chosen['name']}' "
               f"({chosen['lat']:.5f}, {chosen['lon']:.5f})")
         return chosen["lat"], chosen["lon"], "google_direct"
@@ -399,7 +482,9 @@ def refine_coords(name: str, city: str, lat: float, lon: float, cfg: dict,
     else:
         # 名称完全一致 かつ 都道府県一致なら距離閾値を無視して補正
         name_match = best["name"] == name
-        pref_match = pref_hint and pref_hint in best.get("address", "")
+        pref_en = _PREF_TO_ENGLISH.get(pref_hint, "")
+        pref_match = pref_hint and (pref_hint in best.get("address", "")
+                                    or (pref_en and pref_en in best.get("address", "")))
         if name_match and pref_match:
             print(f"  [Google] 補正(完全一致・{pref_hint}): {dist:.2f}km → '{best['name']}'")
             return best["lat"], best["lon"], "google_exact"
@@ -580,34 +665,45 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
     print(f"  エリア: {area_name} ({area_slug})")
 
     # ── ③ Google Places 座標補正（Nominatim より先に確定座標を得る）──
+    # ファイル名プレフィックス由来の都道府県を優先。なければエリアマップ由来。
+    pref_hint = rec.get("pref_from_file") or pref_fallback
     if skip_google:
         print("  [Google] スキップ（--skip-google）")
         coord_source = "tsv"
     else:
         print("  座標補正 (Google Places)...", end=" ", flush=True)
         lat, lon, coord_source = refine_coords(name, "", lat, lon, cfg,
-                                                pref_hint=pref_fallback)
+                                                pref_hint=pref_hint)
         time.sleep(cfg["request_delay_sec"])
 
+    is_fallback = (coord_source == "fallback")
+
     # ── ② Nominatim 逆ジオコーディング（確定済み座標で取得）────
-    print("  住所取得 (Nominatim)...", end=" ", flush=True)
-    geo_ja = reverse_geocode(lat, lon, lang="ja,en")
-    if not geo_ja["prefecture"]:
-        geo_ja["prefecture"] = pref_fallback
-    print(f"→ {geo_ja['prefecture']} {geo_ja['city']}")
-    time.sleep(1.1)
+    if is_fallback:
+        print(f"  住所取得... スキップ（フォールバック座標）→ {pref_hint}")
+        actual_pref      = pref_hint
+        actual_pref_slug = PREF_SLUG_MAP.get(pref_hint, pref_slug_fallback)
+        city      = ""
+        city_slug = ""
+    else:
+        print("  住所取得 (Nominatim)...", end=" ", flush=True)
+        geo_ja = reverse_geocode(lat, lon, lang="ja,en")
+        if not geo_ja["prefecture"]:
+            geo_ja["prefecture"] = pref_hint
+        print(f"→ {geo_ja['prefecture']} {geo_ja['city']}")
+        time.sleep(1.1)
 
-    geo_en = reverse_geocode(lat, lon, lang="en,ja")
-    city_slug = _city_to_slug(geo_en.get("city", ""))
-    time.sleep(1.1)
+        geo_en = reverse_geocode(lat, lon, lang="en,ja")
+        city_slug = _city_to_slug(geo_en.get("city", ""))
+        time.sleep(1.1)
 
-    actual_pref      = geo_ja["prefecture"] or pref_fallback
-    actual_pref_slug = PREF_SLUG_MAP.get(actual_pref, pref_slug_fallback)
-    city             = geo_ja["city"]
+        actual_pref      = geo_ja["prefecture"] or pref_hint
+        actual_pref_slug = PREF_SLUG_MAP.get(actual_pref, pref_slug_fallback)
+        city             = geo_ja["city"]
 
     # ── ④ 海方向計算（確定座標から）──────────────────────────
-    if skip_google:
-        print("  海方向計算... スキップ（--skip-google）")
+    if skip_google or is_fallback:
+        print("  海方向計算... スキップ（" + ("フォールバック座標" if is_fallback else "--skip-google") + "）")
         sea_bearing = None
     else:
         print("  海方向計算 (OSM)...", end=" ", flush=True)
@@ -619,8 +715,8 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
             sea_bearing = None
 
     # ── ⑤ 底質・等深線取得（海しる）────────────────────────
-    if skip_google:
-        print("  底質・等深線取得... スキップ（--skip-google）")
+    if skip_google or is_fallback:
+        print("  底質・等深線取得... スキップ（" + ("フォールバック座標" if is_fallback else "--skip-google") + "）")
         phys = None
     else:
         print("  底質・等深線取得 (海しる)...", end=" ", flush=True)
@@ -635,19 +731,23 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
             phys = None
 
     # ── ⑥ OSM 施設分類 ──────────────────────────────────────
-    print("  施設分類 (Overpass)...", end=" ", flush=True)
-    try:
-        classification = classify_spot(lat, lon)
-        if classification:
-            print(f"→ {classification['primary_type']} (conf={classification['confidence']})")
-        else:
-            print("→ 失敗")
-    except Exception as e:
-        print(f"→ エラー ({e})")
+    if is_fallback:
+        print("  施設分類 (Overpass)... スキップ（フォールバック座標）")
         classification = None
-    time.sleep(_overpass_sleep)
+    else:
+        print("  施設分類 (Overpass)...", end=" ", flush=True)
+        try:
+            classification = classify_spot(lat, lon)
+            if classification:
+                print(f"→ {classification['primary_type']} (conf={classification['confidence']})")
+            else:
+                print("→ 失敗")
+        except Exception as e:
+            print(f"→ エラー ({e})")
+            classification = None
+        time.sleep(_overpass_sleep)
 
-    # unknown 残りにキーワード補完を試みる
+    # unknown 残りにキーワード補完を試みる（フォールバック時も実行）
     if classification is None or classification["primary_type"] == "unknown":
         kw_cls = classify_by_keyword(name)
         if kw_cls:
@@ -666,9 +766,9 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
     # ── ⑥-b サーフスポット判定 (OSM sport=surfing) ─────────────
     # 砂浜スポットに限定（漁港・磯など非砂浜での誤判定を防ぐ）
     _cls_type = classification.get("primary_type", "unknown") if classification else "unknown"
-    if skip_google or _cls_type != "sand_beach":
+    if skip_google or is_fallback or _cls_type != "sand_beach":
         surfer_spot = False
-        if not skip_google and _cls_type != "sand_beach":
+        if not skip_google and not is_fallback and _cls_type != "sand_beach":
             print(f"  サーフスポット判定... スキップ（{_cls_type}）")
     else:
         print("  サーフスポット判定 (OSM)...", end=" ", flush=True)
@@ -786,7 +886,13 @@ def main():
     all_records = []
     for tsv_path in tsv_files:
         recs = parse_tsv_file(tsv_path)
-        print(f"読み込み: {tsv_path.name}  ({len(recs)}件)")
+        # ファイル名プレフィックス（"_" またはスペースで区切られた最初の単語）から都道府県を判定
+        prefix = tsv_path.stem.split("_")[0].split()[0]
+        pref_from_file = _SLUG_TO_PREF.get(prefix, "")
+        if pref_from_file:
+            for r in recs:
+                r["pref_from_file"] = pref_from_file
+        print(f"読み込み: {tsv_path.name}  ({len(recs)}件){f'  [{pref_from_file}]' if pref_from_file else ''}")
         all_records.extend(recs)
 
     # --slug フィルタ

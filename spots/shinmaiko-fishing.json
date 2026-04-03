@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "柵付き整備施設、ファミリー向き、多彩魚種",
-    "access": "新舞子駅から徒歩10分",
+    "access": "新舞子駅から徒歩20分",
     "photo_url": ""
   },
   "classification": {
@@ -38,5 +38,7 @@
     "source": "osm_rule",
     "osm_evidence": []
   },
-  "target_fish": []
+  "target_fish": [],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
 }

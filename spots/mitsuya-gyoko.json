@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "蒲郡市の漁港、クロダイ・キス・アジ向き",
-    "access": "三河三谷駅から徒歩10分",
+    "access": "三谷駅口バス停から徒歩5分",
     "photo_url": ""
   },
   "classification": {
@@ -48,5 +48,7 @@
     "kurodai",
     "aji",
     "shirogisu"
-  ]
+  ],
+  "harbor_code": "23-8",
+  "harbor_name": "三谷"
 }

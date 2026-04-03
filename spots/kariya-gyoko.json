@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "常滑南、小漁港でアオリイカ・クロダイ向き",
-    "access": "常滑駅からバス利用",
+    "access": "常滑市方面から車利用",
     "photo_url": ""
   },
   "classification": {
@@ -42,5 +42,7 @@
   "target_fish": [
     "aoriika",
     "kurodai"
-  ]
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
 }

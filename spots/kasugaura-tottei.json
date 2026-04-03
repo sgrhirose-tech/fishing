@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "蒲郡市の突堤、ハゼ・クロダイ・ウキ釣り向き",
-    "access": "蒲郡駅から徒歩20分",
+    "access": "形原駅前バス停から徒歩15分",
     "photo_url": ""
   },
   "classification": {
@@ -42,5 +42,7 @@
   "target_fish": [
     "kurodai",
     "haze"
-  ]
+  ],
+  "harbor_code": "23-8",
+  "harbor_name": "三谷"
 }

@@ -1,0 +1,49 @@
+{
+  "slug": "shichirimihama-mihasecho",
+  "name": "七里御浜（御浜町側）",
+  "location": {
+    "latitude": 33.8203213,
+    "longitude": 136.0534859
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "熊野市",
+    "city_slug": "kumano"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 110,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 713.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "広大な玉砂利サーフ、青物・キス・シーバス向き",
+    "access": "紀伊市木駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "cliff"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "natural=cliff@175m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "suzuki"
+  ],
+  "harbor_code": "24-11",
+  "harbor_name": "尾鷲"
+}

@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "西尾市の港、クロダイ・セイゴ・ハゼ向き",
-    "access": "西尾駅からバス20分",
+    "access": "西尾市方面から車利用",
     "photo_url": ""
   },
   "classification": {
@@ -39,5 +39,7 @@
   "target_fish": [
     "kurodai",
     "haze"
-  ]
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
 }

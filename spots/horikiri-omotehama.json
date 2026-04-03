@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "外洋表浜サーフ、キス・ヒラメ・青物向き",
-    "access": "豊橋方面から車利用",
+    "access": "田原市方面から車利用",
     "photo_url": ""
   },
   "classification": {
@@ -41,5 +41,7 @@
   "target_fish": [
     "hirame",
     "shirogisu"
-  ]
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
 }

@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "豊橋市の護岸公園、クロダイ・ハゼ・ルアー向き",
-    "access": "御油駅からバス利用",
+    "access": "豊橋市方面から車利用",
     "photo_url": ""
   },
   "classification": {
@@ -42,5 +42,7 @@
   "target_fish": [
     "kurodai",
     "haze"
-  ]
+  ],
+  "harbor_code": "23-8",
+  "harbor_name": "三谷"
 }

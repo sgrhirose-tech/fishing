@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "武豊町南の小漁港、クロダイ・カレイ向き",
-    "access": "武豊駅からバス利用",
+    "access": "富貴駅東駅から徒歩5分",
     "photo_url": ""
   },
   "classification": {
@@ -41,5 +41,7 @@
   "target_fish": [
     "kurodai",
     "karei"
-  ]
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
 }

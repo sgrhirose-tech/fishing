@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "電車アクセス可の人気護岸、クロダイ・アジ向き",
-    "access": "武豊駅から徒歩20分",
+    "access": "上ゲ駅から徒歩25分",
     "photo_url": ""
   },
   "classification": {
@@ -41,5 +41,7 @@
   "target_fish": [
     "kurodai",
     "aji"
-  ]
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
 }

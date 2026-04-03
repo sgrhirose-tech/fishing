@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "サビキ・ウキ釣り向き、名古屋市内から近い",
-    "access": "築地口駅から徒歩15分",
+    "access": "名古屋港駅から徒歩10分",
     "photo_url": ""
   },
   "classification": {
@@ -43,5 +43,7 @@
       "man_made=pier@252m"
     ]
   },
-  "target_fish": []
+  "target_fish": [],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
 }
