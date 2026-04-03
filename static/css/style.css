@@ -775,6 +775,7 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 }
 #fav-btn.is-favorite { background: #1a6b9e; color: white; }
 #fav-btn:active { opacity: .8; }
+.fav-note { font-size: .72rem; color: #aaa; margin-left: .5rem; vertical-align: middle; }
 
 /* ---- お気に入りパネル（TOPページ地図上） ---- */
 .map-section { position: relative; }
