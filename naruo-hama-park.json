@@ -1,0 +1,46 @@
+{
+  "slug": "naruo-hama-park",
+  "name": "鳴尾浜公園堤防",
+  "location": {
+    "latitude": 34.6937,
+    "longitude": 135.5022
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "クロダイ、アジ、メバルが狙える公園。足場安全で初心者向け。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:堤防"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "aji"
+  ],
+  "harbor_code": "28-6",
+  "harbor_name": "尼崎"
+}

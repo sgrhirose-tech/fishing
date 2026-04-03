@@ -1,0 +1,50 @@
+{
+  "slug": "fukebe-ko",
+  "name": "深日漁港",
+  "location": {
+    "latitude": 34.3229201,
+    "longitude": 135.1476409
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "岬町",
+    "city_slug": "misaki"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 324.8,
+    "seabed_type": "shell",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "貝殻主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "クロダイ、メバル、カサゴが狙える。磯のような地形で中級者向け。潮通し良好。",
+    "access": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@192m",
+      "man_made=pier@285m",
+      "man_made=pier@98m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "kasago",
+    "mebaru"
+  ],
+  "harbor_code": "27-3",
+  "harbor_name": "岸和田"
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "choshi-kako",
+  "name": "銚子川河口（相賀）",
+  "location": {
+    "latitude": 34.1048726,
+    "longitude": 136.2309837
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "紀北町",
+    "city_slug": "kihoku"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 135,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1934.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "紀北町の清流河口、シーバス・クロダイ向き",
+    "access": "相賀駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki"
+  ],
+  "harbor_code": "24-10",
+  "harbor_name": "長島"
+}

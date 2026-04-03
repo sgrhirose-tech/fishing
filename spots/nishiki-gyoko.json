@@ -1,0 +1,48 @@
+{
+  "slug": "nishiki-gyoko",
+  "name": "錦漁港",
+  "location": {
+    "latitude": 34.2178702,
+    "longitude": 136.3977528
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "大紀町",
+    "city_slug": "taiki"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 210,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1744.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "大紀町の大型漁港、アジ・グレ・アオリイカ向き",
+    "access": "大紀町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "mejina",
+    "aoriika"
+  ],
+  "harbor_code": "24-8",
+  "harbor_name": "五ヶ所"
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "kuzaki-gyoko",
+  "name": "国崎漁港",
+  "location": {
+    "latitude": 34.4124902,
+    "longitude": 136.921674
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "鳥羽市",
+    "city_slug": "toba"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 150,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1220.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "外洋向きの漁港、アジ・クロダイ・グレ向き",
+    "access": "鳥羽市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "mejina",
+    "kurodai"
+  ],
+  "harbor_code": "23-3",
+  "harbor_name": "篠島"
+}
