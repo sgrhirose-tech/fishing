@@ -462,7 +462,7 @@ def page_top(request: Request):
             {"name": name, "slug": data["slug"]}
             for name, data in _FISH_MASTER.items()
             if data.get("slug")
-            and any(data["slug"] in s.get("target_fish", []) for s in all_spots)
+            and any(data["slug"] in s.get("target_fish", []) for s in spots)
         ],
     })
 
