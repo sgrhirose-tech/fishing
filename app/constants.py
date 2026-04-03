@@ -22,6 +22,13 @@ VALID_AREA_SLUGS: frozenset[str] = frozenset({
     # 三重県
     "shima-minami-ise",  # 志摩・南伊勢（志摩市・南伊勢町・大紀町）
     "kumano-nada",  # 熊野灘
+    # 大阪府
+    "osakawan",     # 大阪湾
+    # 兵庫県
+    "harimanada",   # 播磨灘
+    "awajishima",   # 淡路島
+    # 和歌山県
+    "kii-suido-wakayama",  # 紀伊水道（和歌山）
 })
 
 VALID_PREF_SLUGS: frozenset[str] = frozenset({
@@ -31,6 +38,9 @@ VALID_PREF_SLUGS: frozenset[str] = frozenset({
     "shizuoka",
     "aichi",
     "mie",
+    "osaka",
+    "hyogo",
+    "wakayama",
 })
 
 REGIONS: list[dict] = [
