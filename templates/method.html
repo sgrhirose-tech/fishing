@@ -72,15 +72,6 @@
 </section>
 {% endif %}
 
-{% if method_spots_count > 0 %}
-<section class="method-spots-link">
-  <h2>この釣法で釣れる釣り場を探す</h2>
-  <a href="/spots?method={{ method_slug }}" class="btn-primary">
-    {{ method_name }}ができる釣り場を見る（{{ method_spots_count }}か所）→
-  </a>
-</section>
-{% endif %}
-
 {% if data.season %}
 <section class="method-season-section">
   <h2>向いているシーズン</h2>
@@ -105,6 +96,15 @@
     <span class="method-spot-chip">{{ st }}</span>
     {% endfor %}
   </div>
+</section>
+{% endif %}
+
+{% if method_spots_count > 0 %}
+<section class="method-spots-link">
+  <h2>この釣法で釣れる釣り場を探す</h2>
+  <a href="/spots?method={{ method_slug }}" class="btn-primary">
+    {{ method_name }}ができる釣り場を見る（{{ method_spots_count }}か所）→
+  </a>
 </section>
 {% endif %}
 
