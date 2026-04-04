@@ -756,3 +756,44 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
   min-width: 90px;
   text-align: center;
 }
+
+/* ---- お気に入りボタン（スポットページ） ---- */
+#fav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .45rem 1rem;
+  border: 2px solid #1a6b9e;
+  border-radius: 20px;
+  background: white;
+  color: #1a6b9e;
+  font-size: .9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  margin-top: .4rem;
+}
+#fav-btn.is-favorite { background: #1a6b9e; color: white; }
+#fav-btn:active { opacity: .8; }
+.fav-note { font-size: .72rem; color: #aaa; margin-left: .5rem; vertical-align: middle; }
+
+/* ---- お気に入りパネル（TOPページ地図上） ---- */
+.map-section { position: relative; }
+#favorites-panel {
+  position: absolute;
+  bottom: 28px;
+  left: 8px;
+  z-index: 500;
+  background: rgba(255,255,255,.88);
+  border-radius: 6px;
+  padding: .3rem .5rem;
+  max-width: 200px;
+  font-size: .78rem;
+  line-height: 1.7;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  pointer-events: auto;
+}
+.fav-panel-label { font-size: .7rem; color: #888; display: block; }
+#favorites-list { margin: 0; padding: 0; list-style: none; }
+#favorites-list a { color: #1a6b9e; text-decoration: none; display: block; }
+#favorites-list a:hover { text-decoration: underline; }

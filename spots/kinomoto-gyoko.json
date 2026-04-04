@@ -1,0 +1,56 @@
+{
+  "slug": "kinomoto-gyoko",
+  "name": "下津港",
+  "location": {
+    "latitude": 34.1884024,
+    "longitude": 135.1450412
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "和歌山市",
+    "city_slug": "wakayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 215,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 591.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "和歌山市北部の漁港。アジ、イワシ、クロダイが狙える。足場がよく家族連れにも適している。",
+    "access": "和歌山市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier",
+      "slipway"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=slipway@235m",
+      "leisure=slipway@238m",
+      "leisure=slipway@239m",
+      "leisure=slipway@245m",
+      "leisure=slipway@270m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "iwashi"
+  ],
+  "harbor_code": "27-2",
+  "harbor_name": "淡輪"
+}

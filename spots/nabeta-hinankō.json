@@ -1,0 +1,48 @@
+{
+  "slug": "nabeta-hinankō",
+  "name": "鍋田避難港",
+  "location": {
+    "latitude": 35.0367515,
+    "longitude": 136.7803026
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "弥富市",
+    "city_slug": "yatomi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 120,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "弥富市の港、カレイ・ハゼ・クロダイ向き",
+    "access": "弥富市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "karei",
+    "haze"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

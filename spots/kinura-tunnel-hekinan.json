@@ -1,0 +1,44 @@
+{
+  "slug": "kinura-tunnel-hekinan",
+  "name": "衣浦トンネル周辺（碧南側）",
+  "location": {
+    "latitude": 34.8702937,
+    "longitude": 136.967411
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "碧南市",
+    "city_slug": "hekinan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 260,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "衣浦港護岸、クロダイ・セイゴ向き",
+    "access": "碧南市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai"
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "koshito-tottei",
+  "name": "越戸突堤・若見海岸",
+  "location": {
+    "latitude": 34.5946408,
+    "longitude": 137.156974
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "田原市",
+    "city_slug": "tahara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "表浜の突堤とサーフ、キス・ヒラメ・カレイ向き",
+    "access": "田原市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "karei",
+    "hirame",
+    "shirogisu"
+  ],
+  "harbor_code": "23-8",
+  "harbor_name": "三谷"
+}

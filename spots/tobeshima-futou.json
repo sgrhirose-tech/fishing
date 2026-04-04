@@ -1,0 +1,46 @@
+{
+  "slug": "tobeshima-futou",
+  "name": "飛島埠頭",
+  "location": {
+    "latitude": 35.0463489,
+    "longitude": 136.8137741
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "飛島村",
+    "city_slug": "tobishima"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "大型工業港の護岸、ハゼ・クロダイ・シーバス向き",
+    "access": "飛島村方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "haze",
+    "suzuki"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

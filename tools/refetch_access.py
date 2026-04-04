@@ -35,7 +35,7 @@ from pathlib import Path
 import requests
 
 REPO_ROOT    = Path(__file__).parent.parent
-SPOTS_DIR    = REPO_ROOT / "spots"
+SPOTS_DIR    = REPO_ROOT / "spots_wip"
 CONFIG_FILE  = REPO_ROOT / "config.json"
 AUDIT_FILE   = REPO_ROOT / "access_audit.tsv"
 

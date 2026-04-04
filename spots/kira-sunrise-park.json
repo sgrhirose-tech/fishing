@@ -1,0 +1,48 @@
+{
+  "slug": "kira-sunrise-park",
+  "name": "吉良サンライズパーク",
+  "location": {
+    "latitude": 34.778514,
+    "longitude": 137.0933191
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "西尾市",
+    "city_slug": "nishio"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "西尾市吉良の整備護岸、クロダイ・キス向き",
+    "access": "西尾市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@122m",
+      "man_made=breakwater@229m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "shirogisu"
+  ],
+  "harbor_code": "23-9",
+  "harbor_name": "蒲郡"
+}

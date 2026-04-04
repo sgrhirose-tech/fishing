@@ -1,0 +1,48 @@
+{
+  "slug": "owase-tenman",
+  "name": "尾鷲港・天満浦堤防",
+  "location": {
+    "latitude": 34.0728294,
+    "longitude": 136.2061482
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "尾鷲市",
+    "city_slug": "owase"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 881.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "南部最大港、アジ・グレ・クロダイ・多彩魚種",
+    "access": "尾鷲市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:堤防"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "24-10",
+  "harbor_name": "長島"
+}

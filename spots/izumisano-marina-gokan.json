@@ -1,0 +1,51 @@
+{
+  "slug": "izumisano-marina-gokan",
+  "name": "泉佐野マリーナ周辺護岸",
+  "location": {
+    "latitude": 34.418832,
+    "longitude": 135.313066
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "泉佐野市",
+    "city_slug": "izumisano"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 313.3,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "泉佐野市のマリーナ周辺護岸。アジ・サバ・メバル・クロダイが狙える。",
+    "access": "泉佐野駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.85,
+    "secondary_flags": [
+      "marina"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@14m",
+      "man_made=breakwater@155m",
+      "man_made=breakwater@287m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "saba",
+    "aji"
+  ],
+  "harbor_code": "27-6",
+  "harbor_name": "大阪"
+}

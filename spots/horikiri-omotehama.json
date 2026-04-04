@@ -1,0 +1,47 @@
+{
+  "slug": "horikiri-omotehama",
+  "name": "堀切町海岸（表浜）",
+  "location": {
+    "latitude": 34.5833467,
+    "longitude": 137.0549205
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "田原市",
+    "city_slug": "tahara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 155,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "外洋表浜サーフ、キス・ヒラメ・青物向き",
+    "access": "田原市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
+}

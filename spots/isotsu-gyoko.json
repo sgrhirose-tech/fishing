@@ -1,0 +1,47 @@
+{
+  "slug": "isotsu-gyoko",
+  "name": "磯津漁港",
+  "location": {
+    "latitude": 34.9252192,
+    "longitude": 136.6441485
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "四日市市",
+    "city_slug": "yokkaichi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "鈴鹿市の漁港、クロダイ・ハゼ・セイゴ向き",
+    "access": "四日市市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@166m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

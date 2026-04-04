@@ -1,0 +1,44 @@
+{
+  "slug": "toyohama-fishing-park",
+  "name": "豊浜海釣り公園",
+  "location": {
+    "latitude": 34.7025599,
+    "longitude": 136.933989
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "南知多町",
+    "city_slug": "minamichita"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 537.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "釣り桟橋完備、ファミリー向き人気施設",
+    "access": "南知多町方面から車利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@74m"
+    ]
+  },
+  "target_fish": [],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
+}

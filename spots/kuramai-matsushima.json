@@ -1,0 +1,48 @@
+{
+  "slug": "kuramai-matsushima",
+  "name": "倉舞港・松島突堤",
+  "location": {
+    "latitude": 34.7713896,
+    "longitude": 137.1676755
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "蒲郡市",
+    "city_slug": "gamagori"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 305,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "蒲郡市の突堤、クロダイ・メバル・アオリイカ向き",
+    "access": "蒲郡市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@74m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "mebaru"
+  ],
+  "harbor_code": "23-8",
+  "harbor_name": "三谷"
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "ishikagami-gyoko",
+  "name": "石鏡漁港",
+  "location": {
+    "latitude": 34.44565,
+    "longitude": 136.92029
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "鳥羽市",
+    "city_slug": "toba"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 50,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "鳥羽市、ヒラスズキ・メバル・カサゴ人気港",
+    "access": "藤沢市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  },
+  "target_fish": [
+    "suzuki",
+    "kasago",
+    "mebaru"
+  ],
+  "harbor_code": "23-3",
+  "harbor_name": "篠島"
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "sakama-gyoko",
+  "name": "迫間浦漁港",
+  "location": {
+    "latitude": 34.3202856,
+    "longitude": 136.6597271
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "南伊勢町",
+    "city_slug": "minamiise"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 115,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "南伊勢町の漁港、クロダイ・グレ・アオリイカ向き",
+    "access": "南伊勢町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@157m",
+      "man_made=breakwater@62m"
+    ]
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai",
+    "aoriika"
+  ],
+  "harbor_code": "23-2",
+  "harbor_name": "神島"
+}

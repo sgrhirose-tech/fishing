@@ -1,0 +1,49 @@
+{
+  "slug": "nagoya-garden-futou",
+  "name": "名古屋港ガーデン埠頭",
+  "location": {
+    "latitude": 35.0897556,
+    "longitude": 136.8822278
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "名古屋市",
+    "city_slug": "nagoya"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 190,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "サビキ・ウキ釣り向き、名古屋市内から近い",
+    "access": "名古屋港駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.38,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@173m",
+      "man_made=pier@247m",
+      "man_made=pier@252m"
+    ]
+  },
+  "target_fish": [],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "taketoyo-ryokuchi",
+  "name": "武豊緑地",
+  "location": {
+    "latitude": 34.8553681,
+    "longitude": 136.9361901
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "武豊町",
+    "city_slug": "taketoyo"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 155,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "電車アクセス可の人気護岸、クロダイ・アジ向き",
+    "access": "上ゲ駅から徒歩25分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "aji"
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
+}

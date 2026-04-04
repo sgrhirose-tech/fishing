@@ -1,0 +1,45 @@
+{
+  "slug": "yamazaki-horikawa",
+  "name": "山崎川・堀川河口",
+  "location": {
+    "latitude": 35.0925238,
+    "longitude": 136.8898416
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "名古屋市",
+    "city_slug": "nagoya"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 205,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "河口のシーバス・クロダイ向き、市内からアクセス良",
+    "access": "東名古屋港駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}
