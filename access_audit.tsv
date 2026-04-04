@@ -1,0 +1,72 @@
+slug	name	current_access	parsed_station	parsed_mode	parsed_min	nearest_station	nearest_dist_km	station_found	found_dist_km	flag	reason
+akasuka-gyoko	赤須賀漁港	桑名駅から徒歩30分	桑名駅	徒歩	30	西桑名駅	1.73	西桑名駅	1.73	OK	問題なし（距離1.7km）
+akonomatsubara	阿児の松原海水浴場	鵜方駅からバス15分	鵜方駅	バス	15			鵜方駅	4.89	OK	問題なし（距離4.9km）
+anori-gyoko	安乗漁港	鵜方駅からバス20分	鵜方駅	バス	20			鵜方駅	7.48	OK	問題なし（距離7.5km）
+araushima-gyoko	安楽島漁港	鳥羽駅からバス10分	鳥羽駅	バス	10			鳥羽駅	3.42	OK	問題なし（距離3.4km）
+aritaki-teibou	有滝堤防・外城田川河口	伊勢市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+chidorigahama	千鳥ヶ浜	鳥羽駅からバス45分	鳥羽駅	バス	45			鳥羽駅	11.90	OK	問題なし（距離11.9km）
+chiyozaki-surf	千代崎サーフ	近鉄千代崎駅から徒歩10分	近鉄千代崎駅	徒歩	10	千代崎駅	0.58	千代崎駅	0.58	OK	問題なし（距離0.6km）
+choshi-kako	銚子川河口（相賀）	相賀駅から徒歩15分	相賀駅	徒歩	15	相賀駅	0.82	相賀駅	0.82	OK	問題なし（距離0.8km）
+funakoshi-maehama	船越前浜小公園	鵜方駅からバス25分	鵜方駅	バス	25			鵜方駅	7.40	OK	問題なし（距離7.4km）
+fusou-ryokuchi	富双緑地公園	近鉄霞ヶ浦駅から徒歩20分	近鉄霞ヶ浦駅	徒歩	20	富田浜駅	0.90	霞ヶ浦駅	2.25	OK	問題なし（距離2.2km）
+futakijima-gyoko	二木島漁港	二木島駅から徒歩5分	二木島駅	徒歩	5	二木島駅	0.11	二木島駅	0.11	TIME_IMPLAUSIBLE	直線0.1km → 推定徒歩2分 vs 申告5分（2.6x）
+futami-gyoko	二見浦・二見漁港	近鉄二見浦駅から徒歩10分	近鉄二見浦駅	徒歩	10	民話の駅・蘇民前	0.50	二見浦駅	1.57	TIME_IMPLAUSIBLE	直線1.6km → 推定徒歩28分 vs 申告10分（0.4x）
+gokasho-gyoko	五ヶ所浦漁港	伊勢市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+goza-ko	御座港	鵜方駅からバス40分	鵜方駅	バス	40			鵜方駅	7.71	OK	問題なし（距離7.7km）
+hamajima-nanbari	浜島港・南張海水浴場	鵜方駅からバス20分	鵜方駅	バス	20			鵜方駅	10.05	OK	問題なし（距離10.1km）
+hiike-kaigan	比幾海岸	三野瀬駅から徒歩20分	三野瀬駅	徒歩	20	三野瀬駅	2.94	三野瀬駅	2.94	TIME_IMPLAUSIBLE	直線2.9km → 推定徒歩51分 vs 申告20分（0.4x）
+hoza-gyoko	方座浦漁港	伊勢市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+ichigo-hama	いちご浜	鵜方駅からバス15分	鵜方駅	バス	15			鵜方駅	6.12	OK	問題なし（距離6.1km）
+ishikagami-gyoko	石鏡漁港	鳥羽駅からバス30分	鳥羽駅	バス	30			鳥羽駅	8.42	OK	問題なし（距離8.4km）
+isotsu-gyoko	磯津漁港	近鉄白子駅からバス20分	近鉄白子駅	バス	20			白子駅	11.29	OK	問題なし（距離11.3km）
+iwata-kako	岩田川河口	津駅からバス15分	津駅	バス	15			国府津駅	253.14	OK	問題なし（距離253.1km）
+jonohama-beach	城ノ浜海水浴場	相賀駅から徒歩20分	相賀駅	徒歩	20	紀伊長島駅	2.14			STATION_MISMATCH	申告駅「相賀駅」が周辺に見当たらない（最寄: 紀伊長島駅）
+kaino-gyoko	海野漁港	紀伊長島駅から徒歩20分	紀伊長島駅	徒歩	20	紀伊長島駅前	3.00	紀伊長島駅前	3.00	TIME_IMPLAUSIBLE	直線3.0km → 推定徒歩53分 vs 申告20分（0.4x）
+kajika-gyoko	梶賀漁港	大曽根浦駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+kasumi-fishing-park	霞埠頭・霞釣り公園	近鉄霞ヶ浦駅から徒歩15分	近鉄霞ヶ浦駅	徒歩	15	富田浜駅	2.62	霞ヶ浦駅	3.50	TIME_IMPLAUSIBLE	直線3.5km → 推定徒歩61分 vs 申告15分（0.2x）
+kii-nagashima-ko	紀伊長島港	紀伊長島駅から徒歩15分	紀伊長島駅	徒歩	15	紀伊長島駅前	1.03	紀伊長島駅前	1.03	OK	問題なし（距離1.0km）
+koga-gyoko	甲賀漁港	鵜方駅からバス15分	鵜方駅	バス	15			鵜方駅	6.08	OK	問題なし（距離6.1km）
+kohama-gyoko-toba	小浜漁港	鳥羽駅からバス10分	鳥羽駅	バス	10			鳥羽駅	1.65	OK	問題なし（距離1.7km）
+koshika-kaigan	越賀海岸	鵜方駅からバス35分	鵜方駅	バス	35			鵜方駅	8.60	OK	問題なし（距離8.6km）
+kowa-minamiise	古和浦漁港	伊勢市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+kumano-ko	熊野港・木本港	熊野市駅から徒歩15分	熊野市駅	徒歩	15	熊野市駅前	0.91	熊野市駅前	0.91	OK	問題なし（距離0.9km）
+kurohama-kaigan	黒浜海岸	三野瀬駅から徒歩15分	三野瀬駅	徒歩	15	紀伊長島駅前	2.95			STATION_MISMATCH	申告駅「三野瀬駅」が周辺に見当たらない（最寄: 紀伊長島駅前）
+kuzaki-gyoko	国崎漁港	鳥羽駅からバス35分	鳥羽駅	バス	35			鳥羽駅	10.96	OK	問題なし（距離11.0km）
+mikinosato-kaigan	三木里海岸	三木里駅から徒歩10分	三木里駅	徒歩	10	三木里駅下	1.00	三木里駅下	1.00	OK	問題なし（距離1.0km）
+mitaki-haneage	三滝川河口・跳ね上げ橋	近鉄四日市駅からバス15分	近鉄四日市駅	バス	15			近鉄四日市駅	1.92	OK	問題なし（距離1.9km）
+miura-gyoko-kihoku	三浦漁港	三野瀬駅から徒歩25分	三野瀬駅	徒歩	25	三野瀬駅	0.74	三野瀬駅	0.74	OK	問題なし（距離0.7km）
+miyagawa-kako	宮川河口	近鉄二見浦駅から徒歩20分	近鉄二見浦駅	徒歩	20					API_NO_RESULT	5km 圏内に駅なし（要確認）
+nada-area	名田エリア	鵜方駅からバス25分	鵜方駅	バス	25			鵜方駅	7.44	OK	問題なし（距離7.4km）
+naya-gyoko	奈屋浦漁港	伊勢市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+nie-gyoko	贄浦漁港	伊勢市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+niishika-kaigan	新鹿海岸	新鹿駅から徒歩10分	新鹿駅	徒歩	10	新鹿駅前	0.27	新鹿駅前	0.27	OK	問題なし（距離0.3km）
+nishiki-gyoko	錦漁港	三野瀬駅から徒歩20分	三野瀬駅	徒歩	20					API_NO_RESULT	5km 圏内に駅なし（要確認）
+ohori-gyoko	大堀漁港	近鉄明星駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+ojiro-park	大白公園	尾鷲北ICから車利用								OK_CAR	車利用（検証対象外）
+oka-oike	相賀浦・大池付近	伊勢市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+onigajo-chiso	鬼ヶ城周辺地磯	熊野市駅からバス15分	熊野市駅	バス	15			熊野市駅	1.61	OK	問題なし（距離1.6km）
+osatsu-gyoko	相差漁港	鳥羽駅からバス40分	鳥羽駅	バス	40			鳥羽駅	12.52	OK	問題なし（距離12.5km）
+owase-tenman	尾鷲港・天満浦堤防	尾鷲駅から徒歩20分	尾鷲駅	徒歩	20					API_NO_RESULT	5km 圏内に駅なし（要確認）
+oyodo-kaigan	大淀漁港・大淀海岸	松阪駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+ozone-gyoko	大曽根浦漁港	尾鷲駅からバス10分	尾鷲駅	バス	10			尾鷲駅	3.17	OK	問題なし（距離3.2km）
+sakama-gyoko	迫間浦漁港	伊勢市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+shichirimihama-kiho	七里御浜（紀宝町側）	鵜殿駅から徒歩10分	鵜殿駅	徒歩	10	井田駅前	0.05			STATION_MISMATCH	申告駅「鵜殿駅」が周辺に見当たらない（最寄: 井田駅前）
+shichirimihama-mihasecho	七里御浜（御浜町側）	阿田和駅から徒歩10分	阿田和駅	徒歩	10	紀伊市木駅	0.88	阿田和駅前	1.88	TIME_IMPLAUSIBLE	直線1.9km → 推定徒歩33分 vs 申告10分（0.3x）
+shiohama-tetra	塩浜テトラ	近鉄塩浜駅から徒歩15分	近鉄塩浜駅	徒歩	15	塩浜駅	3.27	塩浜駅	3.27	TIME_IMPLAUSIBLE	直線3.3km → 推定徒歩57分 vs 申告15分（0.3x）
+shirogishi-doze	白石湖周辺（道瀬漁港）	相賀駅から徒歩15分	相賀駅	徒歩	15	相賀駅	0.71	相賀駅	0.71	OK	問題なし（距離0.7km）
+shiroko-gyoko	白子漁港	近鉄白子駅からバス25分	近鉄白子駅	バス	25			白子駅	0.44	BUS_TOO_CLOSE	直線0.44km — 徒歩圏なのにバス表記
+sugari-gyoko	須賀利漁港	尾鷲駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+suzuka-nipponkokan	鈴鹿港・日本鋼管テトラ	近鉄鈴鹿市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+toba-nakanogou	鳥羽港・中之郷	近鉄鳥羽駅から徒歩10分	近鉄鳥羽駅	徒歩	10	中之郷駅	0.13	鳥羽駅	0.89	OK	問題なし（距離0.9km）
+tomisuhara-gyoko	富洲原漁港	近鉄富洲原駅から徒歩10分	近鉄富洲原駅	徒歩	10	富田駅	1.00			STATION_MISMATCH	申告駅「近鉄富洲原駅」が周辺に見当たらない（最寄: 富田駅）
+toshijima	答志島	鳥羽港から渡船10分								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+tsu-nipponkokan	日本鋼管（津市）護岸・テトラ	津駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+tsu-port	津ポートターミナル周辺	近鉄津駅からバス15分	近鉄津駅	バス	15			津駅	2.82	OK	問題なし（距離2.8km）
+udono-ko	鵜殿港	鵜殿駅から徒歩10分	鵜殿駅	徒歩	10	鵜殿駅前	0.32	鵜殿駅前	0.32	OK	問題なし（距離0.3km）
+uramura-motoura	浦村湾・本浦湾	鳥羽駅からバス20分	鳥羽駅	バス	20			鳥羽駅	6.05	OK	問題なし（距離6.1km）
+wagu-gyoko	和具漁港	鵜方駅からバス30分	鵜方駅	バス	30			鵜方駅	8.59	OK	問題なし（距離8.6km）
+wagu-hiroma	和具広の浜・布施田ふれあい公園	鵜方駅からバス30分	鵜方駅	バス	30			鵜方駅	8.64	OK	問題なし（距離8.6km）
+yokkaichi-yumekujira	四日市港・ゆめくじら周辺	近鉄四日市駅からバス15分	近鉄四日市駅	バス	15			近鉄四日市駅	3.90	OK	問題なし（距離3.9km）
+yoshizaki-kaigan	吉崎海岸	近鉄鈴鹿市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+yoshizu-kamizaki	吉津港（神前浦）	伊勢市駅からバス利用								FORMAT_ERROR	書式不一致（○○駅から徒歩/バス○分 でない）
+yukunoura-gyoko	行野浦漁港	尾鷲駅からバス15分	尾鷲駅	バス	15			尾鷲駅	4.95	OK	問題なし（距離5.0km）

@@ -1,0 +1,47 @@
+{
+  "slug": "ukui-port",
+  "name": "宇久井漁港",
+  "location": {
+    "latitude": 33.6621958,
+    "longitude": 135.9757333
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "那智勝浦町",
+    "city_slug": "nachikatsuura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 105,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1613.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "那智勝浦町宇久井の漁港。アジ・クロダイ・メバル・アオリイカが狙える。熊野灘に面し底物も豊富。",
+    "access": "宇久井駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "kurodai",
+    "mebaru"
+  ],
+  "harbor_code": "24-12",
+  "harbor_name": "古江"
+}

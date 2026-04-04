@@ -1,0 +1,48 @@
+{
+  "slug": "utsumi-shinko",
+  "name": "内海新港",
+  "location": {
+    "latitude": 34.7392592,
+    "longitude": 136.8606341
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "南知多町",
+    "city_slug": "minamichita"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 245,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 859.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "外洋向き、キス・アオリイカ・アジ向き",
+    "access": "内海駅から徒歩30分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika",
+    "aji",
+    "shirogisu"
+  ],
+  "harbor_code": "23-12",
+  "harbor_name": "寺津"
+}

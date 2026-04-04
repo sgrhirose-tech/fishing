@@ -1,0 +1,48 @@
+{
+  "slug": "udono-ko",
+  "name": "鵜殿港",
+  "location": {
+    "latitude": 33.7330007,
+    "longitude": 136.0155256
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "紀宝町",
+    "city_slug": "kiho"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 110,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1899.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "紀宝町の港護岸、クロダイ・セイゴ・ハゼ向き",
+    "access": "鵜殿駅前駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "24-12",
+  "harbor_name": "古江"
+}

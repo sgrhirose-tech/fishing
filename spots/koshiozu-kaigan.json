@@ -1,0 +1,43 @@
+{
+  "slug": "koshiozu-kaigan",
+  "name": "小塩津海岸",
+  "location": {
+    "latitude": 34.59065930000001,
+    "longitude": 137.0885098
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "遠州灘",
+    "area_slug": "enshu-nada",
+    "city": "田原市",
+    "city_slug": "tahara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 154.9,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "渥美半島東端の砂浜、キス・ヒラメ向きサーフ",
+    "access": "田原市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "hirame",
+    "shirogisu"
+  ],
+  "harbor_code": "23-9",
+  "harbor_name": "蒲郡"
+}

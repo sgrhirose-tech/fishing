@@ -1,0 +1,51 @@
+{
+  "slug": "shirasaki-kaigan",
+  "name": "白崎海岸",
+  "location": {
+    "latitude": 33.9775991,
+    "longitude": 135.0707763
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "由良町",
+    "city_slug": "yura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 10,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 372.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "由良町の石灰岩が連なる海岸。イシダイ、メジナ、クロダイが磯から狙える人気の磯釣りポイント。",
+    "access": "由良町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@86m",
+      "natural=beach@80m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "ishidai",
+    "mejina"
+  ],
+  "harbor_code": "27-1",
+  "harbor_name": "深日"
+}

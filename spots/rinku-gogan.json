@@ -1,0 +1,48 @@
+{
+  "slug": "rinku-gogan",
+  "name": "常滑りんくう釣り護岸",
+  "location": {
+    "latitude": 34.8812152,
+    "longitude": 136.8233894
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "常滑市",
+    "city_slug": "tokoname"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 250,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体、貝殻混じり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "整備された護岸、クロダイ・キス・アジ向き",
+    "access": "りんくう常滑駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "aji",
+    "shirogisu"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

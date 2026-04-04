@@ -1,0 +1,50 @@
+{
+  "slug": "kina-gyoko",
+  "name": "衣奈漁港",
+  "location": {
+    "latitude": 33.9903015,
+    "longitude": 135.1058316
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "由良町",
+    "city_slug": "yura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 15,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 622.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "有田郡湯浅町衣奈の漁港。メバル、カサゴ、アオリイカが狙える。秋冬の根魚釣りに定評あり。",
+    "access": "由良町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@191m",
+      "man_made=breakwater@242m",
+      "man_made=breakwater@274m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kasago",
+    "mebaru"
+  ],
+  "harbor_code": "27-1",
+  "harbor_name": "深日"
+}

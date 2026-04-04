@@ -1,0 +1,44 @@
+{
+  "slug": "ikadagawa-kako",
+  "name": "筏川河口",
+  "location": {
+    "latitude": 35.0534013,
+    "longitude": 136.8065
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "弥富市",
+    "city_slug": "yatomi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "弥富市の河口、セイゴ・クロダイ・ウナギ向き",
+    "access": "弥富市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai"
+  ],
+  "harbor_code": "23-17",
+  "harbor_name": "名古屋"
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "iwata-kako",
+  "name": "岩田川河口",
+  "location": {
+    "latitude": 34.7080332,
+    "longitude": 136.5233231
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "津市",
+    "city_slug": "tsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 110,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "津市の河口、シーバス・クロダイ向き",
+    "access": "藤沢市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki"
+  ],
+  "harbor_code": "23-16",
+  "harbor_name": "鬼崎"
+}
