@@ -1,0 +1,47 @@
+{
+  "slug": "tanabe-gyoko",
+  "name": "田辺漁港",
+  "location": {
+    "latitude": 34.226,
+    "longitude": 135.1675
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "田辺市の主要漁港。アジ、クロダイ、タチウオ、スズキが通年狙える。アクセス良好で人気。",
+    "access": "和歌山市駅から徒歩25分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "tachiuo",
+    "kurodai",
+    "suzuki",
+    "aji"
+  ],
+  "harbor_code": "27-2",
+  "harbor_name": "淡輪"
+}
