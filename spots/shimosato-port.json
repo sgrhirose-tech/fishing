@@ -10,8 +10,8 @@
     "pref_slug": "wakayama",
     "area_name": "熊野灘",
     "area_slug": "kumano-nada",
-    "city": "",
-    "city_slug": ""
+    "city": "那智勝浦町",
+    "city_slug": "nachikatuura"
   },
   "physical_features": {
     "sea_bearing_deg": 175,
@@ -42,6 +42,6 @@
     "saba",
     "kamasu"
   ],
-  "harbor_code": "24-13",
-  "harbor_name": "二木島"
+  "harbor_code": "30-2",
+  "harbor_name": "浦神"
 }
