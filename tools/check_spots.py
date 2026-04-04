@@ -41,9 +41,8 @@ def check_spot(spot: dict) -> list[str]:
     elif not (0 <= sea_bearing <= 360):
         reasons.append(f"sea_bearing_deg 範囲外 ({sea_bearing})")
 
-    ptype = spot.get("classification", {}).get("primary_type", "")
-    if not ptype or ptype == "unknown":
-        reasons.append("primary_type が unknown / 未設定")
+    if not spot.get("area", {}).get("city"):
+        reasons.append("city 未設定")
 
     if not spot.get("harbor_code"):
         reasons.append("harbor_code 未設定")
