@@ -1,0 +1,46 @@
+{
+  "slug": "tomidagawa-kako",
+  "name": "富田川河口",
+  "location": {
+    "latitude": 33.6420818,
+    "longitude": 135.3961945
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 225,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1959.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "白浜町の富田川河口。スズキ、クロダイ、ハゼが狙える。砂浜に囲まれた河口ポイント。",
+    "access": "和歌山県方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "24-14",
+  "harbor_name": "鵜殿"
+}

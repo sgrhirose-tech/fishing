@@ -1,0 +1,46 @@
+{
+  "slug": "aizugawa-kako",
+  "name": "会津川河口",
+  "location": {
+    "latitude": 33.7305185,
+    "longitude": 135.3715611
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "田辺市",
+    "city_slug": "tanabe"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 200,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "田辺市の会津川河口。スズキ、クロダイ、ハゼが狙える。夜釣りのスズキ狙いで有名なポイント。",
+    "access": "紀伊田辺駅から徒歩25分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "27-2",
+  "harbor_name": "淡輪"
+}
