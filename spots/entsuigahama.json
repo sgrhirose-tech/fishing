@@ -1,0 +1,46 @@
+{
+  "slug": "entsuigahama",
+  "name": "煙樹ヶ浜",
+  "location": {
+    "latitude": 33.8923377,
+    "longitude": 135.1216057
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "美浜町",
+    "city_slug": "mihama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 192.3,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1440.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "美浜町の砂礫海岸。シロギス、カレイ、スズキの投げ釣りが有名。紀伊水道屈指の投げ釣りポイント。",
+    "access": "美浜町方面から車利用"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu",
+    "karei",
+    "suzuki"
+  ],
+  "harbor_code": "27-1",
+  "harbor_name": "深日"
+}

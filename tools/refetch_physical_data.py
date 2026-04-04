@@ -26,6 +26,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from pythonista_spot_tools import fetch_physical_data
+from backfill_harbor_code import find_nearest_harbor, load_harbor_list
 
 REPO_ROOT = Path(__file__).parent.parent
 
@@ -231,6 +232,7 @@ def process_file(
     skip_classified: bool = False,
     verbose: bool = False,
     classification_only: bool = False,
+    harbors: list | None = None,
 ) -> bool:
     spot        = json.loads(src_path.read_text(encoding="utf-8"))
     lat         = spot["location"]["latitude"]
@@ -294,6 +296,13 @@ def process_file(
 
     if cls:
         spot["classification"] = cls
+
+    if harbors:
+        nearest, dist_km = find_nearest_harbor(lat, lon, harbors)
+        if nearest:
+            spot["harbor_code"] = nearest["harbor_code"]
+            spot["harbor_name"] = nearest["harbor_name"]
+            print(f"    最寄り港: {nearest['harbor_name']} ({nearest['harbor_code']}, {dist_km:.1f}km)")
 
     out = dst_path or src_path
     out.parent.mkdir(exist_ok=True)
@@ -375,6 +384,15 @@ def main():
         mode = "書き込みモード（→ spots/ ・元ファイル削除）"
     print(f"対象: {len(files)}件  モード: {mode}\n")
 
+    if not dry_run and not args.classification_only:
+        try:
+            harbors = load_harbor_list()
+        except SystemExit:
+            print("[警告] harbor_list.json が見つかりません。harbor_code は更新されません。")
+            harbors = []
+    else:
+        harbors = []
+
     ok = 0
     for i, path in enumerate(files, 1):
         try:
@@ -393,6 +411,7 @@ def main():
             skip_classified=skip_classified,
             verbose=args.verbose,
             classification_only=args.classification_only,
+            harbors=harbors,
         ):
             ok += 1
 

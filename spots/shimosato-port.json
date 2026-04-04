@@ -1,0 +1,47 @@
+{
+  "slug": "shimosato-port",
+  "name": "下里漁港",
+  "location": {
+    "latitude": 33.5763902,
+    "longitude": 135.9305334
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 175,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 943.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "那智勝浦町下里の漁港。アジ・サバ・カマス・アオリイカが狙える。静かな環境で家族連れにも向くポイント。",
+    "access": "下里駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "saba",
+    "kamasu"
+  ],
+  "harbor_code": "24-13",
+  "harbor_name": "二木島"
+}
