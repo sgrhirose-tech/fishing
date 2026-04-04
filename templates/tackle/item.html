@@ -18,7 +18,7 @@
 
 <article class="tackle-item-article">
 
-  {% if item.beginner_tip %}
+  {% if not body_from_md and item.beginner_tip %}
   <div class="tackle-tip-box">
     <span class="tackle-tip-label">💡 初心者へのアドバイス</span>
     <p>{{ item.beginner_tip }}</p>
@@ -26,33 +26,14 @@
   {% endif %}
 
   <div class="tackle-item-body">
-    {{ item.body | replace('\n', '<br>') | safe }}
+    {{ body_html | safe }}
   </div>
 
-  {% if item.suitable_for %}
+  {% if not body_from_md and item.suitable_for %}
   <div class="tackle-suitable">
     <h3>🎯 こんな釣りに向いています</h3>
     <p>{{ item.suitable_for }}</p>
   </div>
-  {% endif %}
-
-  <!-- アフィリエイトリンク枠 -->
-  {% if item.affiliate_links %}
-  <section class="tackle-affiliate">
-    <h3>おすすめ商品</h3>
-    <div class="tackle-affiliate-list">
-      {% for link in item.affiliate_links %}
-      <a href="{{ link.url }}" target="_blank" rel="noopener sponsored" class="tackle-affiliate-item">
-        {% if link.image %}<img src="{{ link.image }}" alt="{{ link.name }}" loading="lazy">{% endif %}
-        <div class="tackle-affiliate-info">
-          <p class="tackle-affiliate-name">{{ link.name }}</p>
-          {% if link.price %}<p class="tackle-affiliate-price">{{ link.price }}</p>{% endif %}
-          {% if link.note %}<p class="tackle-affiliate-note">{{ link.note }}</p>{% endif %}
-        </div>
-      </a>
-      {% endfor %}
-    </div>
-  </section>
   {% endif %}
 
 </article>

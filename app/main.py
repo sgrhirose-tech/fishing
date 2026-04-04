@@ -5,6 +5,7 @@ uvicorn app.main:app --reload で起動。
 
 import json
 import os
+import re as _re
 import time
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
@@ -648,6 +649,56 @@ def page_safety(request: Request):
 
 _TACKLE_DIR = _BASE / "data" / "tackle"
 
+try:
+    import mistune as _mistune
+    _MARKDOWN = _mistune.create_markdown(plugins=["table"])
+except ImportError:
+    _MARKDOWN = None
+
+_AFFILIATE_MARKER = _re.compile(r'<!--\s*affiliate:\s*(\d+)\s*-->')
+
+
+def _build_affiliate_html(links: list) -> str:
+    """商品カードHTMLを生成する。"""
+    items_html = ""
+    for link in links:
+        name = link.get("name", "")
+        url = link.get("url", "#")
+        price = link.get("price", "")
+        note = link.get("note", "")
+        price_html = f"<p class='tackle-affiliate-price'>{price}</p>" if price else ""
+        note_html = f"<p class='tackle-affiliate-note'>{note}</p>" if note else ""
+        items_html += (
+            f'<a href="{url}" target="_blank" rel="noopener sponsored" class="tackle-affiliate-item">'
+            f'<div class="tackle-affiliate-info">'
+            f'<p class="tackle-affiliate-name">{name}</p>'
+            f'{price_html}{note_html}'
+            f'</div></a>'
+        )
+    return f'<section class="tackle-affiliate"><div class="tackle-affiliate-list">{items_html}</div></section>'
+
+
+def _render_tackle_body(category_slug: str, item: dict) -> tuple:
+    """Markdownファイルがあればそれを基にHTMLを組み立てる。返り値: (body_html, from_md)"""
+    md_path = _TACKLE_DIR / category_slug / f"{item['slug']}.md"
+    if not md_path.exists() or _MARKDOWN is None:
+        return item.get("body", "").replace("\n", "<br>"), False
+
+    md_text = md_path.read_text(encoding="utf-8")
+    slots = item.get("affiliate_slots", [])
+
+    parts = _AFFILIATE_MARKER.split(md_text)
+    html_parts = []
+    for i, part in enumerate(parts):
+        if i % 2 == 0:
+            html_parts.append(_MARKDOWN(part))
+        else:
+            idx = int(part) - 1
+            links = slots[idx] if isinstance(slots, list) and 0 <= idx < len(slots) else []
+            if links:
+                html_parts.append(_build_affiliate_html(links))
+    return "".join(html_parts), True
+
 
 def _load_tackle_categories() -> list:
     path = _TACKLE_DIR / "categories.json"
@@ -695,11 +746,14 @@ def page_tackle_item(request: Request, category_slug: str, item_slug: str):
     item = next((i for i in items if i["slug"] == item_slug), None)
     if not item:
         raise HTTPException(status_code=404, detail="アイテムが見つかりません")
+    body_html, body_from_md = _render_tackle_body(category_slug, item)
     return templates.TemplateResponse(request, "tackle/item.html", {
         "category": category,
         "categories": categories,
         "item": item,
         "items": items,
+        "body_html": body_html,
+        "body_from_md": body_from_md,
     })
 
 
