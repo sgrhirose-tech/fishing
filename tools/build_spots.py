@@ -889,6 +889,15 @@ def main():
         # ファイル名プレフィックス（"_" またはスペースで区切られた最初の単語）から都道府県を判定
         prefix = tsv_path.stem.split("_")[0].split()[0]
         pref_from_file = _SLUG_TO_PREF.get(prefix, "")
+
+        # プレフィックスで判定できない場合、サフィックス（kumano-nada_和歌山 形式）を試みる
+        if not pref_from_file and "_" in tsv_path.stem:
+            suffix = tsv_path.stem.rsplit("_", 1)[-1]
+            for ending in ("県", "府", "都", "道"):
+                candidate = suffix + ending
+                if candidate in PREF_SLUG_MAP:
+                    pref_from_file = candidate
+                    break
         if pref_from_file:
             for r in recs:
                 r["pref_from_file"] = pref_from_file
