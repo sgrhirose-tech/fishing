@@ -6,6 +6,25 @@
 const OSM_TILE = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const OSM_ATTR = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
+// マップ初期オプション: マウスドラッグ・スクロールホイール・1本指タッチを無効化
+const _MAP_OPTS = {
+  dragging:        false,
+  touchZoom:       true,
+  scrollWheelZoom: false,
+  boxZoom:         false,
+  doubleClickZoom: false,
+};
+
+// 2本指タッチ時のみ dragging を有効にするヘルパー
+function _enableTwoFingerInteraction(map) {
+  map.on('touchstart', function(e) {
+    if (e.originalEvent.touches.length >= 2) map.dragging.enable();
+  });
+  map.on('touchend touchcancel', function(e) {
+    if (e.originalEvent.touches.length < 2) map.dragging.disable();
+  });
+}
+
 const AREA_COLORS = {
   'sagamibay':   '#2196F3',
   'miura':       '#4CAF50',
@@ -63,7 +82,7 @@ function _fitSpots(map, spots, opts) {
  * TOPページ: 全域マップ（現在地に自動センタリング）
  */
 function initTopMap(elementId, spots) {
-  const map = L.map(elementId).setView([35.20, 139.65], 9);
+  const map = L.map(elementId, _MAP_OPTS).setView([35.20, 139.65], 9);
   L.tileLayer(OSM_TILE, { attribution: OSM_ATTR }).addTo(map);
   spots.forEach(spot => _makeMarker(spot, map));
   _fitSpots(map, spots);
@@ -105,16 +124,19 @@ function initTopMap(elementId, spots) {
       map.setView([pos.coords.latitude, pos.coords.longitude], 10);
     }, function() {});
   }
+
+  _enableTwoFingerInteraction(map);
 }
 
 /**
  * 一覧ページ: 全スポットマップ
  */
 function initSpotListMap(elementId, spots) {
-  const map = L.map(elementId).setView([35.20, 139.65], 9);
+  const map = L.map(elementId, _MAP_OPTS).setView([35.20, 139.65], 9);
   L.tileLayer(OSM_TILE, { attribution: OSM_ATTR }).addTo(map);
   spots.forEach(spot => _makeMarker(spot, map));
   _fitSpots(map, spots);
+  _enableTwoFingerInteraction(map);
 }
 
 /**
@@ -123,7 +145,7 @@ function initSpotListMap(elementId, spots) {
 function initDetailMap(elementId, spot) {
   const lat = spot.location?.latitude ?? spot.lat;
   const lon = spot.location?.longitude ?? spot.lon;
-  const map = L.map(elementId).setView([lat, lon], 15);
+  const map = L.map(elementId, _MAP_OPTS).setView([lat, lon], 15);
   L.tileLayer(OSM_TILE, { attribution: OSM_ATTR }).addTo(map);
 
   const icon = L.divIcon({
@@ -134,5 +156,6 @@ function initDetailMap(elementId, spot) {
   });
   L.marker([lat, lon], { icon }).addTo(map)
     .bindPopup(`<b>${spot.name}</b>`).openPopup();
+  _enableTwoFingerInteraction(map);
   return map;
 }
