@@ -10,12 +10,12 @@
     "pref_slug": "wakayama",
     "area_name": "紀伊水道（和歌山）",
     "area_slug": "kii-suido-wakayama",
-    "city": "",
-    "city_slug": ""
+    "city": "白浜町",
+    "city_slug": "shirahama"
   },
   "physical_features": {
     "sea_bearing_deg": 225,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1959.1
   },
@@ -31,9 +31,9 @@
   },
   "classification": {
     "primary_type": "unknown",
-    "confidence": 0.0,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
@@ -41,6 +41,6 @@
     "suzuki",
     "haze"
   ],
-  "harbor_code": "24-14",
-  "harbor_name": "鵜殿"
+  "harbor_code": "30-13",
+  "harbor_name": "田辺"
 }
