@@ -958,3 +958,13 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
   border-top: 1px solid #e0ecf5;
 }
 .tackle-nav-other > p { font-size: .82rem; color: #888; margin-bottom: .5rem; }
+
+/* ---- 釣法→スポット導線 ---- */
+.method-spots-link {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background: #f0f7fc;
+  border-left: 4px solid #1a6b9e;
+  border-radius: 0 8px 8px 0;
+}
+.method-spots-link h2 { font-size: 1.05rem; margin: 0 0 .6rem; color: #1a6b9e; }
