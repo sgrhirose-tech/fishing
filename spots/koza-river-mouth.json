@@ -10,8 +10,8 @@
     "pref_slug": "wakayama",
     "area_name": "熊野灘",
     "area_slug": "kumano-nada",
-    "city": "",
-    "city_slug": ""
+    "city": "串本町",
+    "city_slug": "kusimoto"
   },
   "physical_features": {
     "sea_bearing_deg": 180,
@@ -31,9 +31,9 @@
   },
   "classification": {
     "primary_type": "unknown",
-    "confidence": 0.0,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
@@ -41,6 +41,6 @@
     "suzuki",
     "haze"
   ],
-  "harbor_code": "24-14",
-  "harbor_name": "鵜殿"
+  "harbor_code": "30-3",
+  "harbor_name": "串本"
 }
