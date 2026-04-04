@@ -90,6 +90,13 @@ PC_NAMES = {
 }
 
 TIDE_SITE = "https://tide736.net"
+
+
+def _dm_to_decimal(dm: float) -> float:
+    """度分（DD.MM）形式の座標を十進度に変換する。例: 33.28 → 33.4667"""
+    degrees = int(dm)
+    minutes = (dm - degrees) * 100
+    return round(degrees + minutes / 60, 6)
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 USER_AGENT = "TsuricastSetup/1.0 (personal-use)"
 GEOCODE_INTERVAL = 1.2  # Nominatim 利用規約: 1秒以上の間隔
@@ -255,12 +262,13 @@ def probe_harbor_codes(pc: int, max_hc: int = 99) -> list[dict]:
                     continue
                 entry = {"pc": pc, "hc": hc, "harbor_name": harbor_name}
                 # 座標も取得できれば付与（Nominatim 不要）
+                # tide736.net の API は度分（DD.MM）形式で返すため十進度に変換する
                 try:
-                    lat = float(port.get("latitude") or 0)
-                    lon = float(port.get("longitude") or 0)
-                    if lat != 0 and lon != 0:
-                        entry["lat"] = lat
-                        entry["lon"] = lon
+                    lat_dm = float(port.get("latitude") or 0)
+                    lon_dm = float(port.get("longitude") or 0)
+                    if lat_dm != 0 and lon_dm != 0:
+                        entry["lat"] = _dm_to_decimal(lat_dm)
+                        entry["lon"] = _dm_to_decimal(lon_dm)
                 except (TypeError, ValueError):
                     pass
                 harbors.append(entry)
