@@ -59,6 +59,23 @@
       </div>
     </section>
 
+    <!-- ②-b 魚種×エリアのクイック導線 -->
+    <section class="area-links">
+      <h2>魚種×エリアで探す</h2>
+      <div class="area-chips">
+        <a href="/spots?area=miura&fish=kurodai"    class="area-chip">三浦のクロダイ</a>
+        <a href="/spots?area=miura&fish=aji"        class="area-chip">三浦のアジ</a>
+        <a href="/spots?area=sagamibay&fish=shirogisu" class="area-chip">相模湾のキス</a>
+        <a href="/spots?area=tokyobay&fish=haze"    class="area-chip">東京湾のハゼ</a>
+        <a href="/spots?area=isewan&fish=kurodai"   class="area-chip">伊勢湾のクロダイ</a>
+        <a href="/spots?area=mikawa-bay&fish=aji"   class="area-chip">三河湾のアジ</a>
+        <a href="/spots?area=kumano-nada&fish=aoriika" class="area-chip">熊野灘のアオリイカ</a>
+        <a href="/spots?area=sotobo&fish=hirame"    class="area-chip">外房のヒラメ</a>
+        <a href="/spots?fish=shirogisu&type=sand_beach" class="area-chip">砂浜でキス釣り</a>
+        <a href="/spots?fish=aoriika&type=rocky_shore"  class="area-chip">磯でアオリイカ</a>
+      </div>
+    </section>
+
     <!-- ③ 都道府県から探す（アコーディオン） -->
     <section class="area-links">
       <h2>都道府県から探す</h2>
@@ -103,6 +120,7 @@
 {% block scripts %}
 <script>
   const SPOTS = {{ spots | tojson }};
+  const FISH_NAMES = {{ fish_name_map | tojson }};
   document.addEventListener('DOMContentLoaded', function() {
     initTopMap('map-top', SPOTS);
 
@@ -126,7 +144,10 @@
           return (s.name || '').toLowerCase().includes(q)
               || ((s.area || {}).area_name || '').toLowerCase().includes(q)
               || ((s.area || {}).city || '').toLowerCase().includes(q)
-              || ((s.info || {}).notes || '').toLowerCase().includes(q);
+              || ((s.info || {}).notes || '').toLowerCase().includes(q)
+              || (s.target_fish || []).some(function(f) {
+                   return (FISH_NAMES[f] || '').includes(q) || f.includes(q);
+                 });
         }).slice(0, 10);
 
         if (!matches.length) { list.hidden = true; return; }
