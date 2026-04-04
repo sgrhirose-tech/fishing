@@ -1,0 +1,46 @@
+{
+  "slug": "sudahara-kaigan",
+  "name": "栖原海岸",
+  "location": {
+    "latitude": 34.0455413,
+    "longitude": 135.1613574
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "湯浅町",
+    "city_slug": "yuasa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 234.0,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1584.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "湯浅町の海岸。シロギス、カレイの投げ釣りが人気。砂浜と護岸が続く釣りやすいポイント。",
+    "access": "湯浅町方面から車利用"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@243m",
+      "natural=beach@93m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "karei"
+  ],
+  "harbor_code": "27-1",
+  "harbor_name": "深日"
+}

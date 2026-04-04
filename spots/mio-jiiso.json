@@ -1,0 +1,49 @@
+{
+  "slug": "mio-jiiso",
+  "name": "西の地磯（美浜）",
+  "location": {
+    "latitude": 33.4940312,
+    "longitude": 135.6614113
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "串本町",
+    "city_slug": "kushimoto"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 716.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "美浜町三尾周辺の地磯。メジナ、イシダイ、クロダイが狙える本格的な磯釣りポイント。",
+    "access": "和深駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.55,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@116m",
+      "natural=beach@179m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "ishidai",
+    "mejina"
+  ],
+  "harbor_code": "24-14",
+  "harbor_name": "鵜殿"
+}

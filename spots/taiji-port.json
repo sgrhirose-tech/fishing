@@ -1,0 +1,51 @@
+{
+  "slug": "taiji-port",
+  "name": "太地漁港",
+  "location": {
+    "latitude": 33.5900235,
+    "longitude": 135.9496593
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "太地町",
+    "city_slug": "taiji"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 20,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 984.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "太地町の漁港。アジ・サバ・カマス・アオリイカが狙える。クジラの町としても有名で、堤防からの回遊魚実績が高い。",
+    "access": "太地町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.38,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@200m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "saba",
+    "kamasu"
+  ],
+  "harbor_code": "24-13",
+  "harbor_name": "二木島"
+}
