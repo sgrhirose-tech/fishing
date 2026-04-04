@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}タックルガイド｜釣り道具の選び方 | Tsuricast{% endblock %}
+{% block description %}釣り初心者でも迷わず選べる釣り道具（タックル）ガイド。ロッド・リール・ライン・仕掛けをカテゴリ別にわかりやすく解説します。{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <span>タックルガイド</span>
+</nav>
+
+<section class="page-header">
+  <h1>タックルガイド</h1>
+  <p>釣り道具の選び方を初心者にわかりやすく解説</p>
+</section>
+
+<section class="tackle-intro">
+  <p>釣りを始めるとき、最初に迷うのが「何を買えばいいの？」という道具選びです。竿・リール・糸・仕掛け……種類が多すぎて、釣具店に行くだけで心が折れそうになりますよね。でも大丈夫。釣り具には「釣り方ごとの正解」があります。このページでは、釣り初心者の方でも迷わず選べるよう、タックル（釣り道具一式）をカテゴリ別にやさしく解説しています。まずは自分がやりたい釣りを思い浮かべながら読み進めてみてください。</p>
+</section>
+
+<section class="area-links">
+  <h2>カテゴリから選ぶ</h2>
+  <div class="tackle-category-grid">
+    {% for cat in categories %}
+    <a href="/tackle/{{ cat.slug }}/"
+       class="tackle-category-card {% if cat.coming_soon %}coming-soon{% endif %}">
+      <span class="tackle-cat-icon">{{ cat.icon }}</span>
+      <div class="tackle-cat-body">
+        <h3>{{ cat.name }}</h3>
+        <p>{{ cat.summary }}</p>
+      </div>
+      {% if cat.coming_soon %}
+      <span class="badge badge-warning">準備中</span>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
