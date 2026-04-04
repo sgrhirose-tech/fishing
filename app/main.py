@@ -494,11 +494,22 @@ def page_method(request: Request, method_slug: str):
     data = _METHOD_MASTER[method_name]
     # この釣法を使う魚種を逆引き
     target_fish = [fn for fn, fd in _FISH_MASTER.items() if method_name in fd.get("method", [])]
+    # この釣法で釣れるスポット数を計算
+    method_fish_slugs = {
+        v["slug"] for k, v in _FISH_MASTER.items()
+        if method_name in v.get("method", []) and "slug" in v
+    }
+    all_spots = load_spots()
+    method_spots_count = sum(
+        1 for s in all_spots
+        if any(f in method_fish_slugs for f in s.get("target_fish", []))
+    )
     return templates.TemplateResponse(request, "method.html", {
         "method_name": method_name,
         "method_slug": method_slug,
         "data": data,
         "target_fish": target_fish,
+        "method_spots_count": method_spots_count,
     })
 
 
@@ -561,6 +572,7 @@ def page_spots(
     area: str = Query(None),
     fish: str = Query(None),
     spot_type: str = Query(None, alias="type"),
+    method: str = Query(None),
 ):
     all_spots = load_spots()
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
@@ -579,6 +591,16 @@ def page_spots(
     if spot_type and spot_type in SPOT_TYPE_LABELS:
         all_spots = [s for s in all_spots if s.get("classification", {}).get("primary_type") == spot_type]
 
+    active_method_name = ""
+    if method and method in _METHOD_SLUG_TO_NAME:
+        active_method_name = _METHOD_SLUG_TO_NAME[method]
+        method_fish_slugs = {
+            v["slug"] for k, v in _FISH_MASTER.items()
+            if active_method_name in v.get("method", []) and "slug" in v
+        }
+        all_spots = [s for s in all_spots
+                     if any(f in method_fish_slugs for f in s.get("target_fish", []))]
+
     # 現在の絞り込み結果から魚種の出現頻度を集計（上位10件）
     from collections import Counter
     fish_counts = Counter(f for s in all_spots for f in s.get("target_fish", []))
@@ -594,6 +616,8 @@ def page_spots(
         "active_area": area or "",
         "active_fish": fish or "",
         "active_type": spot_type or "",
+        "active_method": method or "",
+        "active_method_name": active_method_name,
         "available_fish": available_fish,
         "spot_type_labels": SPOT_TYPE_LABELS,
         "active_fish_name": fish_name_map.get(fish, "") if fish else "",

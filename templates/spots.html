@@ -48,11 +48,12 @@
   </div>
   {% endif %}
   <!-- 選択中フィルタ表示 -->
-  {% if active_fish or active_type %}
+  {% if active_fish or active_type or active_method %}
   <div class="filter-active">
     <span>絞り込み中：</span>
     {% if active_fish_name %}<span class="filter-badge">{{ active_fish_name }} <a href="?{{ 'area=' + active_area + '&' if active_area }}{{ 'type=' + active_type if active_type }}">×</a></span>{% endif %}
     {% if active_type_label %}<span class="filter-badge">{{ active_type_label }} <a href="?{{ 'area=' + active_area + '&' if active_area }}{{ 'fish=' + active_fish if active_fish }}">×</a></span>{% endif %}
+    {% if active_method_name %}<span class="filter-badge">{{ active_method_name }} <a href="?{{ 'area=' + active_area + '&' if active_area }}{{ 'fish=' + active_fish + '&' if active_fish }}{{ 'type=' + active_type if active_type }}">×</a></span>{% endif %}
     <a href="?{{ 'area=' + active_area if active_area }}" class="filter-clear">すべてクリア</a>
   </div>
   {% endif %}
