@@ -60,13 +60,51 @@ function _fitSpots(map, spots, opts) {
 }
 
 /**
- * TOPページ: 全域マップ
+ * TOPページ: 全域マップ（現在地に自動センタリング）
  */
 function initTopMap(elementId, spots) {
   const map = L.map(elementId).setView([35.20, 139.65], 9);
   L.tileLayer(OSM_TILE, { attribution: OSM_ATTR }).addTo(map);
   spots.forEach(spot => _makeMarker(spot, map));
   _fitSpots(map, spots);
+
+  // 現在地に戻るコントロール
+  const LocControl = L.Control.extend({
+    options: { position: 'bottomright' },
+    onAdd: function() {
+      const btn = L.DomUtil.create('button', 'map-loc-btn');
+      btn.textContent = '📍 現在地';
+      btn.title = '現在地に移動';
+      let userMarker = null;
+      L.DomEvent.on(btn, 'click', function(e) {
+        L.DomEvent.stopPropagation(e);
+        if (!navigator.geolocation) return;
+        btn.textContent = '📍 取得中…';
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+          map.setView([lat, lon], 11);
+          if (userMarker) userMarker.remove();
+          userMarker = L.circleMarker([lat, lon], {
+            radius: 8, color: '#1a6b9e', fillColor: '#4a9fd4',
+            fillOpacity: 0.9, weight: 2,
+          }).addTo(map).bindPopup('現在地').openPopup();
+          btn.textContent = '📍 現在地';
+        }, function() {
+          btn.textContent = '📍 現在地';
+        });
+      });
+      return btn;
+    },
+  });
+  new LocControl().addTo(map);
+
+  // ページロード時に自動センタリング（失敗はサイレント）
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      map.setView([pos.coords.latitude, pos.coords.longitude], 10);
+    }, function() {});
+  }
 }
 
 /**
