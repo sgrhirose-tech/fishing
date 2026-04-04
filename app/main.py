@@ -620,6 +620,65 @@ def page_safety(request: Request):
     return templates.TemplateResponse(request, "static_pages/safety.html", {})
 
 
+# ---- タックルガイド（アフィリエイト） ----------------------------------------
+
+_TACKLE_DIR = _BASE / "data" / "tackle"
+
+
+def _load_tackle_categories() -> list:
+    path = _TACKLE_DIR / "categories.json"
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _load_tackle_items(category_slug: str) -> list:
+    path = _TACKLE_DIR / f"{category_slug}.json"
+    if not path.exists():
+        return []
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+@app.get("/tackle/", response_class=HTMLResponse)
+def page_tackle_top(request: Request):
+    categories = _load_tackle_categories()
+    return templates.TemplateResponse(request, "tackle/top.html", {
+        "categories": categories,
+    })
+
+
+@app.get("/tackle/{category_slug}/", response_class=HTMLResponse)
+def page_tackle_category(request: Request, category_slug: str):
+    categories = _load_tackle_categories()
+    category = next((c for c in categories if c["slug"] == category_slug), None)
+    if not category:
+        raise HTTPException(status_code=404, detail="カテゴリが見つかりません")
+    items = _load_tackle_items(category_slug)
+    return templates.TemplateResponse(request, "tackle/category.html", {
+        "category": category,
+        "categories": categories,
+        "items": items,
+    })
+
+
+@app.get("/tackle/{category_slug}/{item_slug}/", response_class=HTMLResponse)
+def page_tackle_item(request: Request, category_slug: str, item_slug: str):
+    categories = _load_tackle_categories()
+    category = next((c for c in categories if c["slug"] == category_slug), None)
+    if not category:
+        raise HTTPException(status_code=404, detail="カテゴリが見つかりません")
+    items = _load_tackle_items(category_slug)
+    item = next((i for i in items if i["slug"] == item_slug), None)
+    if not item:
+        raise HTTPException(status_code=404, detail="アイテムが見つかりません")
+    return templates.TemplateResponse(request, "tackle/item.html", {
+        "category": category,
+        "categories": categories,
+        "item": item,
+        "items": items,
+    })
+
+
 @app.get("/area/", response_class=HTMLResponse)
 def page_area_index(request: Request):
     spots = load_spots()

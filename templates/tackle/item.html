@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}{{ item.name }}の選び方 | {{ category.name }} | タックルガイド | Tsuricast{% endblock %}
+{% block description %}{{ item.summary }}{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <a href="/tackle/">タックルガイド</a> &rsaquo;
+  <a href="/tackle/{{ category.slug }}/">{{ category.name }}</a> &rsaquo;
+  <span>{{ item.name }}</span>
+</nav>
+
+<section class="page-header">
+  <h1>{{ item.name }}</h1>
+  <p>{{ item.summary }}</p>
+</section>
+
+<article class="tackle-item-article">
+
+  {% if item.beginner_tip %}
+  <div class="tackle-tip-box">
+    <span class="tackle-tip-label">💡 初心者へのアドバイス</span>
+    <p>{{ item.beginner_tip }}</p>
+  </div>
+  {% endif %}
+
+  <div class="tackle-item-body">
+    {{ item.body | replace('\n', '<br>') | safe }}
+  </div>
+
+  {% if item.suitable_for %}
+  <div class="tackle-suitable">
+    <h3>🎯 こんな釣りに向いています</h3>
+    <p>{{ item.suitable_for }}</p>
+  </div>
+  {% endif %}
+
+  <!-- アフィリエイトリンク枠 -->
+  {% if item.affiliate_links %}
+  <section class="tackle-affiliate">
+    <h3>おすすめ商品</h3>
+    <div class="tackle-affiliate-list">
+      {% for link in item.affiliate_links %}
+      <a href="{{ link.url }}" target="_blank" rel="noopener sponsored" class="tackle-affiliate-item">
+        {% if link.image %}<img src="{{ link.image }}" alt="{{ link.name }}" loading="lazy">{% endif %}
+        <div class="tackle-affiliate-info">
+          <p class="tackle-affiliate-name">{{ link.name }}</p>
+          {% if link.price %}<p class="tackle-affiliate-price">{{ link.price }}</p>{% endif %}
+          {% if link.note %}<p class="tackle-affiliate-note">{{ link.note }}</p>{% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+</article>
+
+<!-- 同カテゴリの他の種類 -->
+{% if items | length > 1 %}
+<section class="tackle-nav-other">
+  <p>{{ category.name }}の他の種類</p>
+  <div class="filter-chips">
+    {% for other in items %}
+    {% if other.slug != item.slug %}
+    <a href="/tackle/{{ category.slug }}/{{ other.slug }}/" class="filter-chip">{{ other.name }}</a>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<div class="tackle-nav-other">
+  <p>他のカテゴリを見る</p>
+  <div class="filter-chips">
+    {% for cat in categories %}
+    {% if cat.slug != category.slug %}
+    <a href="/tackle/{{ cat.slug }}/" class="filter-chip">{{ cat.icon }} {{ cat.name }}</a>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
