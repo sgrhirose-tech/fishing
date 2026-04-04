@@ -1,0 +1,44 @@
+{
+  "slug": "shinjo-gyoko",
+  "name": "新庄漁港",
+  "location": {
+    "latitude": 33.7105274,
+    "longitude": 135.396333
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "田辺市",
+    "city_slug": "tanabe"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 345.6,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "田辺市新庄の漁港。メバル、カサゴ、アオリイカが狙える。小規模ながら常連アングラーに人気。",
+    "access": "田辺市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika",
+    "kasago",
+    "mebaru"
+  ],
+  "harbor_code": "27-2",
+  "harbor_name": "淡輪"
+}

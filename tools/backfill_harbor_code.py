@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-既存の spots/*.json に harbor_code / harbor_name を一括追記する一時ツール。
+spots/*.json の harbor_code / harbor_name を最近傍港で補正する。
 
-harbor_mapping.json → spot JSON への移行用。実行後は削除可。
+harbor_list.json をもとに全スポットの harbor_code を再計算・上書きする。
+既存の値があっても常に上書きする（座標修正後の再補正用）。
 
 使い方:
     python tools/backfill_harbor_code.py           # 全件処理
     python tools/backfill_harbor_code.py --dry-run # 表示のみ
-    python tools/backfill_harbor_code.py --slug abosaki  # 1件確認
+    python tools/backfill_harbor_code.py --slug abosaki  # 1件のみ
+    python tools/backfill_harbor_code.py --spots-dir spots_wip  # ディレクトリ指定
 """
 
 import argparse
@@ -80,10 +82,6 @@ def main() -> None:
         try:
             with open(path, encoding="utf-8") as f:
                 spot = json.load(f)
-
-            if spot.get("harbor_code"):
-                skipped += 1
-                continue
 
             loc = spot.get("location", {})
             lat = loc.get("latitude")

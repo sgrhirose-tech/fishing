@@ -1,0 +1,56 @@
+{
+  "slug": "tanoura-gyoko",
+  "name": "田ノ浦漁港",
+  "location": {
+    "latitude": 34.183509,
+    "longitude": 135.151975
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "和歌山市",
+    "city_slug": "wakayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1198.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "和歌山市の内湾に位置する漁港。アジ、イワシ、メバル、カサゴが狙える初心者向けのスポット。",
+    "access": "和歌山市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@152m",
+      "man_made=breakwater@160m",
+      "man_made=breakwater@88m",
+      "man_made=pier@83m",
+      "man_made=pier@96m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "kasago",
+    "mebaru",
+    "iwashi"
+  ],
+  "harbor_code": "27-2",
+  "harbor_name": "淡輪"
+}

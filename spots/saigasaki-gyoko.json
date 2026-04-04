@@ -1,0 +1,55 @@
+{
+  "slug": "saigasaki-gyoko",
+  "name": "雑賀崎漁港",
+  "location": {
+    "latitude": 34.1884024,
+    "longitude": 135.1450412
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "和歌山市",
+    "city_slug": "wakayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 213.4,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 591.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "和歌山市の地磯に隣接する漁港。アオリイカ、メバル、カサゴ、クロダイが人気。磯釣りも楽しめる。",
+    "access": "和歌山市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier",
+      "slipway"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=slipway@221m",
+      "leisure=slipway@225m",
+      "leisure=slipway@229m",
+      "leisure=slipway@239m",
+      "leisure=slipway@256m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "kasago",
+    "mebaru"
+  ],
+  "harbor_code": "27-2",
+  "harbor_name": "淡輪"
+}

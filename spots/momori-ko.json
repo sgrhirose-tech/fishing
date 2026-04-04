@@ -1,0 +1,44 @@
+{
+  "slug": "momori-ko",
+  "name": "文里港",
+  "location": {
+    "latitude": 33.7150074,
+    "longitude": 135.3864345
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "田辺市",
+    "city_slug": "tanabe"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 201.0,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1804.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "田辺市の港。アジ、サバ、クロダイが狙える。田辺湾奥に位置し穏やかな釣り環境。",
+    "access": "田辺市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "saba",
+    "aji"
+  ],
+  "harbor_code": "27-2",
+  "harbor_name": "淡輪"
+}

@@ -1,0 +1,50 @@
+{
+  "slug": "arida-port-kushimoto",
+  "name": "有田漁港（串本）",
+  "location": {
+    "latitude": 33.4845002,
+    "longitude": 135.7365934
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "串本町",
+    "city_slug": "kushimoto"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 205,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1317.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "串本町有田の漁港。アジ・アオリイカ・カサゴ・クロダイが狙える。熊野灘側に開けており回遊魚も期待できる。",
+    "access": "紀伊有田駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@267m",
+      "natural=bare_rock@293m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "kurodai",
+    "kasago"
+  ],
+  "harbor_code": "24-14",
+  "harbor_name": "鵜殿"
+}

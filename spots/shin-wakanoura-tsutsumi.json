@@ -1,0 +1,51 @@
+{
+  "slug": "shin-wakanoura-tsutsumi",
+  "name": "新和歌浦堤防",
+  "location": {
+    "latitude": 34.1856767,
+    "longitude": 135.160718
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "和歌山市",
+    "city_slug": "wakayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 195,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1970.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "和歌浦湾の堤防。アジ、サバ、タチウオ、アオリイカが狙える。秋のエギングに好評。",
+    "access": "和歌山市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@97m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "tachiuo",
+    "saba"
+  ],
+  "harbor_code": "27-2",
+  "harbor_name": "淡輪"
+}
