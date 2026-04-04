@@ -20,7 +20,8 @@
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [10, 11, 12, 1],
     "method": ["ジギング", "カゴ釣り", "ルアー釣り"],
-    "bottom": ["砂地", "岩礁"]
+    "bottom": ["砂地", "岩礁"],
+    "image": "/static/img/fish/buri.jpg"
   },
   "アオリイカ": {
     "slug": "aoriika",
@@ -34,7 +35,8 @@
     "season": [7, 8, 9, 10, 11],
     "peak_season": [9, 10],
     "method": ["ウキ釣り", "ジギング", "ルアー釣り"],
-    "bottom": ["砂地"]
+    "bottom": ["砂地"],
+    "image": "/static/img/fish/tachiuo.jpg"
   },
   "シロギス": {
     "slug": "shirogisu",
@@ -65,7 +67,8 @@
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [10, 11, 12, 1],
     "method": ["泳がせ釣り", "ルアー釣り"],
-    "bottom": ["砂地"]
+    "bottom": ["砂地"],
+    "image": "/static/img/fish/hirame.jpg"
   },
   "カレイ": {
     "slug": "karei",
@@ -80,7 +83,8 @@
     "season": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [11, 12, 1, 2],
     "method": ["穴釣り", "胴突き仕掛け"],
-    "bottom": ["岩礁"]
+    "bottom": ["岩礁"],
+    "image": "/static/img/fish/kasago.jpg"
   },
   "メバル": {
     "slug": "mebaru",
@@ -102,7 +106,8 @@
     "season": [5, 6, 7, 8, 9, 10],
     "peak_season": [6, 7, 8],
     "method": ["カゴ釣り", "フカセ釣り"],
-    "bottom": ["岩礁"]
+    "bottom": ["岩礁"],
+    "image": "/static/img/fish/isaki.jpg"
   },
   "サバ": {
     "slug": "saba",
@@ -137,7 +142,8 @@
     "season": [4, 5, 6, 7, 8, 9, 10],
     "peak_season": [6, 7, 8],
     "method": ["泳がせ釣り", "ルアー釣り"],
-    "bottom": ["砂地"]
+    "bottom": ["砂地"],
+    "image": "/static/img/fish/magochi.jpg"
   },
   "カンパチ": {
     "slug": "kanpachi",
@@ -214,7 +220,8 @@
     "season": [5, 6, 7, 8, 9, 10, 11],
     "peak_season": [8, 9, 10],
     "method": ["脈釣り", "ちょい投げ"],
-    "bottom": ["砂地", "泥地"]
+    "bottom": ["砂地", "泥地"],
+    "image": "/static/img/fish/haze.jpg"
   },
   "カマス": {
     "slug": "kamasu",
@@ -264,7 +271,8 @@
     "season": [4, 5, 6, 7, 8, 9, 10, 11],
     "peak_season": [5, 6, 9, 10],
     "method": ["カゴ釣り", "サビキ釣り", "ルアー釣り"],
-    "bottom": ["砂地"]
+    "bottom": ["砂地"],
+    "image": "/static/img/fish/katsuo.jpg"
   },
   "シイラ": {
     "slug": "shiira",
