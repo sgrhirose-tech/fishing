@@ -7,6 +7,7 @@ import json
 import os
 import re
 import unicodedata
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -213,6 +214,10 @@ def generate_area_comment(area_name_jp: str, area_data: dict, mode: str = "morni
         # 改行を取り除き 40 文字に切り捨て
         text = text.replace("\n", " ")
         return text[:40]
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"  [警告] AIコメント生成失敗 ({area_name_jp}): {e} | {body}")
+        return ""
     except Exception as e:
         print(f"  [警告] AIコメント生成失敗 ({area_name_jp}): {e}")
         return ""
