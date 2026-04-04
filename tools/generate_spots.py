@@ -254,30 +254,31 @@ def main() -> None:
     # ── エリアリスト決定 ─────────────────────────────────
     if args.all:
         targets = list(AREA_MAP.items())
-    elif args.prefecture:
-        targets = [(a, v) for a, v in AREA_MAP.items() if v[2] == args.prefecture]
-        if not targets:
-            print(f"[エラー] '{args.prefecture}' に対応するエリアがありません")
-            print("都道府県名は AREA_MAP の登録名と一致させてください（例: 兵庫県）")
-            sys.exit(1)
     elif args.area:
         if args.area not in AREA_MAP:
             print(f"[エラー] 未対応のエリアです: {args.area}")
             print("対応エリア: " + "、".join(AREA_MAP.keys()))
             sys.exit(1)
         targets = [(args.area, AREA_MAP[args.area])]
+    elif args.prefecture:
+        targets = [(a, v) for a, v in AREA_MAP.items() if v[2] == args.prefecture]
+        if not targets:
+            print(f"[エラー] '{args.prefecture}' に対応するエリアがありません")
+            print("都道府県名は AREA_MAP の登録名と一致させてください（例: 兵庫県）")
+            sys.exit(1)
     elif args.list_areas:
         targets = list(AREA_MAP.items())
     else:
         parser.print_help()
         sys.exit(1)
 
-    # --area + --prefecture 両方指定時の整合チェック
+    # --area + --prefecture 両方指定時：都道府県を上書き（多県エリアの一部生成用）
+    pref_override = None
     if args.area and args.prefecture and not args.all:
-        _, _, pref = AREA_MAP[args.area]
-        if pref != args.prefecture:
-            print(f"[エラー] {args.area} は {pref} のエリアです（{args.prefecture} ではありません）")
-            sys.exit(1)
+        _, pref_slug_default, pref_default = AREA_MAP[args.area]
+        if args.prefecture != pref_default:
+            pref_override = args.prefecture
+            print(f"[情報] {args.area} の都道府県を {pref_default} → {args.prefecture} で上書きします")
 
     if args.list_areas:
         print(f"対応エリア一覧{f'（{args.prefecture}）' if args.prefecture else ''}:")
@@ -289,11 +290,21 @@ def main() -> None:
     ok_count = skip_count = 0
 
     for i, (area_name, (area_slug, _, prefecture)) in enumerate(targets, 1):
+        # 都道府県上書きが指定されている場合（単体処理時のみ適用）
+        if pref_override:
+            prefecture = pref_override
+
         if len(targets) > 1:
             print(f"\n[{i}/{len(targets)}] {area_name}（{prefecture}）")
             print("-" * 40)
 
-        out_path = TSV_DIR / f"{area_slug}.tsv"
+        # 都道府県上書き時はファイル名を分けて既存TSVを保護
+        if pref_override:
+            import re as _re
+            pref_slug = _re.sub(r'[都道府県]$', '', args.prefecture)
+            out_path = TSV_DIR / f"{area_slug}_{pref_slug}.tsv"
+        else:
+            out_path = TSV_DIR / f"{area_slug}.tsv"
 
         print(f"エリア  : {area_name}（{prefecture}）")
         print(f"目安件数: {args.count}件")
