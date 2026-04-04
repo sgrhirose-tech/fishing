@@ -75,18 +75,6 @@
     },
     "熊野灘": {
       "center_lat": 34.10, "center_lon": 136.20, "fetch_km": 60
-    },
-    "大阪湾": {
-      "center_lat": 34.50, "center_lon": 135.30, "fetch_km": 60
-    },
-    "播磨灘": {
-      "center_lat": 34.55, "center_lon": 134.70, "fetch_km": 80
-    },
-    "淡路島": {
-      "center_lat": 34.40, "center_lon": 134.90, "fetch_km": 50
-    },
-    "紀伊水道（和歌山）": {
-      "center_lat": 33.90, "center_lon": 135.15, "fetch_km": 60
     }
   },
   "fallbacks": [
