@@ -797,3 +797,64 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 #favorites-list { margin: 0; padding: 0; list-style: none; }
 #favorites-list a { color: #1a6b9e; text-decoration: none; display: block; }
 #favorites-list a:hover { text-decoration: underline; }
+
+/* ---- スポット一覧: フィルタバー ---- */
+.spots-filter {
+  background: #f5f7fa;
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  margin-bottom: 1rem;
+}
+.filter-row { display: flex; align-items: flex-start; gap: .5rem; flex-wrap: wrap; margin-bottom: .4rem; }
+.filter-row:last-child { margin-bottom: 0; }
+.filter-label { font-size: .78rem; color: #666; white-space: nowrap; padding-top: .3rem; min-width: 5em; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: .3rem; }
+.filter-chip {
+  display: inline-block;
+  padding: .25rem .65rem;
+  border-radius: 14px;
+  border: 1px solid #c8d3df;
+  background: white;
+  color: #444;
+  font-size: .8rem;
+  text-decoration: none;
+  transition: background .1s, color .1s;
+}
+.filter-chip:hover { background: #e8f0fa; }
+.filter-chip.active { background: #1a6b9e; color: white; border-color: #1a6b9e; }
+.filter-active { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-top: .4rem; font-size: .82rem; color: #555; }
+.filter-badge {
+  display: inline-flex; align-items: center; gap: .3rem;
+  background: #ddeeff; color: #1a5a8a; border-radius: 10px;
+  padding: .2rem .55rem; font-size: .8rem;
+}
+.filter-badge a { color: #1a5a8a; text-decoration: none; font-weight: bold; }
+.filter-clear { color: #888; font-size: .78rem; text-decoration: underline; }
+
+/* ---- スポット一覧: 並べ替えバー ---- */
+.sort-bar { margin-bottom: .75rem; }
+.btn-sort {
+  padding: .4rem .9rem;
+  border-radius: 16px;
+  border: 1px solid #1a6b9e;
+  background: white;
+  color: #1a6b9e;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: background .1s, color .1s;
+}
+.btn-sort:hover { background: #e8f0fa; }
+.btn-sort:disabled { opacity: .6; cursor: default; }
+
+/* ---- 現在地ボタン（地図右下） ---- */
+.map-loc-btn {
+  background: white;
+  border: 2px solid rgba(0,0,0,.2);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: .85rem;
+  cursor: pointer;
+  box-shadow: 0 1px 5px rgba(0,0,0,.2);
+  white-space: nowrap;
+}
+.map-loc-btn:hover { background: #f4f4f4; }

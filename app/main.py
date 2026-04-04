@@ -548,20 +548,56 @@ def page_fish(request: Request, fish_slug: str):
     })
 
 
+SPOT_TYPE_LABELS = {
+    "breakwater":       "堤防・防波堤",
+    "rocky_shore":      "磯・岩場",
+    "sand_beach":       "砂浜",
+    "fishing_facility": "釣り公園・施設",
+}
+
 @app.get("/spots", response_class=HTMLResponse)
-def page_spots(request: Request, area: str = Query(None)):
+def page_spots(
+    request: Request,
+    area: str = Query(None),
+    fish: str = Query(None),
+    spot_type: str = Query(None, alias="type"),
+):
     all_spots = load_spots()
+    fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
+    fish_name_map = {v: k for k, v in fish_slug_map.items()}
+
     area_name = None
     if area:
         filtered = [s for s in all_spots if s.get("area", {}).get("area_slug") == area]
         if filtered:
             all_spots = filtered
             area_name = filtered[0]["area"]["area_name"]
-    fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
-    fish_name_map = {v: k for k, v in fish_slug_map.items()}
+
+    if fish and fish in fish_name_map:
+        all_spots = [s for s in all_spots if fish in s.get("target_fish", [])]
+
+    if spot_type and spot_type in SPOT_TYPE_LABELS:
+        all_spots = [s for s in all_spots if s.get("classification", {}).get("primary_type") == spot_type]
+
+    # 現在の絞り込み結果から魚種の出現頻度を集計（上位10件）
+    from collections import Counter
+    fish_counts = Counter(f for s in all_spots for f in s.get("target_fish", []))
+    available_fish = [
+        {"slug": slug, "name": fish_name_map.get(slug, slug), "count": cnt}
+        for slug, cnt in fish_counts.most_common(10)
+        if slug in fish_name_map
+    ]
+
     return templates.TemplateResponse(request, "spots.html", {
         "spots": all_spots,
         "area_name": area_name,
+        "active_area": area or "",
+        "active_fish": fish or "",
+        "active_type": spot_type or "",
+        "available_fish": available_fish,
+        "spot_type_labels": SPOT_TYPE_LABELS,
+        "active_fish_name": fish_name_map.get(fish, "") if fish else "",
+        "active_type_label": SPOT_TYPE_LABELS.get(spot_type, "") if spot_type else "",
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
     })
