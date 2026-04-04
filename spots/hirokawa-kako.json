@@ -1,0 +1,53 @@
+{
+  "slug": "hirokawa-kako",
+  "name": "広川河口",
+  "location": {
+    "latitude": 34.031288,
+    "longitude": 135.1719403
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "広川町",
+    "city_slug": "hirogawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 300,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "広川町の広川河口。スズキ、クロダイ、ハゼが主なターゲット。河川と海の交差点で魚が集まりやすい。",
+    "access": "湯浅駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.81,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@132m",
+      "man_made=breakwater@160m",
+      "man_made=breakwater@177m",
+      "man_made=breakwater@36m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "30-9",
+  "harbor_name": "下津"
+}

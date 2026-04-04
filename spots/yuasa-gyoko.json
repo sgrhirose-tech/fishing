@@ -1,0 +1,49 @@
+{
+  "slug": "yuasa-gyoko",
+  "name": "湯浅漁港",
+  "location": {
+    "latitude": 34.0339171,
+    "longitude": 135.1711035
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "湯浅町",
+    "city_slug": "yuasa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 270,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "湯浅町の漁港。アジ、クロダイ、タチウオが狙える。湯浅湾の入り口に位置し潮通し良好。",
+    "access": "湯浅駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@183m",
+      "man_made=breakwater@220m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "tachiuo",
+    "kurodai"
+  ],
+  "harbor_code": "30-9",
+  "harbor_name": "下津"
+}

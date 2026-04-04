@@ -5,6 +5,7 @@ uvicorn app.main:app --reload で起動。
 
 import json
 import os
+import re as _re
 import time
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
@@ -494,11 +495,22 @@ def page_method(request: Request, method_slug: str):
     data = _METHOD_MASTER[method_name]
     # この釣法を使う魚種を逆引き
     target_fish = [fn for fn, fd in _FISH_MASTER.items() if method_name in fd.get("method", [])]
+    # この釣法で釣れるスポット数を計算
+    method_fish_slugs = {
+        v["slug"] for k, v in _FISH_MASTER.items()
+        if method_name in v.get("method", []) and "slug" in v
+    }
+    all_spots = load_spots()
+    method_spots_count = sum(
+        1 for s in all_spots
+        if any(f in method_fish_slugs for f in s.get("target_fish", []))
+    )
     return templates.TemplateResponse(request, "method.html", {
         "method_name": method_name,
         "method_slug": method_slug,
         "data": data,
         "target_fish": target_fish,
+        "method_spots_count": method_spots_count,
     })
 
 
@@ -548,20 +560,69 @@ def page_fish(request: Request, fish_slug: str):
     })
 
 
+SPOT_TYPE_LABELS = {
+    "breakwater":       "堤防・防波堤",
+    "rocky_shore":      "磯・岩場",
+    "sand_beach":       "砂浜",
+    "fishing_facility": "釣り公園・施設",
+}
+
 @app.get("/spots", response_class=HTMLResponse)
-def page_spots(request: Request, area: str = Query(None)):
+def page_spots(
+    request: Request,
+    area: str = Query(None),
+    fish: str = Query(None),
+    spot_type: str = Query(None, alias="type"),
+    method: str = Query(None),
+):
     all_spots = load_spots()
+    fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
+    fish_name_map = {v: k for k, v in fish_slug_map.items()}
+
     area_name = None
     if area:
         filtered = [s for s in all_spots if s.get("area", {}).get("area_slug") == area]
         if filtered:
             all_spots = filtered
             area_name = filtered[0]["area"]["area_name"]
-    fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
-    fish_name_map = {v: k for k, v in fish_slug_map.items()}
+
+    if fish and fish in fish_name_map:
+        all_spots = [s for s in all_spots if fish in s.get("target_fish", [])]
+
+    if spot_type and spot_type in SPOT_TYPE_LABELS:
+        all_spots = [s for s in all_spots if s.get("classification", {}).get("primary_type") == spot_type]
+
+    active_method_name = ""
+    if method and method in _METHOD_SLUG_TO_NAME:
+        active_method_name = _METHOD_SLUG_TO_NAME[method]
+        method_fish_slugs = {
+            v["slug"] for k, v in _FISH_MASTER.items()
+            if active_method_name in v.get("method", []) and "slug" in v
+        }
+        all_spots = [s for s in all_spots
+                     if any(f in method_fish_slugs for f in s.get("target_fish", []))]
+
+    # 現在の絞り込み結果から魚種の出現頻度を集計（上位10件）
+    from collections import Counter
+    fish_counts = Counter(f for s in all_spots for f in s.get("target_fish", []))
+    available_fish = [
+        {"slug": slug, "name": fish_name_map.get(slug, slug), "count": cnt}
+        for slug, cnt in fish_counts.most_common(10)
+        if slug in fish_name_map
+    ]
+
     return templates.TemplateResponse(request, "spots.html", {
         "spots": all_spots,
         "area_name": area_name,
+        "active_area": area or "",
+        "active_fish": fish or "",
+        "active_type": spot_type or "",
+        "active_method": method or "",
+        "active_method_name": active_method_name,
+        "available_fish": available_fish,
+        "spot_type_labels": SPOT_TYPE_LABELS,
+        "active_fish_name": fish_name_map.get(fish, "") if fish else "",
+        "active_type_label": SPOT_TYPE_LABELS.get(spot_type, "") if spot_type else "",
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
     })
@@ -582,6 +643,118 @@ def page_contact(request: Request):
 @app.get("/safety", response_class=HTMLResponse)
 def page_safety(request: Request):
     return templates.TemplateResponse(request, "static_pages/safety.html", {})
+
+
+# ---- タックルガイド（アフィリエイト） ----------------------------------------
+
+_TACKLE_DIR = _BASE / "data" / "tackle"
+
+try:
+    import mistune as _mistune
+    _MARKDOWN = _mistune.create_markdown(plugins=["table"])
+except ImportError:
+    _MARKDOWN = None
+
+_AFFILIATE_MARKER = _re.compile(r'<!--\s*affiliate:\s*(\d+)\s*-->')
+
+
+def _build_affiliate_html(links: list) -> str:
+    """商品カードHTMLを生成する。"""
+    items_html = ""
+    for link in links:
+        name = link.get("name", "")
+        url = link.get("url", "#")
+        price = link.get("price", "")
+        note = link.get("note", "")
+        price_html = f"<p class='tackle-affiliate-price'>{price}</p>" if price else ""
+        note_html = f"<p class='tackle-affiliate-note'>{note}</p>" if note else ""
+        items_html += (
+            f'<a href="{url}" target="_blank" rel="noopener sponsored" class="tackle-affiliate-item">'
+            f'<div class="tackle-affiliate-info">'
+            f'<p class="tackle-affiliate-name">{name}</p>'
+            f'{price_html}{note_html}'
+            f'</div></a>'
+        )
+    return f'<section class="tackle-affiliate"><div class="tackle-affiliate-list">{items_html}</div></section>'
+
+
+def _render_tackle_body(category_slug: str, item: dict) -> tuple:
+    """Markdownファイルがあればそれを基にHTMLを組み立てる。返り値: (body_html, from_md)"""
+    md_path = _TACKLE_DIR / category_slug / f"{item['slug']}.md"
+    if not md_path.exists() or _MARKDOWN is None:
+        return item.get("body", "").replace("\n", "<br>"), False
+
+    md_text = md_path.read_text(encoding="utf-8")
+    slots = item.get("affiliate_slots", [])
+
+    parts = _AFFILIATE_MARKER.split(md_text)
+    html_parts = []
+    for i, part in enumerate(parts):
+        if i % 2 == 0:
+            html_parts.append(_MARKDOWN(part))
+        else:
+            idx = int(part) - 1
+            links = slots[idx] if isinstance(slots, list) and 0 <= idx < len(slots) else []
+            if links:
+                html_parts.append(_build_affiliate_html(links))
+    return "".join(html_parts), True
+
+
+def _load_tackle_categories() -> list:
+    path = _TACKLE_DIR / "categories.json"
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _load_tackle_items(category_slug: str) -> list:
+    path = _TACKLE_DIR / f"{category_slug}.json"
+    if not path.exists():
+        return []
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+@app.get("/tackle/", response_class=HTMLResponse)
+def page_tackle_top(request: Request):
+    categories = _load_tackle_categories()
+    return templates.TemplateResponse(request, "tackle/top.html", {
+        "categories": categories,
+    })
+
+
+@app.get("/tackle/{category_slug}/", response_class=HTMLResponse)
+def page_tackle_category(request: Request, category_slug: str):
+    categories = _load_tackle_categories()
+    category = next((c for c in categories if c["slug"] == category_slug), None)
+    if not category:
+        raise HTTPException(status_code=404, detail="カテゴリが見つかりません")
+    items = _load_tackle_items(category_slug)
+    return templates.TemplateResponse(request, "tackle/category.html", {
+        "category": category,
+        "categories": categories,
+        "items": items,
+    })
+
+
+@app.get("/tackle/{category_slug}/{item_slug}/", response_class=HTMLResponse)
+def page_tackle_item(request: Request, category_slug: str, item_slug: str):
+    categories = _load_tackle_categories()
+    category = next((c for c in categories if c["slug"] == category_slug), None)
+    if not category:
+        raise HTTPException(status_code=404, detail="カテゴリが見つかりません")
+    items = _load_tackle_items(category_slug)
+    item = next((i for i in items if i["slug"] == item_slug), None)
+    if not item:
+        raise HTTPException(status_code=404, detail="アイテムが見つかりません")
+    body_html, body_from_md = _render_tackle_body(category_slug, item)
+    return templates.TemplateResponse(request, "tackle/item.html", {
+        "category": category,
+        "categories": categories,
+        "item": item,
+        "items": items,
+        "body_html": body_html,
+        "body_from_md": body_from_md,
+    })
 
 
 @app.get("/area/", response_class=HTMLResponse)

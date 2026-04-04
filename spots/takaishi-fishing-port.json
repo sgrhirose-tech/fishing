@@ -1,0 +1,53 @@
+{
+  "slug": "takaishi-fishing-port",
+  "name": "高石漁港",
+  "location": {
+    "latitude": 34.5298688,
+    "longitude": 135.4307768
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "高石市",
+    "city_slug": "takaishi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 295.0,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "高石市の漁港。アジ・クロダイ・スズキ・タチウオが狙える。夜釣りでタチウオ実績あり。",
+    "access": "高師浜駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@84m",
+      "man_made=breakwater@132m",
+      "man_made=breakwater@136m",
+      "man_made=breakwater@257m",
+      "man_made=breakwater@89m"
+    ]
+  },
+  "target_fish": [
+    "tachiuo",
+    "kurodai",
+    "suzuki",
+    "aji"
+  ],
+  "harbor_code": "27-4",
+  "harbor_name": "泉大津"
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "tadaoka-mokuzai",
+  "name": "忠岡木材コンビナート",
+  "location": {
+    "latitude": 34.4864071,
+    "longitude": 135.3779997
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "岸和田市",
+    "city_slug": "kishiwada"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 211.4,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "クロダイ・アジ・タチウオ・スズキが狙える工業地帯護岸。足場良好。",
+    "access": "春木駅から徒歩30分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "tachiuo",
+    "kurodai",
+    "suzuki",
+    "aji"
+  ],
+  "harbor_code": "27-3",
+  "harbor_name": "岸和田"
+}

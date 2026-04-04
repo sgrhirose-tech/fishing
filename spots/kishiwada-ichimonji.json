@@ -1,0 +1,46 @@
+{
+  "slug": "kishiwada-ichimonji",
+  "name": "岸和田渡船利用一文字堤防",
+  "location": {
+    "latitude": 34.4989981,
+    "longitude": 135.3844563
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "忠岡町",
+    "city_slug": "tadaoka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 215.2,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "岸和田沖の一文字堤防。アジ・クロダイ・スズキ・ヒラメ・メバルが釣れる。渡船利用。",
+    "access": "忠岡駅から徒歩30分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "hirame",
+    "suzuki",
+    "aji"
+  ],
+  "harbor_code": "27-4",
+  "harbor_name": "泉大津"
+}

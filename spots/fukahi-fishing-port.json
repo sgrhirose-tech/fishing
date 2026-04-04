@@ -1,0 +1,52 @@
+{
+  "slug": "fukahi-fishing-port",
+  "name": "深日漁港",
+  "location": {
+    "latitude": 34.3229201,
+    "longitude": 135.1476409
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "岬町",
+    "city_slug": "misaki"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 324.8,
+    "seabed_type": "shell",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "貝殻主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "岬町の漁港。アジ・クロダイ・アオリイカ・メバル・カサゴが狙える大阪府最南端付近の漁港。",
+    "access": "深日町駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@192m",
+      "man_made=pier@285m",
+      "man_made=pier@98m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "kasago",
+    "mebaru",
+    "aji"
+  ],
+  "harbor_code": "27-1",
+  "harbor_name": "深日"
+}

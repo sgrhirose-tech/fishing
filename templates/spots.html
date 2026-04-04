@@ -19,14 +19,62 @@
   <p>全 {{ spots|length }} か所</p>
 </section>
 
+<!-- フィルタバー -->
+<section class="spots-filter">
+  <!-- 釣り場タイプ -->
+  <div class="filter-row">
+    <span class="filter-label">釣り場タイプ</span>
+    <div class="filter-chips">
+      {% for type_slug, type_name in spot_type_labels.items() %}
+      <a href="?{{ 'area=' + active_area + '&' if active_area }}{{ 'fish=' + active_fish + '&' if active_fish }}type={{ type_slug }}"
+         class="filter-chip {% if active_type == type_slug %}active{% endif %}">
+        {{ type_name }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- 魚種（現在の絞り込み結果から上位10件） -->
+  {% if available_fish %}
+  <div class="filter-row">
+    <span class="filter-label">魚種</span>
+    <div class="filter-chips">
+      {% for f in available_fish %}
+      <a href="?{{ 'area=' + active_area + '&' if active_area }}fish={{ f.slug }}{{ '&type=' + active_type if active_type }}"
+         class="filter-chip {% if active_fish == f.slug %}active{% endif %}">
+        {{ f.name }}（{{ f.count }}）
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  <!-- 選択中フィルタ表示 -->
+  {% if active_fish or active_type or active_method %}
+  <div class="filter-active">
+    <span>絞り込み中：</span>
+    {% if active_fish_name %}<span class="filter-badge">{{ active_fish_name }} <a href="?{{ 'area=' + active_area + '&' if active_area }}{{ 'type=' + active_type if active_type }}">×</a></span>{% endif %}
+    {% if active_type_label %}<span class="filter-badge">{{ active_type_label }} <a href="?{{ 'area=' + active_area + '&' if active_area }}{{ 'fish=' + active_fish if active_fish }}">×</a></span>{% endif %}
+    {% if active_method_name %}<span class="filter-badge">{{ active_method_name }} <a href="?{{ 'area=' + active_area + '&' if active_area }}{{ 'fish=' + active_fish + '&' if active_fish }}{{ 'type=' + active_type if active_type }}">×</a></span>{% endif %}
+    <a href="?{{ 'area=' + active_area if active_area }}" class="filter-clear">すべてクリア</a>
+  </div>
+  {% endif %}
+</section>
+
 <!-- マップ -->
 <div id="map-spots" class="map-container"></div>
 
+<!-- 並べ替えバー -->
+<div class="sort-bar">
+  <button id="btn-sort-near" class="btn-sort">📍 現在地から近い順</button>
+</div>
+
 <!-- スポット一覧テーブル -->
-<section class="spots-list">
+<section class="spots-list" id="spots-list">
   {% for spot in spots %}
   {% set area = spot.area %}
-  <article class="spot-card">
+  <article class="spot-card"
+    data-lat="{{ spot.location.latitude }}"
+    data-lon="{{ spot.location.longitude }}"
+    data-slug="{{ spot.slug }}">
     <h2>
       <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/{{ spot.slug }}">
         {{ spot.name }}
@@ -61,6 +109,48 @@
   const SPOTS = {{ spots | tojson }};
   document.addEventListener('DOMContentLoaded', function() {
     try { initSpotListMap('map-spots', SPOTS); } catch(e) {}
+
+    // 近い順ソート
+    var btnSort = document.getElementById('btn-sort-near');
+    if (btnSort) {
+      btnSort.addEventListener('click', function() {
+        if (!navigator.geolocation) { alert('お使いのブラウザは位置情報に対応していません'); return; }
+        btnSort.textContent = '📍 取得中...';
+        btnSort.disabled = true;
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          var uLat = pos.coords.latitude;
+          var uLon = pos.coords.longitude;
+          function hav(lat1, lon1, lat2, lon2) {
+            var R = 6371, p = Math.PI / 180;
+            var a = Math.sin((lat2-lat1)*p/2)**2 + Math.cos(lat1*p)*Math.cos(lat2*p)*Math.sin((lon2-lon1)*p/2)**2;
+            return 2*R*Math.asin(Math.sqrt(a));
+          }
+          var list = document.getElementById('spots-list');
+          var cards = Array.from(list.querySelectorAll('.spot-card'));
+          cards.sort(function(a, b) {
+            return hav(uLat, uLon, +a.dataset.lat, +a.dataset.lon)
+                 - hav(uLat, uLon, +b.dataset.lat, +b.dataset.lon);
+          });
+          cards.forEach(function(card) {
+            var d = hav(uLat, uLon, +card.dataset.lat, +card.dataset.lon);
+            var badge = card.querySelector('.dist-badge');
+            if (!badge) {
+              badge = document.createElement('span');
+              badge.className = 'badge dist-badge';
+              card.querySelector('.spot-meta').prepend(badge);
+            }
+            badge.textContent = d < 1 ? Math.round(d*1000)+'m' : d.toFixed(1)+'km';
+            list.appendChild(card);
+          });
+          btnSort.textContent = '📍 現在地から近い順（並替済）';
+          btnSort.disabled = false;
+        }, function() {
+          btnSort.textContent = '📍 現在地から近い順';
+          btnSort.disabled = false;
+          alert('位置情報を取得できませんでした');
+        });
+      });
+    }
   });
 </script>
 {% endblock %}

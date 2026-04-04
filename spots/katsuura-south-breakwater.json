@@ -1,0 +1,48 @@
+{
+  "slug": "katsuura-south-breakwater",
+  "name": "勝浦漁港南堤防",
+  "location": {
+    "latitude": 33.6254256,
+    "longitude": 135.9486008
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "那智勝浦町",
+    "city_slug": "nachikatsuura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 726.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "那智勝浦港南側の堤防。アジ・メバル・カサゴ・アオリイカが狙え、夜釣りでのスズキも実績あり。",
+    "access": "勝浦温泉バス停から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "suzuki",
+    "kasago",
+    "mebaru"
+  ],
+  "harbor_code": "30-1",
+  "harbor_name": "紀伊勝浦"
+}

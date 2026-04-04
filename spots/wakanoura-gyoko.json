@@ -1,0 +1,51 @@
+{
+  "slug": "wakanoura-gyoko",
+  "name": "和歌浦漁港",
+  "location": {
+    "latitude": 34.1874266,
+    "longitude": 135.1614137
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "和歌山市",
+    "city_slug": "wakayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 175,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "和歌浦湾に面した漁港。クロダイ、アジ、カサゴ、スズキが狙える。景観も良く人気スポット。",
+    "access": "和歌山市方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@204m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "suzuki",
+    "kasago"
+  ],
+  "harbor_code": "30-11",
+  "harbor_name": "和歌山"
+}

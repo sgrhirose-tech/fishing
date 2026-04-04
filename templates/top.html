@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Tsuricast | 千葉・東京・神奈川・静岡・愛知の釣り場天気情報{% endblock %}
+{% block title %}Tsuricast | 千葉・東京・神奈川・静岡・愛知・三重・大阪の釣り場天気情報{% endblock %}
 
 {% block hero_image %}
 <img src="/static/img/hero.png"
-     alt="Tsuricast - 千葉・東京・神奈川・静岡・愛知の釣り場天気情報"
+     alt="Tsuricast - 千葉・東京・神奈川・静岡・愛知・三重・大阪の釣り場天気情報"
      class="hero-banner">
 {% endblock %}
 
 {% block content %}
-<p class="hero-caption">千葉・東京・神奈川・静岡・愛知の釣り場天気・波高情報。天気・風・海況をチェックしよう。</p>
+<p class="hero-caption">千葉・東京・神奈川・静岡・愛知・三重・大阪の釣り場天気・波高情報。天気・風・海況をチェックしよう。</p>
 
 <div class="top-layout">
 
@@ -17,6 +17,10 @@
   <div class="top-map-col">
     <section class="map-section">
       <div id="map-top" class="map-container"></div>
+      <div id="favorites-panel" style="display:none;">
+        <span class="fav-panel-label">⭐ お気に入り</span>
+        <ul id="favorites-list"></ul>
+      </div>
     </section>
   </div>
 
@@ -47,7 +51,28 @@
         <a href="/spots?area=suruga-bay" class="area-chip">駿河湾（{{ area_counts.get('suruga-bay', 0) }}）</a>
         <a href="/spots?area=enshu-nada" class="area-chip">遠州灘（{{ area_counts.get('enshu-nada', 0) }}）</a>
         <a href="/spots?area=mikawa-bay" class="area-chip">三河湾（{{ area_counts.get('mikawa-bay', 0) }}）</a>
-        <a href="/spots?area=isewan"     class="area-chip">伊勢湾（{{ area_counts.get('isewan', 0) }}）</a>
+        <a href="/spots?area=isewan"          class="area-chip">伊勢湾（{{ area_counts.get('isewan', 0) }}）</a>
+        <a href="/spots?area=shima-minami-ise" class="area-chip">志摩・南伊勢（{{ area_counts.get('shima-minami-ise', 0) }}）</a>
+        <a href="/spots?area=kumano-nada"      class="area-chip">熊野灘（{{ area_counts.get('kumano-nada', 0) }}）</a>
+        <a href="/spots?area=osakawan"         class="area-chip">大阪湾（{{ area_counts.get('osakawan', 0) }}）</a>
+        <a href="/spots?area=kii-suido-wakayama" class="area-chip">紀伊水道（和歌山）（{{ area_counts.get('kii-suido-wakayama', 0) }}）</a>
+      </div>
+    </section>
+
+    <!-- ②-b 魚種×エリアのクイック導線 -->
+    <section class="area-links">
+      <h2>魚種×エリアで探す</h2>
+      <div class="area-chips">
+        <a href="/spots?area=miura&fish=kurodai"    class="area-chip">三浦のクロダイ</a>
+        <a href="/spots?area=miura&fish=aji"        class="area-chip">三浦のアジ</a>
+        <a href="/spots?area=sagamibay&fish=shirogisu" class="area-chip">相模湾のキス</a>
+        <a href="/spots?area=tokyobay&fish=haze"    class="area-chip">東京湾のハゼ</a>
+        <a href="/spots?area=isewan&fish=kurodai"   class="area-chip">伊勢湾のクロダイ</a>
+        <a href="/spots?area=mikawa-bay&fish=aji"   class="area-chip">三河湾のアジ</a>
+        <a href="/spots?area=kumano-nada&fish=aoriika" class="area-chip">熊野灘のアオリイカ</a>
+        <a href="/spots?area=sotobo&fish=hirame"    class="area-chip">外房のヒラメ</a>
+        <a href="/spots?fish=shirogisu&type=sand_beach" class="area-chip">砂浜でキス釣り</a>
+        <a href="/spots?fish=aoriika&type=rocky_shore"  class="area-chip">磯でアオリイカ</a>
       </div>
     </section>
 
@@ -95,6 +120,7 @@
 {% block scripts %}
 <script>
   const SPOTS = {{ spots | tojson }};
+  const FISH_NAMES = {{ fish_name_map | tojson }};
   document.addEventListener('DOMContentLoaded', function() {
     initTopMap('map-top', SPOTS);
 
@@ -118,7 +144,10 @@
           return (s.name || '').toLowerCase().includes(q)
               || ((s.area || {}).area_name || '').toLowerCase().includes(q)
               || ((s.area || {}).city || '').toLowerCase().includes(q)
-              || ((s.info || {}).notes || '').toLowerCase().includes(q);
+              || ((s.info || {}).notes || '').toLowerCase().includes(q)
+              || (s.target_fish || []).some(function(f) {
+                   return (FISH_NAMES[f] || '').includes(q) || f.includes(q);
+                 });
         }).slice(0, 10);
 
         if (!matches.length) { list.hidden = true; return; }
@@ -140,6 +169,8 @@
         if (!e.target.closest('.search-box-container')) list.hidden = true;
       });
     })();
+
+    renderFavoritesSection(SPOTS);
   });
 </script>
 {% endblock %}

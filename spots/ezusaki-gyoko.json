@@ -1,0 +1,47 @@
+{
+  "slug": "ezusaki-gyoko",
+  "name": "江須ノ川漁港",
+  "location": {
+    "latitude": 33.5060884,
+    "longitude": 135.5931759
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "すさみ町",
+    "city_slug": "susami"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 150,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 794.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "西牟婁郡すさみ町江須崎の漁港。アオリイカ、カサゴ、クロダイ、メジナが狙える。磯釣りの基地。",
+    "access": "道の駅すさみ前駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "kasago",
+    "mejina"
+  ],
+  "harbor_code": "30-4",
+  "harbor_name": "周参見"
+}

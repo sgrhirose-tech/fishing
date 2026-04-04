@@ -1,0 +1,47 @@
+{
+  "slug": "mio-gyoko",
+  "name": "三尾漁港",
+  "location": {
+    "latitude": 33.8879316,
+    "longitude": 135.082727
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "美浜町",
+    "city_slug": "mihama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 230,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 792.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "美浜町三尾の漁港。アジ、サバ、カサゴ、アオリイカが狙える。地磯への渡船基地でもある。",
+    "access": "美浜町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "kasago",
+    "saba"
+  ],
+  "harbor_code": "30-6",
+  "harbor_name": "三尾"
+}

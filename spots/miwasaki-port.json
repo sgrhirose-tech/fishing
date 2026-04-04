@@ -1,0 +1,47 @@
+{
+  "slug": "miwasaki-port",
+  "name": "三輪崎漁港",
+  "location": {
+    "latitude": 33.6849665,
+    "longitude": 135.9878035
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "新宮市",
+    "city_slug": "shing"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1434.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "新宮市三輪崎の小規模漁港。アジ・カサゴ・メバル・アオリイカが狙える。比較的空いており穴場的スポット。",
+    "access": "三輪崎駅から徒歩10分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "kasago",
+    "mebaru"
+  ],
+  "harbor_code": "24-14",
+  "harbor_name": "鵜殿"
+}

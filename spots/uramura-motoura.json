@@ -6,8 +6,8 @@
     "longitude": 136.8871593
   },
   "area": {
-    "prefecture": "神奈川県",
-    "pref_slug": "kanagawa",
+    "prefecture": "三重県",
+    "pref_slug": "mie",
     "area_name": "志摩・南伊勢",
     "area_slug": "shima-minami-ise",
     "city": "鳥羽市",
@@ -37,9 +37,9 @@
     "osm_evidence": []
   },
   "target_fish": [
-    "kurodai",
-    "aoriika"
+    "aoriika",
+    "kurodai"
   ],
-  "harbor_code": "13-3",
-  "harbor_name": "羽田"
+  "harbor_code": "24-5",
+  "harbor_name": "鳥羽"
 }

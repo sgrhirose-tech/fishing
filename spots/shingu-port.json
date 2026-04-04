@@ -1,0 +1,47 @@
+{
+  "slug": "shingu-port",
+  "name": "新宮港",
+  "location": {
+    "latitude": 33.6820705,
+    "longitude": 135.9772222
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "新宮市",
+    "city_slug": "shing"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 107.5,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1958.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "新宮市の大型港湾。クロダイ・スズキ・アジ・ハゼが狙える。熊野川河口に近く、多彩な魚種が集まりやすい。",
+    "access": "紀伊佐野駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze",
+    "aji"
+  ],
+  "harbor_code": "30-1",
+  "harbor_name": "紀伊勝浦"
+}

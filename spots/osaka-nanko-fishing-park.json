@@ -1,0 +1,47 @@
+{
+  "slug": "osaka-nanko-fishing-park",
+  "name": "大阪南港魚釣り園",
+  "location": {
+    "latitude": 34.6149692,
+    "longitude": 135.4020169
+  },
+  "area": {
+    "prefecture": "大阪府",
+    "pref_slug": "osaka",
+    "area_name": "大阪湾",
+    "area_slug": "osakawan",
+    "city": "大阪市",
+    "city_slug": "osaka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 252.3,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "大阪市住之江区の公営釣り公園。アジ・クロダイ・スズキ・タチウオが狙える。有料釣り場。",
+    "access": "大阪市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "tachiuo",
+    "kurodai",
+    "suzuki",
+    "aji"
+  ],
+  "harbor_code": "27-6",
+  "harbor_name": "大阪"
+}

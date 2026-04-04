@@ -1,0 +1,47 @@
+{
+  "slug": "yukawa-port",
+  "name": "湯川漁港",
+  "location": {
+    "latitude": 33.6098449,
+    "longitude": 135.9267998
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "那智勝浦町",
+    "city_slug": "nachikatsuura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1170.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "那智勝浦町湯川の漁港。アジ・メバル・カサゴ・アオリイカが狙える。温泉地に近い小規模港で穴場的ポイント。",
+    "access": "湯川駅から徒歩5分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "kasago",
+    "mebaru"
+  ],
+  "harbor_code": "30-1",
+  "harbor_name": "紀伊勝浦"
+}

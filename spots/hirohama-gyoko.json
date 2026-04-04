@@ -1,0 +1,49 @@
+{
+  "slug": "hirohama-gyoko",
+  "name": "広浜漁港",
+  "location": {
+    "latitude": 34.0286391,
+    "longitude": 135.1684642
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "広川町",
+    "city_slug": "hirokawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 305,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "広川町の漁港。アジ、サバ、クロダイが狙える。家族連れにも適した足場の良い漁港。",
+    "access": "広川町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.81,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@259m",
+      "man_made=breakwater@31m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "saba"
+  ],
+  "harbor_code": "30-8",
+  "harbor_name": "由良"
+}

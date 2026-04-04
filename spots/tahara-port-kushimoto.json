@@ -1,0 +1,47 @@
+{
+  "slug": "tahara-port-kushimoto",
+  "name": "田原漁港",
+  "location": {
+    "latitude": 33.5314057,
+    "longitude": 135.8768463
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "串本町",
+    "city_slug": "kushimoto"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 275,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1020.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "串本町田原の小漁港。アオリイカ・メバル・カサゴ・クロダイが狙える。磯近くに位置し根魚の実績が高い。",
+    "access": "紀伊田原駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "kasago",
+    "mebaru"
+  ],
+  "harbor_code": "30-2",
+  "harbor_name": "浦神"
+}

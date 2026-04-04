@@ -6,12 +6,12 @@
     "longitude": 136.92029
   },
   "area": {
-    "prefecture": "神奈川県",
-    "pref_slug": "kanagawa",
+    "prefecture": "三重県",
+    "pref_slug": "mie",
     "area_name": "志摩・南伊勢",
     "area_slug": "shima-minami-ise",
-    "city": "藤沢市",
-    "city_slug": "fujisawa"
+    "city": "鳥羽市",
+    "city_slug": "toba"
   },
   "physical_features": {
     "sea_bearing_deg": 50,
@@ -39,10 +39,10 @@
     ]
   },
   "target_fish": [
+    "suzuki",
     "kasago",
-    "mebaru",
-    "suzuki"
+    "mebaru"
   ],
-  "harbor_code": "13-3",
-  "harbor_name": "羽田"
+  "harbor_code": "24-5",
+  "harbor_name": "鳥羽"
 }

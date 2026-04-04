@@ -1,0 +1,51 @@
+{
+  "slug": "nachi-katsuura-port",
+  "name": "那智勝浦港",
+  "location": {
+    "latitude": 33.6252302,
+    "longitude": 135.9426193
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "那智勝浦町",
+    "city_slug": "nachikatsuura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 125,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1270.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "和歌山県東牟婁郡の主要漁港。アジ・サバ・カマス・スズキ・クロダイ・アオリイカが狙える。堤防・岸壁から手軽に釣れる好ポイント。",
+    "access": "勝浦温泉バス停から徒歩5分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "kurodai",
+    "suzuki",
+    "saba",
+    "kamasu"
+  ],
+  "harbor_code": "30-1",
+  "harbor_name": "紀伊勝浦"
+}

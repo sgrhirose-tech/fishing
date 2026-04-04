@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-既存の spots/*.json に harbor_code / harbor_name を一括追記する一時ツール。
+spots/*.json の harbor_code / harbor_name を最近傍港で補正する。
 
-harbor_mapping.json → spot JSON への移行用。実行後は削除可。
+harbor_list.json をもとに全スポットの harbor_code を再計算・上書きする。
+既存の値があっても常に上書きする（座標修正後の再補正用）。
 
 使い方:
     python tools/backfill_harbor_code.py           # 全件処理
     python tools/backfill_harbor_code.py --dry-run # 表示のみ
-    python tools/backfill_harbor_code.py --slug abosaki  # 1件確認
+    python tools/backfill_harbor_code.py --slug abosaki  # 1件のみ
+    python tools/backfill_harbor_code.py --spots-dir spots_wip  # ディレクトリ指定
 """
 
 import argparse
@@ -53,13 +55,19 @@ def load_harbor_list() -> list:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="spots/*.json に harbor_code を一括追記")
-    parser.add_argument("--dry-run", action="store_true", help="表示のみ（ファイル保存しない）")
-    parser.add_argument("--slug", metavar="SLUG", help="1スポットのみ処理")
+    parser.add_argument("--dry-run",   action="store_true", help="表示のみ（ファイル保存しない）")
+    parser.add_argument("--slug",      metavar="SLUG", help="1スポットのみ処理")
+    parser.add_argument("--spots-dir", metavar="DIR",
+                        help="spots/ の代わりに使うディレクトリ（例: spots_wip）")
     args = parser.parse_args()
 
     harbors = load_harbor_list()
 
-    paths = sorted(SPOTS_DIR.glob("*.json"))
+    spots_dir = Path(args.spots_dir) if args.spots_dir else SPOTS_DIR
+    if not spots_dir.is_absolute():
+        spots_dir = REPO_ROOT / spots_dir
+
+    paths = sorted(spots_dir.glob("*.json"))
     if args.slug:
         paths = [p for p in paths if p.stem == args.slug]
         if not paths:
@@ -74,10 +82,6 @@ def main() -> None:
         try:
             with open(path, encoding="utf-8") as f:
                 spot = json.load(f)
-
-            if spot.get("harbor_code"):
-                skipped += 1
-                continue
 
             loc = spot.get("location", {})
             lat = loc.get("latitude")

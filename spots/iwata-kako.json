@@ -2,16 +2,16 @@
   "slug": "iwata-kako",
   "name": "岩田川河口",
   "location": {
-    "latitude": 34.7085038,
-    "longitude": 136.5231514
+    "latitude": 34.7080332,
+    "longitude": 136.5233231
   },
   "area": {
-    "prefecture": "神奈川県",
-    "pref_slug": "kanagawa",
+    "prefecture": "三重県",
+    "pref_slug": "mie",
     "area_name": "伊勢湾",
     "area_slug": "isewan",
-    "city": "藤沢市",
-    "city_slug": "fujisawa"
+    "city": "津市",
+    "city_slug": "tsu"
   },
   "physical_features": {
     "sea_bearing_deg": 110,
@@ -40,6 +40,6 @@
     "kurodai",
     "suzuki"
   ],
-  "harbor_code": "13-3",
-  "harbor_name": "羽田"
+  "harbor_code": "24-2",
+  "harbor_name": "津"
 }

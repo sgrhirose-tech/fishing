@@ -1,0 +1,49 @@
+{
+  "slug": "hiokigawa-kako",
+  "name": "日置川河口",
+  "location": {
+    "latitude": 33.5597219,
+    "longitude": 135.4470062
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "白浜町",
+    "city_slug": "shirahama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 230,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 830.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "白浜町の日置川河口。スズキ、クロダイ、ハゼが狙える。河口の広いポイントで投げ釣りも可能。",
+    "access": "白浜町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@180m",
+      "man_made=breakwater@191m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "30-4",
+  "harbor_name": "周参見"
+}

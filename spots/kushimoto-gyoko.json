@@ -1,0 +1,49 @@
+{
+  "slug": "kushimoto-gyoko",
+  "name": "串本漁港",
+  "location": {
+    "latitude": 33.4700898,
+    "longitude": 135.7835225
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "串本町",
+    "city_slug": "kushimoto"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 80,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 499.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "串本町の漁港。マダイ、アジ、スズキ、アオリイカが狙える。紀伊水道と太平洋の交差点で魚種豊富。",
+    "access": "串本駅から徒歩15分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "madai",
+    "aoriika",
+    "suzuki"
+  ],
+  "harbor_code": "30-3",
+  "harbor_name": "串本"
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "shioya-gyoko",
+  "name": "塩屋漁港",
+  "location": {
+    "latitude": 33.8629994,
+    "longitude": 135.1588661
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "御坊市",
+    "city_slug": "gobo"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 254.9,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1524.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "御坊市塩屋の漁港。アジ、クロダイ、メバルが狙える。港内は水深があり多彩な魚種が狙える。",
+    "access": "御坊市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "aji"
+  ],
+  "harbor_code": "30-6",
+  "harbor_name": "三尾"
+}

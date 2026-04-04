@@ -237,54 +237,106 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Claude API を使い、指定エリアの釣りスポット TSV を生成する"
     )
-    parser.add_argument("--area",       metavar="AREA",
+    parser.add_argument("--area",        metavar="AREA",
                         help="対象エリア名（例: 三河湾）")
-    parser.add_argument("--count",      type=int, default=25,
+    parser.add_argument("--prefecture",  metavar="PREF",
+                        help="都道府県名で絞り込み（例: 兵庫県）。--area 省略時は全エリアを処理")
+    parser.add_argument("--all",         action="store_true",
+                        help="AREA_MAP の全エリアを処理")
+    parser.add_argument("--count",       type=int, default=25,
                         help="生成するスポット数の目安（デフォルト: 25）")
-    parser.add_argument("--model",      default=DEFAULT_MODEL,
+    parser.add_argument("--model",       default=DEFAULT_MODEL,
                         help=f"使用するモデル（デフォルト: {DEFAULT_MODEL}）")
-    parser.add_argument("--list-areas", action="store_true",
+    parser.add_argument("--list-areas",  action="store_true",
                         help="対応エリア一覧を表示して終了")
     args = parser.parse_args()
 
-    if args.list_areas:
-        print("対応エリア一覧:")
-        for area, (slug, pref_slug, prefecture) in AREA_MAP.items():
-            print(f"  {area:12s}  ({prefecture})")
-        return
-
-    if not args.area:
+    # ── エリアリスト決定 ─────────────────────────────────
+    if args.all:
+        targets = list(AREA_MAP.items())
+    elif args.area:
+        if args.area not in AREA_MAP:
+            print(f"[エラー] 未対応のエリアです: {args.area}")
+            print("対応エリア: " + "、".join(AREA_MAP.keys()))
+            sys.exit(1)
+        targets = [(args.area, AREA_MAP[args.area])]
+    elif args.prefecture:
+        targets = [(a, v) for a, v in AREA_MAP.items() if v[2] == args.prefecture]
+        if not targets:
+            print(f"[エラー] '{args.prefecture}' に対応するエリアがありません")
+            print("都道府県名は AREA_MAP の登録名と一致させてください（例: 兵庫県）")
+            sys.exit(1)
+    elif args.list_areas:
+        targets = list(AREA_MAP.items())
+    else:
         parser.print_help()
         sys.exit(1)
 
-    if args.area not in AREA_MAP:
-        print(f"[エラー] 未対応のエリアです: {args.area}")
-        print("対応エリア: " + "、".join(AREA_MAP.keys()))
-        sys.exit(1)
+    # --area + --prefecture 両方指定時：都道府県を上書き（多県エリアの一部生成用）
+    pref_override = None
+    if args.area and args.prefecture and not args.all:
+        _, pref_slug_default, pref_default = AREA_MAP[args.area]
+        if args.prefecture != pref_default:
+            pref_override = args.prefecture
+            print(f"[情報] {args.area} の都道府県を {pref_default} → {args.prefecture} で上書きします")
 
-    area_slug, _, prefecture = AREA_MAP[args.area]
-    out_path = TSV_DIR / f"{area_slug}.tsv"
+    if args.list_areas:
+        print(f"対応エリア一覧{f'（{args.prefecture}）' if args.prefecture else ''}:")
+        for area, (slug, pref_slug, prefecture) in targets:
+            print(f"  {area:12s}  ({prefecture})")
+        return
 
-    print(f"エリア  : {args.area}（{prefecture}）")
-    print(f"目安件数: {args.count}件")
-    print(f"モデル  : {args.model}")
-    print(f"出力先  : {out_path.relative_to(REPO_ROOT)}")
-    print()
-    print("Claude API に問い合わせ中...")
+    # ── バッチ処理 ──────────────────────────────────────
+    ok_count = skip_count = 0
 
-    spots = generate_spots(args.area, prefecture, args.count, args.model)
+    for i, (area_name, (area_slug, _, prefecture)) in enumerate(targets, 1):
+        # 都道府県上書きが指定されている場合（単体処理時のみ適用）
+        if pref_override:
+            prefecture = pref_override
 
-    print(f"→ {len(spots)}件 生成完了\n")
-    for s in spots:
-        print(f"  {s.name}  ({s.slug})")
-        print(f"    {s.notes}")
+        if len(targets) > 1:
+            print(f"\n[{i}/{len(targets)}] {area_name}（{prefecture}）")
+            print("-" * 40)
 
-    write_tsv(spots, args.area, area_slug, out_path)
-    print(f"\n→ {out_path.relative_to(REPO_ROOT)} に保存しました")
-    print()
-    print("次のステップ:")
-    print(f"  python3 tools/build_spots.py          # 座標・物理データ補完")
-    print(f"  python3 tools/refetch_access.py --apply  # アクセス情報補完")
+        # 都道府県上書き時はファイル名を分けて既存TSVを保護
+        if pref_override:
+            import re as _re
+            pref_slug = _re.sub(r'[都道府県]$', '', args.prefecture)
+            out_path = TSV_DIR / f"{area_slug}_{pref_slug}.tsv"
+        else:
+            out_path = TSV_DIR / f"{area_slug}.tsv"
+
+        print(f"エリア  : {area_name}（{prefecture}）")
+        print(f"目安件数: {args.count}件")
+        print(f"モデル  : {args.model}")
+        print(f"出力先  : {out_path.relative_to(REPO_ROOT)}")
+        print()
+        print("Claude API に問い合わせ中...")
+
+        try:
+            spots = generate_spots(area_name, prefecture, args.count, args.model)
+            print(f"→ {len(spots)}件 生成完了\n")
+            for s in spots:
+                print(f"  {s.name}  ({s.slug})")
+                print(f"    {s.notes}")
+            write_tsv(spots, area_name, area_slug, out_path)
+            print(f"\n→ {out_path.relative_to(REPO_ROOT)} に保存しました")
+            ok_count += 1
+        except Exception as e:
+            print(f"[エラー] {area_name}: {e}")
+            skip_count += 1
+
+        if i < len(targets):
+            import time as _time
+            _time.sleep(2)
+
+    if len(targets) > 1:
+        print(f"\n── 完了 ── 成功: {ok_count}件 / エラー: {skip_count}件")
+    else:
+        print()
+        print("次のステップ:")
+        print(f"  python3 tools/build_spots.py             # 座標・物理データ補完")
+        print(f"  python3 tools/refetch_access.py --apply  # アクセス情報補完")
 
 
 if __name__ == "__main__":

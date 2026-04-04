@@ -1,0 +1,52 @@
+{
+  "slug": "miyama-gogan",
+  "name": "深山護岸",
+  "location": {
+    "latitude": 34.2886152,
+    "longitude": 135.0711751
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "和歌山市",
+    "city_slug": "wakayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 260,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 494.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "友ヶ島水道に近い護岸。マダイ、アジ、イサキ、アオリイカが狙える潮通しの良いスポット。",
+    "access": "加太駅から徒歩35分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.95,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@128m",
+      "man_made=breakwater@13m",
+      "natural=beach@129m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "madai",
+    "aoriika"
+  ],
+  "harbor_code": "30-12",
+  "harbor_name": "沖ノ島"
+}

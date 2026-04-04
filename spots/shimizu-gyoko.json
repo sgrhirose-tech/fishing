@@ -1,0 +1,47 @@
+{
+  "slug": "shimizu-gyoko",
+  "name": "冷水浦漁港",
+  "location": {
+    "latitude": 34.1431696,
+    "longitude": 135.1899082
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "海南市",
+    "city_slug": "kainan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 355.2,
+    "seabed_type": "gravel",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "礫主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "海南市冷水浦の漁港。アジ、クロダイ、アオリイカが狙える。秋のエギングシーズンに混む。",
+    "access": "冷水浦駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@126m",
+      "man_made=breakwater@91m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ],
+  "harbor_code": "30-10",
+  "harbor_name": "海南"
+}

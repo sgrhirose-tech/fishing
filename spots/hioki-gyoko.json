@@ -1,0 +1,50 @@
+{
+  "slug": "hioki-gyoko",
+  "name": "日置漁港",
+  "location": {
+    "latitude": 33.5616342,
+    "longitude": 135.4464054
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "白浜町",
+    "city_slug": "shirahama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 200,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 960.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "西牟婁郡白浜町日置の漁港。アジ、クロダイ、アオリイカが狙える。日置川河口も近く魚種豊富。",
+    "access": "白浜町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.81,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@170m",
+      "man_made=breakwater@229m",
+      "man_made=breakwater@28m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "kurodai"
+  ],
+  "harbor_code": "30-4",
+  "harbor_name": "周参見"
+}

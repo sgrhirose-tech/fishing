@@ -1,0 +1,48 @@
+{
+  "slug": "kinokawa-kako",
+  "name": "紀ノ川河口",
+  "location": {
+    "latitude": 34.2251053,
+    "longitude": 135.1446851
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "和歌山市",
+    "city_slug": "wakayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 255,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "和歌山市の紀ノ川河口。スズキ、クロダイ、ハゼが狙える。シーバスの好ポイントとして知られる。",
+    "access": "和歌山港駅から徒歩20分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "30-11",
+  "harbor_name": "和歌山"
+}

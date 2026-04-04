@@ -1,0 +1,47 @@
+{
+  "slug": "uragami-port",
+  "name": "浦神漁港",
+  "location": {
+    "latitude": 33.5608438,
+    "longitude": 135.8973259
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "那智勝浦町",
+    "city_slug": "nachikatsuura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 75,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "那智勝浦町浦神の小漁港。メバル・カサゴ・アオリイカ・クロダイが狙える。入り江状の地形で穏やかに釣れる。",
+    "access": "紀伊浦神駅から徒歩5分",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "kasago",
+    "mebaru"
+  ],
+  "harbor_code": "30-2",
+  "harbor_name": "浦神"
+}

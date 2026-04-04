@@ -1,0 +1,50 @@
+{
+  "slug": "kii-hioki-kaigan",
+  "name": "紀伊日置海岸",
+  "location": {
+    "latitude": 33.5677034,
+    "longitude": 135.4353333
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "白浜町",
+    "city_slug": "shirahama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 210,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 996.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "白浜町日置の海岸。シロギス、カレイの投げ釣りが人気。砂浜が続きキス釣りの好ポイント。",
+    "access": "白浜町方面から車利用",
+    "photo_url": ""
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.38,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@254m",
+      "natural=bare_rock@280m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "karei"
+  ],
+  "harbor_code": "30-4",
+  "harbor_name": "周参見"
+}

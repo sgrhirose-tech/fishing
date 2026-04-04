@@ -1,0 +1,46 @@
+{
+  "slug": "uchinourawanko-gogan",
+  "name": "内の浦湾護岸",
+  "location": {
+    "latitude": 33.6965902,
+    "longitude": 135.3874025
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "田辺市",
+    "city_slug": "tanabe"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 285.4,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1617.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "田辺市内の浦湾の護岸。アジ、メバル、クロダイが狙える。穏やかな内湾で釣りやすい環境。",
+    "access": "田辺市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "aji"
+  ],
+  "harbor_code": "30-13",
+  "harbor_name": "田辺"
+}

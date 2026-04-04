@@ -1,0 +1,48 @@
+{
+  "slug": "wakayama-ko",
+  "name": "和歌山港",
+  "location": {
+    "latitude": 34.2175031,
+    "longitude": 135.1461021
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "和歌山市",
+    "city_slug": "wakayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 260.3,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "和歌山市の主要漁港。アジ、サバ、クロダイ、スズキ、タチウオなど多彩な魚種が狙える。周辺護岸からの釣りが可能。",
+    "access": "和歌山港駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "tachiuo",
+    "kurodai",
+    "suzuki",
+    "saba",
+    "aji"
+  ],
+  "harbor_code": "30-11",
+  "harbor_name": "和歌山"
+}
