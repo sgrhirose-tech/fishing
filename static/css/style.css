@@ -797,3 +797,174 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 #favorites-list { margin: 0; padding: 0; list-style: none; }
 #favorites-list a { color: #1a6b9e; text-decoration: none; display: block; }
 #favorites-list a:hover { text-decoration: underline; }
+
+/* ---- スポット一覧: フィルタバー ---- */
+.spots-filter {
+  background: #f5f7fa;
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  margin-bottom: 1rem;
+}
+.filter-row { display: flex; align-items: flex-start; gap: .5rem; flex-wrap: wrap; margin-bottom: .4rem; }
+.filter-row:last-child { margin-bottom: 0; }
+.filter-label { font-size: .78rem; color: #666; white-space: nowrap; padding-top: .3rem; min-width: 5em; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: .3rem; }
+.filter-chip {
+  display: inline-block;
+  padding: .25rem .65rem;
+  border-radius: 14px;
+  border: 1px solid #c8d3df;
+  background: white;
+  color: #444;
+  font-size: .8rem;
+  text-decoration: none;
+  transition: background .1s, color .1s;
+}
+.filter-chip:hover { background: #e8f0fa; }
+.filter-chip.active { background: #1a6b9e; color: white; border-color: #1a6b9e; }
+.filter-active { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-top: .4rem; font-size: .82rem; color: #555; }
+.filter-badge {
+  display: inline-flex; align-items: center; gap: .3rem;
+  background: #ddeeff; color: #1a5a8a; border-radius: 10px;
+  padding: .2rem .55rem; font-size: .8rem;
+}
+.filter-badge a { color: #1a5a8a; text-decoration: none; font-weight: bold; }
+.filter-clear { color: #888; font-size: .78rem; text-decoration: underline; }
+
+/* ---- スポット一覧: 並べ替えバー ---- */
+.sort-bar { margin-bottom: .75rem; }
+.btn-sort {
+  padding: .4rem .9rem;
+  border-radius: 16px;
+  border: 1px solid #1a6b9e;
+  background: white;
+  color: #1a6b9e;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: background .1s, color .1s;
+}
+.btn-sort:hover { background: #e8f0fa; }
+.btn-sort:disabled { opacity: .6; cursor: default; }
+
+/* ---- 現在地ボタン（地図右下） ---- */
+.map-loc-btn {
+  background: white;
+  border: 2px solid rgba(0,0,0,.2);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: .85rem;
+  cursor: pointer;
+  box-shadow: 0 1px 5px rgba(0,0,0,.2);
+  white-space: nowrap;
+}
+.map-loc-btn:hover { background: #f4f4f4; }
+
+/* ---- タックルガイド ---- */
+.tackle-intro {
+  background: #f0f7ff;
+  border-left: 4px solid #1a6b9e;
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: #334;
+}
+.tackle-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.tackle-category-card {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #d0e4f0;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #334;
+  transition: box-shadow .15s, border-color .15s;
+}
+.tackle-category-card:hover { box-shadow: 0 2px 10px rgba(26,107,158,.15); border-color: #1a6b9e; }
+.tackle-category-card.coming-soon { opacity: .65; pointer-events: none; }
+.tackle-cat-icon { font-size: 2rem; flex-shrink: 0; line-height: 1; }
+.tackle-cat-body h3 { font-size: 1rem; margin: 0 0 .3rem; color: #1a6b9e; }
+.tackle-cat-body p { font-size: .83rem; margin: 0; color: #556; line-height: 1.5; }
+
+.tackle-item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: .85rem;
+}
+.tackle-item-card {
+  display: block;
+  padding: .85rem 1rem;
+  background: white;
+  border: 1px solid #d0e4f0;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #334;
+  transition: box-shadow .15s, border-color .15s;
+}
+.tackle-item-card:hover { box-shadow: 0 2px 8px rgba(26,107,158,.15); border-color: #1a6b9e; }
+.tackle-item-card h3 { font-size: .95rem; margin: 0 0 .4rem; color: #1a6b9e; }
+.tackle-item-summary { font-size: .82rem; color: #556; margin: 0 0 .4rem; line-height: 1.5; }
+.tackle-item-suitable { font-size: .76rem; color: #888; margin: 0; }
+
+.tackle-item-article { max-width: 720px; }
+.tackle-tip-box {
+  background: #fffbe6;
+  border: 1px solid #ffe066;
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+.tackle-tip-label { font-weight: bold; font-size: .85rem; display: block; margin-bottom: .3rem; }
+.tackle-tip-box p { margin: 0; font-size: .9rem; }
+.tackle-item-body {
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  font-size: .95rem;
+}
+.tackle-suitable {
+  background: #f0f7ff;
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  margin-bottom: 1.5rem;
+}
+.tackle-suitable h3 { font-size: .9rem; margin: 0 0 .4rem; }
+.tackle-suitable p { margin: 0; font-size: .88rem; }
+
+.tackle-affiliate { margin-bottom: 1.5rem; }
+.tackle-affiliate h3 { font-size: 1rem; margin-bottom: .75rem; }
+.tackle-affiliate-list { display: flex; flex-direction: column; gap: .75rem; }
+.tackle-affiliate-item {
+  display: flex; gap: 1rem; align-items: center;
+  padding: .75rem; border: 1px solid #d0e4f0; border-radius: 8px;
+  text-decoration: none; color: #334;
+  background: white;
+  transition: box-shadow .15s;
+}
+.tackle-affiliate-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+.tackle-affiliate-item img { width: 80px; height: 80px; object-fit: contain; flex-shrink: 0; }
+.tackle-affiliate-name { font-size: .9rem; font-weight: bold; margin: 0 0 .25rem; }
+.tackle-affiliate-price { font-size: .85rem; color: #c0392b; margin: 0 0 .2rem; }
+.tackle-affiliate-note { font-size: .78rem; color: #888; margin: 0; }
+
+.tackle-nav-other {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0ecf5;
+}
+.tackle-nav-other > p { font-size: .82rem; color: #888; margin-bottom: .5rem; }
+
+/* ---- 釣法→スポット導線 ---- */
+.method-spots-link {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background: #f0f7fc;
+  border-left: 4px solid #1a6b9e;
+  border-radius: 0 8px 8px 0;
+}
+.method-spots-link h2 { font-size: 1.05rem; margin: 0 0 .6rem; color: #1a6b9e; }
