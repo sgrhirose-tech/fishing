@@ -6,7 +6,57 @@
     "body": "天秤・オモリ・ハリ・エダスがセットになった仕掛けです。オモリで仕掛けを底まで沈め、海底付近にいるシロギス・カレイ・ハゼなどを狙います。\n\n市販の仕掛けは「針の号数」「ハリスの太さ」「針の数」が商品名に書いてあります。シロギスなら<strong>キス針8〜10号・ハリス0.8〜1号・2〜3本針</strong>が初心者向けの標準です。天秤とオモリ（15〜25号）は別途購入します。",
     "suitable_for": "シロギス・カレイ・ハゼ・キビレ（投げ釣り全般）",
     "beginner_tip": "まずは市販の完成仕掛けから。天秤とオモリ（15〜25号）は別途必要。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "ハヤブサ(Hayabusa) 投げキス天秤式 早掛キス 2本鈎 NT665",
+          "url": "https://www.amazon.co.jp/dp/B0FDW2ZQDM?tag=tsuricast-22",
+          "asin": "B0FDW2ZQDM",
+          "note": "完成仕掛け｜キス狙いの最初の一組に使いやすい"
+        }
+      ],
+      [
+        {
+          "name": "がまかつ K148 港カレイ仕掛 13-5",
+          "url": "https://www.amazon.co.jp/dp/B0GGNKCHRZ?tag=tsuricast-22",
+          "asin": "B0GGNKCHRZ",
+          "note": "完成仕掛け｜港内カレイの定番完成仕掛け"
+        }
+      ],
+      [
+        {
+          "name": "ささめ針(SASAME) K-553 一投入魂キャノンボールカレイ 10-3",
+          "url": "https://www.amazon.co.jp/dp/B0BT7J3HW7?tag=tsuricast-22",
+          "asin": "B0BT7J3HW7",
+          "note": "完成仕掛け｜カレイ狙いで使いやすい定番セット"
+        }
+      ],
+      [
+        {
+          "name": "富士工業(FUJI KOGYO) ミニジェット天秤 2JO-S 8号",
+          "url": "https://www.amazon.co.jp/dp/B000AQR35E?tag=tsuricast-22",
+          "asin": "B000AQR35E",
+          "note": "天秤パーツ｜初心者から使いやすいミニジェット天秤"
+        }
+      ],
+      [
+        {
+          "name": "フジワラ(FUJIWARA) 山本式 高感度天秤 L",
+          "url": "https://www.amazon.co.jp/dp/B0GGJ4MSHX?tag=tsuricast-22",
+          "asin": "B0GGJ4MSHX",
+          "note": "天秤パーツ｜感度重視のL型候補"
+        }
+      ],
+      [
+        {
+          "name": "フジワラ(Fujiwara) Lショット 固定 22号 ムク",
+          "url": "https://www.amazon.co.jp/dp/B0D1JMB1ZL?tag=tsuricast-22",
+          "asin": "B0D1JMB1ZL",
+          "note": "天秤パーツ｜固定式で操作しやすいLショット"
+        }
+      ]
+    ]
   },
   {
     "slug": "float-rig",
@@ -15,7 +65,57 @@
     "body": "ウキを使って仕掛けを水中のある深さ（「タナ」と言います）に漂わせる釣り方です。アジ・サバ・メジナ・チヌなど、幅広い魚種が狙えます。\n\nウキには「固定ウキ」と「遊動ウキ」の2タイプがあります。初心者には<strong>固定タイプ</strong>が分かりやすくておすすめ。遊動タイプは深いタナを狙えますが、仕掛けが複雑になります。\n\nウキのサイズとオモリのバランス（ウキの号数＝オモリの号数）を合わせることが基本中の基本です。",
     "suitable_for": "アジ・サバ・イワシ（サビキ）・メジナ・チヌ（フカセ）",
     "beginner_tip": "固定ウキから始めよう。ウキの号数＝オモリの号数が基本。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "ハヤブサ(Hayabusa) コンパクトロッド 簡単ウキ釣りセット(堤防用) L HA176",
+          "url": "https://www.amazon.co.jp/dp/B0FR9234B3?tag=tsuricast-22",
+          "asin": "B0FR9234B3",
+          "note": "入門クラス｜堤防用の簡単ウキ釣りセット"
+        }
+      ],
+      [
+        {
+          "name": "がまかつ(Gamakatsu) うきまろ堤防ウキ釣リ仕掛 UM120",
+          "url": "https://www.amazon.co.jp/dp/B0BS2W3KWK?tag=tsuricast-22",
+          "asin": "B0BS2W3KWK",
+          "note": "入門クラス｜玉ウキ系で扱いやすい堤防用仕掛"
+        }
+      ],
+      [
+        {
+          "name": "冨士灯器(Fuji-Toki) 遊動式 波止夜釣リ仕掛けセット タイプ1",
+          "url": "https://www.amazon.co.jp/dp/B07GKN2MYL?tag=tsuricast-22",
+          "asin": "B07GKN2MYL",
+          "note": "入門クラス｜夜釣り用の電気ウキセット"
+        }
+      ],
+      [
+        {
+          "name": "がまかつ(Gamakatsu) 堤防棒ウキ ワンタッチ仕掛2 HU110 M-1.5",
+          "url": "https://www.amazon.co.jp/dp/B08TWNZV6N?tag=tsuricast-22",
+          "asin": "B08TWNZV6N",
+          "note": "ミドルクラス｜棒ウキ入門に向くワンタッチ仕掛"
+        }
+      ],
+      [
+        {
+          "name": "OWNER(オーナー) H-3585 セット一発 チヌ棒ウキ仕掛 2-1.5",
+          "url": "https://www.amazon.co.jp/dp/B0CJNWRTQ7?tag=tsuricast-22",
+          "asin": "B0CJNWRTQ7",
+          "note": "ミドルクラス｜チヌ狙いまで見据えた棒ウキ仕掛"
+        }
+      ],
+      [
+        {
+          "name": "キザクラ(kizakura) ウキ釣り速攻セット(ナマリタイプ) チヌ用 3B",
+          "url": "https://www.amazon.co.jp/dp/B075SRK9FV?tag=tsuricast-22",
+          "asin": "B075SRK9FV",
+          "note": "ミドルクラス｜結ぶだけで始めやすいチヌ用セット"
+        }
+      ]
+    ]
   },
   {
     "slug": "lure",
@@ -24,7 +124,105 @@
     "body": "金属や樹脂でできた疑似餌です。大きく「ハードルアー（ミノー・バイブレーション・メタルジグ等）」と「ソフトルアー（ワーム）」に分かれます。\n\n初心者にまずおすすめなのが<strong>メタルジグ</strong>。投げて底まで沈めてから巻くだけでOKで、アジ・サバ・シーバス・青物など幅広い魚種に対応します。20〜30gのジグを2〜3種類持っておけば、堤防からのライトショアジギングが楽しめます。\n\nワームは<strong>ジグヘッド（オモリ付き針）に刺して使う</strong>のが基本。メバル・アジ・根魚狙いでよく使われます。",
     "suitable_for": "シーバス・アジ・メバル・青物・根魚（カサゴ・ソイ）",
     "beginner_tip": "まずはメタルジグ20〜30gを2〜3種類。投げて底から巻くだけでOK。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "ダイワ(DAIWA) メバル/アジ ワーム 月下美人 アジングビーム2",
+          "url": "https://www.amazon.co.jp/dp/B0B92XRYTZ?tag=tsuricast-22",
+          "asin": "B0B92XRYTZ",
+          "note": "アジング向け｜まず使いやすい小型ワーム定番"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) メバル/アジ ジグヘッド 月下美人アジングジグヘッド",
+          "url": "https://www.amazon.co.jp/dp/B0B92Q84YF?tag=tsuricast-22",
+          "asin": "B0B92Q84YF",
+          "note": "アジング向け｜相性を取りやすい専用ジグヘッド"
+        }
+      ],
+      [
+        {
+          "name": "エコギア(Ecogear) ルアー メバル職人 ミノーSS 1-1/2インチ",
+          "url": "https://www.amazon.co.jp/dp/B07ND3KMVN?tag=tsuricast-22",
+          "asin": "B07ND3KMVN",
+          "note": "メバリング向け｜スローに誘いやすい定番ワーム"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) メバル/アジ ルアー 月下美人 夜霧Z 42F-DR / 42S-DR",
+          "url": "https://www.amazon.co.jp/dp/B0B92YCSXB?tag=tsuricast-22",
+          "asin": "B0B92YCSXB",
+          "note": "メバリング向け｜小型プラグの定番候補"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) ルアー ソルトプラグ EXS サイレントアサシン 99F フラッシュブースト",
+          "url": "https://www.amazon.co.jp/dp/B09VPH7H66?tag=tsuricast-22",
+          "asin": "B09VPH7H66",
+          "note": "シーバス向け｜広く使いやすいミノー定番"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) シーバスルアー バイブレーション エクスセンス サルベージ 70ES",
+          "url": "https://www.amazon.co.jp/dp/B0CKKVSNZJ?tag=tsuricast-22",
+          "asin": "B0CKKVSNZJ",
+          "note": "シーバス向け｜レンジを入れやすいバイブ候補"
+        }
+      ],
+      [
+        {
+          "name": "メジャークラフト ジグパラ ショート 30g JPS30 2TON イワシゼブラ",
+          "url": "https://www.amazon.co.jp/dp/B0CNPLKDZX?tag=tsuricast-22",
+          "asin": "B0CNPLKDZX",
+          "note": "ショアジギング向け｜まず持ちたい30g定番"
+        }
+      ],
+      [
+        {
+          "name": "メジャークラフト ジグパラ ショート 40g JPS40 2TON ディープパープル",
+          "url": "https://www.amazon.co.jp/dp/B0GGN3BLT1?tag=tsuricast-22",
+          "asin": "B0GGN3BLT1",
+          "note": "ショアジギング向け｜少し重めを足す40g候補"
+        }
+      ],
+      [
+        {
+          "name": "ヤマシタ(YAMASHITA) エギ王 K 3.0号",
+          "url": "https://www.amazon.co.jp/dp/B0B1LSCVTC?tag=tsuricast-22",
+          "asin": "B0B1LSCVTC",
+          "note": "エギング向け｜まず使いやすい3.0号の定番"
+        }
+      ],
+      [
+        {
+          "name": "DUEL(デュエル) EZ-Q ダートマスター 3.5号",
+          "url": "https://www.amazon.co.jp/dp/B01MZD2TK7?tag=tsuricast-22",
+          "asin": "B01MZD2TK7",
+          "note": "エギング向け｜3.5号で広く使える定番候補"
+        }
+      ],
+      [
+        {
+          "name": "エコギア(Ecogear) ルアー バグアンツ 3インチ",
+          "url": "https://www.amazon.co.jp/dp/B007IEJHRS?tag=tsuricast-22",
+          "asin": "B007IEJHRS",
+          "note": "ロックフィッシュ向け｜根周りで使いやすい定番ワーム"
+        }
+      ],
+      [
+        {
+          "name": "カツイチ(Katsuichi) デコイ Worm29 ロックンフック #1",
+          "url": "https://www.amazon.co.jp/dp/B073NXD4KQ?tag=tsuricast-22",
+          "asin": "B073NXD4KQ",
+          "note": "ロックフィッシュ向け｜テキサスリグ用の定番フック"
+        }
+      ]
+    ]
   },
   {
     "slug": "egi",
@@ -33,6 +231,69 @@
     "body": "アオリイカ専用のルアーです。エビや小魚の形をしており、針は下向きに付いています。シャクリ（竿をあおる動作）で「ダート」させてイカを誘います。\n\n号数は2〜4号があり、初心者には<strong>3号（標準サイズ）のオレンジ・ピンク系のカラー</strong>から始めるのが定番です。シーズンは秋（9〜11月）と春（3〜5月）がハイシーズンで、アオリイカが最もよく釣れます。",
     "suitable_for": "エギング（アオリイカ・コウイカ）",
     "beginner_tip": "3号・オレンジ or ピンク系のカラーから始めよう。秋と春がベストシーズン。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "ヤマシタ(YAMASHITA) エギ エギ王 LIVE 3.5号 21g ルアー",
+          "url": "https://www.amazon.co.jp/dp/B07WCMSHL5?tag=tsuricast-22",
+          "asin": "B07WCMSHL5",
+          "note": "入門クラス｜まず使いやすい3.5号の定番エギ"
+        }
+      ],
+      [
+        {
+          "name": "DUEL(デュエル) EZ-Q ダートマスター 3.0号 ブルー夜光オレンジピンク",
+          "url": "https://www.amazon.co.jp/dp/B073WT67LG?tag=tsuricast-22",
+          "asin": "B073WT67LG",
+          "note": "入門〜ミドル｜扱いやすく実績の高い定番モデル"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) セフィア クリンチ フラッシュブースト ラトル 3号",
+          "url": "https://www.amazon.co.jp/dp/B0B6QG5TK1?tag=tsuricast-22",
+          "asin": "B0B6QG5TK1",
+          "note": "ミドルクラス｜フラッシュブースト搭載で差別化しやすい実戦型"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) エギ エメラルダスピーク TypeSRV",
+          "url": "https://www.amazon.co.jp/dp/B0C6QLKNZD?tag=tsuricast-22",
+          "asin": "B0C6QLKNZD",
+          "note": "ミドルクラス｜フォール姿勢重視の実戦型モデル"
+        }
+      ],
+      [
+        {
+          "name": "",
+          "url": "",
+          "asin": ""
+        }
+      ],
+      [
+        {
+          "name": "",
+          "url": "",
+          "asin": ""
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) エギ 快適船タコエギSS ルアー",
+          "url": "https://www.amazon.co.jp/dp/B08CNL16FT?tag=tsuricast-22",
+          "asin": "B08CNL16FT",
+          "note": "タコエギ｜底を攻めやすい船タコ向けの定番"
+        }
+      ],
+      [
+        {
+          "name": "",
+          "url": "",
+          "asin": ""
+        }
+      ]
+    ]
   }
 ]

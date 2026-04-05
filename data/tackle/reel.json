@@ -6,7 +6,57 @@
     "body": "最もポピュラーで、初心者にも扱いやすいリールです。竿の下側に取り付け、ラインを前方に放出する構造で、キャスティングのトラブルが少ないのが特徴です。\n\n選ぶポイントは「番手（サイズ）」。数字が大きいほどリールも大きく、太い糸をたくさん巻けます。\n\n| 番手の目安 | 向いている釣り |\n|---|---|\n| 1000〜2000番 | アジング・メバリング・トラウト |\n| 2500〜3000番 | シーバス・エギング・投げ釣り |\n| 4000番以上 | 青物・ショアジギング・磯釣り |\n\n最初の1台なら、汎用性の高い<strong>2500〜3000番</strong>を選ぶと様々な釣りに対応できます。",
     "suitable_for": "アジング・メバリング・シーバス・エギング・投げ釣り・磯釣り・ショアジギング",
     "beginner_tip": "最初の1台は2500〜3000番。実売1万〜2万円台の中堅モデルが◎。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "ダイワ(DAIWA) スピニングリール 24レブロス 1000～6000 各種 (2024年モデル)",
+          "url": "https://www.amazon.co.jp/dp/B0DCVF51RY?tag=tsuricast-22",
+          "asin": "B0DCVF51RY",
+          "note": "入門クラス｜3000番帯で始めやすい現行レブロス"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) スピニングリール 26ナスキー C3000HG",
+          "url": "https://www.amazon.co.jp/dp/B0G4M48NGV?tag=tsuricast-22",
+          "asin": "B0G4M48NGV",
+          "note": "入門クラス｜最初の3000番候補として自然なナスキー"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) スピニングリール 26FREAMS LT3000-CXH",
+          "url": "https://www.amazon.co.jp/dp/B0GCM1PKGS?tag=tsuricast-22",
+          "asin": "B0GCM1PKGS",
+          "note": "ミドルクラス｜軽さと実用性のバランスが良い3000番帯"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) スピニングリール 23 ストラディック 各種",
+          "url": "https://www.amazon.co.jp/dp/B0CGCTHF1T?tag=tsuricast-22",
+          "asin": "B0CGCTHF1T",
+          "note": "ミドルクラス｜巻き心地で満足度が高いストラディック系"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) スピニングリール 22イグジスト(EXIST) 各種 (2022モデル)",
+          "url": "https://www.amazon.co.jp/dp/B0BT2W4KT5?tag=tsuricast-22",
+          "asin": "B0BT2W4KT5",
+          "note": "ハイエンドクラス｜軽さと感度を追求するダイワ上位機"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) スピニングリール 22 ステラ 各種",
+          "url": "https://www.amazon.co.jp/dp/B09VPBC5P4?tag=tsuricast-22",
+          "asin": "B09VPBC5P4",
+          "note": "ハイエンドクラス｜最高峰として自然なステラ"
+        }
+      ]
+    ]
   },
   {
     "slug": "baitcasting",
@@ -15,7 +65,57 @@
     "body": "親指でスプール（糸巻き部分）を操作して飛距離やキャストの精度をコントロールするリールです。慣れると絶大な威力を発揮しますが、スプールが空回りして糸が絡む「バックラッシュ」という現象が起きやすく、習得に練習が必要です。\n\nバス釣りやオフショア（船釣り）での使用がメインです。<strong>初心者にはまずスピニングリールで練習してから</strong>ベイトリールに挑戦することをおすすめします。",
     "suitable_for": "バス釣り・オフショア（船釣り）・ショアジギング（上級者）",
     "beginner_tip": "まずスピニングで釣りを覚えてから挑戦しよう。バックラッシュ対策のブレーキ調整が重要。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "ダイワ(DAIWA) ベイトリール 24バス X 100H 100HL 各種",
+          "url": "https://www.amazon.co.jp/dp/B0CYCGYNCB?tag=tsuricast-22",
+          "asin": "B0CYCGYNCB",
+          "note": "入門クラス｜ブレーキ強めで練習しやすい現行バスX"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) ベイトリール 17 バスワンXT 150 右ハンドル",
+          "url": "https://www.amazon.co.jp/dp/B0853DRJ13?tag=tsuricast-22",
+          "asin": "B0853DRJ13",
+          "note": "入門クラス｜定番の右巻きエントリーモデル"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) ベイトリール 25TATULA SV TW 100",
+          "url": "https://www.amazon.co.jp/dp/B0DNDZRD66?tag=tsuricast-22",
+          "asin": "B0DNDZRD66",
+          "note": "ミドルクラス｜SVスプールでトラブルを減らしやすい"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) ベイトリール 24 SLX 各種",
+          "url": "https://www.amazon.co.jp/dp/B0CS5TQJYD?tag=tsuricast-22",
+          "asin": "B0CS5TQJYD",
+          "note": "ミドルクラス｜バランスの良い現行SLX"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) バスベイトリール 24STEEZ SV TW 100 100H 100XH 各種",
+          "url": "https://www.amazon.co.jp/dp/B0CM8YKBNX?tag=tsuricast-22",
+          "asin": "B0CM8YKBNX",
+          "note": "ハイエンドクラス｜軽さと巻き感を両立する上位機"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) 両軸リール 21 アンタレスDC 各種",
+          "url": "https://www.amazon.co.jp/dp/B08ZSTGN4D?tag=tsuricast-22",
+          "asin": "B08ZSTGN4D",
+          "note": "ハイエンドクラス｜飛距離と制御性で差が出る名機"
+        }
+      ]
+    ]
   },
   {
     "slug": "conventional",
@@ -24,7 +124,81 @@
     "body": "船釣り専用のリールで、竿の上側に取り付けて使います。ラインを真下に出す構造が深場の釣りに向いており、タチウオ・マダイ・根魚などの船釣りで主に使われます。\n\n手巻きタイプと電動タイプがあり、水深や体力・予算に応じて選びます。まずは<strong>手巻きタイプで釣りを覚えてから</strong>電動を検討するのが賢い順序です。",
     "suitable_for": "タチウオ・マダイ・根魚・ヒラメ（船釣り全般）",
     "beginner_tip": "手巻きタイプから始めよう。船宿での釣りに慣れてから購入を検討。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "シマノ(SHIMANO) 電動リール プレイズ 各種",
+          "url": "https://www.amazon.co.jp/dp/B0DBH1JW2L?tag=tsuricast-22",
+          "asin": "B0DBH1JW2L",
+          "note": "入門クラス｜小型電動を試しやすいベーシックモデル"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) 電動リール フォースマスター 2021 200DH",
+          "url": "https://www.amazon.co.jp/dp/B09CYTG3KD?tag=tsuricast-22",
+          "asin": "B09CYTG3KD",
+          "note": "入門クラス｜カウンター付きで扱いやすい小型電動"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) 電動リール 23レオブリッツ 200J/200JL 右/左ハンドル 各種 (2023年モデル)",
+          "url": "https://www.amazon.co.jp/dp/B0C9ZJ7CD4?tag=tsuricast-22",
+          "asin": "B0C9ZJ7CD4",
+          "note": "ミドルクラス｜ライト船釣りで幅広く使いやすい電動定番"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) 電動リール 23 フォースマスター 600DH",
+          "url": "https://www.amazon.co.jp/dp/B0DBGZPNH6?tag=tsuricast-22",
+          "asin": "B0DBGZPNH6",
+          "note": "ミドルクラス｜巻き性能と汎用性のバランスが良い600番電動"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) 電動リール シーボーグ G200J",
+          "url": "https://www.amazon.co.jp/dp/B0BMW2SV8Y?tag=tsuricast-22",
+          "asin": "B0BMW2SV8Y",
+          "note": "ハイエンドクラス｜高耐久 高出力で差が出る上位電動"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) 電動リール 22 ビーストマスター 2000",
+          "url": "https://www.amazon.co.jp/dp/B0CLRBBTHS?tag=tsuricast-22",
+          "asin": "B0CLRBBTHS",
+          "note": "ハイエンドクラス｜剛性とパワーを備えた上位電動"
+        }
+      ],
+      [
+        {
+          "name": "ハピソン(Hapyson) 中・小型電動リール用充電式 12Ahバッテリーパック YQ-118",
+          "url": "https://www.amazon.co.jp/dp/B009V5CRXS?tag=tsuricast-22",
+          "asin": "B009V5CRXS",
+          "note": "バッテリー｜入門向けの充電式12Ah定番モデル"
+        }
+      ],
+      [
+        {
+          "name": "BMO JAPAN(ビーエムオージャパン) リチウムイオンバッテリー11.6Ahチャージャーセット BM-L116-SET",
+          "url": "https://www.amazon.co.jp/dp/B06XVJFLLF?tag=tsuricast-22",
+          "asin": "B06XVJFLLF",
+          "note": "バッテリー｜軽量で扱いやすい11.6Ahリチウム"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) 電動リール 22 BTマスター 11Ah 電動丸",
+          "url": "https://www.amazon.co.jp/dp/B09R9JL84R?tag=tsuricast-22",
+          "asin": "B09R9JL84R",
+          "note": "バッテリー｜純正志向で安心感の高い11Ahモデル"
+        }
+      ]
+    ]
   },
   {
     "slug": "electric",

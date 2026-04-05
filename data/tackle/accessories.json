@@ -6,7 +6,73 @@
     "body": "ラインカット用のはさみは必需品です。釣り専用のラインカッターはコンパクトで切れ味がよく、PEラインもスパッと切れます。普通のはさみで代用するのはNG。\n\nフォーセップ（プライヤー型のペンチ）は、飲み込まれた針を安全に外すためのツール。魚の口の奥に刺さった針を素手で触ると怪我をするので、必ず用意してください。\n\n釣りナイフは魚を締める・さばくときに使います。最初は安価なものでOKですが、切れ味の落ちたものは危険なので定期的に交換を。",
     "suitable_for": "全釣り種共通",
     "beginner_tip": "まずラインカッターとフォーセップを揃えよう。怪我防止の必需品。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "ダイワ(DAIWA) ラインカッター PE チョッキン 689465",
+          "url": "https://www.amazon.co.jp/dp/B001G5OB26?tag=tsuricast-22",
+          "asin": "B001G5OB26",
+          "note": "ラインカッター｜PE対応でまず外しにくい定番"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) ラインカッター CT-931R",
+          "url": "https://www.amazon.co.jp/dp/B088Z28PDS?tag=tsuricast-22",
+          "asin": "B088Z28PDS",
+          "note": "ラインカッター｜携帯しやすいステンレス定番"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) 折り畳みナイフ フィッシュナイフ II型 各種",
+          "url": "https://www.amazon.co.jp/dp/B0D9JPZ7YC?tag=tsuricast-22",
+          "asin": "B0D9JPZ7YC",
+          "note": "ナイフ｜折りたたみ式で魚の締めや下処理に使いやすい"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) フォールディングナイフUF UB-202X 各カラー",
+          "url": "https://www.amazon.co.jp/dp/B0CSFWXQD9?tag=tsuricast-22",
+          "asin": "B0CSFWXQD9",
+          "note": "ナイフ｜安全に携行しやすいフォールディング型"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) ラインカッター・ハサミ 針外し フォーセップ S TYPE B ベント",
+          "url": "https://www.amazon.co.jp/dp/B0060EMVW0?tag=tsuricast-22",
+          "asin": "B0060EMVW0",
+          "note": "フォーセップ｜小針外しで扱いやすいベント型定番"
+        }
+      ],
+      [
+        {
+          "name": "OWNER(オーナー) リリーサー FT-06 マルチフォーセップ S 89726",
+          "url": "https://www.amazon.co.jp/dp/B06XRV142Y?tag=tsuricast-22",
+          "asin": "B06XRV142Y",
+          "note": "フォーセップ｜ライトゲームや小物釣りに使いやすい"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) パワープライヤー ブラック CT-561P",
+          "url": "https://www.amazon.co.jp/dp/B07GKJDTS8?tag=tsuricast-22",
+          "asin": "B07GKJDTS8",
+          "note": "プライヤー｜大型フック外しとリング交換の定番"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) パワープライヤー ベント ブラック CT-562P",
+          "url": "https://www.amazon.co.jp/dp/B07GK26BCC?tag=tsuricast-22",
+          "asin": "B07GK26BCC",
+          "note": "プライヤー｜先曲がりでフックを外しやすいベント型"
+        }
+      ]
+    ]
   },
   {
     "slug": "tackle-bag",
@@ -15,7 +81,73 @@
     "body": "ルアーや仕掛けの収納ケースと、釣り道具一式を持ち歩くバッグです。\n\nルアーケースは100均のものでも代用できますが、専用品はコンパクトで仕切りが自在に動き、持ち運びに便利です。バッグはロッドホルダー付きのショルダータイプが両手を空けられて安全。",
     "suitable_for": "ルアー釣り・エギング・ライトゲーム",
     "beginner_tip": "ルアーケースは100均でもOK。バッグはロッドホルダー付きが便利。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "メイホウ(MEIHO) VS-3010NDM(マルチ) クリア",
+          "url": "https://www.amazon.co.jp/dp/B0GGM56876?tag=tsuricast-22",
+          "asin": "B0GGM56876",
+          "note": "ライトゲーム向けケース｜薄型で小物整理しやすい定番"
+        }
+      ],
+      [
+        {
+          "name": "Abu Garcia (アブガルシア) ワンショルダーバッグ 各種 収納 耐水 釣り",
+          "url": "https://www.amazon.co.jp/dp/B0GS9CF7KJ?tag=tsuricast-22",
+          "asin": "B0GS9CF7KJ",
+          "note": "ライトゲーム向けバッグ｜軽快に動けるワンショルダー"
+        }
+      ],
+      [
+        {
+          "name": "メイホウ(MEIHO) ランガンケース3010",
+          "url": "https://www.amazon.co.jp/dp/B09YMG1GL5?tag=tsuricast-22",
+          "asin": "B09YMG1GL5",
+          "note": "シーバス 青物向けケース｜少し大きめでルアー整理しやすい"
+        }
+      ],
+      [
+        {
+          "name": "ドレス(DRESS) ホールディングショルダーバッグ グラファイトブラック",
+          "url": "https://www.amazon.co.jp/dp/B0DZH4XFFG?tag=tsuricast-22",
+          "asin": "B0DZH4XFFG",
+          "note": "シーバス 青物向けバッグ｜ロッドホルダー付きの実戦型"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) エギケース エメラルダス エギホルダーR S(A) / T(B)",
+          "url": "https://www.amazon.co.jp/dp/B0FD9ZYHMD?tag=tsuricast-22",
+          "asin": "B0FD9ZYHMD",
+          "note": "エギング向けケース｜両面収納で手返しを上げやすい現行専用ケース"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) エギング エメラルダス タクティカル ショルダーバッグ(A)",
+          "url": "https://www.amazon.co.jp/dp/B0B4VBSY7P?tag=tsuricast-22",
+          "asin": "B0B4VBSY7P",
+          "note": "エギング向けバッグ｜専用設計で機動力を確保しやすい"
+        }
+      ],
+      [
+        {
+          "name": "メイホウ(MEIHO) VS-7080N グリーンツートン",
+          "url": "https://www.amazon.co.jp/dp/B085HT4RKP?tag=tsuricast-22",
+          "asin": "B085HT4RKP",
+          "note": "投げ釣り 堤防向け｜定点で使いやすい大容量ボックス"
+        }
+      ],
+      [
+        {
+          "name": "リングスター(RING STAR) ドカット D-4700 レッド/ブラック",
+          "url": "https://www.amazon.co.jp/dp/B007MWYTA6?tag=tsuricast-22",
+          "asin": "B007MWYTA6",
+          "note": "投げ釣り 堤防向け｜頑丈さ重視の大型ボックス"
+        }
+      ]
+    ]
   },
   {
     "slug": "cooler",
@@ -24,7 +156,40 @@
     "body": "釣れた魚の鮮度を保つために必須です。「どうせ釣れないだろう」と持っていかない日に限って大漁になったりします。\n\n選び方は「保冷力（断熱材の厚さ）」と「容量（リットル数）」の2軸。堤防での半日釣りなら<strong>10〜15Lの普及モデル</strong>で十分です。遠征・船釣りでは25〜35Lの中型が活躍します。氷は釣り場近くのコンビニやガソリンスタンドで調達できます。",
     "suitable_for": "全釣り種共通（魚を持ち帰る場合）",
     "beginner_tip": "10〜15Lから始めよう。高い保冷力より「とにかく持っていく」習慣が大事。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "ダイワ(DAIWA) クーラーボックス ミニクール2",
+          "url": "https://www.amazon.co.jp/dp/B0GFVJ9P29?tag=tsuricast-22",
+          "asin": "B0GFVJ9P29",
+          "note": "初心者向け｜軽くて持ち出しやすい小型クーラー"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) クーラーボックス クールラインα3 GU1500 レッド",
+          "url": "https://www.amazon.co.jp/dp/B0GCNDBTPL?tag=tsuricast-22",
+          "asin": "B0GCNDBTPL",
+          "note": "初心者向け｜15Lクラスで半日のおかっぱりにちょうどいい"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) クーラーボックス フィクセル ライト RS 120 ホワイトブルー",
+          "url": "https://www.amazon.co.jp/dp/B084CJHS92?tag=tsuricast-22",
+          "asin": "B084CJHS92",
+          "note": "ワンランク上｜12Lで軽さと保冷力のバランスが良い"
+        }
+      ],
+      [
+        {
+          "name": "",
+          "url": "",
+          "asin": ""
+        }
+      ]
+    ]
   },
   {
     "slug": "apparel",
@@ -33,6 +198,104 @@
     "body": "<strong>ライフジャケット（救命胴衣）は命を守る道具</strong>です。2022年より小型船舶への乗船時は着用が義務化されており、磯・堤防でも万一の落水に備えて着用を強くおすすめします。\n\nコンパクトな腰巻き型（膨張式）なら動きやすく、釣りの邪魔になりません。値段は5,000〜15,000円程度。自分の命の値段として考えれば、決して高くはありません。\n\n釣り用シューズはフェルット底（磯）やスパイク付き（テトラ・濡れた堤防）など、フィールドによって選びます。スニーカーは滑りやすく危険な場所があるため注意が必要です。",
     "suitable_for": "磯釣り・テトラ・船釣り・全釣り種共通（安全装備）",
     "beginner_tip": "ライフジャケットは腰巻き膨張式が動きやすい。まずこれだけは揃えよう。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": [
+      [
+        {
+          "name": "BASARO (バサロ) AIRLEGATO 国土交通省型式承認品 桜マーク タイプA 手動膨脹式 ライフジャケット",
+          "url": "https://www.amazon.co.jp/dp/B0F742JYLZ?tag=tsuricast-22",
+          "asin": "B0F742JYLZ",
+          "note": "堤防向け腰巻き型｜桜マーク付きでまず揃えやすい手動膨脹式"
+        }
+      ],
+      [
+        {
+          "name": "ブルーストーム(Bluestorm) 小型船舶用救命胴衣 タイプA 国土交通省型式承認品 桜マーク 自動膨脹式ライフジャケット ウエストベルトタイプ",
+          "url": "https://www.amazon.co.jp/dp/B0F742JYLZ?tag=tsuricast-22",
+          "asin": "B088RDTMLM",
+          "note": "堤防向け腰巻き型｜桜マーク付きで導入しやすい自動膨脹式定番"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) ラフトエアジャケット コンパクトタイプ 膨脹式救命具 VF-053U",
+          "url": "https://www.amazon.co.jp/dp/B0DPPFZYGJ?tag=tsuricast-22",
+          "asin": "B0DPPFZYGJ",
+          "note": "船釣り兼用モデル｜桜マーク付きのコンパクト上位候補"
+        }
+      ],
+      [
+        {
+          "name": "藤倉航装 WP-2 HAYABUSA 自動膨張式ライフジャケット ベルト式 桜マーク付",
+          "url": "https://www.amazon.co.jp/dp/B079N5RL4C?tag=tsuricast-22",
+          "asin": "B079N5RL4C",
+          "note": "船釣り兼用モデル｜国交省認定の信頼重視ベルト型"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) カットラバーピンフェルトフィットシューズ LT FS-041Q",
+          "url": "https://www.amazon.co.jp/dp/B01MUTN7SN?tag=tsuricast-22",
+          "asin": "B01MUTN7SN",
+          "note": "磯 テトラ向け｜ピンフェルトで滑り対策重視"
+        }
+      ],
+      [
+        {
+          "name": "ダイワ(DAIWA) フェルトスパイクソールフィッシングシューズ DS-2504 ブラック 25.0~29.0cm 各種",
+          "url": "https://www.amazon.co.jp/dp/B0GN2ZSMB3?tag=tsuricast-22",
+          "asin": "B0GN2ZSMB3",
+          "note": "磯 テトラ向け｜フェルトスパイクで滑り対策を強めた上位シューズ"
+        }
+      ],
+      [
+        {
+          "name": "シマノ(SHIMANO) ボートゲーム ドライデッキシューズ FS-030X",
+          "url": "https://www.amazon.co.jp/dp/B0CSSCW5C6?tag=tsuricast-22",
+          "asin": "B0CSSCW5C6",
+          "note": "堤防 港内向け｜軽量で滑りにくいデッキシューズ"
+        }
+      ],
+      [
+        {
+          "name": "プロックス(PROX) ショートデッキブーツ PX5082",
+          "url": "https://www.amazon.co.jp/dp/B0D4TQP2XD?tag=tsuricast-22",
+          "asin": "B0D4TQP2XD",
+          "note": "堤防 港内向け｜ショート丈で脱ぎ履きしやすい"
+        }
+      ],
+      [
+        {
+          "name": "ウミネコ スゴ乾2WAY ドライ フィッシング リバーシャツ",
+          "url": "https://www.amazon.co.jp/dp/B071JM3631?tag=tsuricast-22",
+          "asin": "B071JM3631",
+          "note": "夏向け｜UVカットと速乾を両立した定番シャツ"
+        }
+      ],
+      [
+        {
+          "name": "MAGCOMSEN フィッシングシャツ 長袖 メンズ 吸汗 速乾",
+          "url": "https://www.amazon.co.jp/dp/B0D5CJWQXD?tag=tsuricast-22",
+          "asin": "B0D5CJWQXD",
+          "note": "夏向け｜吸汗速乾の長袖で日焼け対策しやすい"
+        }
+      ],
+      [
+        {
+          "name": "プロマリン LUKIA LWB2504 防水防寒ウィンター透湿ストレッチスーツ上下セット",
+          "url": "https://www.amazon.co.jp/dp/B0FYWHFTK3?tag=tsuricast-22",
+          "asin": "B0FYWHFTK3",
+          "note": "冬向け｜上下セットで防水防寒をまとめて揃えやすい"
+        }
+      ],
+      [
+        {
+          "name": "DRESS タクティカルサーモジャケット フィッシングアウター",
+          "url": "https://www.amazon.co.jp/dp/B0FTM2RJ35?tag=tsuricast-22",
+          "asin": "B0FTM2RJ35",
+          "note": "冬向け｜防風 撥水 中綿入りの実戦向けアウター"
+        }
+      ]
+    ]
   }
 ]
