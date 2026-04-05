@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}{{ fish_name }}が釣れる釣り場 | Tsuricast{% endblock %}
+{% block description %}{{ fish_name }}が釣れる釣り場一覧。千葉・東京・神奈川・静岡の{{ total }}か所のスポットを紹介。釣れる時期・釣法もチェック。{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <a href="/fish/">魚種から探す</a> &rsaquo;
+  <span>{{ fish_name }}</span>
+</nav>
+
+<h1>{{ fish_name }}が釣れる釣り場</h1>
+
+<!-- 釣れる時期 -->
+<section class="fish-season-section">
+  <h2>釣れる時期</h2>
+  <div class="fish-season-legend">
+    <span class="fish-legend-item"><span class="fish-legend-dot peak"></span>特によく釣れる</span>
+    <span class="fish-legend-item"><span class="fish-legend-dot in"></span>釣れる</span>
+    <span class="fish-legend-item"><span class="fish-legend-dot off"></span>シーズンオフ</span>
+  </div>
+  <div class="fish-season-bar">
+    {% set months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'] %}
+    {% for i in range(1, 13) %}
+    {% if i in fish_data.peak_season %}
+    <div class="fish-month peak"><span class="fish-month-label">{{ months[i-1] }}</span></div>
+    {% elif i in fish_data.season %}
+    <div class="fish-month in"><span class="fish-month-label">{{ months[i-1] }}</span></div>
+    {% else %}
+    <div class="fish-month off"><span class="fish-month-label">{{ months[i-1] }}</span></div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<!-- 代表的な釣法 -->
+{% if fish_data.method %}
+<section class="fish-meta-section">
+  <span class="fish-meta-label">代表的な釣法:</span>
+  {% for m in fish_data.method %}
+  {% set mslug = method_slug_map.get(m) %}
+  {% if mslug %}
+  <a href="/method/{{ mslug }}" class="fish-method-chip">{{ m }}</a>
+  {% else %}
+  <span class="fish-method-chip">{{ m }}</span>
+  {% endif %}
+  {% endfor %}
+</section>
+{% endif %}
+
+<!-- エリア別スポット一覧 -->
+{% if fish_data.image %}
+<figure class="fish-photo">
+  <img src="{{ fish_data.image }}" alt="{{ fish_name }}" loading="lazy">
+</figure>
+{% endif %}
+<section class="fish-spots-section">
+  <h2>釣り場一覧（{{ total }}か所）</h2>
+  {% if areas %}
+    {% for area_slug, area in areas.items() %}
+    <div class="fish-area-group">
+      <h3 class="fish-area-name">
+        <a href="/spots?area={{ area_slug }}">{{ area.name }}</a>
+        <span class="fish-area-count">{{ area.spots|length }}か所</span>
+      </h3>
+      <div class="fish-spot-grid">
+        {% for s in area.spots %}
+        {% set a = s.area %}
+        <a href="/{{ a.pref_slug }}/{{ a.area_slug }}/{{ a.city_slug }}/{{ s.slug }}"
+           class="fish-spot-card">
+          <span class="fish-spot-name">{{ s.name }}</span>
+          <span class="fish-spot-city">{{ a.city }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+  <p>現在登録されているスポットはありません。</p>
+  {% endif %}
+</section>
+<a href="/fish/" class="back-link">‹ 戻る</a>
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block title %}Tsuricast | 千葉・東京・神奈川・静岡・愛知・三重・大阪の釣り場天気情報{% endblock %}
+
+{% block hero_image %}
+<img src="/static/img/hero.png"
+     alt="Tsuricast - 千葉・東京・神奈川・静岡・愛知・三重・大阪の釣り場天気情報"
+     class="hero-banner">
+{% endblock %}
+
+{% block content %}
+<p class="hero-caption">千葉・東京・神奈川・静岡・愛知・三重・大阪の釣り場天気・波高情報。天気・風・海況をチェックしよう。</p>
+
+<div class="top-layout">
+
+  <!-- 左カラム（PC）/ 上段（スマホ）: 地図 -->
+  <div class="top-map-col">
+    <section class="map-section">
+      <div id="map-top" class="map-container"></div>
+      <div id="favorites-panel" style="display:none;">
+        <span class="fav-panel-label">⭐ お気に入り</span>
+        <ul id="favorites-list"></ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- 右カラム（PC）/ 下段（スマホ）: 検索・エリア・都道府県 -->
+  <div class="top-sidebar-col">
+
+    <!-- ① 検索窓 -->
+    <div class="search-box-container">
+      <input type="text" id="spot-search"
+             placeholder="スポット名・エリア・魚種で探す"
+             autocomplete="off">
+      <ul id="search-results" class="search-results" hidden></ul>
+    </div>
+
+    <!-- ② エリアから探す（横スクロールチップ） -->
+    <section class="area-links">
+      <h2>エリアから探す</h2>
+      <div class="area-chips">
+        <a href="/spots?area=sagamibay"  class="area-chip">相模湾（{{ area_counts.get('sagamibay', 0) }}）</a>
+        <a href="/spots?area=miura"      class="area-chip">三浦半島（{{ area_counts.get('miura', 0) }}）</a>
+        <a href="/spots?area=tokyobay"   class="area-chip">東京湾（{{ area_counts.get('tokyobay', 0) }}）</a>
+        <a href="/spots?area=uchibo"     class="area-chip">内房（{{ area_counts.get('uchibo', 0) }}）</a>
+        <a href="/spots?area=sotobo"     class="area-chip">外房（{{ area_counts.get('sotobo', 0) }}）</a>
+        <a href="/spots?area=kujukuri"   class="area-chip">九十九里（{{ area_counts.get('kujukuri', 0) }}）</a>
+        <a href="/spots?area=higashi-izu" class="area-chip">東伊豆（{{ area_counts.get('higashi-izu', 0) }}）</a>
+        <a href="/spots?area=minami-izu" class="area-chip">南伊豆（{{ area_counts.get('minami-izu', 0) }}）</a>
+        <a href="/spots?area=nishi-izu"  class="area-chip">西伊豆（{{ area_counts.get('nishi-izu', 0) }}）</a>
+        <a href="/spots?area=suruga-bay" class="area-chip">駿河湾（{{ area_counts.get('suruga-bay', 0) }}）</a>
+        <a href="/spots?area=enshu-nada" class="area-chip">遠州灘（{{ area_counts.get('enshu-nada', 0) }}）</a>
+        <a href="/spots?area=mikawa-bay" class="area-chip">三河湾（{{ area_counts.get('mikawa-bay', 0) }}）</a>
+        <a href="/spots?area=isewan"          class="area-chip">伊勢湾（{{ area_counts.get('isewan', 0) }}）</a>
+        <a href="/spots?area=shima-minami-ise" class="area-chip">志摩・南伊勢（{{ area_counts.get('shima-minami-ise', 0) }}）</a>
+        <a href="/spots?area=kumano-nada"      class="area-chip">熊野灘（{{ area_counts.get('kumano-nada', 0) }}）</a>
+        <a href="/spots?area=osakawan"         class="area-chip">大阪湾（{{ area_counts.get('osakawan', 0) }}）</a>
+        <a href="/spots?area=kii-suido-wakayama" class="area-chip">紀伊水道（和歌山）（{{ area_counts.get('kii-suido-wakayama', 0) }}）</a>
+      </div>
+    </section>
+
+    <!-- ②-b 魚種×エリアのクイック導線 -->
+    <section class="area-links">
+      <h2>魚種×エリアで探す</h2>
+      <div class="area-chips">
+        <a href="/spots?area=miura&fish=kurodai"    class="area-chip">三浦のクロダイ</a>
+        <a href="/spots?area=miura&fish=aji"        class="area-chip">三浦のアジ</a>
+        <a href="/spots?area=sagamibay&fish=shirogisu" class="area-chip">相模湾のキス</a>
+        <a href="/spots?area=tokyobay&fish=haze"    class="area-chip">東京湾のハゼ</a>
+        <a href="/spots?area=isewan&fish=kurodai"   class="area-chip">伊勢湾のクロダイ</a>
+        <a href="/spots?area=mikawa-bay&fish=aji"   class="area-chip">三河湾のアジ</a>
+        <a href="/spots?area=kumano-nada&fish=aoriika" class="area-chip">熊野灘のアオリイカ</a>
+        <a href="/spots?area=sotobo&fish=hirame"    class="area-chip">外房のヒラメ</a>
+        <a href="/spots?fish=shirogisu&type=sand_beach" class="area-chip">砂浜でキス釣り</a>
+        <a href="/spots?fish=aoriika&type=rocky_shore"  class="area-chip">磯でアオリイカ</a>
+      </div>
+    </section>
+
+    <!-- ③ 都道府県から探す（アコーディオン） -->
+    <section class="area-links">
+      <h2>都道府県から探す</h2>
+      <details class="pref-accordion">
+        <summary><span class="pref-accordion-hint">ここをタップして開閉</span></summary>
+        {% for rg in region_groups %}
+        <div class="region-group">
+          <h3><a href="/{{ rg.slug }}/">{{ rg.name }}</a></h3>
+          <div class="area-grid">
+            {% for pref_slug, info in rg.prefs.items() %}
+            <a href="/{{ pref_slug }}/" class="area-card">
+              <h3>{{ info.name }}</h3>
+              <p>{{ info.count }}か所</p>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </details>
+    </section>
+
+    <!-- ④ 魚種から選ぶ -->
+    <section class="area-links">
+      <h3>魚種から選ぶ</h3>
+      <div class="area-chips">
+        {% for fish in fish_list %}
+        <a href="/fish/{{ fish.slug }}" class="area-chip">{{ fish.name }}</a>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="all-spots-link">
+      <a href="/spots" class="btn-primary">全釣り場一覧を見る（{{ spots|length }}か所）</a>
+      <a href="/fish/" class="btn-secondary">魚種から探す</a>
+      <a href="/method/" class="btn-secondary">釣法から探す</a>
+    </section>
+
+  </div><!-- /.top-sidebar-col -->
+</div><!-- /.top-layout -->
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const SPOTS = {{ spots | tojson }};
+  const FISH_NAMES = {{ fish_name_map | tojson }};
+  document.addEventListener('DOMContentLoaded', function() {
+    initTopMap('map-top', SPOTS);
+
+    // ① インクリメンタルサーチ
+    (function() {
+      var input = document.getElementById('spot-search');
+      var list  = document.getElementById('search-results');
+      if (!input || !list) return;
+
+      function esc(s) {
+        return String(s)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      input.addEventListener('input', function() {
+        var q = this.value.trim().toLowerCase();
+        if (!q) { list.hidden = true; return; }
+
+        var matches = SPOTS.filter(function(s) {
+          return (s.name || '').toLowerCase().includes(q)
+              || ((s.area || {}).area_name || '').toLowerCase().includes(q)
+              || ((s.area || {}).city || '').toLowerCase().includes(q)
+              || ((s.info || {}).notes || '').toLowerCase().includes(q)
+              || (s.target_fish || []).some(function(f) {
+                   return (FISH_NAMES[f] || '').includes(q) || f.includes(q);
+                 });
+        }).slice(0, 10);
+
+        if (!matches.length) { list.hidden = true; return; }
+
+        list.innerHTML = matches.map(function(s) {
+          var a   = s.area || {};
+          var url = (a.pref_slug && a.area_slug && a.city_slug && s.slug)
+            ? '/' + a.pref_slug + '/' + a.area_slug + '/' + a.city_slug + '/' + s.slug
+            : '#';
+          var label = esc(s.name || '')
+            + '<span class="result-sep"> / </span>'
+            + esc(a.area_name || '') + ' / ' + esc(a.city || '');
+          return '<li><a href="' + esc(url) + '">' + label + '</a></li>';
+        }).join('');
+        list.hidden = false;
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.search-box-container')) list.hidden = true;
+      });
+    })();
+
+    renderFavoritesSection(SPOTS);
+  });
+</script>
+{% endblock %}
