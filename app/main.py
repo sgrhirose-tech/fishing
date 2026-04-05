@@ -658,6 +658,11 @@ except ImportError:
 _AFFILIATE_MARKER = _re.compile(r'<!--\s*affiliate:\s*(\d+)\s*-->')
 
 
+def _amazon_image_url(asin: str) -> str:
+    """ASINからamazon.co.jpの商品画像URLを生成する（国コード09）。"""
+    return f"https://images-na.ssl-images-amazon.com/images/P/{asin}.09.LZZZZZZZ.jpg"
+
+
 def _build_affiliate_html(links: list) -> str:
     """商品カードHTMLを生成する。"""
     items_html = ""
@@ -666,10 +671,16 @@ def _build_affiliate_html(links: list) -> str:
         url = link.get("url", "#")
         price = link.get("price", "")
         note = link.get("note", "")
+        asin = (link.get("asin", "") or "").strip()
         price_html = f"<p class='tackle-affiliate-price'>{price}</p>" if price else ""
         note_html = f"<p class='tackle-affiliate-note'>{note}</p>" if note else ""
+        image_html = (
+            f'<img src="{_amazon_image_url(asin)}" alt="" loading="lazy" referrerpolicy="no-referrer">'
+            if asin else ""
+        )
         items_html += (
             f'<a href="{url}" target="_blank" rel="noopener sponsored" class="tackle-affiliate-item">'
+            f'{image_html}'
             f'<div class="tackle-affiliate-info">'
             f'<p class="tackle-affiliate-name">{name}</p>'
             f'{price_html}{note_html}'
@@ -685,7 +696,7 @@ def _render_tackle_body(category_slug: str, item: dict) -> tuple:
         return item.get("body", "").replace("\n", "<br>"), False
 
     md_text = md_path.read_text(encoding="utf-8")
-    slots = item.get("affiliate_slots", [])
+    slots = item.get("affiliate_slots", {}) or {}
 
     parts = _AFFILIATE_MARKER.split(md_text)
     html_parts = []
@@ -693,8 +704,13 @@ def _render_tackle_body(category_slug: str, item: dict) -> tuple:
         if i % 2 == 0:
             html_parts.append(_MARKDOWN(part))
         else:
-            idx = int(part) - 1
-            links = slots[idx] if isinstance(slots, list) and 0 <= idx < len(slots) else []
+            if isinstance(slots, dict):
+                links = slots.get(part, [])
+            elif isinstance(slots, list):
+                idx = int(part) - 1
+                links = slots[idx] if 0 <= idx < len(slots) else []
+            else:
+                links = []
             if links:
                 html_parts.append(_build_affiliate_html(links))
     return "".join(html_parts), True

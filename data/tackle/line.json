@@ -15,7 +15,57 @@
     "body": "水に沈みやすく、ナイロンより硬くてハリがある素材です。魚に見えにくい（屈折率が水に近い）という特性があり、特に<strong>ハリス（仕掛けの先端の糸）</strong>として多用されます。\n\n感度が高く、底の地形変化も伝わりやすいため、投げ釣りや根魚狙いのルアー釣りにも向いています。ナイロンより少し高価ですが、ハリスだけフロロにする使い方が釣り師の定番です。",
     "suitable_for": "ハリス・ルアー釣りのリーダー・根魚狙い",
     "beginner_tip": "道糸はナイロン、ハリスだけフロロにするのが定番の使い分け。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": {
+      "1": [
+        {
+          "name": "シーガー(Seaguar) シーガー フロロマイスター300 6lb(1.5号) 300m クリア",
+          "url": "https://www.amazon.co.jp/dp/B09JSRKR1T?tag=tsuricast-22",
+          "asin": "B09JSRKR1T",
+          "note": "入門クラス｜まず試しやすい高コスパ定番"
+        }
+      ],
+      "2": [
+        {
+          "name": "シーガー(Seaguar) シーガー フロロマイスター300 14lb(3.5号) 300m クリア",
+          "url": "https://www.amazon.co.jp/dp/B09JSQBW4G?tag=tsuricast-22",
+          "asin": "B09JSQBW4G",
+          "note": "入門クラス｜根魚・チニング寄りの少し太め候補"
+        }
+      ],
+      "3": [
+        {
+          "name": "DUEL(デュエル) フロロカーボンライン TB300 300m",
+          "url": "https://www.amazon.co.jp/dp/B08C19JDCS?tag=tsuricast-22",
+          "asin": "B08C19JDCS",
+          "note": "ミドルクラス｜300m巻で巻き替えやすい実用派"
+        }
+      ],
+      "4": [
+        {
+          "name": "エックスブレイド(X-Braid) ライン FCディスク 300m",
+          "url": "https://www.amazon.co.jp/dp/B07L5TTC1Z?tag=tsuricast-22",
+          "asin": "B07L5TTC1Z",
+          "note": "ミドルクラス｜300m巻で強度と扱いやすさのバランス型"
+        }
+      ],
+      "5": [
+        {
+          "name": "クレハ(KUREHA) ライン シーガー R-18フロロリミテッド 100m 12lb",
+          "url": "https://www.amazon.co.jp/dp/B08CN71J4T?tag=tsuricast-22",
+          "asin": "B08CN71J4T",
+          "note": "ハイエンド候補｜12lbクラスで感度と耐摩耗性を重視"
+        }
+      ],
+      "6": [
+        {
+          "name": "サンライン(SUNLINE) フロロカーボンライン シューター FCスナイパー",
+          "url": "https://www.amazon.co.jp/dp/B09N7CJYMR?tag=tsuricast-22",
+          "asin": "B09N7CJYMR",
+          "note": "ハイエンド候補｜FCスナイパー系の上位候補"
+        }
+      ]
+    }
   },
   {
     "slug": "pe",
