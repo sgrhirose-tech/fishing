@@ -770,7 +770,7 @@ def _load_tackle_items(category_slug: str) -> list:
 _H1_RE = _re.compile(r'^#\s+(.+)', _re.MULTILINE)
 
 _CATEGORY_CARD: dict[str, str] = {
-    "colum":  "fishing_master_card.png",
+    "column": "fishing_master_card.png",
     "report": "reporter_card.png",
     "info":   "shop_girl_card.png",
 }
