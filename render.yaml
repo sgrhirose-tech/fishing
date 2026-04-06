@@ -82,3 +82,15 @@ services:
         value: 3.11.0
       - key: GITHUB_TOKEN
         sync: false
+
+  - type: cron
+    name: tsuricast-affiliate-check-monthly
+    runtime: python
+    repo: https://github.com/sgrhirose-tech/fishing
+    branch: master
+    schedule: "0 15 10 * *"  # 毎月10日 AM0:00 JST（UTC 15:00）
+    buildCommand: pip install -r requirements.txt
+    startCommand: python scripts/check_affiliate_links.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
