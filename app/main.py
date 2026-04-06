@@ -769,6 +769,12 @@ def _load_tackle_items(category_slug: str) -> list:
 
 _H1_RE = _re.compile(r'^#\s+(.+)', _re.MULTILINE)
 
+_CATEGORY_CARD: dict[str, str] = {
+    "colum":  "fishing_master_card.png",
+    "report": "reporter_card.png",
+    "info":   "shop_girl_card.png",
+}
+
 
 def _extract_article_meta(content: str, slug: str) -> tuple[dict, str]:
     """Markdownテキストからメタ情報と本文（フロントマター除去済み）を返す。"""
@@ -792,28 +798,34 @@ def _extract_article_meta(content: str, slug: str) -> tuple[dict, str]:
 
 
 def _load_articles() -> list:
-    """articles/ 以下の全フォルダのメタ情報一覧を返す（index.md を基準）。"""
+    """articles/{category}/ 以下の全フォルダのメタ情報一覧を返す。"""
     result = []
     if not _ARTICLES_DIR.exists():
         return result
-    for slug_dir in sorted(_ARTICLES_DIR.iterdir()):
-        if not slug_dir.is_dir() or slug_dir.name.startswith("."):
+    for cat_dir in sorted(_ARTICLES_DIR.iterdir()):
+        if not cat_dir.is_dir() or cat_dir.name.startswith("."):
             continue
-        md_path = slug_dir / "index.md"
-        if not md_path.exists():
-            mds = sorted(slug_dir.glob("*.md"))
-            if not mds:
+        card = _CATEGORY_CARD.get(cat_dir.name, "fishing_master_card.png")
+        for slug_dir in sorted(cat_dir.iterdir()):
+            if not slug_dir.is_dir() or slug_dir.name.startswith("."):
                 continue
-            md_path = mds[0]
-        content = md_path.read_text(encoding="utf-8")
-        meta, _ = _extract_article_meta(content, slug_dir.name)
-        result.append(meta)
+            md_path = slug_dir / "index.md"
+            if not md_path.exists():
+                mds = sorted(slug_dir.glob("*.md"))
+                if not mds:
+                    continue
+                md_path = mds[0]
+            content = md_path.read_text(encoding="utf-8")
+            meta, _ = _extract_article_meta(content, slug_dir.name)
+            meta["category"] = cat_dir.name
+            meta["card_image"] = card
+            result.append(meta)
     return result
 
 
-def _load_article_slots(slug: str) -> list:
-    """articles/{slug}/affiliate.json を読み込んで返す。"""
-    path = _ARTICLES_DIR / slug / "affiliate.json"
+def _load_article_slots(category: str, slug: str) -> list:
+    """articles/{category}/{slug}/affiliate.json を読み込んで返す。"""
+    path = _ARTICLES_DIR / category / slug / "affiliate.json"
     if path.exists():
         try:
             return json.loads(path.read_text(encoding="utf-8"))
@@ -825,7 +837,7 @@ def _load_article_slots(slug: str) -> list:
 _MD_LINK_RE = _re.compile(r'href="\./([\w-]+)\.md"')
 
 
-def _render_md_with_affiliates(content: str, slots: list, article_slug: str = "") -> str:
+def _render_md_with_affiliates(content: str, slots: list, article_path: str = "") -> str:
     """MarkdownをアフィリエイトスロットHTMLに展開してHTMLに変換する。"""
     if _MARKDOWN is None:
         return content
@@ -840,8 +852,8 @@ def _render_md_with_affiliates(content: str, slots: list, article_slug: str = ""
             if links:
                 html_parts.append(_build_affiliate_html(links))
     html = "".join(html_parts)
-    if article_slug:
-        html = _MD_LINK_RE.sub(lambda m: f'href="/articles/{article_slug}/{m.group(1)}/"', html)
+    if article_path:
+        html = _MD_LINK_RE.sub(lambda m: f'href="/articles/{article_path}/{m.group(1)}/"', html)
     return html
 
 
@@ -853,9 +865,9 @@ def page_articles_top(request: Request):
     })
 
 
-@app.get("/articles/{slug}/", response_class=HTMLResponse)
-def page_article_detail(request: Request, slug: str):
-    slug_dir = _ARTICLES_DIR / slug
+@app.get("/articles/{category}/{slug}/", response_class=HTMLResponse)
+def page_article_detail(request: Request, category: str, slug: str):
+    slug_dir = _ARTICLES_DIR / category / slug
     if not slug_dir.exists():
         raise HTTPException(status_code=404, detail="記事が見つかりません")
     md_path = slug_dir / "index.md"
@@ -866,40 +878,46 @@ def page_article_detail(request: Request, slug: str):
         md_path = mds[0]
     content = md_path.read_text(encoding="utf-8")
     meta, body = _extract_article_meta(content, slug)
-    slots = _load_article_slots(slug)
-    body_html = _render_md_with_affiliates(body, slots, article_slug=slug)
+    slots = _load_article_slots(category, slug)
+    body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
     parts_paths = sorted(p for p in slug_dir.glob("*.md") if p.name != "index.md" and p != md_path)
     part_metas = []
     for p in parts_paths:
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
         pm["part_slug"] = p.stem
         part_metas.append(pm)
+    card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
     return templates.TemplateResponse(request, "articles/detail.html", {
         "meta": meta,
         "body_html": body_html,
         "slug": slug,
+        "category": category,
+        "card_image": card_image,
         "parts": part_metas,
     })
 
 
-@app.get("/articles/{slug}/{part_slug}/", response_class=HTMLResponse)
-def page_article_part(request: Request, slug: str, part_slug: str):
-    slug_dir = _ARTICLES_DIR / slug
+@app.get("/articles/{category}/{slug}/{part_slug}/", response_class=HTMLResponse)
+def page_article_part(request: Request, category: str, slug: str, part_slug: str):
+    slug_dir = _ARTICLES_DIR / category / slug
     md_path = slug_dir / f"{part_slug}.md"
     if not md_path.exists():
         raise HTTPException(status_code=404)
     content = md_path.read_text(encoding="utf-8")
     meta, body = _extract_article_meta(content, slug)
-    slots = _load_article_slots(slug)
-    body_html = _render_md_with_affiliates(body, slots, article_slug=slug)
+    slots = _load_article_slots(category, slug)
+    body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
     all_parts = sorted(p.stem for p in slug_dir.glob("*.md") if p.name != "index.md")
     idx = all_parts.index(part_slug) if part_slug in all_parts else -1
     prev_part = all_parts[idx - 1] if idx > 0 else None
     next_part = all_parts[idx + 1] if 0 <= idx < len(all_parts) - 1 else None
+    card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
     return templates.TemplateResponse(request, "articles/part.html", {
         "meta": meta,
         "body_html": body_html,
         "slug": slug,
+        "category": category,
+        "card_image": card_image,
         "part_slug": part_slug,
         "prev_part": prev_part,
         "next_part": next_part,

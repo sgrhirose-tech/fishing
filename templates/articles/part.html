@@ -5,16 +5,16 @@
 
 {% block og_title %}{{ meta.title or part_slug }} | Tsuricast{% endblock %}
 {% block og_desc %}{{ meta.description or meta.title or part_slug }}{% endblock %}
-{% block og_image %}<meta property="og:image" content="https://tsuricast.jp/static/img/fishing_master_card.png">{% endblock %}
+{% block og_image %}<meta property="og:image" content="https://tsuricast.jp/static/img/{{ card_image }}">{% endblock %}
 {% block tw_title %}{{ meta.title or part_slug }}{% endblock %}
 {% block tw_desc %}{{ meta.description or meta.title or part_slug }}{% endblock %}
-{% block tw_image %}https://tsuricast.jp/static/img/fishing_master_card.png{% endblock %}
+{% block tw_image %}https://tsuricast.jp/static/img/{{ card_image }}{% endblock %}
 
 {% block content %}
 <nav class="breadcrumb">
   <a href="/">ホーム</a> &rsaquo;
   <a href="/articles/">釣りコラム</a> &rsaquo;
-  <a href="/articles/{{ slug }}/">{{ meta.title or slug }}</a> &rsaquo;
+  <a href="/articles/{{ category }}/{{ slug }}/">{{ meta.title or slug }}</a> &rsaquo;
   <span>続き</span>
 </nav>
 
@@ -26,12 +26,12 @@
 
 <nav class="article-part-nav">
   {% if prev_part %}
-  <a href="/articles/{{ slug }}/{{ prev_part }}/" class="back-link">‹ 前へ</a>
+  <a href="/articles/{{ category }}/{{ slug }}/{{ prev_part }}/" class="back-link">‹ 前へ</a>
   {% else %}
-  <a href="/articles/{{ slug }}/" class="back-link">‹ 最初に戻る</a>
+  <a href="/articles/{{ category }}/{{ slug }}/" class="back-link">‹ 最初に戻る</a>
   {% endif %}
   {% if next_part %}
-  <a href="/articles/{{ slug }}/{{ next_part }}/" class="filter-chip">次へ ›</a>
+  <a href="/articles/{{ category }}/{{ slug }}/{{ next_part }}/" class="filter-chip">次へ ›</a>
   {% endif %}
 </nav>
 {% endblock %}
