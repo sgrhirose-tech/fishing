@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ meta.title or part_slug }} | 釣りコラム | Tsuricast{% endblock %}
+{% block description %}{{ meta.description or meta.title or part_slug }}{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <a href="/articles/">釣りコラム</a> &rsaquo;
+  <a href="/articles/{{ slug }}/">{{ meta.title or slug }}</a> &rsaquo;
+  <span>続き</span>
+</nav>
+
+<article class="tackle-item-article">
+  <div class="article-body">
+    {{ body_html | safe }}
+  </div>
+</article>
+
+<nav class="article-part-nav">
+  {% if prev_part %}
+  <a href="/articles/{{ slug }}/{{ prev_part }}/" class="back-link">‹ 前へ</a>
+  {% else %}
+  <a href="/articles/{{ slug }}/" class="back-link">‹ 最初に戻る</a>
+  {% endif %}
+  {% if next_part %}
+  <a href="/articles/{{ slug }}/{{ next_part }}/" class="filter-chip">次へ ›</a>
+  {% endif %}
+</nav>
+{% endblock %}
