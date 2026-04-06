@@ -49,6 +49,18 @@
 </section>
 {% endif %}
 
+<!-- タックル導線 -->
+{% if tackle_links %}
+<section class="fish-tackle-section">
+  <h2>{{ fish_name }}を釣るためのタックル</h2>
+  <div class="filter-chips">
+    {% for t in tackle_links %}
+    <a href="/tackle/{{ t.category }}/{{ t.slug }}/" class="filter-chip">{{ t.name }}</a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <!-- エリア別スポット一覧 -->
 {% if fish_data.image %}
 <figure class="fish-photo">

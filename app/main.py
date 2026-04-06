@@ -65,6 +65,38 @@ def _load_method_master() -> None:
         print(f"[method_master] 読み込みエラー: {e}")
 
 
+# ── 釣法 → タックル マッピング ────────────────────────────────
+# (category_slug, item_slug, 表示名) のタプルリスト
+_METHOD_TO_TACKLE: dict[str, list[tuple[str, str, str]]] = {
+    "サビキ釣り":   [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "nylon", "ナイロンライン")],
+    "投げ釣り":     [("rod", "casting-rod", "投げ竿"),    ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "casting-rig", "投げ釣り仕掛け")],
+    "ウキ釣り":     [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("terminal", "float-rig", "ウキ釣り仕掛け")],
+    "フカセ釣り":   [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "カゴ釣り":     [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "nylon", "ナイロンライン")],
+    "エギング":     [("rod", "eging-rod", "エギングロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "egi", "エギ（餌木）")],
+    "アジング":     [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "メバリング":   [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "ルアー釣り":   [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
+    "ジギング":     [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
+    "タイラバ":     [("rod", "boat-rod", "船竿"),         ("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
+    "船釣り":       [("rod", "boat-rod", "船竿"),         ("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
+    "バス釣り":     [("rod", "bass-rod", "バスロッド"),   ("reel", "spinning", "スピニングリール"), ("terminal", "lure", "ルアー・ワーム")],
+}
+
+
+def _get_tackle_for_methods(methods: list) -> list:
+    """釣法名リストから重複なしのタックルリストを返す。"""
+    seen: set = set()
+    result = []
+    for method in methods:
+        for cat, slug, name in _METHOD_TO_TACKLE.get(method, []):
+            key = (cat, slug)
+            if key not in seen:
+                seen.add(key)
+                result.append({"category": cat, "slug": slug, "name": name})
+    return result
+
+
 def _tomorrow() -> str:
     return (datetime.now(JST) + timedelta(days=1)).strftime("%Y-%m-%d")
 
@@ -551,12 +583,14 @@ def page_fish(request: Request, fish_slug: str):
         if key not in areas:
             areas[key] = {"name": a.get("area_name", ""), "spots": []}
         areas[key]["spots"].append(s)
+    tackle_links = _get_tackle_for_methods(fish_data.get("method", []))
     return templates.TemplateResponse(request, "fish.html", {
         "fish_name": fish_name,
         "fish_slug": fish_slug,
         "fish_data": fish_data,
         "areas": areas,
         "total": len(matched),
+        "tackle_links": tackle_links,
     })
 
 
@@ -915,6 +949,15 @@ def page_spot_detail(
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     fish_name_map = {v: k for k, v in fish_slug_map.items()}
     fish_names_jp = [fish_name_map.get(s, s) for s in spot.get("target_fish", [])[:3]]
+    # スポットの対象魚種から釣法を収集してタックルリストを生成
+    spot_methods: list = []
+    for fish_s in spot.get("target_fish", []):
+        fish_n = fish_name_map.get(fish_s)
+        if fish_n and fish_n in _FISH_MASTER:
+            for m in _FISH_MASTER[fish_n].get("method", []):
+                if m not in spot_methods:
+                    spot_methods.append(m)
+    tackle_links = _get_tackle_for_methods(spot_methods)
     cached_facilities = get_cached_facilities(slug) or []
     facility_types = {f["type"] for f in cached_facilities}
     facility_flags = {
@@ -936,4 +979,5 @@ def page_spot_detail(
         "fish_name_map":      fish_name_map,
         "fish_names_jp":      fish_names_jp,
         "facility_flags":     facility_flags,
+        "tackle_links":       tackle_links,
     })

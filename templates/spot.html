@@ -234,6 +234,17 @@
   <ins class="adsbygoogle" ...></ins>
 </section>
 -->
+{% if tackle_links %}
+<section class="spot-tackle-section">
+  <h2>このスポットで使うタックル</h2>
+  <div class="filter-chips">
+    {% for t in tackle_links %}
+    <a href="/tackle/{{ t.category }}/{{ t.slug }}/" class="filter-chip">{{ t.name }}</a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
 
