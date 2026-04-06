@@ -3,7 +3,7 @@
 Render cron で毎月自動実行。結果は stdout（Render ログ）で確認。
 
 チェック内容:
-  - /dp/ASIN URL: HTTP ステータス + カートボタン存在確認（なければ在庫切れ）
+  - /dp/ASIN URL: HTTP ステータス + Amazon在庫なし文言検出
   - /s?k= URL  : HTTP 200 確認のみ
 """
 
@@ -44,12 +44,15 @@ HEADERS = {
 
 TIMEOUT = 10
 
-# 商品が購入可能な場合に必ず存在するボタン文言
-AVAILABLE_PATTERNS = [
-    "カートに入れる",
-    "今すぐ購入",
-    "Add to Cart",
-    "Buy now",
+# Amazon の「在庫なし」「商品なし」を示す文言（日本語）
+UNAVAILABLE_PATTERNS = [
+    "現在お取り扱いできません",
+    "この商品は現在お取り扱いできません",
+    "見つかりませんでした",
+    "申し訳ありませんが、お探しの商品は見つかりませんでした",
+    "この商品は、現在お買い求めいただけません",
+    "Currently unavailable",
+    "This item is not available",
 ]
 
 # Amazon トップページへのリダイレクト先（商品削除時の挙動）
@@ -141,12 +144,12 @@ def check_url(url: str) -> tuple[str, str]:
         if pattern in final_url and "/dp/" not in final_url:
             return "DEAD", f"トップページへリダイレクト: {final_url[:80]}"
 
-    # 商品 URL のみ在庫チェック（カートボタンの有無で判定）
+    # 商品 URL のみ在庫チェック
     if is_product:
         html = resp.text
-        has_cart = any(pattern in html for pattern in AVAILABLE_PATTERNS)
-        if not has_cart:
-            return "UNAVAILABLE", "カートボタンが見つかりません（在庫切れまたはbot検知の可能性あり）"
+        for pattern in UNAVAILABLE_PATTERNS:
+            if pattern in html:
+                return "UNAVAILABLE", f"文言検出: 「{pattern}」"
 
     return "OK", ""
 
