@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}釣りコラム | Tsuricast{% endblock %}
+{% block description %}釣りのノウハウ・現場の知恵・道具選びのコツをベテラン店長目線で解説。初心者からベテランまで役立つ記事を掲載。{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <span>釣りコラム</span>
+</nav>
+
+<section class="page-header">
+  <h1>釣りコラム</h1>
+  <p>現場目線の釣りノウハウをお届けします</p>
+</section>
+
+<section class="area-links">
+  <div class="article-grid">
+    {% for a in articles %}
+    <a href="/articles/{{ a.slug }}/" class="article-card">
+      <img src="/static/img/fishing_master_card.png" alt="{{ a.title or a.slug }}" loading="lazy">
+      <div class="article-card-body">
+        <p class="article-card-title">{{ a.title or a.slug }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
