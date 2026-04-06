@@ -53,7 +53,7 @@
 釣りデートが失敗するのは、釣りの腕の問題ではありません。  
 「自分が楽しい釣り」に相手を連れて行こうとするから失敗する——店長の本音を4回で。
 
-- [① 釣りに誘う前に、まずこれだけは考えておけ](./date/01_fishing_date_invite_mindset.md)
+- [① 釣りにデートに誘う前に、まずこれだけは考えておけ](./date/01_fishing_date_invite_mindset.md)
 - [② 初回に選ぶ場所と釣り方を間違えるな](./date/02_fishing_date_place_and_method.md)
 - [③ 当日やってはいけないこと](./date/03_fishing_date_donts_on_the_day.md)
 - [④ 「また行きたい」と思われる終わり方をしろ](./date/04_fishing_date_how_to_end_well.md)
