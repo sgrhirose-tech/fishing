@@ -770,8 +770,8 @@ def _load_tackle_items(category_slug: str) -> list:
 _H1_RE = _re.compile(r'^#\s+(.+)', _re.MULTILINE)
 
 
-def _extract_article_meta(content: str, slug: str) -> dict:
-    """Markdownテキストからメタ情報を抽出する（フロントマターまたはH1）。"""
+def _extract_article_meta(content: str, slug: str) -> tuple[dict, str]:
+    """Markdownテキストからメタ情報と本文（フロントマター除去済み）を返す。"""
     meta: dict = {}
     body = content
     if content.startswith("---"):
@@ -788,7 +788,7 @@ def _extract_article_meta(content: str, slug: str) -> dict:
             title = _re.sub(r'^[①-⑩\d]+[\s\.。、]+', '', m.group(1)).strip()
             meta["title"] = title
     meta.setdefault("slug", slug)
-    return meta
+    return meta, body
 
 
 def _load_articles() -> list:
@@ -806,7 +806,7 @@ def _load_articles() -> list:
                 continue
             md_path = mds[0]
         content = md_path.read_text(encoding="utf-8")
-        meta = _extract_article_meta(content, slug_dir.name)
+        meta, _ = _extract_article_meta(content, slug_dir.name)
         result.append(meta)
     return result
 
@@ -859,13 +859,13 @@ def page_article_detail(request: Request, slug: str):
             raise HTTPException(status_code=404)
         md_path = mds[0]
     content = md_path.read_text(encoding="utf-8")
-    meta = _extract_article_meta(content, slug)
+    meta, body = _extract_article_meta(content, slug)
     slots = _load_article_slots(slug)
-    body_html = _render_md_with_affiliates(content, slots)
-    parts_paths = sorted(p for p in slug_dir.glob("*.md") if p.name != "index.md")
+    body_html = _render_md_with_affiliates(body, slots)
+    parts_paths = sorted(p for p in slug_dir.glob("*.md") if p.name != "index.md" and p != md_path)
     part_metas = []
     for p in parts_paths:
-        pm = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
+        pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
         pm["part_slug"] = p.stem
         part_metas.append(pm)
     return templates.TemplateResponse(request, "articles/detail.html", {
@@ -883,9 +883,9 @@ def page_article_part(request: Request, slug: str, part_slug: str):
     if not md_path.exists():
         raise HTTPException(status_code=404)
     content = md_path.read_text(encoding="utf-8")
-    meta = _extract_article_meta(content, slug)
+    meta, body = _extract_article_meta(content, slug)
     slots = _load_article_slots(slug)
-    body_html = _render_md_with_affiliates(content, slots)
+    body_html = _render_md_with_affiliates(body, slots)
     all_parts = sorted(p.stem for p in slug_dir.glob("*.md") if p.name != "index.md")
     idx = all_parts.index(part_slug) if part_slug in all_parts else -1
     prev_part = all_parts[idx - 1] if idx > 0 else None
