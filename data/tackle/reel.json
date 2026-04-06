@@ -8,6 +8,12 @@
     "beginner_tip": "最初の1台は2500〜3000番。実売1万〜2万円台の中堅モデルが◎。",
     "affiliate_links": [],
     "affiliate_slots": {
+      "0": [
+        {
+          "name": "スピニングリールの商品一覧はこちら",
+          "url": "https://www.amazon.co.jp/s?k=%E3%82%B9%E3%83%94%E3%83%8B%E3%83%B3%E3%82%B0%E3%83%AA%E3%83%BC%E3%83%AB&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=3KLDTPTJCSF3C&sprefix=%E3%82%B9%E3%83%94%E3%83%8B%E3%83%B3%E3%82%B0%E3%83%AA%E3%83%BC%E3%83%AB%2Caps%2C191&linkCode=ll2&tag=tsuricast-22&linkId=921a9d784036f1ee39fe3a0b60385788&ref_=as_li_ss_tl"
+        }
+      ],
       "1": [
         {
           "name": "ダイワ(DAIWA) スピニングリール 24レブロス 1000～6000 各種 (2024年モデル)",
@@ -67,6 +73,12 @@
     "beginner_tip": "まずスピニングで釣りを覚えてから挑戦しよう。バックラッシュ対策のブレーキ調整が重要。",
     "affiliate_links": [],
     "affiliate_slots": {
+      "0": [
+        {
+          "name": "ベイトリールの商品一覧はこちら",
+          "url": "https://www.amazon.co.jp/s?k=%E3%83%99%E3%82%A4%E3%83%88%E3%83%AA%E3%83%BC%E3%83%AB&crid=30MTLB1UJ5ACE&sprefix=%E3%83%99%E3%82%A4%E3%83%88%E3%83%AA%E3%83%BC%E3%83%AB%2Caps%2C313&linkCode=ll2&tag=tsuricast-22&linkId=abe0081c3f4b42b7733bb6ea295bd5c5&ref_=as_li_ss_tl"
+        }
+      ],
       "1": [
         {
           "name": "ダイワ(DAIWA) ベイトリール 24バス X 100H 100HL 各種",
@@ -126,6 +138,12 @@
     "beginner_tip": "手巻きタイプから始めよう。船宿での釣りに慣れてから購入を検討。",
     "affiliate_links": [],
     "affiliate_slots": {
+      "0": [
+        {
+          "name": "両軸リール（船用）の商品一覧はこちら",
+          "url": "https://www.amazon.co.jp/s?k=%E9%9B%BB%E5%8B%95%E3%83%AA%E3%83%BC%E3%83%AB&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1NMADN0F7Z4B0&sprefix=%E9%9B%BB%E5%8B%95%E3%83%AA%E3%83%BC%E3%83%AB%2Caps%2C190&linkCode=ll2&tag=tsuricast-22&linkId=de0fb31f67fad40155b9da70c6b429f7&ref_=as_li_ss_tl"
+        }
+      ],
       "1": [
         {
           "name": "シマノ(SHIMANO) 電動リール プレイズ 各種",
@@ -208,7 +226,14 @@
     "suitable_for": "投げ釣り（シロギス・カレイ・ハゼ・キビレ）",
     "beginner_tip": "投げ竿（25〜30号対応）とセットで選ぼう。番手は3000〜4000番が標準。",
     "affiliate_links": [],
-    "affiliate_slots": [[], [], []]
+    "affiliate_slots": {
+      "0": [
+        {
+          "name": "投げ専用リールの商品一覧はこちら",
+          "url": "https://www.amazon.co.jp/s?k=%E6%8A%95%E3%81%92%E5%B0%82%E7%94%A8%E3%83%AA%E3%83%BC%E3%83%AB&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1ZFC0SQUU0R2I&sprefix=%E6%8A%95%E3%81%92%E5%B0%82%E7%94%A8%E3%83%AA%E3%83%BC%E3%83%AB%2Caps%2C227&linkCode=ll2&tag=tsuricast-22&linkId=ea4113a720faf4a6af4bae7cf46f07f2&ref_=as_li_ss_tl"
+        }
+      ]
+    }
   },
   {
     "slug": "electric",

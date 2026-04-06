@@ -161,7 +161,8 @@
     "season": [4, 5, 6, 7, 8, 9, 10, 11],
     "peak_season": [5, 6, 9, 10],
     "method": ["ジギング", "カゴ釣り", "ルアー釣り"],
-    "bottom": ["岩礁"]
+    "bottom": ["岩礁"],
+    "image": "/static/img/fish/hiramasa.jpg"
   },
   "マハタ": {
     "slug": "mahata",
@@ -175,21 +176,24 @@
     "season": [9, 10, 11, 12, 1],
     "peak_season": [10, 11, 12],
     "method": ["カワハギ仕掛け"],
-    "bottom": ["岩礁", "砂地"]
+    "bottom": ["岩礁", "砂地"],
+    "image": "/static/img/fish/kawahagi.jpg"
   },
   "ホウボウ": {
     "slug": "houhou",
     "season": [10, 11, 12, 1, 2, 3],
     "peak_season": [11, 12, 1],
     "method": ["投げ釣り", "胴突き仕掛け"],
-    "bottom": ["砂地"]
+    "bottom": ["砂地"],
+    "image": "/static/img/fish/houhou.jpg"
   },
   "アマダイ": {
     "slug": "amadai",
     "season": [10, 11, 12, 1, 2, 3],
     "peak_season": [11, 12, 1],
     "method": ["胴突き仕掛け"],
-    "bottom": ["砂地", "泥地"]
+    "bottom": ["砂地", "泥地"],
+    "image": "/static/img/fish/amadai.jpg"
   },
   "オニカサゴ": {
     "slug": "onikasago",

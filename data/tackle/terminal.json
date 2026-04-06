@@ -8,6 +8,12 @@
     "beginner_tip": "まずは市販の完成仕掛けから。天秤とオモリ（15〜25号）は別途必要。",
     "affiliate_links": [],
     "affiliate_slots": {
+      "0": [
+        {
+          "name": "投げ釣り仕掛けの商品一覧はこちら",
+          "url": "https://www.amazon.co.jp/s?k=%E6%8A%95%E3%81%92%E9%87%A3%E3%82%8A%20%E4%BB%95%E6%8E%9B%E3%81%91%20%E3%82%AD%E3%82%B9%20%E3%82%AB%E3%83%AC%E3%82%A4&tag=tsuricast-22"
+        }
+      ],
       "1": [
         {
           "name": "ハヤブサ(Hayabusa) 投げキス天秤式 早掛キス 2本鈎 NT665",
@@ -67,6 +73,12 @@
     "beginner_tip": "固定ウキから始めよう。ウキの号数＝オモリの号数が基本。",
     "affiliate_links": [],
     "affiliate_slots": {
+      "0": [
+        {
+          "name": "ウキ釣り仕掛けの商品一覧はこちら",
+          "url": "https://www.amazon.co.jp/s?k=%E3%82%A6%E3%82%AD%E9%87%A3%E3%82%8A%20%E4%BB%95%E6%8E%9B%E3%81%91&tag=tsuricast-22"
+        }
+      ],
       "1": [
         {
           "name": "ハヤブサ(Hayabusa) コンパクトロッド 簡単ウキ釣りセット(堤防用) L HA176",
@@ -126,6 +138,12 @@
     "beginner_tip": "まずはメタルジグ20〜30gを2〜3種類。投げて底から巻くだけでOK。",
     "affiliate_links": [],
     "affiliate_slots": {
+      "0": [
+        {
+          "name": "ルアー・ワームの商品一覧はこちら",
+          "url": "https://www.amazon.co.jp/s?k=%E3%83%AB%E3%82%A2%E3%83%BC%20%E3%83%AF%E3%83%BC%E3%83%A0%20%E9%87%A3%E3%82%8A&tag=tsuricast-22"
+        }
+      ],
       "1": [
         {
           "name": "ダイワ(DAIWA) メバル/アジ ワーム 月下美人 アジングビーム2",
@@ -233,6 +251,12 @@
     "beginner_tip": "3号・オレンジ or ピンク系のカラーから始めよう。秋と春がベストシーズン。",
     "affiliate_links": [],
     "affiliate_slots": {
+      "0": [
+        {
+          "name": "エギ・エギングルアーの商品一覧はこちら",
+          "url": "https://www.amazon.co.jp/s?k=%E3%82%A8%E3%82%AE%20%E3%82%A8%E3%82%AE%E3%83%B3%E3%82%B0%20%E3%82%A2%E3%82%AA%E3%83%AA%E3%82%A4%E3%82%AB&tag=tsuricast-22"
+        }
+      ],
       "1": [
         {
           "name": "ヤマシタ(YAMASHITA) エギ エギ王 LIVE 3.5号 21g ルアー",
