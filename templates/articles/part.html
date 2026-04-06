@@ -2,13 +2,38 @@
 
 {% block title %}{{ meta.title or part_slug }} | 釣りコラム | Tsuricast{% endblock %}
 {% block description %}{{ meta.description or meta.title or part_slug }}{% endblock %}
-
+{% block og_type %}article{% endblock %}
+{% block og_url %}https://tsuricast.jp/articles/{{ category }}/{{ slug }}/{{ part_slug }}/{% endblock %}
+{% block canonical %}https://tsuricast.jp/articles/{{ category }}/{{ slug }}/{{ part_slug }}/{% endblock %}
 {% block og_title %}{{ meta.title or part_slug }} | Tsuricast{% endblock %}
 {% block og_desc %}{{ meta.description or meta.title or part_slug }}{% endblock %}
 {% block og_image %}<meta property="og:image" content="https://tsuricast.jp/static/img/{{ card_image }}">{% endblock %}
 {% block tw_title %}{{ meta.title or part_slug }}{% endblock %}
 {% block tw_desc %}{{ meta.description or meta.title or part_slug }}{% endblock %}
 {% block tw_image %}https://tsuricast.jp/static/img/{{ card_image }}{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ (meta.title or part_slug) | tojson }},
+  "description": {{ (meta.description or meta.title or part_slug) | tojson }},
+  "url": "https://tsuricast.jp/articles/{{ category }}/{{ slug }}/{{ part_slug }}/",
+  "isPartOf": { "@type": "CreativeWorkSeries", "url": "https://tsuricast.jp/articles/{{ category }}/{{ slug }}/" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tsuricast",
+    "url": "https://tsuricast.jp"
+  }
+}
+</script>
+{% endblock %}
+
+{% block scripts %}
+{% if prev_part %}<link rel="prev" href="/articles/{{ category }}/{{ slug }}/{{ prev_part }}/">{% endif %}
+{% if next_part %}<link rel="next" href="/articles/{{ category }}/{{ slug }}/{{ next_part }}/">{% endif %}
+{% endblock %}
 
 {% block content %}
 <nav class="breadcrumb">
