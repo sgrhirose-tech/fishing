@@ -65,6 +65,38 @@ def _load_method_master() -> None:
         print(f"[method_master] 読み込みエラー: {e}")
 
 
+# ── 釣法 → タックル マッピング ────────────────────────────────
+# (category_slug, item_slug, 表示名) のタプルリスト
+_METHOD_TO_TACKLE: dict[str, list[tuple[str, str, str]]] = {
+    "サビキ釣り":   [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "nylon", "ナイロンライン")],
+    "投げ釣り":     [("rod", "casting-rod", "投げ竿"),    ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "casting-rig", "投げ釣り仕掛け")],
+    "ウキ釣り":     [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("terminal", "float-rig", "ウキ釣り仕掛け")],
+    "フカセ釣り":   [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "カゴ釣り":     [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "nylon", "ナイロンライン")],
+    "エギング":     [("rod", "eging-rod", "エギングロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "egi", "エギ（餌木）")],
+    "アジング":     [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "メバリング":   [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "ルアー釣り":   [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
+    "ジギング":     [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
+    "タイラバ":     [("rod", "boat-rod", "船竿"),         ("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
+    "船釣り":       [("rod", "boat-rod", "船竿"),         ("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
+    "バス釣り":     [("rod", "bass-rod", "バスロッド"),   ("reel", "spinning", "スピニングリール"), ("terminal", "lure", "ルアー・ワーム")],
+}
+
+
+def _get_tackle_for_methods(methods: list) -> list:
+    """釣法名リストから重複なしのタックルリストを返す。"""
+    seen: set = set()
+    result = []
+    for method in methods:
+        for cat, slug, name in _METHOD_TO_TACKLE.get(method, []):
+            key = (cat, slug)
+            if key not in seen:
+                seen.add(key)
+                result.append({"category": cat, "slug": slug, "name": name})
+    return result
+
+
 def _tomorrow() -> str:
     return (datetime.now(JST) + timedelta(days=1)).strftime("%Y-%m-%d")
 
@@ -551,12 +583,14 @@ def page_fish(request: Request, fish_slug: str):
         if key not in areas:
             areas[key] = {"name": a.get("area_name", ""), "spots": []}
         areas[key]["spots"].append(s)
+    tackle_links = _get_tackle_for_methods(fish_data.get("method", []))
     return templates.TemplateResponse(request, "fish.html", {
         "fish_name": fish_name,
         "fish_slug": fish_slug,
         "fish_data": fish_data,
         "areas": areas,
         "total": len(matched),
+        "tackle_links": tackle_links,
     })
 
 
@@ -648,6 +682,7 @@ def page_safety(request: Request):
 # ---- タックルガイド（アフィリエイト） ----------------------------------------
 
 _TACKLE_DIR = _BASE / "data" / "tackle"
+_ARTICLES_DIR = _BASE / "articles"
 
 try:
     import mistune as _mistune
@@ -728,6 +763,141 @@ def _load_tackle_items(category_slug: str) -> list:
         return []
     with open(path, encoding="utf-8") as f:
         return json.load(f)
+
+
+# ── 記事（Articles）ヘルパー ──────────────────────────────────
+
+_H1_RE = _re.compile(r'^#\s+(.+)', _re.MULTILINE)
+
+
+def _extract_article_meta(content: str, slug: str) -> dict:
+    """Markdownテキストからメタ情報を抽出する（フロントマターまたはH1）。"""
+    meta: dict = {}
+    body = content
+    if content.startswith("---"):
+        end = content.find("---", 3)
+        if end > 0:
+            for line in content[3:end].strip().splitlines():
+                if ":" in line:
+                    k, v = line.split(":", 1)
+                    meta[k.strip()] = v.strip()
+            body = content[end + 3:].strip()
+    if "title" not in meta:
+        m = _H1_RE.search(body)
+        if m:
+            title = _re.sub(r'^[①-⑩\d]+[\s\.。、]+', '', m.group(1)).strip()
+            meta["title"] = title
+    meta.setdefault("slug", slug)
+    return meta
+
+
+def _load_articles() -> list:
+    """articles/ 以下の全フォルダのメタ情報一覧を返す（index.md を基準）。"""
+    result = []
+    if not _ARTICLES_DIR.exists():
+        return result
+    for slug_dir in sorted(_ARTICLES_DIR.iterdir()):
+        if not slug_dir.is_dir() or slug_dir.name.startswith("."):
+            continue
+        md_path = slug_dir / "index.md"
+        if not md_path.exists():
+            mds = sorted(slug_dir.glob("*.md"))
+            if not mds:
+                continue
+            md_path = mds[0]
+        content = md_path.read_text(encoding="utf-8")
+        meta = _extract_article_meta(content, slug_dir.name)
+        result.append(meta)
+    return result
+
+
+def _load_article_slots(slug: str) -> list:
+    """articles/{slug}/affiliate.json を読み込んで返す。"""
+    path = _ARTICLES_DIR / slug / "affiliate.json"
+    if path.exists():
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return []
+
+
+def _render_md_with_affiliates(content: str, slots: list) -> str:
+    """MarkdownをアフィリエイトスロットHTMLに展開してHTMLに変換する。"""
+    if _MARKDOWN is None:
+        return content
+    parts = _AFFILIATE_MARKER.split(content)
+    html_parts = []
+    for i, part in enumerate(parts):
+        if i % 2 == 0:
+            html_parts.append(_MARKDOWN(part))
+        else:
+            idx = int(part) - 1
+            links = slots[idx] if isinstance(slots, list) and 0 <= idx < len(slots) else []
+            if links:
+                html_parts.append(_build_affiliate_html(links))
+    return "".join(html_parts)
+
+
+@app.get("/articles/", response_class=HTMLResponse)
+def page_articles_top(request: Request):
+    articles = _load_articles()
+    return templates.TemplateResponse(request, "articles/top.html", {
+        "articles": articles,
+    })
+
+
+@app.get("/articles/{slug}/", response_class=HTMLResponse)
+def page_article_detail(request: Request, slug: str):
+    slug_dir = _ARTICLES_DIR / slug
+    if not slug_dir.exists():
+        raise HTTPException(status_code=404, detail="記事が見つかりません")
+    md_path = slug_dir / "index.md"
+    if not md_path.exists():
+        mds = sorted(slug_dir.glob("*.md"))
+        if not mds:
+            raise HTTPException(status_code=404)
+        md_path = mds[0]
+    content = md_path.read_text(encoding="utf-8")
+    meta = _extract_article_meta(content, slug)
+    slots = _load_article_slots(slug)
+    body_html = _render_md_with_affiliates(content, slots)
+    parts_paths = sorted(p for p in slug_dir.glob("*.md") if p.name != "index.md")
+    part_metas = []
+    for p in parts_paths:
+        pm = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
+        pm["part_slug"] = p.stem
+        part_metas.append(pm)
+    return templates.TemplateResponse(request, "articles/detail.html", {
+        "meta": meta,
+        "body_html": body_html,
+        "slug": slug,
+        "parts": part_metas,
+    })
+
+
+@app.get("/articles/{slug}/{part_slug}/", response_class=HTMLResponse)
+def page_article_part(request: Request, slug: str, part_slug: str):
+    slug_dir = _ARTICLES_DIR / slug
+    md_path = slug_dir / f"{part_slug}.md"
+    if not md_path.exists():
+        raise HTTPException(status_code=404)
+    content = md_path.read_text(encoding="utf-8")
+    meta = _extract_article_meta(content, slug)
+    slots = _load_article_slots(slug)
+    body_html = _render_md_with_affiliates(content, slots)
+    all_parts = sorted(p.stem for p in slug_dir.glob("*.md") if p.name != "index.md")
+    idx = all_parts.index(part_slug) if part_slug in all_parts else -1
+    prev_part = all_parts[idx - 1] if idx > 0 else None
+    next_part = all_parts[idx + 1] if 0 <= idx < len(all_parts) - 1 else None
+    return templates.TemplateResponse(request, "articles/part.html", {
+        "meta": meta,
+        "body_html": body_html,
+        "slug": slug,
+        "part_slug": part_slug,
+        "prev_part": prev_part,
+        "next_part": next_part,
+    })
 
 
 @app.get("/tackle/", response_class=HTMLResponse)
@@ -931,6 +1101,15 @@ def page_spot_detail(
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     fish_name_map = {v: k for k, v in fish_slug_map.items()}
     fish_names_jp = [fish_name_map.get(s, s) for s in spot.get("target_fish", [])[:3]]
+    # スポットの対象魚種から釣法を収集してタックルリストを生成
+    spot_methods: list = []
+    for fish_s in spot.get("target_fish", []):
+        fish_n = fish_name_map.get(fish_s)
+        if fish_n and fish_n in _FISH_MASTER:
+            for m in _FISH_MASTER[fish_n].get("method", []):
+                if m not in spot_methods:
+                    spot_methods.append(m)
+    tackle_links = _get_tackle_for_methods(spot_methods)
     cached_facilities = get_cached_facilities(slug) or []
     facility_types = {f["type"] for f in cached_facilities}
     facility_flags = {
@@ -952,4 +1131,5 @@ def page_spot_detail(
         "fish_name_map":      fish_name_map,
         "fish_names_jp":      fish_names_jp,
         "facility_flags":     facility_flags,
+        "tackle_links":       tackle_links,
     })

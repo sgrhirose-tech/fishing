@@ -154,11 +154,44 @@ def _get_prompt_file(mode: str) -> Path:
     return candidates[0]
 
 
-def generate_area_comment(area_name_jp: str, area_data: dict, mode: str = "morning") -> str:
+_XPOST_CACHE_DIR = Path(__file__).parent.parent / "data" / "cache"
+
+
+def _load_xpost_cache(date_str: str) -> dict:
+    path = _XPOST_CACHE_DIR / f"xpost_{date_str}.json"
+    if path.exists():
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            return {}
+    return {}
+
+
+def _save_xpost_cache(date_str: str, cache: dict) -> None:
+    try:
+        _XPOST_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        path = _XPOST_CACHE_DIR / f"xpost_{date_str}.json"
+        path.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+    except Exception as e:
+        print(f"  [キャッシュ書き込み失敗] {e}")
+
+
+def generate_area_comment(area_name_jp: str, area_data: dict, mode: str = "morning",
+                          date_str: str = "") -> str:
     """Claude API でエリア海況の一言コメントを生成する（最大40文字）。"""
+    import time as _time
+    from .ai_logger import log_ai_call
+
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not api_key:
         return ""
+
+    # ファイルキャッシュを確認
+    if date_str:
+        cache = _load_xpost_cache(date_str)
+        cache_key = f"{area_name_jp}_{mode}"
+        if cache_key in cache:
+            return cache[cache_key]
 
     prompt_file = _get_prompt_file(mode)
     if not prompt_file.exists():
@@ -193,27 +226,47 @@ def generate_area_comment(area_name_jp: str, area_data: dict, mode: str = "morni
     try:
         payload = {
             "model": "claude-haiku-4-5-20251001",
-            "max_tokens": 100,
+            "max_tokens": 50,
             "messages": [{"role": "user", "content": user_prompt}],
         }
         if system_prompt:
-            payload["system"] = system_prompt
-        body = json.dumps(payload).encode("utf-8")
+            payload["system"] = [
+                {
+                    "type": "text",
+                    "text": system_prompt,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ]
+        body_bytes = json.dumps(payload).encode("utf-8")
         req = urllib.request.Request(
             "https://api.anthropic.com/v1/messages",
-            data=body,
+            data=body_bytes,
             headers={
                 "x-api-key": api_key,
-                "anthropic-version": "2023-06-01",
+                "anthropic-version": "2024-06-01",
+                "anthropic-beta": "prompt-caching-2024-07-31",
                 "content-type": "application/json",
             },
         )
+        t0 = _time.monotonic()
         with urllib.request.urlopen(req, timeout=30) as resp:
             result = json.loads(resp.read().decode("utf-8"))
+        latency_ms = int((_time.monotonic() - t0) * 1000)
+
         text = result["content"][0]["text"].strip()
-        # 改行を取り除き 40 文字に切り捨て
         text = text.replace("\n", " ")
-        return text[:40]
+        text = text[:40]
+
+        # ログ記録
+        log_key = f"{area_name_jp}_{mode}_{date_str}" if date_str else f"{area_name_jp}_{mode}"
+        log_ai_call("xpost", log_key, result.get("usage", {}), latency_ms, text)
+
+        # キャッシュ保存
+        if date_str:
+            cache[cache_key] = text
+            _save_xpost_cache(date_str, cache)
+
+        return text
     except urllib.error.HTTPError as e:
         body = e.read().decode("utf-8", errors="replace")
         print(f"  [警告] AIコメント生成失敗 ({area_name_jp}): {e} | {body}")
@@ -312,7 +365,7 @@ def post_area(area_slug: str, area_name_jp: str, url: str, date_str: str,
     """1エリア分のデータ取得・コメント生成・投稿を行う。失敗時はFalseを返す。"""
     try:
         area_data = get_area_weather(area_name_jp, date_str)
-        comment = generate_area_comment(area_name_jp, area_data, mode=mode)
+        comment = generate_area_comment(area_name_jp, area_data, mode=mode, date_str=date_str)
         tweet = format_tweet(area_name_jp, area_data, comment, url, mode=mode)
         x_env = os.environ.get("X_POST_ENV", "production")
         print(f"--- {area_name_jp} ({count_weighted(tweet)}文字) [{x_env}] ---")
