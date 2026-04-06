@@ -2,6 +2,8 @@
 
 {% block title %}{{ pref_name }}の釣り場・天気情報 | Tsuricast{% endblock %}
 {% block description %}{{ pref_name }}の釣り場・天気情報。相模湾・三浦半島・東京湾など{{ areas|length }}エリアを掲載。{% endblock %}
+{% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
+{% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 
 {% block jsonld %}
 <script type="application/ld+json">
