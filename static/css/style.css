@@ -962,6 +962,13 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .tackle-affiliate-price { font-size: .85rem; color: #c0392b; margin: 0 0 .2rem; }
 .tackle-affiliate-note { font-size: .78rem; color: #888; margin: 0; }
 
+/* ページ内誘導リンクカード */
+.page-link-card { display: block; margin: 1.5rem 0; padding: .85rem 1.1rem .75rem; background: #f0f7fd; border: 1px solid #b8d8ef; border-left: 4px solid #3d82b5; border-radius: 0 8px 8px 0; text-decoration: none; color: #1a6b9e; transition: background .15s, box-shadow .15s; }
+.page-link-card:hover { background: #e2f0fb; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+.page-link-card-title { font-size: .95rem; font-weight: bold; margin: 0; display: flex; align-items: center; gap: .4rem; }
+.page-link-card-title::before { content: "→"; }
+.page-link-card-desc { font-size: .82rem; color: #5a7a8e; margin: .25rem 0 0; }
+
 .tackle-nav-other {
   margin-top: 2rem;
   padding-top: 1rem;
