@@ -822,7 +822,10 @@ def _load_article_slots(slug: str) -> list:
     return []
 
 
-def _render_md_with_affiliates(content: str, slots: list) -> str:
+_MD_LINK_RE = _re.compile(r'href="\./([\w-]+)\.md"')
+
+
+def _render_md_with_affiliates(content: str, slots: list, article_slug: str = "") -> str:
     """MarkdownをアフィリエイトスロットHTMLに展開してHTMLに変換する。"""
     if _MARKDOWN is None:
         return content
@@ -836,7 +839,10 @@ def _render_md_with_affiliates(content: str, slots: list) -> str:
             links = slots[idx] if isinstance(slots, list) and 0 <= idx < len(slots) else []
             if links:
                 html_parts.append(_build_affiliate_html(links))
-    return "".join(html_parts)
+    html = "".join(html_parts)
+    if article_slug:
+        html = _MD_LINK_RE.sub(lambda m: f'href="/articles/{article_slug}/{m.group(1)}/"', html)
+    return html
 
 
 @app.get("/articles/", response_class=HTMLResponse)
@@ -861,7 +867,7 @@ def page_article_detail(request: Request, slug: str):
     content = md_path.read_text(encoding="utf-8")
     meta, body = _extract_article_meta(content, slug)
     slots = _load_article_slots(slug)
-    body_html = _render_md_with_affiliates(body, slots)
+    body_html = _render_md_with_affiliates(body, slots, article_slug=slug)
     parts_paths = sorted(p for p in slug_dir.glob("*.md") if p.name != "index.md" and p != md_path)
     part_metas = []
     for p in parts_paths:
@@ -885,7 +891,7 @@ def page_article_part(request: Request, slug: str, part_slug: str):
     content = md_path.read_text(encoding="utf-8")
     meta, body = _extract_article_meta(content, slug)
     slots = _load_article_slots(slug)
-    body_html = _render_md_with_affiliates(body, slots)
+    body_html = _render_md_with_affiliates(body, slots, article_slug=slug)
     all_parts = sorted(p.stem for p in slug_dir.glob("*.md") if p.name != "index.md")
     idx = all_parts.index(part_slug) if part_slug in all_parts else -1
     prev_part = all_parts[idx - 1] if idx > 0 else None
