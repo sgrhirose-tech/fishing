@@ -951,9 +951,9 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .tackle-affiliate-list { display: flex; flex-direction: column; gap: .75rem; }
 .tackle-affiliate-item {
   display: flex; gap: 1rem; align-items: center;
-  padding: .75rem; border: 1px solid #d0e4f0; border-radius: 8px;
+  padding: .75rem; border: 2px solid #d4a017; border-radius: 8px;
   text-decoration: none; color: #334;
-  background: white;
+  background: #fffbf0;
   transition: box-shadow .15s;
 }
 .tackle-affiliate-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
