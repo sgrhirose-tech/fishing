@@ -6,7 +6,56 @@
     "body": "磯竿は、堤防・磯場・河口などでウキ釣りやフカセ釣りをするときに使う、細くて長い竿です。長さは4〜5m程度が主流で、一見扱いにくそうに見えますが、実は振出式（継ぎ竿）なのでコンパクトに収納できます。\n\n選ぶポイントは「号数」と「長さ」の2つ。号数は竿の太さ・硬さの目安で、数字が大きいほど太く硬くなります。初心者がアジ・サバ・メジナなどを堤防で狙うなら、汎用性の高い<strong>1〜1.5号・4〜5m</strong>がおすすめです。グレ（メジナ）や大型チヌを本格的に狙いたくなったら、その時点で専用モデルを検討しましょう。",
     "suitable_for": "ウキ釣り・フカセ釣り・サビキ釣り（アジ・サバ・イワシ）・チヌ（クロダイ）・グレ（メジナ）",
     "beginner_tip": "1〜1.5号・4〜5mが汎用性◎。まずはこのサイズから。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": {
+      "1": [
+        {
+          "name": "ダイワ(DAIWA) 磯竿/防波堤 リーガル 1.5~3号",
+          "url": "https://www.amazon.co.jp/dp/B09SZWDLQ8?tag=tsuricast-22",
+          "asin": "B09SZWDLQ8",
+          "note": "入門クラス｜防波堤入門で選びやすいダイワ定番"
+        }
+      ],
+      "2": [
+        {
+          "name": "シマノ(SHIMANO) 磯竿 ホリデー 磯 各種",
+          "url": "https://www.amazon.co.jp/dp/B0CMF4D7H2?tag=tsuricast-22",
+          "asin": "B0CMF4D7H2",
+          "note": "入門クラス｜ホリデー磯系の定番候補"
+        }
+      ],
+      "3": [
+        {
+          "name": "ダイワ(DAIWA) 磯竿 21 波濤 0.8~2号 各種",
+          "url": "https://www.amazon.co.jp/dp/B0BT33Z4S6?tag=tsuricast-22",
+          "asin": "B0BT33Z4S6",
+          "note": "ミドルクラス｜軽さと基本性能のバランス重視"
+        }
+      ],
+      "4": [
+        {
+          "name": "シマノ(SHIMANO) 20 アドバンス イソ",
+          "url": "https://www.amazon.co.jp/dp/B08HS73XLK?tag=tsuricast-22",
+          "asin": "B08HS73XLK",
+          "note": "ミドルクラス｜感度と操作性を伸ばしたい人向け"
+        }
+      ],
+      "5": [
+        {
+          "name": "ダイワ(DAIWA) 磯竿 トーナメント磯AGS L/ML/M/MH/H 各種",
+          "url": "https://www.amazon.co.jp/dp/B0FL1JYBLD?tag=tsuricast-22",
+          "asin": "B0FL1JYBLD",
+          "note": "ハイエンドクラス｜本気で釣る人向けのダイワ上位"
+        }
+      ],
+      "6": [
+        {
+          "name": "",
+          "url": "",
+          "asin": ""
+        }
+      ]
+    }
   },
   {
     "slug": "casting-rod",
@@ -16,7 +65,14 @@
     "suitable_for": "投げ釣り（シロギス・カレイ・ハゼ・キビレ）",
     "beginner_tip": "25〜30号対応の並継ぎモデルから。砂浜でのキス釣りに最適。",
     "affiliate_links": [],
-    "affiliate_slots": [[{"name": "ダイワ(DAIWA) 投竿/振出し LBTC(リバティクラブ) SURF(サーフ) T 15号~30号", "url": "https://amzn.to/4sdPHbA"}], [], []]
+    "affiliate_slots": {
+      "1": [
+        {
+          "name": "ダイワ(DAIWA) 投竿/振出し LBTC(リバティクラブ) SURF(サーフ) T 15号~30号",
+          "url": "https://amzn.to/4sdPHbA"
+        }
+      ]
+    }
   },
   {
     "slug": "lure-rod",
@@ -25,7 +81,57 @@
     "body": "金属や樹脂製の疑似餌（ルアー）を使って魚を誘う釣りのための竿です。竿を動かしてルアーに生き物のような動きをつける「操作感」が最大の魅力で、釣れた瞬間の興奮は格別です。\n\nターゲットや使うルアーの重さに合わせて「ウルトラライト〜ヘビー」などの硬さが設定されています。初心者には、メバル・アジなどの小物を狙う<strong>ライトゲーム用（Lクラス・6〜7ft）</strong>が扱いやすくておすすめ。道具も軽く、港や堤防で気軽に楽しめます。",
     "suitable_for": "シーバス（スズキ）・アジ・メバル・ソイ・青物（ブリ・ショアジギング）",
     "beginner_tip": "Lクラス・6〜7ftのライトゲームロッドが入門に最適。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": {
+      "1": [
+        {
+          "name": "ダイワ(DAIWA) スピニングロッド LURENIST(ルアーニスト)",
+          "url": "https://www.amazon.co.jp/dp/B09VPM35V1?tag=tsuricast-22",
+          "asin": "B09VPM35V1",
+          "note": "入門クラス｜まず試しやすい万能入門ロッド"
+        }
+      ],
+      "2": [
+        {
+          "name": "シマノ(SHIMANO) シーバスロッド 25ソルティーアドバンス ショアモデル シーバス/サーフ S90ML",
+          "url": "https://www.amazon.co.jp/dp/B0FH9S2XYL?tag=tsuricast-22",
+          "asin": "B0FH9S2XYL",
+          "note": "入門クラス｜9ft前後で始めやすいシマノ候補"
+        }
+      ],
+      "3": [
+        {
+          "name": "ダイワ(DAIWA) シーバスロッド ラテオ・R スピニングモデル各種",
+          "url": "https://www.amazon.co.jp/dp/B095YKP2F1?tag=tsuricast-22",
+          "asin": "B095YKP2F1",
+          "note": "ミドルクラス｜軽さと感度のバランスが良い現行ラテオ"
+        }
+      ],
+      "4": [
+        {
+          "name": "シマノ(SHIMANO) シーバス ロッド 18 ディアルーナ スピニング S90ML",
+          "url": "https://www.amazon.co.jp/dp/B08GKLT7DN?tag=tsuricast-22",
+          "asin": "B08GKLT7DN",
+          "note": "ミドルクラス｜港湾からサーフまで使いやすい定番"
+        }
+      ],
+      "5": [
+        {
+          "name": "ダイワ(DAIWA) シーバスロッド morethan(モアザン) 各種 (2025年モデル)",
+          "url": "https://www.amazon.co.jp/dp/B0FL1PBV78?tag=tsuricast-22",
+          "asin": "B0FL1PBV78",
+          "note": "ハイエンドクラス｜ダイワの高級シーバスロッド候補"
+        }
+      ],
+      "6": [
+        {
+          "name": "シマノ(SHIMANO) シーバスロッド 22 エクスセンス インフィニティ",
+          "url": "https://www.amazon.co.jp/dp/B0CG1JFJLQ?tag=tsuricast-22",
+          "asin": "B0CG1JFJLQ",
+          "note": "ハイエンドクラス｜シマノの高感度上位候補"
+        }
+      ]
+    }
   },
   {
     "slug": "eging-rod",
@@ -43,7 +149,57 @@
     "body": "船の上から海底や中層を狙う「船釣り」専用の竿です。陸っぱり（岸釣り）とは異なり、水深10〜200m以上を釣ることもあるため、短くて丈夫な設計になっています。\n\nタチウオ・マダイ・ヒラメ・根魚など、ターゲットや釣法（ジギング・タイラバ・胴突き等）によって使う竿がまったく異なります。<strong>船宿でのレンタル竿から始めて、通い慣れてから専用竿を購入する</strong>のが初心者には最も賢いルートです。",
     "suitable_for": "タチウオ・マダイ（タイラバ）・ヒラメ・青物（ジギング）・根魚",
     "beginner_tip": "最初は船宿のレンタル竿で十分。釣りに慣れてから購入を検討。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": {
+      "1": [
+        {
+          "name": "ダイワ(DAIWA) ジギングロッド ヴァデル Y J60MB Y",
+          "url": "https://www.amazon.co.jp/dp/B09SZWDDDR?tag=tsuricast-22",
+          "asin": "B09SZWDDDR",
+          "note": "入門クラス｜レンタル卒業後の一本にしやすい"
+        }
+      ],
+      "2": [
+        {
+          "name": "シマノ(SHIMANO) オフショアロッド 25ソルティーアドバンス オフショアモデル タイラバ B69ML-S",
+          "url": "https://www.amazon.co.jp/dp/B0FH9S5PZP?tag=tsuricast-22",
+          "asin": "B0FH9S5PZP",
+          "note": "入門クラス｜最新ソルティーアドバンスのタイラバ向け"
+        }
+      ],
+      "3": [
+        {
+          "name": "ダイワ(DAIWA) タイラバロッド 紅牙X 69HB-S ブラック",
+          "url": "https://www.amazon.co.jp/dp/B0GPQKGNZJ?tag=tsuricast-22",
+          "asin": "B0GPQKGNZJ",
+          "note": "ミドルクラス｜タイラバ入門から中級まで使いやすい現行紅牙X"
+        }
+      ],
+      "4": [
+        {
+          "name": "シマノ グラップラータイプ LJ GRPLJC63M キャスティングロッド",
+          "url": "https://www.amazon.co.jp/dp/B07WT6NCLX?tag=tsuricast-22",
+          "asin": "B07WT6NCLX",
+          "note": "ミドルクラス｜ライトジギングで満足度が高い"
+        }
+      ],
+      "5": [
+        {
+          "name": "ダイワ(DAIWA) ジギングロッド ソルティガ SJ AGS 55B-2 TG",
+          "url": "https://www.amazon.co.jp/dp/B09YSTDQSH?tag=tsuricast-22",
+          "asin": "B09YSTDQSH",
+          "note": "ハイエンドクラス｜感度と粘りを追求した上位ジギングロッド"
+        }
+      ],
+      "6": [
+        {
+          "name": "シマノ(SHIMANO) 24 オシアジガー インフィニティ",
+          "url": "https://www.amazon.co.jp/dp/B0D9GTM67J?tag=tsuricast-22",
+          "asin": "B0D9GTM67J",
+          "note": "ハイエンドクラス｜ジギング特化の上位オシアジガー"
+        }
+      ]
+    }
   },
   {
     "slug": "bass-rod",
@@ -52,6 +208,56 @@
     "body": "ブラックバス（ラージマウスバス・スモールマウスバス）専用のルアーロッドです。バス釣りは日本全国の湖・池・川で楽しめる人気ジャンルで、専用タックルの種類が非常に豊富です。\n\nスピニングタイプとベイトタイプの2種類があり、初心者にはまず<strong>スピニングタイプ（Mクラス・6〜7ft）</strong>から始めることをおすすめします。使えるルアーの幅が広く、キャスティングのトラブルも少ないためです。",
     "suitable_for": "バス釣り（ブラックバス・スモールマウスバス）",
     "beginner_tip": "スピニングタイプ・Mクラス・6〜7ftから。ベイトは慣れてから。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": {
+      "1": [
+        {
+          "name": "ダイワ(DAIWA) バスロッド 2ピース スピニング/ベイト BASS X 各種",
+          "url": "https://www.amazon.co.jp/dp/B09SZTL4JX?tag=tsuricast-22",
+          "asin": "B09SZTL4JX",
+          "note": "入門クラス｜扱いやすい現行BASS Xの定番候補"
+        }
+      ],
+      "2": [
+        {
+          "name": "シマノ(SHIMANO) バスロッド 23 バスワン XT+ スピニング ベイト 釣り竿",
+          "url": "https://www.amazon.co.jp/dp/B0BW45F57C?tag=tsuricast-22",
+          "asin": "B0BW45F57C",
+          "note": "入門クラス｜サイズ展開が広い現行バスワンXT+"
+        }
+      ],
+      "3": [
+        {
+          "name": "ダイワ(DAIWA) バスロッド リベリオン 631MHRB",
+          "url": "https://www.amazon.co.jp/dp/B09SZW4B9R?tag=tsuricast-22",
+          "asin": "B09SZW4B9R",
+          "note": "ミドルクラス｜感度と操作性のバランスが良い"
+        }
+      ],
+      "4": [
+        {
+          "name": "シマノ(SHIMANO) バスロッド 20 ゾディアス 166M-2",
+          "url": "https://www.amazon.co.jp/dp/B083ZV182H?tag=tsuricast-22",
+          "asin": "B083ZV182H",
+          "note": "ミドルクラス｜バーサタイルに使いやすい166M-2"
+        }
+      ],
+      "5": [
+        {
+          "name": "ダイワ(DAIWA) 21 スティーズ SC C66ML-G ベイトキャスティングモデル",
+          "url": "https://www.amazon.co.jp/dp/B08VCVKZJN?tag=tsuricast-22",
+          "asin": "B08VCVKZJN",
+          "note": "ハイエンドクラス｜軽さと感度を追求するスティーズ"
+        }
+      ],
+      "6": [
+        {
+          "name": "シマノ(SHIMANO) バスロッド ポイズンアルティマ 5ピースモデル各種",
+          "url": "https://www.amazon.co.jp/dp/B08ZST6XHJ?tag=tsuricast-22",
+          "asin": "B08ZST6XHJ",
+          "note": "ハイエンドクラス｜究極系の名にふさわしい上位機"
+        }
+      ]
+    }
   }
 ]

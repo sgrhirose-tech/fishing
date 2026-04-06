@@ -15,7 +15,33 @@
     "body": "夜釣りで仕掛けを水中で光らせるための発光体です。折って混ぜるだけで8〜12時間発光し、仕掛けの視認性を高めながら集魚効果も期待できます。\n\nタチウオやアジなど、光に集まる習性を持つ魚に特に効果的です。3本入りで200〜300円ほどと安価なので、夜釣りのときは常備しておきましょう。",
     "suitable_for": "タチウオ・アジ・メバル（夜釣り全般）",
     "beginner_tip": "夜釣りの必需品。安価なのでケチらず使おう。ウキへの装着はシモリペットが便利。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": {
+      "1": [
+        {
+          "name": "ルミカ(日本化学発光) ケミホタル25 イエロー (2本入リ)",
+          "url": "https://www.amazon.co.jp/dp/B00IGI3SSE?tag=tsuricast-22",
+          "asin": "B00IGI3SSE",
+          "note": "小サイズ｜ウキや軽量仕掛けに合わせやすい定番"
+        }
+      ],
+      "2": [
+        {
+          "name": "ルミカ(日本化学発光) ケミホタル37 イエロー (2本入リ)",
+          "url": "https://www.amazon.co.jp/dp/B00IGI3TT2?tag=tsuricast-22",
+          "asin": "B00IGI3TT2",
+          "note": "中サイズ｜万能で最初に選びやすい定番"
+        }
+      ],
+      "3": [
+        {
+          "name": "ルミカ(日本化学発光) ケミホタル37 レギュラー イエロー 2本入 3枚セット",
+          "url": "https://www.amazon.co.jp/dp/B00YTWYT8Y?tag=tsuricast-22",
+          "asin": "B00YTWYT8Y",
+          "note": "まとめ買い｜中サイズをストックしやすい3枚セット"
+        }
+      ]
+    }
   },
   {
     "slug": "rod-rest",
@@ -33,7 +59,25 @@
     "body": "エソ・カサゴ・フグ・ウミケムシなど、素手で触ると怪我をする魚や生物は意外と多いです。また、青物などの大きな魚が釣れたとき、魚を掴む力が格段に上がります。\n\nフィッシュグリップはバス釣りのイメージが強いですが、シーバスや青物を安全に取り扱うためにも使えます。口の中に指を入れずに済むため、針による怪我も防げます。",
     "suitable_for": "シーバス・青物・根魚・バス釣り（魚の取り扱い全般）",
     "beginner_tip": "ゴム手袋はホームセンターの作業用が安くて使いやすい。フィッシュグリップも一本あると安心。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": {
+      "1": [
+        {
+          "name": "ダイワ(DAIWA) フィッシュグリップV 170 RD",
+          "url": "https://www.amazon.co.jp/dp/B0BSWKS8NW?tag=tsuricast-22",
+          "asin": "B0BSWKS8NW",
+          "note": "定番モデル｜小〜中型魚を安全に掴みやすい"
+        }
+      ],
+      "2": [
+        {
+          "name": "シマノ(SHIMANO) フィッシュグリップR UE-302T",
+          "url": "https://www.amazon.co.jp/dp/B08WD584XC?tag=tsuricast-22",
+          "asin": "B08WD584XC",
+          "note": "上位候補｜ロック機構付きで幅広い魚に対応"
+        }
+      ]
+    }
   },
   {
     "slug": "gloves",
@@ -51,6 +95,24 @@
     "body": "釣りは水辺でする遊びです。スマホを水没させたアングラーは数知れず。海水でのスマホ水没は修理不可のケースが多いため、数百円の防水ケースを常に持ち歩く習慣をつけましょう。釣り場での魚の写真撮影にも安心して使えます。",
     "suitable_for": "全釣り種共通",
     "beginner_tip": "数百円で買える。スマホ本体が万単位する今、コスパは最高。常に持ち歩こう。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": {
+      "1": [
+        {
+          "name": "JOTO 防水ケース 2枚セット スマホ用 IPX8認証 7インチまで対応",
+          "url": "https://www.amazon.co.jp/dp/B07V8HGM7T?tag=tsuricast-22",
+          "asin": "B07V8HGM7T",
+          "note": "シンプル定番｜IPX8対応の首掛け型2枚セット"
+        }
+      ],
+      "2": [
+        {
+          "name": "Lamicall ダブルポケット スマホ 防水 ケース 雨 小物収納 バッグ",
+          "url": "https://www.amazon.co.jp/dp/B0F4RDHH73?tag=tsuricast-22",
+          "asin": "B0F4RDHH73",
+          "note": "小物収納付き｜鍵や現金も一緒に持ち歩きやすい"
+        }
+      ]
+    }
   }
 ]
