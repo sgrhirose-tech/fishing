@@ -68,8 +68,66 @@
     "affiliate_slots": {
       "1": [
         {
-          "name": ,
-          "url":
+          "name": "ダイワ(DAIWA) 投竿/振出し LBTC(リバティクラブ) SURF(サーフ) T 15号~30号 各種",
+          "url": "https://www.amazon.co.jp/dp/B09SZWLCJK?tag=tsuricast-22",
+          "asin": "B09SZWLCJK",
+          "note": "入門クラス｜25号-390前後で始めやすい定番振出モデル"
+        }
+      ],
+      "2": [
+        {
+          "name": "シマノ(SHIMANO) ロッド 投げ竿 17 ホリデースピン (振出) 各種 軽快な投げ釣り用",
+          "url": "https://www.amazon.co.jp/dp/B08GKKZGQS?tag=tsuricast-22",
+          "asin": "B08GKKZGQS",
+          "note": "入門クラス｜30号帯で堤防からサーフまで使いやすい定番"
+        }
+      ],
+      "3": [
+        {
+          "name": "PRO MARINE ワンステップ投釣りセット",
+          "url": "https://www.amazon.co.jp/dp/B08TR26F23?tag=tsuricast-22",
+          "asin": "B08TR26F23",
+          "note": "入門クラス｜ロッドとリールをまとめて揃えやすいセット候補"
+        }
+      ],
+      "4": [
+        {
+          "name": "ダイワ(DAIWA) 投竿/振出し PRIMESURF T(プライムサーフ) 25号~33号 各種",
+          "url": "https://www.amazon.co.jp/dp/B0D354SZ9N?tag=tsuricast-22",
+          "asin": "B0D354SZ9N",
+          "note": "ミドルクラス｜25-405前後で長く使いやすいプライムサーフ系"
+        }
+      ],
+      "5": [
+        {
+          "name": "シマノ(SHIMANO) ロッド 投げ竿 20 サーフリーダー 振出 各種 軽快なキャスティング",
+          "url": "https://www.amazon.co.jp/dp/B08P4XXLX7?tag=tsuricast-22",
+          "asin": "B08P4XXLX7",
+          "note": "ミドルクラス｜軽快なキャスティングで満足度が高い定番"
+        }
+      ],
+      "6": [
+        {
+          "name": "シマノ(SHIMANO) 投げ竿 26サーフゲイザー (並継) 27-405",
+          "url": "https://www.amazon.co.jp/dp/B0GFTWJL8Y?tag=tsuricast-22",
+          "asin": "B0GFTWJL8Y",
+          "note": "ミドルクラス｜27-405前後で感度と飛距離を伸ばしやすい並継モデル"
+        }
+      ],
+      "7": [
+        {
+          "name": "ダイワ(DAIWA) 投げ竿 21 プライムキャスター 23号~33号",
+          "url": "https://www.amazon.co.jp/dp/B09879MV8P?tag=tsuricast-22",
+          "asin": "B09879MV8P",
+          "note": "ハイエンドクラス｜遠投性能と仕上げにこだわりたい人向け"
+        }
+      ],
+      "8": [
+        {
+          "name": "シマノ(SHIMANO) 投げ竿 21 プロセレクト(振出) 各種",
+          "url": "https://www.amazon.co.jp/dp/B09CQFQBQY?tag=tsuricast-22",
+          "asin": "B09CQFQBQY",
+          "note": "ハイエンドクラス｜競技志向まで視野に入る上位振出モデル"
         }
       ]
     }
