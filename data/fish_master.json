@@ -28,7 +28,8 @@
     "season": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     "peak_season": [9, 10, 11],
     "method": ["エギング"],
-    "bottom": ["岩礁", "藻場"]
+    "bottom": ["岩礁", "藻場"],
+    "image": "/static/img/fish/aoriika.jpg"
   },
   "タチウオ": {
     "slug": "tachiuo",
@@ -99,7 +100,8 @@
     "season": [1, 2, 3, 10, 11, 12],
     "peak_season": [11, 12, 1],
     "method": ["投げ釣り", "ルアー釣り", "胴突き仕掛け"],
-    "bottom": ["岩礁"]
+    "bottom": ["岩礁"],
+    "image": "/static/img/fish/ainame.jpg"
   },
   "イサキ": {
     "slug": "isaki",
@@ -114,7 +116,8 @@
     "season": [4, 5, 6, 7, 8, 9, 10, 11],
     "peak_season": [7, 8, 9, 10],
     "method": ["サビキ釣り", "ジギング"],
-    "bottom": ["砂地", "岩礁"]
+    "bottom": ["砂地", "岩礁"],
+    "image": "/static/img/fish/saba.jpg"
   },
   "スルメイカ": {
     "slug": "surumeika",
@@ -150,7 +153,8 @@
     "season": [5, 6, 7, 8, 9, 10, 11],
     "peak_season": [7, 8, 9, 10],
     "method": ["ジギング", "カゴ釣り", "泳がせ釣り"],
-    "bottom": ["岩礁", "砂地"]
+    "bottom": ["岩礁", "砂地"],
+    "image": "/static/img/fish/kanpachi.jpg"
   },
   "ヒラマサ": {
     "slug": "hiramasa",
