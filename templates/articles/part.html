@@ -3,6 +3,13 @@
 {% block title %}{{ meta.title or part_slug }} | 釣りコラム | Tsuricast{% endblock %}
 {% block description %}{{ meta.description or meta.title or part_slug }}{% endblock %}
 
+{% block og_title %}{{ meta.title or part_slug }} | Tsuricast{% endblock %}
+{% block og_desc %}{{ meta.description or meta.title or part_slug }}{% endblock %}
+{% block og_image %}<meta property="og:image" content="https://tsuricast.jp/static/img/fishing_master_card.png">{% endblock %}
+{% block tw_title %}{{ meta.title or part_slug }}{% endblock %}
+{% block tw_desc %}{{ meta.description or meta.title or part_slug }}{% endblock %}
+{% block tw_image %}https://tsuricast.jp/static/img/fishing_master_card.png{% endblock %}
+
 {% block content %}
 <nav class="breadcrumb">
   <a href="/">ホーム</a> &rsaquo;
