@@ -12,3 +12,10 @@ fishing_report_*.txt
 
 # 海岸線ローカルキャッシュ（大容量・再生成可能）
 tools/data/coastline_elements.json
+
+# AIコメントログ（サーバー上で蓄積・Gitには含めない）
+logs/*.jsonl
+
+# AIコメントキャッシュ（日次生成・Gitには含めない）
+data/cache/ai_comment_*.json
+data/cache/xpost_*.json
