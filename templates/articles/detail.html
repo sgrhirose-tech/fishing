@@ -15,16 +15,6 @@
     {{ body_html | safe }}
   </div>
 
-  {% if parts %}
-  <section class="article-parts-toc">
-    <h2>この記事の続き</h2>
-    <ol class="article-parts-list">
-      {% for p in parts %}
-      <li><a href="/articles/{{ slug }}/{{ p.part_slug }}/">{{ p.title or p.part_slug }}</a></li>
-      {% endfor %}
-    </ol>
-  </section>
-  {% endif %}
 </article>
 
 <a href="/articles/" class="back-link">‹ コラム一覧に戻る</a>
