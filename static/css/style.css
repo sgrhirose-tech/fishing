@@ -580,6 +580,24 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 /* ---- TOPページ: レイアウト（1カラム） ---- */
 .top-layout { display: block; }
 
+/* ---- TOPページ: イントロ・コラムセクション ---- */
+.top-intro {
+  max-width: 860px;
+  margin: 1.5rem auto 1rem;
+  padding: 0 1rem;
+  line-height: 1.8;
+}
+.top-intro h2 { font-size: 1.2rem; margin-bottom: .6rem; }
+.top-intro p { margin: 0 0 .75rem; color: #444; }
+
+.top-articles {
+  max-width: 1060px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.top-articles h2 { font-size: 1.2rem; margin-bottom: 1rem; }
+.top-articles-more { text-align: right; margin-top: .75rem; font-size: .9rem; }
+
 /* ---- 釣法一覧ページ ---- */
 .method-index-grid {
   display: grid;

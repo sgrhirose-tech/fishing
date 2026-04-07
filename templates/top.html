@@ -13,6 +13,12 @@
 {% block content %}
 <p class="hero-caption">千葉・東京・神奈川・静岡・愛知・三重・大阪の釣り場天気・波高情報。天気・風・海況をチェックしよう。</p>
 
+<section class="top-intro">
+  <h2>Tsuricastとは</h2>
+  <p>Tsuricastは、関東〜東海〜近畿の海釣り場を対象に、各スポットの天気・風速・波高・海況をまとめて確認できる釣り情報サービスです。堤防・磯・砂浜・釣り施設など{{ spots|length }}か所以上の釣り場を掲載しており、釣行前の情報収集から現地の状況確認まで幅広くご活用いただけます。</p>
+  <p>各釣り場ページでは対象魚種・アクセス方法・地図を掲載。クロダイ・アジ・シロギス・アオリイカ・ヒラメなど人気魚種ごとの絞り込み検索にも対応しています。釣り場探しの第一歩に、ぜひご利用ください。</p>
+</section>
+
 <div class="top-layout">
 
   <!-- 左カラム（PC）/ 上段（スマホ）: 地図 -->
@@ -117,6 +123,23 @@
 
   </div><!-- /.top-sidebar-col -->
 </div><!-- /.top-layout -->
+
+{% if recent_articles %}
+<section class="top-articles">
+  <h2>釣りコラム</h2>
+  <div class="article-grid">
+    {% for a in recent_articles %}
+    <a href="/articles/{{ a.category }}/{{ a.slug }}/" class="article-card">
+      <img src="/static/img/{{ a.card_image }}" alt="{{ a.title or a.slug }}" loading="lazy">
+      <div class="article-card-body">
+        <p class="article-card-title">{{ a.title or a.slug }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  <p class="top-articles-more"><a href="/articles/">コラム一覧を見る →</a></p>
+</section>
+{% endif %}
 {% endblock %}
 
 {% block scripts %}
