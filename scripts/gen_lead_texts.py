@@ -52,7 +52,7 @@ _AREA_PRIORITY: dict[str, int] = {
 _AREA_PRIORITY_DEFAULT = 99
 
 _REFRESH_DAYS   = 180
-_SLEEP_BETWEEN  = 20  # 秒（web_search 結果が大量トークンを消費するため余裕を持たせる）
+_SLEEP_BETWEEN  = 65  # 秒（前リクエストのトークンが1分ウィンドウから抜けるまで待つ）
 
 
 # ---------------------------------------------------------------------------
