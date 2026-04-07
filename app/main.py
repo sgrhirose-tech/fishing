@@ -486,6 +486,7 @@ def page_top(request: Request):
         a_slug = s.get("area", {}).get("area_slug", "")
         if a_slug:
             area_counts[a_slug] = area_counts.get(a_slug, 0) + 1
+    recent_articles = _load_articles()[:6]
     return templates.TemplateResponse(request, "top.html", {
         "spots": spots,
         "tomorrow": _tomorrow(),
@@ -497,6 +498,7 @@ def page_top(request: Request):
             if data.get("slug")
             and any(data["slug"] in s.get("target_fish", []) for s in spots)
         ],
+        "recent_articles": recent_articles,
     })
 
 
