@@ -76,7 +76,7 @@ def _call_claude(messages: list[dict], api_key: str, retry: int = 3) -> dict:
         data=body,
         headers={
             "x-api-key": api_key,
-            "anthropic-version": "2024-06-01",
+            "anthropic-version": "2023-06-01",
             "anthropic-beta": "prompt-caching-2024-07-31",
             "content-type": "application/json",
         },
