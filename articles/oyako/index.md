@@ -1,6 +1,12 @@
 ---
 title: 親子釣り完全ガイド｜「また行きたい」で終わる一日のつくり方
 description: 初めての親子釣りで大切なのは釣果ではなく「また行きたいね」で終わること。心構えから準備・前日・当日まで4ステップでベテラン店長が解説します。
+related_spots:
+  - higashi-ogishima-nishi-koen
+  - jonanjima-kaihin-koen
+  - wakasu-kaihin-koen
+  - takasu-kaihin-koen
+  - sodegaura-kaihin-koen
 ---
 
 # 親子釣り完全ガイド

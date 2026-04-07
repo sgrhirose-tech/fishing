@@ -1,6 +1,12 @@
 ---
 title: 釣りガールの悩みQ&A｜トイレ・男性への距離感・道具選びにベテラン店長が答える
 description: 女性アングラーが抱えるリアルな悩み——トイレ問題、男性ばかりの空気、安全、夜釣り、タックル選び、釣具店への入りにくさ——にベテラン店長がQ&A形式で全問答えます。
+related_spots:
+  - higashi-ogishima-nishi-koen
+  - jonanjima-kaihin-koen
+  - wakasu-kaihin-koen
+  - oiso-ko
+  - tsujido
 ---
 
 # 釣りガールの悩みに全部答えます  

@@ -1,6 +1,12 @@
 ---
 title: サーフィンと釣りが共存する砂浜のルール｜すみ分けの考え方をベテラン店長が解説
 description: 投げ釣りやシロギス狙いでサーファーとかち合いやすい砂浜でのすみ分け方と、お互いが気持ちよく使うための考え方をベテラン店長がまとめます。
+related_spots:
+  - shichirigahama
+  - tsujido
+  - chigasaki-headland
+  - katase
+  - katase_east
 ---
 
 # サーフィンに適した海と、釣りに適した海  

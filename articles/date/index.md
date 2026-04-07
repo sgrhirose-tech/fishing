@@ -1,6 +1,12 @@
 ---
 title: 釣りデートを成功させる｜ベテラン店長が教える4ステップ
 description: 釣りデートが失敗するのは技術の問題ではなく、自分が楽しい釣りに相手を連れて行こうとするから。ベテラン店長が誘い方から終わり方まで4回で本音を語ります。
+related_spots:
+  - enoshima
+  - shichirigahama
+  - morito
+  - zaimokuza-kaigan
+  - isshiki
 ---
 
 # 釣りデートを成功させる

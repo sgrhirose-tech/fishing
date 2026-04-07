@@ -1,6 +1,11 @@
 ---
 title: 釣具屋に来る迷惑な客ベスト3｜ベテラン店長が本音で言う「困る」の中身
 description: 悪気はないけど店側が困る客、実は本人も損している客とは。釣具屋で得をするための振る舞い方をベテラン店長が本音で解説します。
+related_spots:
+  - enoshima
+  - shichirigahama
+  - tsujido
+  - chigasaki-headland
 ---
 
 # 釣具屋に来る、迷惑な客ベスト3  
