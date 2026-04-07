@@ -11,6 +11,7 @@
 {% block tw_title %}{{ meta.title or slug }}{% endblock %}
 {% block tw_desc %}{{ meta.description or meta.title or slug }}{% endblock %}
 {% block tw_image %}https://tsuricast.jp/static/img/{{ card_image }}{% endblock %}
+{% if meta.noindex == "true" %}{% block robots_meta %}<meta name="robots" content="noindex,follow">{% endblock %}{% endif %}
 
 {% block jsonld %}
 <script type="application/ld+json">

@@ -1152,6 +1152,38 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     })
 
 
+def _build_spot_description(spot: dict, fish_name_map: dict) -> str:
+    """スポットの既存データから100〜200字の説明文を動的生成する。"""
+    area  = spot.get("area", {})
+    pref  = area.get("prefecture", "")
+    city  = area.get("city", "")
+    name  = spot.get("name", "")
+    stype = spot_type_label(spot)
+    label = getattr(stype, "label", None) if stype else None
+
+    intro = (
+        f"{pref}{city}の{name}は、{label}の釣り場です。"
+        if label else f"{pref}{city}に位置する{name}の釣り場です。"
+    )
+
+    fish = [fish_name_map.get(f, f) for f in spot.get("target_fish", [])[:5]]
+    fish_str = f"{'・'.join(fish)}が狙えます。" if fish else ""
+
+    seabed = (spot.get("derived_features") or {}).get("seabed_summary", "")
+    slope  = spot_slope_type(spot)
+    terrain_str = ""
+    if seabed:
+        terrain_str = f"底質は{seabed}"
+        if slope and slope != "不明":
+            terrain_str += f"、地形は{slope}タイプ"
+        terrain_str += "。"
+
+    notes = (spot.get("info") or {}).get("notes", "")
+    notes_str = notes if notes and len(notes) > 10 else ""
+
+    return intro + fish_str + terrain_str + notes_str
+
+
 @app.get("/{pref_slug}/{area_slug}/{city_slug}/{slug}", response_class=HTMLResponse)
 def page_spot_detail(
     request: Request,
@@ -1186,6 +1218,11 @@ def page_spot_detail(
         "toilet":      "トイレ" in facility_types,
         "convenience": "コンビニ" in facility_types,
     }
+    try:
+        preloaded_forecast = _compute_forecast(spot)
+    except Exception as e:
+        print(f"[警告] _compute_forecast 失敗 ({slug}): {e}")
+        preloaded_forecast = None
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -1193,7 +1230,7 @@ def page_spot_detail(
         "slope_type":         spot_slope_type(spot),
         "spot_type":          spot_type_label(spot),
         "photos":             get_photos(slug),
-        "preloaded_forecast": _compute_forecast(spot),
+        "preloaded_forecast": preloaded_forecast,
         "region_slug":        region_slug,
         "region_name":        region_name,
         "fish_slug_map":      fish_slug_map,
@@ -1201,5 +1238,6 @@ def page_spot_detail(
         "fish_names_jp":      fish_names_jp,
         "facility_flags":     facility_flags,
         "tackle_links":       tackle_links,
+        "spot_description":   (spot.get("info") or {}).get("description") or _build_spot_description(spot, fish_name_map),
         "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
     })

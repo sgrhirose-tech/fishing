@@ -1,6 +1,10 @@
 ---
 title: 釣りをしない家族との折り合いの付け方｜段取りと片付けが全てです
 description: 釣りをしない配偶者・家族と長く両立するために必要なのは釣りの腕前ではなく段取りと片付け。ベテラン店長が家族との関係を保つ実践的な考え方を伝えます。
+related_spots:
+  - higashi-ogishima-nishi-koen
+  - jonanjima-kaihin-koen
+  - wakasu-kaihin-koen
 ---
 
 # 釣りをしない家族との折り合いの付け方  

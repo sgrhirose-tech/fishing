@@ -83,6 +83,9 @@
   {% endif %}
 </div>
 <div id="fav-btn-container"></div>
+{% if spot_description %}
+<p class="spot-description">{{ spot_description }}</p>
+{% endif %}
 
 <!-- スポット写真 -->
 {% if photos %}
@@ -430,8 +433,9 @@
       document.querySelectorAll('.tab-btn:not(.tab-tomorrow):not(.tab-today)').forEach(b =>
         b.addEventListener('click', () => renderTab(b.dataset.period)));
     }
-    if (window.PRELOADED_FORECAST) {
-      renderForecast(window.PRELOADED_FORECAST);
+    var _pf = window.PRELOADED_FORECAST;
+    if (_pf && _pf.days && _pf.days.length > 0) {
+      renderForecast(_pf);
     } else {
       fetch('/api/forecast/' + SPOT.slug)
         .then(r => r.json())

@@ -1,6 +1,11 @@
 ---
 title: 虫エサが苦手でも釣りはできる｜無理しない始め方を7回で解説
 description: 虫エサが触れなくても釣りは楽しめます。苦手の種類の整理から、最初の一回の具体的プランまでベテラン店長が7回シリーズで丁寧に解説します。
+related_spots:
+  - enoshima
+  - kurihama
+  - miura
+  - shichirigahama
 ---
 
 # 虫エサが苦手でも釣りはできる
