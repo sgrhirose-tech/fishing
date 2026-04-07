@@ -350,6 +350,7 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
 .field-row select { width: 100%; padding: 5px 7px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; font-family: inherit; }
 .field-row textarea { resize: vertical; min-height: 60px; }
 .field-row input[readonly] { background: #f7f7f7; color: #666; }
+.lead-text-preview { background: #f0f4f8; border: 1px solid #d0dce8; border-radius: 4px; padding: 7px 9px; font-size: 13px; line-height: 1.6; color: #555; white-space: pre-wrap; }
 .section-title { font-size: 11px; font-weight: bold; color: #2c3e50; background: #f0f4f8; padding: 4px 6px; margin: 12px -10px 8px; }
 .bearing-row { display: flex; gap: 6px; align-items: center; }
 .bearing-row select { flex: 1; }
@@ -691,6 +692,7 @@ function showSpot(idx) {
     row('terrain_summary',     '地形サマリ',           'text',   der.terrain_summary     || '') +
 
     '<div class="section-title">アクセス・情報</div>' +
+    (info.lead_text ? '<div class="field-row"><label>AI生成リード文</label><div class="lead-text-preview">' + escHtml(info.lead_text) + '</div></div>' : '') +
     rowArea('description', '紹介文',     info.description || '') +
     rowArea('notes',     '備考',       info.notes     || '') +
     row('access',        'アクセス',   'text',  info.access    || '') +
