@@ -598,6 +598,15 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .top-articles h2 { font-size: 1.2rem; margin-bottom: 1rem; }
 .top-articles-more { text-align: right; margin-top: .75rem; font-size: .9rem; }
 
+/* ---- スポット: 関連コラム ---- */
+.spot-related-articles { margin: 1.5rem 0; }
+.spot-related-articles h2 { font-size: 1.1rem; margin-bottom: .5rem; }
+.spot-related-articles ul { list-style: none; padding: 0; margin: 0; }
+.spot-related-articles li { padding: .35rem 0; border-bottom: 1px solid #eee; }
+.spot-related-articles li:last-child { border-bottom: none; }
+.spot-related-articles a { color: #1a6496; text-decoration: none; }
+.spot-related-articles a:hover { text-decoration: underline; }
+
 /* ---- 釣法一覧ページ ---- */
 .method-index-grid {
   display: grid;

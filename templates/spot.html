@@ -246,6 +246,17 @@
 </section>
 {% endif %}
 
+{% if related_articles %}
+<section class="spot-related-articles">
+  <h2>この釣り場に関連するコラム</h2>
+  <ul>
+    {% for a in related_articles %}
+    <li><a href="/articles/{{ a.category }}/{{ a.slug }}/">{{ a.title or a.slug }}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
 <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
 
