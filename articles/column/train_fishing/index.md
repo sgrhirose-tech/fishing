@@ -1,6 +1,14 @@
 ---
 title: 電車釣行完全ガイド｜車なしで釣りを楽しむコツをベテラン店長が解説
 description: 車がなくても釣りはできます。電車釣行の荷物の組み方・釣り場の選び方・時間の使い方まで、都市部の釣り人向けにベテラン店長が本音で解説します。
+related_spots:
+  - zaimokuza-kaigan
+  - tsujido
+  - shichirigahama
+  - kurihama
+  - miura
+  - wakasu-kaihin-koen
+  - takasu-kaihin-koen
 ---
 
 # 電車釣行完全ガイド  

@@ -24,6 +24,7 @@
   <meta name="twitter:title"       content="{% block tw_title %}Tsuricast{% endblock %}">
   <meta name="twitter:description" content="{% block tw_desc %}千葉・東京・神奈川・静岡の釣り場天気・波高情報。天気・風・波高・水温を毎日更新。{% endblock %}">
   <meta name="twitter:image"       content="{% block tw_image %}https://tsuricast.jp/static/img/ogp.png?v=3{% endblock %}">
+  {% block robots_meta %}{% endblock %}
 
   <!-- JSON-LD 構造化データ -->
   {% block jsonld %}
@@ -41,7 +42,7 @@
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <!-- カスタムCSS -->
-  <link rel="stylesheet" href="/static/css/style.css?v=15">
+  <link rel="stylesheet" href="/static/css/style.css?v=16">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SCVHBC5134"></script>
   <script>

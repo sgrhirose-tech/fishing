@@ -1,6 +1,10 @@
 ---
 title: 魚の生臭さ対策｜手・家・クーラー・車の臭いをまとめて片づける実践ガイド
 description: 釣りで悩む魚の生臭さを手・家・クーラー・車ごとに解決する方法をベテラン店長が解説。アミエビ臭・ドリップ汚れなど釣り人特有の臭い対策を網羅します。
+related_spots:
+  - wakasu-kaihin-koen
+  - jonanjima-kaihin-koen
+  - higashi-ogishima-nishi-koen
 ---
 
 # 魚の生臭さ対策  

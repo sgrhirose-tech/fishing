@@ -1,6 +1,58 @@
 ---
 title: サーフィンと釣りが共存する砂浜のルール｜すみ分けの考え方をベテラン店長が解説
 description: 投げ釣りやシロギス狙いでサーファーとかち合いやすい砂浜でのすみ分け方と、お互いが気持ちよく使うための考え方をベテラン店長がまとめます。
+related_spots:
+  - akiya
+  - emi-kaigan
+  - fudodo-kaigan
+  - futoma-kaigan
+  - hanamizugawa-kako
+  - hebara-kaigan
+  - heisaura
+  - hikichigawa-kako
+  - hiratsuka-kaigan
+  - hiratsuka
+  - horikawa-hama
+  - ichinomiya-kaigan
+  - inamuragasaki
+  - isshiki
+  - isumigawa-kako
+  - katase
+  - katase_east
+  - katsuura-todai-shita
+  - kidohama-kaigan
+  - kimigahama
+  - koshigoe-gyoko
+  - kozu
+  - kyu-yoshida-tei-shita
+  - magame-kaigan
+  - miura
+  - miyuki
+  - motosuka-kaigan
+  - nakatajima-enshunada
+  - nakayazato-kaigan
+  - ninomiya
+  - note-hama
+  - oiso-choyakuba-shita
+  - onjuku
+  - sakawa
+  - sakuda-kaigan
+  - shichirigahama
+  - shirasato-kaigan
+  - shirosaki-kaigan
+  - taito-kaigan
+  - tojo-kaigan
+  - tsujido
+  - tsukui
+  - uchiura-kaigan
+  - uhara-kaigan
+  - umezawa-kaigan
+  - yanagishima-kaigan
+  - yokata-kaigan
+  - yoshizaki-hama
+  - yuigahama
+  - zaimokuza-kaigan
+  - zushi
 ---
 
 # サーフィンに適した海と、釣りに適した海  

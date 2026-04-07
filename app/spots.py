@@ -212,12 +212,15 @@ def get_area_centers() -> dict:
     return centers
 
 def get_photos(slug: str) -> list[str]:
-    """スポットの写真URLリストを返す（static/photos/{slug}*.jpg の命名規則）。"""
-    photos_dir = _ROOT / "static" / "photos"
-    if not photos_dir.exists():
-        return []
-    files = sorted(photos_dir.glob(f"{slug}*.jpg"))
-    return [f"/static/photos/{f.name}" for f in files]
+    """スポットの写真URLリストを返す。
+    static/photos/{slug}*.jpg → static/img/spots/{slug}*.jpg の順に探索。
+    """
+    photos: list[str] = []
+    for subdir in ("photos", "img/spots"):
+        d = _ROOT / "static" / subdir
+        if d.exists():
+            photos += [f"/static/{subdir}/{f.name}" for f in sorted(d.glob(f"{slug}*.jpg"))]
+    return photos
 
 
 def assign_area(spot: dict) -> str:
