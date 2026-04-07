@@ -1256,9 +1256,11 @@ def page_spot_detail(
         "convenience": "コンビニ" in facility_types,
     }
     try:
-        preloaded_forecast = _compute_forecast(spot)
+        import concurrent.futures as _cf
+        with _cf.ThreadPoolExecutor(max_workers=1) as _ex:
+            preloaded_forecast = _ex.submit(_compute_forecast, spot).result(timeout=8)
     except Exception as e:
-        print(f"[警告] _compute_forecast 失敗 ({slug}): {e}")
+        print(f"[警告] _compute_forecast スキップ ({slug}): {e}")
         preloaded_forecast = None
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
