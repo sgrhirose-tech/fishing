@@ -1155,6 +1155,11 @@ def page_spot_detail(
         "toilet":      "トイレ" in facility_types,
         "convenience": "コンビニ" in facility_types,
     }
+    try:
+        preloaded_forecast = _compute_forecast(spot)
+    except Exception as e:
+        print(f"[警告] _compute_forecast 失敗 ({slug}): {e}")
+        preloaded_forecast = None
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -1162,7 +1167,7 @@ def page_spot_detail(
         "slope_type":         spot_slope_type(spot),
         "spot_type":          spot_type_label(spot),
         "photos":             get_photos(slug),
-        "preloaded_forecast": _compute_forecast(spot),
+        "preloaded_forecast": preloaded_forecast,
         "region_slug":        region_slug,
         "region_name":        region_name,
         "fish_slug_map":      fish_slug_map,
