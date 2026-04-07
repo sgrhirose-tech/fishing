@@ -47,12 +47,13 @@ _SYSTEM_PROMPT = """\
 - "{spot_name} 釣り 釣行記"
 - "{spot_name} {primary_fish} ポイント"
 - "{spot_name} 釣り 穴場"
+- "{spot_name} 釣り コツ"
 
 【出力ルール】
-- 文字数: 200〜260文字（厳守）
+- 文字数: 210〜260文字（厳守）
 - 語り口: 砕けた丁寧語（「〜です」「〜ます」調）
-- 地名・施設名・具体的な数字など「地元感のある情報」を1つ以上含める
-- 汎用的な釣り方説明（「底を引く」「遠投する」など）は書かない
+- 以下を必ず1つ以上含める：地名・地形・水深・底質・常連が通う時期・時間帯など「その場所ならではの情報」
+- 汎用的な魚の習性説明（「底を引く」「遠投する」など）は書かない
 - 「釣れます」「おすすめです」などの営業的表現は使わない
 - 観光情報・アクセス情報は含めない
 - ニッチ情報がまったく見つからなかった場合は、空文字列を返してください
@@ -150,24 +151,25 @@ def generate_lead_text(spot: dict, api_key: str) -> tuple[str, str, bool]:
 
     # 文字数チェック
     char_count = len(text)
-    if text and not (200 <= char_count <= 260):
+    if text and not (210 <= char_count <= 260):
         # 1回リプロンプト
         messages.append({"role": "assistant", "content": response.get("content", [])})
         messages.append({
             "role": "user",
             "content": (
-                f"文字数が {char_count} 文字です。200〜260文字に収めてください。"
+                f"文字数が {char_count} 文字です。210〜260文字に収めてください。"
+                "具体的なエピソードや地形の特徴を加えて文字数を増やしてください。"
                 "ニッチ情報が見つからない場合は空文字列のみ返してください。"
             ),
         })
         response2 = _call_claude(messages, api_key)
         text = _extract_text(response2) if response2 else text
 
-    # ニッチ情報なし判定（空文字 or 「整理中」など明示的な空応答）
+    # ニッチ情報なし判定（空文字 or 短すぎる応答）
     if not text or len(text) < 50:
         return "", "fallback", True
 
-    quality = "ok" if 200 <= len(text) <= 260 else "fallback"
+    quality = "ok" if 150 <= len(text) <= 260 else "fallback"
     needs_review = quality == "fallback"
     return text, quality, needs_review
 
