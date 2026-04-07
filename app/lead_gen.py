@@ -89,7 +89,9 @@ def _call_claude(messages: list[dict], api_key: str, retry: int = 3) -> dict:
             err_body = e.read().decode("utf-8", errors="replace")
             print(f"  [警告] Claude API HTTP {e.code}: {err_body[:200]}")
             if attempt < retry - 1:
-                time.sleep(2 ** attempt * 3)
+                wait = 65 if e.code == 429 else 2 ** attempt * 3
+                print(f"  [{wait}秒待機中...]")
+                time.sleep(wait)
         except Exception as e:
             print(f"  [警告] Claude API エラー: {e}")
             if attempt < retry - 1:
