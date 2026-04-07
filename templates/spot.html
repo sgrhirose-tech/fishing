@@ -82,6 +82,9 @@
   {% endif %}
 </div>
 <div id="fav-btn-container"></div>
+{% if spot_description %}
+<p class="spot-description">{{ spot_description }}</p>
+{% endif %}
 
 <!-- スポット写真 -->
 {% if photos %}

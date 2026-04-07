@@ -9,6 +9,7 @@
 {% block tw_title %}{{ meta.title or part_slug }}{% endblock %}
 {% block tw_desc %}{{ meta.description or meta.title or part_slug }}{% endblock %}
 {% block tw_image %}https://tsuricast.jp/static/img/fishing_master_card.png{% endblock %}
+{% if meta.noindex == "true" %}{% block robots_meta %}<meta name="robots" content="noindex,follow">{% endblock %}{% endif %}
 
 {% block content %}
 <nav class="breadcrumb">
