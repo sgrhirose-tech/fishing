@@ -799,10 +799,22 @@ def _extract_article_meta(content: str, slug: str) -> tuple[dict, str]:
     if content.startswith("---"):
         end = content.find("---", 3)
         if end > 0:
-            for line in content[3:end].strip().splitlines():
-                if ":" in line:
+            current_key = None
+            for line in content[3:end].splitlines():
+                stripped = line.strip()
+                if stripped.startswith("- "):
+                    # YAML リスト要素
+                    item = stripped[2:].strip()
+                    if current_key is not None:
+                        if isinstance(meta.get(current_key), list):
+                            meta[current_key].append(item)
+                        else:
+                            meta[current_key] = [item]
+                elif ":" in line and not line.startswith(" "):
                     k, v = line.split(":", 1)
-                    meta[k.strip()] = v.strip()
+                    current_key = k.strip()
+                    val = v.strip()
+                    meta[current_key] = val if val else None
             body = content[end + 3:].strip()
     if "title" not in meta:
         m = _H1_RE.search(body)
