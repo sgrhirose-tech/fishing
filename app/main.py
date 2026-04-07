@@ -825,6 +825,18 @@ def _load_articles() -> list:
     return result
 
 
+def _build_spot_article_index() -> dict[str, list]:
+    """spot_slug → [article_meta, ...] の逆引き辞書を返す。"""
+    index: dict[str, list] = {}
+    for art in _load_articles():
+        for s in art.get("related_spots") or []:
+            index.setdefault(s, []).append(art)
+    return index
+
+
+_SPOT_ARTICLE_INDEX: dict[str, list] = _build_spot_article_index()
+
+
 def _load_article_slots(category: str, slug: str) -> list:
     """articles/{category}/{slug}/affiliate.json を読み込んで返す。"""
     path = _ARTICLES_DIR / category / slug / "affiliate.json"
@@ -1158,4 +1170,5 @@ def page_spot_detail(
         "fish_names_jp":      fish_names_jp,
         "facility_flags":     facility_flags,
         "tackle_links":       tackle_links,
+        "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
     })
