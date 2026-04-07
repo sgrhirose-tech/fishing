@@ -691,6 +691,7 @@ function showSpot(idx) {
     row('terrain_summary',     '地形サマリ',           'text',   der.terrain_summary     || '') +
 
     '<div class="section-title">アクセス・情報</div>' +
+    rowArea('description', '紹介文',     info.description || '') +
     rowArea('notes',     '備考',       info.notes     || '') +
     row('access',        'アクセス',   'text',  info.access    || '') +
     row('photo_url',     '写真URL',    'text',  info.photo_url || '') +
@@ -808,6 +809,7 @@ function saveChanges() {
       terrain_summary:     fv('terrain_summary')
     },
     info: {
+      description: fv('description'),
       notes:     fv('notes'),
       access:    fv('access'),
       photo_url: fv('photo_url')
@@ -1062,9 +1064,12 @@ def _save_spot(payload):
 
     info = payload.get("info", {})
     inf = spot.setdefault("info", {})
-    for key in ("notes", "access", "photo_url"):
+    for key in ("description", "notes", "access", "photo_url"):
         if info.get(key) is not None:
-            inf[key] = info[key]
+            if info[key] == "":
+                inf.pop(key, None)  # 空文字は削除（フィールド肥大化防止）
+            else:
+                inf[key] = info[key]
 
     if "target_fish" in payload:
         spot["target_fish"] = [f for f in payload["target_fish"] if isinstance(f, str)]
