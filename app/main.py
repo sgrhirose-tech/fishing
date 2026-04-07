@@ -486,6 +486,7 @@ def page_top(request: Request):
         a_slug = s.get("area", {}).get("area_slug", "")
         if a_slug:
             area_counts[a_slug] = area_counts.get(a_slug, 0) + 1
+    recent_articles = _load_articles()[:6]
     return templates.TemplateResponse(request, "top.html", {
         "spots": spots,
         "tomorrow": _tomorrow(),
@@ -497,6 +498,7 @@ def page_top(request: Request):
             if data.get("slug")
             and any(data["slug"] in s.get("target_fish", []) for s in spots)
         ],
+        "recent_articles": recent_articles,
     })
 
 
@@ -691,6 +693,20 @@ except ImportError:
     _MARKDOWN = None
 
 _AFFILIATE_MARKER = _re.compile(r'<!--\s*affiliate:\s*(\d+)\s*-->')
+_LINK_CARD_RE = _re.compile(r'<!--\s*link-card:\s*([^|>\n]+)\|([^|>\n]+)(?:\|([^>\n]*))?\s*-->')
+
+
+def _build_link_card_html(url: str, title: str, desc: str = "") -> str:
+    url = url.strip()
+    title = title.strip()
+    desc = desc.strip() if desc else ""
+    desc_html = f'<p class="page-link-card-desc">{desc}</p>' if desc else ""
+    return (
+        f'<a class="page-link-card" href="{url}">'
+        f'<p class="page-link-card-title">{title}</p>'
+        f'{desc_html}'
+        f'</a>'
+    )
 
 
 def _amazon_image_url(asin: str) -> str:
@@ -841,6 +857,17 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
     """MarkdownをアフィリエイトスロットHTMLに展開してHTMLに変換する。"""
     if _MARKDOWN is None:
         return content
+
+    # link-card マーカーをプレースホルダーに置換（Mistune処理前）
+    link_card_map: dict[str, str] = {}
+
+    def _replace_link_card(m: _re.Match) -> str:
+        key = f"@@LINKCARD{len(link_card_map):04d}@@"
+        link_card_map[key] = _build_link_card_html(m.group(1), m.group(2), m.group(3) or "")
+        return key
+
+    content = _LINK_CARD_RE.sub(_replace_link_card, content)
+
     parts = _AFFILIATE_MARKER.split(content)
     html_parts = []
     for i, part in enumerate(parts):
@@ -852,6 +879,12 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
             if links:
                 html_parts.append(_build_affiliate_html(links))
     html = "".join(html_parts)
+
+    # プレースホルダーをリンクカードHTMLに戻す（<p>タグで包まれた場合も対応）
+    for key, card_html in link_card_map.items():
+        html = html.replace(f"<p>{key}</p>", card_html)
+        html = html.replace(key, card_html)
+
     if article_path:
         html = _MD_LINK_RE.sub(lambda m: f'href="/articles/{article_path}/{m.group(1)}/"', html)
     return html

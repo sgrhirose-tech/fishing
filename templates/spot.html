@@ -22,6 +22,7 @@
 {% block description %}{% if fish_names_jp %}{{ area.prefecture }}{{ area.area_name }}の{{ spot.name }}の釣り場情報。{{ fish_names_jp | join('・') }}が狙えます。波高・風向・水温・潮回りを時間帯別に確認できます。{{ fac_meta }}{% else %}{{ spot.name }}（{{ area.prefecture }}{{ area.city }}）の釣り場情報。底質: {{ df.seabed_summary or 'ー' }}、海底傾斜: {{ slope_type or 'ー' }}。天気・波・風・水温を毎日更新。{{ fac_meta }}アクセス: {{ spot.info.access }}{% endif %}{% endblock %}
 
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
+{% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block og_title %}{{ spot.name }}の釣り場情報 | {{ area.city }}{% endblock %}
 {% block og_desc %}{{ spot.name }}（{{ area.prefecture }}{{ area.city }}）の釣り場。底質: {{ df.seabed_summary or 'ー' }}。天気・波・風・水温を毎日更新。{% endblock %}
 {% if photos %}
