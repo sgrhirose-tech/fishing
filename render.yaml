@@ -84,6 +84,22 @@ services:
         sync: false
 
   - type: cron
+    name: tsuricast-lead-text-weekly
+    runtime: python
+    repo: https://github.com/sgrhirose-tech/fishing
+    branch: master
+    schedule: "0 16 * * 0"   # 毎週日曜 01:00 JST（UTC 16:00）、30件ずつ処理（約19週で全563件完走）
+    buildCommand: pip install -r requirements.txt
+    startCommand: python scripts/gen_lead_texts.py --limit 30
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+
+  - type: cron
     name: tsuricast-affiliate-check-monthly
     runtime: python
     repo: https://github.com/sgrhirose-tech/fishing
