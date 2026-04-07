@@ -1238,6 +1238,6 @@ def page_spot_detail(
         "fish_names_jp":      fish_names_jp,
         "facility_flags":     facility_flags,
         "tackle_links":       tackle_links,
-        "spot_description":   (spot.get("info") or {}).get("description") or _build_spot_description(spot, fish_name_map),
+        "spot_description":   (spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map),
         "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
     })
