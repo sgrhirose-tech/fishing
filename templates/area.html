@@ -2,6 +2,8 @@
 
 {% block title %}{{ area_name }}の釣り場・天気情報 | {{ pref_name }} | Tsuricast{% endblock %}
 {% block description %}{{ area_name }}（{{ pref_name }}）の釣り場天気情報。{{ cities|length }}市区町村・{{ spots|length }}か所を掲載。{% endblock %}
+{% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
+{% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 
 {% block jsonld %}
 <script type="application/ld+json">

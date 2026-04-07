@@ -22,6 +22,7 @@
 {% block description %}{% if fish_names_jp %}{{ area.prefecture }}{{ area.area_name }}の{{ spot.name }}の釣り場情報。{{ fish_names_jp | join('・') }}が狙えます。波高・風向・水温・潮回りを時間帯別に確認できます。{{ fac_meta }}{% else %}{{ spot.name }}（{{ area.prefecture }}{{ area.city }}）の釣り場情報。底質: {{ df.seabed_summary or 'ー' }}、海底傾斜: {{ slope_type or 'ー' }}。天気・波・風・水温を毎日更新。{{ fac_meta }}アクセス: {{ spot.info.access }}{% endif %}{% endblock %}
 
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
+{% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block og_title %}{{ spot.name }}の釣り場情報 | {{ area.city }}{% endblock %}
 {% block og_desc %}{{ spot.name }}（{{ area.prefecture }}{{ area.city }}）の釣り場。底質: {{ df.seabed_summary or 'ー' }}。天気・波・風・水温を毎日更新。{% endblock %}
 {% if photos %}
@@ -248,6 +249,17 @@
 </section>
 {% endif %}
 
+{% if related_articles %}
+<section class="spot-related-articles">
+  <h2>この釣り場に関連するコラム</h2>
+  <ul>
+    {% for a in related_articles %}
+    <li><a href="/articles/{{ a.category }}/{{ a.slug }}/">{{ a.title or a.slug }}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
 <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
 
@@ -421,8 +433,9 @@
       document.querySelectorAll('.tab-btn:not(.tab-tomorrow):not(.tab-today)').forEach(b =>
         b.addEventListener('click', () => renderTab(b.dataset.period)));
     }
-    if (window.PRELOADED_FORECAST) {
-      renderForecast(window.PRELOADED_FORECAST);
+    var _pf = window.PRELOADED_FORECAST;
+    if (_pf && _pf.days && _pf.days.length > 0) {
+      renderForecast(_pf);
     } else {
       fetch('/api/forecast/' + SPOT.slug)
         .then(r => r.json())

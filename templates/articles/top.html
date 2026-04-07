@@ -17,8 +17,8 @@
 <section class="area-links">
   <div class="article-grid">
     {% for a in articles %}
-    <a href="/articles/{{ a.slug }}/" class="article-card">
-      <img src="/static/img/fishing_master_card.png" alt="{{ a.title or a.slug }}" loading="lazy">
+    <a href="/articles/{{ a.category }}/{{ a.slug }}/" class="article-card">
+      <img src="/static/img/{{ a.card_image }}" alt="{{ a.title or a.slug }}" loading="lazy">
       <div class="article-card-body">
         <p class="article-card-title">{{ a.title or a.slug }}</p>
       </div>
