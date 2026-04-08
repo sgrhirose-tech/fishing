@@ -58,7 +58,12 @@ _SYSTEM_PROMPT = """\
 - 観光情報・アクセス情報は含めない
 - ニッチ情報がまったく見つからなかった場合は、空文字列を返してください
 
-テキストのみ出力してください。JSON・マークダウン記法は不要です。\
+【厳禁】
+- 「以下がリード文です」「収集した情報をもとに」など前置きは一切書かない
+- 「---」などの区切り線は書かない
+- 「文字数確認：○字」などの確認コメントは書かない
+- マークダウン記法（**太字**、## 見出しなど）は使わない
+- リード文本文のみを出力すること\
 """
 
 
@@ -104,8 +109,49 @@ def _extract_text(response: dict) -> str:
     """レスポンスから最後のテキストブロックを取り出す。"""
     for block in reversed(response.get("content", [])):
         if block.get("type") == "text":
-            return block["text"].strip()
+            return _clean_text(block["text"])
     return ""
+
+
+import re as _re
+
+_HR_RE       = _re.compile(r'\n\s*[-─―]{3,}\s*\n')
+_PREAMBLE_RE = _re.compile(r'^(?:以下[、，はが]|収集|情報を|リード文|十分な情報)')
+_POSTSCRIPT_RE = _re.compile(r'^(?:文字数|[-─―]{3}|\*\*文字)')
+_BOLD_RE     = _re.compile(r'\*\*(.+?)\*\*')
+_H_RE        = _re.compile(r'#{1,6}\s*')
+
+
+def _clean_text(text: str) -> str:
+    """前置き・区切り線・文字数コメント・マークダウンを除去する。"""
+    text = text.strip()
+
+    # 「---」区切りで分割し、本文らしい部分を取り出す
+    parts = _HR_RE.split(text)
+    if len(parts) > 1:
+        # 前置きでもなく後書きでもない部分を探す（後ろから）
+        for part in reversed(parts):
+            part = part.strip()
+            if part and not _PREAMBLE_RE.match(part) and not _POSTSCRIPT_RE.match(part):
+                text = part
+                break
+
+    # 先頭の前置き行を除去
+    lines = text.splitlines()
+    while lines and _PREAMBLE_RE.match(lines[0].strip()):
+        lines.pop(0)
+
+    # 末尾の後書き行を除去
+    while lines and _POSTSCRIPT_RE.match(lines[-1].strip()):
+        lines.pop()
+
+    text = "\n".join(lines)
+
+    # マークダウン除去
+    text = _BOLD_RE.sub(r"\1", text)
+    text = _H_RE.sub("", text)
+
+    return text.strip()
 
 
 def generate_lead_text(spot: dict, api_key: str) -> tuple[str, str, bool]:
