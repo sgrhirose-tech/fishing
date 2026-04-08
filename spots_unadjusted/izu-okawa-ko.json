@@ -1,0 +1,46 @@
+{
+  "slug": "izu-okawa-ko",
+  "name": "伊豆大川港",
+  "location": {
+    "latitude": 34.8291595,
+    "longitude": 139.0760404
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "伊東市",
+    "city_slug": "ito"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 60,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 123.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "東伊豆町北端の小漁港、アジ・アオリイカ向き",
+    "access": "伊豆北川駅から徒歩10分",
+    "lead_text": "---\n\n※上記の情報をもとに、文字数・ルールに準拠したリード文を以下に生成します。\n\n東伊豆町大川温泉のすぐ隣に位置する小さな漁港で、波止先端部が主なポイントです。水深は全体的に浅めで、足場の良い堤防からの釣りが基本となります。外向きテトラは立入禁止のため、釣りは内側の堤防に限られます。アジは夏から秋が本番で、堤防先端やや左側が実績ポイント。常連の中には、サビキで確保したアジをそのまま泳がせてアオリイカを狙う人も多く、秋口にはその両方を一度に楽しめることもあります。朝マズメにはアジのほかカマスやサバが混じることもあり、地元勢は早朝から足を運ぶスタイルが定番です。\n\n---\n\n文字数確認・調整前の確認のため、最終リード文のみを以下に出力します。\n\n東伊豆町大川温泉のすぐ隣に位置する小さな漁港で、波止先端部が主なポイントです。水深は全体的に浅めで、足場の良い堤防からの釣りが基本となります。外向きテトラは立入禁止のため、釣りは堤防側に限られます。アジは夏から秋が本番で、堤防先端やや左側が実績"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "aji"
+  ],
+  "harbor_code": "22-3",
+  "harbor_name": "川奈"
+}

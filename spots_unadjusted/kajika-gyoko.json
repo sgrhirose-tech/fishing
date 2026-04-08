@@ -1,0 +1,48 @@
+{
+  "slug": "kajika-gyoko",
+  "name": "梶賀漁港",
+  "location": {
+    "latitude": 33.9679871,
+    "longitude": 136.21808
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "尾鷲市",
+    "city_slug": "owase"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 65,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 374.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "熊野市境の漁港、グレ・メバル・アオリイカ向き",
+    "access": "尾鷲市方面から車利用",
+    "photo_url": "",
+    "lead_text": "賀田湾の入口南部に開口した梶賀漁港は、外洋を遮る防波堤がない分、熊野灘の潮がそのまま入り込む潮通しの良さが魅力です。両サイドはゴロタ場で、沖向きは足元から水深があり、秋のアオリイカは港中央のミオ筋から手前へ誘い込んで掛けるスタイルが定番。メバルやグレは荒れ気味の日に良型が差してくることで知られています。夜釣りと防波堤への立入は禁止のため、常連は朝まづめの時合いに合わせて早朝から竿を出すのがお決まりのパターンです。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "mebaru"
+  ],
+  "harbor_code": "24-12",
+  "harbor_name": "古江"
+}
