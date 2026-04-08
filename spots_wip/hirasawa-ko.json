@@ -1,0 +1,55 @@
+{
+  "slug": "hirasawa-ko",
+  "name": "平沢港",
+  "location": {
+    "latitude": 35.0204725,
+    "longitude": 138.8620591
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "沼津市",
+    "city_slug": "numazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 330,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 385.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "内浦南の漁港、アジ・クロダイ・アオリイカ向き",
+    "access": "らららサンビーチバス停から徒歩5分",
+    "lead_text": "駿河湾に面した平沢港は、らららサンビーチに隣接する小さな漁港で、沖に伸びた堤防が主な釣り場です。水深は7〜8メートルとほぼフラットな砂泥底で、堤防周りには石積みのケーソンが2〜3メートル幅で入っており、先端部に向かって海底が落ち込んでいく地形です。アオリイカはヤエン師を中心に人気が高く、早朝から堤防が満員になるほど。春〜初夏と秋がシーズンで、夜中から陣取る常連も珍しくありません。内向きはクロダイの団子釣りで大型の実績があり、水温が上がり始める春先からアジやサバの回遊も始まります。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.77,
+    "secondary_flags": [
+      "cliff",
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@196m",
+      "man_made=breakwater@228m",
+      "man_made=breakwater@246m",
+      "man_made=breakwater@252m",
+      "man_made=breakwater@266m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ],
+  "harbor_code": "22-10",
+  "harbor_name": "三津"
+}

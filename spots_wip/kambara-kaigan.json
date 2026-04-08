@@ -1,0 +1,45 @@
+{
+  "slug": "kambara-kaigan",
+  "name": "蒲原海岸",
+  "location": {
+    "latitude": 35.1157181,
+    "longitude": 138.6045721
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "駿河湾",
+    "area_slug": "suruga-bay",
+    "city": "静岡市",
+    "city_slug": "shizuoka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 185,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 188.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "穏やかな砂浜、投げ釣りでキス・イシモチ",
+    "access": "蒲原本町バス停から徒歩10分",
+    "photo_url": "",
+    "lead_text": "駿河湾に面した蒲原海岸は、沖に並ぶ消波堤に守られ一年を通して比較的穏やかなサーフです。底質は砂泥底が主体で、岸から35メートルほど沖に出たあたりで水深が5メートル前後になり、波打ち際の手前で3メートル弱に落ち込む地形になっています。シロギスは遠浅ゆえに遠投が基本ですが、秋口は手前でも拾えることがあり、常連はシーズンによって探る距離を変えています。海岸沿いには小規模な流れ込みが点在し、沖のテトラとの複合エリアが実績ポイントとして知られています。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu"
+  ],
+  "harbor_code": "22-11",
+  "harbor_name": "田子の浦"
+}

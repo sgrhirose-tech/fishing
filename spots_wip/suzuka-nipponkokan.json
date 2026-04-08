@@ -1,0 +1,46 @@
+{
+  "slug": "suzuka-nipponkokan",
+  "name": "鈴鹿港・日本鋼管テトラ",
+  "location": {
+    "latitude": 34.8854776,
+    "longitude": 136.6334009
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "鈴鹿市",
+    "city_slug": "suzuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 130,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "大型テトラ帯、メバル・クロダイ・グレ向き",
+    "access": "長太ノ浦駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:テトラ"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru"
+  ],
+  "harbor_code": "24-1",
+  "harbor_name": "四日市"
+}
