@@ -17,7 +17,7 @@ sys.path.insert(0, str(_REPO_ROOT))
 
 from app.lead_gen import _clean_text  # noqa: E402
 
-_SPOTS_DIR = _REPO_ROOT / "spots"
+_SPOTS_DIR = _REPO_ROOT / "spots_wip"
 
 
 def main() -> None:
