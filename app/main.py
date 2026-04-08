@@ -930,11 +930,28 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
     return html
 
 
+_ARTICLE_CATEGORY_LABELS: dict[str, str] = {
+    "column": "店長コラム",
+    "info":   "店員インフォメーション",
+    "report": "店員釣行レポート",
+}
+_ARTICLE_CATEGORY_ORDER = ["column", "info", "report"]
+
+
 @app.get("/articles/", response_class=HTMLResponse)
 def page_articles_top(request: Request):
-    articles = _load_articles()
+    all_articles = _load_articles()
+    grouped: dict[str, list] = {cat: [] for cat in _ARTICLE_CATEGORY_ORDER}
+    for a in all_articles:
+        cat = a.get("category", "")
+        if cat in grouped:
+            grouped[cat].append(a)
+    categories = [
+        {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": grouped[cat]}
+        for cat in _ARTICLE_CATEGORY_ORDER
+    ]
     return templates.TemplateResponse(request, "articles/top.html", {
-        "articles": articles,
+        "categories": categories,
     })
 
 

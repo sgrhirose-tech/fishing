@@ -16,16 +16,30 @@
   <p>現場目線の釣りノウハウをお届けします</p>
 </section>
 
-<section class="area-links">
-  <div class="article-grid">
-    {% for a in articles %}
-    <a href="/articles/{{ a.category }}/{{ a.slug }}/" class="article-card">
-      <img src="/static/img/{{ a.card_image }}" alt="{{ a.title or a.slug }}" loading="lazy">
-      <div class="article-card-body">
-        <p class="article-card-title">{{ a.title or a.slug }}</p>
-      </div>
-    </a>
+<nav class="articles-page-nav">
+  {% for cat in categories %}
+  <a href="#{{ cat.key }}">{{ cat.label }}</a>
+  {% endfor %}
+</nav>
+
+{% for cat in categories %}
+<section class="articles-category-section" id="{{ cat.key }}">
+  <h2 class="articles-category-heading">{{ cat.label }}</h2>
+  {% if cat.articles %}
+  <ul class="article-list">
+    {% for a in cat.articles %}
+    <li>
+      <a href="/articles/{{ a.category }}/{{ a.slug }}/" class="article-row-card">
+        <img src="/static/img/{{ a.card_image }}" alt="{{ a.title or a.slug }}" loading="lazy">
+        <span class="article-row-title">{{ a.title or a.slug }}</span>
+      </a>
+    </li>
     {% endfor %}
-  </div>
+  </ul>
+  {% else %}
+  <p class="articles-empty">記事はまだありません。</p>
+  {% endif %}
 </section>
+{% endfor %}
+
 {% endblock %}
