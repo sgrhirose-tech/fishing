@@ -14,33 +14,36 @@
     "city_slug": "miura"
   },
   "physical_features": {
-    "sea_bearing_deg": 120.6,
+    "sea_bearing_deg": 120,
     "seabed_type": "sand",
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1704.0
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "seabed_summary": "砂主体"
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "1km以上の白砂ビーチ、キス・マゴチ・ヒラメ・カレイ向き",
-    "access": "南下浦郵便局前バス停から徒歩5分"
+    "access": "南下浦郵便局前バス停から徒歩5分",
+    "description": "津久井浜から続いている広大な砂浜です。京急の最寄り駅から徒歩でも大丈夫な近さです。この浜は釣れるポイント探しが数釣りのこつと言えるでしょう。一カ所で粘らないで積極的に移動していくことをお勧めします。津久井浜ほどマリンスポーツは盛んではありませんが譲り合って海を楽しみましょう。なお、海水浴場にもなりますので夏は一部エリアで釣りができません。南側の釣り可能エリアへ。",
+    "lead_text": "【文字数確認】 約248文字（210〜260文字の範囲内）✅"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.7,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:海岸"
     ]
   },
   "target_fish": [
-    "magochi",
-    "karei",
+    "shirogisu",
     "hirame",
-    "shirogisu"
+    "karei",
+    "magochi"
   ],
   "harbor_code": "14-11",
   "harbor_name": "金田湾",

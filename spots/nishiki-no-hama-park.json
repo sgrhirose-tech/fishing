@@ -14,26 +14,28 @@
     "city_slug": "kaizuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 226.5,
+    "sea_bearing_deg": 225,
     "seabed_type": "gravel",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1083.4
   },
   "derived_features": {
     "bottom_kisugo_score": 65,
-    "seabed_summary": "礫主体、貝殻混じり"
+    "seabed_summary": "礫主体、貝殻混じり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "貝塚市の海浜公園。シロギス・ハゼ・イシモチ・メバルが狙える。家族向け釣り場。",
-    "access": "二色浜駅から徒歩40分"
+    "access": "二色浜駅から徒歩40分",
+    "lead_text": "大阪湾に面した貝塚市の海浜公園で、府内でもサーフフィッシングが成立する砂浜を持つ数少ない釣り場です。沖は砂地底が広がるため根掛かりが少なく、シロギスは5月〜10月がシーズン。常連は干潮から上げ潮に変わる早朝に竿を出すことが多く、波打ち際から2〜3色先のカケアガリ付近でアタリが出やすいとされています。海浜緑地の護岸エリアは足場が広くて柵も整備されており、時間帯によっては潮の流れが強くなることもあるため、こまめな仕掛けの調整が必要です。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

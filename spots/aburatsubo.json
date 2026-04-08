@@ -21,28 +21,30 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "静かな入り江、キス・マゴチ・アオリイカ・メジナ向き",
-    "access": "油壺バス停から徒歩5分"
+    "access": "油壺バス停から徒歩5分",
+    "lead_text": "三浦半島の西端に位置する油壷は、三方を丘に囲まれた入り江で、湾内は湖面のように静かで波がほぼありません。底質は砂泥地で、水深はかなり浅め。験潮場や東大臨海実験所下などの地磯では、ポンプ小屋周辺の根際でフカセを入れるとメジナの顔が見やすく、秋口から冬にかけては型のいいクロダイも出ます。アオリイカは三浦半島でも有数のエギングスポットで、9月中旬〜10月が地元勢の間では本命シーズン。朝夕のマヅメを外さない人が多いです。"
   },
   "classification": {
-    "primary_type": "sand_beach",
-    "confidence": 0.41,
+    "primary_type": "breakwater",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=beach@274m"
     ]
   },
   "target_fish": [
     "aoriika",
+    "shirogisu",
     "magochi",
-    "mejina",
-    "shirogisu"
+    "mejina"
   ],
   "harbor_code": "14-15",
   "harbor_name": "諸磯"

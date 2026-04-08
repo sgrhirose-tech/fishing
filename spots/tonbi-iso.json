@@ -21,25 +21,27 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "大浜・長者ヶ崎境の磯混じり防波堤、クロダイ・メジナ向き",
-    "access": "葉山バス停から徒歩5分"
+    "access": "葉山バス停から徒歩5分",
+    "lead_text": "葉山・大浜と長者ヶ崎の境に位置するトンビ磯は、名前は磯ですが実態は磯とテトラが絡む小規模な防波堤です。水深は全体的に浅めで、特に御用邸側（堤防右手）は根がきつく投げ釣りでの根掛かりが多発するエリア。磯周りにはメジナをはじめクロダイ・カワハギ・ウミタナゴが付き、魚影は割と濃いと地元では知られています。夏の海水浴シーズンは竿を出しにくいため、常連が通うのは秋から春にかけて。テトラ際のウキフカセが主流です。"
   },
   "classification": {
-    "primary_type": "sand_beach",
-    "confidence": 0.59,
+    "primary_type": "breakwater",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=bare_rock@52m",
       "natural=beach@126m"
     ]
   },
   "target_fish": [
-    "mejina",
-    "kurodai"
+    "kurodai",
+    "mejina"
   ],
   "harbor_code": "14-18",
   "harbor_name": "新宿湾"

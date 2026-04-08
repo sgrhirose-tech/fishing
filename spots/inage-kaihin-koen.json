@@ -21,24 +21,26 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "砂浜は釣禁、検見川浜突堤・小堤防がメイン、メバル・シーバス向き",
-    "access": "花の美術館バス停から徒歩10分"
+    "access": "花の美術館バス停から徒歩10分",
+    "lead_text": "東京湾に面した稲毛海浜公園では、砂浜での釣りは禁止されており、メインとなるのは検見川浜の東突堤と小堤防エリアです。突堤の入り口付近はゴロタ石が積まれた地形で、メバルの好ポイントとして地元アングラーに知られています。水深は3〜7mで徐々に深くなる砂地底。メバルは夜行性のため夜間が狙い目で、2〜5月の春先が特に乗りやすい時期です。常夜灯がないため、ヘッドライトは必携です。"
   },
   "classification": {
-    "primary_type": "sand_beach",
-    "confidence": 0.41,
+    "primary_type": "breakwater",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=beach@271m"
     ]
   },
   "target_fish": [
-    "mebaru",
-    "suzuki"
+    "suzuki",
+    "mebaru"
   ],
   "harbor_code": "12-16",
   "harbor_name": "千葉灯標"

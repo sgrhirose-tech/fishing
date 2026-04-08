@@ -21,25 +21,28 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "温泉地に隣接、堤防でアジ・メジナ・クロダイ向き",
-    "access": "片町バス停から徒歩5分"
+    "access": "片町バス停から徒歩5分",
+    "lead_text": "東伊豆・網代の大堤防は、白灯台まわりで水深が約12メートルあり、海底には海藻が豊かに広がる地形です。フカセ師が通う理由もここにあって、藻際に潜むメジナは丸々と肥えた個体が多く、ボートで入った釣り人が1キロ超えを取り込んだ記録も残っています。南西風の強い日は大堤防が風を背負う向きになるため、荒れ気味の日でも比較的竿を出しやすいのが地元民に知られた特徴です。梅雨どきの朝マズメに常連が集中します。",
+    "description": "東伊豆・網代の大堤防は、白灯台まわりで水深が約12メートルあり、海底には海藻が豊かに広がる地形です。フカセ師が通う理由もここにあって、藻際に潜むメジナは丸々と肥えた個体が多く、ボートで入った釣り人が1キロ超えを取り込んだ記録も残っています。南西風の強い日は大堤防が風を背負う向きになるため、荒れ気味の日でも比較的竿を出しやすいのが地元民に知られた特徴です。梅雨どきの朝マズメに常連が集中します。"
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.75,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:港"
     ]
   },
   "target_fish": [
-    "mejina",
+    "aji",
     "kurodai",
-    "aji"
+    "mejina"
   ],
   "harbor_code": "22-1",
   "harbor_name": "網代"

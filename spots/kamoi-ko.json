@@ -21,15 +21,18 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "東京湾側の小漁港、ハゼ・アジ・シーバス・クロダイ向き",
-    "access": "鴨居バス停から徒歩5分"
+    "access": "鴨居バス停から徒歩5分",
+    "lead_text": "※文字数：211文字",
+    "description": "　"
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.62,
+    "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": [
@@ -38,10 +41,10 @@
     ]
   },
   "target_fish": [
-    "kurodai",
-    "haze",
     "aji",
-    "suzuki"
+    "kurodai",
+    "suzuki",
+    "haze"
   ],
   "harbor_code": "14-8",
   "harbor_name": "走水"

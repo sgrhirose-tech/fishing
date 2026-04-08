@@ -14,31 +14,33 @@
     "city_slug": "ninomiya"
   },
   "physical_features": {
-    "sea_bearing_deg": 169.5,
+    "sea_bearing_deg": 170,
     "seabed_type": "sand",
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 78.9
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "seabed_summary": "砂主体、急深寄り"
+    "seabed_summary": "砂主体、急深寄り",
+    "terrain_summary": ""
   },
   "info": {
-    "notes": "湘南西端の遠浅砂浜、キス・マゴチ向き、比較的空いた穴場",
-    "access": "秦野道バス停から徒歩10分"
+    "notes": "湘南西端の遠浅砂浜、キス・マゴチ向き、比較的空いた穴場　近隣駐車場少なめ",
+    "access": "秦野道バス停から徒歩10分",
+    "lead_text": "湘南西端・二宮の遠浅サーフは、遊泳禁止ゆえにサーファーが入らず、地元の投げ師が朝マズメから静かに場所を構える穴場です。砂底主体で根掛かりは少なく、梅沢川河口の払い出し周辺がマゴチの着き場として知られています。夏から秋口にかけてカタクチイワシが波打ち際に打ち上がる光景が見られたら活性が上がっているサイン。そのタイミングを狙って夕マズメに入る常連が多いポイントです。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.7,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:海岸"
     ]
   },
   "target_fish": [
-    "magochi",
-    "shirogisu"
+    "shirogisu",
+    "magochi"
   ],
   "harbor_code": "14-20",
   "harbor_name": "真鶴"

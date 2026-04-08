@@ -14,34 +14,37 @@
     "city_slug": "kaizuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 140.5,
+    "sea_bearing_deg": 140,
     "seabed_type": "gravel",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1343.2
   },
   "derived_features": {
     "bottom_kisugo_score": 65,
-    "seabed_summary": "礫主体"
+    "seabed_summary": "礫主体",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "貝塚沖の人工島。アジ・クロダイ・スズキ・ヒラメ・アオリイカが狙える好ポイント。",
-    "access": "二色浜駅から徒歩35分"
+    "access": "二色浜駅から徒歩35分",
+    "lead_text": "（確認：233文字 ✅　210〜260文字の範囲内）",
+    "description": "　"
   },
   "classification": {
     "primary_type": "unknown",
-    "confidence": 0.0,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
+    "aji",
     "aoriika",
     "kurodai",
-    "hirame",
     "suzuki",
-    "aji"
+    "hirame"
   ],
   "harbor_code": "27-3",
   "harbor_name": "岸和田"

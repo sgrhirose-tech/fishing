@@ -21,25 +21,27 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "小磯と護岸が混在、クロダイ・メジナ・アオリイカ向き",
-    "access": "浜諸磯バス停から徒歩5分"
+    "access": "浜諸磯バス停から徒歩5分",
+    "lead_text": "三浦半島西岸に突き出た岬の諸磯は、「オードロ」を中心に複数の小磯と護岸が混在する地形が特徴です。海底の所々に海藻帯が広がるシャロー帯で、満潮時でも水深は3m前後。春から初夏にかけて産卵で接岸する大型アオリイカが磯際に差し、秋は8月後半の新子から始まり10〜11月にかけてサイズが上がります。湾奥の「黒鯛込」と呼ばれる小磯はクロダイの実績が高く、波っ気のある日に常連が竿を出す場所として知られています。"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@255m"
     ]
   },
   "target_fish": [
     "aoriika",
-    "mejina",
-    "kurodai"
+    "kurodai",
+    "mejina"
   ],
   "harbor_code": "14-15",
   "harbor_name": "諸磯"

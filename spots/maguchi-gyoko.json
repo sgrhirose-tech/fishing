@@ -21,17 +21,19 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "港内岸釣り禁止、剱崎隣の地磯・大浦海岸から入釣",
-    "access": "剱崎バス停から徒歩15分"
+    "access": "剱崎バス停から徒歩15分",
+    "lead_text": "三浦半島の先端部、剱崎に隣接する間口漁港は2020年以降港内への立ち入りが禁止となり、現在は大浦海岸から入磯する地磯が陸っぱりの主戦場です。根がガチャガチャと入り組んだ浅い磯で、メジナ・クロダイ・メバル・ウミタナゴの実績が高く、荒れ気味の日に良型が出やすいと常連の間では知られています。夏から秋の早朝・夕まずめにはアジやイワシの回遊も入ります。"
   },
   "classification": {
-    "primary_type": "fishing_facility",
-    "confidence": 0.85,
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "harbour=yes@13m",
       "natural=bare_rock@253m"

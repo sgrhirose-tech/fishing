@@ -21,25 +21,27 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "毘沙門湾の荒磯、メジナ・クロダイ・アオリイカ向き",
-    "access": "毘沙門天入口バス停から徒歩10分"
+    "access": "毘沙門天入口バス停から徒歩10分",
+    "lead_text": "三崎と剣崎の中間に位置する毘沙門湾の荒磯エリアです。周囲を山や丘に囲まれた自然の入江で、外洋のうねりが直接当たる太平洋向きの地形ながら、風には比較的強いのが特徴。アオリイカは正面の潮通しが良い場所より、磯際のワンドや根まわりが実績ポイントとされており、春先には大型の親イカが接岸します。隣接する盗人狩（ヌスットガリ）は水深も深く、かなりの魚種が狙える磯として知られています。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
     "aoriika",
-    "mejina",
-    "kurodai"
+    "kurodai",
+    "mejina"
   ],
   "harbor_code": "14-12",
   "harbor_name": "間口"

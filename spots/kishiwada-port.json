@@ -2,8 +2,8 @@
   "slug": "kishiwada-port",
   "name": "岸和田港",
   "location": {
-    "latitude": 34.4657844,
-    "longitude": 135.3716589
+    "latitude": 34.469595,
+    "longitude": 135.3691149
   },
   "area": {
     "prefecture": "大阪府",
@@ -14,33 +14,35 @@
     "city_slug": "kishiwada"
   },
   "physical_features": {
-    "sea_bearing_deg": 322.0,
+    "sea_bearing_deg": 320,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "岸和田市の港湾。アジ・クロダイ・スズキ・タチウオが狙える。夜釣りにも対応。",
-    "access": "岸和田駅から徒歩15分"
+    "access": "岸和田駅から徒歩15分",
+    "lead_text": "大阪湾に面した岸和田港は、沖一文字と旧一文字を擁する泉州エリアの沖波止として知られます。タチウオシーズンの9月初旬、沖一文字の沖向き堤防に二桁釣果が複数出た翌日には渡船が定員近くで出船するほどの活況を見せた記録があります。旧一文字は混雑が比較的緩やかで、常連が夕暮れ前から釣り座を押さえてテンヤで地合いを待つのが習慣になっています。満潮に向かう上り潮の夜間が時合いとされています。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
+    "aji",
     "tachiuo",
     "kurodai",
-    "suzuki",
-    "aji"
+    "suzuki"
   ],
   "harbor_code": "27-3",
   "harbor_name": "岸和田"

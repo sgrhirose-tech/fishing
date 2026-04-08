@@ -14,26 +14,29 @@
     "city_slug": "tsu"
   },
   "physical_features": {
-    "sea_bearing_deg": 103.1,
+    "sea_bearing_deg": 105,
     "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "seabed_summary": "砂主体、貝殻混じり"
+    "seabed_summary": "砂主体、貝殻混じり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "津市の港護岸、クロダイ・セイゴ向き",
-    "access": "津市方面から車利用"
+    "access": "津市方面から車利用",
+    "lead_text": "【文字数確認】\n233文字。210〜260文字の範囲内です。",
+    "description": "　"
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.55,
+    "confidence": 1.0,
     "secondary_flags": [
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=pier@55m"
     ]

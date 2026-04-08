@@ -21,25 +21,27 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "岩礁と砂地が入り混じる広い海岸、クロダイ・キス・シーバス向き",
-    "access": "高崎海岸バス停から徒歩10分"
+    "access": "高崎海岸バス停から徒歩10分",
+    "description": "内房のシロギス釣り場として首都圏の釣り人に長く愛されてきた浜です。浜全体が砂地で根掛かりが少なく、ファミリーから本格派まで対応できます。通い込んだ釣り人のお気に入りポイントは「ど真ん中のポンプ前」。ヒットゾーンは4〜5色（80〜100m付近）のカケアガリが鉄板で、良型は5色から4色に差し掛かるタイミングで出ることが多いです。岸からの投げ釣りのほか、岩井ボートのレンタルボートで沖に出ると型がワンランク上がります。週末は館山道の渋滞が激しく、帰りは4時間超えも覚悟を。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.7,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:海岸"
     ]
   },
   "target_fish": [
+    "shirogisu",
     "kurodai",
-    "suzuki",
-    "shirogisu"
+    "suzuki"
   ],
   "harbor_code": "12-10",
   "harbor_name": "岩井袋"
