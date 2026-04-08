@@ -1,0 +1,53 @@
+{
+  "slug": "honmoku-umizuri-shisetsu",
+  "name": "本牧海づり施設",
+  "location": {
+    "latitude": 35.4297812,
+    "longitude": 139.6878362
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": "yokohama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 110,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 200.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "有料桟橋式施設、数釣りに定評、アジ・タコ・スズキ・カレイ向き",
+    "access": "横浜市方面から車利用",
+    "photo_url": "/static/img/spots/本牧海釣り施設.jpg",
+    "lead_text": "横浜本牧ふ頭D突堤から東京湾に向かって伸びる桟橋式の釣り施設です。底質は砂地で平坦な地形が広がり、沖桟橋の水深は約15mとかなり深め。カレイは投げ釣りで根がかりが出やすいため、沖桟橋から海底付近を狙う落とし込みが常連のアプローチです。シーズンは春、なかでも3〜4月ごろに釣果が集まりやすく、朝の開場時間帯に入釣した常連が桟橋の外側を占拠する光景もよく見られます。潮通しのよさが際立つこの海域は、江戸時代から漁場として知られてきた本牧沖に位置します。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=fishing@142m",
+      "man_made=pier@128m"
+    ]
+  },
+  "target_fish": [
+    "karei",
+    "suzuki",
+    "tako",
+    "aji"
+  ],
+  "harbor_code": "14-4",
+  "harbor_name": "新山下"
+}

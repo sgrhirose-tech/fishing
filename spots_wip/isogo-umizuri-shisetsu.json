@@ -1,0 +1,51 @@
+{
+  "slug": "isogo-umizuri-shisetsu",
+  "name": "磯子海づり施設",
+  "location": {
+    "latitude": 35.402448,
+    "longitude": 139.643222
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": "yokohama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 165,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1976.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "有料施設で大物実績、タコ・クロダイ・スズキ・カレイ向き",
+    "access": "横浜市方面から車利用",
+    "photo_url": "/static/img/spots/磯子海釣り施設.jpg",
+    "lead_text": "根岸湾奥に設けられた全長500mの桟橋で、フェンス直下にはテトラが沈み根掛かりが多い独特の地形です。漁礁が4か所投下されており、水温が上がる春先から南桟橋側でクロダイのウキフカセ釣果が出始めます。常連が開場前から並んで狙うのが南・東・中央の桟橋が交差する中央桟橋エリアで、場所取りに出遅れると入れないことも。夕方から暗くなりかけの時間帯に潮の流れが速まるタイミングで、大物の気配が濃くなります。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.95,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=fishing@12m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "karei",
+    "suzuki",
+    "tako"
+  ],
+  "harbor_code": "14-5",
+  "harbor_name": "根岸"
+}

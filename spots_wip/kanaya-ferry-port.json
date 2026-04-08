@@ -1,0 +1,46 @@
+{
+  "slug": "kanaya-ferry-port",
+  "name": "金谷フェリー港",
+  "location": {
+    "latitude": 35.1692,
+    "longitude": 139.817371
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 230,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 712.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "石積み護岸でクロダイ・アジ・回遊魚向き、要作業確認",
+    "access": "浜金谷駅から徒歩10分",
+    "lead_text": "千葉県富津市・浜金谷港の北港に広がる石積み護岸が主な釣り場で、久里浜行きのフェリーが目の前を通過します。水深は護岸際で約4〜5メートルあり、ところどころ根が点在しているのが特徴です。アジを狙うなら水深の3分の2ほど、タナ3メートル前後が目安で、アジが回遊し始めると常連が一気に集まる活気ある釣り場として知られています。夜間は奥の常夜灯周りがアジの定番スポットになり、日中はウキフカセでクロダイを狙う釣り人の姿も見られます。岩場は干潮時のみ入れるエリアでクロダイ実績が高く、作業日は入場不可となるため、訪れる前に状況確認を忘れずに。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@113m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "aji"
+  ],
+  "harbor_code": "12-10",
+  "harbor_name": "岩井袋"
+}

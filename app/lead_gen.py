@@ -148,36 +148,72 @@ def _extract_text(response: dict) -> str:
 import re as _re
 
 _HR_RE         = _re.compile(r'\n\s*[-─―]{3,}\s*\n')
-_PREAMBLE_RE   = _re.compile(r'^(?:以下[、，はが]|収集|情報を|リード文|十分な情報|確認したところ)')
+_LEAD_SEP_RE   = _re.compile(r'^[-─―]{3,}\s*\n?')   # 先頭の --- ストリップ用
+_TRAIL_SEP_RE  = _re.compile(r'\n?\s*[-─―]{3,}\s*$') # 末尾の --- ストリップ用
+_PREAMBLE_RE   = _re.compile(
+    r'^(?:以下[、，はが]|収集|情報を|リード文|十分な情報|確認したところ'
+    r'|上記[のをがにリ]|字数確認|【文字数|以上の情報|以下が'
+    r'|[-─―]{3,}$'    # 単独の区切り線
+    r')'
+)
 _POSTSCRIPT_RE = _re.compile(r'^(?:文字数|[-─―]{3}|\*\*文字|ルールに従い)')
 _BOLD_RE       = _re.compile(r'\*\*(.+?)\*\*')
 _H_RE          = _re.compile(r'#{1,6}\s*')
-# モデルが「情報なし」を文章で説明しているパターン
-_NO_INFO_RE    = _re.compile(r'空文字列を返|情報が得られません|ニッチ情報.*見つかりません|ルールに従い.*空')
+# モデルが「情報なし」や「エラー」を文章で説明しているパターン → 空文字を返す
+_NO_INFO_RE    = _re.compile(
+    r'空文字列を返|情報が得られません|ニッチ情報.*見つかりません|ルールに従い.*空'
+    r'|ニッチ情報が不足|ニッチ情報が十分に取得できません'
+    r'|ニッチな釣り場固有情報|収集できたニッチ情報.*が限られ'
+    r'|検索回数上限に達'
+)
 
 
 def _clean_text(text: str) -> str:
     """前置き・区切り線・文字数コメント・マークダウンを除去する。
-    モデルが「情報なし」を文章で説明している場合は空文字を返す。
+    モデルが「情報なし」や「エラー」を文章で説明している場合は空文字を返す。
     """
     text = text.strip()
+    if not text:
+        return ""
 
-    # モデルが空文字列を返す旨を説明しているだけのケース
+    # モデルが「情報なし/エラー」を説明しているだけのケース
     if _NO_INFO_RE.search(text):
         return ""
 
-    # 「---」区切りで分割し、本文らしい部分を取り出す
-    parts = _HR_RE.split(text)
-    if len(parts) > 1:
-        for part in reversed(parts):
-            part = part.strip()
-            if part and not _PREAMBLE_RE.match(part) and not _POSTSCRIPT_RE.match(part):
-                text = part
-                break
+    # 先頭・末尾の --- を除去してから段落分割
+    text = _LEAD_SEP_RE.sub("", text).strip()
+    text = _TRAIL_SEP_RE.sub("", text).strip()
 
-    # 先頭の前置き行を除去
+    # 「最後の \n\n 以降を取る」戦略：
+    # 前置きは最初の段落に、本文は最後の段落に来ることが多い。
+    # ただしモデルが本文を2回出力し末尾が短く切れている場合は長い版を優先する。
+    if "\n\n" in text:
+        paragraphs = text.split("\n\n")
+        candidates = []
+        for para in paragraphs:
+            para = _LEAD_SEP_RE.sub("", para).strip()
+            if not para:
+                continue
+            if (_PREAMBLE_RE.match(para) or _POSTSCRIPT_RE.match(para)
+                    or _NO_INFO_RE.search(para)):
+                continue
+            candidates.append(para)
+
+        if not candidates:
+            return ""
+
+        best = candidates[-1]  # 基本は末尾を採用
+        # 末尾が短い（< 150字）かつ前方に長い版（≥200字）があれば長い版を優先
+        if len(best) < 150:
+            longer = [c for c in candidates[:-1] if len(c) >= 200]
+            if longer:
+                best = max(longer, key=len)
+        text = best
+
+    # 先頭の前置き行を除去（段落が1つのケース向け）
     lines = text.splitlines()
-    while lines and _PREAMBLE_RE.match(lines[0].strip()):
+    while lines and (_PREAMBLE_RE.match(lines[0].strip())
+                     or _POSTSCRIPT_RE.match(lines[0].strip())):
         lines.pop(0)
 
     # 末尾の後書き行を除去

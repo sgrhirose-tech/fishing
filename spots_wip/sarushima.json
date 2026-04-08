@@ -1,0 +1,55 @@
+{
+  "slug": "sarushima",
+  "name": "猿島",
+  "location": {
+    "latitude": 35.2857045,
+    "longitude": 139.6940804
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 230,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 448.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "渡船でアクセスの無人島磯、クロダイ・メジナ・アジ向き",
+    "access": "横須賀中央駅から徒歩30分",
+    "photo_url": "/static/img/spots/猿島.jpg",
+    "lead_text": "東京湾に浮かぶ無人島・猿島でメジナを狙うなら、北東側の小磯「オイモノ鼻」が主戦場です。岩礁と根が複雑に入り組んだ地形で潮通しもよく、ウキフカセで実績があります。北風が吹くと波が立ちやすいため、常連は南寄りの風の日を選んで渡ります。フェリーの運航上、朝マヅメには間に合わない分、日中の潮の動き出しを意識した釣行が定番スタイル。夏の海水浴シーズン中はビーチ側の釣りが制限されるため、磯狙いは春・秋が中心です。"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=pier@130m",
+      "man_made=pier@138m",
+      "man_made=pier@151m",
+      "natural=bare_rock@154m",
+      "natural=bare_rock@219m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "14-7",
+  "harbor_name": "横須賀"
+}

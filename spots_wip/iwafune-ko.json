@@ -1,0 +1,46 @@
+{
+  "slug": "iwafune-ko",
+  "name": "岩船港",
+  "location": {
+    "latitude": 35.2089502,
+    "longitude": 140.3929138
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "いすみ市",
+    "city_slug": "isumi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1874.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "多彩な魚種が入る港、アジ・シマアジ・クロダイ・アイナメ向き",
+    "access": "いすみ市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.77,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "waterway=dock@31m"
+    ]
+  },
+  "target_fish": [
+    "shimaaji",
+    "kurodai",
+    "aji"
+  ],
+  "harbor_code": "12-5",
+  "harbor_name": "上総勝浦"
+}
