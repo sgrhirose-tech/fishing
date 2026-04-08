@@ -115,21 +115,28 @@ def _extract_text(response: dict) -> str:
 
 import re as _re
 
-_HR_RE       = _re.compile(r'\n\s*[-─―]{3,}\s*\n')
-_PREAMBLE_RE = _re.compile(r'^(?:以下[、，はが]|収集|情報を|リード文|十分な情報)')
-_POSTSCRIPT_RE = _re.compile(r'^(?:文字数|[-─―]{3}|\*\*文字)')
-_BOLD_RE     = _re.compile(r'\*\*(.+?)\*\*')
-_H_RE        = _re.compile(r'#{1,6}\s*')
+_HR_RE         = _re.compile(r'\n\s*[-─―]{3,}\s*\n')
+_PREAMBLE_RE   = _re.compile(r'^(?:以下[、，はが]|収集|情報を|リード文|十分な情報|確認したところ)')
+_POSTSCRIPT_RE = _re.compile(r'^(?:文字数|[-─―]{3}|\*\*文字|ルールに従い)')
+_BOLD_RE       = _re.compile(r'\*\*(.+?)\*\*')
+_H_RE          = _re.compile(r'#{1,6}\s*')
+# モデルが「情報なし」を文章で説明しているパターン
+_NO_INFO_RE    = _re.compile(r'空文字列を返|情報が得られません|ニッチ情報.*見つかりません|ルールに従い.*空')
 
 
 def _clean_text(text: str) -> str:
-    """前置き・区切り線・文字数コメント・マークダウンを除去する。"""
+    """前置き・区切り線・文字数コメント・マークダウンを除去する。
+    モデルが「情報なし」を文章で説明している場合は空文字を返す。
+    """
     text = text.strip()
+
+    # モデルが空文字列を返す旨を説明しているだけのケース
+    if _NO_INFO_RE.search(text):
+        return ""
 
     # 「---」区切りで分割し、本文らしい部分を取り出す
     parts = _HR_RE.split(text)
     if len(parts) > 1:
-        # 前置きでもなく後書きでもない部分を探す（後ろから）
         for part in reversed(parts):
             part = part.strip()
             if part and not _PREAMBLE_RE.match(part) and not _POSTSCRIPT_RE.match(part):
