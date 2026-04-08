@@ -21,15 +21,17 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "砂礫混じりのサーフ、キス・ヒラメ・マゴチ・弓角青物向き",
-    "access": "大磯局前バス停から徒歩5分"
+    "access": "大磯駅から徒歩10分",
+    "lead_text": "相模湾に面した砂礫混じりのサーフで、大磯高校前あたりを境に沖が急深になるため、この付近から花水川河口にかけてのエリアが常連アングラーに知られたマゴチの主戦場です。目の前にシラスの群れが入る春から夏が本格シーズンで、夜明け前から日の出直後の朝マズメに集中して釣果が出る傾向があります。吉田邸下には「古賀根」と呼ばれる根が点在し、駆け上がりも形成されているため、底質の変化を丁寧に拾っていくのがこの浜の定石です。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.43,
+    "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": [
@@ -39,9 +41,9 @@
     ]
   },
   "target_fish": [
-    "magochi",
+    "shirogisu",
     "hirame",
-    "shirogisu"
+    "magochi"
   ],
   "harbor_code": "14-19",
   "harbor_name": "江ノ島"

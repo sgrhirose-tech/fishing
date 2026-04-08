@@ -21,15 +21,17 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "相模川河口東側の砂浜、キス・シーバス・ヒラメ向き",
-    "access": "道の駅湘南ちがさき前バス停から徒歩15分"
+    "access": "道の駅湘南ちがさき前バス停から徒歩15分",
+    "lead_text": "相模川河口の東側に位置する茅ヶ崎の砂浜で、比較的遠浅ながら川の影響で地形変化に富んでいます。河口付近に絡む砂州や石積みの護岸まわりはベイトが豊富で、春先にイワシが接岸するタイミングでヒラメが浅場に差してきます。常連アングラーが朝マヅメ狙いで訪れる時期は4月前後が多く、夜明け前から立ちこみ、夜が明けた後も粘る釣り人の姿が見られます。雨後は相模川の濁りをモロに受けやすい点は、ベテランなら誰もが気にするポイントです。"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.41,
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": [
@@ -37,9 +39,9 @@
     ]
   },
   "target_fish": [
-    "hirame",
+    "shirogisu",
     "suzuki",
-    "shirogisu"
+    "hirame"
   ],
   "harbor_code": "14-19",
   "harbor_name": "江ノ島"

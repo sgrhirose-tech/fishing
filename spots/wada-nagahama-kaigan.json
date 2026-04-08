@@ -21,27 +21,29 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "三浦西岸の広い砂浜、キス・マゴチ・カレイ向き",
-    "access": "和田バス停から徒歩20分"
+    "access": "和田バス停から徒歩20分",
+    "lead_text": "三浦半島西岸、荒崎と黒崎の鼻にはさまれた遠浅の砂泥底サーフ。シロギスは4月から10月ごろが主なシーズンで、秋口は手前まで寄ってくることが多く、海岸中央部は根掛かりが少ない分、丁寧に広く探れます。常連は早朝マヅメの3〜4時間に絞って竿を出すスタイルが多く、日中は人も増えて落ち着かなくなります。砂地に点在する沈み根との境目はマゴチの気配も濃く、キス狙いと並行して意識されています。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.52,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=sand@52m"
     ]
   },
   "target_fish": [
-    "magochi",
+    "shirogisu",
     "karei",
-    "shirogisu"
+    "magochi"
   ],
   "harbor_code": "14-17",
   "harbor_name": "小田和湾"

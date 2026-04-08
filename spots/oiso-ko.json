@@ -21,15 +21,17 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "アジ・サバ・サビキの定番港、クロダイ・カマス・メジナ向き",
-    "access": "消防署前［大磯町］バス停から徒歩10分"
+    "access": "大磯駅から徒歩10分",
+    "lead_text": "相模湾に面した大磯港の中央岸壁は底質が砂泥地で、朝夕のまずめ時に豆アジや小サバの群れが回遊してきます。常連の間では「日が高くなる前の8時頃がピーク」と言われており、夏から秋にかけて特に活性が上がります。駐車場側の「フェンス前」と呼ばれるポイントはクロダイやマダコの実績も高い隠れた一等地で、秋口に外海が荒れた際は港内にカイズが入りやすく、ウキ釣りやヘチ釣りの常連が早朝から場所を押さえにきます。"
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.68,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
@@ -43,11 +45,11 @@
     ]
   },
   "target_fish": [
-    "mejina",
+    "aji",
     "kurodai",
-    "kamasu",
     "saba",
-    "aji"
+    "kamasu",
+    "mejina"
   ],
   "harbor_code": "14-19",
   "harbor_name": "江ノ島",

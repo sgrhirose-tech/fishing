@@ -21,7 +21,8 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "seabed_summary": "砂主体"
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "2020年8月より釣り禁止、釣行不可",
@@ -29,11 +30,11 @@
   },
   "classification": {
     "primary_type": "unknown",
-    "confidence": 0.0,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [],

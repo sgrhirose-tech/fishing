@@ -21,23 +21,25 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "西湘の地磯、クロダイ・メジナ・アオリイカ向き",
-    "access": "真鶴町方面から車利用"
+    "access": "真鶴町方面から車利用",
+    "lead_text": "真鶴半島に位置する道無は、岩礁帯と砂地が混在する底質の地磯です。カジメが茂る根回りはアオリイカの好ポイントで、西湘・真鶴エリアはキロアップの実績が神奈川でも際立つエリアとして知られています。秋口からはエギングとヤエン釣りの両方で地元勢が通い、夜間に磯際へ回遊してくるアオリを狙うヤエン師の姿も見られます。春の産卵期にかけても大型の期待があり、クロダイ・メジナのフカセ釣りも通年で成立します。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
     "aoriika",
-    "mejina",
-    "kurodai"
+    "kurodai",
+    "mejina"
   ],
   "harbor_code": "14-20",
   "harbor_name": "真鶴"

@@ -21,25 +21,27 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "境川河口の漁港、キス・サビキ・シーバス向き（タコ禁漁区）",
-    "access": "片瀬江ノ島駅から徒歩15分"
+    "access": "片瀬江ノ島駅から徒歩15分",
+    "description": "江ノ島の西側、境川の河口に位置する漁港です。白灯側（西側）の堤防の一部が釣り人に開放されています。堤防先端部は漁船の出入りがあるため釣りはできません。遊歩道として整備されていますが、柵が低いのでライフジャケット着用を推奨します。チョイ投げでシロギス、サビキ釣りもしやすいスポットです。ルアーでシーバスを狙うアングラーもよく訪れています。シーバスかと期待して巻き上げてみたらボラだった、チョイ投げで激震を感じて上げてみたらダイナンウミヘビが仕掛けをぐるぐる巻きにして上がってきた、など残念？なゲストが釣れても大きな心で。"
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.9,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:漁港"
     ]
   },
   "target_fish": [
-    "tako",
+    "shirogisu",
     "suzuki",
-    "shirogisu"
+    "tako"
   ],
   "harbor_code": "14-19",
   "harbor_name": "江ノ島"

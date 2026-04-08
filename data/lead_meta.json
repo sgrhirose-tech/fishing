@@ -1,0 +1,102 @@
+{
+  "honmoku-umizuri-shisetsu": {
+    "generated_at": "2026-04-07T23:23:27.946232+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "ichihara-umizuri-shisetsu": {
+    "generated_at": "2026-04-07T23:24:14.428887+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "ichikawa-ko": {
+    "generated_at": "2026-04-07T23:32:39.654811+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "inage-kaihin-koen": {
+    "generated_at": "2026-04-07T23:33:14.254242+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "isogo-umizuri-shisetsu": {
+    "generated_at": "2026-04-07T23:35:07.266473+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "jonanjima-kaihin-koen": {
+    "generated_at": "2026-04-07T23:36:49.117313+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kaneda-mitate-kaigan": {
+    "generated_at": "2026-04-07T23:38:46.943509+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kasai-rinkai-koen": {
+    "generated_at": "2026-04-07T23:41:40.209578+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "keihinjima-tsubasa-koen": {
+    "generated_at": "2026-04-07T23:43:27.809042+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kemigawahama-tottei": {
+    "generated_at": "2026-04-07T23:46:18.818400+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kisarazu-ko": {
+    "generated_at": "2026-04-07T23:49:09.112954+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kisarazu-shiohama-koen": {
+    "generated_at": "2026-04-07T23:50:53.382296+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kuzuma-kaigan": {
+    "generated_at": "2026-04-07T23:53:53.069566+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "mizu-no-hiroba-koen": {
+    "generated_at": "2026-04-07T23:54:24.564202+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nakanoshima-koen": {
+    "generated_at": "2026-04-07T23:56:03.153658+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "oi-futo-chuo-kaihin-koen-nagisa-no-mori": {
+    "generated_at": "2026-04-07T23:56:37.737093+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "sodegaura-kaihin-koen": {
+    "generated_at": "2026-04-08T00:00:14.500489+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "takasu-kaihin-koen": {
+    "generated_at": "2026-04-08T00:02:00.296919+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "tokai-futo-koen": {
+    "generated_at": "2026-04-08T00:03:52.671127+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "toyosu-gururi-koen": {
+    "generated_at": "2026-04-08T00:04:27.463779+09:00",
+    "quality": "ok",
+    "needs_review": false
+  }
+}

@@ -26,8 +26,7 @@
   },
   "info": {
     "notes": "美浜町の漁港、アオリイカ・クロダイ向き",
-    "access": "美浜町方面から車利用",
-    "photo_url": ""
+    "access": "美浜町方面から車利用"
   },
   "classification": {
     "primary_type": "breakwater",
@@ -47,8 +46,8 @@
     ]
   },
   "target_fish": [
-    "kurodai",
-    "aoriika"
+    "aoriika",
+    "kurodai"
   ],
   "harbor_code": "23-15",
   "harbor_name": "常滑"

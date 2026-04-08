@@ -21,25 +21,27 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "真鶴半島の入り江状磯、クロダイ・メジナ・アオリイカ向き",
-    "access": "真鶴町方面から車利用"
+    "access": "真鶴町方面から車利用",
+    "lead_text": "真鶴半島の北側に切り込む入り江状の地磯・番場浦。かつての石切場跡が海底にも続き、大岩がゴロゴロと連なる複雑な岩礁地帯が広がっています。水深は4〜5mで底質は白い岩盤。岩と岩の峡谷状の隙間をアオリイカが回遊するのがこの場所ならではの特徴です。春の親イカ・秋の新子シーズンには常連エギンガーが早朝から集まり、階段を降りて左手の飛び岩周りは休日の夜明けには釣り座が埋まることも多い人気ポイントです。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
     "aoriika",
-    "mejina",
-    "kurodai"
+    "kurodai",
+    "mejina"
   ],
   "harbor_code": "14-20",
   "harbor_name": "真鶴"

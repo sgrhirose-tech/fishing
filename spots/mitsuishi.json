@@ -21,23 +21,25 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "真鶴半島の景勝地磯、クロダイ・メジナ・イシダイ向き",
-    "access": "真鶴町方面から車利用"
+    "access": "真鶴町方面から車利用",
+    "lead_text": "真鶴半島の先端に位置する三ツ石は、相模湾に突き出た岩礁地帯の地磯です。ゴロタ浜を経由して渡礁できるのは潮位80cm以下の干潮時のみで、大潮回りを狙って通う常連が多いです。水深は7〜10mほどで、箱根火山の溶岩ドームが生んだ複雑な根回りがイシダイ・クロダイ・メジナを引きつけます。冬場の1〜3月は水温低下とともにエサ取りが少なくなり、良型の石物を狙う磯師が夜明け前から陣取りに来ます。南西微風の日ほど仕掛けが安定しやすく、北東風が強まると一気に難しくなる、風向きを選ぶ磯です。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
+    "kurodai",
     "ishidai",
-    "mejina",
-    "kurodai"
+    "mejina"
   ],
   "harbor_code": "14-20",
   "harbor_name": "真鶴"

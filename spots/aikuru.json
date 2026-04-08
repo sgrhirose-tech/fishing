@@ -21,23 +21,25 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "追浜の護岸、足場良く手軽、アイナメ・アジ・メバル・カサゴ向き",
-    "access": "追浜駅から徒歩30分"
+    "access": "追浜駅から徒歩30分",
+    "lead_text": "横須賀・追浜の長浦港（深浦湾）に面したアイクル裏の護岸。足もとの水深は3〜4mほどで、沖にはゴロタや漁礁が点在し、海底は岩場に藻がびっしり茂る磯的な地形です。カサゴやメバル、アイナメといった根魚が護岸際にしっかりついており、ヘチ狙いの常連が通うのは日没前後の時間帯。透明度が高く小魚の回遊も目視できることもあり、秋口にはアジやサバが寄ってくる夕マヅメも見逃せません。沖を狙うと根がかりしやすいため、壁際とその周辺が実績の高いポイントです。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "breakwater",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
+    "aji",
     "kasago",
-    "mebaru",
-    "aji"
+    "mebaru"
   ],
   "harbor_code": "14-6",
   "harbor_name": "長浦"

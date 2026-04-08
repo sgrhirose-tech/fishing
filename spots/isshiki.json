@@ -21,19 +21,21 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "海水浴シーズン外が主体、キス・マゴチ・アオリイカ・クロダイ向き",
-    "access": "葉山公園前バス停から徒歩5分"
+    "access": "葉山公園前バス停から徒歩5分",
+    "lead_text": "三浦半島西岸・相模湾に面した遠浅の砂浜で、夏の海水浴シーズンが明けると常連のエギンガーが戻ってくる場所です。砂地と岩礁帯が混在する地形で、海岸端の一色堤防まわりがアオリイカの主戦場。一帯はシャローエリアのため、秋シーズンは2.5〜3号エギを遠投するスタイルが主流です。満潮時は堤防付け根が水没するため、潮位を見計らってからポイントに入るのが地元流です。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.59,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@167m",
       "natural=beach@149m",
@@ -42,9 +44,9 @@
   },
   "target_fish": [
     "aoriika",
-    "magochi",
+    "shirogisu",
     "kurodai",
-    "shirogisu"
+    "magochi"
   ],
   "harbor_code": "14-18",
   "harbor_name": "新宿湾",

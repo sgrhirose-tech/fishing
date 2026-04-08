@@ -21,7 +21,8 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "横須賀の無料釣り専用公園、アジ・サバ・カレイ・タチウオ向き",
@@ -29,20 +30,20 @@
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.81,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "leisure=fishing@43m"
     ]
   },
   "target_fish": [
+    "aji",
     "tachiuo",
     "karei",
-    "saba",
-    "aji"
+    "saba"
   ],
   "harbor_code": "14-7",
   "harbor_name": "横須賀"

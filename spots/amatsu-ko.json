@@ -15,34 +15,37 @@
   },
   "physical_features": {
     "sea_bearing_deg": 180,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1241.4
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "赤灯・白灯立入禁止、港内のみ可、アジ・クロダイ・サヨリ向き",
-    "access": "仲宿バス停から徒歩5分"
+    "access": "仲宿バス停から徒歩5分",
+    "lead_text": "千葉県鴨川市・外房に位置する天津港は、港内の水深が4〜6mあり、砂地底の岸壁と一段高くなった小突堤がクロダイ狙いの定番スポットです。港内は潮が澄んでいることが多く、ダンゴ釣り師が年間を通じて竿を出しています。なかでも通称「タンク前」と呼ばれる港奥の岸壁は秋口のカイズ（小型クロダイ）の数釣りで知られ、9月以降になると常連の姿が増えます。ボラが多く居着いているため、比重のあるダンゴで手早く底まで送り込むのが現地での定石。エサ取りが多い日や食い渋り時にはフナムシが特エサになると地元で語られています。",
+    "description": "千葉県鴨川市・外房に位置する天津港は、港内の水深が4〜6mあり、砂地底の岸壁と一段高くなった小突堤がクロダイ狙いの定番スポットです。港内は潮が澄んでいることが多く、ダンゴ釣り師が年間を通じて竿を出しています。なかでも通称「タンク前」と呼ばれる港奥の岸壁は秋口のカイズ（小型クロダイ）の数釣りで知られ、9月以降になると常連の姿が増えます。ボラが多く居着いているため、比重のあるダンゴで手早く底まで送り込むのが現地での定石。エサ取りが多い日や食い渋り時にはフナムシが特エサになると地元で語られています。"
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.9,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@220m",
       "waterway=dock@3m"
     ]
   },
   "target_fish": [
+    "aji",
     "kurodai",
-    "sayori",
-    "aji"
+    "sayori"
   ],
   "harbor_code": "12-6",
   "harbor_name": "鴨川"
