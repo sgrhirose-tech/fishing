@@ -18,17 +18,23 @@ sys.path.insert(0, str(_REPO_ROOT))
 
 from app.lead_gen import _clean_text  # noqa: E402
 
-# 80字未満かつ釣り禁止通知でもないテキストは不完全と見なして削除
-_MIN_CHARS = 80
-_BAN_RE    = __import__("re").compile(r'釣り禁止|立入禁止|釣禁')
+# 釣り禁止通知でもないテキストの最低文字数
+_MIN_CHARS       = 80
+_BAN_RE          = __import__("re").compile(r'釣り禁止|立入禁止|釣禁')
+# 文末が句読点・括弧などで終わっていない → 途中で切れている
+_SENTENCE_END_RE = __import__("re").compile(r'[。！？」）…～]$')
 
 
 def _should_delete(text: str) -> bool:
     """クリーニング後でも使い物にならないテキストか判定する。"""
     if not text:
         return True
+    is_ban = _BAN_RE.search(text)
     # 短すぎる（釣り禁止通知は除く）
-    if len(text) < _MIN_CHARS and not _BAN_RE.search(text):
+    if len(text) < _MIN_CHARS and not is_ban:
+        return True
+    # 文末が途中切れ（釣り禁止通知は除く）
+    if not is_ban and len(text) > 40 and not _SENTENCE_END_RE.search(text):
         return True
     return False
 
