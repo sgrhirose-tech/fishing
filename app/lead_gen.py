@@ -42,6 +42,17 @@ _SYSTEM_PROMPT = """\
 あなたは釣り場情報サービス「Tsuricast」のコンテンツ担当です。
 指定された釣り場について web_search ツールで情報を収集し、リード文を生成してください。
 
+【魚種スラッグ対応表】
+以下のスラッグが USER メッセージに記載された場合、対応する日本語名を使ってください。
+kurodai=クロダイ / mejina=メジナ / aji=アジ / karei=カレイ / kisu=キス / suzuki=スズキ
+ma-aji=マアジ / shiro-aji=シロアジ / sardinella=イワシ / katakuchi-iwashi=カタクチイワシ
+saba=サバ / sanma=サンマ / hirame=ヒラメ / tachiuo=タチウオ / tako=タコ / ika=イカ
+surume-ika=スルメイカ / koika=コウイカ / buri=ブリ / kampachi=カンパチ / hamachi=ハマチ
+inada=イナダ / warasa=ワラサ / maguro=マグロ / katsuo=カツオ / sawara=サワラ
+aburame=アイナメ / kasago=カサゴ / mebaru=メバル / isaki=イサキ / chinu=チヌ
+shiro-gikesu=シロギス / makogarei=マコガレイ / ishigarei=イシガレイ / ainame=アイナメ
+haze=ハゼ / unagi=ウナギ / fugu=フグ / korodai=コロダイ / tairyo=タイ
+
 【検索の進め方】
 以下のようなクエリを組み合わせて検索し、個人ブログや地元釣具店のレポートを優先して読んでください。
 - "{spot_name} 釣り 釣行記"
@@ -63,7 +74,15 @@ _SYSTEM_PROMPT = """\
 - 「---」などの区切り線は書かない
 - 「文字数確認：○字」などの確認コメントは書かない
 - マークダウン記法（**太字**、## 見出しなど）は使わない
-- リード文本文のみを出力すること\
+- リード文本文のみを出力すること
+
+【良いリード文の例】
+
+例1（桟橋式有料施設）:
+横浜本牧ふ頭D突堤から東京湾に向かって伸びる桟橋式の釣り施設です。底質は砂地で平坦な地形が広がり、沖桟橋の水深は約15メートルあります。カレイは12月から3月にかけて砂地の底を這う個体が多く、常連はエサをコマセカゴと組み合わせた仕掛けで足元に止めて待つスタイルが主流です。夏から秋はアジとサバが回遊し、カゴ釣りでの数釣りが楽しめます。
+
+例2（護岸・公園）:
+羽田空港対岸に位置する「みなと広場」の北東向き約300mの護岸が釣り場で、東京湾の航路に面しているぶん潮通しが際立っています。水深は岸壁際で約5メートル、潮が動く時間帯には小型のクロダイが浮いてくるためヘチ釣りの実績があります。春から初夏にかけてはシーバスのランカーも出ており、地元では夜間の橋脚際が有名なポイントです。\
 """
 
 
@@ -90,7 +109,13 @@ def _call_claude(messages: list[dict], api_key: str, retry: int = 3) -> dict:
     for attempt in range(retry):
         try:
             with urllib.request.urlopen(req, timeout=60, context=_SSL_CONTEXT) as resp:
-                return json.loads(resp.read().decode("utf-8"))
+                data = json.loads(resp.read().decode("utf-8"))
+            usage = data.get("usage", {})
+            cache_write = usage.get("cache_creation_input_tokens", 0)
+            cache_read  = usage.get("cache_read_input_tokens", 0)
+            if cache_write or cache_read:
+                print(f"  [cache] write={cache_write} read={cache_read} input={usage.get('input_tokens',0)}")
+            return data
         except urllib.error.HTTPError as e:
             err_body = e.read().decode("utf-8", errors="replace")
             print(f"  [警告] Claude API HTTP {e.code}: {err_body[:200]}")
@@ -176,22 +201,11 @@ def generate_lead_text(spot: dict, api_key: str) -> tuple[str, str, bool]:
     pref = area.get("prefecture", "")
     area_name = _AREA_NAMES.get(area.get("area_slug", ""), area.get("area_name", ""))
     fish = spot.get("target_fish", [])
-    primary_fish_slug = fish[0] if fish else ""
-
-    # 魚種スラッグ → 日本語名の簡易マップ（プロンプト用。完全性は不要）
-    _FISH_JP: dict[str, str] = {
-        "kurodai": "クロダイ", "mejina": "メジナ", "aji": "アジ",
-        "karei": "カレイ", "kisu": "キス", "suzuki": "スズキ",
-        "sardinella": "イワシ", "saba": "サバ", "sanma": "サンマ",
-        "hirame": "ヒラメ", "tachiuo": "タチウオ", "tako": "タコ",
-        "ika": "イカ", "buri": "ブリ", "kampachi": "カンパチ",
-    }
-    primary_fish_jp = _FISH_JP.get(primary_fish_slug, primary_fish_slug)
+    fish_slugs = ", ".join(fish[:3]) if fish else "不明"  # 最大3種まで
 
     user_prompt = (
-        f"以下の釣り場のリード文を生成してください。\n\n"
         f"【釣り場名】{name}（{pref} {area_name}）\n"
-        f"【主な対象魚】{primary_fish_jp or '不明'}\n"
+        f"【対象魚スラッグ】{fish_slugs}\n"
         f"【メモ】{spot.get('info', {}).get('notes', '')}"
     )
 
@@ -201,22 +215,6 @@ def generate_lead_text(spot: dict, api_key: str) -> tuple[str, str, bool]:
         return "", "fallback", True
 
     text = _extract_text(response)
-
-    # 文字数チェック
-    char_count = len(text)
-    if text and not (210 <= char_count <= 260):
-        # 1回リプロンプト
-        messages.append({"role": "assistant", "content": response.get("content", [])})
-        messages.append({
-            "role": "user",
-            "content": (
-                f"文字数が {char_count} 文字です。210〜260文字に収めてください。"
-                "具体的なエピソードや地形の特徴を加えて文字数を増やしてください。"
-                "ニッチ情報が見つからない場合は空文字列のみ返してください。"
-            ),
-        })
-        response2 = _call_claude(messages, api_key)
-        text = _extract_text(response2) if response2 else text
 
     # ニッチ情報なし判定（空文字 or 短すぎる応答）
     if not text or len(text) < 50:
