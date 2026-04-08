@@ -1,0 +1,47 @@
+{
+  "slug": "aridagawa-kako",
+  "name": "有田川河口",
+  "location": {
+    "latitude": 34.084656,
+    "longitude": 135.0972462
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "有田市",
+    "city_slug": "arita"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 0,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 874.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "有田市の有田川河口。スズキ、クロダイ、ハゼが狙える。干潮時の干潟付近もポイント。",
+    "access": "有田市方面から車利用",
+    "photo_url": "",
+    "lead_text": "---\n\n以下が生成したリード文です。\n\n有田市を流れる有田川が紀伊水道へと注ぐ河口域で、右岸には辰ヶ浜漁港と隣接した長いテトラ帯が続いています。クロダイは外海に面したテトラ沿いでの紀州釣りやフカセ釣りで実績があり、上潮のタイミングに合わせて入る常連が多いポイントです。スズキは春先のバチ抜けシーズンに夜間釣行で狙う地元アングラーに根強い人気があります。干潮時に現れる干潟付近や水門周りの内側護岸はハゼの好ポイントで、川の濁りが増すと青物の回遊は遠のく一方、ハゼ狙いには影響が少ない傾向があります。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "30-9",
+  "harbor_name": "下津"
+}

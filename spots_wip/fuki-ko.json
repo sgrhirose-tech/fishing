@@ -1,0 +1,48 @@
+{
+  "slug": "fuki-ko",
+  "name": "富貴港",
+  "location": {
+    "latitude": 34.8284949,
+    "longitude": 136.9226503
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "武豊町",
+    "city_slug": "taketoyo"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "武豊町南の小漁港、クロダイ・カレイ向き",
+    "access": "富貴駅東駅から徒歩5分",
+    "photo_url": "",
+    "lead_text": "大変失礼しました。今ターンの検索回数上限に達しております。次のターンで改めて愛知県・武豊町の富貴港に関する情報を検索し、リード文を生成いたします。\n\nお手数ですが、もう一度「生成してください」とお送りいただけますでしょうか。今度は「富貴港 武豊 釣り」「富貴港 三河湾 クロダイ カレイ」などのクエリで正確に検索し直します。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "karei"
+  ],
+  "harbor_code": "23-13",
+  "harbor_name": "武豊"
+}

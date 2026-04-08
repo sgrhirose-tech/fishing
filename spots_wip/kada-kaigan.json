@@ -1,0 +1,50 @@
+{
+  "slug": "kada-kaigan",
+  "name": "加太海岸",
+  "location": {
+    "latitude": 34.2786674,
+    "longitude": 135.0741271
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "和歌山市",
+    "city_slug": "wakayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 290,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1002.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "加太漁港周辺の海岸。シロギス、カレイ、ハゼが狙える。砂浜と岩礁が混在するポイント。",
+    "access": "加太駅から徒歩15分",
+    "photo_url": "",
+    "lead_text": "※収集できた情報の中でハゼに関する詳細なニッチ情報が限られていたため、一部は周辺情報から補完しています。より詳細な情報が取得できない場合は空文字列返却も検討いただけますと幸いです。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@298m",
+      "natural=beach@92m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "karei",
+    "haze"
+  ],
+  "harbor_code": "30-12",
+  "harbor_name": "沖ノ島"
+}
