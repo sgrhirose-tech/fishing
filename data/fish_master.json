@@ -1390,7 +1390,8 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/muroaji.jpg"
   },
   "イトヨリダイ": {
     "slug": "itoyoridai",
@@ -1421,7 +1422,8 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "image": "/static/img/fish/itoyoridai.jpg"
   },
   "レンコダイ": {
     "slug": "renkodai",
@@ -1667,7 +1669,8 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "image": "/static/img/fish/iwashi.jpg"
   },
   "サヨリ": {
     "slug": "sayori",
@@ -1690,6 +1693,7 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "image": "/static/img/fish/sayori.jpg"
   }
 }
