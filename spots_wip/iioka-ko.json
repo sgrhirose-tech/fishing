@@ -1,0 +1,48 @@
+{
+  "slug": "iioka-ko",
+  "name": "飯岡港",
+  "location": {
+    "latitude": 35.6910428,
+    "longitude": 140.7316017
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "旭市",
+    "city_slug": "asahi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "サーフ・テトラ・護岸が揃う大型港、アジ・キス・ヒラメ実績豊富",
+    "access": "飯岡バス停から徒歩25分",
+    "lead_text": "千葉県旭市・刑部岬のふもとに広がる飯岡港は、全長1キロを超える大堤防、新堤、港内岸壁、そして大堤防の根元から続くサーフが一体となった大型の漁港です。大堤防先端右側は足場も良く、砂地底を生かした投げ釣りでシロギスやイシモチが狙えるほか、泳がせやルアーでのヒラメ実績も高いポイントです。アジはサビキ釣りで狙う人が多く、魚影の濃い時期は新堤周辺で群れが入るタイミングを押さえるのがポイントです。冬場は「寒ヒラメ」が肉厚に育つシーズンとして、常連や遊漁船の間でも知られています。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.62,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@78m",
+      "natural=sand@229m"
+    ]
+  },
+  "target_fish": [
+    "hirame",
+    "aji",
+    "shirogisu"
+  ],
+  "harbor_code": "12-4",
+  "harbor_name": "名洗"
+}

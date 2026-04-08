@@ -1,0 +1,47 @@
+{
+  "slug": "futtsu-kaigan",
+  "name": "富津海岸",
+  "location": {
+    "latitude": 35.30589,
+    "longitude": 139.81042
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 195,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "東京湾口の潮流速い遠浅サーフ、キス・シーバス向き投げ釣りのメッカ",
+    "access": "新町［富津市］バス停から徒歩10分",
+    "photo_url": "",
+    "lead_text": "浦賀水道に面した内房の広大な遠浅サーフです。富津岬をはさむ北側・南側の砂浜はいずれも底質が砂と砂利の混合で、潮が速く常に払い出しが効いています。シロギスは20〜30メートル付近に多く、砂地のエリアでフォール中や駆け上がりのタイミングにアタリが集中する傾向があります。シーバスはウェーディングで沖めを狙うスタイルが常連に定着しており、朝まずめを中心に水道の流れが当たるポイントで実績があります。砂利底が混じる箇所は根がかりが出やすいため、立ち位置選びがカギになります。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  },
+  "target_fish": [
+    "suzuki",
+    "shirogisu"
+  ],
+  "harbor_code": "12-11",
+  "harbor_name": "第１海堡"
+}

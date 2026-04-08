@@ -1,0 +1,51 @@
+{
+  "slug": "katakai-ko",
+  "name": "片貝港",
+  "location": {
+    "latitude": 35.5332041,
+    "longitude": 140.4641104
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "九十九里町",
+    "city_slug": "kujukuri"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 120,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "作田川河口の大型港、港内・堤防・サーフでキス・ヒラメ・アジ向き",
+    "access": "海の駅九十九里バス停から徒歩10分",
+    "lead_text": "九十九里浜のほぼ中央、作田川河口に位置する大型港で、港内の水深は約2〜7メートル、海底は砂地が広がります。白灯堤防と赤灯堤防の間の船道エリアは辛うじて水深があり、アジやイシモチの実績ポイントとして知られています。シロギスは港周辺のサーフへの投げ釣りが中心で、近隣の釣り人からは「投げ釣りでのキスよりイシモチがメイン」との声も。ヒラメはルアーで狙う釣り人が多く、夏から秋にかけてイワシやアジの回遊に合わせた釣行が定番です。作田川の淡水が混じる河口付近は潮位の変動で干潮時に底が露出するほど浅く、満潮前後の時間帯を選ぶのが常連の基本スタイルです。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.72,
+    "secondary_flags": [
+      "marina"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@47m",
+      "man_made=breakwater@206m",
+      "natural=beach@259m"
+    ]
+  },
+  "target_fish": [
+    "hirame",
+    "aji",
+    "shirogisu"
+  ],
+  "harbor_code": "12-14",
+  "harbor_name": "市原"
+}
