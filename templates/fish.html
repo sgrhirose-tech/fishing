@@ -2,6 +2,8 @@
 
 {% block title %}{{ fish_name }}が釣れる釣り場 | Tsuricast{% endblock %}
 {% block description %}{{ fish_name }}が釣れる釣り場一覧。千葉・東京・神奈川・静岡の{{ total }}か所のスポットを紹介。釣れる時期・釣法もチェック。{% endblock %}
+{% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
+{% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 
 {% block content %}
 <nav class="breadcrumb">
