@@ -78,9 +78,13 @@
     data-lon="{{ spot.location.longitude }}"
     data-slug="{{ spot.slug }}">
     <h2>
+      {% if area.city_slug %}
       <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/{{ spot.slug }}">
         {{ spot.name }}
       </a>
+      {% else %}
+      {{ spot.name }}
+      {% endif %}
     </h2>
     <div class="spot-meta">
       <span class="badge">{{ area.area_name }}</span>
@@ -98,9 +102,11 @@
     </div>
     {% endif %}
     <p class="spot-access">🚃 {{ spot.info.access }}</p>
+    {% if area.city_slug %}
     <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/{{ spot.slug }}" class="btn-detail">
       詳細・気象情報 →
     </a>
+    {% endif %}
   </article>
   {% endfor %}
 </section>
