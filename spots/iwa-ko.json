@@ -21,7 +21,8 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "真鶴寄りの小漁港、アジ・クロダイ・メジナ向き",
@@ -29,17 +30,17 @@
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.75,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:港"
     ]
   },
   "target_fish": [
-    "mejina",
+    "aji",
     "kurodai",
-    "aji"
+    "mejina"
   ],
   "harbor_code": "14-20",
   "harbor_name": "真鶴"

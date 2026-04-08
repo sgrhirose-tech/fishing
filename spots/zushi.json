@@ -14,33 +14,35 @@
     "city_slug": "zushi"
   },
   "physical_features": {
-    "sea_bearing_deg": 271.1,
+    "sea_bearing_deg": 270,
     "seabed_type": "sand",
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1903.8
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "遠浅の砂浜、キス・マゴチ・シーバス向き、夏季海水浴時間外が主体",
     "access": "逗子・葉山駅から徒歩15分",
     "photo_url": "/static/img/spots/逗子海岸.jpg"
+    "lead_text": "三浦半島の付け根、相模湾に面した逗子海岸は、岸から100m以上沖に出ても満潮時で水深1m前後という極端な遠浅の砂地サーフです。初夏から秋の高水温期にシロギスが数釣りできる時期があり、常連は夏の早朝5〜6時台に竿を出すのが定番。昼間の釣行より断然反応がよいと地元では知られています。田越川河口・渚橋エリアはクサフグの密度が高いため、シロギスを狙うなら少し離れた砂浜側に絞るのが現地の通例です。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.7,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:海岸"
     ]
   },
   "target_fish": [
-    "magochi",
+    "shirogisu",
     "suzuki",
-    "shirogisu"
+    "magochi"
   ],
   "harbor_code": "14-18",
   "harbor_name": "新宿湾"

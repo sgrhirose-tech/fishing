@@ -21,25 +21,27 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "大磯海岸沿いの護岸、キス・クロダイ・メジナ向き",
-    "access": "さざれ石バス停から徒歩5分"
+    "access": "大磯駅から徒歩10分",
+    "lead_text": "大磯町役場前に広がる相模湾の護岸エリアです。照ヶ崎一帯は湘南唯一の岩礁海岸で、足元から沖にかけてツブ根が連なる複雑な底質が特徴的。護岸正面の2色付近には沈み根が走っており、根掛かりのリスクと引き換えにメジナやクロダイが居着く好地形になっています。地元の常連は水温が落ち着く秋口から冬にかけてフカセで通う人が多く、朝まずめの時間帯に釣り座が埋まることもあります。"
   },
   "classification": {
     "primary_type": "unknown",
-    "confidence": 0.0,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
-    "mejina",
+    "shirogisu",
     "kurodai",
-    "shirogisu"
+    "mejina"
   ],
   "harbor_code": "14-19",
   "harbor_name": "江ノ島"

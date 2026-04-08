@@ -14,35 +14,37 @@
     "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 117.5,
+    "sea_bearing_deg": 120,
     "seabed_type": "sand_mud",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1512.1
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "穏やかな東京湾の砂泥浜、キス・ハゼ・シーバス・カレイ向き",
-    "access": "久里浜海岸バス停から徒歩0分"
+    "access": "久里浜海岸バス停から徒歩0分",
+    "lead_text": "三浦半島の付け根、平作川が流れ込む東京湾側の砂泥浜です。全長約300mの海岸は北側が岩礁帯、南側はほぼ砂底で、シロギスは夏から秋にかけて水深1m以内の浅場に差してきます。沖30m付近にはアマモの大群生があり、ほかの浜が不調なときでもここはコンスタントに型を見られると常連に知られています。日中は水温が上がりすぎることもあり、まずめ時に狙うのが地元流。晩秋から春は遠投してカレイも視野に入ります。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.77,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=beach@33m"
     ]
   },
   "target_fish": [
-    "karei",
-    "haze",
+    "shirogisu",
     "suzuki",
-    "shirogisu"
+    "karei",
+    "haze"
   ],
   "harbor_code": "14-9",
   "harbor_name": "浦賀",

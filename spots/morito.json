@@ -21,15 +21,17 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "seabed_summary": "砂主体"
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "遠浅の砂礫浜、キス・カレイ・マゴチ・シーバス向き、ボート釣り人気",
-    "access": "元町バス停から徒歩5分"
+    "access": "元町バス停から徒歩5分",
+    "lead_text": "葉山町の相模湾側に広がる遠浅の砂礫浜で、森戸川河口から葉山マリーナ方向に延びるサーフがシロギスのメインポイントです。全体的に水深が浅く、飛距離を出しても釣果が伸びにくい地形のため、常連はちょい投げ主体で釣り座を選んでいます。海水浴場が閉まる17時以降、サーフ側でのアタリが増える傾向があります。9月を過ぎると水温低下とともにキスが一気に遠のくため、シーズンは実質6〜8月が核心です。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.62,
+    "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": [
@@ -38,10 +40,10 @@
     ]
   },
   "target_fish": [
-    "magochi",
-    "karei",
+    "shirogisu",
     "suzuki",
-    "shirogisu"
+    "karei",
+    "magochi"
   ],
   "harbor_code": "14-18",
   "harbor_name": "新宿湾",

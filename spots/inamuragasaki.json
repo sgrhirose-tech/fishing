@@ -21,27 +21,29 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "景観の磯と護岸、クロダイ・メジナ・アオリイカ向き",
-    "access": "稲村ヶ崎駅から徒歩5分"
+    "access": "稲村ヶ崎駅から徒歩5分",
+    "lead_text": "鎌倉・稲村ヶ崎は、相模湾に突き出た岬状の磯と隣接する護岸が釣り場になっています。足元は岩礁帯が広がるものの全体的に遠浅で、干潮時にはかなり水深が浅くなるのが特徴。エギングでアオリイカを狙うなら、水深が確保できる満潮前後の時間帯が有利です。磯の岩盤周りには根掛かりが多いため、潮のタイミングを丁寧に見極める必要があります。公園東側の護岸寄りには居つきのクロダイやメジナの姿も確認されており、湘南エリアの中でも岩礁性の魚影が濃い一角です。"
   },
   "classification": {
-    "primary_type": "sand_beach",
-    "confidence": 0.41,
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=beach@238m"
     ]
   },
   "target_fish": [
     "aoriika",
-    "mejina",
-    "kurodai"
+    "kurodai",
+    "mejina"
   ],
   "harbor_code": "14-19",
   "harbor_name": "江ノ島"

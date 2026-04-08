@@ -799,10 +799,22 @@ def _extract_article_meta(content: str, slug: str) -> tuple[dict, str]:
     if content.startswith("---"):
         end = content.find("---", 3)
         if end > 0:
-            for line in content[3:end].strip().splitlines():
-                if ":" in line:
+            current_key = None
+            for line in content[3:end].splitlines():
+                stripped = line.strip()
+                if stripped.startswith("- "):
+                    # YAML リスト要素
+                    item = stripped[2:].strip()
+                    if current_key is not None:
+                        if isinstance(meta.get(current_key), list):
+                            meta[current_key].append(item)
+                        else:
+                            meta[current_key] = [item]
+                elif ":" in line and not line.startswith(" "):
                     k, v = line.split(":", 1)
-                    meta[k.strip()] = v.strip()
+                    current_key = k.strip()
+                    val = v.strip()
+                    meta[current_key] = val if val else None
             body = content[end + 3:].strip()
     if "title" not in meta:
         m = _H1_RE.search(body)
@@ -822,17 +834,33 @@ def _load_articles() -> list:
         if not cat_dir.is_dir() or cat_dir.name.startswith("."):
             continue
         card = _CATEGORY_CARD.get(cat_dir.name, "fishing_master_card.png")
-        for slug_dir in sorted(cat_dir.iterdir()):
-            if not slug_dir.is_dir() or slug_dir.name.startswith("."):
+        seen_slugs: set = set()
+        for entry in sorted(cat_dir.iterdir()):
+            if entry.name.startswith("."):
                 continue
-            md_path = slug_dir / "index.md"
-            if not md_path.exists():
-                mds = sorted(slug_dir.glob("*.md"))
-                if not mds:
+            if entry.is_dir():
+                # サブディレクトリ形式: {slug}/index.md or {slug}/*.md
+                md_path = entry / "index.md"
+                if not md_path.exists():
+                    mds = sorted(entry.glob("*.md"))
+                    if not mds:
+                        continue
+                    md_path = mds[0]
+                slug = entry.name
+            elif entry.is_file() and entry.suffix == ".md" and entry.name != "index.md":
+                # フラットファイル形式: {slug}.md
+                # サブディレクトリ版が存在する場合はスキップ
+                if (cat_dir / entry.stem).is_dir():
                     continue
-                md_path = mds[0]
+                md_path = entry
+                slug = entry.stem
+            else:
+                continue
+            if slug in seen_slugs:
+                continue
+            seen_slugs.add(slug)
             content = md_path.read_text(encoding="utf-8")
-            meta, _ = _extract_article_meta(content, slug_dir.name)
+            meta, _ = _extract_article_meta(content, slug)
             meta["category"] = cat_dir.name
             meta["card_image"] = card
             result.append(meta)
@@ -913,19 +941,28 @@ def page_articles_top(request: Request):
 @app.get("/articles/{category}/{slug}/", response_class=HTMLResponse)
 def page_article_detail(request: Request, category: str, slug: str):
     slug_dir = _ARTICLES_DIR / category / slug
-    if not slug_dir.exists():
+    flat_md = _ARTICLES_DIR / category / f"{slug}.md"
+
+    if slug_dir.is_dir():
+        # サブディレクトリ形式
+        md_path = slug_dir / "index.md"
+        if not md_path.exists():
+            mds = sorted(slug_dir.glob("*.md"))
+            if not mds:
+                raise HTTPException(status_code=404)
+            md_path = mds[0]
+        parts_paths = sorted(p for p in slug_dir.glob("*.md") if p.name != "index.md" and p != md_path)
+    elif flat_md.exists():
+        # フラットファイル形式
+        md_path = flat_md
+        parts_paths = []
+    else:
         raise HTTPException(status_code=404, detail="記事が見つかりません")
-    md_path = slug_dir / "index.md"
-    if not md_path.exists():
-        mds = sorted(slug_dir.glob("*.md"))
-        if not mds:
-            raise HTTPException(status_code=404)
-        md_path = mds[0]
+
     content = md_path.read_text(encoding="utf-8")
     meta, body = _extract_article_meta(content, slug)
     slots = _load_article_slots(category, slug)
     body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
-    parts_paths = sorted(p for p in slug_dir.glob("*.md") if p.name != "index.md" and p != md_path)
     part_metas = []
     for p in parts_paths:
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
@@ -1219,9 +1256,11 @@ def page_spot_detail(
         "convenience": "コンビニ" in facility_types,
     }
     try:
-        preloaded_forecast = _compute_forecast(spot)
+        import concurrent.futures as _cf
+        with _cf.ThreadPoolExecutor(max_workers=1) as _ex:
+            preloaded_forecast = _ex.submit(_compute_forecast, spot).result(timeout=8)
     except Exception as e:
-        print(f"[警告] _compute_forecast 失敗 ({slug}): {e}")
+        print(f"[警告] _compute_forecast スキップ ({slug}): {e}")
         preloaded_forecast = None
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,

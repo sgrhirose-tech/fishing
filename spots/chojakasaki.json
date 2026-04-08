@@ -14,35 +14,37 @@
     "city_slug": "hayama"
   },
   "physical_features": {
-    "sea_bearing_deg": 290.4,
-    "seabed_type": "sand_gravel",
+    "sea_bearing_deg": 290,
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 935.7
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "葉山・横須賀境の砂礫浜、キス・マゴチ・カレイ向き",
-    "access": "長者ケ崎バス停から徒歩5分"
+    "access": "長者ケ崎バス停から徒歩5分",
+    "lead_text": "葉山町と横須賀市の境に細長く突き出た長者ヶ崎の葉山側に広がる砂礫混じりのサーフです。全体的に遠浅な地形で、海水浴シーズンが終わった9月以降から翌春にかけてが投げ釣りのメインシーズン。夏場の日中は海水浴客で竿を出せる状況ではないため、常連は早朝の人が少ない時間帯を狙って入るのが定番です。岬先端部に近いほど根が絡み、シロギスに交じってマゴチやカレイが顔を出すこともあります。三浦半島西岸の中でも投げ釣りが入りにくい小場所のため、比較的プレッシャーが低めです。"
   },
   "classification": {
     "primary_type": "breakwater",
-    "confidence": 0.43,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@271m",
       "natural=beach@295m"
     ]
   },
   "target_fish": [
-    "magochi",
+    "shirogisu",
     "karei",
-    "shirogisu"
+    "magochi"
   ],
   "harbor_code": "14-18",
   "harbor_name": "新宿湾"

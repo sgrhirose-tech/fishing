@@ -21,26 +21,28 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "長井地区の小漁港、キス・カレイ・メバル・クロダイ向き",
-    "access": "荒崎バス停から徒歩5分"
+    "access": "荒崎バス停から徒歩5分",
+    "lead_text": "※文字数：222文字"
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.75,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:港"
     ]
   },
   "target_fish": [
+    "shirogisu",
     "kurodai",
     "karei",
-    "mebaru",
-    "shirogisu"
+    "mebaru"
   ],
   "harbor_code": "14-17",
   "harbor_name": "小田和湾"

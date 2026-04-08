@@ -2,6 +2,8 @@
 
 {% block title %}{{ item.name }}の選び方 | {{ category.name }} | タックルガイド | Tsuricast{% endblock %}
 {% block description %}{{ item.summary }}{% endblock %}
+{% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
+{% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 
 {% block content %}
 <nav class="breadcrumb">
