@@ -1,12 +1,34 @@
 {% extends "base.html" %}
 {% block robots_meta %}<meta name="robots" content="noindex,follow">{% endblock %}
 {% block title %}運営者情報 | Tsuricast{% endblock %}
+{% block canonical %}https://tsuricast.jp/about{% endblock %}
+{% block description %}Tsuricastの運営者情報です。対象エリア・データソース・更新頻度をご確認ください。{% endblock %}
 {% block content %}
 <h1>運営者情報</h1>
 <table class="info-table">
   <tr><th>サイト名</th><td>Tsuricast</td></tr>
-  <tr><th>目的</th><td>千葉・東京・神奈川・静岡の釣り場の天気・波高・風向情報の提供</td></tr>
-  <tr><th>対象エリア</th><td>千葉県・東京都・神奈川県（相模湾・三浦半島・東京湾・内房・外房・九十九里）、静岡県（東伊豆・南伊豆・西伊豆）</td></tr>
+  <tr><th>運営主体</th><td>Tsuricastプロジェクト</td></tr>
+  <tr><th>運営者プロフィール</th><td>
+    海釣りを本格的に始めて10年。<br>
+    釣り公園でのサビキ釣りから始め、徐々に投げ釣りにシフト。<br>
+    現在は湘南・三浦・内房エリアでシロギス釣りをメインで楽しんでいます。
+  </td></tr>
+  <tr><th>目的</th><td>千葉・東京・神奈川・静岡・愛知・三重・大阪・和歌山の釣り場の天気・波高・風向情報の提供</td></tr>
+  <tr><th>対象エリア</th><td>千葉県（内房・外房・九十九里）、東京都、神奈川県（相模湾・三浦半島・東京湾）、静岡県（東伊豆・南伊豆・西伊豆・駿河湾・遠州灘）、愛知県（三河湾・伊勢湾）、三重県（伊勢湾・志摩・南伊勢・熊野灘）、大阪府（大阪湾）、和歌山県（紀伊水道）</td></tr>
+  <tr><th>連絡手段</th><td>
+    <a href="/contact">ご連絡フォーム</a> /
+    <a href="mailto:admin@tsuricast.jp">admin@tsuricast.jp</a>
+  </td></tr>
+  <tr><th>編集方針</th><td>
+    最新の気象・海況情報を１ページで確認できるよう、各種APIサービスを利用してデータを収集して表示しています。<br>
+    スポットの周辺情報（釣具店・駐車場・コンビニ・トイレ）についても、公開されているAPI情報を元に随時更新しています。<br>
+    AIアドバイスについては、明日の気象情報とスポット情報をもとにAIが生成しているものです。<br><br>
+    危険性の情報は下記の基準で提供しています。
+    <ul style="margin:.5rem 0 0 1.2rem; padding:0;">
+      <li>波高 中止ライン: &gt; 1.5m ／ うねり注意: 周期 ≥ 8秒</li>
+      <li>風速 中止ライン: ≥ 8.0 m/s</li>
+    </ul>
+  </td></tr>
   <tr><th>データソース</th><td>
     <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a>（気象・波浪）/
     <a href="https://coastwatch.pfeg.noaa.gov/" target="_blank">NOAA CoastWatch</a>（海面水温）/

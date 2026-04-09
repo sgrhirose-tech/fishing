@@ -141,6 +141,7 @@ templates = Jinja2Templates(directory=str(_BASE / "templates"))
 _ROBOTS_TXT = """\
 User-agent: *
 Allow: /
+Disallow: /api/
 
 # --- AI training crawlers: block ---
 User-agent: GPTBot
@@ -933,9 +934,8 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
 _ARTICLE_CATEGORY_LABELS: dict[str, str] = {
     "column": "店長コラム",
     "info":   "店員インフォメーション",
-    "report": "店員釣行レポート",
 }
-_ARTICLE_CATEGORY_ORDER = ["column", "info", "report"]
+_ARTICLE_CATEGORY_ORDER = ["column", "info"]
 
 
 @app.get("/articles/", response_class=HTMLResponse)
@@ -1161,6 +1161,8 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
     for s in spots:
         c_slug = s["area"]["city_slug"]
         c_name = s["area"]["city"]
+        if not c_slug:
+            continue
         cities.setdefault(c_slug, {"name": c_name, "count": 0})
         cities[c_slug]["count"] += 1
     return templates.TemplateResponse(request, "area.html", {

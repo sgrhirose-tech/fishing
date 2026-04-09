@@ -47,9 +47,20 @@ main {
 .hero-caption {
   text-align: center;
   padding: 1.25rem 1rem 0.25rem;
-  font-size: 1rem;
-  color: #334;
   margin: 0;
+}
+.hero-catchcopy {
+  font-size: 1.45rem;
+  font-weight: bold;
+  color: #1a3a5c;
+  margin: 0 0 .45rem;
+  line-height: 1.4;
+}
+.hero-desc {
+  font-size: .95rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.7;
 }
 
 /* ---- ヒーロー（旧スタイル） ---- */
@@ -1020,6 +1031,11 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .article-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
 .article-card-body { padding: .75rem 1rem; }
 .article-card-title { font-size: .95rem; font-weight: bold; margin: 0; line-height: 1.45; }
+
+/* ── コラムトップ ページヘッダー ─────────────────────────── */
+.page-header { margin: 0 0 1.2rem; }
+.page-header h1 { font-size: 1.6rem; margin: 0 0 .3rem; color: #1a3a5c; }
+.page-header p { font-size: .95rem; color: #555; margin: 0; }
 
 /* ── コラムトップ カテゴリ別リスト ─────────────────────── */
 .articles-page-nav { display: flex; gap: .6rem 1.2rem; flex-wrap: wrap; margin: 1.2rem 0 1.8rem; padding: .75rem 1rem; background: #f0f6fb; border-radius: 8px; }

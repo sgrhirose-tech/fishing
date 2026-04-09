@@ -277,7 +277,8 @@ def score_spot(spot: dict, weather_data: dict, marine_data: dict,
     temp_pts = tp["pts"]
     details["sst"] = tp["label"]
 
-    # 降水ペナルティ
+    # 降水ペナルティ（日次合計: score_period の時間帯合計とは閾値が異なる。
+    # 日次 1/5/10 mm ≒ 時間帯 0.5/2/5 mm（3〜4時間換算）で同等リスクを表す設計）
     precip = None
     if weather_data and "daily" in weather_data:
         pr_list = weather_data["daily"].get("precipitation_sum", [])
@@ -474,6 +475,7 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
 
     seabed_pts = 0  # 底質スコア廃止
 
+    # 時間帯合計で評価（3〜4時間分）。日次とは別スケールで同等リスクを設定
     rain_penalty = 0
     if precip is not None:
         if precip > 5:
