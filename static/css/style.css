@@ -249,6 +249,22 @@ main {
 /* ---- ローディング ---- */
 .loading { color: #888; font-style: italic; padding: 1rem 0; }
 
+/* ---- SSR 天気サマリー（Googlebot 向け・視覚的には控えめ） ---- */
+.ssr-weather-summary {
+  font-size: .88rem;
+  color: #555;
+  background: #f7f9fb;
+  border-left: 3px solid #5b8fc9;
+  border-radius: 4px;
+  padding: .55rem .8rem;
+  margin-bottom: .8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem .9rem;
+  line-height: 1.6;
+}
+.ssr-period { white-space: nowrap; }
+
 /* ---- ページ上に戻る ---- */
 #back-to-top {
   position: fixed; bottom: 1.5rem; right: 1.5rem;

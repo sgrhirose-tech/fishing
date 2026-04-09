@@ -144,6 +144,19 @@
 <!-- 気象・スコア（JS で非同期ロード） -->
 <section class="weather-section">
   <h2>明日&emsp;{{ tomorrow_jp }}の海況・気象情報</h2>
+  {% if preloaded_forecast and preloaded_forecast.days %}
+  {% set tmr = preloaded_forecast.days[0] %}
+  <div class="ssr-weather-summary" aria-hidden="false">
+    {% for p in tmr.periods %}
+    <span class="ssr-period">
+      <strong>{{ p.period }}</strong>：
+      {% if p.wave_height_raw is not none %}波 {{ p.wave_height_raw }}m{% else %}波 --{% endif %}
+      ／ {% if p.wind_speed_raw is not none %}風 {{ p.wind_speed_raw }}m/s {{ p.wind_dir_compass }}{% else %}風 --{% endif %}
+      ／ {{ p.sky }}{% if p.sst_raw is not none %} ／ 水温 {{ p.sst_raw }}°C{% endif %}
+    </span>
+    {% endfor %}
+  </div>
+  {% endif %}
   <div id="weather-loading" class="loading">気象データを取得中...</div>
   <div id="weather-result" style="display:none;">
     <div class="forecast-tabs tomorrow-tabs">
