@@ -148,16 +148,14 @@
   {% set tmr = preloaded_forecast.days[0] %}
   <div class="ssr-weather-summary" aria-hidden="false">
     {% for p in tmr.periods %}
-    <span class="ssr-period">
+    <div class="ssr-period">
       <strong>{{ p.period }}</strong>：
       {% if p.wave_height_raw is not none %}波 {{ p.wave_height_raw | round(1, 'ceil') }}m{% else %}波 --{% endif %}
       ／ {% if p.wind_speed_raw is not none %}風 {{ p.wind_speed_raw | round(1, 'ceil') }}m/s {{ p.wind_dir_compass }}{% else %}風 --{% endif %}
       ／ {{ p.sky }}{% if p.sst_raw is not none %} ／ 水温 {{ p.sst_raw | round(1, 'ceil') }}°C{% endif %}
-    </span>
+    </div>
     {% endfor %}
-    {% if preloaded_forecast.fetched_at %}
-    <span class="ssr-fetched-at">取得 {{ preloaded_forecast.fetched_at }} JST</span>
-    {% endif %}
+    {% if preloaded_forecast.fetched_at %}<div class="ssr-fetched-at">取得 {{ preloaded_forecast.fetched_at }} JST</div>{% endif %}
   </div>
   {% endif %}
   <div id="weather-loading" class="loading">気象データを取得中...</div>

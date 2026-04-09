@@ -258,13 +258,10 @@ main {
   border-radius: 4px;
   padding: .55rem .8rem;
   margin-bottom: .8rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: .4rem .9rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
-.ssr-period { white-space: nowrap; }
-.ssr-fetched-at { margin-left: auto; font-size: .80rem; color: #999; white-space: nowrap; align-self: flex-end; }
+.ssr-period { display: block; }
+.ssr-fetched-at { display: block; text-align: right; font-size: .78rem; color: #aaa; margin-top: .2rem; }
 
 /* ---- ページ上に戻る ---- */
 #back-to-top {
