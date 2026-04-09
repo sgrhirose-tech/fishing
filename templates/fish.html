@@ -81,11 +81,13 @@
       <div class="fish-spot-grid">
         {% for s in area.spots %}
         {% set a = s.area %}
+        {% if a.city_slug %}
         <a href="/{{ a.pref_slug }}/{{ a.area_slug }}/{{ a.city_slug }}/{{ s.slug }}"
            class="fish-spot-card">
           <span class="fish-spot-name">{{ s.name }}</span>
           <span class="fish-spot-city">{{ a.city }}</span>
         </a>
+        {% endif %}
         {% endfor %}
       </div>
     </div>

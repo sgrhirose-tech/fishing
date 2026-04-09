@@ -10,8 +10,8 @@
     "pref_slug": "wakayama",
     "area_name": "紀伊水道（和歌山）",
     "area_slug": "kii-suido-wakayama",
-    "city": "",
-    "city_slug": ""
+    "city": "田辺市",
+    "city_slug": "tanabe"
   },
   "physical_features": {
     "sea_bearing_deg": null,
