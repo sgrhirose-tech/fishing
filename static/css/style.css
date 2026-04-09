@@ -264,6 +264,7 @@ main {
   line-height: 1.6;
 }
 .ssr-period { white-space: nowrap; }
+.ssr-fetched-at { margin-left: auto; font-size: .80rem; color: #999; white-space: nowrap; align-self: flex-end; }
 
 /* ---- ページ上に戻る ---- */
 #back-to-top {

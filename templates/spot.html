@@ -155,6 +155,9 @@
       ／ {{ p.sky }}{% if p.sst_raw is not none %} ／ 水温 {{ p.sst_raw }}°C{% endif %}
     </span>
     {% endfor %}
+    {% if preloaded_forecast.fetched_at %}
+    <span class="ssr-fetched-at">取得 {{ preloaded_forecast.fetched_at }} JST</span>
+    {% endif %}
   </div>
   {% endif %}
   <div id="weather-loading" class="loading">気象データを取得中...</div>
