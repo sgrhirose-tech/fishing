@@ -88,16 +88,17 @@ def get_area_weather(area_name_jp: str, date_str: str, include_tide: bool = True
     sst = fetch_sst_noaa(center_lat, center_lon, date_str)
 
     daily = weather.get("daily", {})
+    hourly = weather.get("hourly", {})
 
-    # 風速・風向
+    # 風速・風向（朝8時の値を使用）
     wind_speed = None
     wind_dir_deg = None
-    spd_list = daily.get("wind_speed_10m_max", [])
-    dir_list = daily.get("wind_direction_10m_dominant", [])
-    if spd_list and spd_list[0] is not None:
-        wind_speed = round(spd_list[0], 1)
-    if dir_list and dir_list[0] is not None:
-        wind_dir_deg = dir_list[0]
+    _spd_hourly = hourly.get("wind_speed_10m", [])
+    _dir_hourly = hourly.get("wind_direction_10m", [])
+    if len(_spd_hourly) > 8 and _spd_hourly[8] is not None:
+        wind_speed = round(_spd_hourly[8], 1)
+    if len(_dir_hourly) > 8 and _dir_hourly[8] is not None:
+        wind_dir_deg = _dir_hourly[8]
     wind_dir_label = direction_label(wind_dir_deg) if wind_dir_deg is not None else "--"
 
     # 天気コード
