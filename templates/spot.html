@@ -150,9 +150,9 @@
     {% for p in tmr.periods %}
     <span class="ssr-period">
       <strong>{{ p.period }}</strong>：
-      {% if p.wave_height_raw is not none %}波 {{ p.wave_height_raw }}m{% else %}波 --{% endif %}
-      ／ {% if p.wind_speed_raw is not none %}風 {{ p.wind_speed_raw }}m/s {{ p.wind_dir_compass }}{% else %}風 --{% endif %}
-      ／ {{ p.sky }}{% if p.sst_raw is not none %} ／ 水温 {{ p.sst_raw }}°C{% endif %}
+      {% if p.wave_height_raw is not none %}波 {{ p.wave_height_raw | round(1, 'ceil') }}m{% else %}波 --{% endif %}
+      ／ {% if p.wind_speed_raw is not none %}風 {{ p.wind_speed_raw | round(1, 'ceil') }}m/s {{ p.wind_dir_compass }}{% else %}風 --{% endif %}
+      ／ {{ p.sky }}{% if p.sst_raw is not none %} ／ 水温 {{ p.sst_raw | round(1, 'ceil') }}°C{% endif %}
     </span>
     {% endfor %}
     {% if preloaded_forecast.fetched_at %}

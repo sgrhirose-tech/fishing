@@ -251,7 +251,7 @@ main {
 
 /* ---- SSR 天気サマリー（Googlebot 向け・視覚的には控えめ） ---- */
 .ssr-weather-summary {
-  font-size: .88rem;
+  font-size: .82rem;
   color: #555;
   background: #f7f9fb;
   border-left: 3px solid #5b8fc9;
