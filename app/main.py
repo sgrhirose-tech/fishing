@@ -934,9 +934,8 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
 _ARTICLE_CATEGORY_LABELS: dict[str, str] = {
     "column": "店長コラム",
     "info":   "店員インフォメーション",
-    "report": "店員釣行レポート",
 }
-_ARTICLE_CATEGORY_ORDER = ["column", "info", "report"]
+_ARTICLE_CATEGORY_ORDER = ["column", "info"]
 
 
 @app.get("/articles/", response_class=HTMLResponse)

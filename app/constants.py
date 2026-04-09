@@ -24,9 +24,6 @@ VALID_AREA_SLUGS: frozenset[str] = frozenset({
     "kumano-nada",  # 熊野灘
     # 大阪府
     "osakawan",     # 大阪湾
-    # 兵庫県
-    "harimanada",   # 播磨灘
-    "awajishima",   # 淡路島
     # 和歌山県
     "kii-suido-wakayama",  # 紀伊水道（和歌山）
 })
@@ -39,7 +36,6 @@ VALID_PREF_SLUGS: frozenset[str] = frozenset({
     "aichi",
     "mie",
     "osaka",
-    "hyogo",
     "wakayama",
 })
 
@@ -49,7 +45,7 @@ REGIONS: list[dict] = [
     {"slug": "kanto",    "name": "関東",   "prefs": ["ibaraki", "chiba", "tokyo", "kanagawa"]},           # 08茨城 12千葉 13東京 14神奈川
     {"slug": "hokuriku", "name": "北陸",   "prefs": ["niigata", "toyama", "ishikawa", "fukui"]},           # 15新潟 16富山 17石川 18福井
     {"slug": "tokai",    "name": "東海",   "prefs": ["shizuoka", "aichi", "mie"]},                         # 22静岡 23愛知 24三重
-    {"slug": "kansai",   "name": "関西",   "prefs": ["kyoto", "osaka", "hyogo", "wakayama"]},              # 26京都 27大阪 28兵庫 30和歌山
+    {"slug": "kansai",   "name": "関西",   "prefs": ["kyoto", "osaka", "wakayama"]},                      # 26京都 27大阪 30和歌山
     {"slug": "chugoku",  "name": "中国",   "prefs": ["tottori", "shimane", "okayama", "hiroshima", "yamaguchi"]},
     {"slug": "shikoku",  "name": "四国",   "prefs": ["tokushima", "kagawa", "ehime", "kochi"]},
     {"slug": "kyushu",   "name": "九州",   "prefs": ["fukuoka", "saga", "nagasaki", "kumamoto", "oita", "miyazaki", "kagoshima", "okinawa"]},
