@@ -75,6 +75,20 @@ main {
   font-size: .75rem; color: #555;
   margin: -.75rem 0 1rem;
 }
+
+/* ---- 周辺施設チップ ---- */
+.spot-facilities { margin: 1rem 0 1.2rem; }
+.spot-facilities h2 { font-size: 1rem; margin-bottom: .6rem; color: #1a3a5c; }
+.facility-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: .5rem; }
+.facility-chip {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .82rem; font-weight: 600; padding: .28rem .7rem;
+  border-radius: 20px; white-space: nowrap;
+}
+.chip-parking  { background: #e3edf9; color: #1565C0; }
+.chip-toilet   { background: #e8f5e9; color: #2E7D32; }
+.chip-conbini  { background: #f3e8fb; color: #6A1B9A; }
+.facility-note { font-size: .78rem; color: #888; margin: 0; }
 .legend-item { display: flex; align-items: center; gap: .3rem; }
 .legend-badge {
   color: white; min-width: 20px; height: 20px; border-radius: 3px;
@@ -1045,6 +1059,24 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .article-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
 .article-card-body { padding: .75rem 1rem; }
 .article-card-title { font-size: .95rem; font-weight: bold; margin: 0; line-height: 1.45; }
+
+/* ── トイレあり釣り場一覧ページ ───────────────────────── */
+.toilet-lead { font-size: .95rem; color: #444; margin-bottom: 1.2rem; line-height: 1.8; }
+.toilet-pref-nav {
+  display: flex; flex-wrap: wrap; gap: .45rem;
+  margin-bottom: 1.8rem; padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e6ef;
+}
+.pref-nav-chip {
+  background: #e8f0fa; color: #1a3a5c; border-radius: 20px;
+  padding: .3rem .85rem; font-size: .82rem; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.pref-nav-chip:hover { background: #c8d8f0; }
+.toilet-pref-section { margin-bottom: 2.5rem; }
+.toilet-pref-section h2 { font-size: 1.1rem; color: #1a3a5c; margin-bottom: .8rem; border-left: 4px solid #5b8fc9; padding-left: .6rem; }
+.toilet-table th { white-space: nowrap; }
+.toilet-note { font-size: .8rem; color: #999; margin-top: 1.5rem; }
 
 /* ── コラムトップ ページヘッダー ─────────────────────────── */
 .page-header { margin: 0 0 1.2rem; }
