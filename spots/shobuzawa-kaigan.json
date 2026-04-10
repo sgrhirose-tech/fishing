@@ -15,31 +15,33 @@
   },
   "physical_features": {
     "sea_bearing_deg": 110,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 442.6
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "河津町のゴロタ浜、メジナ・クロダイ・アオリイカ向き",
-    "access": "菖蒲沢バス停から徒歩10分"
+    "access": "菖蒲沢バス停から徒歩10分",
+    "lead_text": "河津町に位置するゴロタ浜で、断崖に囲まれた入り江地形が特徴の磯釣りスポットです。海底は岩礁帯が広がり根がそこかしこに張り出しているため、クロダイやメジナのフカセ釣り師が通い、冬から春にかけてとくに常連の姿が増えます。外洋側の水深は35メートルほど沖で6メートル前後と浅めで、潮の動くタイミングに根際を丁寧に攻めるスタイルが定番です。秋はアオリイカの回遊も見られ、ゴロタ際のシャロー帯が実績ポイントとして知られています。"
   },
   "classification": {
-    "primary_type": "sand_beach",
-    "confidence": 0.7,
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:海岸"
     ]
   },
   "target_fish": [
     "aoriika",
-    "mejina",
-    "kurodai"
+    "kurodai",
+    "mejina"
   ],
   "harbor_code": "22-4",
   "harbor_name": "白浜"

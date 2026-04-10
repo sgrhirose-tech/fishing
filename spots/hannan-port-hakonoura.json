@@ -14,27 +14,29 @@
     "city_slug": "hannan"
   },
   "physical_features": {
-    "sea_bearing_deg": 336.7,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 335,
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "阪南市の港湾護岸。アジ・クロダイ・スズキ・イシモチが狙える。足場良好。",
-    "access": "淡輪駅から徒歩40分"
+    "access": "淡輪駅から徒歩40分",
+    "lead_text": "阪南市の港湾護岸に設けられた箱の浦地区の釣り場です。足元には石組が入っており水深は岸壁際で約5〜6メートル、沖に向けて7メートル前後まで落ちていきます。沖には旧岸和田一文字が控えているぶん潮通しは穏やかで、回遊魚よりも居付きの魚が主役です。クロダイはタナ2.5〜3.5ヒロ付近を潮と水温に合わせて探るのが地元流で、スズキ・セイゴも通年魚影が濃く、夏から秋にかけてエビ撒き釣りで実績があります。アジは回遊が限られるため、サビキは投げて当てるスタイルが基本です。"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.62,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby",
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@137m",
       "man_made=breakwater@189m",
@@ -44,9 +46,9 @@
     ]
   },
   "target_fish": [
+    "aji",
     "kurodai",
-    "suzuki",
-    "aji"
+    "suzuki"
   ],
   "harbor_code": "27-2",
   "harbor_name": "淡輪"

@@ -15,31 +15,33 @@
   },
   "physical_features": {
     "sea_bearing_deg": 180,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 673.8
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "房総最南端の地磯、クロダイ・メジナ・イシダイ・青物向き",
-    "access": "白浜オーシャンリゾートバス停から徒歩10分"
+    "access": "白浜オーシャンリゾートバス停から徒歩10分",
+    "lead_text": "房総半島最南端に位置する地磯で、野島崎灯台のすぐそばから竿を出せます。足元の水深は約6メートルあり、底質は磯盤。潮通しが非常によく、外洋らしいワンサイズ大きな魚が出ることで知られています。メジナやクロダイは朝夕のまずめ時に実績が集中し、常連はコマセのタイミングにこだわりながらウキ下を丁寧に合わせて型物を狙います。先端方向へ50メートルほど投じるとイシダイが出るポイントもあり、秋口までがイシダイ師のシーズンです。夜釣りではカゴ釣りで大型のアジも期待できます。"
   },
   "classification": {
-    "primary_type": "fishing_facility",
-    "confidence": 0.41,
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "waterway=dock@294m"
     ]
   },
   "target_fish": [
+    "kurodai",
     "ishidai",
-    "mejina",
-    "kurodai"
+    "mejina"
   ],
   "harbor_code": "12-7",
   "harbor_name": "白浜"
