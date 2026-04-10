@@ -254,6 +254,7 @@ def sitemap_xml():
     # 固定ページ
     urls.append((f"{_BASE_URL}/",       "daily",   "1.0"))
     urls.append((f"{_BASE_URL}/spots",  "daily",   "0.8"))
+    urls.append((f"{_BASE_URL}/toilet/", "weekly",  "0.7"))
     urls.append((f"{_BASE_URL}/fish/",  "weekly",  "0.7"))
     for s in ("safety", "privacy", "about", "contact"):
         urls.append((f"{_BASE_URL}/{s}", "monthly", "0.4"))
@@ -510,6 +511,47 @@ def page_top(request: Request):
             and any(data["slug"] in s.get("target_fish", []) for s in spots)
         ],
         "recent_articles": recent_articles,
+    })
+
+
+@app.get("/toilet/", response_class=HTMLResponse)
+def page_toilet(request: Request):
+    """トイレあり釣り場一覧ページ。"""
+    spots = load_spots()
+    toilet_spots = []
+    for s in spots:
+        slug = spot_slug(s)
+        facilities = get_cached_facilities(slug) or []
+        if any(f["type"] == "トイレ" for f in facilities):
+            toilet_spots.append(s)
+
+    # REGIONS 順に都道府県グループを構築
+    pref_name_map: dict[str, str] = {}
+    for s in spots:
+        a = s.get("area", {})
+        p_slug = a.get("pref_slug", "")
+        p_name = a.get("prefecture", "")
+        if p_slug and p_name:
+            pref_name_map[p_slug] = p_name
+
+    pref_groups: list[dict] = []
+    seen: set = set()
+    for r in REGIONS:
+        for p_slug in r["prefs"]:
+            if p_slug in seen:
+                continue
+            p_spots = [s for s in toilet_spots if s.get("area", {}).get("pref_slug") == p_slug]
+            if p_spots:
+                seen.add(p_slug)
+                pref_groups.append({
+                    "pref_slug": p_slug,
+                    "pref_name": pref_name_map.get(p_slug, p_slug),
+                    "spots": p_spots,
+                })
+
+    return templates.TemplateResponse(request, "toilet.html", {
+        "pref_groups": pref_groups,
+        "total": len(toilet_spots),
     })
 
 
