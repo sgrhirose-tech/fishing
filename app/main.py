@@ -28,7 +28,7 @@ from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_sl
 from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, spot_slope_type, spot_type_label, assign_area, get_area_centers, get_photos
 from .weather import (fetch_weather, fetch_weather_range,
                        fetch_marine_weatherapi, fetch_marine, fetch_marine_range,
-                       fetch_sst_noaa)
+                       fetch_sst_noaa, get_weather_fetched_at)
 from .scoring import score_spot, direction_label, score_7days
 from .osm import fetch_nearby_facilities, load_facilities_json, get_cached_facilities
 
@@ -367,7 +367,17 @@ def _compute_forecast(spot) -> dict:
 
     today_data = all_days[0] if all_days else None   # days[0] = 今日
     forecast   = all_days[1:]                        # days[1:] = 明日+6日
-    return {"slug": slug, "days": forecast, "today": today_data}
+
+    # 気象データ取得時刻（JST 表示用）
+    fetched_ts = get_weather_fetched_at(lat, lon, start, end)
+    import datetime as _dt2
+    if fetched_ts:
+        fetched_at = _dt2.datetime.fromtimestamp(fetched_ts, tz=_dt2.timezone(
+            _dt2.timedelta(hours=9))).strftime("%m/%d %H:%M")
+    else:
+        fetched_at = None
+
+    return {"slug": slug, "days": forecast, "today": today_data, "fetched_at": fetched_at}
 
 
 @app.get("/api/forecast/{slug}")

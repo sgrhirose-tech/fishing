@@ -88,16 +88,17 @@ def get_area_weather(area_name_jp: str, date_str: str, include_tide: bool = True
     sst = fetch_sst_noaa(center_lat, center_lon, date_str)
 
     daily = weather.get("daily", {})
+    hourly = weather.get("hourly", {})
 
-    # 風速・風向
+    # 風速・風向（朝8時の値を使用）
     wind_speed = None
     wind_dir_deg = None
-    spd_list = daily.get("wind_speed_10m_max", [])
-    dir_list = daily.get("wind_direction_10m_dominant", [])
-    if spd_list and spd_list[0] is not None:
-        wind_speed = round(spd_list[0], 1)
-    if dir_list and dir_list[0] is not None:
-        wind_dir_deg = dir_list[0]
+    _spd_hourly = hourly.get("wind_speed_10m", [])
+    _dir_hourly = hourly.get("wind_direction_10m", [])
+    if len(_spd_hourly) > 8 and _spd_hourly[8] is not None:
+        wind_speed = round(_spd_hourly[8], 1)
+    if len(_dir_hourly) > 8 and _dir_hourly[8] is not None:
+        wind_dir_deg = _dir_hourly[8]
     wind_dir_label = direction_label(wind_dir_deg) if wind_dir_deg is not None else "--"
 
     # 天気コード
@@ -116,10 +117,6 @@ def get_area_weather(area_name_jp: str, date_str: str, include_tide: bool = True
             wave_height = round(wh_list[0], 1)
     if wave_height is None and marine.get("wave_height_max") is not None:
         wave_height = round(marine["wave_height_max"], 1)
-    if wave_height is None and wind_speed is not None:
-        from .weather import estimate_wave_from_wind
-        wave_height = round(estimate_wave_from_wind(wind_speed, fetch_km), 1)
-
     # 潮回り
     import datetime as _dt
     tide = tide_label(_dt.date.fromisoformat(date_str)) if include_tide else "--"
@@ -365,6 +362,9 @@ def post_area(area_slug: str, area_name_jp: str, url: str, date_str: str,
     """1エリア分のデータ取得・コメント生成・投稿を行う。失敗時はFalseを返す。"""
     try:
         area_data = get_area_weather(area_name_jp, date_str)
+        if area_data.get("wave_height") is None:
+            print(f"[SKIP] {area_name_jp}: 波高データ未取得のため投稿スキップ")
+            return False
         comment = generate_area_comment(area_name_jp, area_data, mode=mode, date_str=date_str)
         tweet = format_tweet(area_name_jp, area_data, comment, url, mode=mode)
         x_env = os.environ.get("X_POST_ENV", "production")
