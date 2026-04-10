@@ -19,7 +19,7 @@
 {% set fac_meta = '近隣に' + _fm|join('・') + 'あり。' if _fm else '周辺の施設情報も掲載。' %}
 
 {% block title %}{% if fish_names_jp %}{{ spot.name }} | {{ fish_names_jp | join('・') }}が釣れる釣り場{{ fac_title }} 天気・波高{% else %}{{ spot.name }}の釣り場情報{{ fac_title }} | {{ area.city }}・天気・波・風{% endif %}{% endblock %}
-{% block description %}{% if fish_names_jp %}{{ area.prefecture }}{{ area.area_name }}の{{ spot.name }}の釣り場情報。{{ fish_names_jp | join('・') }}が狙えます。波高・風向・水温・潮回りを時間帯別に確認できます。{{ fac_meta }}{% else %}{{ spot.name }}（{{ area.prefecture }}{{ area.city }}）の釣り場情報。底質: {{ df.seabed_summary or 'ー' }}、海底傾斜: {{ slope_type or 'ー' }}。天気・波・風・水温を毎日更新。{{ fac_meta }}アクセス: {{ spot.info.access }}{% endif %}{% endblock %}
+{% block description %}{{ spot_description[:130] }}{% if fac_meta %} {{ fac_meta }}{% endif %}{% endblock %}
 
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
@@ -30,6 +30,10 @@
 {% endif %}
 
 {% block jsonld %}
+{% set _af = [] %}
+{% if facility_flags.toilet %}{% set _af = _af + ['{"@type":"LocationFeatureSpecification","name":"トイレ","value":true}'] %}{% endif %}
+{% if facility_flags.parking %}{% set _af = _af + ['{"@type":"LocationFeatureSpecification","name":"駐車場","value":true}'] %}{% endif %}
+{% if facility_flags.convenience %}{% set _af = _af + ['{"@type":"LocationFeatureSpecification","name":"コンビニ","value":true}'] %}{% endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -37,6 +41,7 @@
   "name": "{{ spot.name }}",
   "description": "{{ spot.info.notes | replace('"', '\\"') }}",
   {% if fish_names_jp %}"keywords": "{{ (fish_names_jp + [area.prefecture]) | join(',') }}",{% else %}"keywords": "{{ area.prefecture }},釣り場",{% endif %}
+  {% if _af %}"amenityFeature": [{{ _af | join(',') }}],{% endif %}
   "address": {
     "@type": "PostalAddress",
     "addressRegion": "{{ area.prefecture }}",
@@ -104,6 +109,19 @@
   <span class="legend-item"><span class="legend-badge" style="background:#6A1B9A">C</span>コンビニ</span>
   <span class="legend-item"><span class="legend-dot" style="background:#1a6b9e"></span>釣り場</span>
 </div>
+
+<!-- 周辺施設（SSR: Googlebot 向け可視テキスト） -->
+{% if facility_flags.toilet or facility_flags.parking or facility_flags.convenience %}
+<section class="spot-facilities">
+  <h2>周辺施設</h2>
+  <div class="facility-chips">
+    {% if facility_flags.parking %}<span class="facility-chip chip-parking">駐車場あり</span>{% endif %}
+    {% if facility_flags.toilet %}<span class="facility-chip chip-toilet">トイレあり</span>{% endif %}
+    {% if facility_flags.convenience %}<span class="facility-chip chip-conbini">コンビニあり</span>{% endif %}
+  </div>
+  <p class="facility-note">マーカーの場所は上の地図でご確認ください（半径1km以内）。</p>
+</section>
+{% endif %}
 
 <!-- 基本情報 -->
 <section class="spot-info">

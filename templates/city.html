@@ -48,7 +48,7 @@
       <span class="badge badge-warning">サーファーと仲良く</span>
       {% endif %}
     </div>
-    <p class="spot-seabed">{{ spot.info.notes }}</p>
+    <p class="spot-seabed">{{ spot_descriptions.get(spot.slug, spot.info.notes) }}</p>
     {% if spot.target_fish %}
     <div class="fish-chips">
       {% for fish in spot.target_fish %}
