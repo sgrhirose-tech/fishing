@@ -21,17 +21,19 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "静かな砂浜、キス中心の投げ釣り場",
-    "access": "保田駅から徒歩20分"
+    "access": "保田駅から徒歩20分",
+    "lead_text": "千葉県鋸南町に位置する、こぢんまりとした静かな砂浜です。海底は一面砂地で根掛かりが少なく、シロギスは年間を通じて姿を見せますが、常連が足繁く通うのは初夏から晩秋にかけて。海岸左寄りのエリアに魚影が集まりやすく、2.5〜3.5色付近がよく当たるポイントとして知られています。釣れるサイズは10〜16cmの中小型が中心ですが、すぐ隣に岩礁帯が控えるため、25cm級のジャンボギスが顔を出すこともあります。海岸北側にある北見釣具店では現地でジャリメを購入でき、5〜6号針に合わせた小さめサイズが揃っています。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.7,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:海岸"
     ]

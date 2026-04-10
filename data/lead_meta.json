@@ -98,5 +98,300 @@
     "generated_at": "2026-04-08T00:04:27.463779+09:00",
     "quality": "ok",
     "needs_review": false
+  },
+  "futoma-kaigan": {
+    "generated_at": "2026-04-10T18:54:45.648723+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "hanazono-kaigan": {
+    "generated_at": "2026-04-10T18:55:59.462914+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "ichinomiyagawa-kako": {
+    "generated_at": "2026-04-10T18:57:21.121931+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "isumigawa-kako": {
+    "generated_at": "2026-04-10T18:58:36.748190+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "izumiura-kaigan": {
+    "generated_at": "2026-04-10T18:59:49.360127+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kawazu-ko": {
+    "generated_at": "2026-04-10T19:01:08.411917+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kominato-ko": {
+    "generated_at": "2026-04-10T19:02:25.694321+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "maebara": {
+    "generated_at": "2026-04-10T19:03:47.907125+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "mama-misaki": {
+    "generated_at": "2026-04-10T19:05:00.824760+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "moriya": {
+    "generated_at": "2026-04-10T19:06:16.976205+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nojimasaki": {
+    "generated_at": "2026-04-10T19:07:41.382878+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "okawa-ko": {
+    "generated_at": "2026-04-10T19:09:05.811363+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "okitsu-ko": {
+    "generated_at": "2026-04-10T19:10:25.674204+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "onjuku": {
+    "generated_at": "2026-04-10T19:11:49.151676+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "onjuku-ko": {
+    "generated_at": "2026-04-10T19:13:10.525174+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "otohama-ko": {
+    "generated_at": "2026-04-10T19:14:29.832641+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "senda-ko": {
+    "generated_at": "2026-04-10T19:15:45.193407+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "setohama-kaigan": {
+    "generated_at": "2026-04-10T19:17:02.470242+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shinkan-ko": {
+    "generated_at": "2026-04-10T19:18:21.281291+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shirako-ko": {
+    "generated_at": "2026-04-10T19:19:37.263639+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "funakata-port": {
+    "generated_at": "2026-04-10T19:20:27.287930+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "heisaura": {
+    "generated_at": "2026-04-10T19:21:53.674480+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "hota-beach": {
+    "generated_at": "2026-04-10T19:23:11.428595+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "iwaibukuro-port": {
+    "generated_at": "2026-04-10T19:24:30.542072+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kazusa-minato-ko": {
+    "generated_at": "2026-04-10T19:25:55.388884+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kazusa-minato-seaside-park": {
+    "generated_at": "2026-04-10T19:27:12.317835+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kenbutsu-breakwater": {
+    "generated_at": "2026-04-10T19:28:33.020699+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "maruyama-breakwater": {
+    "generated_at": "2026-04-10T19:34:30.427475+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "mera-ko-uchibo": {
+    "generated_at": "2026-04-10T19:35:49.377504+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "minatogawa-river-mouth": {
+    "generated_at": "2026-04-10T19:37:10.305990+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "motona-beach": {
+    "generated_at": "2026-04-10T19:38:30.249575+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "myojin-misaki": {
+    "generated_at": "2026-04-10T19:39:55.724109+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "namuya-beach": {
+    "generated_at": "2026-04-10T19:41:17.517593+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nunobiki-beach": {
+    "generated_at": "2026-04-10T19:42:38.764296+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "okinoshima": {
+    "generated_at": "2026-04-10T19:43:57.590544+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "onuki-ko": {
+    "generated_at": "2026-04-10T19:45:15.896701+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "ryujima-port": {
+    "generated_at": "2026-04-10T19:46:34.879279+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shimosu-port": {
+    "generated_at": "2026-04-10T19:47:45.871371+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "shinmaiko-kaigan": {
+    "generated_at": "2026-04-10T19:49:05.746255+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "sunosaki-lighthouse-shita": {
+    "generated_at": "2026-04-10T19:51:03.127991+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "sunosaki-west-port": {
+    "generated_at": "2026-04-10T19:52:28.170906+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "takeoka-port": {
+    "generated_at": "2026-04-10T19:53:53.286292+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "tateyama-jieitai-breakwater": {
+    "generated_at": "2026-04-10T19:55:04.196950+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "tateyama-sunset-pier": {
+    "generated_at": "2026-04-10T19:56:29.226465+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "tomiura-new-port": {
+    "generated_at": "2026-04-10T20:01:24.425780+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "tomiura-old-port": {
+    "generated_at": "2026-04-10T20:02:43.607692+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "imaihama-beach": {
+    "generated_at": "2026-04-10T20:04:17.798054+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "katase-shirota": {
+    "generated_at": "2026-04-10T20:05:35.149359+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kawana-iruka": {
+    "generated_at": "2026-04-10T20:06:56.087728+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kitagawa-ko": {
+    "generated_at": "2026-04-10T20:08:15.702932+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "nagahama-kaihin": {
+    "generated_at": "2026-04-10T20:09:35.269644+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "nagisa-kouen": {
+    "generated_at": "2026-04-10T20:10:46.917561+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "namikiri-ko": {
+    "generated_at": "2026-04-10T20:12:10.746793+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "niekawa-beach": {
+    "generated_at": "2026-04-10T20:13:58.744840+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shimotaga-ko": {
+    "generated_at": "2026-04-10T20:15:22.640143+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "shobuzawa-kaigan": {
+    "generated_at": "2026-04-10T20:16:44.409940+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "sotourahama": {
+    "generated_at": "2026-04-10T20:18:06.817663+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "usami-ko": {
+    "generated_at": "2026-04-10T20:19:28.368075+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "yahano-ko": {
+    "generated_at": "2026-04-10T20:25:38.037496+09:00",
+    "quality": "ok",
+    "needs_review": false
   }
 }
