@@ -14,6 +14,11 @@ Render cron では実行後に GitHub へプッシュして永続化する。
     python scripts/gen_lead_texts.py --slug enoshima           # 1件のみ
     python scripts/gen_lead_texts.py --empty-only              # lead_text が空のものだけ処理（再生成なし）
     python scripts/gen_lead_texts.py --area tokyobay           # エリア絞り込み（複数可: --area tokyobay --area miura）
+    # 指定可能なエリアスラッグ:
+    #   tokyobay / uchibo / sotobo / kujukuri
+    #   sagamibay / miura / suruga-bay / nishi-izu / higashi-izu / minami-izu
+    #   enshu-nada / isewan / mikawa-bay / shima-minami-ise / kumano-nada
+    #   kii-suido-wakayama / osakawan
     python scripts/gen_lead_texts.py --force                   # 既存でも強制再生成
     python scripts/gen_lead_texts.py --dry-run                 # 生成のみ、ファイル書き込み・GitHub プッシュなし
 
