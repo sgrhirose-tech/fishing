@@ -12,6 +12,7 @@ Render cron では実行後に GitHub へプッシュして永続化する。
     python scripts/gen_lead_texts.py                    # 優先度順に20件処理
     python scripts/gen_lead_texts.py --limit 50
     python scripts/gen_lead_texts.py --slug enoshima    # 1件のみ
+    python scripts/gen_lead_texts.py --empty-only       # lead_text が空のものだけ処理（再生成なし）
     python scripts/gen_lead_texts.py --force            # 既存でも強制再生成
     python scripts/gen_lead_texts.py --dry-run          # 生成のみ、ファイル書き込み・GitHub プッシュなし
 
@@ -129,11 +130,15 @@ def get_spots_to_process(
     limit: int,
     force: bool = False,
     slug_filter: str | None = None,
+    empty_only: bool = False,
 ) -> list[dict]:
     if slug_filter:
         return [s for s in spots if s.get("slug") == slug_filter]
 
-    if force:
+    if empty_only:
+        # lead_text が空のもののみ（グループ 0 相当）
+        candidates = [s for s in spots if not (s.get("info") or {}).get("lead_text")]
+    elif force:
         candidates = spots
     else:
         # グループ 3（新鮮 + 不要）は除外
@@ -207,10 +212,11 @@ def push_results_to_github(token: str, updated_slugs: list[str]) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="釣り場リード文自動生成バッチ")
-    parser.add_argument("--limit",   type=int, default=20, help="処理件数（デフォルト20）")
-    parser.add_argument("--slug",    type=str, default=None, help="1件だけ処理するスポットスラッグ")
-    parser.add_argument("--force",   action="store_true",   help="既存のリード文も強制再生成")
-    parser.add_argument("--dry-run", action="store_true",   help="生成のみ（ファイル書き込み・GitHub プッシュなし）")
+    parser.add_argument("--limit",      type=int, default=20, help="処理件数（デフォルト20）")
+    parser.add_argument("--slug",       type=str, default=None, help="1件だけ処理するスポットスラッグ")
+    parser.add_argument("--force",      action="store_true",   help="既存のリード文も強制再生成")
+    parser.add_argument("--empty-only", action="store_true",   help="lead_text が空のスポットのみ処理（再生成なし）")
+    parser.add_argument("--dry-run",    action="store_true",   help="生成のみ（ファイル書き込み・GitHub プッシュなし）")
     args = parser.parse_args()
 
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
@@ -235,6 +241,7 @@ def main() -> None:
         limit=args.limit,
         force=args.force,
         slug_filter=args.slug,
+        empty_only=args.empty_only,
     )
     print(f"[処理対象] {len(targets)} 件\n")
 
