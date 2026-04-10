@@ -121,6 +121,13 @@ main {
 .area-card h3 { margin: 0 0 .25rem; color: #1a6b9e; font-size: 1.17rem; }
 .area-card p  { margin: 0; font-size: .85rem; color: #555; }
 
+/* ---- エリアページ スポット一覧テーブル ---- */
+.area-spot-index { margin-top: 2rem; }
+.area-spot-index h2 { font-size: 1.05rem; margin-bottom: .8rem; color: #1a3a5c; }
+.area-spot-table td { font-size: .85rem; vertical-align: top; }
+.area-spot-table td:nth-child(1) { white-space: nowrap; }
+.area-fish-cell { white-space: nowrap; color: #555; }
+
 /* ---- 戻るリンク ---- */
 .back-link {
   display: inline-block;

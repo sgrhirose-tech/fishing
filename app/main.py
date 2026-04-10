@@ -1245,6 +1245,13 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     region_name = REGION_NAMES.get(region_slug, "")
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     fish_name_map = {v: k for k, v in fish_slug_map.items()}
+    spot_descriptions = {
+        s["slug"]: (
+            (s.get("info") or {}).get("description")
+            or _build_spot_description(s, fish_name_map)
+        )
+        for s in spots
+    }
     return templates.TemplateResponse(request, "city.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -1257,6 +1264,7 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "spots": spots,
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
+        "spot_descriptions": spot_descriptions,
     })
 
 
