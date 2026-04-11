@@ -1,6 +1,6 @@
 {
   "slug": "kawagoe-tsurizanbashi",
-  "name": "川越釣り桟橋",
+  "name": "川越釣り桟橋（JERA海釣り桟橋）",
   "location": {
     "latitude": 35.0041854,
     "longitude": 136.686225
@@ -14,7 +14,7 @@
     "city_slug": "kawagoe"
   },
   "physical_features": {
-    "sea_bearing_deg": 255,
+    "sea_bearing_deg": 155,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
