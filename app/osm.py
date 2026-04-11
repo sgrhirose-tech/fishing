@@ -12,7 +12,7 @@ import urllib.parse
 import urllib.request
 
 # 検索半径（メートル）
-AMENITY_SEARCH_RADIUS_M = 1000
+AMENITY_SEARCH_RADIUS_M = 500
 
 # 取得対象の施設タイプ
 FACILITY_TYPES = [

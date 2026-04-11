@@ -2,8 +2,8 @@
   "slug": "tomisuhara-gyoko",
   "name": "富洲原漁港",
   "location": {
-    "latitude": 35.0023036,
-    "longitude": 136.6615068
+    "latitude": 35.0042,
+    "longitude": 136.6654372
   },
   "area": {
     "prefecture": "三重県",
@@ -14,14 +14,15 @@
     "city_slug": "yokkaichi"
   },
   "physical_features": {
-    "sea_bearing_deg": 140.7,
+    "sea_bearing_deg": 140,
     "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "四日市市北端の漁港、クロダイ・セイゴ向き",
@@ -31,9 +32,9 @@
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 0.9,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:漁港"
     ]
