@@ -33,8 +33,7 @@
 **注意点**  
 水深が浅く干潮時は釣りになりにくいため、潮汐確認が必須です。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/osaka/osakawan/sakai/ishizu-fishing-port
+**[Tsuricast詳細ページ](https://tsuricast.jp/osaka/osakawan/sakai/ishizu-fishing-port)**
 
 ---
 
@@ -59,8 +58,7 @@ https://tsuricast.jp/osaka/osakawan/sakai/ishizu-fishing-port
 タチウオのハイシーズン（秋）は非常に混雑します。  
 ドラム缶ポイントには「1組1基」の暗黙ルールがあります。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/osaka/osakawan/izumisano/izumisano-food-combinator
+**[Tsuricast詳細ページ](https://tsuricast.jp/osaka/osakawan/izumisano/izumisano-food-combinator)**
 
 ---
 
@@ -85,8 +83,7 @@ JR阪和線・箱作駅から徒歩10分。
 **注意点**  
 テトラ帯での釣りになるため、足元の安全に注意してください。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/osaka/osakawan/hannan/hakozukuri-fishing-port
+**[Tsuricast詳細ページ](https://tsuricast.jp/osaka/osakawan/hannan/hakozukuri-fishing-port)**
 
 ---
 

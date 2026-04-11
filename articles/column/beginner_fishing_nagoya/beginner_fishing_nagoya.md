@@ -30,8 +30,7 @@
 潮汐をTsuricastで確認してから出発してください。  
 ハゼ専門のスポットなので、他の魚種を狙いたい場合は次の2か所をどうぞ。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/aichi/isewan/nagoya/inae-kouen
+**[Tsuricast詳細ページ](https://tsuricast.jp/aichi/isewan/nagoya/inae-kouen)**
 
 ---
 
@@ -62,8 +61,7 @@ https://tsuricast.jp/aichi/isewan/nagoya/inae-kouen
 堤防の3分の1ほどまで消波ブロックが入っているエリアがあるため、  
 初心者は足場の広い部分で竿を出すのが安全です。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/mie/isewan/ise/aritaki-teibou
+**[Tsuricast詳細ページ](https://tsuricast.jp/mie/isewan/ise/aritaki-teibou)**
 
 ---
 
@@ -92,8 +90,7 @@ https://tsuricast.jp/mie/isewan/ise/aritaki-teibou
 初心者は堤防の手前側（陸に近い部分）から始めるのが無難です。  
 人気スポットのため、土日は混雑します。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/shizuoka/enshu-nada/kosai/arai-benten-fishing-park
+**[Tsuricast詳細ページ](https://tsuricast.jp/shizuoka/enshu-nada/kosai/arai-benten-fishing-park)**
 
 ---
 

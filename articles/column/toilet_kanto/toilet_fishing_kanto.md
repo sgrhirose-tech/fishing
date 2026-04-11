@@ -32,8 +32,7 @@
 釣具店も隣接しているため、長時間釣行でも安心感があります。  
 出発前に勇竿釣具店のSNSで釣況と設備情報を確認しておくのがこの釣り場の定番です。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/kanagawa/tokyobay/kawasaki/higashi-ogishima-nishi-koen
+**[Tsuricast詳細ページ](https://tsuricast.jp/kanagawa/tokyobay/kawasaki/higashi-ogishima-nishi-koen)**
 
 ---
 
@@ -53,8 +52,7 @@ https://tsuricast.jp/kanagawa/tokyobay/kawasaki/higashi-ogishima-nishi-koen
 東京湾側で波が穏やかなため、荒天時でも比較的釣りになりやすく、  
 長時間釣行との相性がいい場所です。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/kanagawa/miura/yokosuka/kurihama
+**[Tsuricast詳細ページ](https://tsuricast.jp/kanagawa/miura/yokosuka/kurihama)**
 
 ---
 
@@ -78,8 +76,7 @@ https://tsuricast.jp/kanagawa/miura/yokosuka/kurihama
 **注意点**  
 サーファーの多い海岸です。砂浜での棲み分けを意識して釣り座を選んでください。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/kanagawa/sagamibay/hiratsuka/hiratsuka-kaigan
+**[Tsuricast詳細ページ](https://tsuricast.jp/kanagawa/sagamibay/hiratsuka/hiratsuka-kaigan)**
 
 ---
 

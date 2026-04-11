@@ -35,8 +35,7 @@
 満潮前後に合わせて出発時間を決めるのが正解です。  
 潮汐はTsuricastの詳細ページで確認できます。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/osaka/osakawan/sakai/ishizu-fishing-port
+**[Tsuricast詳細ページ](https://tsuricast.jp/osaka/osakawan/sakai/ishizu-fishing-port)**
 
 ---
 
@@ -67,8 +66,7 @@ https://tsuricast.jp/osaka/osakawan/sakai/ishizu-fishing-port
 人気ポイントのドラム缶には「1組1基」の暗黙ルールがあります。  
 初心者のうちは混雑するハイシーズンを避けて、まず昼間のサビキから始めるのが無難です。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/osaka/osakawan/izumisano/izumisano-food-combinator
+**[Tsuricast詳細ページ](https://tsuricast.jp/osaka/osakawan/izumisano/izumisano-food-combinator)**
 
 ---
 
@@ -94,8 +92,7 @@ JR阪和線・箱作駅下車・徒歩10分。駐車場あり。
 漁港へ向かう道が細く分かりにくいため、初回は地図で経路を事前確認してください。  
 テトラ帯での釣りになるため、足元の安全に注意してください。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/osaka/osakawan/hannan/hakozukuri-fishing-port
+**[Tsuricast詳細ページ](https://tsuricast.jp/osaka/osakawan/hannan/hakozukuri-fishing-port)**
 
 ---
 
