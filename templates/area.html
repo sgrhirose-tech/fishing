@@ -43,6 +43,25 @@
     {% endfor %}
   </div>
 </section>
+<section class="area-spot-index">
+  <h2>{{ area_name }}の釣り場一覧（{{ spots|length }}か所）</h2>
+  <table class="info-table area-spot-table">
+    <thead>
+      <tr><th>釣り場名</th><th>市区町村</th><th>対象魚種</th><th>概要</th></tr>
+    </thead>
+    <tbody>
+    {% for s in spots %}
+    {% set a = s.area %}
+    <tr>
+      <td><a href="/{{ a.pref_slug }}/{{ a.area_slug }}/{{ a.city_slug }}/{{ s.slug }}">{{ s.name }}</a></td>
+      <td>{{ a.city }}</td>
+      <td class="area-fish-cell">{% for fish in s.target_fish[:3] %}{{ fish_name_map.get(fish, fish) }}{% if not loop.last %}・{% endif %}{% endfor %}</td>
+      <td>{{ s.info.notes }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
 <a href="/{{ pref_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
 

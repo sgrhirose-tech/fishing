@@ -28,7 +28,7 @@ from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_sl
 from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, spot_slope_type, spot_type_label, assign_area, get_area_centers, get_photos
 from .weather import (fetch_weather, fetch_weather_range,
                        fetch_marine_weatherapi, fetch_marine, fetch_marine_range,
-                       fetch_sst_noaa)
+                       fetch_sst_noaa, get_weather_fetched_at)
 from .scoring import score_spot, direction_label, score_7days
 from .osm import fetch_nearby_facilities, load_facilities_json, get_cached_facilities
 
@@ -141,6 +141,7 @@ templates = Jinja2Templates(directory=str(_BASE / "templates"))
 _ROBOTS_TXT = """\
 User-agent: *
 Allow: /
+Disallow: /api/
 
 # --- AI training crawlers: block ---
 User-agent: GPTBot
@@ -253,6 +254,7 @@ def sitemap_xml():
     # 固定ページ
     urls.append((f"{_BASE_URL}/",       "daily",   "1.0"))
     urls.append((f"{_BASE_URL}/spots",  "daily",   "0.8"))
+    urls.append((f"{_BASE_URL}/toilet/", "weekly",  "0.7"))
     urls.append((f"{_BASE_URL}/fish/",  "weekly",  "0.7"))
     for s in ("safety", "privacy", "about", "contact"):
         urls.append((f"{_BASE_URL}/{s}", "monthly", "0.4"))
@@ -366,7 +368,17 @@ def _compute_forecast(spot) -> dict:
 
     today_data = all_days[0] if all_days else None   # days[0] = 今日
     forecast   = all_days[1:]                        # days[1:] = 明日+6日
-    return {"slug": slug, "days": forecast, "today": today_data}
+
+    # 気象データ取得時刻（JST 表示用）
+    fetched_ts = get_weather_fetched_at(lat, lon, start, end)
+    import datetime as _dt2
+    if fetched_ts:
+        fetched_at = _dt2.datetime.fromtimestamp(fetched_ts, tz=_dt2.timezone(
+            _dt2.timedelta(hours=9))).strftime("%m/%d %H:%M")
+    else:
+        fetched_at = None
+
+    return {"slug": slug, "days": forecast, "today": today_data, "fetched_at": fetched_at}
 
 
 @app.get("/api/forecast/{slug}")
@@ -499,6 +511,47 @@ def page_top(request: Request):
             and any(data["slug"] in s.get("target_fish", []) for s in spots)
         ],
         "recent_articles": recent_articles,
+    })
+
+
+@app.get("/toilet/", response_class=HTMLResponse)
+def page_toilet(request: Request):
+    """トイレあり釣り場一覧ページ。"""
+    spots = load_spots()
+    toilet_spots = []
+    for s in spots:
+        slug = spot_slug(s)
+        facilities = get_cached_facilities(slug) or []
+        if any(f["type"] == "トイレ" for f in facilities):
+            toilet_spots.append(s)
+
+    # REGIONS 順に都道府県グループを構築
+    pref_name_map: dict[str, str] = {}
+    for s in spots:
+        a = s.get("area", {})
+        p_slug = a.get("pref_slug", "")
+        p_name = a.get("prefecture", "")
+        if p_slug and p_name:
+            pref_name_map[p_slug] = p_name
+
+    pref_groups: list[dict] = []
+    seen: set = set()
+    for r in REGIONS:
+        for p_slug in r["prefs"]:
+            if p_slug in seen:
+                continue
+            p_spots = [s for s in toilet_spots if s.get("area", {}).get("pref_slug") == p_slug]
+            if p_spots:
+                seen.add(p_slug)
+                pref_groups.append({
+                    "pref_slug": p_slug,
+                    "pref_name": pref_name_map.get(p_slug, p_slug),
+                    "spots": p_spots,
+                })
+
+    return templates.TemplateResponse(request, "toilet.html", {
+        "pref_groups": pref_groups,
+        "total": len(toilet_spots),
     })
 
 
@@ -930,11 +983,27 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
     return html
 
 
+_ARTICLE_CATEGORY_LABELS: dict[str, str] = {
+    "column": "店長コラム",
+    "info":   "店員インフォメーション",
+}
+_ARTICLE_CATEGORY_ORDER = ["column", "info"]
+
+
 @app.get("/articles/", response_class=HTMLResponse)
 def page_articles_top(request: Request):
-    articles = _load_articles()
+    all_articles = _load_articles()
+    grouped: dict[str, list] = {cat: [] for cat in _ARTICLE_CATEGORY_ORDER}
+    for a in all_articles:
+        cat = a.get("category", "")
+        if cat in grouped:
+            grouped[cat].append(a)
+    categories = [
+        {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": grouped[cat]}
+        for cat in _ARTICLE_CATEGORY_ORDER
+    ]
     return templates.TemplateResponse(request, "articles/top.html", {
-        "articles": articles,
+        "categories": categories,
     })
 
 
@@ -1144,6 +1213,8 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
     for s in spots:
         c_slug = s["area"]["city_slug"]
         c_name = s["area"]["city"]
+        if not c_slug:
+            continue
         cities.setdefault(c_slug, {"name": c_name, "count": 0})
         cities[c_slug]["count"] += 1
     return templates.TemplateResponse(request, "area.html", {
@@ -1174,6 +1245,13 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     region_name = REGION_NAMES.get(region_slug, "")
     fish_slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     fish_name_map = {v: k for k, v in fish_slug_map.items()}
+    spot_descriptions = {
+        s["slug"]: (
+            (s.get("info") or {}).get("description")
+            or _build_spot_description(s, fish_name_map)
+        )
+        for s in spots
+    }
     return templates.TemplateResponse(request, "city.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -1186,6 +1264,7 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "spots": spots,
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
+        "spot_descriptions": spot_descriptions,
     })
 
 

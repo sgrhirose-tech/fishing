@@ -14,24 +14,26 @@
     "city_slug": "tateyama"
   },
   "physical_features": {
-    "sea_bearing_deg": 2.9,
+    "sea_bearing_deg": 5,
     "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1041.3
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "L字波止でアオリイカ・クロダイ・キス・ヒラメ向き",
-    "access": "休暇村前［館山市］バス停から徒歩5分"
+    "access": "休暇村前［館山市］バス停から徒歩5分",
+    "lead_text": "千葉県内房・見物漁港に延びるL字形の堤防で、3本ある堤防のうち一番奥のL字堤防がメインポイントです。曲がり角より先の先端側が好釣り座で、底質は岩礁と砂地が入り混じっています。水深は曲がり角付近で約2メートルと全体的に浅めですが、アオリイカの魚影は濃く、堤防際に小型の群れが目視できることもあります。クロダイは潮が満ちている時間帯、とくに濁りが入った日の夜釣りウキ釣りで実績があります。ヒラメは砂地が絡む先端エリアが狙い目です。"
   },
   "classification": {
-    "primary_type": "fishing_facility",
-    "confidence": 0.59,
+    "primary_type": "breakwater",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=bare_rock@241m",
       "natural=beach@148m",
@@ -40,9 +42,9 @@
   },
   "target_fish": [
     "aoriika",
+    "shirogisu",
     "kurodai",
-    "hirame",
-    "shirogisu"
+    "hirame"
   ],
   "harbor_code": "12-19",
   "harbor_name": "館山"

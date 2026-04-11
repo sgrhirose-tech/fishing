@@ -75,6 +75,14 @@
     },
     "熊野灘": {
       "center_lat": 34.10, "center_lon": 136.20, "fetch_km": 60
+    },
+    "大阪湾": {
+      "center_lat": 34.58, "center_lon": 135.30, "fetch_km": 35,
+      "lat_min": 34.28, "lat_max": 34.90, "lon_min": 134.88, "lon_max": 135.70
+    },
+    "紀伊水道（和歌山）": {
+      "center_lat": 34.00, "center_lon": 135.15, "fetch_km": 80,
+      "lat_min": 33.65, "lat_max": 34.30, "lon_min": 134.80, "lon_max": 135.55
     }
   },
   "fallbacks": [

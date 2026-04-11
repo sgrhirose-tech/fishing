@@ -15,29 +15,31 @@
   },
   "physical_features": {
     "sea_bearing_deg": 65,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 458.8
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "熱海市の小漁港、アジ・メジナ・アオリイカ向き",
-    "access": "ＪＡ下多賀支店バス停から徒歩5分"
+    "access": "ＪＡ下多賀支店バス停から徒歩5分",
+    "lead_text": "熱海市下多賀に位置する小規模漁港で、入口がわかりにくく駐車場もないため地元の常連が中心の穴場です。港内の底質は砂地で水深は最深部でも5メートル未満と浅め。テトラ帯左側の沈みテトラ周りが特に実績の高いポイントとして知られており、波のある日はメジナやクロダイがテトラ際に寄りやすくなります。アオリイカはエギングで狙われ、アジは夜の時間帯に実績があります。春先にはクロダイの50センチクラスも出た記録があります。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
+    "aji",
     "aoriika",
-    "mejina",
-    "aji"
+    "mejina"
   ],
   "harbor_code": "22-1",
   "harbor_name": "網代"

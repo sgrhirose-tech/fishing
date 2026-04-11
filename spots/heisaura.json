@@ -21,23 +21,25 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "6kmに及ぶ広大サーフ、キス・ヒラメ・アオリイカ向き",
-    "access": "布沼大石弁天バス停から徒歩5分"
+    "access": "布沼大石弁天バス停から徒歩5分",
+    "lead_text": "館山市に位置する約6kmの遠浅サーフです。底質は全域砂地で、海岸線には佐野川・布沼川・巴川など複数の小河川が流れ込み、アロハガーデン下の河口周辺は沈み根が少なく常連に人気の一級ポイントになっています。水深はアクシオン下でも2m前後と全体的に浅く、離岸流やブレイクが貴重な変化になります。シロギスは4月から12月まで狙え、6〜9月がピーク。10月上旬には大型も混じります。ヒラメは4月以降にカタクチイワシの群れが入ると活性が上がりやすく、アオリイカは洲崎寄りの岩礁帯との境目が実績ポイントです。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
     "aoriika",
-    "hirame",
-    "shirogisu"
+    "shirogisu",
+    "hirame"
   ],
   "harbor_code": "12-8",
   "harbor_name": "布良"

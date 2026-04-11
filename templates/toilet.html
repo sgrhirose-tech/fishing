@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}トイレあり釣り場一覧（{{ total }}か所）| 関東・東海・近畿の海釣りスポット | Tsuricast{% endblock %}
+{% block canonical %}https://tsuricast.jp/toilet/{% endblock %}
+{% block description %}トイレが近くにある海釣り場を{{ total }}か所掲載。千葉・神奈川・静岡・愛知・三重・大阪・和歌山エリア別に一覧で確認できます。家族連れや長時間釣行に便利なスポット選びにお役立てください。{% endblock %}
+
+{% block content %}
+<h1>トイレあり釣り場一覧</h1>
+<p class="toilet-lead">トイレが近く（500m以内）にある海釣りスポット <strong>{{ total }}か所</strong>を都道府県別にまとめました。<br>家族連れや長時間の釣行でも安心してご利用いただけます。</p>
+
+<!-- 都道府県ジャンプリンク -->
+<nav class="toilet-pref-nav" aria-label="都道府県で絞り込む">
+  {% for g in pref_groups %}
+  <a href="#pref-{{ g.pref_slug }}" class="pref-nav-chip">{{ g.pref_name }}（{{ g.spots|length }}）</a>
+  {% endfor %}
+</nav>
+
+<!-- 都道府県別リスト -->
+{% for g in pref_groups %}
+<section class="toilet-pref-section" id="pref-{{ g.pref_slug }}">
+  <h2>{{ g.pref_name }}のトイレあり釣り場（{{ g.spots|length }}か所）</h2>
+  <table class="info-table toilet-table">
+    <thead>
+      <tr>
+        <th>釣り場名</th>
+        <th>市区町村</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in g.spots %}
+      {% set a = s.area %}
+      <tr>
+        <td>
+          <a href="/{{ a.pref_slug }}/{{ a.area_slug }}/{{ a.city_slug }}/{{ s.slug }}">{{ s.name }}</a>
+          <span class="facility-chip chip-toilet" style="font-size:.72rem;padding:.15rem .5rem;margin-left:.4rem;vertical-align:middle">トイレあり</span>
+        </td>
+        <td>{{ a.city }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endfor %}
+
+<p class="toilet-note">※ 施設情報は OpenStreetMap のデータをもとにしています。現地の状況と異なる場合があります。釣行前に最新情報をご確認ください。</p>
+{% endblock %}

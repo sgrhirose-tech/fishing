@@ -262,3 +262,11 @@ def fetch_sst_noaa(lat: float, lon: float, date_str: str) -> float | None:
         pass
 
     return None
+
+
+def get_weather_fetched_at(lat: float, lon: float, start_date: str, end_date: str) -> float | None:
+    """指定座標・期間の気象キャッシュ取得時刻（unixtime）を返す。キャッシュ未存在時は None。"""
+    grid_lat = round(round(lat * 10) / 10, 1)
+    grid_lon = round(round(lon * 10) / 10, 1)
+    entry = _WEATHER_CACHE.get((grid_lat, grid_lon, start_date, end_date))
+    return entry[0] if entry else None
