@@ -113,6 +113,12 @@ def _format_date_jp(date_str: str) -> str:
 
 
 # ============================================================
+# フォアキャスト結果キャッシュ（スポットページ高速化用）
+# ============================================================
+_FORECAST_CACHE: dict = {}   # {slug: (timestamp, result)}
+_FORECAST_CACHE_TTL = 300    # 5分（秒）
+
+# ============================================================
 # FastAPI アプリ
 # ============================================================
 
@@ -1334,13 +1340,18 @@ def page_spot_detail(
         "toilet":      "トイレ" in facility_types,
         "convenience": "コンビニ" in facility_types,
     }
-    try:
-        import concurrent.futures as _cf
-        with _cf.ThreadPoolExecutor(max_workers=1) as _ex:
-            preloaded_forecast = _ex.submit(_compute_forecast, spot).result(timeout=8)
-    except Exception as e:
-        print(f"[警告] _compute_forecast スキップ ({slug}): {e}")
-        preloaded_forecast = None
+    _cached = _FORECAST_CACHE.get(slug)
+    if _cached and time.time() - _cached[0] < _FORECAST_CACHE_TTL:
+        preloaded_forecast = _cached[1]
+    else:
+        try:
+            import concurrent.futures as _cf
+            with _cf.ThreadPoolExecutor(max_workers=1) as _ex:
+                preloaded_forecast = _ex.submit(_compute_forecast, spot).result(timeout=8)
+            _FORECAST_CACHE[slug] = (time.time(), preloaded_forecast)
+        except Exception as e:
+            print(f"[警告] _compute_forecast スキップ ({slug}): {e}")
+            preloaded_forecast = None
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
