@@ -213,13 +213,16 @@ def get_area_centers() -> dict:
 
 def get_photos(slug: str) -> list[str]:
     """スポットの写真URLリストを返す。
-    static/photos/{slug}*.jpg → static/img/spots/{slug}*.jpg の順に探索。
+    static/photos/{slug}*.{jpg,png} → static/img/spots/{slug}*.{jpg,png} の順に探索。
     """
     photos: list[str] = []
     for subdir in ("photos", "img/spots"):
         d = _ROOT / "static" / subdir
         if d.exists():
-            photos += [f"/static/{subdir}/{f.name}" for f in sorted(d.glob(f"{slug}*.jpg"))]
+            files = sorted(
+                f for ext in ("jpg", "png") for f in d.glob(f"{slug}*.{ext}")
+            )
+            photos += [f"/static/{subdir}/{f.name}" for f in files]
     return photos
 
 
