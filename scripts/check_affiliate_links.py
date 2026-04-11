@@ -198,10 +198,19 @@ def main():
     print(f"  合計         : {total:>4}件")
 
     # 問題があった場合は exit code 1（Render ログで目立つ）
-    problem_count = len(results["DEAD"]) + len(results["UNAVAILABLE"])
-    if problem_count > 0:
-        print(f"\n★ DEAD/UNAVAILABLE が {problem_count}件 あります。上記URLを確認してください。")
+    # DEAD のみ exit 1（商品が Amazon から削除された確実なケース）
+    # UNAVAILABLE はサーバー環境での bot 検知による誤検知が多いため警告のみ
+    dead_count = len(results["DEAD"])
+    unavail_count = len(results["UNAVAILABLE"])
+    error_count = len(results["ERROR"])
+
+    if dead_count > 0:
+        print(f"\n❌ DEAD が {dead_count}件 あります。リンクを削除または差し替えてください。")
         sys.exit(1)
+    elif unavail_count > 0:
+        print(f"\n⚠️  UNAVAILABLE が {unavail_count}件 あります（在庫切れまたはbot検知の可能性）。手動で確認してください。")
+    elif error_count > 0:
+        print(f"\n⚠️  ERROR が {error_count}件 あります（一時的なネットワーク障害の可能性）。")
     else:
         print("\n✓ 問題のあるリンクは見つかりませんでした。")
 
