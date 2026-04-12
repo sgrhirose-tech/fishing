@@ -136,6 +136,7 @@ import pathlib
 _BASE = pathlib.Path(__file__).parent.parent
 
 app.mount("/static", StaticFiles(directory=str(_BASE / "static")), name="static")
+app.mount("/article-assets", StaticFiles(directory=str(_BASE / "articles")), name="article_assets")
 templates = Jinja2Templates(directory=str(_BASE / "templates"))
 
 _ROBOTS_TXT = """\
@@ -944,6 +945,7 @@ def _load_article_slots(category: str, slug: str) -> list:
 
 
 _MD_LINK_RE = _re.compile(r'href="\./([\w-]+)\.md"')
+_MD_IMG_RE  = _re.compile(r'src="(?:\./)?(img/[\w.@-]+)"')
 
 
 def _render_md_with_affiliates(content: str, slots: list, article_path: str = "") -> str:
@@ -980,6 +982,7 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
 
     if article_path:
         html = _MD_LINK_RE.sub(lambda m: f'href="/articles/{article_path}/{m.group(1)}/"', html)
+        html = _MD_IMG_RE.sub(lambda m: f'src="/article-assets/{article_path}/{m.group(1)}"', html)
     return html
 
 
