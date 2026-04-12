@@ -38,8 +38,7 @@
 潮汐はTsuricastの詳細ページで確認できます。  
 ハゼ専門のスポットのため、他の魚種を狙いたい場合は向きません。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/aichi/isewan/nagoya/inae-kouen
+**[Tsuricast詳細ページ](https://tsuricast.jp/aichi/isewan/nagoya/inae-kouen)**
 
 ---
 

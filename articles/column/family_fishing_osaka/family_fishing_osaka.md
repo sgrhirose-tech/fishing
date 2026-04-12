@@ -34,8 +34,7 @@
 潮汐はTsuricastの詳細ページで確認できます。  
 駐車場・トイレあり。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/osaka/osakawan/sakai/ishizu-fishing-port
+**[Tsuricast詳細ページ](https://tsuricast.jp/osaka/osakawan/sakai/ishizu-fishing-port)**
 
 ---
 
@@ -64,8 +63,7 @@ https://tsuricast.jp/osaka/osakawan/sakai/ishizu-fishing-port
 夜釣りになる場合はライフジャケット着用と、  
 帰りの電車の時間の事前確認を忘れずに。
 
-**Tsuricast詳細ページ**  
-https://tsuricast.jp/osaka/osakawan/izumisano/izumisano-food-combinator
+**[Tsuricast詳細ページ](https://tsuricast.jp/osaka/osakawan/izumisano/izumisano-food-combinator)**
 
 ---
 
