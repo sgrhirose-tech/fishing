@@ -3,9 +3,10 @@
 
 - data/blog_feeds.json に登録されたブログの RSS を定期取得（TTL: 4時間）
 - 記事タイトルから魚種キーワードを抽出してタグ付け
-- スポットの都道府県 + 対象魚種に基づいて関連記事を返す
+- スポットの都道府県 + 地理キーワード + 対象魚種に基づいて関連記事を返す
 """
 import json
+import re
 import time
 import threading
 import xml.etree.ElementTree as ET
@@ -25,11 +26,12 @@ _FISH_KEYWORDS: dict = {}     # {slug: [keyword, ...]}
 # 通称・別名マッピング（魚種スラッグ → キーワードリスト）
 _SYNONYMS: dict = {
     "aji":      ["アジ", "鯵", "アジング"],
-    "kurodai":  ["クロダイ", "チヌ", "黒鯛", "チヌ釣り", "クロダイ釣り"],
-    "suzuki":   ["スズキ", "シーバス", "鱸", "シーバス釣り"],
+    "kurodai":  ["クロダイ", "チヌ", "黒鯛"],
+    "suzuki":   ["スズキ", "シーバス", "鱸"],
     "aoriika":  ["アオリイカ", "エギング", "アオリ"],
     "tachiuo":  ["タチウオ", "太刀魚"],
     "shirogisu":["シロギス", "キス", "キスゴ"],
+    "mejina":   ["メジナ", "グレ"],
     "iwashi":   ["イワシ", "鰯", "サビキ"],
     "sayori":   ["サヨリ", "細魚"],
     "madako":   ["タコ", "蛸", "マダコ"],
@@ -168,22 +170,64 @@ def refresh_all() -> None:
             _CACHE[url] = (now, articles)
 
 
+def _spot_geo_keywords(spot: dict) -> set:
+    """スポットの地理キーワードセットを生成する。
+
+    使用するデータ:
+      - area.city       : 市区町村名（行政区分接尾辞を除去）
+      - area.area_name  : エリア名（例: 相模湾）
+      - name            : スポット名から一般的な施設接尾語を除いた主要部分
+    """
+    kws: set = set()
+    area = spot.get("area") or {}
+
+    # 市区町村名: "茅ヶ崎市" → "茅ヶ崎"
+    city = area.get("city", "")
+    city_short = re.sub(r"[市区町村郡]$", "", city)
+    if len(city_short) >= 2:
+        kws.add(city_short)
+
+    # エリア名: "相模湾" など
+    area_name = area.get("area_name", "")
+    if len(area_name) >= 2:
+        kws.add(area_name)
+
+    # スポット名から施設接尾語を繰り返し除去して主要部分を追加
+    spot_name = spot.get("name", "")
+    _SPOT_SUFFIXES = re.compile(
+        r"(公園|海浜|海岸|港|漁港|護岸|岸壁|堤防|波止|沖堤|突堤|桟橋|釣り場|釣場|フィッシング|センター|パーク)$"
+    )
+    for part in re.findall(r"[^\s・（）()「」/／]+", spot_name):
+        # 接尾語を繰り返し除去（「城南島海浜公園」→「城南島海浜」→「城南島」）
+        clean = part.strip()
+        for _ in range(5):
+            next_clean = _SPOT_SUFFIXES.sub("", clean).strip()
+            if next_clean == clean:
+                break
+            clean = next_clean
+        if len(clean) >= 2 and clean not in kws:
+            kws.add(clean)
+
+    return kws
+
+
 def get_posts_for_spot(spot: dict, limit: int = 5) -> list:
     """スポットに関連する最新ブログ記事を返す。
 
     フィルタ条件:
       1. ブログの pref_slugs がスポットの都道府県と一致
-      2. スコアリング: スポットの対象魚種と記事タグが重なる数を加算
+      2. 記事タイトルにスポットの地理キーワード（市区町村・エリア名・スポット名）が
+         1つ以上含まれること（地理的に無関係な記事を除外）
+    スコアリング:
+      - 地理キーワードのマッチ数が多いほど上位（同点は投稿日時の新しい順）
     """
     pref = (spot.get("area") or {}).get("pref_slug", "")
-    # target_fish は文字列リスト ["aji", "kurodai", ...]
-    spot_fish: list = spot.get("target_fish") or []
+    geo_keywords = _spot_geo_keywords(spot)
 
     candidates = []
     with _CACHE_LOCK:
         snapshot = list(_CACHE.items())
 
-    # ブログ → 記事 のマッピングを構築
     feed_map = {f["rss_url"]: f for f in _FEEDS}
 
     for rss_url, (_, articles) in snapshot:
@@ -193,10 +237,12 @@ def get_posts_for_spot(spot: dict, limit: int = 5) -> list:
         if pref not in feed.get("pref_slugs", []):
             continue
         for a in articles:
-            fish_match = sum(1 for s in spot_fish if s in a.get("fish_tags", []))
-            # (score 降順, 投稿日時 降順) でソート
-            candidates.append((fish_match, a["ts"], a))
+            title = a["title"]
+            geo_score = sum(1 for kw in geo_keywords if kw in title)
+            if geo_score == 0:
+                continue  # 地理的な関連なし → 除外
+            candidates.append((geo_score, a["ts"], a))
 
-    # score 降順 → ts 降順
+    # geo_score 降順 → 投稿日時 降順
     candidates.sort(key=lambda x: (x[0], x[1]), reverse=True)
     return [c[2] for c in candidates[:limit]]
