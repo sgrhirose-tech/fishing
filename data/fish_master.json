@@ -901,7 +901,8 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/kijihata.jpg"
   },
   "オオモンハタ": {
     "slug": "oomonhata",
@@ -971,7 +972,8 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/maguro.jpg"
   },
   "カツオ": {
     "slug": "katsuo",
