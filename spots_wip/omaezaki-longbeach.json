@@ -16,7 +16,7 @@
   "physical_features": {
     "sea_bearing_deg": 190,
     "seabed_type": "sand",
-    "surfer_spot": false,
+    "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1826.8
   },
   "derived_features": {
@@ -27,21 +27,20 @@
   "info": {
     "notes": "御前崎周辺サーフ、ヒラメ・キス・ルアー向き",
     "access": "御前崎市方面から車利用",
-    "photo_url": "",
     "lead_text": "御前崎灯台の下からロングビーチにかけての海岸は、遠浅の砂地サーフが広がる遠州灘の釣り場です。底質は砂主体で、サーフ全体に均一な浅瀬が続きます。ヒラメはショアからのミノーやジグでのルアー釣りが主流で、秋から冬にかけて実績が高く、早朝のサーフ際に狙い目があります。夏場はシロギスの投げ釣りが盛んで、地元アングラーは遠投で砂底を丁寧に探るスタイルが定番です。サーファーとポイントが重なるため、混雑する週末は早朝の入水が鉄則となっています。"
   },
   "classification": {
     "primary_type": "unknown",
-    "confidence": 0.0,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
-    "hirame",
-    "shirogisu"
+    "shirogisu",
+    "hirame"
   ],
   "harbor_code": "22-17",
   "harbor_name": "御前崎"

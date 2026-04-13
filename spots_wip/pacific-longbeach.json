@@ -14,14 +14,15 @@
     "city_slug": "tahara"
   },
   "physical_features": {
-    "sea_bearing_deg": 154.9,
-    "seabed_type": "unknown",
-    "surfer_spot": false,
+    "sea_bearing_deg": 155,
+    "seabed_type": "sand",
+    "surfer_spot": true,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "豊橋市との境の表浜、ヒラメ・キス・青物向き",
@@ -29,15 +30,15 @@
     "lead_text": "渥美半島南岸・田原市赤羽根に広がる遠州灘の砂浜で、細かい砂底の遠浅サーフが約2kmにわたって続きます。西側エリアは波打ち際から35〜40mで水深2m前後と均一な地形ですが、場所によって底が掘れたブレイクポイントが点在しています。東端の弥八島周辺は岩礁帯が砂底に混じって水深が約3mまで深くなり、ヒラメが好む地形変化が生まれるエリアです。シロギスは夏を中心に浅場の砂底に集まりやすく、ヒラメは秋から冬にかけてベイトが接岸する朝まずめに実績が出やすいと地元では知られています。サーファーが多いため、釣り場は端側を選ぶのが常連のセオリーです。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
-    "hirame",
-    "shirogisu"
+    "shirogisu",
+    "hirame"
   ],
   "harbor_code": "23-18",
   "harbor_name": "赤羽根"
