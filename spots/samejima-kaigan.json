@@ -16,7 +16,7 @@
   "physical_features": {
     "sea_bearing_deg": 165,
     "seabed_type": "sand",
-    "surfer_spot": false,
+    "surfer_spot": true,
     "nearest_20m_contour_distance_m": 1510.9
   },
   "derived_features": {
@@ -27,7 +27,7 @@
   "info": {
     "notes": "遠浅サーフ、投げ釣りでキス・イシモチ向き",
     "access": "磐田市方面から車利用",
-    "photo_url": ""
+    "lead_text": "静岡県磐田市に位置する鮫島海岸は、天竜川河口と太田川河口のほぼ中間に広がる遠州灘のサーフで、周辺エリアと比べると波打ち際からやや水深があるのが特徴です。底質は全面砂地で、ワンド状に地形が変化している箇所があり、常連はそうしたくぼみにシロギスが入るタイミングを見計らって入釣します。シロギスシーズンは初夏から秋口がメインで、潮が動くタイミングに数釣りの実績が高く、地形の変化を読みながら仕掛けをさびくのが地元流です。サーファーも多く利用するため、混雑しやすい休日の朝は特にキャスト方向への注意が必要です。"
   },
   "classification": {
     "primary_type": "sand_beach",
