@@ -47,6 +47,11 @@ _SYNONYMS: dict = {
     "madai":    ["マダイ", "真鯛", "タイラバ"],
 }
 
+# 船釣り記事を除外するキーワード
+_BOAT_KEYWORDS: frozenset = frozenset([
+    "船釣り", "乗合船", "遊漁船", "仕立て船", "沖釣り", "船中", "船上",
+])
+
 
 def load_feeds(fish_master: dict | None = None) -> None:
     """起動時に呼ぶ。blog_feeds.json とキーワード辞書をロード。"""
@@ -238,6 +243,8 @@ def get_posts_for_spot(spot: dict, limit: int = 5) -> list:
             continue
         for a in articles:
             title = a["title"]
+            if any(kw in title for kw in _BOAT_KEYWORDS):
+                continue  # 船釣り記事を除外
             geo_score = sum(1 for kw in geo_keywords if kw in title)
             if geo_score == 0:
                 continue  # 地理的な関連なし → 除外
