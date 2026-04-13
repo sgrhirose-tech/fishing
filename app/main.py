@@ -122,6 +122,18 @@ _FORECAST_CACHE_TTL = 300    # 5分（秒）
 # FastAPI アプリ
 # ============================================================
 
+def _rss_refresh_loop() -> None:
+    """バックグラウンドで 4時間ごとに RSS フィードを更新するループ。"""
+    import threading as _th
+    from app import blog_feeds as _bf
+    while True:
+        try:
+            _bf.refresh_all()
+        except Exception as e:
+            print(f"[blog_feeds] refresh_all エラー: {e}")
+        _th.Event().wait(4 * 3600)
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     load_spots()
@@ -132,6 +144,12 @@ async def lifespan(app: FastAPI):
     templates.env.globals["fish_slug_map"] = _slug_map
     templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
     templates.env.globals["method_slug_map"] = {k: v["slug"] for k, v in _METHOD_MASTER.items()}
+    # RSS フィード初期化 & バックグラウンド更新スレッド起動
+    import threading as _th
+    from app import blog_feeds as _bf
+    _bf.load_feeds(fish_master=_FISH_MASTER)
+    _t = _th.Thread(target=_rss_refresh_loop, daemon=True)
+    _t.start()
     yield
 
 
@@ -1356,6 +1374,11 @@ def page_spot_detail(
         except Exception as e:
             print(f"[警告] _compute_forecast スキップ ({slug}): {e}")
             preloaded_forecast = None
+    try:
+        from app import blog_feeds as _bf
+        blog_posts = _bf.get_posts_for_spot(spot)
+    except Exception:
+        blog_posts = []
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -1373,4 +1396,5 @@ def page_spot_detail(
         "tackle_links":       tackle_links,
         "spot_description":   (spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map),
         "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
+        "blog_posts":         blog_posts,
     })
