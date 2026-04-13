@@ -119,13 +119,6 @@
     "fish_slugs": ["aji"]
   },
   {
-    "name": "グラナダの路地裏から",
-    "blog_url": "https://ameblo.jp/srverde/",
-    "rss_url": "https://rssblog.ameba.jp/srverde/rss20.xml",
-    "pref_slugs": ["kanagawa"],
-    "fish_slugs": []
-  },
-  {
     "name": "新ぶっ込み釣り",
     "blog_url": "https://www.mc-bukkomifishing-blog.com/",
     "rss_url": "https://www.mc-bukkomifishing-blog.com/feed/",
