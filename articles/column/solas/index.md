@@ -1,3 +1,15 @@
+---
+title: 釣り場が減り続けている理由｜SOLAS条約と、釣り禁止になる本当の原因
+description: SOLAS条約・漁港法・マナー問題——釣り場が失われる複合的な理由を整理。フェンスの内側に入ってはいけない理由と、釣り人として今できることを店長がまとめます。
+related_spots:
+  - jonanjima-kaihin-koen
+  - higashi-ogishima-nishi-koen
+  - wakasu-kaihin-koen
+  - shimizu-fujimi
+  - maishima-ryokuchi
+  - nanko-yachoen-gokan
+---
+
 # 釣り場が減り続けている理由｜SOLAS条約と、釣り禁止になる本当の原因
 
 ## 「昔はここで釣れたのに」の背景には、複数の事情があります
