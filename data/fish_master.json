@@ -901,7 +901,8 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/kijihata.jpg"
   },
   "オオモンハタ": {
     "slug": "oomonhata",
@@ -971,7 +972,8 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/maguro.jpg"
   },
   "カツオ": {
     "slug": "katsuo",
@@ -1021,7 +1023,8 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "image": "/static/img/fish/shiira.jpg"
   },
   "サワラ": {
     "slug": "sawara",
@@ -1046,7 +1049,8 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/sawara.jpg"
   },
   "ムツ": {
     "slug": "mutsu",
@@ -1121,7 +1125,8 @@
     "bottom": [
       "岩礁",
       "砂地"
-    ]
+    ],
+    "image": "/static/img/fish/kinmedai.jpg"
   },
   "メダイ": {
     "slug": "medai",
@@ -1168,7 +1173,8 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/ishidai.jpg"
   },
   "イシガキダイ": {
     "slug": "ishigakidai",

@@ -292,6 +292,21 @@
 </section>
 {% endif %}
 
+{% if blog_posts %}
+<section class="blog-posts-section">
+  <h2 class="section-title">関連ブログ最新記事</h2>
+  <ul class="blog-posts-list">
+    {% for post in blog_posts %}
+    <li class="blog-post-item">
+      <a href="{{ post.link }}" target="_blank" rel="noopener noreferrer nofollow"
+         class="blog-post-link">{{ post.title }}</a>
+      <span class="blog-post-meta">{{ post.blog_name }}{% if post.pub %} · {{ post.pub }}{% endif %}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
 <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
 
