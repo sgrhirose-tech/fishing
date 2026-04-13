@@ -278,7 +278,7 @@ def sitemap_xml():
 
     # 固定ページ
     urls.append((f"{_BASE_URL}/",       "daily",   "1.0"))
-    urls.append((f"{_BASE_URL}/spots",  "daily",   "0.8"))
+    urls.append((f"{_BASE_URL}/spots/",  "daily",   "0.8"))
     urls.append((f"{_BASE_URL}/toilet/", "weekly",  "0.7"))
     urls.append((f"{_BASE_URL}/fish/",  "weekly",  "0.7"))
     for s in ("safety", "privacy", "about", "contact"):
@@ -681,7 +681,7 @@ SPOT_TYPE_LABELS = {
     "fishing_facility": "釣り公園・施設",
 }
 
-@app.get("/spots", response_class=HTMLResponse)
+@app.get("/spots/", response_class=HTMLResponse)
 def page_spots(
     request: Request,
     area: str = Query(None),
