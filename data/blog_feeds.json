@@ -1,0 +1,261 @@
+[
+  {
+    "name": "ブラックサーフのめざせ爆釣！",
+    "blog_url": "https://tadahiro0128.hatenablog.com/",
+    "rss_url": "https://tadahiro0128.hatenablog.com/rss",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": ["aji"]
+  },
+  {
+    "name": "☆浦安釣日記",
+    "blog_url": "http://urayasu1fish.blog47.fc2.com/",
+    "rss_url": "http://urayasu1fish.blog47.fc2.com/index.rdf",
+    "pref_slugs": ["chiba", "tokyo", "kanagawa"],
+    "fish_slugs": []
+  },
+  {
+    "name": "55FISHING",
+    "blog_url": "https://55fishing.com/",
+    "rss_url": "https://55fishing.com/feed/",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": []
+  },
+  {
+    "name": "TAKASEAのもう一釣！",
+    "blog_url": "https://tsurizuki-takasea.com/",
+    "rss_url": "https://tsurizuki-takasea.com/feed/",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": []
+  },
+  {
+    "name": "外房アジの遠投カゴ釣り日記",
+    "blog_url": "https://sotobou-aji.com/",
+    "rss_url": "https://sotobou-aji.com/feed/",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": ["aji"]
+  },
+  {
+    "name": "釣りバカGちゃん釣行記",
+    "blog_url": "https://turibakagchan.muragon.com/",
+    "rss_url": "https://turibakagchan.muragon.com/rss",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": []
+  },
+  {
+    "name": "千葉県の釣りインストラクター",
+    "blog_url": "http://cofiweb.jounin.jp/",
+    "rss_url": "http://cofiweb.jounin.jp/feed/",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": []
+  },
+  {
+    "name": "天気が良ければそれでいい",
+    "blog_url": "https://tenkigaii.com/",
+    "rss_url": "https://tenkigaii.com/feed/",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": []
+  },
+  {
+    "name": "稲毛海岸周辺の釣り",
+    "blog_url": "https://chiningstar.muragon.com/",
+    "rss_url": "https://chiningstar.muragon.com/rss",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": ["kurodai"]
+  },
+  {
+    "name": "フィッシング天台",
+    "blog_url": "https://tendai.bonnou.org/",
+    "rss_url": "https://tendai.bonnou.org/rss.xml",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": ["shirogisu", "sayori"]
+  },
+  {
+    "name": "ゆるーく投げ釣り",
+    "blog_url": "https://blog.goo.ne.jp/kenoh7",
+    "rss_url": "https://blog.goo.ne.jp/kenoh7/rss.rss",
+    "pref_slugs": ["chiba", "tokyo"],
+    "fish_slugs": ["shirogisu"]
+  },
+  {
+    "name": "雷神の男の遊び",
+    "blog_url": "http://raijinx4.blog.fc2.com/",
+    "rss_url": "http://raijinx4.blog.fc2.com/index.rdf",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": ["suzuki", "aoriika"]
+  },
+  {
+    "name": "房総半島でクロダイを釣りたい",
+    "blog_url": "https://kokoromachi.hatenablog.com",
+    "rss_url": "https://kokoromachi.hatenablog.com/rss",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": ["kurodai"]
+  },
+  {
+    "name": "拙者の投げ釣り 関東",
+    "blog_url": "https://sessya.air-nifty.com/kanto/",
+    "rss_url": "https://sessya.air-nifty.com/kanto/rss.xml",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": []
+  },
+  {
+    "name": "猫とウサギと釣りのブログ",
+    "blog_url": "https://194mac.jp/",
+    "rss_url": "https://194mac.jp/feed/",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": []
+  },
+  {
+    "name": "す〜さんの海釣り釣行記",
+    "blog_url": "https://ameblo.jp/salt-angler1990/",
+    "rss_url": "https://rssblog.ameba.jp/salt-angler1990/rss20.xml",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": ["buri", "kanpachi"]
+  },
+  {
+    "name": "西湘釣れている魚なんだろ？",
+    "blog_url": "https://ameblo.jp/uminoro26/",
+    "rss_url": "https://rssblog.ameba.jp/uminoro26/rss20.xml",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": ["aji"]
+  },
+  {
+    "name": "グラナダの路地裏から",
+    "blog_url": "https://ameblo.jp/srverde/",
+    "rss_url": "https://rssblog.ameba.jp/srverde/rss20.xml",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": []
+  },
+  {
+    "name": "新ぶっ込み釣り",
+    "blog_url": "https://www.mc-bukkomifishing-blog.com/",
+    "rss_url": "https://www.mc-bukkomifishing-blog.com/feed/",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": []
+  },
+  {
+    "name": "釣り勝（千葉内房）",
+    "blog_url": "https://tsurikatsu.net/",
+    "rss_url": "https://tsurikatsu.net/feed/",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": []
+  },
+  {
+    "name": "幻の黒鯛",
+    "blog_url": "https://akifisher.seesaa.net/",
+    "rss_url": "https://akifisher.seesaa.net/index.rdf",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": ["kurodai"]
+  },
+  {
+    "name": "フィッシングディソーダー",
+    "blog_url": "https://fishing-disorder.com/",
+    "rss_url": "https://fishing-disorder.com/feed/",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": ["aoriika"]
+  },
+  {
+    "name": "1年中チヌ釣りに夢中",
+    "blog_url": "https://ameblo.jp/satoshi0720h/",
+    "rss_url": "https://rssblog.ameba.jp/satoshi0720h/rss20.xml",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": ["kurodai"]
+  },
+  {
+    "name": "BUKKO☆MANCER",
+    "blog_url": "https://angler.kuromin.net/",
+    "rss_url": "https://angler.kuromin.net/feed/",
+    "pref_slugs": ["chiba", "tokyo"],
+    "fish_slugs": []
+  },
+  {
+    "name": "ニュービギニングの釣り日記2nd",
+    "blog_url": "https://bbxsp.seesaa.net/",
+    "rss_url": "https://bbxsp.seesaa.net/index.rdf",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": ["shirogisu", "sayori"]
+  },
+  {
+    "name": "またたびモンスター",
+    "blog_url": "https://matatabi.monster/",
+    "rss_url": "https://matatabi.monster/feed/",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": []
+  },
+  {
+    "name": "男なら陸から釣れ2",
+    "blog_url": "https://taimanfish.blogspot.com/",
+    "rss_url": "https://taimanfish.blogspot.com/feeds/posts/default?alt=rss",
+    "pref_slugs": ["tokyo", "kanagawa"],
+    "fish_slugs": ["suzuki"]
+  },
+  {
+    "name": "Sweet Dreams",
+    "blog_url": "https://bunoruha.blogspot.com",
+    "rss_url": "https://bunoruha.blogspot.com/feeds/posts/default?alt=rss",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": []
+  },
+  {
+    "name": "関東【神奈川】釣り場ポイントガイド",
+    "blog_url": "https://fishing-spot.net/",
+    "rss_url": "https://fishing-spot.net/feed/",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": []
+  },
+  {
+    "name": "AKIRAの江戸川で釣るぅ？",
+    "blog_url": "https://ameblo.jp/xanxan2005/",
+    "rss_url": "https://rssblog.ameba.jp/xanxan2005/rss20.xml",
+    "pref_slugs": ["tokyo", "chiba"],
+    "fish_slugs": ["suzuki"]
+  },
+  {
+    "name": "soraのブログ",
+    "blog_url": "https://ameblo.jp/sora2107/",
+    "rss_url": "https://rssblog.ameba.jp/sora2107/rss20.xml",
+    "pref_slugs": ["kanagawa", "chiba"],
+    "fish_slugs": ["tachiuo"]
+  },
+  {
+    "name": "気楽な釣り日記（すわたろ）",
+    "blog_url": "https://suwataro.muragon.com/",
+    "rss_url": "https://suwataro.muragon.com/rss",
+    "pref_slugs": ["chiba", "kanagawa", "tokyo"],
+    "fish_slugs": []
+  },
+  {
+    "name": "ゲルの気ままにフィッシング！",
+    "blog_url": "https://ameblo.jp/will197575/",
+    "rss_url": "https://rssblog.ameba.jp/will197575/rss20.xml",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": []
+  },
+  {
+    "name": "Harry UP!!!",
+    "blog_url": "https://harry-up.com/",
+    "rss_url": "https://harry-up.com/feed/",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": []
+  },
+  {
+    "name": "ウロコナイ釣行2",
+    "blog_url": "https://ameblo.jp/urokonai/",
+    "rss_url": "https://rssblog.ameba.jp/urokonai/rss20.xml",
+    "pref_slugs": ["kanagawa"],
+    "fish_slugs": ["aoriika", "madako"]
+  },
+  {
+    "name": "釣りと野遊び",
+    "blog_url": "http://myblog44814.blog20.fc2.com/",
+    "rss_url": "http://myblog44814.blog20.fc2.com/index.rdf",
+    "pref_slugs": ["chiba", "kanagawa", "tokyo"],
+    "fish_slugs": ["shirogisu"]
+  },
+  {
+    "name": "釣りコスト削減委員会",
+    "blog_url": "https://ameblo.jp/turennaissu/",
+    "rss_url": "https://rssblog.ameba.jp/turennaissu/rss20.xml",
+    "pref_slugs": ["chiba"],
+    "fish_slugs": ["iwashi"]
+  }
+]
