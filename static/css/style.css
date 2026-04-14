@@ -1179,3 +1179,12 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .method-fish-card-img--placeholder { background: #e8f4fb; }
 .method-fish-card-name { font-size: .82rem; font-weight: bold; color: #1a4a7a; text-align: center; }
 .method-fish-card-count { font-size: .72rem; color: #888; }
+
+/* 近隣スポットセクション（釣り禁止スポット用） */
+.kinshi-nearby-section { margin: 1.5rem 0 1rem; }
+.kinshi-nearby-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .6rem; margin: .6rem 0 .85rem; }
+.kinshi-nearby-card { display: flex; flex-direction: column; background: white; border: 1px solid #b8d4ea; border-radius: 8px; padding: .6rem .8rem; text-decoration: none; color: inherit; transition: box-shadow .15s, border-color .15s; }
+.kinshi-nearby-card:hover { box-shadow: 0 2px 8px rgba(26,107,158,.15); border-color: #1a6b9e; }
+.kinshi-nearby-name { font-weight: bold; font-size: .9rem; color: #1a4a7a; }
+.kinshi-nearby-city { font-size: .78rem; color: #888; margin-top: .2rem; }
+.kinshi-nearby-all { display: inline-block; font-size: .88rem; color: #1a6b9e; text-decoration: underline; }

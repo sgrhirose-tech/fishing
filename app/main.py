@@ -1408,6 +1408,33 @@ def _build_spot_description(spot: dict, fish_name_map: dict) -> str:
     return intro + fish_str + terrain_str + notes_str
 
 
+def _is_fully_kinshi(spot: dict) -> bool:
+    """スポット全体が釣り禁止かどうかを判定する。lead_text が短い禁止宣言文のみの場合に True。"""
+    lead = (spot.get("info") or {}).get("lead_text", "") or ""
+    return len(lead) < 80 and "禁止" in lead and lead.startswith("この釣り場は")
+
+
+def _get_nearby_spots(spot: dict, limit: int = 6) -> list:
+    """同エリア（同prefecture + 同area_slug）の非禁止スポットを最大 limit 件返す。"""
+    area = spot.get("area", {})
+    pref = area.get("prefecture", "")
+    aslug = area.get("area_slug", "")
+    current = spot.get("slug", "")
+    result = []
+    for s in load_spots():
+        if s.get("slug") == current:
+            continue
+        sa = s.get("area", {})
+        if sa.get("prefecture") != pref or sa.get("area_slug") != aslug:
+            continue
+        if _is_fully_kinshi(s):
+            continue
+        result.append(s)
+        if len(result) >= limit:
+            break
+    return result
+
+
 @app.get("/{pref_slug}/{area_slug}/{city_slug}/{slug}", response_class=HTMLResponse)
 def page_spot_detail(
     request: Request,
@@ -1459,6 +1486,23 @@ def page_spot_detail(
         blog_posts = _bf.get_posts_for_spot(spot)
     except Exception:
         blog_posts = []
+    # 釣り禁止判定と近隣スポット
+    is_kinshi = _is_fully_kinshi(spot)
+    nearby_spots = _get_nearby_spots(spot) if is_kinshi else []
+    _base_desc = (spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map)
+    if is_kinshi:
+        _area = spot.get("area") or {}
+        _area_name = _area.get("area_name", "")
+        _area_slug = _area.get("area_slug", "")
+        _area_count = sum(1 for s in load_spots() if (s.get("area") or {}).get("area_slug") == _area_slug and not _is_fully_kinshi(s))
+        _alt = nearby_spots[0]["name"] if nearby_spots else ""
+        meta_description = (
+            f"{spot['name']}は現在釣り禁止です。"
+            f"{_area_name}エリアには他に{_area_count}か所の釣り場があります。"
+            + (f"近くの{_alt}などを探してみましょう。" if _alt else "")
+        )
+    else:
+        meta_description = _truncate_meta(_base_desc)
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -1474,8 +1518,10 @@ def page_spot_detail(
         "fish_names_jp":      fish_names_jp,
         "facility_flags":     facility_flags,
         "tackle_links":       tackle_links,
-        "spot_description":   (spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map),
-        "meta_description":   _truncate_meta((spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map)),
+        "spot_description":   _base_desc,
+        "meta_description":   meta_description,
         "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
         "blog_posts":         blog_posts,
+        "is_kinshi":          is_kinshi,
+        "nearby_spots":       nearby_spots,
     })
