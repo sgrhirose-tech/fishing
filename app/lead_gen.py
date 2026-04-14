@@ -278,9 +278,9 @@ def generate_lead_text(spot: dict, api_key: str) -> tuple[str, str, bool]:
     return text, quality, needs_review
 
 
-def update_spot_json(slug: str, lead_text: str) -> bool:
+def update_spot_json(slug: str, lead_text: str, spots_dir: "Path | None" = None) -> bool:
     """spots/{slug}.json の info.lead_text を更新する。成功時 True。"""
-    path = _SPOTS_DIR / f"{slug}.json"
+    path = (spots_dir or _SPOTS_DIR) / f"{slug}.json"
     if not path.exists():
         print(f"  [エラー] ファイルが見つかりません: {path}")
         return False
