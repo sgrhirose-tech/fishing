@@ -113,8 +113,26 @@ def _format_date_jp(date_str: str) -> str:
 
 
 # ============================================================
+# フォアキャスト結果キャッシュ（スポットページ高速化用）
+# ============================================================
+_FORECAST_CACHE: dict = {}   # {slug: (timestamp, result)}
+_FORECAST_CACHE_TTL = 300    # 5分（秒）
+
+# ============================================================
 # FastAPI アプリ
 # ============================================================
+
+def _rss_refresh_loop() -> None:
+    """バックグラウンドで 4時間ごとに RSS フィードを更新するループ。"""
+    import threading as _th
+    from app import blog_feeds as _bf
+    while True:
+        try:
+            _bf.refresh_all()
+        except Exception as e:
+            print(f"[blog_feeds] refresh_all エラー: {e}")
+        _th.Event().wait(4 * 3600)
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -126,6 +144,12 @@ async def lifespan(app: FastAPI):
     templates.env.globals["fish_slug_map"] = _slug_map
     templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
     templates.env.globals["method_slug_map"] = {k: v["slug"] for k, v in _METHOD_MASTER.items()}
+    # RSS フィード初期化 & バックグラウンド更新スレッド起動
+    import threading as _th
+    from app import blog_feeds as _bf
+    _bf.load_feeds(fish_master=_FISH_MASTER)
+    _t = _th.Thread(target=_rss_refresh_loop, daemon=True)
+    _t.start()
     yield
 
 
@@ -136,6 +160,7 @@ import pathlib
 _BASE = pathlib.Path(__file__).parent.parent
 
 app.mount("/static", StaticFiles(directory=str(_BASE / "static")), name="static")
+app.mount("/article-assets", StaticFiles(directory=str(_BASE / "articles")), name="article_assets")
 templates = Jinja2Templates(directory=str(_BASE / "templates"))
 
 _ROBOTS_TXT = """\
@@ -963,6 +988,7 @@ def _load_article_slots(category: str, slug: str) -> list:
 
 
 _MD_LINK_RE = _re.compile(r'href="\./([\w-]+)\.md"')
+_MD_IMG_RE  = _re.compile(r'src="(?:\./)?(img/[\w.@-]+)"')
 
 
 def _render_md_with_affiliates(content: str, slots: list, article_path: str = "") -> str:
@@ -999,14 +1025,16 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
 
     if article_path:
         html = _MD_LINK_RE.sub(lambda m: f'href="/articles/{article_path}/{m.group(1)}/"', html)
+        html = _MD_IMG_RE.sub(lambda m: f'src="/article-assets/{article_path}/{m.group(1)}"', html)
     return html
 
 
 _ARTICLE_CATEGORY_LABELS: dict[str, str] = {
     "column": "店長コラム",
     "info":   "店員インフォメーション",
+    "report": "店員現地レポート",
 }
-_ARTICLE_CATEGORY_ORDER = ["column", "info"]
+_ARTICLE_CATEGORY_ORDER = ["column", "info", "report"]
 
 
 @app.get("/articles/", response_class=HTMLResponse)
@@ -1366,13 +1394,23 @@ def page_spot_detail(
         "toilet":      "トイレ" in facility_types,
         "convenience": "コンビニ" in facility_types,
     }
+    _cached = _FORECAST_CACHE.get(slug)
+    if _cached and time.time() - _cached[0] < _FORECAST_CACHE_TTL:
+        preloaded_forecast = _cached[1]
+    else:
+        try:
+            import concurrent.futures as _cf
+            with _cf.ThreadPoolExecutor(max_workers=1) as _ex:
+                preloaded_forecast = _ex.submit(_compute_forecast, spot).result(timeout=8)
+            _FORECAST_CACHE[slug] = (time.time(), preloaded_forecast)
+        except Exception as e:
+            print(f"[警告] _compute_forecast スキップ ({slug}): {e}")
+            preloaded_forecast = None
     try:
-        import concurrent.futures as _cf
-        with _cf.ThreadPoolExecutor(max_workers=1) as _ex:
-            preloaded_forecast = _ex.submit(_compute_forecast, spot).result(timeout=8)
-    except Exception as e:
-        print(f"[警告] _compute_forecast スキップ ({slug}): {e}")
-        preloaded_forecast = None
+        from app import blog_feeds as _bf
+        blog_posts = _bf.get_posts_for_spot(spot)
+    except Exception:
+        blog_posts = []
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -1391,4 +1429,5 @@ def page_spot_detail(
         "spot_description":   (spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map),
         "meta_description":   _truncate_meta((spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map)),
         "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
+        "blog_posts":         blog_posts,
     })

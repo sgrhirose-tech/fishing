@@ -38,14 +38,14 @@
 {
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
-  "name": "{{ spot.name }}",
-  "description": "{{ spot.info.notes | replace('"', '\\"') }}",
-  {% if fish_names_jp %}"keywords": "{{ (fish_names_jp + [area.prefecture]) | join(',') }}",{% else %}"keywords": "{{ area.prefecture }},釣り場",{% endif %}
-  {% if _af %}"amenityFeature": [{{ _af | join(',') }}],{% endif %}
+  "name": {{ spot.name | tojson }},
+  "description": {{ ((spot.info or {}).get('notes') or '') | tojson }},
+  {% if fish_names_jp %}"keywords": {{ (fish_names_jp + [area.prefecture]) | join(',') | tojson }},{% else %}"keywords": {{ (area.prefecture + ',釣り場') | tojson }},{% endif %}
+  {% if _af %}"amenityFeature": [{{ _af | join(',') | safe }}],{% endif %}
   "address": {
     "@type": "PostalAddress",
-    "addressRegion": "{{ area.prefecture }}",
-    "addressLocality": "{{ area.city }}",
+    "addressRegion": {{ area.prefecture | tojson }},
+    "addressLocality": {{ area.city | tojson }},
     "addressCountry": "JP"
   },
   "geo": {
@@ -58,9 +58,9 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "ホーム",             "item": "https://tsuricast.jp/"},
-      {"@type": "ListItem", "position": 2, "name": "{{ area.area_name }}", "item": "https://tsuricast.jp/{{ area.pref_slug }}/{{ area.area_slug }}/"},
-      {"@type": "ListItem", "position": 3, "name": "{{ area.city }}",     "item": "https://tsuricast.jp/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/"},
-      {"@type": "ListItem", "position": 4, "name": "{{ spot.name }}"}
+      {"@type": "ListItem", "position": 2, "name": {{ area.area_name | tojson }}, "item": "https://tsuricast.jp/{{ area.pref_slug }}/{{ area.area_slug }}/"},
+      {"@type": "ListItem", "position": 3, "name": {{ area.city | tojson }},     "item": "https://tsuricast.jp/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/"},
+      {"@type": "ListItem", "position": 4, "name": {{ spot.name | tojson }}}
     ]
   }
 }
@@ -287,6 +287,21 @@
   <ul>
     {% for a in related_articles %}
     <li><a href="/articles/{{ a.category }}/{{ a.slug }}/">{{ a.title or a.slug }}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if blog_posts %}
+<section class="blog-posts-section">
+  <h2 class="section-title">関連ブログ最新記事</h2>
+  <ul class="blog-posts-list">
+    {% for post in blog_posts %}
+    <li class="blog-post-item">
+      <a href="{{ post.link }}" target="_blank" rel="noopener noreferrer nofollow"
+         class="blog-post-link">{{ post.title }}</a>
+      <span class="blog-post-meta">{{ post.blog_name }}{% if post.pub %} · {{ post.pub }}{% endif %}</span>
+    </li>
     {% endfor %}
   </ul>
 </section>

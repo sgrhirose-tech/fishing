@@ -2,8 +2,8 @@
   "slug": "kinura-tunnel-handa",
   "name": "衣浦トンネル周辺（半田側）",
   "location": {
-    "latitude": 34.8767074,
-    "longitude": 136.9555664
+    "latitude": 34.8760554,
+    "longitude": 136.9620466
   },
   "area": {
     "prefecture": "愛知県",
@@ -27,13 +27,13 @@
   "info": {
     "notes": "衣浦港の護岸、クロダイ・メバル・サッパ向き",
     "access": "半田市方面から車利用",
-    "photo_url": ""
+    "lead_text": "衣浦海底トンネルの半田市側、半田緑地公園に隣接する護岸が釣り場です。底質は砂泥底で、護岸沿いには石積みの駆け上がりが形成されており、満潮時に隠れる石畳が干潮になると姿を現します。この石畳まわりがクロダイ狙いの定番ポイントで、落とし込みの常連はモエビやカニをエサに前打ちでじっくり攻めるスタイルが主流です。メバルは冬から始まり5〜6月にかけて型が出やすく、夜間は外灯周りに魚が集まります。根掛かりしやすいエリアもあるため、仕掛けの予備は多めに準備しておくのが地元流です。"
   },
   "classification": {
     "primary_type": "unknown",
-    "confidence": 0.0,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

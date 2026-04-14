@@ -412,6 +412,7 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
         <button id="btn-refetch-physical" data-action="refetch-physical">物理データ再取得</button>
       </div>
       <div id="info-table"></div>
+      <datalist id="photo-datalist"></datalist>
       <div id="delete-bar">
         <button id="btn-delete-spot" data-action="delete-spot">🗑 このスポットを削除</button>
       </div>
@@ -465,6 +466,7 @@ var SEABED_OPTIONS = __SEABED_OPTIONS_JSON__;
 var BEARING_OPTIONS = __BEARING_OPTIONS_JSON__;
 var CLASSIFICATION_OPTIONS = __CLASSIFICATION_OPTIONS_JSON__;
 var FISH_LIST = __FISH_NAMES_JSON__; // [[slug, name], ...]
+var SPOT_PHOTOS = __SPOT_PHOTOS_JSON__; // ["akasuka-gyoko.png", ...]
 
 // ---- error display (debug) ----
 window.onerror = function(msg, src, line) {
@@ -729,7 +731,7 @@ function showSpot(idx) {
     })() +
     rowArea('notes',     '備考',       info.notes     || '') +
     row('access',        'アクセス',   'text',  info.access    || '') +
-    row('photo_url',     '写真URL',    'text',  info.photo_url || '') +
+    '<div class="field-row"><label>写真URL</label><input type="text" data-field="photo_url" value="' + escHtml(info.photo_url || '') + '" list="photo-datalist"></div>' +
 
     '<div class="section-title">対象魚種</div>' +
     (function() {
@@ -1023,6 +1025,7 @@ document.getElementById('info-table').addEventListener('input', function(e) {
 document.getElementById('info-table').addEventListener('change', function(e) {
   var field = e.target.dataset && e.target.dataset.field;
   if (field) markDirty();
+  if (e.target.name === 'target_fish') markDirty();
 });
 
 document.getElementById('btn-new').addEventListener('click', openNewSpotModal);
@@ -1030,6 +1033,14 @@ document.getElementById('btn-modal-cancel').addEventListener('click', closeModal
 document.getElementById('btn-modal-ok').addEventListener('click', submitNewSpot);
 
 // ---- init ----
+(function() {
+  var dl = document.getElementById('photo-datalist');
+  SPOT_PHOTOS.forEach(function(f) {
+    var opt = document.createElement('option');
+    opt.value = '/static/img/spots/' + f;
+    dl.appendChild(opt);
+  });
+})();
 buildList();
 </script>
 </body>
@@ -1403,6 +1414,12 @@ def build_html(spots, save_mode='pythonista', dir_key=None):
         f'<option value="{k}"{"" if k != dir_key else " selected"}>{k}</option>'
         for k in AVAILABLE_DIRS
     )
+    spots_img_dir = os.path.join(REPO_ROOT, "static", "img", "spots")
+    spot_photos = sorted(
+        f for f in os.listdir(spots_img_dir)
+        if os.path.splitext(f)[1].lower() in ('.jpg', '.jpeg', '.png', '.webp')
+    ) if os.path.isdir(spots_img_dir) else []
+    spot_photos_js = json.dumps(spot_photos, ensure_ascii=False)
 
     html = HTML_TEMPLATE
     html = html.replace("__SAVE_MODE__",           save_mode)
@@ -1413,6 +1430,7 @@ def build_html(spots, save_mode='pythonista', dir_key=None):
     html = html.replace("__BEARING_OPTIONS_JSON__",         bearing_js)
     html = html.replace("__CLASSIFICATION_OPTIONS_JSON__",  classif_js)
     html = html.replace("__FISH_NAMES_JSON__",              fish_names_js)
+    html = html.replace("__SPOT_PHOTOS_JSON__",             spot_photos_js)
     return html
 
 
