@@ -1125,7 +1125,7 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .article-body th, .article-body td { border: 1px solid #ddd; padding: .5rem .75rem; text-align: left; }
 .article-body th { background: #f5f5f5; font-weight: bold; }
 .article-body hr { border: none; border-top: 1px solid #e8e8e8; margin: 2rem 0; }
-.article-body img { max-width: 100%; height: auto; display: block; border-radius: 6px; margin: 1rem 0; }
+.article-hero-img { width: 100%; max-width: 720px; height: auto; border-radius: 8px; display: block; margin: 0 0 1.5rem; }
 
 /* シリーズ目次 */
 .article-parts-toc { margin: 2rem 0; padding: 1rem 1.2rem; background: #f5f9fc; border-radius: 8px; }
