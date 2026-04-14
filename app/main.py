@@ -97,6 +97,30 @@ def _get_tackle_for_methods(methods: list) -> list:
     return result
 
 
+_MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+
+def _build_fish_intro(fish_name: str, fish_data: dict, spot_count: int) -> str:
+    """fish_master.json の既存フィールドから紹介文を自動生成する。"""
+    peak = fish_data.get("peak_season", [])
+    season = fish_data.get("season", [])
+    methods = fish_data.get("method", [])
+    bottom = fish_data.get("bottom", [])
+
+    if peak:
+        peak_str = "・".join(_MONTH_NAMES[m - 1] for m in sorted(peak)) + "頃"
+    elif season:
+        s = sorted(season)
+        peak_str = _MONTH_NAMES[s[0]-1] + "〜" + _MONTH_NAMES[s[-1]-1] + "頃"
+    else:
+        peak_str = "通年"
+
+    method_part = f"主な釣法は{'・'.join(methods[:3])}です。" if methods else ""
+    bottom_part = f"生息環境は{'・'.join(bottom)}が中心。" if bottom else ""
+    spot_part   = f"当サイトでは{spot_count}か所の釣り場情報を掲載しています。"
+
+    return f"{fish_name}のベストシーズンは{peak_str}。{method_part}{bottom_part}{spot_part}"
+
+
 def _tomorrow() -> str:
     return (datetime.now(JST) + timedelta(days=1)).strftime("%Y-%m-%d")
 
@@ -617,11 +641,27 @@ def page_method(request: Request, method_slug: str):
         1 for s in all_spots
         if any(f in method_fish_slugs for f in s.get("target_fish", []))
     )
+    # 魚種カード用データ（画像・スポット数付き）
+    fish_spot_counts: dict = {}
+    for s in all_spots:
+        for fslug in s.get("target_fish", []):
+            fish_spot_counts[fslug] = fish_spot_counts.get(fslug, 0) + 1
+    target_fish_data = []
+    for fn in target_fish:
+        fd = _FISH_MASTER.get(fn, {})
+        fslug = fd.get("slug", "")
+        target_fish_data.append({
+            "name":  fn,
+            "slug":  fslug,
+            "image": fd.get("image", ""),
+            "count": fish_spot_counts.get(fslug, 0),
+        })
     return templates.TemplateResponse(request, "method.html", {
         "method_name": method_name,
         "method_slug": method_slug,
         "data": data,
         "target_fish": target_fish,
+        "target_fish_data": target_fish_data,
         "method_spots_count": method_spots_count,
     })
 
@@ -664,6 +704,12 @@ def page_fish(request: Request, fish_slug: str):
             areas[key] = {"name": a.get("area_name", ""), "spots": []}
         areas[key]["spots"].append(s)
     tackle_links = _get_tackle_for_methods(fish_data.get("method", []))
+    method_data_map = {
+        m: _METHOD_MASTER[m]
+        for m in fish_data.get("method", [])
+        if m in _METHOD_MASTER
+    }
+    fish_intro = _build_fish_intro(fish_name, fish_data, len(matched))
     return templates.TemplateResponse(request, "fish.html", {
         "fish_name": fish_name,
         "fish_slug": fish_slug,
@@ -671,6 +717,8 @@ def page_fish(request: Request, fish_slug: str):
         "areas": areas,
         "total": len(matched),
         "tackle_links": tackle_links,
+        "method_data_map": method_data_map,
+        "fish_intro": fish_intro,
     })
 
 

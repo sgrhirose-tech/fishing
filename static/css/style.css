@@ -1158,3 +1158,43 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 
 /* スポット説明文 */
 .spot-description { font-size: .95rem; line-height: 1.8; color: #3a3a4a; margin: .75rem 0 1.25rem; }
+
+/* fish - intro */
+.fish-intro-text { font-size: 1rem; line-height: 1.8; color: #334; margin: .75rem 0 1.5rem; padding: .85rem 1.1rem; background: #f0f7fb; border-left: 4px solid #1a6b9e; border-radius: 0 6px 6px 0; }
+
+/* fish - method cards */
+.fish-method-section { margin: 1.25rem 0; }
+.fish-method-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-top: .6rem; }
+.fish-method-card { display: block; background: white; border: 1px solid #b8d4ea; border-radius: 8px; padding: .75rem 1rem; text-decoration: none; color: inherit; transition: box-shadow .15s, border-color .15s; }
+.fish-method-card:hover { box-shadow: 0 2px 8px rgba(26,107,158,.15); border-color: #1a6b9e; }
+.fish-method-card--simple { display: flex; align-items: center; }
+.fish-method-card--nolink { cursor: default; }
+.fish-method-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .35rem; }
+.fish-method-card-name { font-weight: bold; font-size: .95rem; color: #1a6b9e; }
+.fish-method-card-stars { font-size: .8rem; color: #e8651a; }
+.fish-method-card-desc { font-size: .82rem; color: #555; margin: 0; line-height: 1.5; }
+
+/* fish - spots CTA */
+.fish-spots-cta { background: linear-gradient(135deg,#e8f4fb,#d0eaf8); border: 1px solid #aad4ee; border-radius: 10px; padding: 1rem 1.25rem; margin: 1.5rem 0 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; }
+.fish-spots-cta-count { font-size: 1.05rem; font-weight: bold; color: #1a4a7a; }
+.fish-spots-cta-msg { font-size: .95rem; color: #334; }
+.fish-spots-cta-btn { display: inline-block; background: #1a6b9e; color: white; padding: .5rem 1.1rem; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: .9rem; margin-left: auto; transition: background .15s; }
+.fish-spots-cta-btn:hover { background: #155480; }
+@media (max-width: 600px) { .fish-spots-cta-btn { margin-left: 0; width: 100%; text-align: center; } }
+
+/* method - spots CTA (上部移動版) */
+.method-spots-cta { background: #fff8ec; border: 2px solid #e8a01a; border-radius: 10px; padding: 1rem 1.25rem; margin: 1.5rem 0; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; }
+.method-spots-cta-text { flex: 1 1 180px; margin: 0; font-size: .95rem; color: #334; }
+.method-spots-cta-text strong { color: #c06000; }
+.method-spots-cta-btn { margin: 0; white-space: nowrap; }
+@media (max-width: 600px) { .method-spots-cta-btn { width: 100%; text-align: center; } }
+
+/* method - fish cards */
+.method-fish-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: .75rem; margin-top: .6rem; }
+.method-fish-card { display: flex; flex-direction: column; align-items: center; gap: .3rem; background: white; border: 1px solid #d0e4f0; border-radius: 8px; padding: .6rem .5rem; text-decoration: none; color: inherit; transition: box-shadow .15s, border-color .15s; }
+.method-fish-card:hover { box-shadow: 0 2px 8px rgba(26,107,158,.15); border-color: #1a6b9e; }
+.method-fish-card--nolink { cursor: default; }
+.method-fish-card-img { width: 64px; height: 48px; object-fit: cover; border-radius: 5px; display: block; }
+.method-fish-card-img--placeholder { background: #e8f4fb; }
+.method-fish-card-name { font-size: .82rem; font-weight: bold; color: #1a4a7a; text-align: center; }
+.method-fish-card-count { font-size: .72rem; color: #888; }

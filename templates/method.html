@@ -56,16 +56,26 @@
 </section>
 {% endif %}
 
-{% if target_fish %}
+{% if target_fish_data %}
 <section class="method-fish-section">
   <h2>この釣法で狙える魚</h2>
-  <div class="method-fish-chips">
-    {% for name in target_fish %}
-    {% set slug = fish_slug_map.get(name) %}
-    {% if slug %}
-    <a href="/fish/{{ slug }}" class="fish-chip">{{ name }}</a>
+  <div class="method-fish-cards">
+    {% for fd in target_fish_data %}
+    {% if fd.slug %}
+    <a href="/fish/{{ fd.slug }}" class="method-fish-card">
+      {% if fd.image %}
+      <img src="{{ fd.image }}" alt="{{ fd.name }}" class="method-fish-card-img" loading="lazy">
+      {% else %}
+      <div class="method-fish-card-img method-fish-card-img--placeholder"></div>
+      {% endif %}
+      <span class="method-fish-card-name">{{ fd.name }}</span>
+      {% if fd.count > 0 %}<span class="method-fish-card-count">{{ fd.count }}か所</span>{% endif %}
+    </a>
     {% else %}
-    <span class="fish-chip">{{ name }}</span>
+    <span class="method-fish-card method-fish-card--nolink">
+      <div class="method-fish-card-img method-fish-card-img--placeholder"></div>
+      <span class="method-fish-card-name">{{ fd.name }}</span>
+    </span>
     {% endif %}
     {% endfor %}
   </div>
@@ -100,12 +110,14 @@
 {% endif %}
 
 {% if method_spots_count > 0 %}
-<section class="method-spots-link">
-  <h2>この釣法で釣れる釣り場を探す</h2>
-  <a href="/spots?method={{ method_slug }}" class="btn-primary">
-    {{ method_name }}ができる釣り場を見る（{{ method_spots_count }}か所）→
+<div class="method-spots-cta">
+  <p class="method-spots-cta-text">
+    {{ method_name }}ができる釣り場が<strong>{{ method_spots_count }}か所</strong>あります。エリアから絞り込めます。
+  </p>
+  <a href="/spots?method={{ method_slug }}" class="btn-primary method-spots-cta-btn">
+    {{ method_name }}ができる釣り場を探す（{{ method_spots_count }}か所）→
   </a>
-</section>
+</div>
 {% endif %}
 
 {% if data.videos %}
