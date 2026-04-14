@@ -351,6 +351,15 @@ body { font-family: -apple-system, sans-serif; font-size: 14px; background: #f0f
 .field-row textarea { resize: vertical; min-height: 60px; }
 .field-row input[readonly] { background: #f7f7f7; color: #666; }
 .lead-text-preview { background: #f0f4f8; border: 1px solid #d0dce8; border-radius: 4px; padding: 7px 9px; font-size: 13px; line-height: 1.6; color: #555; white-space: pre-wrap; }
+.meta-desc-box { background: #fafafa; border: 1px solid #ddd; border-radius: 4px; padding: 7px 9px; font-size: 13px; line-height: 1.6; }
+.meta-desc-header { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; font-size: 11px; }
+.meta-desc-src-badge { display: inline-block; padding: 1px 6px; border-radius: 10px; color: #fff; font-size: 10px; font-weight: bold; }
+.meta-desc-count { font-weight: bold; }
+.meta-desc-limit { color: #999; }
+.meta-desc-text { white-space: pre-wrap; word-break: break-all; }
+.meta-desc-ok { background: #e8f5e9; }
+.meta-desc-over { background: #fff3cd; color: #b8860b; text-decoration: underline wavy #e67e22; }
+.meta-desc-auto { color: #999; font-style: italic; }
 .section-title { font-size: 11px; font-weight: bold; color: #2c3e50; background: #f0f4f8; padding: 4px 6px; margin: 12px -10px 8px; }
 .bearing-row { display: flex; gap: 6px; align-items: center; }
 .bearing-row select { flex: 1; }
@@ -696,6 +705,30 @@ function showSpot(idx) {
     '<div class="section-title">アクセス・情報</div>' +
     (info.lead_text ? '<div class="field-row"><label>AI生成リード文</label><div class="lead-text-preview">' + escHtml(info.lead_text) + '</div></div>' : '') +
     rowArea('description', '紹介文',     info.description || '') +
+    (function() {
+      var effText = info.description || info.lead_text || '';
+      var src = info.description ? '紹介文' : (info.lead_text ? 'AIリード文' : '自動生成');
+      var srcColor = info.description ? '#2980b9' : (info.lead_text ? '#8e44ad' : '#95a5a6');
+      var len = effText.length;
+      var lenColor = len === 0 ? '#e74c3c' : (len < 80 ? '#e67e22' : (len <= 130 ? '#27ae60' : '#e67e22'));
+      var bodyHtml;
+      if (effText) {
+        var ok   = escHtml(effText.substring(0, 130));
+        var over = effText.length > 130 ? '<span class="meta-desc-over">' + escHtml(effText.substring(130)) + '</span>' : '';
+        bodyHtml = '<span class="meta-desc-ok">' + ok + '</span>' + over;
+      } else {
+        bodyHtml = '<span class="meta-desc-auto">（自動生成・spot データから構築）</span>';
+      }
+      return '<div class="field-row"><label>メタdescription</label>' +
+        '<div class="meta-desc-box">' +
+          '<div class="meta-desc-header">' +
+            '<span class="meta-desc-src-badge" style="background:' + srcColor + '">' + src + '</span>' +
+            '<span class="meta-desc-count" style="color:' + lenColor + '">' + len + '字</span>' +
+            '<span class="meta-desc-limit">（130字以内推奨）</span>' +
+          '</div>' +
+          '<div class="meta-desc-text">' + bodyHtml + '</div>' +
+        '</div></div>';
+    })() +
     rowArea('notes',     '備考',       info.notes     || '') +
     row('access',        'アクセス',   'text',  info.access    || '') +
     '<div class="field-row"><label>写真URL</label><input type="text" data-field="photo_url" value="' + escHtml(info.photo_url || '') + '" list="photo-datalist"></div>' +

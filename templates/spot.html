@@ -19,7 +19,7 @@
 {% set fac_meta = '近隣に' + _fm|join('・') + 'あり。' if _fm else '周辺の施設情報も掲載。' %}
 
 {% block title %}{% if fish_names_jp %}{{ spot.name }} | {{ fish_names_jp | join('・') }}が釣れる釣り場{{ fac_title }} 天気・波高{% else %}{{ spot.name }}の釣り場情報{{ fac_title }} | {{ area.city }}・天気・波・風{% endif %}{% endblock %}
-{% block description %}{{ spot_description[:130] }}{% if fac_meta %} {{ fac_meta }}{% endif %}{% endblock %}
+{% block description %}{{ meta_description }}{% if fac_meta %} {{ fac_meta }}{% endif %}{% endblock %}
 
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}

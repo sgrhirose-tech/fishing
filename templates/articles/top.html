@@ -30,7 +30,7 @@
     {% for a in cat.articles %}
     <li>
       <a href="/articles/{{ a.category }}/{{ a.slug }}/" class="article-row-card">
-        <img src="/static/img/{{ a.card_image }}" alt="{{ a.title or a.slug }}" loading="lazy">
+        <img src="{{ a.card_image }}" alt="{{ a.title or a.slug }}" loading="lazy">
         <span class="article-row-title">{{ a.title or a.slug }}</span>
       </a>
     </li>
