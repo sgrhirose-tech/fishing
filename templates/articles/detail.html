@@ -38,6 +38,7 @@
 </nav>
 
 <article class="tackle-item-article">
+  <img src="/static/img/{{ card_image }}" alt="{{ meta.title or slug }}" class="article-hero-img" loading="eager">
   <div class="article-body">
     {{ body_html | safe }}
   </div>

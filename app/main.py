@@ -844,6 +844,20 @@ _CATEGORY_CARD: dict[str, str] = {
     "info":   "shop_girl_card.png",
 }
 
+_ARTICLE_CARD_DIR = _BASE / "static" / "img" / "articles"
+
+
+def _article_card_image(category: str, slug: str) -> str:
+    """記事専用サムネイルのパスを返す。
+    static/img/articles/{category}/{slug}.jpg があればそれを使い、
+    なければカテゴリ共通のフォールバック画像を返す。
+    戻り値は templates で https://tsuricast.jp/static/img/{戻り値} と結合される。
+    """
+    custom = _ARTICLE_CARD_DIR / category / f"{slug}.jpg"
+    if custom.exists():
+        return f"articles/{category}/{slug}.jpg"
+    return _CATEGORY_CARD.get(category, "fishing_master_card.png")
+
 
 def _extract_article_meta(content: str, slug: str) -> tuple[dict, str]:
     """Markdownテキストからメタ情報と本文（フロントマター除去済み）を返す。"""
@@ -886,7 +900,6 @@ def _load_articles() -> list:
     for cat_dir in sorted(_ARTICLES_DIR.iterdir()):
         if not cat_dir.is_dir() or cat_dir.name.startswith("."):
             continue
-        card = _CATEGORY_CARD.get(cat_dir.name, "fishing_master_card.png")
         seen_slugs: set = set()
         for entry in sorted(cat_dir.iterdir()):
             if entry.name.startswith("."):
@@ -915,7 +928,7 @@ def _load_articles() -> list:
             content = md_path.read_text(encoding="utf-8")
             meta, _ = _extract_article_meta(content, slug)
             meta["category"] = cat_dir.name
-            meta["card_image"] = card
+            meta["card_image"] = _article_card_image(cat_dir.name, slug)
             result.append(meta)
     return result
 
@@ -1037,7 +1050,7 @@ def page_article_detail(request: Request, category: str, slug: str):
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
         pm["part_slug"] = p.stem
         part_metas.append(pm)
-    card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
+    card_image = _article_card_image(category, slug)
     return templates.TemplateResponse(request, "articles/detail.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1062,7 +1075,7 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
     idx = all_parts.index(part_slug) if part_slug in all_parts else -1
     prev_part = all_parts[idx - 1] if idx > 0 else None
     next_part = all_parts[idx + 1] if 0 <= idx < len(all_parts) - 1 else None
-    card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
+    card_image = _article_card_image(category, slug)
     return templates.TemplateResponse(request, "articles/part.html", {
         "meta": meta,
         "body_html": body_html,
