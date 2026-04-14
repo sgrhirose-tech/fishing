@@ -281,6 +281,18 @@
 </section>
 {% endif %}
 
+{% if nearby_spots %}
+<section class="nearby-spots-section">
+  <h2>近くの{{ spot_type.label if spot_type else "" }}スポット</h2>
+  <ul class="nearby-spots-list">
+    {% for s in nearby_spots %}
+    {% set a = s.area %}
+    <li><a href="/{{ a.pref_slug }}/{{ a.area_slug }}/{{ a.city_slug }}/{{ s.slug }}" class="nearby-spot-link">{{ s.name }}</a><span class="nearby-spot-area">（{{ a.city }}）</span></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
 {% if related_articles %}
 <section class="spot-related-articles">
   <h2>この釣り場に関連するコラム</h2>

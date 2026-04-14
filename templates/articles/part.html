@@ -60,4 +60,16 @@
   <a href="/articles/{{ category }}/{{ slug }}/{{ next_part }}/" class="filter-chip">次へ ›</a>
   {% endif %}
 </nav>
+
+{% if related_spots %}
+<section class="article-related-spots">
+  <h2>この記事に関連する釣り場</h2>
+  <ul class="related-spots-list">
+    {% for s in related_spots %}
+    {% set a = s.area %}
+    <li><a href="/{{ a.pref_slug }}/{{ a.area_slug }}/{{ a.city_slug }}/{{ s.slug }}" class="related-spot-link">{{ s.name }}<span class="related-spot-area">（{{ a.area_name }}）</span></a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
 {% endblock %}

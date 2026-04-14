@@ -1066,6 +1066,7 @@ def page_article_detail(request: Request, category: str, slug: str):
         pm["part_slug"] = p.stem
         part_metas.append(pm)
     card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
+    related_spots = [s for rs in (meta.get("related_spots") or []) if (s := load_spot(rs))]
     return templates.TemplateResponse(request, "articles/detail.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1073,6 +1074,7 @@ def page_article_detail(request: Request, category: str, slug: str):
         "category": category,
         "card_image": card_image,
         "parts": part_metas,
+        "related_spots": related_spots,
     })
 
 
@@ -1091,6 +1093,13 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
     prev_part = all_parts[idx - 1] if idx > 0 else None
     next_part = all_parts[idx + 1] if 0 <= idx < len(all_parts) - 1 else None
     card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
+    # related_spots は親記事（index.md）のフロントマターから取得
+    parent_md = slug_dir / "index.md"
+    _parent_slugs: list = []
+    if parent_md.exists():
+        _pm, _ = _extract_article_meta(parent_md.read_text(encoding="utf-8"), slug)
+        _parent_slugs = _pm.get("related_spots") or []
+    related_spots = [s for rs in _parent_slugs if (s := load_spot(rs))]
     return templates.TemplateResponse(request, "articles/part.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1100,6 +1109,7 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
         "part_slug": part_slug,
         "prev_part": prev_part,
         "next_part": next_part,
+        "related_spots": related_spots,
     })
 
 
@@ -1379,6 +1389,15 @@ def page_spot_detail(
         blog_posts = _bf.get_posts_for_spot(spot)
     except Exception:
         blog_posts = []
+    # 近くの同種スポット（同エリア・同施設種別、最大4件）
+    _current_type = (spot.get("classification") or {}).get("primary_type", "")
+    nearby_spots = [
+        s for s in load_spots()
+        if s.get("area", {}).get("pref_slug") == pref_slug
+        and s.get("area", {}).get("area_slug") == area_slug
+        and (s.get("classification") or {}).get("primary_type") == _current_type
+        and s.get("slug") != slug
+    ][:4] if _current_type else []
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -1397,4 +1416,5 @@ def page_spot_detail(
         "spot_description":   (spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map),
         "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
         "blog_posts":         blog_posts,
+        "nearby_spots":       nearby_spots,
     })
