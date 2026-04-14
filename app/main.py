@@ -97,6 +97,30 @@ def _get_tackle_for_methods(methods: list) -> list:
     return result
 
 
+_MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+
+def _build_fish_intro(fish_name: str, fish_data: dict, spot_count: int) -> str:
+    """fish_master.json の既存フィールドから紹介文を自動生成する。"""
+    peak = fish_data.get("peak_season", [])
+    season = fish_data.get("season", [])
+    methods = fish_data.get("method", [])
+    bottom = fish_data.get("bottom", [])
+
+    if peak:
+        peak_str = "・".join(_MONTH_NAMES[m - 1] for m in sorted(peak)) + "頃"
+    elif season:
+        s = sorted(season)
+        peak_str = _MONTH_NAMES[s[0]-1] + "〜" + _MONTH_NAMES[s[-1]-1] + "頃"
+    else:
+        peak_str = "通年"
+
+    method_part = f"主な釣法は{'・'.join(methods[:3])}です。" if methods else ""
+    bottom_part = f"生息環境は{'・'.join(bottom)}が中心。" if bottom else ""
+    spot_part   = f"当サイトでは{spot_count}か所の釣り場情報を掲載しています。"
+
+    return f"{fish_name}のベストシーズンは{peak_str}。{method_part}{bottom_part}{spot_part}"
+
+
 def _tomorrow() -> str:
     return (datetime.now(JST) + timedelta(days=1)).strftime("%Y-%m-%d")
 
@@ -617,11 +641,27 @@ def page_method(request: Request, method_slug: str):
         1 for s in all_spots
         if any(f in method_fish_slugs for f in s.get("target_fish", []))
     )
+    # 魚種カード用データ（画像・スポット数付き）
+    fish_spot_counts: dict = {}
+    for s in all_spots:
+        for fslug in s.get("target_fish", []):
+            fish_spot_counts[fslug] = fish_spot_counts.get(fslug, 0) + 1
+    target_fish_data = []
+    for fn in target_fish:
+        fd = _FISH_MASTER.get(fn, {})
+        fslug = fd.get("slug", "")
+        target_fish_data.append({
+            "name":  fn,
+            "slug":  fslug,
+            "image": fd.get("image", ""),
+            "count": fish_spot_counts.get(fslug, 0),
+        })
     return templates.TemplateResponse(request, "method.html", {
         "method_name": method_name,
         "method_slug": method_slug,
         "data": data,
         "target_fish": target_fish,
+        "target_fish_data": target_fish_data,
         "method_spots_count": method_spots_count,
     })
 
@@ -664,6 +704,12 @@ def page_fish(request: Request, fish_slug: str):
             areas[key] = {"name": a.get("area_name", ""), "spots": []}
         areas[key]["spots"].append(s)
     tackle_links = _get_tackle_for_methods(fish_data.get("method", []))
+    method_data_map = {
+        m: _METHOD_MASTER[m]
+        for m in fish_data.get("method", [])
+        if m in _METHOD_MASTER
+    }
+    fish_intro = _build_fish_intro(fish_name, fish_data, len(matched))
     return templates.TemplateResponse(request, "fish.html", {
         "fish_name": fish_name,
         "fish_slug": fish_slug,
@@ -671,6 +717,8 @@ def page_fish(request: Request, fish_slug: str):
         "areas": areas,
         "total": len(matched),
         "tackle_links": tackle_links,
+        "method_data_map": method_data_map,
+        "fish_intro": fish_intro,
     })
 
 
@@ -869,6 +917,26 @@ _CATEGORY_CARD: dict[str, str] = {
     "info":   "shop_girl_card.png",
 }
 
+_ARTICLE_CARD_DIR = _BASE / "static" / "img" / "articles"
+
+
+def _article_card_image(category: str, slug: str) -> str:
+    """記事専用サムネイルの絶対 URL パス（/ 始まり）を返す。優先順位:
+    1. articles/{category}/{slug}/img/card.jpg  → /article-assets/{category}/{slug}/img/card.jpg
+    2. static/img/articles/{category}/{slug}.jpg → /static/img/articles/{category}/{slug}.jpg
+    3. カテゴリ共通フォールバック               → /static/img/{fallback}
+    """
+    # 1. 記事フォルダ内 img/card.jpg
+    local = _ARTICLES_DIR / category / slug / "img" / "card.jpg"
+    if local.exists():
+        return f"/article-assets/{category}/{slug}/img/card.jpg"
+    # 2. static/img/articles/ 内
+    static = _ARTICLE_CARD_DIR / category / f"{slug}.jpg"
+    if static.exists():
+        return f"/static/img/articles/{category}/{slug}.jpg"
+    # 3. フォールバック
+    return f"/static/img/{_CATEGORY_CARD.get(category, 'fishing_master_card.png')}"
+
 
 def _extract_article_meta(content: str, slug: str) -> tuple[dict, str]:
     """Markdownテキストからメタ情報と本文（フロントマター除去済み）を返す。"""
@@ -911,7 +979,6 @@ def _load_articles() -> list:
     for cat_dir in sorted(_ARTICLES_DIR.iterdir()):
         if not cat_dir.is_dir() or cat_dir.name.startswith("."):
             continue
-        card = _CATEGORY_CARD.get(cat_dir.name, "fishing_master_card.png")
         seen_slugs: set = set()
         for entry in sorted(cat_dir.iterdir()):
             if entry.name.startswith("."):
@@ -940,7 +1007,7 @@ def _load_articles() -> list:
             content = md_path.read_text(encoding="utf-8")
             meta, _ = _extract_article_meta(content, slug)
             meta["category"] = cat_dir.name
-            meta["card_image"] = card
+            meta["card_image"] = _article_card_image(cat_dir.name, slug)
             result.append(meta)
     return result
 
@@ -1065,7 +1132,7 @@ def page_article_detail(request: Request, category: str, slug: str):
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
         pm["part_slug"] = p.stem
         part_metas.append(pm)
-    card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
+    card_image = _article_card_image(category, slug)
     return templates.TemplateResponse(request, "articles/detail.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1090,7 +1157,7 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
     idx = all_parts.index(part_slug) if part_slug in all_parts else -1
     prev_part = all_parts[idx - 1] if idx > 0 else None
     next_part = all_parts[idx + 1] if 0 <= idx < len(all_parts) - 1 else None
-    card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
+    card_image = _article_card_image(category, slug)
     return templates.TemplateResponse(request, "articles/part.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1296,6 +1363,19 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     })
 
 
+def _truncate_meta(text: str, limit: int = 130) -> str:
+    """文章の区切りを探して limit 字以内に収め、超える場合は … を付ける。"""
+    if len(text) <= limit:
+        return text
+    # limit 字以内の最後の句点・感嘆符・疑問符を探す（直近 40 字の範囲）
+    sub = text[:limit]
+    for i in range(len(sub) - 1, max(len(sub) - 40, 0) - 1, -1):
+        if sub[i] in "。！？":
+            return sub[:i + 1] + "…"
+    # 見つからなければ limit 字で切って … を付ける
+    return sub + "…"
+
+
 def _build_spot_description(spot: dict, fish_name_map: dict) -> str:
     """スポットの既存データから100〜200字の説明文を動的生成する。"""
     area  = spot.get("area", {})
@@ -1395,6 +1475,7 @@ def page_spot_detail(
         "facility_flags":     facility_flags,
         "tackle_links":       tackle_links,
         "spot_description":   (spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map),
+        "meta_description":   _truncate_meta((spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map)),
         "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
         "blog_posts":         blog_posts,
     })
