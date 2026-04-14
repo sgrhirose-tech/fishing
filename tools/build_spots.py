@@ -655,7 +655,10 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
     notes  = rec["notes"]
     access = rec["access"]
 
-    print(f"\n[{idx}/{total}] {name} ({slug})")
+    # 釣り禁止スポット: 座標・住所のみ取得し、海方向/底質/OSM分類はスキップ
+    is_kinshi = notes.startswith("この釣り場は") and "禁止" in notes
+
+    print(f"\n[{idx}/{total}] {name} ({slug})" + (" [釣り禁止]" if is_kinshi else ""))
 
     # ── ② エリア自動判定 ────────────────────────────────────
     area_name = rec.get("area") or assign_area(lat, lon)
@@ -702,8 +705,9 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
         city             = geo_ja["city"]
 
     # ── ④ 海方向計算（確定座標から）──────────────────────────
-    if skip_google or is_fallback:
-        print("  海方向計算... スキップ（" + ("フォールバック座標" if is_fallback else "--skip-google") + "）")
+    if skip_google or is_fallback or is_kinshi:
+        reason = "フォールバック座標" if is_fallback else ("--skip-google" if skip_google else "釣り禁止スポット")
+        print(f"  海方向計算... スキップ（{reason}）")
         sea_bearing = None
     else:
         print("  海方向計算 (OSM)...", end=" ", flush=True)
@@ -715,8 +719,9 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
             sea_bearing = None
 
     # ── ⑤ 底質・等深線取得（海しる）────────────────────────
-    if skip_google or is_fallback:
-        print("  底質・等深線取得... スキップ（" + ("フォールバック座標" if is_fallback else "--skip-google") + "）")
+    if skip_google or is_fallback or is_kinshi:
+        reason = "フォールバック座標" if is_fallback else ("--skip-google" if skip_google else "釣り禁止スポット")
+        print(f"  底質・等深線取得... スキップ（{reason}）")
         phys = None
     else:
         print("  底質・等深線取得 (海しる)...", end=" ", flush=True)
@@ -731,7 +736,13 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
             phys = None
 
     # ── ⑥ OSM 施設分類 ──────────────────────────────────────
-    if is_fallback:
+    if is_kinshi:
+        print("  施設分類 (Overpass)... スキップ（釣り禁止スポット）")
+        classification = {
+            "primary_type": "unknown", "confidence": 0.0,
+            "secondary_flags": [], "source": "kinshi", "osm_evidence": [],
+        }
+    elif is_fallback:
         print("  施設分類 (Overpass)... スキップ（フォールバック座標）")
         classification = None
     else:
@@ -766,7 +777,7 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
     # ── ⑥-b サーフスポット判定 (OSM sport=surfing) ─────────────
     # 砂浜スポットに限定（漁港・磯など非砂浜での誤判定を防ぐ）
     _cls_type = classification.get("primary_type", "unknown") if classification else "unknown"
-    if skip_google or is_fallback or _cls_type != "sand_beach":
+    if skip_google or is_fallback or is_kinshi or _cls_type != "sand_beach":
         surfer_spot = False
         if not skip_google and not is_fallback and _cls_type != "sand_beach":
             print(f"  サーフスポット判定... スキップ（{_cls_type}）")
