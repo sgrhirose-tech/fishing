@@ -14,6 +14,10 @@
 
 <h1>{{ fish_name }}が釣れる釣り場</h1>
 
+{% if fish_intro %}
+<p class="fish-intro-text">{{ fish_intro }}</p>
+{% endif %}
+
 <!-- 釣れる時期 -->
 <section class="fish-season-section">
   <h2>釣れる時期</h2>
@@ -38,16 +42,33 @@
 
 <!-- 代表的な釣法 -->
 {% if fish_data.method %}
-<section class="fish-meta-section">
-  <span class="fish-meta-label">代表的な釣法:</span>
-  {% for m in fish_data.method %}
-  {% set mslug = method_slug_map.get(m) %}
-  {% if mslug %}
-  <a href="/method/{{ mslug }}" class="fish-method-chip">{{ m }}</a>
-  {% else %}
-  <span class="fish-method-chip">{{ m }}</span>
-  {% endif %}
-  {% endfor %}
+<section class="fish-method-section">
+  <h2>代表的な釣法</h2>
+  <div class="fish-method-cards">
+    {% for m in fish_data.method %}
+    {% set mdata = method_data_map.get(m) %}
+    {% set mslug = method_slug_map.get(m) %}
+    {% if mdata and mslug %}
+    <a href="/method/{{ mslug }}" class="fish-method-card">
+      <div class="fish-method-card-header">
+        <span class="fish-method-card-name">{{ m }}</span>
+        <span class="fish-method-card-stars">
+          {% for i in range(mdata.difficulty) %}★{% endfor %}{% for i in range(3-mdata.difficulty) %}☆{% endfor %}
+        </span>
+      </div>
+      <p class="fish-method-card-desc">{{ mdata.short_desc }}</p>
+    </a>
+    {% elif mslug %}
+    <a href="/method/{{ mslug }}" class="fish-method-card fish-method-card--simple">
+      <span class="fish-method-card-name">{{ m }}</span>
+    </a>
+    {% else %}
+    <span class="fish-method-card fish-method-card--simple fish-method-card--nolink">
+      <span class="fish-method-card-name">{{ m }}</span>
+    </span>
+    {% endif %}
+    {% endfor %}
+  </div>
 </section>
 {% endif %}
 
@@ -68,6 +89,13 @@
 <figure class="fish-photo">
   <img src="{{ fish_data.image }}" alt="{{ fish_name }}" loading="lazy">
 </figure>
+{% endif %}
+{% if total > 0 %}
+<div class="fish-spots-cta">
+  <span class="fish-spots-cta-count">{{ total }}か所の釣り場を掲載中</span>
+  <span class="fish-spots-cta-msg">気になるエリアから探してみよう！</span>
+  <a href="/spots?fish={{ fish_slug }}" class="fish-spots-cta-btn">すべての釣り場を地図で見る →</a>
+</div>
 {% endif %}
 <section class="fish-spots-section">
   <h2>釣り場一覧（{{ total }}か所）</h2>
