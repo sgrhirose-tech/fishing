@@ -1296,6 +1296,19 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     })
 
 
+def _truncate_meta(text: str, limit: int = 130) -> str:
+    """文章の区切りを探して limit 字以内に収め、超える場合は … を付ける。"""
+    if len(text) <= limit:
+        return text
+    # limit 字以内の最後の句点・感嘆符・疑問符を探す（直近 40 字の範囲）
+    sub = text[:limit]
+    for i in range(len(sub) - 1, max(len(sub) - 40, 0) - 1, -1):
+        if sub[i] in "。！？":
+            return sub[:i + 1] + "…"
+    # 見つからなければ limit 字で切って … を付ける
+    return sub + "…"
+
+
 def _build_spot_description(spot: dict, fish_name_map: dict) -> str:
     """スポットの既存データから100〜200字の説明文を動的生成する。"""
     area  = spot.get("area", {})
@@ -1395,6 +1408,7 @@ def page_spot_detail(
         "facility_flags":     facility_flags,
         "tackle_links":       tackle_links,
         "spot_description":   (spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map),
+        "meta_description":   _truncate_meta((spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map)),
         "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
         "blog_posts":         blog_posts,
     })
