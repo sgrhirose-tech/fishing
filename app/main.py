@@ -848,15 +848,21 @@ _ARTICLE_CARD_DIR = _BASE / "static" / "img" / "articles"
 
 
 def _article_card_image(category: str, slug: str) -> str:
-    """記事専用サムネイルのパスを返す。
-    static/img/articles/{category}/{slug}.jpg があればそれを使い、
-    なければカテゴリ共通のフォールバック画像を返す。
-    戻り値は templates で https://tsuricast.jp/static/img/{戻り値} と結合される。
+    """記事専用サムネイルの絶対 URL パス（/ 始まり）を返す。優先順位:
+    1. articles/{category}/{slug}/img/card.jpg  → /article-assets/{category}/{slug}/img/card.jpg
+    2. static/img/articles/{category}/{slug}.jpg → /static/img/articles/{category}/{slug}.jpg
+    3. カテゴリ共通フォールバック               → /static/img/{fallback}
     """
-    custom = _ARTICLE_CARD_DIR / category / f"{slug}.jpg"
-    if custom.exists():
-        return f"articles/{category}/{slug}.jpg"
-    return _CATEGORY_CARD.get(category, "fishing_master_card.png")
+    # 1. 記事フォルダ内 img/card.jpg
+    local = _ARTICLES_DIR / category / slug / "img" / "card.jpg"
+    if local.exists():
+        return f"/article-assets/{category}/{slug}/img/card.jpg"
+    # 2. static/img/articles/ 内
+    static = _ARTICLE_CARD_DIR / category / f"{slug}.jpg"
+    if static.exists():
+        return f"/static/img/articles/{category}/{slug}.jpg"
+    # 3. フォールバック
+    return f"/static/img/{_CATEGORY_CARD.get(category, 'fishing_master_card.png')}"
 
 
 def _extract_article_meta(content: str, slug: str) -> tuple[dict, str]:
