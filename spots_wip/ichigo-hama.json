@@ -1,0 +1,49 @@
+{
+  "slug": "ichigo-hama",
+  "name": "いちご浜",
+  "location": {
+    "latitude": 34.305375,
+    "longitude": 136.8858182
+  },
+  "area": {
+    "prefecture": "三重県",
+    "pref_slug": "mie",
+    "area_name": "志摩・南伊勢",
+    "area_slug": "shima-minami-ise",
+    "city": "志摩市",
+    "city_slug": "shima"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "志摩市の砂浜、キス・メバル・アオリイカ向き",
+    "access": "志摩市方面から車利用",
+    "photo_url": "",
+    "lead_text": "※ご確認ください：いちご浜固有の詳細データ（水深・具体的なポイント位置・常連の釣法など）が今回の検索では十分に取得できませんでした。ニッチ情報が不足しているため、上記リード文は志摩エリアの一般的な傾向を補完して作成しています。追加の現地情報（釣具店レポート・釣行ブログ等）が入手できれば、より精度の高いリード文に改訂できます。必要であれば追加情報をご提供いただくか、再検索をご指示ください。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:浜"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "shirogisu",
+    "mebaru"
+  ],
+  "harbor_code": "24-6",
+  "harbor_name": "的矢"
+}

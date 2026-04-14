@@ -1,0 +1,44 @@
+{
+  "slug": "funabashi-sanbanze",
+  "name": "ふなばし三番瀬海浜公園",
+  "location": {
+    "latitude": 35.6725847,
+    "longitude": 139.966955
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "船橋市",
+    "city_slug": "funabashi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 188.9,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "干潟と突堤の公園、満潮時推奨、シーバス・クロダイ・ハゼ向き",
+    "access": "船橋海浜公園バス停から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "haze",
+    "suzuki"
+  ],
+  "harbor_code": "12-18",
+  "harbor_name": "船橋"
+}

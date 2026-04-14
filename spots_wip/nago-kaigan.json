@@ -1,0 +1,50 @@
+{
+  "slug": "nago-kaigan",
+  "name": "那古海岸",
+  "location": {
+    "latitude": 35.0218515,
+    "longitude": 139.8534358
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 235,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1943.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "遠浅サーフ＆桟橋、キス・マゴチ・ヒラメ・シーバス向き",
+    "access": "川名［館山市］バス停から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=pier@206m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "suzuki",
+    "hirame",
+    "magochi"
+  ],
+  "harbor_code": "12-9",
+  "harbor_name": "船形"
+}

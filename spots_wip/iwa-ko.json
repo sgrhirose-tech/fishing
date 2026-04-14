@@ -1,0 +1,47 @@
+{
+  "slug": "iwa-ko",
+  "name": "岩港",
+  "location": {
+    "latitude": 35.1605648,
+    "longitude": 139.1430693
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "真鶴町",
+    "city_slug": "manazuru"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 75,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 422.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "真鶴半島基部の小漁港、メジナ・クロダイ・アオリイカ向き",
+    "access": "真鶴駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "14-20",
+  "harbor_name": "真鶴"
+}

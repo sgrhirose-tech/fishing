@@ -1,0 +1,45 @@
+{
+  "slug": "iwai-kaigan",
+  "name": "岩井海岸",
+  "location": {
+    "latitude": 35.0940928,
+    "longitude": 139.8404019
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "南房総市",
+    "city_slug": "minamiboso"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 248.9,
+    "seabed_type": "sand",
+    "surfer_spot": null,
+    "nearest_20m_contour_distance_m": 1343.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "岩井袋の南に続く砂浜、キス・マゴチ向きサーフ",
+    "access": "富山地域センターバス停から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@86m"
+    ]
+  },
+  "target_fish": [
+    "magochi",
+    "shirogisu"
+  ],
+  "harbor_code": "12-10",
+  "harbor_name": "岩井袋"
+}

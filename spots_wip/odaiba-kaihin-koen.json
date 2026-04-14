@@ -1,0 +1,49 @@
+{
+  "slug": "odaiba-kaihin-koen",
+  "name": "お台場海浜公園",
+  "location": {
+    "latitude": 35.6295,
+    "longitude": 139.7739458
+  },
+  "area": {
+    "prefecture": "東京都",
+    "pref_slug": "tokyo",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "港区",
+    "city_slug": "minato"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 320,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "砂浜両端磯のみ可、ルアー・投げ禁止、ハゼ・シーバス向き",
+    "access": "東京国際クルーズターミナル駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=pier@220m",
+      "natural=beach@242m"
+    ]
+  },
+  "target_fish": [
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "13-2",
+  "harbor_name": "芝浦"
+}

@@ -1,0 +1,46 @@
+{
+  "slug": "fukuro-port",
+  "name": "袋漁港",
+  "location": {
+    "latitude": 33.6300728,
+    "longitude": 135.3968006
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "熊野灘",
+    "area_slug": "kumano-nada",
+    "city": "白浜町",
+    "city_slug": "shirahama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 312.2,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1272.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "串本町袋の漁港。アジ・メバル・カサゴ・アオリイカが狙える。穏やかな湾内で初心者にも入りやすい環境。",
+    "access": "白浜町方面から車利用",
+    "lead_text": "※今回の検索では袋漁港（串本町袋）固有の水深・底質・常連の時期・時間帯に関するニッチ情報が十分に取得できませんでした。現時点で確認できた情報の範囲でリード文を作成していますが、情報の精度・網羅性に限界があるため、追加取材や現地確認をお勧めします。必要であれば「袋港 串本 釣行記」などのクエリで再検索し、個人ブログや釣具店レポートを直接参照することで精度を高められます。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika",
+    "kasago",
+    "mebaru",
+    "aji"
+  ],
+  "harbor_code": "30-13",
+  "harbor_name": "田辺"
+}

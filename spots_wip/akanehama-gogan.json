@@ -1,0 +1,46 @@
+{
+  "slug": "akanehama-gogan",
+  "name": "茜浜護岸",
+  "location": {
+    "latitude": 35.6538664,
+    "longitude": 140.0182666
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "習志野市",
+    "city_slug": "narashino"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 225,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "菊田川河口の護岸、シーバス・ハゼ・カレイ・サヨリ向き",
+    "access": "習志野市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "suzuki",
+    "karei",
+    "haze",
+    "sayori"
+  ],
+  "harbor_code": "12-18",
+  "harbor_name": "船橋"
+}

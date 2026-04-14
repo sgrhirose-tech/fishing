@@ -1,0 +1,46 @@
+{
+  "slug": "zushi-kaigan",
+  "name": "逗子海岸",
+  "location": {
+    "latitude": 35.2918619,
+    "longitude": 139.5726447
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "逗子市",
+    "city_slug": "zushi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 240,
+    "seabed_type": "rock",
+    "surfer_spot": true,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "田越川河口でシーバス・キス、海水浴シーズン中の釣り禁止注意",
+    "access": "逗子・葉山駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "natural=beach@161m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "suzuki"
+  ],
+  "harbor_code": "14-18",
+  "harbor_name": "新宿湾"
+}

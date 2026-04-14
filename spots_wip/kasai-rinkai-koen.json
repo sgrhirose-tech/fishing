@@ -1,0 +1,45 @@
+{
+  "slug": "kasai-rinkai-koen",
+  "name": "葛西臨海公園",
+  "location": {
+    "latitude": 35.6419847,
+    "longitude": 139.8603206
+  },
+  "area": {
+    "prefecture": "東京都",
+    "pref_slug": "tokyo",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "江戸川区",
+    "city_slug": "edogawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 195,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "一部釣禁・投げ・撒き餌禁止、ハゼ・シーバス・クロダイ向き",
+    "access": "葛西臨海公園駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "13-14",
+  "harbor_name": "晴海"
+}

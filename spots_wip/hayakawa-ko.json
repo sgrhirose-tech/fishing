@@ -1,0 +1,45 @@
+{
+  "slug": "hayakawa-ko",
+  "name": "早川港",
+  "location": {
+    "latitude": 35.2397898,
+    "longitude": 139.1483823
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "小田原市",
+    "city_slug": "odawara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 309.0,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 281.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "西湘BP下護岸のみ可・4〜11時立禁、アジ・クロダイ向き",
+    "access": "早川駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "aji"
+  ],
+  "harbor_code": "14-20",
+  "harbor_name": "真鶴"
+}

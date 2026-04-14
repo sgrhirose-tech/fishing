@@ -1,0 +1,49 @@
+{
+  "slug": "inubosaki",
+  "name": "犬吠埼",
+  "location": {
+    "latitude": 35.7077,
+    "longitude": 140.8684
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "九十九里",
+    "area_slug": "kujukuri",
+    "city": "銚子市",
+    "city_slug": "choshi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "東端の地磯、ヒラスズキ・青物・根魚向き、波高時注意",
+    "access": "犬吠駅から徒歩15分",
+    "lead_text": "---\n\n以下がリード文です。\n\n千葉県最東端・銚子市の犬吠埼灯台下に広がる地磯です。灯台前から南側「バフン下」にかけてが主なポイントで、外洋からのウネリが入るたびに磯全体に白いサラシが広がります。スズキ（ヒラスズキ）は春の3〜4月と、秋の10〜11月に実績が高く、銚子周辺に通い込む地元アングラーはサラシが安定する朝まずめの時間帯を狙い打ちにしています。夏の夜間もシーバスの活性が上がる時間帯があります。根魚やクロダイの魚影も濃く、磯際にはカサゴ・アイナメも着いています。遊歩道の柵外は立入禁止エリアがあるため、入磯ルートを事前に確認してください。ウネリが高い日は波をかぶる危険があり、常連も無理な入磯を避けています。"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.77,
+    "secondary_flags": [
+      "cliff",
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=cliff@131m",
+      "natural=cliff@21m"
+    ]
+  },
+  "target_fish": [
+    "suzuki"
+  ],
+  "harbor_code": "12-3",
+  "harbor_name": "犬吠埼"
+}

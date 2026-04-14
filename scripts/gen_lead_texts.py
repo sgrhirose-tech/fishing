@@ -40,7 +40,7 @@ sys.path.insert(0, str(_REPO_ROOT))
 
 from app.lead_gen import generate_lead_text, update_spot_json  # noqa: E402
 
-_SPOTS_DIR      = _REPO_ROOT / "spots"
+_SPOTS_DIR      = _REPO_ROOT / "spots_wip"
 _META_PATH      = _REPO_ROOT / "data" / "lead_meta.json"
 
 GITHUB_API       = "https://api.github.com"
@@ -210,7 +210,7 @@ def push_results_to_github(token: str, updated_slugs: list[str]) -> None:
         local = _SPOTS_DIR / f"{slug}.json"
         if local.exists():
             try:
-                _push_file(token, local, f"spots/{slug}.json", msg)
+                _push_file(token, local, f"spots_wip/{slug}.json", msg)
                 time.sleep(0.5)
             except Exception as e:
                 print(f"  [警告] {slug} のプッシュ失敗: {e}")

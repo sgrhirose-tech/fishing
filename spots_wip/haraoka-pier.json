@@ -1,0 +1,51 @@
+{
+  "slug": "haraoka-pier",
+  "name": "原岡桟橋",
+  "location": {
+    "latitude": 35.044254,
+    "longitude": 139.8311644
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "南房総市",
+    "city_slug": "minamiboso"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 285,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "桟橋周辺は砂地、キス・ハゼ・サヨリ・クロダイ向き",
+    "access": "原岡バス停から徒歩5分",
+    "lead_text": "南房総市富浦町に位置する原岡桟橋は、大正10年創建の木製桟橋で、富浦湾の西向きに突き出した遠浅の砂地エリアです。先端部でも水深は約2メートルと浅く、西風が続くと底濁りが起きやすい特性があります。クロダイは乗っ込み期の3〜4月が狙い目で、桟橋の橋脚周りに着く個体を対象に、橋脚の海藻や桟橋下で掬えるモエビを使うと実績が高いと地元では知られています。サヨリやハゼは岡本川河口側の砂地絡みのエリアにも回遊があり、濁りが入った日は魚の活性が上がりやすい傾向があります。桟橋上部には電線が通っているためキャスト時の注意が必要です。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.85,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=pier@1m",
+      "natural=beach@84m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "sayori",
+    "haze",
+    "shirogisu"
+  ],
+  "harbor_code": "12-9",
+  "harbor_name": "船形"
+}

@@ -1,0 +1,50 @@
+{
+  "slug": "shimoda-ko-inubashiri",
+  "name": "下田港犬走堤防",
+  "location": {
+    "latitude": 34.6693406,
+    "longitude": 138.9493214
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "下田市",
+    "city_slug": "shimoda"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 43.2,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1064.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "サビキのメッカ、アジ・サバ・イワシ・クロダイ向き",
+    "access": "海中水族館バス停から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.72,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@190m",
+      "man_made=pier@37m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "iwashi",
+    "saba",
+    "aji"
+  ],
+  "harbor_code": "22-5",
+  "harbor_name": "下田"
+}

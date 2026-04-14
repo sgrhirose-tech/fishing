@@ -1,0 +1,48 @@
+{
+  "slug": "sugita-rinkai-ryokuchi",
+  "name": "杉田臨海緑地",
+  "location": {
+    "latitude": 35.3845062,
+    "longitude": 139.6275288
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": "yokohama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 62.3,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "根岸湾の無料護岸、夜釣り可、シーバス・アジ・タチウオ向き",
+    "access": "南部市場駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.38,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@183m"
+    ]
+  },
+  "target_fish": [
+    "tachiuo",
+    "aji",
+    "suzuki"
+  ],
+  "harbor_code": "14-5",
+  "harbor_name": "根岸"
+}

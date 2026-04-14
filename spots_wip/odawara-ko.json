@@ -1,0 +1,48 @@
+{
+  "slug": "odawara-ko",
+  "name": "小田原港",
+  "location": {
+    "latitude": 35.2398975,
+    "longitude": 139.1485555
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "小田原市",
+    "city_slug": "odawara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 115,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 279.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "本港・新港一部のみ可、アジ・イワシ・カレイ・アオリイカ向き",
+    "access": "早川駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "karei",
+    "iwashi"
+  ],
+  "harbor_code": "14-20",
+  "harbor_name": "真鶴"
+}

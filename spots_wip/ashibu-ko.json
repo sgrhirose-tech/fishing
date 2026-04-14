@@ -1,0 +1,47 @@
+{
+  "slug": "ashibu-ko",
+  "name": "足保港",
+  "location": {
+    "latitude": 35.019159,
+    "longitude": 138.837769
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "伊豆市",
+    "city_slug": "izu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 45,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 66.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "内浦最南部の小漁港、アオリイカ・メジナ・アジ向き",
+    "access": "足保バス停から徒歩5分",
+    "lead_text": "西伊豆・内浦湾の最南端に位置する小漁港で、沖へ細長く伸びるL字型の防波堤が主なポイントです。外向き先端付近は岩礁帯と砂泥底が混在する地形で水深4〜5メートル、港内向きではかけあがりを境に最深部が10メートル超まで落ち込みます。アオリイカはこの岩礁帯の沿い歩きながら狙う釣り人が多く、港東側の根回りもエギングで実績があります。メジナのフカセ釣りは高水温期にエサ取りが増えるため、常連の間では冬から春が本番とされています。アジはサビキとカゴ釣りともに堤防先端付近への回遊を待つスタイルが主流です。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "aji"
+  ],
+  "harbor_code": "22-10",
+  "harbor_name": "三津"
+}

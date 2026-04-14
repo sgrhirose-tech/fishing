@@ -1,0 +1,54 @@
+{
+  "slug": "kada-gyoko",
+  "name": "加太漁港",
+  "location": {
+    "latitude": 34.2780645,
+    "longitude": 135.0693921
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "和歌山市",
+    "city_slug": "wakayama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 295,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 618.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "和歌山市加太の漁港。マダイ、アジ、イサキの好漁場として有名。船釣りの基地としても利用される。",
+    "access": "加太駅から徒歩20分",
+    "photo_url": "",
+    "lead_text": "友ヶ島水道に面した加太漁港の大波止は、紀淡海峡の潮流が直撃する地形で、関西随一の大物フィールドとして知られています。大波止の外向きには沖30〜50センチほどのカケアガリがあり、春と秋〜初冬にかけてマダイが集中するポイントです。常連は撒き餌をヌカ主体のダンゴに近い配合で作るカゴ釣りスタイルが主流で、餌取りが増える夏場は紀州釣りに切り替える人が多いです。アジは朝まずめのサビキやアジングで狙われ、夜間は港内でもよく回遊します。冬の平日でも釣り座が埋まるほどで、早めの場所取りが常連の間では鉄則になっています。"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@144m",
+      "man_made=breakwater@154m",
+      "man_made=breakwater@180m",
+      "man_made=breakwater@189m",
+      "man_made=breakwater@218m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "madai"
+  ],
+  "harbor_code": "30-12",
+  "harbor_name": "沖ノ島"
+}

@@ -1,0 +1,46 @@
+{
+  "slug": "isogo-umizuri-shisetsu",
+  "name": "磯子海づり施設",
+  "location": {
+    "latitude": 35.4024443,
+    "longitude": 139.6432535
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": "yokohama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 167.0,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1973.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "有料・横浜FP、根岸湾に面した護岸、アジ・クロダイ・タコ向き",
+    "access": "横浜市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.95,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=fishing@9m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "tako",
+    "aji"
+  ],
+  "harbor_code": "14-5",
+  "harbor_name": "根岸"
+}

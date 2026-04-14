@@ -1,0 +1,55 @@
+{
+  "slug": "fuguzaki-gyoko",
+  "name": "冨具崎漁港",
+  "location": {
+    "latitude": 34.7646962,
+    "longitude": 136.8417918
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "伊勢湾",
+    "area_slug": "isewan",
+    "city": "美浜町",
+    "city_slug": "mihama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 270,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1049.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "美浜町の漁港、アオリイカ・クロダイ向き",
+    "access": "美浜町方面から車利用",
+    "lead_text": "知多半島南部・美浜町に位置する伊勢湾に面した漁港で、地元では「知多半島で一番潮通しが良い」と評されるポイントです。外向き堤防の沖には障害物がなく潮が素直に通るため、秋口からアオリイカのエギングで連日賑わいます。堤防手前には捨て石と海藻帯が続き、この根際がクロダイの格好の居場所になっています。港内（内側向き）は釣り禁止のため外堤と南岸壁が釣り座となり、夜明け前から場所取りが始まることも珍しくありません。"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "marina",
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "leisure=marina@117m",
+      "man_made=breakwater@149m",
+      "man_made=breakwater@166m",
+      "man_made=breakwater@288m",
+      "man_made=pier@129m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai"
+  ],
+  "harbor_code": "23-15",
+  "harbor_name": "常滑"
+}

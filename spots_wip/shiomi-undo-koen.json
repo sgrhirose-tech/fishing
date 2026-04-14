@@ -1,0 +1,49 @@
+{
+  "slug": "shiomi-undo-koen",
+  "name": "潮見運動公園",
+  "location": {
+    "latitude": 35.6550395,
+    "longitude": 139.8087475
+  },
+  "area": {
+    "prefecture": "東京都",
+    "pref_slug": "tokyo",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "江東区",
+    "city_slug": "koto"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 230.5,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "投げ禁止・常夜灯あり、クロダイ実績高くシーバス・ハゼ向き",
+    "access": "辰巳駅から徒歩25分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.52,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=sand@135m",
+      "natural=sand@146m",
+      "natural=sand@69m",
+      "natural=sand@73m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "haze",
+    "suzuki"
+  ],
+  "harbor_code": "13-14",
+  "harbor_name": "晴海"
+}

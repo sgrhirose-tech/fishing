@@ -1,0 +1,46 @@
+{
+  "slug": "keihinjima-tsubasa-koen",
+  "name": "京浜島つばさ公園",
+  "location": {
+    "latitude": 35.5701303,
+    "longitude": 139.7697971
+  },
+  "area": {
+    "prefecture": "東京都",
+    "pref_slug": "tokyo",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "大田区",
+    "city_slug": "ota"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 125,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "羽田対岸・柵あり護岸、シーバス・クロダイ・アジ・カレイ向き",
+    "access": "京浜島海上公園バス停から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "suzuki",
+    "karei"
+  ],
+  "harbor_code": "13-3",
+  "harbor_name": "羽田"
+}

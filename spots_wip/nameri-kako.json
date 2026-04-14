@@ -1,0 +1,44 @@
+{
+  "slug": "nameri-kako",
+  "name": "滑川河口",
+  "location": {
+    "latitude": 35.3091033,
+    "longitude": 139.545958
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "鎌倉市",
+    "city_slug": "kamakura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 220,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "材木座と由比ヶ浜の間、シーバスのメッカ・ハゼ向き",
+    "access": "和田塚駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "14-3",
+  "harbor_name": "新港"
+}

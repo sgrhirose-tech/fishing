@@ -1,0 +1,50 @@
+{
+  "slug": "daikoku-umizuri-shisetsu",
+  "name": "大黒海づり施設",
+  "location": {
+    "latitude": 35.450093,
+    "longitude": 139.6954083
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": "yokohama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 120,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 910.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "貝殻主体、貝殻混じり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "有料・横浜FP、桟橋と護岸、アジ・クロダイ・タコ向き",
+    "access": "横浜市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "leisure=fishing@166m",
+      "man_made=pier@154m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "tako"
+  ],
+  "harbor_code": "14-4",
+  "harbor_name": "新山下"
+}

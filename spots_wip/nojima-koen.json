@@ -1,0 +1,45 @@
+{
+  "slug": "nojima-koen",
+  "name": "野島公園",
+  "location": {
+    "latitude": 35.3275377,
+    "longitude": 139.6375394
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": "yokohama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 55,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "金沢区の海浜公園、砂浜と磯、キス・クロダイ・メジナ向き",
+    "access": "野島公園駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu",
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "14-6",
+  "harbor_name": "長浦"
+}

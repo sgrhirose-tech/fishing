@@ -1,0 +1,46 @@
+{
+  "slug": "kawazu-hama",
+  "name": "河津浜",
+  "location": {
+    "latitude": 34.74428839999999,
+    "longitude": 138.998716
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "河津町",
+    "city_slug": "kawazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 135.3,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 239.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "河津川河口のサーフ＆磯、キス・クロダイ・ヒラスズキ向き",
+    "access": "河津駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.6,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:浜"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "shirogisu"
+  ],
+  "harbor_code": "22-4",
+  "harbor_name": "白浜"
+}

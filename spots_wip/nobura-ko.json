@@ -1,0 +1,48 @@
+{
+  "slug": "nobura-ko",
+  "name": "野布良港",
+  "location": {
+    "latitude": 35.1346427,
+    "longitude": 139.8371881
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "鋸南町",
+    "city_slug": "kyonan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 341.9,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 829.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "保田港北側の小港、クロダイ・アジ・メバル向き",
+    "access": "保田駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.38,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=pier@242m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "aji"
+  ],
+  "harbor_code": "12-10",
+  "harbor_name": "岩井袋"
+}

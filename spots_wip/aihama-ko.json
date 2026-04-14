@@ -1,0 +1,53 @@
+{
+  "slug": "aihama-ko",
+  "name": "相浜港",
+  "location": {
+    "latitude": 34.9239864,
+    "longitude": 139.8255924
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 285,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "布良港隣の小漁港、クロダイ・メジナ・アオリイカ向き",
+    "access": "相の浜バス停から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "marina"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "leisure=marina@294m",
+      "man_made=breakwater@120m",
+      "man_made=breakwater@175m",
+      "man_made=breakwater@209m",
+      "waterway=dock@115m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "12-8",
+  "harbor_name": "布良"
+}

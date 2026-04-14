@@ -1,0 +1,46 @@
+{
+  "slug": "inatorigawa-ko",
+  "name": "稲取港",
+  "location": {
+    "latitude": 34.773223,
+    "longitude": 139.0412035
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "東伊豆町",
+    "city_slug": "higashiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 83.0,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 445.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "東伊豆を代表する大型港、アジ・青物・カマス・アオリイカ向き",
+    "access": "伊豆稲取駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kamasu",
+    "aji"
+  ],
+  "harbor_code": "22-4",
+  "harbor_name": "白浜"
+}

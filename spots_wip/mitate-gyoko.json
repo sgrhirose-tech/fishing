@@ -1,0 +1,46 @@
+{
+  "slug": "mitate-gyoko",
+  "name": "見立漁港",
+  "location": {
+    "latitude": 35.4271492,
+    "longitude": 139.9023291
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "木更津市",
+    "city_slug": "kisarazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 305,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "木更津金田の小漁港、ハゼ・クロダイ向き",
+    "access": "龍宮城スパ・ホテル三日月バス停から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "12-12",
+  "harbor_name": "君津"
+}

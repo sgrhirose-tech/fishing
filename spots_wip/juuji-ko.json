@@ -1,0 +1,53 @@
+{
+  "slug": "juuji-ko",
+  "name": "重寺港",
+  "location": {
+    "latitude": 35.0336334,
+    "longitude": 138.8944763
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "沼津市",
+    "city_slug": "numazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 305,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 338.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "沼津穴場漁港、青物・クロダイ・アオリイカ向き",
+    "access": "重寺バス停から徒歩5分",
+    "lead_text": "淡島マリンパーク対岸に位置する内浦湾奥の小さな漁港で、沖側堤防の先端から40メートルほど投げると水深12メートル前後の深場に届き、砂泥底に石が混じる駆け上がり地形が広がっています。大潮時は潮足が川のように速くなるため、クロダイのフカセ釣りでは重めの配合餌で海底にしっかりとポイントを作るのが地元常連のセオリーです。クロダイは年間を通じて実績があり、平日でも常連の姿が見られます。夏から秋にかけては沖側堤防に青物のカゴ釣り師が並び、アオリイカも同時期に活性が上がります。港内はルアー禁止のため、エサ釣り・カゴ釣り・フカセ釣り専用の釣り場です。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "marina",
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@165m",
+      "man_made=pier@69m",
+      "man_made=pier@86m",
+      "man_made=quay@164m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai"
+  ],
+  "harbor_code": "22-10",
+  "harbor_name": "三津"
+}

@@ -1,0 +1,46 @@
+{
+  "slug": "handa-ko",
+  "name": "半田港",
+  "location": {
+    "latitude": 34.8789591,
+    "longitude": 136.9439454
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "半田市",
+    "city_slug": "handa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 155,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "半田市の港湾岸壁、クロダイ・ハゼ・セイゴ向き",
+    "access": "半田市方面から車利用",
+    "photo_url": "",
+    "lead_text": "---\n\n以下がリード文です（文字数確認のうえ出力）：\n\n半田市の十ヶ川河口に面した工業地帯の湾奥岸壁です。淡水の流入により汽水が形成され、クロダイやセイゴ、ハゼといった汽水域を好む魚が通年通じて狙えます。岸壁の高さは約3メートルほどあり、足元はテトラなどのない平坦な作りです。ハゼは夏から晩秋まで実績があり、11月以降も新子と落ちハゼが混在します。年末にかけては常夜灯の下でセイゴを電気ウキで狙う常連の姿が増え、上げ潮のタイミングに合わせた夜間釣行が定番スタイルとして根付いています。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "haze"
+  ],
+  "harbor_code": "23-13",
+  "harbor_name": "武豊"
+}

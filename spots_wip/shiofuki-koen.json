@@ -1,0 +1,44 @@
+{
+  "slug": "shiofuki-koen",
+  "name": "汐吹公園",
+  "location": {
+    "latitude": 34.9686663,
+    "longitude": 139.1278629
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "伊東市",
+    "city_slug": "ito"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 0.0,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 287.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "川奈の磯公園、水深あり磯釣り入門向き、クロダイ向き",
+    "access": "東山田バス停から徒歩30分"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.55,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=rock@55m"
+    ]
+  },
+  "target_fish": [
+    "kurodai"
+  ],
+  "harbor_code": "22-2",
+  "harbor_name": "伊東"
+}

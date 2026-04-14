@@ -1,0 +1,44 @@
+{
+  "slug": "ishibu-beach",
+  "name": "石部海水浴場",
+  "location": {
+    "latitude": 34.7327517,
+    "longitude": 138.7554681
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "南伊豆町",
+    "city_slug": "minamiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 330,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 708.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "松崎町の砂浜・ゴロタ、キス・アオリイカ向き",
+    "access": "石部温泉バス停から徒歩5分",
+    "lead_text": "---\n\n上記の情報をもとに、リード文を生成しました。\n\n西伊豆・松崎町の石部海岸は、砂泥底の砂浜とゴロタ場が隣り合う変化に富んだロケーションです。海岸中央の水門前は遠浅で、波打ち際から35mほどの地点でも水深2.5m前後。砂利交じりの砂泥底が続く春〜夏にかけてシロギスの季節が本番を迎えます。海岸西側のゴロタ帯は岩礁が複雑に入り組んでおり、アオリイカが好む地形変化が随所にあります。東側の石部港堤防では付け根付近から沖に離れ根が張り出し、潮通しのよい先端部でもアオリイカの実績が知られています。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aoriika",
+    "shirogisu"
+  ],
+  "harbor_code": "22-8",
+  "harbor_name": "田子"
+}

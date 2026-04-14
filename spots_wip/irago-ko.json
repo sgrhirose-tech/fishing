@@ -1,0 +1,56 @@
+{
+  "slug": "irago-ko",
+  "name": "伊良湖港",
+  "location": {
+    "latitude": 34.5843963,
+    "longitude": 137.019651
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "田原市",
+    "city_slug": "tahara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 15,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1324.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "半島先端の港、内港でアジ・キス・クロダイ向き（赤灯堤は立入禁止）",
+    "access": "田原市方面から車利用",
+    "photo_url": "",
+    "lead_text": "渥美半島の先端・伊良湖岬に位置する伊良湖港は、三河湾と伊勢湾の境目にあたり潮通しのよさが際立つ漁港です。現在釣りができるのは白灯台堤防とフェリー乗り場周辺の2エリアで、赤灯台堤防は2022年より立入禁止となっています。白灯台側は砂地底の内港で、夏場はアジのサビキ釣りが朝マズメに集中し、シロギスは6〜8月に実績が高く地元勢に人気のシーズンです。クロダイはヘチ回りに着く個体が多く、春から秋にかけて常連が足元周辺を丁寧に探るスタイルで知られています。"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "parking_nearby",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@212m",
+      "man_made=breakwater@160m",
+      "man_made=breakwater@267m",
+      "man_made=pier@154m",
+      "natural=beach@164m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "aji",
+    "shirogisu"
+  ],
+  "harbor_code": "23-1",
+  "harbor_name": "伊良湖"
+}

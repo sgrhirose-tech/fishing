@@ -1,0 +1,47 @@
+{
+  "slug": "hekinan-fishing",
+  "name": "碧南海釣り広場",
+  "location": {
+    "latitude": 34.8501392,
+    "longitude": 136.9597721
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "碧南市",
+    "city_slug": "hekinan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 295,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "整備された護岸広場、クロダイ・メバル・ハゼ向き",
+    "access": "碧南市方面から車利用",
+    "photo_url": "",
+    "lead_text": "三河湾に面した碧南火力発電所の温排水放水口沿いに整備された無料の護岸釣り場です。転落防止用の高めの柵が連続して設置されており、足元は平坦な作りになっています。発電所からの温かい排水が年中流れ込むため、冬場でも魚が集まりやすい環境で、常連の間では水温12℃を切ると「温排水側でもあたりが渋くなる」と言われています。クロダイは2月〜3月の乗っ込み期に実績があり、地元ファンは電気ウキを温排水の流れに100メートル近く流すスタイルを好みます。ハゼは夏から秋にスケートボードパーク側の護岸際で釣れる傾向があり、メバルは夜間の温排水絡みのポイントで出ることがあります。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "mebaru",
+    "haze"
+  ],
+  "harbor_code": "23-13",
+  "harbor_name": "武豊"
+}

@@ -1,0 +1,46 @@
+{
+  "slug": "maeha-kaigan",
+  "name": "前羽海岸",
+  "location": {
+    "latitude": 35.2818944,
+    "longitude": 139.2228806
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "小田原市",
+    "city_slug": "odawara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 145,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 346.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "西湘の比較的空いたサーフ、キス・ヒラメ向き",
+    "access": "前川バス停から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "hirame"
+  ],
+  "harbor_code": "14-20",
+  "harbor_name": "真鶴"
+}
