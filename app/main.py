@@ -53,6 +53,25 @@ def _load_fish_master() -> None:
 _METHOD_MASTER: dict = {}
 _METHOD_SLUG_TO_NAME: dict = {}  # {slug: 釣法名}
 
+# ── ページリード文 ────────────────────────────────────────────
+_PAGE_LEADS: dict = {}  # {"pref/area/city-key": "リード文", ...}
+
+def _load_page_leads() -> None:
+    global _PAGE_LEADS
+    import csv
+    path = _BASE / "data" / "page_leads_all.tsv"
+    try:
+        with open(path, encoding="utf-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            _PAGE_LEADS = {
+                row["key"]: row["lead"]
+                for row in reader
+                if row.get("lead", "").strip()
+            }
+        print(f"[page_leads] {len(_PAGE_LEADS)} 件のリード文を読み込みました")
+    except Exception as e:
+        print(f"[page_leads] 読み込みエラー: {e}")
+
 def _load_method_master() -> None:
     global _METHOD_MASTER, _METHOD_SLUG_TO_NAME
     path = _BASE / "data" / "method_master.json"
@@ -164,6 +183,7 @@ async def lifespan(app: FastAPI):
     load_facilities_json()
     _load_fish_master()
     _load_method_master()
+    _load_page_leads()
     _slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     templates.env.globals["fish_slug_map"] = _slug_map
     templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
@@ -1345,6 +1365,7 @@ def page_pref_or_region(request: Request, slug: str):
         "spot_count": _spot_count,
         "top_fish_jp": _seo["top_fish_jp"],
         "intro_text": "".join(_intro),
+        "page_lead": _PAGE_LEADS.get(pref_slug, ""),
     })
 
 
@@ -1387,6 +1408,7 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
         "spot_count": _spot_count,
         "top_fish_jp": _seo["top_fish_jp"],
         "intro_text": "".join(_intro),
+        "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}", ""),
     })
 
 
@@ -1435,6 +1457,7 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "spot_count": _spot_count,
         "top_fish_jp": _seo["top_fish_jp"],
         "intro_text": "".join(_intro),
+        "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}/{city_slug}", ""),
     })
 
 
