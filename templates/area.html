@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}{{ area_name }}の釣り場・天気情報 | {{ pref_name }} | Tsuricast{% endblock %}
-{% block description %}{{ area_name }}（{{ pref_name }}）の釣り場天気情報。{{ cities|length }}市区町村・{{ spots|length }}か所を掲載。{% endblock %}
+{% block title %}{{ area_name }}の釣り場{{ spot_count }}か所 | {{ pref_name }} | Tsuricast{% endblock %}
+{% block description %}{{ area_name }}（{{ pref_name }}）の釣り場{{ spot_count }}か所。{% if top_fish_jp %}{{ top_fish_jp[:3]|join('・') }}などが狙えます。{% endif %}天気・波高・潮汐情報あり。{% endblock %}
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 
@@ -18,6 +18,53 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{{ area_name }}の釣り場一覧",
+  "numberOfItems": {{ spot_count }},
+  "itemListElement": [
+    {% for s in spots %}
+    {
+      "@type": "ListItem",
+      "position": {{ loop.index }},
+      "item": {
+        "@type": "TouristAttraction",
+        "name": "{{ s.name }}",
+        "url": "https://tsuricast.jp/{{ s.area.pref_slug }}/{{ s.area.area_slug }}/{{ s.area.city_slug }}/{{ s.slug }}"
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% if top_fish_jp %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ area_name }}で釣れる魚は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ area_name }}では{{ top_fish_jp[:5]|join('・') }}などが釣れます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ area_name }}の釣り場は何か所ありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ area_name }}（{{ pref_name }}）には{{ spot_count }}か所の釣り場情報を掲載しています。"
+      }
+    }
+  ]
+}
+</script>
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -29,6 +76,9 @@
 </nav>
 
 <h1>{{ area_name }}の釣り場</h1>
+{% if intro_text %}
+<p class="page-intro">{{ intro_text }}</p>
+{% endif %}
 
 <div id="map-area" class="map-container"></div>
 
