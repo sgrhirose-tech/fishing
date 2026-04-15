@@ -1,1 +1,1 @@
-fetch_date,fetch_time_jst,target_date,coord_label,lat,lon,daily_wh_max_m,daily_wp_max_s,daily_wdir_deg,am_wh_m,noon_wh_m,pm_wh_m,eve_wh_m
+fetch_date,fetch_time_jst,target_date,coord_label,lat,lon,daily_wh_max_m,daily_wp_max_s,am_wh_m,noon_wh_m,pm_wh_m,eve_wh_m
