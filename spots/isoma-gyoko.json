@@ -1,0 +1,47 @@
+{
+  "slug": "isoma-gyoko",
+  "name": "磯間漁港",
+  "location": {
+    "latitude": 33.7184818,
+    "longitude": 135.3826371
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "田辺市",
+    "city_slug": "tanabe"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 235,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1801.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "田辺市磯間の漁港。クロダイ、アジ、アオリイカが狙える。田辺湾内で波静かな釣り場。",
+    "access": "紀伊田辺駅から徒歩30分",
+    "photo_url": "",
+    "lead_text": "田辺市磯間漁港は、旗島エリアと蝦島エリアの2つに分かれる漁港です。旗島エリアは堤防先端付近に磯場が広がり水深も確保されているため、フカセ釣りでクロダイを狙う常連が多く、白灯台波止では昼間でも50cmオーバーの大型が上がることがあります。蝦島エリアの岸壁足元には石垣が組まれており、アジのサビキでは朝一番に28cmクラスの良型が混じることも。アオリイカはミオ筋絡みのテトラ周辺がポイントで、潮が澄んでいる夜から夜明け前の時間帯が実績時間帯です。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "kurodai"
+  ],
+  "harbor_code": "30-5",
+  "harbor_name": "田辺（旧）"
+}

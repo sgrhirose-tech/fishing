@@ -1,0 +1,46 @@
+{
+  "slug": "hamaogi-no-iso",
+  "name": "浜荻の磯",
+  "location": {
+    "latitude": 35.1167932,
+    "longitude": 140.150485
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "鴨川市",
+    "city_slug": "kamogawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 180,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 749.9
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "テトラ混じりの磯場、クロダイ・メジナ向き、足場注意",
+    "access": "薬師堂バス停から徒歩10分",
+    "lead_text": "千葉県外房・鴨川エリアに位置する浜荻の磯は、岩礁帯の上に造られた漁港の外海側に広がるテトラ混じりの磯場です。テトラ帯の外海側ではウキフカセによるメジナ狙いが主流で、特に堤防最初の曲がり角付近はクロダイの実績が高いポイントとして常連に知られています。秋の台風通過後など海中に濁りが入るタイミングはカイズがまとまって浮く傾向があります。堤防先端はテトラがなく立ちやすい分、人が集まりやすい場所です。テトラ上は濡れていると非常に滑りやすく、スパイクシューズとライフジャケットは欠かせません。"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:磯"
+    ]
+  },
+  "target_fish": [
+    "mejina",
+    "kurodai"
+  ],
+  "harbor_code": "12-6",
+  "harbor_name": "鴨川"
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "atami-ko-umizuri",
+  "name": "熱海港海釣り施設",
+  "location": {
+    "latitude": 35.0921358,
+    "longitude": 139.079827
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "熱海市",
+    "city_slug": "atami"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 340,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 252.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "有料・レンタルあり、水深深くアジ・メジナ・クロダイ向き",
+    "access": "山麓駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "22-19",
+  "harbor_name": "熱海"
+}

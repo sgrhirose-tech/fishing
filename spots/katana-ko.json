@@ -1,0 +1,53 @@
+{
+  "slug": "katana-ko",
+  "name": "片名港",
+  "location": {
+    "latitude": 34.7096941,
+    "longitude": 136.969124
+  },
+  "area": {
+    "prefecture": "愛知県",
+    "pref_slug": "aichi",
+    "area_name": "三河湾",
+    "area_slug": "mikawa-bay",
+    "city": "南知多町",
+    "city_slug": "minamichita"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 75,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 646.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "南知多町の漁港、クロダイ・アジ・アオリイカ向き",
+    "access": "南知多町方面から車利用",
+    "photo_url": "",
+    "lead_text": "知多半島のほぼ先端、師崎の山裏側に位置する片名港は、山が北風を遮るため冬でも竿が出しやすい風裏ポイントとして地元常連に重宝されています。突堤は足場が整っており、港入り口付近はクロダイが居つく定番のヘチポイントとして知られています。アジは港内のサビキで数釣りが楽しめ、秋口には漁港周辺一帯がアオリイカのフィールドになりエギングで賑わいます。テトラ帯にはカサゴ・メバルも多く、1年を通じて多彩な魚種が狙える漁港です。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.55,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@227m",
+      "man_made=breakwater@259m",
+      "man_made=pier@131m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "aji"
+  ],
+  "harbor_code": "23-14",
+  "harbor_name": "師崎"
+}

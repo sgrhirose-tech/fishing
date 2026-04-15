@@ -1,0 +1,47 @@
+{
+  "slug": "kamoi-ko",
+  "name": "鴨居港",
+  "location": {
+    "latitude": 35.2476347,
+    "longitude": 139.7340473
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 120.5,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1364.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "東京湾口の潮通し良好な小港、アジ・クロダイ・シーバス向き",
+    "access": "鴨居バス停から徒歩0分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.43,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@252m",
+      "natural=beach@164m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "aji",
+    "suzuki"
+  ],
+  "harbor_code": "14-8",
+  "harbor_name": "走水"
+}

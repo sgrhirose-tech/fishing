@@ -1,0 +1,45 @@
+{
+  "slug": "nagasawa-kaigan",
+  "name": "長沢海岸",
+  "location": {
+    "latitude": 35.1906528,
+    "longitude": 139.6148426
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 212.7,
+    "seabed_type": "rock",
+    "surfer_spot": null,
+    "nearest_20m_contour_distance_m": 1337.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "東京湾沿いのサーフ、キス実績高い、長沢港は釣禁注意",
+    "access": "ソレイユの丘バス停から徒歩20分",
+    "lead_text": "三浦半島・東京湾側に面した砂地のサーフで、野比川河口から津久井川河口にかけて続く海岸線が釣り場です。水深は全体的に浅めで海底はほぼ砂地帯。潮通しが良く、シロギスの魚影が特に濃いエリアとして知られています。シーズンは4月から10月頃で、秋口はさほど遠投せずとも釣果が出やすく、夏の最盛期には2桁釣果の報告も多数あります。エサはアオイソメのほかジャリメを使うとピンギスが鈴なりになる傾向も。海岸中ほどにある長沢港は釣り禁止エリアになっているため注意してください。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.52,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=sand@125m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu"
+  ],
+  "harbor_code": "14-17",
+  "harbor_name": "小田和湾"
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "kita-shimoura-gyoko",
+  "name": "北下浦漁港",
+  "location": {
+    "latitude": 35.201676,
+    "longitude": 139.6766994
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 142.8,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1737.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "三浦海岸北端の漁港、アジ・キス・クロダイ向き",
+    "access": "京急長沢駅から徒歩10分",
+    "lead_text": "この釣り場は現在釣り禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.9,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "aji",
+    "shirogisu"
+  ],
+  "harbor_code": "14-11",
+  "harbor_name": "金田湾"
+}

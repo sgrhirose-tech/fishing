@@ -1,0 +1,47 @@
+{
+  "slug": "chigasaki-kaigan",
+  "name": "茅ヶ崎海岸",
+  "location": {
+    "latitude": 35.3175057,
+    "longitude": 139.4010544
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "茅ヶ崎市",
+    "city_slug": "chigasaki"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 160,
+    "seabed_type": "sand",
+    "surfer_spot": true,
+    "nearest_20m_contour_distance_m": 1506.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "サザンビーチ西の広大なサーフ、キス・イシモチ・シーバス向き",
+    "access": "市営プール前［茅ヶ崎市］バス停から徒歩5分",
+    "lead_text": "サザンビーチの西側に広がる茅ヶ崎海岸は、相模湾に面した遠浅の砂浜サーフです。底質は砂地で、シロギスは4〜5月ごろから岸寄りの群れが活発になり、11月ごろまで数釣りが楽しめます。シマノの釣行記では5色半（約130m）前後に群れが着き、手前2〜3色でも良型が単発でヒットする展開が記録されています。南向きの地形のため南風が吹くと波立ちやすく、コンディションの見極めが大切です。スズキはヘッドランド周辺の流れが効くポイントで実績があり、マズメ時の常連に知られた時間帯です。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "natural=beach@100m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "suzuki"
+  ],
+  "harbor_code": "14-19",
+  "harbor_name": "江ノ島"
+}

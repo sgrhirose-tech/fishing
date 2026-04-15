@@ -1,0 +1,43 @@
+{
+  "slug": "ito-ko-shiro-ban",
+  "name": "伊東港・白灯台堤防",
+  "location": {
+    "latitude": 34.9739787,
+    "longitude": 139.1035531
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "伊東市",
+    "city_slug": "ito"
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "この釣り場は工事以降立入禁止・釣り禁止となりました。",
+    "access": "",
+    "lead_text": "この釣り場は工事以降立入禁止・釣り禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:堤防"
+    ]
+  },
+  "target_fish": [],
+  "harbor_code": "22-2",
+  "harbor_name": "伊東"
+}

@@ -1,0 +1,43 @@
+{
+  "slug": "koitogawa-ko-ban",
+  "name": "小糸川漁港",
+  "location": {
+    "latitude": 35.3476297,
+    "longitude": 139.8552704
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "君津市",
+    "city_slug": "kimitsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 0,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "この釣り場は2020年10月より釣り禁止となりました。",
+    "lead_text": "この釣り場は2020年10月より釣り禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:漁港"
+    ]
+  },
+  "target_fish": [],
+  "harbor_code": "12-15",
+  "harbor_name": "寒川"
+}

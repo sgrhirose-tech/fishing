@@ -1,0 +1,49 @@
+{
+  "slug": "hiratsuka-shinko",
+  "name": "平塚新港（須賀港）",
+  "location": {
+    "latitude": 35.3204943,
+    "longitude": 139.3654732
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "平塚市",
+    "city_slug": "hiratsuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 89.5,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1781.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "相模川河口西側護岸、青物・アジ・キス・シーバス向き",
+    "access": "須賀港バス停から徒歩5分",
+    "lead_text": "相模川河口西側に広がる平塚新港（須賀港）は、砂泥底の護岸と港内岸壁が主なフィールドで、相模川の淡水と相模湾の潮が混じる汽水域特有の地形が特徴です。シロギスは東岸壁周辺の砂底エリアへのちょい投げで狙えます。アジはトリックサビキで夏から秋にかけて数釣りが成立しやすく、同時期には青物の回遊も見込めます。スズキは相模川河口方向が主戦場で、常連は潮が動く時間帯を中心に夜間の常夜灯まわりを実績ポイントとして通っています。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.85,
+    "secondary_flags": [
+      "marina"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=marina@2m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "suzuki",
+    "shirogisu"
+  ],
+  "harbor_code": "14-19",
+  "harbor_name": "江ノ島"
+}

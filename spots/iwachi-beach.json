@@ -1,0 +1,49 @@
+{
+  "slug": "iwachi-beach",
+  "name": "岩地海水浴場",
+  "location": {
+    "latitude": 34.7380595,
+    "longitude": 138.7603283
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "西伊豆",
+    "area_slug": "nishi-izu",
+    "city": "南伊豆町",
+    "city_slug": "minamiizu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 330,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 799.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "入り江の砂浜、キス・メジナ・アオリイカ向き",
+    "access": "岩地温泉バス停から徒歩5分",
+    "lead_text": "松崎町・岩地に広がる入り江状の白砂ビーチで、湾に囲まれているぶん波が極めて穏やかなのが特徴です。砂浜は遠浅ですが、両端の岩礁寄りに近づくと急深になる地点もあります。シロギスは砂浜からのちょい投げで狙えますが、堤防周りは根掛かりしやすいため30m以上沖を意識するのがポイントです。メジナはウキフカセで狙う地元勢が多く、岩礁際が好ポイント。アオリイカは夏から秋にかけて回遊が活発になり、エビ漁の規制がかかる時期と時間帯（9月16日〜12月31日は午後3時〜翌朝6時は堤防釣り禁止）に注意が必要です。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@64m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "mejina",
+    "shirogisu"
+  ],
+  "harbor_code": "22-8",
+  "harbor_name": "田子"
+}

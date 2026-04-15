@@ -1,0 +1,41 @@
+{
+  "slug": "miharu-ganpeki-ban",
+  "name": "三春町岸壁（旧）",
+  "location": {
+    "latitude": 35.2651918,
+    "longitude": 139.6964347
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "この釣り場は護岸改築後に釣り禁止となりました。",
+    "access": "",
+    "lead_text": "この釣り場は護岸改築後に釣り禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "kinshi",
+    "osm_evidence": []
+  },
+  "target_fish": [],
+  "harbor_code": "14-8",
+  "harbor_name": "走水"
+}

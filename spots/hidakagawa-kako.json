@@ -1,0 +1,49 @@
+{
+  "slug": "hidakagawa-kako",
+  "name": "日高川河口",
+  "location": {
+    "latitude": 33.8779873,
+    "longitude": 135.1568985
+  },
+  "area": {
+    "prefecture": "和歌山県",
+    "pref_slug": "wakayama",
+    "area_name": "紀伊水道（和歌山）",
+    "area_slug": "kii-suido-wakayama",
+    "city": "御坊市",
+    "city_slug": "gobo"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 240,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "御坊市の日高川河口。スズキ、クロダイ、ハゼが狙える。サビキ釣りではアジ、イワシも回遊。",
+    "access": "西御坊駅から徒歩15分",
+    "photo_url": "",
+    "lead_text": "御坊市塩屋町に流れる日高川が紀伊水道へ注ぐ河口エリアで、西川との合流点が生まれる地形が特徴です。水深は比較的浅く、テトラ帯の先端部は足場が悪いため上級者向けのポイントになっています。合流の波止先端にはハネ（スズキ）狙いのルアーマンが常時竿を出しており、夜間の実績が高いです。クロダイは河口付近の常連で、地元チヌ師の姿が絶えません。隣接する浜ノ瀬漁港の小さな漁港内には常夜灯があり、潮が引くタイミングでアジが入ってくる時間帯だけのアジングポイントとしても知られています。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "suzuki",
+    "haze",
+    "iwashi"
+  ],
+  "harbor_code": "30-7",
+  "harbor_name": "比井湾"
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "honmoku-umizuri-shisetsu",
+  "name": "本牧海づり施設",
+  "location": {
+    "latitude": 35.4301656,
+    "longitude": 139.6866362
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": "yokohama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 108.4,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 316.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "有料・横浜FP・最老舗、沖桟橋あり、アジ・クロダイ向き",
+    "access": "横浜市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.43,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "leisure=fishing@189m",
+      "man_made=pier@175m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "aji"
+  ],
+  "harbor_code": "14-4",
+  "harbor_name": "新山下"
+}
