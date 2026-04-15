@@ -159,7 +159,7 @@ def _format_date_jp(date_str: str) -> str:
 # フォアキャスト結果キャッシュ（スポットページ高速化用）
 # ============================================================
 _FORECAST_CACHE: dict = {}   # {slug: (timestamp, result)}
-_FORECAST_CACHE_TTL = 300    # 5分（秒）
+_FORECAST_CACHE_TTL = 3600   # 1時間（クローラー対策: 同一スポットの重複 API 呼び出しを防ぐ）
 
 # ============================================================
 # FastAPI アプリ
@@ -211,6 +211,7 @@ _ROBOTS_TXT = """\
 User-agent: *
 Allow: /
 Disallow: /api/
+Crawl-delay: 2
 
 # --- AI training crawlers: block ---
 User-agent: GPTBot
