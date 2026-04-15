@@ -2,13 +2,48 @@
 title: 電車釣行完全ガイド｜車なしで釣りを楽しむコツをベテラン店長が解説
 description: 車がなくても釣りはできます。電車釣行の荷物の組み方・釣り場の選び方・時間の使い方まで、都市部の釣り人向けにベテラン店長が本音で解説します。
 related_spots:
-  - zaimokuza-kaigan
-  - tsujido
-  - shichirigahama
+  - aikuru
+  - akatsuki-futo-koen
+  - ariake-nishi-futo-koen
+  - fukuura-ganpeki
+  - hakkeijima-taigan
+  - hota-beach
+  - inamuragasaki
+  - izumiura-kaigan
+  - katase
+  - katase-gyoko
+  - katase_east
+  - kimigahama
+  - koshigoe-gyoko
   - kurihama
+  - kuromae-ko
+  - manazuru-ko
   - miura
-  - wakasu-kaihin-koen
+  - miyuki
+  - mizu-no-hiroba-koen
+  - motona-beach
+  - nojima-koen
+  - oi-futo-chuo-kaihin-koen-nagisa-no-mori
+  - oiso
+  - oiso-choyakuba-shita
+  - oiso-ko
+  - onjuku
+  - onjuku-ko
+  - ryujima-port
+  - sakawa
+  - shichirigahama
+  - shirako-ko
+  - shonan-dai-teibo
   - takasu-kaihin-koen
+  - tokai-futo-koen
+  - tsujido
+  - tsukui
+  - umi-no-koen
+  - umikaze-koen
+  - uraga-ko
+  - wakasu-kaihin-koen
+  - yuigahama
+  - zaimokuza-kaigan
 ---
 
 # 電車釣行完全ガイド  
