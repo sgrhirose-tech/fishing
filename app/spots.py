@@ -7,7 +7,10 @@ import json
 import logging
 from pathlib import Path
 
-from .constants import VALID_AREA_SLUGS, VALID_PREF_SLUGS
+from .constants import (
+    VALID_AREA_SLUGS, VALID_PREF_SLUGS,
+    PREF_CODE, _AREA_SORT, CITY_CODE, _CITY_CODE_OVERRIDE,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -52,6 +55,21 @@ def _get_marine_cache() -> tuple[dict, list, dict]:
     return _marine_cache
 
 
+def spot_sort_key(s: dict) -> tuple:
+    """並び順キー: (都道府県JISコード, エリア地理順, 市区町村JISコード, スポット名)"""
+    area      = s.get("area", {})
+    pref_slug = area.get("pref_slug", "")
+    area_slug = area.get("area_slug",  "")
+    city_slug = area.get("city_slug",  "")
+    pref_code = PREF_CODE.get(pref_slug, 99)
+    area_sort = _AREA_SORT.get((pref_slug, area_slug), 99)
+    city_code = _CITY_CODE_OVERRIDE.get(
+        (pref_slug, city_slug),
+        CITY_CODE.get(city_slug, 99999),
+    )
+    return (pref_code, area_sort, city_code, s.get("name", ""))
+
+
 def load_spots(spots_dir: str | None = None) -> list[dict]:
     """spots/ フォルダ内の JSON ファイルから全スポットデータを読み込む。"""
     global _spots_cache
@@ -82,6 +100,7 @@ def load_spots(spots_dir: str | None = None) -> list[dict]:
         if p_slug and p_slug not in VALID_PREF_SLUGS:
             logger.warning("invalid pref_slug '%s' in %s", p_slug, s.get("slug"))
 
+    spots.sort(key=spot_sort_key)
     _spots_cache = spots
     return spots
 
