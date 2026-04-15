@@ -467,7 +467,8 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/surumeika.jpg"
   },
   "ヤリイカ": {
     "slug": "yariika",
@@ -491,7 +492,8 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/yariika.jpg"
   },
   "コウイカ": {
     "slug": "kouika",
@@ -514,7 +516,8 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/kouika.jpg"
   },
   "マゴチ": {
     "slug": "magochi",
@@ -625,7 +628,8 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/mahata.jpg"
   },
   "カワハギ": {
     "slug": "kawahagi",
@@ -1652,7 +1656,8 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/umitanago.jpg"
   },
   "イワシ": {
     "slug": "iwashi",

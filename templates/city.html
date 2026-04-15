@@ -52,7 +52,9 @@
 </nav>
 
 <h1>{{ city_name }}の釣り場</h1>
-{% if intro_text %}
+{% if page_lead %}
+<p class="page-intro">{{ page_lead }}</p>
+{% elif intro_text %}
 <p class="page-intro">{{ intro_text }}</p>
 {% endif %}
 
