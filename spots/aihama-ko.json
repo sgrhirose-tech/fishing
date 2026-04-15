@@ -1,0 +1,54 @@
+{
+  "slug": "aihama-ko",
+  "name": "相浜港",
+  "location": {
+    "latitude": 34.9239864,
+    "longitude": 139.8255924
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 285,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "布良港隣の小漁港、クロダイ・メジナ・アオリイカ向き",
+    "access": "相の浜バス停から徒歩10分",
+    "lead_text": "布良港に隣接する相浜港は、砂地と岩礁が混在する地形の小漁港です。右側堤防の先端が主なポイントで、外側は浅く内側の船道を狙うのが定番。水深は約4メートルと浅めですが、クロダイは4月と10月に実績が高く、フカセ釣りの常連が夕マヅメに集まります。港内には常夜灯も多く、夜間のアオリイカ狙いにも向いています。沖のテトラは渡船でアクセスでき、クロダイ・メジナの魚影が特に濃いエリアです。周囲に磯場が多い影響でシマダイの姿も目立ちます。"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "marina"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "leisure=marina@294m",
+      "man_made=breakwater@120m",
+      "man_made=breakwater@175m",
+      "man_made=breakwater@209m",
+      "waterway=dock@115m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "12-8",
+  "harbor_name": "布良"
+}

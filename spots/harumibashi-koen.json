@@ -1,0 +1,50 @@
+{
+  "slug": "harumibashi-koen",
+  "name": "春海橋公園",
+  "location": {
+    "latitude": 35.6534771,
+    "longitude": 139.7920889
+  },
+  "area": {
+    "prefecture": "東京都",
+    "pref_slug": "tokyo",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "江東区",
+    "city_slug": "koto"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 240,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "ドック跡で水深あり、投げ・撒き餌禁止、シーバス・クロダイ向き",
+    "access": "豊洲駅から徒歩5分",
+    "lead_text": "晴海運河に面したガスの科学館前の護岸が釣り場で、かつての造船ドック跡地ゆえに足元から水深5〜10メートルが確保されています。撒き餌・投げ釣りは禁止のため、護岸際をヘチ釣りで攻めるスタイルが主流で、クロダイは壁際に張り付いていることが多く落とし込みでの実績が豊富です。スズキはルアーでも狙えますが、水中の濁りが強い日はアピールが落ちるため、水色のよい日の早朝や日没後が常連の狙い目となっています。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "harbour",
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=pier@186m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki"
+  ],
+  "harbor_code": "13-14",
+  "harbor_name": "晴海"
+}

@@ -2,48 +2,44 @@
   "slug": "nojima-koen",
   "name": "野島公園",
   "location": {
-    "latitude": 35.328291,
-    "longitude": 139.636488
+    "latitude": 35.3275377,
+    "longitude": 139.6375394
   },
   "area": {
     "prefecture": "神奈川県",
     "pref_slug": "kanagawa",
-    "area_name": "三浦半島",
-    "area_slug": "miura",
-    "city": "横須賀市",
-    "city_slug": "yokosuka"
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": "yokohama"
   },
   "physical_features": {
-    "sea_bearing_deg": 25,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 55,
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
-    "notes": "横浜の岸壁と浜の公園、クロダイ・メジナ・ハゼ・シーバス向き",
-    "access": "野島公園駅から徒歩10分",
-    "lead_text": "横浜市金沢区・平潟湾の入口に浮かぶ野島公園。宮川・侍従川・鷹取川が流れ込む汽水域で、遠浅の地形が広がります。岸壁から30mほどは岩盤と牡蠣殻帯が続き、その先の澪筋を超えると砂泥底へと変わります。水深は1〜2m前後と浅く、干潮時は釣りが難しいため、常連は満潮の上げ7分を狙って通います。メジナはシモリ根の海藻まわりにつきやすく、1〜4月のバチ抜けシーズンにはクロダイともども活性が上がる傾向があります。"
+    "notes": "金沢区の海浜公園、砂浜と磯、キス・クロダイ・メジナ向き",
+    "access": "野島公園駅から徒歩15分",
+    "lead_text": "横浜市金沢区・平潟湾の入り口に位置する小島の公園です。岸際の水深は1〜2mと遠浅で、底質は砂地が主体ながら、岩礁や牡蠣殻帯がところどころに顔を出す変化に富んだ地形です。シロギスは砂地が続くエリアへのちょい投げで狙え、夏場を中心に実績があります。クロダイは旧堤まわりで常連が通い、満潮前後に浮いてくる個体をヘチで狙うスタイルが定番です。新堤手前の岩礁帯ではメジナの姿も確認されています。全エリアを通じて水深が浅いため、干潮時よりも満潮のタイミングが魚の活性も高くなります。"
   },
   "classification": {
-    "primary_type": "sand_beach",
-    "confidence": 0.59,
-    "secondary_flags": [
-      "parking_nearby"
-    ],
-    "source": "osm_rule",
-    "osm_evidence": [
-      "natural=beach@121m"
-    ]
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
   },
   "target_fish": [
-    "mejina",
+    "shirogisu",
     "kurodai",
-    "haze",
-    "suzuki"
+    "mejina"
   ],
   "harbor_code": "14-6",
   "harbor_name": "長浦"

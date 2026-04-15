@@ -1,0 +1,45 @@
+{
+  "slug": "kobachiman-kaigan",
+  "name": "小八幡海岸",
+  "location": {
+    "latitude": 35.273965,
+    "longitude": 139.202875
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "小田原市",
+    "city_slug": "odawara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 137.0,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 255.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "西湘サーフの代表格、弓角の青物・キス向き",
+    "access": "一里塚バス停から徒歩5分",
+    "lead_text": "小田原市に位置する相模湾沿いのサーフで、西湘エリアを代表する投げ釣りの場です。海岸から20〜30メートルほど延びる突堤が点在し、急深の地形のおかげで先端付近はそれなりの水深を確保しています。シロギスは4月から10月がメインシーズンですが、神奈川のサーフとしては水深があるぶん、冬場も釣果が途絶えにくいのが特徴です。夏から秋にかけては青物の回遊が盛んになり、弓角やショアジギングで狙う釣り人が突堤に集まります。夜釣りでは30センチ近い良型アジがカゴ釣りで出ることもあり、地元常連が足繁く通う時間帯です。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.7,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  },
+  "target_fish": [
+    "shirogisu"
+  ],
+  "harbor_code": "14-20",
+  "harbor_name": "真鶴"
+}

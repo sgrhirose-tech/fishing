@@ -1,0 +1,51 @@
+{
+  "slug": "nago-kaigan",
+  "name": "那古海岸",
+  "location": {
+    "latitude": 35.0218515,
+    "longitude": 139.8534358
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 235,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1943.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "遠浅サーフ＆桟橋、キス・マゴチ・ヒラメ・シーバス向き",
+    "access": "川名［館山市］バス停から徒歩10分",
+    "lead_text": "千葉県館山市に広がる那古海岸は、砂地の遠浅サーフが続く内房を代表するフラットフィッシュの釣り場です。シロギスは3色〜5色のラインが届くゾーンに群れることが多く、朝の時間帯に活性が上がりやすい傾向があります。夏場はジェットスキーが入る北側エリアを外しながらポイントを選ぶのが地元流で、11月の強風下でも良型が出た釣行記録が残るほど晩秋まで通えます。平久里川河口はシーバスの実績が高く、朝まずめ・夕まずめの時間帯に地元アングラーが集まります。ヒラメやマゴチは砂地に絡む地形変化を広く歩いて探るスタイルが定着しています。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=pier@206m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "suzuki",
+    "hirame",
+    "magochi"
+  ],
+  "harbor_code": "12-9",
+  "harbor_name": "船形"
+}

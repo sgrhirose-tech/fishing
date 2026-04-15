@@ -1,0 +1,45 @@
+{
+  "slug": "kisarazu-choukokujo",
+  "name": "木更津貯木場",
+  "location": {
+    "latitude": 35.386778,
+    "longitude": 139.9164898
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "木更津市",
+    "city_slug": "kisarazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 260,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "木更津の護岸、キス・カレイ・アナゴ・シーバス向き",
+    "access": "新宿バス停から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu",
+    "suzuki",
+    "karei"
+  ],
+  "harbor_code": "12-12",
+  "harbor_name": "君津"
+}

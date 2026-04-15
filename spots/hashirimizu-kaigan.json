@@ -1,0 +1,52 @@
+{
+  "slug": "hashirimizu-kaigan",
+  "name": "走水海岸",
+  "location": {
+    "latitude": 35.263215,
+    "longitude": 139.7236101
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 356.2,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 740.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "走水アジの聖地、東京湾口で潮速い、アジ・シーバス向き",
+    "access": "馬堀海岸駅から徒歩25分",
+    "lead_text": "三浦半島北端、浦賀水道の入口に位置する走水海岸は、東京湾内でも屈指の潮流が生み出す豊かな漁場として知られています。速い潮に揉まれて育ったアジは「走水の黄金アジ」と呼ばれるほど体が丸く脂がのっており、地元の船宿はほぼ通年アジ狙いの出船を続けています。港内は釣り禁止のため、岸からは港周辺の磯場や砂浜が主なポイントです。シーバスは春から秋に明暗部やストラクチャー際での実績があり、特に潮が動き始める時間帯に魚影が濃くなります。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.77,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@211m",
+      "man_made=breakwater@271m",
+      "man_made=breakwater@287m",
+      "man_made=pier@239m",
+      "natural=beach@17m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "suzuki"
+  ],
+  "harbor_code": "14-8",
+  "harbor_name": "走水"
+}

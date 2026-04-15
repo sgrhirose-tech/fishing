@@ -20,6 +20,11 @@ logs/*.jsonl
 data/cache/ai_comment_*.json
 data/cache/xpost_*.json
 
+<<<<<<< HEAD
 # DS_store
 .DS_store
 
+=======
+# .DS_Store
+.DS_Store
+>>>>>>> origin/claude/resolve-shigeru-master

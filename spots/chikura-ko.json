@@ -1,0 +1,49 @@
+{
+  "slug": "chikura-ko",
+  "name": "千倉・平舘港",
+  "location": {
+    "latitude": 34.956905,
+    "longitude": 139.9632454
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "外房",
+    "area_slug": "sotobo",
+    "city": "南房総市",
+    "city_slug": "minamibouso"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 90,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1454.5
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "長い堤防で足場良好、アジ・サバ・クロダイ・アオリイカ向き",
+    "access": "千倉港バス停から徒歩5分",
+    "lead_text": "千倉港と平舘港が連結した南房総最大規模の漁港で、水深は全体的に5〜7メートルほどです。堤防外側は浅い磯が広がっており、磯際を流すコースがクロダイの実績ポイントとして地元に知られています。オイルタンク周辺は常夜灯が点き、夜釣りでアジを狙う常連が通うエリアです。サバは夏から秋にかけて早朝・夕まづめに回遊が集中し、アオリイカも常夜灯まわりで秋に狙える港として評判があります。一部エリアに立入制限区画があるため、現地の掲示の確認が必要です。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@269m",
+      "waterway=dock@56m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "saba",
+    "aji"
+  ],
+  "harbor_code": "12-7",
+  "harbor_name": "白浜"
+}

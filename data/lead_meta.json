@@ -1,8 +1,8 @@
 {
   "honmoku-umizuri-shisetsu": {
-    "generated_at": "2026-04-07T23:23:27.946232+09:00",
-    "quality": "ok",
-    "needs_review": false
+    "generated_at": "2026-04-15T08:57:38.751961+09:00",
+    "quality": "fallback",
+    "needs_review": true
   },
   "ichihara-umizuri-shisetsu": {
     "generated_at": "2026-04-07T23:24:14.428887+09:00",
@@ -20,7 +20,7 @@
     "needs_review": false
   },
   "isogo-umizuri-shisetsu": {
-    "generated_at": "2026-04-07T23:35:07.266473+09:00",
+    "generated_at": "2026-04-15T08:58:54.785530+09:00",
     "quality": "fallback",
     "needs_review": true
   },
@@ -35,12 +35,12 @@
     "needs_review": true
   },
   "kasai-rinkai-koen": {
-    "generated_at": "2026-04-07T23:41:40.209578+09:00",
-    "quality": "fallback",
-    "needs_review": true
+    "generated_at": "2026-04-15T09:00:16.473829+09:00",
+    "quality": "ok",
+    "needs_review": false
   },
   "keihinjima-tsubasa-koen": {
-    "generated_at": "2026-04-07T23:43:27.809042+09:00",
+    "generated_at": "2026-04-15T09:01:32.554635+09:00",
     "quality": "ok",
     "needs_review": false
   },
@@ -95,9 +95,9 @@
     "needs_review": false
   },
   "toyosu-gururi-koen": {
-    "generated_at": "2026-04-08T00:04:27.463779+09:00",
-    "quality": "ok",
-    "needs_review": false
+    "generated_at": "2026-04-15T09:18:27.214706+09:00",
+    "quality": "fallback",
+    "needs_review": true
   },
   "futoma-kaigan": {
     "generated_at": "2026-04-10T18:54:45.648723+09:00",
@@ -740,9 +740,9 @@
     "needs_review": false
   },
   "suzaki-ko": {
-    "generated_at": "2026-04-13T07:39:30.376667+09:00",
-    "quality": "fallback",
-    "needs_review": true
+    "generated_at": "2026-04-15T00:47:14.412989+09:00",
+    "quality": "ok",
+    "needs_review": false
   },
   "tahara-ko": {
     "generated_at": "2026-04-13T07:40:53.456135+09:00",
@@ -781,6 +781,791 @@
   },
   "yoshida-shinko": {
     "generated_at": "2026-04-13T07:50:07.527377+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "funakoshi-maehama": {
+    "generated_at": "2026-04-14T23:14:02.281212+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "hoza-gyoko": {
+    "generated_at": "2026-04-14T23:15:21.528053+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "koga-gyoko": {
+    "generated_at": "2026-04-14T23:16:43.499332+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kohama-gyoko-toba": {
+    "generated_at": "2026-04-14T23:17:58.958449+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "koshika-kaigan": {
+    "generated_at": "2026-04-14T23:19:17.883725+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kowa-minamiise": {
+    "generated_at": "2026-04-14T23:20:39.188884+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kuzaki-gyoko": {
+    "generated_at": "2026-04-14T23:22:03.449974+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nada-area": {
+    "generated_at": "2026-04-14T23:23:29.669124+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "naya-gyoko": {
+    "generated_at": "2026-04-14T23:24:48.985418+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nie-gyoko": {
+    "generated_at": "2026-04-14T23:26:10.598994+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nishiki-gyoko": {
+    "generated_at": "2026-04-14T23:27:30.702441+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "oka-oike": {
+    "generated_at": "2026-04-14T23:28:53.204547+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "osatsu-gyoko": {
+    "generated_at": "2026-04-14T23:30:10.700564+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "sakama-gyoko": {
+    "generated_at": "2026-04-14T23:31:21.825841+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "toba-nakanogou": {
+    "generated_at": "2026-04-14T23:32:49.113157+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "toshijima": {
+    "generated_at": "2026-04-14T23:34:10.446153+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "uramura-motoura": {
+    "generated_at": "2026-04-14T23:35:37.147042+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "wagu-gyoko": {
+    "generated_at": "2026-04-14T23:36:56.021687+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "wagu-hiroma": {
+    "generated_at": "2026-04-14T23:38:24.961915+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "yoshizu-kamizaki": {
+    "generated_at": "2026-04-14T23:39:49.563361+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "arida-port-kushimoto": {
+    "generated_at": "2026-04-14T23:44:37.215047+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "choshi-kako": {
+    "generated_at": "2026-04-14T23:45:51.260700+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "futakijima-gyoko": {
+    "generated_at": "2026-04-14T23:47:12.060631+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "heda-gyoko": {
+    "generated_at": "2026-04-14T23:48:29.706708+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "ida-beach": {
+    "generated_at": "2026-04-14T23:49:46.308176+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "isakizaki-port": {
+    "generated_at": "2026-04-14T23:51:02.160979+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "jonohama-beach": {
+    "generated_at": "2026-04-14T23:52:17.059407+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kidohama-kaigan": {
+    "generated_at": "2026-04-14T23:53:30.411531+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kimigahama": {
+    "generated_at": "2026-04-14T23:54:50.853698+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kinose-teibou": {
+    "generated_at": "2026-04-14T23:56:06.982760+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "komezaki-ko": {
+    "generated_at": "2026-04-14T23:57:25.078950+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "koura-beach": {
+    "generated_at": "2026-04-14T23:58:51.574108+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "koza-river-mouth": {
+    "generated_at": "2026-04-15T00:00:12.871342+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kumomi-kaigan": {
+    "generated_at": "2026-04-15T00:01:31.137255+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kurohama-kaigan": {
+    "generated_at": "2026-04-15T00:02:43.903271+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kuromae-ko": {
+    "generated_at": "2026-04-15T00:03:50.505582+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kushimoto-port": {
+    "generated_at": "2026-04-15T00:05:09.506707+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "madogahama-park": {
+    "generated_at": "2026-04-15T00:06:30.977802+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "magame-kaigan": {
+    "generated_at": "2026-04-15T00:07:51.140087+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "matsuzaki-ko": {
+    "generated_at": "2026-04-15T00:09:13.744813+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "mera-ko-izu": {
+    "generated_at": "2026-04-15T00:10:30.727224+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "mikinosato-kaigan": {
+    "generated_at": "2026-04-15T00:11:50.566292+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "mitoura-ko": {
+    "generated_at": "2026-04-15T00:13:04.088028+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "motosuka-kaigan": {
+    "generated_at": "2026-04-15T00:14:21.429281+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "nachi-katsuura-port": {
+    "generated_at": "2026-04-15T00:15:40.529063+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nagaarai-ko": {
+    "generated_at": "2026-04-15T00:17:03.254901+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "nakayazato-kaigan": {
+    "generated_at": "2026-04-15T00:18:18.861956+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "niishika-kaigan": {
+    "generated_at": "2026-04-15T00:19:39.465586+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "nishina-ko": {
+    "generated_at": "2026-04-15T00:20:58.237021+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "note-hama": {
+    "generated_at": "2026-04-15T00:22:21.905263+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "numazu-ko": {
+    "generated_at": "2026-04-15T00:23:40.502986+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "ojiro-park": {
+    "generated_at": "2026-04-15T00:24:57.980462+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "osegyoko": {
+    "generated_at": "2026-04-15T00:26:22.432047+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "osezaki": {
+    "generated_at": "2026-04-15T00:27:34.533236+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "otago-kaigan": {
+    "generated_at": "2026-04-15T00:28:52.288986+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "ozone-gyoko": {
+    "generated_at": "2026-04-15T00:30:10.973341+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "sakuda-kaigan": {
+    "generated_at": "2026-04-15T00:31:32.144236+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "senbon-katahama": {
+    "generated_at": "2026-04-15T00:32:55.190177+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "shichirimihama-kiho": {
+    "generated_at": "2026-04-15T00:34:13.925517+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shichirimihama-mihasecho": {
+    "generated_at": "2026-04-15T00:35:33.741573+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shimoda-michinoeki": {
+    "generated_at": "2026-04-15T00:36:47.221788+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shimosato-port": {
+    "generated_at": "2026-04-15T00:37:58.283693+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shingu-port": {
+    "generated_at": "2026-04-15T00:39:19.578984+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "shirasato-kaigan": {
+    "generated_at": "2026-04-15T00:40:40.319440+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "shirogishi-doze": {
+    "generated_at": "2026-04-15T00:42:01.869964+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shishihama-kaigan": {
+    "generated_at": "2026-04-15T00:43:13.279102+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shizuura-gyoko": {
+    "generated_at": "2026-04-15T00:44:32.884063+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "sugari-gyoko": {
+    "generated_at": "2026-04-15T00:45:55.931826+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "tabi-ko": {
+    "generated_at": "2026-04-15T00:48:31.192022+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "tadadohama": {
+    "generated_at": "2026-04-15T00:49:50.071256+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "tago-gyoko": {
+    "generated_at": "2026-04-15T00:51:15.402431+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "tahara-port-kushimoto": {
+    "generated_at": "2026-04-15T00:52:36.401726+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "taiji-port": {
+    "generated_at": "2026-04-15T00:53:53.803673+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "toi-beach": {
+    "generated_at": "2026-04-15T00:55:11.482704+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "touji-beach": {
+    "generated_at": "2026-04-15T00:56:30.899735+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "udono-ko": {
+    "generated_at": "2026-04-15T00:57:53.639000+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "ugusu-ko": {
+    "generated_at": "2026-04-15T00:59:13.042078+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "ukui-port": {
+    "generated_at": "2026-04-15T01:00:34.845282+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "uragami-port": {
+    "generated_at": "2026-04-15T01:01:53.438522+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "yokata-kaigan": {
+    "generated_at": "2026-04-15T01:03:13.925004+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "yoshizaki-hama": {
+    "generated_at": "2026-04-15T01:04:26.194765+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "yukawa-port": {
+    "generated_at": "2026-04-15T01:05:46.927439+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "yukunoura-gyoko": {
+    "generated_at": "2026-04-15T01:07:06.357598+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "yumigahama-aonogawa": {
+    "generated_at": "2026-04-15T01:08:28.628582+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "akanehama-gogan": {
+    "generated_at": "2026-04-15T08:49:33.775697+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "daikoku-umizuri-shisetsu": {
+    "generated_at": "2026-04-15T08:50:54.425254+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "funabashi-ko-shinsui": {
+    "generated_at": "2026-04-15T08:52:13.145120+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "funabashi-sanbanze": {
+    "generated_at": "2026-04-15T08:53:34.625545+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "fureyu-ura": {
+    "generated_at": "2026-04-15T08:54:57.427681+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "harumibashi-koen": {
+    "generated_at": "2026-04-15T08:56:19.736588+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kisarazu-choukokujo": {
+    "generated_at": "2026-04-15T09:02:51.351289+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "mitate-gyoko": {
+    "generated_at": "2026-04-15T09:04:07.791952+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "nagaura-ko": {
+    "generated_at": "2026-04-15T09:05:22.872304+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nojima-koen": {
+    "generated_at": "2026-04-15T09:06:44.793013+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "odaiba-kaihin-koen": {
+    "generated_at": "2026-04-15T09:08:01.833733+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "omori-furusato-hamabe": {
+    "generated_at": "2026-04-15T09:09:14.823864+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "shinkiba-koen": {
+    "generated_at": "2026-04-15T09:10:38.047398+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "shiokaze-koen": {
+    "generated_at": "2026-04-15T09:11:54.974921+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "shiomi-undo-koen": {
+    "generated_at": "2026-04-15T09:13:20.991035+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "sodegaura-kitasode": {
+    "generated_at": "2026-04-15T09:14:32.190323+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "sugita-rinkai-ryokuchi": {
+    "generated_at": "2026-04-15T09:15:51.395822+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "toyomi-undo-koen": {
+    "generated_at": "2026-04-15T09:17:09.762357+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "urayasu-denpato-gogan": {
+    "generated_at": "2026-04-15T09:19:52.055794+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "urayasu-sogo-koen": {
+    "generated_at": "2026-04-15T09:21:16.271845+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "yorogawa-rinkai-koen": {
+    "generated_at": "2026-04-15T09:22:34.776043+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "chigasaki-kaigan": {
+    "generated_at": "2026-04-15T09:23:49.632558+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "hayakawa-ko": {
+    "generated_at": "2026-04-15T09:25:12.372082+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "hiratsuka-shinko": {
+    "generated_at": "2026-04-15T09:26:27.330140+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "iwa-ko": {
+    "generated_at": "2026-04-15T09:27:41.851323+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kobachiman-kaigan": {
+    "generated_at": "2026-04-15T09:29:04.568283+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kotsubo-ko-tetra": {
+    "generated_at": "2026-04-15T09:30:30.798588+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kugenuma-kaigan": {
+    "generated_at": "2026-04-15T09:31:47.334900+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "maeha-kaigan": {
+    "generated_at": "2026-04-15T09:33:02.089056+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nameri-kako": {
+    "generated_at": "2026-04-15T09:34:17.766417+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "odawara-kaigan": {
+    "generated_at": "2026-04-15T09:35:35.261115+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "odawara-ko": {
+    "generated_at": "2026-04-15T09:36:57.703522+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "sanno-kaigan": {
+    "generated_at": "2026-04-15T09:38:21.579544+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "tagoe-kako": {
+    "generated_at": "2026-04-15T09:41:09.834629+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "zushi-kaigan": {
+    "generated_at": "2026-04-15T09:42:28.287878+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "hashirimizu-kaigan": {
+    "generated_at": "2026-04-15T09:43:49.741905+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "hashirimizu-ko": {
+    "generated_at": "2026-04-15T09:45:07.909906+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kamoi-ko": {
+    "generated_at": "2026-04-15T09:46:24.498751+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kita-shimoura-gyoko": {
+    "generated_at": "2026-04-15T09:47:37.410549+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "matsuwa-ena-ko": {
+    "generated_at": "2026-04-15T09:49:04.119277+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "miura-kaigan": {
+    "generated_at": "2026-04-15T09:50:21.558962+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "miyakawa-ko": {
+    "generated_at": "2026-04-15T09:51:43.482208+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nagasawa-kaigan": {
+    "generated_at": "2026-04-15T09:53:03.382268+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nobi-kaigan": {
+    "generated_at": "2026-04-15T09:54:26.862669+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "otsu-shinteibo": {
+    "generated_at": "2026-04-15T09:55:48.715321+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "umibe-tsuri-koen": {
+    "generated_at": "2026-04-15T09:57:08.808959+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "aihama-ko": {
+    "generated_at": "2026-04-15T09:58:24.174810+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "atami-ko-umizuri": {
+    "generated_at": "2026-04-15T09:59:40.768262+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "dairoku-kaigan": {
+    "generated_at": "2026-04-15T10:00:58.083168+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "dairoku-ko": {
+    "generated_at": "2026-04-15T10:02:19.082822+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "futo-ko": {
+    "generated_at": "2026-04-15T10:03:36.546840+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "hatsushima": {
+    "generated_at": "2026-04-15T10:04:52.932046+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "inatorigawa-ko": {
+    "generated_at": "2026-04-15T10:06:15.630005+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "ishikoura-ko": {
+    "generated_at": "2026-04-15T10:07:35.509989+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "ito-ko": {
+    "generated_at": "2026-04-15T10:08:45.138532+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "iwai-kaigan": {
+    "generated_at": "2026-04-15T10:10:34.797395+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "jogasaki-iso": {
+    "generated_at": "2026-04-15T10:27:52.366150+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kanaya-kaihin-kaigan": {
+    "generated_at": "2026-04-15T10:29:09.652077+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "kanaya-ko": {
+    "generated_at": "2026-04-15T10:30:31.566759+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "katsuyama-kaigan": {
+    "generated_at": "2026-04-15T10:31:49.803582+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "katsuyama-ko": {
+    "generated_at": "2026-04-15T10:33:11.209334+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "kawazu-hama": {
+    "generated_at": "2026-04-15T10:34:30.421455+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "koura-ko": {
+    "generated_at": "2026-04-15T10:35:47.883537+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "mitaka-ko": {
+    "generated_at": "2026-04-15T10:37:06.531698+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "myogane-misaki": {
+    "generated_at": "2026-04-15T10:38:25.577946+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "nago-kaigan": {
+    "generated_at": "2026-04-15T10:39:42.942861+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nishigasaki-jiso": {
+    "generated_at": "2026-04-15T10:40:58.552689+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "nobura-ko": {
+    "generated_at": "2026-04-15T10:42:20.998471+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "ryujima-kaigan": {
+    "generated_at": "2026-04-15T10:43:41.077899+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "shimoda-ko-inubashiri": {
+    "generated_at": "2026-04-15T10:44:56.854730+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "shiofuki-koen": {
+    "generated_at": "2026-04-15T10:46:16.895411+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "sunhatoya-ura": {
+    "generated_at": "2026-04-15T10:47:38.359023+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "takasaki-ko": {
+    "generated_at": "2026-04-15T10:48:57.835243+09:00",
     "quality": "ok",
     "needs_review": false
   }

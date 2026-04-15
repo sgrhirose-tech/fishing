@@ -1,0 +1,51 @@
+{
+  "slug": "daikoku-umizuri-shisetsu",
+  "name": "大黒海づり施設",
+  "location": {
+    "latitude": 35.450093,
+    "longitude": 139.6954083
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "横浜市",
+    "city_slug": "yokohama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 120,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 910.7
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 65,
+    "seabed_summary": "貝殻主体、貝殻混じり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "有料・横浜FP、桟橋と護岸、アジ・クロダイ・タコ向き",
+    "access": "横浜市方面から車利用",
+    "lead_text": "横浜港の入り口、大黒ふ頭の赤灯台堤防上に設けられた桟橋式の有料釣り場です。釣りデッキは延べ400mあり、足元の水深は約7.5メートル、沖へ30mほど出ると17メートルまで落ち込む地形が特徴です。アジはサビキで朝イチの回遊が特に厚く、多い日には90匹超えの申告も出ています。潮に濁りが入るとクロダイが浮いてきやすく、落とし込みやカゴ釣りで50cmオーバーの実績もある人気ターゲットです。タコは施設側が0.3kg未満をカウント外とするほど通年で顔を出し、常連はタコエギで内側・外側を丹念に探る釣り方が定着しています。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "leisure=fishing@166m",
+      "man_made=pier@154m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "tako"
+  ],
+  "harbor_code": "14-4",
+  "harbor_name": "新山下"
+}

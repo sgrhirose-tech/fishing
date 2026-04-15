@@ -1,0 +1,52 @@
+{
+  "slug": "kotsubo-ko-tetra",
+  "name": "小坪港テトラ帯",
+  "location": {
+    "latitude": 35.2954754,
+    "longitude": 139.5562899
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "逗子市",
+    "city_slug": "zushi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 195,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1646.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "港内釣禁・テトラ外側のみ可、メジナ・クロダイ・アオリイカ向き",
+    "access": "逗子市方面から車利用"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "cliff",
+      "marina"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "leisure=marina@24m",
+      "natural=cliff@228m",
+      "natural=cliff@246m"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "14-18",
+  "harbor_name": "新宿湾"
+}

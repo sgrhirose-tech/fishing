@@ -1,0 +1,54 @@
+{
+  "slug": "funabashi-ko-shinsui",
+  "name": "船橋港親水公園",
+  "location": {
+    "latitude": 35.6882288,
+    "longitude": 139.987331
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "船橋市",
+    "city_slug": "funabashi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 290.8,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "常夜灯あり足場良好、ハゼ・カレイ・シーバス・タチウオ向き",
+    "access": "大神宮下駅から徒歩15分"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "marina",
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "harbour=yes@181m",
+      "leisure=marina@240m",
+      "man_made=breakwater@148m",
+      "man_made=pier@157m",
+      "man_made=pier@178m"
+    ]
+  },
+  "target_fish": [
+    "tachiuo",
+    "karei",
+    "haze",
+    "suzuki"
+  ],
+  "harbor_code": "12-18",
+  "harbor_name": "船橋"
+}

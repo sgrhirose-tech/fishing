@@ -1,0 +1,47 @@
+{
+  "slug": "akanehama-gogan",
+  "name": "茜浜護岸",
+  "location": {
+    "latitude": 35.6538664,
+    "longitude": 140.0182666
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "習志野市",
+    "city_slug": "narashino"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 225,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "菊田川河口の護岸、シーバス・ハゼ・カレイ・サヨリ向き",
+    "access": "習志野市方面から車利用",
+    "lead_text": "菊田川河口を中心に両岸へ約2km広がる護岸で、海底は砂泥質のため投げ釣りとルアーフィッシングの両方が成立します。護岸はほぼ全面に高さ控えめのテトラが2段に敷かれており、シーバスは満潮時に河口へ差してくることから、ルアーマンは常潮時や朝マズメを狙って菊田川沿いをランガンするスタイルが定着しています。カレイは冬場の投げ釣りで実績があり、ハゼは菊田川の水深1〜2mの河川内に春から秋にかけて遡上するため、河口周辺のちょい投げが定番です。秋口から冬はサヨリの回遊も加わり、一年を通じて何かしら狙える釣り場として地元に知られています。"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "suzuki",
+    "karei",
+    "haze",
+    "sayori"
+  ],
+  "harbor_code": "12-18",
+  "harbor_name": "船橋"
+}

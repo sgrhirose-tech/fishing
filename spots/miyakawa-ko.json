@@ -1,0 +1,52 @@
+{
+  "slug": "miyakawa-ko",
+  "name": "宮川港",
+  "location": {
+    "latitude": 35.1418447,
+    "longitude": 139.6376409
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "三浦市",
+    "city_slug": "miura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 160,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 958.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "三浦南部の静かな小港、岩礁帯でメジナ・クロダイ向き",
+    "access": "宮川町バス停から徒歩10分",
+    "lead_text": "三浦半島南部、城ヶ島大橋の東側に位置する小さな入り江の港です。港周りは一帯が岩礁帯で、海底も砂地ではなく岩盤質のため、メジナやクロダイが居着きやすい環境が整っています。水深は3メートル前後と浅めですが、潮通しが良く、左堤防先端の内側はウキフカセ釣りでクロダイの実績が高く、10月前後に30cm超えのカイズが顔を出します。朝夕のマヅメ時が特に狙い目とされており、渡し船で渡れる2号防波堤はメジナの魚影が特に濃いと評判のポイントです。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@258m",
+      "man_made=breakwater@263m",
+      "man_made=pier@149m",
+      "man_made=pier@241m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "14-15",
+  "harbor_name": "諸磯"
+}
