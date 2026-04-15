@@ -20,5 +20,7 @@ logs/*.jsonl
 data/cache/ai_comment_*.json
 data/cache/xpost_*.json
 
-# .DS_Store
+# macOS
 .DS_Store
+.DS_store
+
