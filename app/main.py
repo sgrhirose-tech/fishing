@@ -159,7 +159,7 @@ def _format_date_jp(date_str: str) -> str:
 # フォアキャスト結果キャッシュ（スポットページ高速化用）
 # ============================================================
 _FORECAST_CACHE: dict = {}   # {slug: (timestamp, result)}
-_FORECAST_CACHE_TTL = 300    # 5分（秒）
+_FORECAST_CACHE_TTL = 3600   # 1時間（クローラー対策: 同一スポットの重複 API 呼び出しを防ぐ）
 
 # ============================================================
 # FastAPI アプリ
@@ -211,6 +211,7 @@ _ROBOTS_TXT = """\
 User-agent: *
 Allow: /
 Disallow: /api/
+Crawl-delay: 2
 
 # --- AI training crawlers: block ---
 User-agent: GPTBot
@@ -456,7 +457,13 @@ def api_forecast(slug: str):
     spot = load_spot(slug)
     if not spot:
         raise HTTPException(status_code=404, detail="スポットが見つかりません")
-    return _compute_forecast(spot)
+    # ページロード時のキャッシュを再利用（重複 _compute_forecast 呼び出し防止）
+    _cached = _FORECAST_CACHE.get(slug)
+    if _cached and time.time() - _cached[0] < _FORECAST_CACHE_TTL:
+        return _cached[1]
+    result = _compute_forecast(spot)
+    _FORECAST_CACHE[slug] = (time.time(), result)
+    return result
 
 
 @app.get("/api/ai-comment/{slug}")
