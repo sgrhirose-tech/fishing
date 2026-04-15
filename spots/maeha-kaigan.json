@@ -1,0 +1,47 @@
+{
+  "slug": "maeha-kaigan",
+  "name": "前羽海岸",
+  "location": {
+    "latitude": 35.2818944,
+    "longitude": 139.2228806
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "小田原市",
+    "city_slug": "odawara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 145,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 346.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "西湘の比較的空いたサーフ、キス・ヒラメ向き",
+    "access": "前川バス停から徒歩5分",
+    "lead_text": "相模湾西湘エリアに位置するサーフで、隣の国府津海岸がルアーマンで埋まる休日でも、前羽海岸の西側には比較的スペースが残りやすく、投げ釣り派が静かに竿を出せる穴場として知られています。底質は砂地が主体で、台風後には小砂利が露出することもある変化に富んだ地形です。シロギスは夏場の早朝に実績が高く、常連は6色前後のポイントを中心に攻めるスタイルが定番です。ヒラメは夜明け前後の未明から狙う釣り人も多く、地元では深夜3時台からエントリーする釣行も珍しくありません。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:海岸"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "hirame"
+  ],
+  "harbor_code": "14-20",
+  "harbor_name": "真鶴"
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "odawara-ko",
+  "name": "小田原港",
+  "location": {
+    "latitude": 35.2398975,
+    "longitude": 139.1485555
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "小田原市",
+    "city_slug": "odawara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 115,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 279.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "本港・新港一部のみ可、アジ・イワシ・カレイ・アオリイカ向き",
+    "access": "早川駅から徒歩10分",
+    "lead_text": "相模湾に臨む小田原港（早川港）は、本港と新港の一部エリアのみが釣り可能で、岸壁の大半は立入禁止です。開放されている突端付近は潮通しがよく、水深は約5メートル。底質は砂地寄りで、冬から春にかけてカレイの実績があります。アジはサビキでの数釣りが出入り口付近の岸壁で成立しやすく、目の前が舟道になっているため船の往来には注意が必要です。アオリイカは秋口に港内へ差してくることで知られ、常連の間ではケミホタルなど光を使った仕掛けへの反応がよいと語られています。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "karei",
+    "iwashi"
+  ],
+  "harbor_code": "14-20",
+  "harbor_name": "真鶴"
+}

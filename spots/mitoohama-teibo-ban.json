@@ -1,0 +1,43 @@
+{
+  "slug": "mitoohama-teibo-ban",
+  "name": "三戸浜堤防",
+  "location": {
+    "latitude": 35.1735441,
+    "longitude": 139.6202582
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "三浦市",
+    "city_slug": "miura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "この釣り場はマナー問題により釣り禁止・立入禁止となりました。",
+    "access": "",
+    "lead_text": "この釣り場はマナー問題により釣り禁止・立入禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:堤防"
+    ]
+  },
+  "target_fish": [],
+  "harbor_code": "14-15",
+  "harbor_name": "諸磯"
+}

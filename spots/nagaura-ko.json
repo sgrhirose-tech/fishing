@@ -1,0 +1,47 @@
+{
+  "slug": "nagaura-ko",
+  "name": "長浦港",
+  "location": {
+    "latitude": 35.4531526,
+    "longitude": 139.9897952
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "袖ケ浦市",
+    "city_slug": "sodegaura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 66.3,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体"
+  },
+  "info": {
+    "notes": "袖ケ浦の大型工業港、キス・カレイ・アナゴ・シーバス向き",
+    "access": "長浦駅北口バス停から徒歩15分",
+    "lead_text": "袖ケ浦市に広がる京葉工業地帯のど真ん中に位置する長浦港は、岸壁周りにテトラポットが入り、その際が根魚の好ポイントになっています。水深は全体的に浅めで2〜5メートル程度、底質は砂泥で、シロギスやハゼが混じる砂地エリアが広がっています。カレイは10月から4月にかけてが狙い目で、投げ釣りがメインスタイルです。先端部のテトラ周りではスズキをルアーで狙う常連も多く、秋から冬の夜間が実績の高い時間帯として知られています。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "karei",
+    "suzuki",
+    "shirogisu"
+  ],
+  "harbor_code": "12-13",
+  "harbor_name": "姉崎"
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "ito-ko",
+  "name": "伊東港",
+  "location": {
+    "latitude": 34.9723789,
+    "longitude": 139.1069984
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "",
+    "city_slug": ""
+  },
+  "physical_features": {
+    "sea_bearing_deg": 0,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "東伊豆最大の港、回遊魚・カマス・クロダイ・アオリイカ向き",
+    "access": "魚市場バス停から徒歩5分",
+    "lead_text": "この釣り場は現在、釣り禁止・立入禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "kamasu"
+  ],
+  "harbor_code": "22-13",
+  "harbor_name": "清水"
+}

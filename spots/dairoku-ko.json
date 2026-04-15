@@ -1,0 +1,50 @@
+{
+  "slug": "dairoku-ko",
+  "name": "大六港",
+  "location": {
+    "latitude": 35.1217176,
+    "longitude": 139.8314309
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "鋸南町",
+    "city_slug": "kyonan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 285,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 607.0
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "港内釣り解禁・駐車場完備、アジ・クロダイ向き",
+    "access": "安房勝山駅から徒歩15分",
+    "lead_text": "千葉県鋸南町に位置する小さな漁港で、真珠島と隣の龍島港が外洋の波を遮るため、港内は年間を通じて穏やかな水面が保たれています。海底は全面砂地で、水深は2メートル前後と非常に浅め。港内よりも先端部から沖向きに伸びるテトラ帯が主なポイントで、変化に乏しい砂地の中でここだけが魚の居つく場所になっています。クロダイは春と秋が実績期で、浅場だけに雨後の濁り潮が入ったタイミングに警戒心が薄れる傾向があります。アジは小型中心ながら魚影は濃く、真冬でも姿を見せることがあります。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=pier@194m",
+      "natural=beach@33m"
+    ]
+  },
+  "target_fish": [
+    "aji",
+    "kurodai"
+  ],
+  "harbor_code": "12-10",
+  "harbor_name": "岩井袋"
+}

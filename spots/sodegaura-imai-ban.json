@@ -1,0 +1,43 @@
+{
+  "slug": "sodegaura-imai-ban",
+  "name": "袖ヶ浦港・今井岸壁",
+  "location": {
+    "latitude": 35.4469315,
+    "longitude": 139.9708301
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "千葉東京湾",
+    "area_slug": "unknown",
+    "city": "袖ケ浦市",
+    "city_slug": "sodegaura"
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "この釣り場は2020年10月より釣り禁止となりました。",
+    "access": "",
+    "lead_text": "この釣り場は2020年10月より釣り禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:岸壁"
+    ]
+  },
+  "target_fish": [],
+  "harbor_code": "12-13",
+  "harbor_name": "姉崎"
+}

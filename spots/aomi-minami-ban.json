@@ -1,0 +1,43 @@
+{
+  "slug": "aomi-minami-ban",
+  "name": "青海南ふ頭公園",
+  "location": {
+    "latitude": 35.61607,
+    "longitude": 139.7756369
+  },
+  "area": {
+    "prefecture": "東京都",
+    "pref_slug": "tokyo",
+    "area_name": "東京東京湾",
+    "area_slug": "unknown",
+    "city": "江東区",
+    "city_slug": "koto"
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "この釣り場は2020年7月より全面釣り禁止となりました。",
+    "access": "",
+    "lead_text": "この釣り場は2020年7月より全面釣り禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.85,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:ふ頭公園"
+    ]
+  },
+  "target_fish": [],
+  "harbor_code": "13-2",
+  "harbor_name": "芝浦"
+}

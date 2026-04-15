@@ -1,0 +1,45 @@
+{
+  "slug": "ryujima-kaigan",
+  "name": "龍島海岸",
+  "location": {
+    "latitude": 35.1167961,
+    "longitude": 139.8284362
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "鋸南町",
+    "city_slug": "kyonan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 285.3,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 399.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "龍島港隣接の砂浜、シロギス向き投げ釣り場",
+    "access": "安房勝山駅から徒歩10分",
+    "lead_text": "千葉県鋸南町の龍島港に隣接する砂浜の釣り場です。港の左右に広がる砂地が続く地形で、シロギスを主なターゲットとした投げ釣りが盛んに行われています。外道にはメゴチやヒイラギが混じり、春先にはホウボウが顔を出すこともあります。エサはジャリメが定番で、投げた先にカケアガリを見つけて置き竿にするスタイルが地元の常連に好まれています。フグの猛攻を受けた際は投入方向を変えると落ち着くことが多いです。隣接する龍島新堤は15時から翌朝7時まで釣りが制限されているため、砂浜も含め午前中からの釣行が主流となっています。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@141m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu"
+  ],
+  "harbor_code": "12-10",
+  "harbor_name": "岩井袋"
+}

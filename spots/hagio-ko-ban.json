@@ -1,0 +1,43 @@
+{
+  "slug": "hagio-ko-ban",
+  "name": "萩生港",
+  "location": {
+    "latitude": 35.1996706,
+    "longitude": 139.8266921
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "この釣り場は立入禁止・釣り禁止となりました。",
+    "access": "",
+    "lead_text": "この釣り場は立入禁止・釣り禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 0.75,
+    "secondary_flags": [],
+    "source": "name_keyword",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [],
+  "harbor_code": "14-8",
+  "harbor_name": "走水"
+}

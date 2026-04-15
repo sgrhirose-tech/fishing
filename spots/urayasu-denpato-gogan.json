@@ -1,0 +1,47 @@
+{
+  "slug": "urayasu-denpato-gogan",
+  "name": "浦安電波塔護岸",
+  "location": {
+    "latitude": 35.6171381,
+    "longitude": 139.8974752
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "浦安市",
+    "city_slug": "urayasu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 214.3,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "テトラ護岸で遠投向き、シーバス・クロダイ・サヨリ向き",
+    "access": "浦安市方面から車利用",
+    "lead_text": "東京湾奥、見明川河口に隣接するテトラ護岸で、総延長は2kmを超える広大な釣り場です。護岸下には大きな敷石が入っており、テトラ越しに遠投するスタイルが基本となります。電波塔真下の堤防角は外海に面して潮通しが良く、常連に最も支持されているポイントで、スズキは朝夕のマヅメが狙い目とされています。クロダイは夏から秋にかけてが本番で、落とし込みや前打ちで敷石際を丁寧に探るアプローチが主流です。サヨリは9月から姿を見せはじめます。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.52,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=sand@66m"
+    ]
+  },
+  "target_fish": [
+    "kurodai",
+    "sayori",
+    "suzuki"
+  ],
+  "harbor_code": "12-17",
+  "harbor_name": "市川"
+}

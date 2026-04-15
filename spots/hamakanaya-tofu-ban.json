@@ -1,0 +1,41 @@
+{
+  "slug": "hamakanaya-tofu-ban",
+  "name": "浜金谷港（トウフ堤防）",
+  "location": {
+    "latitude": 35.1705764,
+    "longitude": 139.8160432
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "この釣り場は堤防先端（トウフ）が釣り禁止となりました。",
+    "access": "",
+    "lead_text": "この釣り場は堤防先端（トウフ）が釣り禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "kinshi",
+    "osm_evidence": []
+  },
+  "target_fish": [],
+  "harbor_code": "12-10",
+  "harbor_name": "岩井袋"
+}

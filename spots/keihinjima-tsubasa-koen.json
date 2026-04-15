@@ -1,0 +1,47 @@
+{
+  "slug": "keihinjima-tsubasa-koen",
+  "name": "京浜島つばさ公園",
+  "location": {
+    "latitude": 35.5701303,
+    "longitude": 139.7697971
+  },
+  "area": {
+    "prefecture": "東京都",
+    "pref_slug": "tokyo",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "大田区",
+    "city_slug": "ota"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 125,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "羽田対岸・柵あり護岸、シーバス・クロダイ・アジ・カレイ向き",
+    "access": "京浜島海上公園バス停から徒歩5分",
+    "lead_text": "羽田空港の対岸、京浜運河と海老取川の終点にあたる京浜島に位置する護岸釣り場です。水中は東京湾内では珍しいきれいな砂地で、根掛かりがほぼなく、足元はヘチ釣りでクロダイやキビレが狙えます。シーバスは年中顔を出しますが、常連が特に足を運ぶのは秋から初冬にかけての夜間から朝マズメの時間帯で、60センチオーバーの実績もある時期です。アジは初夏から秋にかけて回遊があり、回遊に当たればサビキで数が出ます。なお、投げ釣りは禁止のため、柵内での仕掛けが基本です。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "aji",
+    "kurodai",
+    "suzuki",
+    "karei"
+  ],
+  "harbor_code": "13-3",
+  "harbor_name": "羽田"
+}

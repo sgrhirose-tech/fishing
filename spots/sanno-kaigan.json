@@ -1,0 +1,48 @@
+{
+  "slug": "sanno-kaigan",
+  "name": "山王海岸",
+  "location": {
+    "latitude": 35.25595,
+    "longitude": 139.1750333
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "小田原市",
+    "city_slug": "odawara"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 135,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 252.6
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "小田原南の砂利サーフ、青物・ヒラメ・キス向き",
+    "access": "緑町駅から徒歩30分",
+    "lead_text": "酒匂川と山王川に挟まれた西湘の砂利混じりのサーフで、相模湾に面した開けた地形が特徴です。底質は砂地ですが、沖60〜70メートル付近に海岸侵食対策の人工リーフが入っており、シロギスの投げ釣りでは3色前後から手前を丁寧に探るのが常連の定石です。夏から秋にかけてはワカシやソウダガツオが回遊し、ショアジギングの竿が数メートルおきに並ぶほどの盛況になります。ヒラメはサーフのブレイクラインをルアーで探る釣り人が多く、青物と同じ時期に実績が高いポイントです。西湘サーフの中では比較的知名度が低いぶん、混雑を避けてゆったり竿を出せる穴場として地元勢に親しまれています。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "natural=beach@230m",
+      "natural=beach@238m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "hirame"
+  ],
+  "harbor_code": "14-20",
+  "harbor_name": "真鶴"
+}

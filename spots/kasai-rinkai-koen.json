@@ -1,0 +1,46 @@
+{
+  "slug": "kasai-rinkai-koen",
+  "name": "葛西臨海公園",
+  "location": {
+    "latitude": 35.6419847,
+    "longitude": 139.8603206
+  },
+  "area": {
+    "prefecture": "東京都",
+    "pref_slug": "tokyo",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "江戸川区",
+    "city_slug": "edogawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 195,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "一部釣禁・投げ・撒き餌禁止、ハゼ・シーバス・クロダイ向き",
+    "access": "葛西臨海公園駅から徒歩15分",
+    "lead_text": "東京湾に突き出た人工干潟「西なぎさ」を主な釣り場とする都立公園です。釣りができるのは陸と西なぎさの間の護岸および両サイドの岸部分に限られ、投げ釣り・撒き餌はどのエリアでも禁止です。足元の底質はゴロタ石に牡蠣殻が混じった地形で根掛かりが多く、仕掛けを止めて待つスタイルが基本。ハゼは春から秋が最盛期で、クロダイは護岸際を丁寧に探る展開が定番です。スズキは秋から冬が狙い目で、大潮前後の夕方から夜にかけてフェリー乗り場の橋脚周りに実績があります。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "13-14",
+  "harbor_name": "晴海"
+}
