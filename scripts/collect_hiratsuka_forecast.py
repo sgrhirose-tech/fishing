@@ -83,7 +83,8 @@ def _fetch_url(url: str) -> dict | None:
         with urllib.request.urlopen(url, timeout=15, context=_SSL_CTX) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
-        print(f"  [エラー] HTTP {e.code}: {url[:80]}", file=sys.stderr)
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"  [エラー] HTTP {e.code}: {body[:300]}", file=sys.stderr)
         return None
     except Exception as e:
         print(f"  [エラー] {e}", file=sys.stderr)
