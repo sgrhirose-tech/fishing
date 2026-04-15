@@ -19,3 +19,7 @@ logs/*.jsonl
 # AIコメントキャッシュ（日次生成・Gitには含めない）
 data/cache/ai_comment_*.json
 data/cache/xpost_*.json
+
+# DS_store
+.DS_store
+
