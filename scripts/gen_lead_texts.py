@@ -21,6 +21,8 @@ Render cron では実行後に GitHub へプッシュして永続化する。
     #   kii-suido-wakayama / osakawan
     python scripts/gen_lead_texts.py --force                   # 既存でも強制再生成
     python scripts/gen_lead_texts.py --dry-run                 # 生成のみ、ファイル書き込み・GitHub プッシュなし
+    python scripts/gen_lead_texts.py --wip                     # spots_wip/ を対象にする
+    python scripts/gen_lead_texts.py --wip --empty-only --slug enoshima  # 組み合わせ可
 
 Render cron スケジュール: 0 16 * * 0 (毎週日曜 01:00 JST)
 """
@@ -41,6 +43,7 @@ sys.path.insert(0, str(_REPO_ROOT))
 from app.lead_gen import generate_lead_text, update_spot_json  # noqa: E402
 
 _SPOTS_DIR      = _REPO_ROOT / "spots"
+_SPOTS_WIP_DIR  = _REPO_ROOT / "spots_wip"
 _META_PATH      = _REPO_ROOT / "data" / "lead_meta.json"
 
 GITHUB_API       = "https://api.github.com"
@@ -84,9 +87,9 @@ def save_lead_meta(meta: dict) -> None:
 # スポット読み込み
 # ---------------------------------------------------------------------------
 
-def load_all_spots() -> list[dict]:
+def load_all_spots(spots_dir: pathlib.Path) -> list[dict]:
     spots = []
-    for p in sorted(_SPOTS_DIR.glob("*.json")):
+    for p in sorted(spots_dir.glob("*.json")):
         if p.name.startswith("_"):
             continue
         try:
@@ -196,21 +199,22 @@ def _push_file(token: str, local_path: pathlib.Path, github_path: str, message: 
     print(f"  [GitHub] {github_path} → commit {commit_sha[:8]}")
 
 
-def push_results_to_github(token: str, updated_slugs: list[str]) -> None:
+def push_results_to_github(token: str, updated_slugs: list[str], spots_dir: pathlib.Path) -> None:
     """更新したスポット JSON と lead_meta.json を GitHub に push する。"""
     print(f"\n[GitHub] {len(updated_slugs)} スポット + メタデータをプッシュ中...")
     today = datetime.date.today().isoformat()
     msg   = f"feat: リード文バッチ更新（{today}）"
+    github_spots_subdir = "spots_wip" if spots_dir.name == "spots_wip" else "spots"
 
     # メタデータ
     _push_file(token, _META_PATH, "data/lead_meta.json", msg)
 
     # 各スポット JSON
     for slug in updated_slugs:
-        local = _SPOTS_DIR / f"{slug}.json"
+        local = spots_dir / f"{slug}.json"
         if local.exists():
             try:
-                _push_file(token, local, f"spots/{slug}.json", msg)
+                _push_file(token, local, f"{github_spots_subdir}/{slug}.json", msg)
                 time.sleep(0.5)
             except Exception as e:
                 print(f"  [警告] {slug} のプッシュ失敗: {e}")
@@ -229,7 +233,10 @@ def main() -> None:
     parser.add_argument("--force",      action="store_true",   help="既存のリード文も強制再生成")
     parser.add_argument("--empty-only", action="store_true",   help="lead_text が空のスポットのみ処理（再生成なし）")
     parser.add_argument("--dry-run",    action="store_true",   help="生成のみ（ファイル書き込み・GitHub プッシュなし）")
+    parser.add_argument("--wip",        action="store_true",   help="spots_wip/ を対象にする（デフォルトは spots/）")
     args = parser.parse_args()
+
+    spots_dir = _SPOTS_WIP_DIR if args.wip else _SPOTS_DIR
 
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not api_key:
@@ -239,11 +246,12 @@ def main() -> None:
     github_token = os.environ.get("GITHUB_TOKEN", "")
 
     print(f"=== リード文自動生成バッチ 開始 {datetime.datetime.now().isoformat()} ===")
+    print(f"[対象ディレクトリ] {spots_dir}")
     if args.dry_run:
         print("[DRY-RUN モード] ファイル書き込み・GitHub プッシュはしません")
 
     # データ読み込み
-    all_spots = load_all_spots()
+    all_spots = load_all_spots(spots_dir)
     meta      = load_lead_meta()
     print(f"[読み込み] {len(all_spots)} スポット / メタデータ {len(meta)} 件")
 
@@ -280,7 +288,7 @@ def main() -> None:
             print(f"  → {len(text)} 字 / quality={quality}")
             print(f"  {text[:60]}…" if len(text) > 60 else f"  {text}")
             if not args.dry_run:
-                if update_spot_json(slug, text):
+                if update_spot_json(slug, text, spots_dir=spots_dir):
                     updated_slugs.append(slug)
         else:
             print(f"  → ニッチ情報なし。lead_text は書き込みません。")
@@ -303,7 +311,7 @@ def main() -> None:
     # GitHub プッシュ
     if not args.dry_run and updated_slugs and github_token:
         try:
-            push_results_to_github(github_token, updated_slugs)
+            push_results_to_github(github_token, updated_slugs, spots_dir)
         except Exception as e:
             print(f"\n[警告] GitHub プッシュ失敗: {e}")
             print("  ローカル変更は保存済みです。手動で git push してください。")
