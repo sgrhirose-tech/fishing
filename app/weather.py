@@ -33,6 +33,86 @@ _API_SEMAPHORE = threading.Semaphore(2)   # 同時API呼び出し上限
 _WEATHER_RATE_LIMIT_UNTIL: float = 0     # 429受信後クールダウン終了時刻
 _MARINE_RATE_LIMIT_UNTIL: float  = 0
 
+# ============================================================
+# ディスクキャッシュ（再起動・デプロイ後もデータを保持）
+# ============================================================
+_DISK_CACHE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data", "weather_cache.json"
+)
+# ディスク書き込みの過剰呼び出しを抑制するタイムスタンプ
+_DISK_CACHE_LAST_SAVED: float = 0
+_DISK_CACHE_SAVE_INTERVAL = 300  # 最短5分に1回だけ書き込む
+
+
+def _key_to_str(key: tuple) -> str:
+    return "|".join(str(x) for x in key)
+
+
+def _str_to_key(s: str) -> tuple:
+    parts = s.split("|")
+    result = []
+    for p in parts:
+        try:
+            result.append(float(p) if "." in p else int(p))
+        except ValueError:
+            result.append(p)
+    return tuple(result)
+
+
+def _load_disk_cache() -> None:
+    """起動時にディスクキャッシュをメモリへ読み込む。
+    TTLの2倍まで古いデータを受け入れ（429時のスタールキャッシュとして使用）。"""
+    global _WEATHER_CACHE, _MARINE_CACHE
+    try:
+        if not os.path.exists(_DISK_CACHE_PATH):
+            return
+        with open(_DISK_CACHE_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        now = _time.time()
+        loaded_w = loaded_m = 0
+        for k_str, (ts, v) in data.get("weather", {}).items():
+            if now - ts < _WEATHER_TTL * 2:
+                _WEATHER_CACHE[_str_to_key(k_str)] = (ts, v)
+                loaded_w += 1
+        for k_str, (ts, v) in data.get("marine", {}).items():
+            if now - ts < _MARINE_TTL * 2:
+                _MARINE_CACHE[_str_to_key(k_str)] = (ts, v)
+                loaded_m += 1
+        if loaded_w + loaded_m > 0:
+            print(f"[起動] ディスクキャッシュ読み込み: 気象{loaded_w}件 / 波浪{loaded_m}件")
+    except Exception as e:
+        print(f"[起動] ディスクキャッシュ読み込み失敗（無視）: {e}")
+
+
+def _save_disk_cache() -> None:
+    """メモリキャッシュをディスクへ書き込む（バックグラウンドスレッドで実行）。"""
+    global _DISK_CACHE_LAST_SAVED
+    now = _time.time()
+    if now - _DISK_CACHE_LAST_SAVED < _DISK_CACHE_SAVE_INTERVAL:
+        return
+    _DISK_CACHE_LAST_SAVED = now
+
+    def _write():
+        try:
+            payload = {
+                "weather": {_key_to_str(k): list(v) for k, v in _WEATHER_CACHE.items()},
+                "marine":  {_key_to_str(k): list(v) for k, v in _MARINE_CACHE.items()},
+                "saved_at": now,
+            }
+            tmp = _DISK_CACHE_PATH + ".tmp"
+            with open(tmp, "w", encoding="utf-8") as f:
+                json.dump(payload, f, ensure_ascii=False)
+            os.replace(tmp, _DISK_CACHE_PATH)
+        except Exception as e:
+            print(f"[警告] ディスクキャッシュ書き込み失敗（無視）: {e}")
+
+    threading.Thread(target=_write, daemon=True).start()
+
+
+# モジュール読み込み時に即座にディスクキャッシュを復元
+_load_disk_cache()
+
 
 def _get_weatherapi_key() -> str:
     return os.environ.get("WEATHERAPI_KEY", "")
@@ -102,6 +182,7 @@ def fetch_weather_range(lat: float, lon: float,
             with urllib.request.urlopen(full_url, timeout=15) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
             _WEATHER_CACHE[cache_key] = (_time.time(), result)
+            _save_disk_cache()
             return result
         except urllib.error.HTTPError as e:
             if e.code == 429:
@@ -165,6 +246,7 @@ def fetch_marine_range(lat: float, lon: float,
             with urllib.request.urlopen(full_url, timeout=15) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
             _MARINE_CACHE[cache_key] = (_time.time(), result)
+            _save_disk_cache()
             return result
         except urllib.error.HTTPError as e:
             if e.code == 400:
