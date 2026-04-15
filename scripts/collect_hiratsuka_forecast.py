@@ -78,31 +78,45 @@ TIME_PERIODS = [
 ]
 
 
-def fetch_marine(lat: float, lon: float, today: str, end: str) -> dict | None:
-    """Open-Meteo Marine API から今日〜7日分の波浪予報（日次+時間別）を取得する。"""
-    params = [
-        ("latitude",  lat),
-        ("longitude", lon),
-        # 日次最大値
-        ("daily",  "wave_height_max"),
-        ("daily",  "wave_period_max"),
-        ("daily",  "dominant_wave_direction"),
-        # 時間別有義波高
-        ("hourly", "wave_height"),
-        ("timezone",   "Asia/Tokyo"),
-        ("start_date", today),
-        ("end_date",   end),
-    ]
-    url = "https://marine-api.open-meteo.com/v1/marine?" + urllib.parse.urlencode(params)
+def _fetch_url(url: str) -> dict | None:
     try:
         with urllib.request.urlopen(url, timeout=15, context=_SSL_CTX) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
-        print(f"  [エラー] Marine API ({lat},{lon}): HTTP {e.code}", file=sys.stderr)
+        print(f"  [エラー] HTTP {e.code}: {url[:80]}", file=sys.stderr)
         return None
     except Exception as e:
-        print(f"  [エラー] Marine API ({lat},{lon}): {e}", file=sys.stderr)
+        print(f"  [エラー] {e}", file=sys.stderr)
         return None
+
+
+def fetch_marine(lat: float, lon: float, today: str, end: str) -> dict | None:
+    """Open-Meteo Marine API から今日〜7日分の波浪予報を取得する。
+
+    まず日次+時間別を試み、400 の場合は日次のみで再試行する（座標によっては
+    hourly wave_height が提供されないため）。
+    """
+    base_params = [
+        ("latitude",  lat),
+        ("longitude", lon),
+        ("daily",  "wave_height_max"),
+        ("daily",  "wave_period_max"),
+        ("daily",  "dominant_wave_direction"),
+        ("timezone",   "Asia/Tokyo"),
+        ("start_date", today),
+        ("end_date",   end),
+    ]
+    base_url = "https://marine-api.open-meteo.com/v1/marine?"
+
+    # 1. 日次 + 時間別（時間帯別精度検証のため）
+    params_with_hourly = base_params + [("hourly", "wave_height")]
+    data = _fetch_url(base_url + urllib.parse.urlencode(params_with_hourly))
+    if data is not None:
+        return data
+
+    # 2. 日次のみにフォールバック（hourly が対象外座標の場合）
+    print(f"    hourly 取得失敗 → 日次のみで再試行", file=sys.stderr)
+    return _fetch_url(base_url + urllib.parse.urlencode(base_params))
 
 
 def period_mean(hourly_vals: list, day_index: int, start_h: int, end_h: int) -> float | None:
