@@ -237,10 +237,20 @@ def estimate_wave_from_wind(wind_speed_ms: float, fetch_km: float) -> float:
 def fetch_marine_with_fallback(lat: float, lon: float, date_str: str) -> dict:
     """プライマリ → フォールバック座標の順で波高データを取得。
     フォールバック使用時は '_is_fallback': True を付加。"""
-    cache_key = (round(lat, 2), round(lon, 2))
+    coord_key = (round(lat, 2), round(lon, 2))
 
-    if cache_key in _MARINE_COORD_CACHE:
-        c = _MARINE_COORD_CACHE[cache_key]
+    # 429クールダウン中: 既知の成功座標のスタールキャッシュを返すか空dictで即返却
+    if _time.time() < _MARINE_RATE_LIMIT_UNTIL:
+        if coord_key in _MARINE_COORD_CACHE:
+            c = _MARINE_COORD_CACHE[coord_key]
+            stale = fetch_marine(c[0], c[1], date_str)  # キャッシュから返る（API呼び出しなし）
+            if stale:
+                stale["_is_fallback"] = c[2]
+                return stale
+        return {}
+
+    if coord_key in _MARINE_COORD_CACHE:
+        c = _MARINE_COORD_CACHE[coord_key]
         result = fetch_marine(c[0], c[1], date_str)
         if result:
             result["_is_fallback"] = c[2]
@@ -248,7 +258,7 @@ def fetch_marine_with_fallback(lat: float, lon: float, date_str: str) -> dict:
 
     result = fetch_marine(lat, lon, date_str)
     if result:
-        _MARINE_COORD_CACHE[cache_key] = (lat, lon, False)
+        _MARINE_COORD_CACHE[coord_key] = (lat, lon, False)
         return result
 
     fallbacks = sorted(
@@ -256,10 +266,13 @@ def fetch_marine_with_fallback(lat: float, lon: float, date_str: str) -> dict:
         key=lambda p: (p[0] - lat) ** 2 + (p[1] - lon) ** 2,
     )
     for fb_lat, fb_lon in fallbacks:
+        # フォールバック試行中に 429 クールダウンに入った場合は打ち切り
+        if _time.time() < _MARINE_RATE_LIMIT_UNTIL:
+            break
         result = fetch_marine(fb_lat, fb_lon, date_str)
         if result:
             result["_is_fallback"] = True
-            _MARINE_COORD_CACHE[cache_key] = (fb_lat, fb_lon, True)
+            _MARINE_COORD_CACHE[coord_key] = (fb_lat, fb_lon, True)
             return result
 
     return {}

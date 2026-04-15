@@ -493,9 +493,11 @@
         b.addEventListener('click', () => renderTab(b.dataset.period)));
     }
     var _pf = window.PRELOADED_FORECAST;
-    if (_pf && _pf.days && _pf.days.length > 0) {
+    if (_pf !== null && _pf !== undefined) {
+      // サーバー側で計算済み（days が空でも API 再呼び出しはしない）
       renderForecast(_pf);
     } else {
+      // サーバー側がタイムアウト → JS 側で取得
       fetch('/api/forecast/' + SPOT.slug)
         .then(r => r.json())
         .then(data => renderForecast(data))
