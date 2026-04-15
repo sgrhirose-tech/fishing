@@ -53,8 +53,8 @@ LOG_HEADER = [
     "fetch_date", "fetch_time_jst", "target_date",
     "coord_label", "lat", "lon",
     # 日次最大値（現在のサイト表示値）
-    "daily_wh_max_m", "daily_wp_max_s", "daily_wdir_deg",
-    # 時間帯別波高（hourly API 平均値）
+    "daily_wh_max_m", "daily_wp_max_s",
+    # 時間帯別波高（hourly API 平均値。対象外座標では空欄）
     "am_wh_m",    # 朝  5〜 9h
     "noon_wh_m",  # 昼  9〜15h
     "pm_wh_m",    # 夕 15〜18h
@@ -102,7 +102,6 @@ def fetch_marine(lat: float, lon: float, today: str, end: str) -> dict | None:
         ("longitude", lon),
         ("daily",  "wave_height_max"),
         ("daily",  "wave_period_max"),
-        ("daily",  "dominant_wave_direction"),
         ("timezone",   "Asia/Tokyo"),
         ("start_date", today),
         ("end_date",   end),
@@ -169,20 +168,18 @@ def main():
             daily  = data.get("daily",  {})
             hourly = data.get("hourly", {})
 
-            dates     = daily.get("time",                [])
-            wh_list   = daily.get("wave_height_max",     [])
-            wp_list   = daily.get("wave_period_max",     [])
-            wd_list   = daily.get("dominant_wave_direction", [])
-            hourly_wh = hourly.get("wave_height",        [])
+            dates     = daily.get("time",            [])
+            wh_list   = daily.get("wave_height_max", [])
+            wp_list   = daily.get("wave_period_max", [])
+            hourly_wh = hourly.get("wave_height",    [])
 
             for day_idx, target_date in enumerate(dates):
                 key = (fetch_date, target_date, coord_label)
                 if key in existing_keys:
                     continue
 
-                wh  = wh_list[day_idx] if day_idx < len(wh_list) else None
-                wp  = wp_list[day_idx] if day_idx < len(wp_list) else None
-                wd  = wd_list[day_idx] if day_idx < len(wd_list) else None
+                wh = wh_list[day_idx] if day_idx < len(wh_list) else None
+                wp = wp_list[day_idx] if day_idx < len(wp_list) else None
 
                 period_vals = {
                     label: period_mean(hourly_wh, day_idx, sh, eh)
@@ -194,7 +191,6 @@ def main():
                     coord_label, lat, lon,
                     f"{wh:.2f}" if wh is not None else "",
                     f"{wp:.1f}" if wp is not None else "",
-                    f"{wd:.0f}" if wd is not None else "",
                     period_vals.get("am",   "") if period_vals.get("am")   is not None else "",
                     period_vals.get("noon", "") if period_vals.get("noon") is not None else "",
                     period_vals.get("pm",   "") if period_vals.get("pm")   is not None else "",
