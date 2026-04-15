@@ -20,11 +20,31 @@ cron 例（毎朝 6:00 JST に実行）:
 import csv
 import json
 import os
+import ssl
 import sys
 import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import date, datetime, timezone, timedelta
+
+
+def _make_ssl_context() -> ssl.SSLContext:
+    """macOS Python の SSL 証明書エラーに対応したコンテキストを返す。
+    certifi があれば使用し、なければシステム証明書、それも失敗なら検証スキップ。"""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        pass
+    try:
+        return ssl.create_default_context()
+    except Exception:
+        ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        return ctx
+
+_SSL_CTX = _make_ssl_context()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG_CSV = os.path.join(BASE_DIR, "data", "hiratsuka_forecast_log.csv")
@@ -75,7 +95,7 @@ def fetch_marine(lat: float, lon: float, today: str, end: str) -> dict | None:
     ]
     url = "https://marine-api.open-meteo.com/v1/marine?" + urllib.parse.urlencode(params)
     try:
-        with urllib.request.urlopen(url, timeout=15) as resp:
+        with urllib.request.urlopen(url, timeout=15, context=_SSL_CTX) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         print(f"  [エラー] Marine API ({lat},{lon}): HTTP {e.code}", file=sys.stderr)
