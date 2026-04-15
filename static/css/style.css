@@ -663,6 +663,25 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .blog-post-link:hover { text-decoration: underline; }
 .blog-post-meta { display: block; font-size: .78rem; color: #888; margin-top: .15rem; }
 
+/* ---- スポット: 近くの同種スポット ---- */
+.nearby-spots-section { margin: 1.5rem 0; }
+.nearby-spots-section h2 { font-size: 1.05rem; margin-bottom: .5rem; }
+.nearby-spots-list { list-style: none; padding: 0; margin: 0; }
+.nearby-spots-list li { padding: .35rem 0; border-bottom: 1px solid #eee; }
+.nearby-spots-list li:last-child { border-bottom: none; }
+.nearby-spot-link { color: #1a6496; font-size: .93rem; text-decoration: none; font-weight: 500; }
+.nearby-spot-link:hover { text-decoration: underline; }
+.nearby-spot-area { font-size: .8rem; color: #888; margin-left: .2rem; }
+
+/* ---- 記事: 関連する釣り場 ---- */
+.article-related-spots { margin: 1.5rem 0; padding: 1rem 1.25rem; background: #f0f6fc; border-radius: 8px; border-left: 4px solid #1a6b9e; }
+.article-related-spots h2 { font-size: 1.05rem; margin: 0 0 .6rem; color: #1a5580; }
+.related-spots-list { list-style: none; padding: 0; margin: 0; }
+.related-spots-list li { padding: .3rem 0; }
+.related-spot-link { color: #1a6496; font-size: .93rem; text-decoration: none; }
+.related-spot-link:hover { text-decoration: underline; }
+.related-spot-area { font-size: .8rem; color: #888; margin-left: .2rem; }
+
 /* ---- 釣法一覧ページ ---- */
 .method-index-grid {
   display: grid;

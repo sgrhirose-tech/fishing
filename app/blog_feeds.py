@@ -49,7 +49,11 @@ _SYNONYMS: dict = {
 
 # 船釣り記事を除外するキーワード
 _BOAT_KEYWORDS: frozenset = frozenset([
+    # 既存
     "船釣り", "乗合船", "遊漁船", "仕立て船", "沖釣り", "船中", "船上",
+    # 追加
+    "船宿", "オフショア", "タイラバ", "一つテンヤ", "LT船",
+    "乗船", "出船", "コマセ船", "深場釣り", "船タコ",
 ])
 
 
@@ -85,19 +89,22 @@ def _parse_rss(xml_text: str) -> list:
         root = ET.fromstring(xml_text)
         # --- RSS 2.0 ---
         for item in root.findall(".//item"):
-            title = (item.findtext("title") or "").strip()
-            link  = (item.findtext("link")  or "").strip()
-            pub   = (item.findtext("pubDate") or "").strip()
+            title    = (item.findtext("title") or "").strip()
+            link     = (item.findtext("link")  or "").strip()
+            pub      = (item.findtext("pubDate") or "").strip()
+            desc_raw = (item.findtext("description") or "").strip()
+            snippet  = re.sub(r"<[^>]+>", "", desc_raw)[:300]
             try:
                 ts = parsedate_to_datetime(pub).timestamp() if pub else 0.0
             except Exception:
                 ts = 0.0
             if title and link:
                 articles.append({
-                    "title": title,
-                    "link":  link,
-                    "ts":    ts,
-                    "pub":   pub[:16] if pub else "",
+                    "title":   title,
+                    "link":    link,
+                    "ts":      ts,
+                    "pub":     pub[:16] if pub else "",
+                    "snippet": snippet,
                 })
         if articles:
             return articles
@@ -119,12 +126,16 @@ def _parse_rss(xml_text: str) -> list:
                         tzinfo=timezone.utc).timestamp()
                 except Exception:
                     pass
+            sum_el   = entry.find(f"{{{ns}}}summary") or entry.find(f"{{{ns}}}content")
+            desc_raw = (sum_el.text or "").strip() if sum_el is not None else ""
+            snippet  = re.sub(r"<[^>]+>", "", desc_raw)[:300]
             if title and link:
                 articles.append({
-                    "title": title,
-                    "link":  link,
-                    "ts":    ts,
-                    "pub":   pub[:10],
+                    "title":   title,
+                    "link":    link,
+                    "ts":      ts,
+                    "pub":     pub[:10],
+                    "snippet": snippet,
                 })
     except Exception:
         pass
@@ -242,8 +253,10 @@ def get_posts_for_spot(spot: dict, limit: int = 5) -> list:
         if pref not in feed.get("pref_slugs", []):
             continue
         for a in articles:
-            title = a["title"]
-            if any(kw in title for kw in _BOAT_KEYWORDS):
+            title   = a["title"]
+            snippet = a.get("snippet", "")
+            text    = title + snippet
+            if any(kw in text for kw in _BOAT_KEYWORDS):
                 continue  # 船釣り記事を除外
             geo_score = sum(1 for kw in geo_keywords if kw in title)
             if geo_score == 0:
