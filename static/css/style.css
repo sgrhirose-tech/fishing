@@ -682,6 +682,14 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .related-spot-link:hover { text-decoration: underline; }
 .related-spot-area { font-size: .8rem; color: #888; margin-left: .2rem; }
 
+/* ---- ページ導入文 ---- */
+.page-intro {
+  margin: .6rem 0 1.2rem;
+  font-size: .95rem;
+  color: #444;
+  line-height: 1.7;
+}
+
 /* ---- 釣法一覧ページ ---- */
 .method-index-grid {
   display: grid;

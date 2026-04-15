@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}{{ pref_name }}の釣り場・天気情報 | Tsuricast{% endblock %}
-{% block description %}{{ pref_name }}の釣り場・天気情報。相模湾・三浦半島・東京湾など{{ areas|length }}エリアを掲載。{% endblock %}
+{% block title %}{{ pref_name }}の釣り場{{ spot_count }}か所{% if top_fish_jp %} | {{ top_fish_jp[:3]|join('・') }}{% endif %} | Tsuricast{% endblock %}
+{% block description %}{{ pref_name }}の釣り場{{ spot_count }}か所を掲載。{% if top_fish_jp %}{{ top_fish_jp[:4]|join('・') }}などが狙えます。{% endif %}各釣り場の天気・波高・潮汐情報つき。{% endblock %}
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 
@@ -17,6 +17,32 @@
   ]
 }
 </script>
+{% if top_fish_jp %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ pref_name }}で釣れる魚は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ pref_name }}では{{ top_fish_jp[:5]|join('・') }}などが釣れます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ pref_name }}の釣り場は何か所ありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ pref_name }}には{{ spot_count }}か所の釣り場情報を掲載しています。"
+      }
+    }
+  ]
+}
+</script>
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -27,6 +53,9 @@
 </nav>
 
 <h1>{{ pref_name }}の釣り場</h1>
+{% if intro_text %}
+<p class="page-intro">{{ intro_text }}</p>
+{% endif %}
 
 <div id="map-pref" class="map-container"></div>
 
