@@ -118,6 +118,24 @@ def _get_weatherapi_key() -> str:
     return os.environ.get("WEATHERAPI_KEY", "")
 
 
+def _get_openmeteo_api_key() -> str:
+    return os.environ.get("OPEN_METEO_API_KEY", "")
+
+
+def _openmeteo_url(base_path: str, params: list) -> str:
+    """Open-Meteo のリクエスト URL を生成する。
+    OPEN_METEO_API_KEY が設定されていればカスタマー URL + apikey を使用。"""
+    api_key = _get_openmeteo_api_key()
+    if api_key:
+        # marine-api を先に判定（api.open-meteo.com の置換と衝突するため）
+        if "marine-api.open-meteo.com" in base_path:
+            host = base_path.replace("marine-api.open-meteo.com", "customer-marine-api.open-meteo.com")
+        else:
+            host = base_path.replace("api.open-meteo.com", "customer-api.open-meteo.com")
+        return host + "?" + urllib.parse.urlencode(params) + "&apikey=" + api_key
+    return base_path + "?" + urllib.parse.urlencode(params)
+
+
 # ============================================================
 # 気象データ取得
 # ============================================================
@@ -178,7 +196,7 @@ def fetch_weather_range(lat: float, lon: float,
                 return _WEATHER_CACHE[cache_key][1]
             return {}
         try:
-            full_url = base_url + "?" + urllib.parse.urlencode(params)
+            full_url = _openmeteo_url(base_url, params)
             with urllib.request.urlopen(full_url, timeout=15) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
             _WEATHER_CACHE[cache_key] = (_time.time(), result)
@@ -242,7 +260,7 @@ def fetch_marine_range(lat: float, lon: float,
                 return _MARINE_CACHE[cache_key][1]
             return {}
         try:
-            full_url = base_url + "?" + urllib.parse.urlencode(params)
+            full_url = _openmeteo_url(base_url, params)
             with urllib.request.urlopen(full_url, timeout=15) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
             _MARINE_CACHE[cache_key] = (_time.time(), result)
@@ -399,7 +417,7 @@ def fetch_sst_noaa(lat: float, lon: float, date_str: str) -> float | None:
         ("end_date", date_str),
     ]
     try:
-        full_url = base_url + "?" + urllib.parse.urlencode(params)
+        full_url = _openmeteo_url(base_url, params)
         with urllib.request.urlopen(full_url, timeout=15) as resp:
             data = json.loads(resp.read().decode("utf-8"))
         sst_list = data.get("hourly", {}).get("sea_surface_temperature", [])
