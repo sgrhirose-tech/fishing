@@ -2,55 +2,123 @@
 title: サーフィンと釣りが共存する砂浜のルール｜すみ分けの考え方をベテラン店長が解説
 description: 投げ釣りやシロギス狙いでサーファーとかち合いやすい砂浜でのすみ分け方と、お互いが気持ちよく使うための考え方をベテラン店長がまとめます。
 related_spots:
+  - akazawa-kaigan
   - akiya
+  - benzaiten-osuka
+  - chiyozaki-surf
+  - domu
   - emi-kaigan
   - fudodo-kaigan
+  - futami-gyoko
   - futoma-kaigan
   - hanamizugawa-kako
+  - hanazono-kaigan
   - hebara-kaigan
   - heisaura
   - hikichigawa-kako
-  - hiratsuka-kaigan
   - hiratsuka
+  - hiratsuka-kaigan
   - horikawa-hama
+  - hota-beach
   - ichinomiya-kaigan
+  - imaihama-beach
   - inamuragasaki
   - isshiki
   - isumigawa-kako
+  - izumiura-kaigan
+  - jonohama-beach
+  - kada-kaigan
+  - kaneda-kaigan
+  - kaneda-mitate-kaigan
+  - kasugaura-tottei
   - katase
+  - katase-shirota
   - katase_east
   - katsuura-todai-shita
+  - kawana-iruka
+  - kazusa-minato-seaside-park
   - kidohama-kaigan
+  - kikugawa-daito
   - kimigahama
+  - koijigahama
   - koshigoe-gyoko
   - kozu
+  - kumomi-kaigan
+  - kuno-kaigan
+  - kurihama
+  - kurohama-kaigan
+  - kuzuma-kaigan
   - kyu-yoshida-tei-shita
   - magame-kaigan
+  - miho-hikojo
+  - miho-komagoe
+  - mikinosato-kaigan
+  - mito-rinkai
   - miura
   - miyuki
+  - morito
+  - moriya
+  - motona-beach
   - motosuka-kaigan
   - nakatajima-enshunada
   - nakayazato-kaigan
+  - namuya-beach
+  - niishika-kaigan
   - ninomiya
+  - nishiki-no-hama-park
+  - nojima-koen
   - note-hama
+  - nunobiki-beach
+  - ohama
+  - ohama-kaigan
+  - oiso
   - oiso-choyakuba-shita
   - onjuku
+  - otago-kaigan
+  - otanigawa-hosui
+  - oura-kaigan
+  - oyodo-kaigan
+  - pacific-longbeach
+  - sagara-ko
+  - sakaguchitani-hachinya
   - sakawa
   - sakuda-kaigan
+  - samejima-kaigan
+  - sangenya-kaigan
+  - senbon-katahama
+  - setohama-kaigan
   - shichirigahama
+  - shichirimihama-mihasecho
+  - shinmaiko-kaigan
   - shirasato-kaigan
+  - shirazu-kaigan
   - shirosaki-kaigan
+  - shishihama-kaigan
+  - sotourahama
+  - sudahara-kaigan
+  - tadadohama
   - taito-kaigan
+  - tajiri-fujimori
+  - takasu-kaihin-koen
+  - tenryugawa-ryuyo
+  - terabe-ko
+  - toi-beach
   - tojo-kaigan
+  - touji-beach
   - tsujido
   - tsukui
   - uchiura-kaigan
   - uhara-kaigan
   - umezawa-kaigan
+  - umi-no-koen
+  - wada-nagahama-kaigan
+  - wadaura-kaigan
+  - wagu-hiroma
   - yanagishima-kaigan
   - yokata-kaigan
   - yoshizaki-hama
   - yuigahama
+  - yumigahama-aonogawa
   - zaimokuza-kaigan
   - zushi
 ---
