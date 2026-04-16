@@ -15,7 +15,7 @@
   },
   "physical_features": {
     "sea_bearing_deg": 155,
-    "seabed_type": "sand",
+    "seabed_type": "unknown",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
@@ -26,11 +26,12 @@
   },
   "info": {
     "notes": "武豊町の漁港、クロダイ・セイゴ・メバル向き",
-    "access": "上ゲ駅から徒歩25分"
+    "access": "上ゲ駅から徒歩25分",
+    "photo_url": ""
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 1.0,
+    "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
