@@ -250,6 +250,9 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
         if any(k in lead for k in ("風向き", "北東風", "南西風", "北風", "南風", "東風", "西風")):
             qa.append({"q": "風向きの影響はありますか？",
                        "a": "風向きによって釣りやすさが変わります。入磯前に風向きを確認してください。"})
+        if any(k in lead for k in ("ウェーダー", "立ち込み")):
+            qa.append({"q": "ウェーダーは必要ですか？",
+                       "a": "磯場では足元が濡れやすいため、ウェーダーがあると快適に釣りができます。"})
 
     elif ptype == "fishing_facility":
         if any(k in lead for k in ("干潮", "浅くなる", "海底が見える", "釣りにならない")):
@@ -260,9 +263,6 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
         if any(k in lead for k in ("根掛かり", "沈みテトラ", "岩礁")):
             qa.append({"q": "根掛かりはしやすいですか？",
                        "a": "砂浜ですが根掛かりが発生する場所があります。沈みテトラや岩礁が混じるためご注意ください。"})
-        if any(k in lead for k in ("ウェーダー", "立ち込み")):
-            qa.append({"q": "ウェーダーは必要ですか？",
-                       "a": "遠浅のため立ち込みスタイルが主流です。ウェーダーがあると釣りやすくなります。"})
         if any(k in lead for k in ("ちょい投げ", "波打ち際", "足元")):
             qa.append({"q": "どのくらい投げる必要がありますか？",
                        "a": "ちょい投げ（25m前後）でも狙えます。初心者でも楽しめるポイントです。"})
