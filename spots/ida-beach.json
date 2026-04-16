@@ -29,10 +29,10 @@
     "lead_text": "晴れた日には駿河湾越しに富士山を正面に望める絶景ポイントとしても名が通っており、釣り座によっては富士山を眺めながらエギングを楽しめます。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "sand_beach",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

@@ -31,12 +31,12 @@
     "lead_text": "駿河湾に注ぐ安倍川の河口は、砂地を主体にサンドバーが形成された浅めの地形で、台風や大雨のたびに払い出しの向きが東西に変化するのが特徴です。稚アユやボラが河口に集まる初夏から秋口にかけてマゴチが接岸し、地元の常連は朝マズメの時間帯に河口払い出しや流れのヨレを丁寧に打っていきます。東岸はオープンサーフ、西岸はテトラ帯に近くブレイクがある地形で、両岸で雰囲気が大きく異なります。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

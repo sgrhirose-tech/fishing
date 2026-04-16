@@ -29,12 +29,12 @@
     "lead_text": "横須賀市平成町の護岸で、足元水深は6.5〜7mほど。岸壁スリットに居つくクロダイは冬の荒食い期でも実績があり、潮が速い海域のため小潮・長潮まわりが狙いやすいとされています。4月〜11月はアジ・タチウオなど回遊魚が入り、タチウオシーズンの夕まずめには常連勢が15時台から釣り座を押さえに来ます。正面左側は足元に敷石と根が入り、根がかりが頻発するエリアです。土日祝および展望台4ヶ所は終日釣り禁止のため、平日のみ竿を出せる釣り場です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [],

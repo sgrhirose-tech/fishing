@@ -26,14 +26,13 @@
   },
   "info": {
     "notes": "海南市塩津の小さな漁港。カサゴ、メバル、アオリイカが狙える。地元アングラーに人気。",
-    "access": "加茂郷駅から徒歩30分",
-    "photo_url": ""
+    "access": "加茂郷駅から徒歩30分"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@268m"
     ]

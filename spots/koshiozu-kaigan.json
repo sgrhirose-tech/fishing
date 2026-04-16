@@ -28,10 +28,10 @@
     "access": "田原市方面から車利用"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "sand_beach",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

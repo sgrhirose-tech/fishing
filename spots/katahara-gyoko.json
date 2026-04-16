@@ -31,10 +31,10 @@
     "lead_text": "三河湾の北岸、蒲郡市に位置する形原漁港は、形原大橋沿いに広がる比較的大規模な漁港です。港内は岸壁際に敷石が入っており、その隙間を好むメバルやカサゴが夕マズメ以降に活発になります。クロダイは潮通しのよい堤防際でウキフカセの実績が高く、地元アングラーは下げ潮に入るタイミングを狙って釣り座を構えます。アジは夏から秋にかけて港内の常夜灯周りに回遊が入り、夜間のサビキやアジングで数が出やすい時期です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

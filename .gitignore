@@ -21,6 +21,7 @@ data/cache/ai_comment_*.json
 data/cache/xpost_*.json
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # DS_store
 .DS_store
 
@@ -28,3 +29,9 @@ data/cache/xpost_*.json
 # .DS_Store
 .DS_Store
 >>>>>>> origin/claude/resolve-shigeru-master
+=======
+# macOS
+.DS_Store
+.DS_store
+
+>>>>>>> 6d74a35a863ca1bdca178890b01c19308822a6c5

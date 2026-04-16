@@ -31,12 +31,12 @@
     "lead_text": "南知多町の知多半島先端近くに位置する豊浜港は、埋立地から延びる釣り桟橋が主な釣り場です。桟橋の基部は敷石を跨ぐ構造で底が起伏に富んでおり、クロダイやセイゴ、メバルが潜みやすい地形です。先端側は砂地に捨て石が点在し、カラスガイが桟橋の柱に着きはじめる春の時期になると、足もとでクロダイがヒラを打つ姿が確認できます。メバルは春から初夏の早朝・夕マズメに魚影が濃く、常連のあいだでは時合を見極めた短時間の集中釣行が定番スタイルです。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.62,
     "secondary_flags": [
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@236m",
       "man_made=breakwater@288m",

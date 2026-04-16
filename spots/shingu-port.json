@@ -11,7 +11,7 @@
     "area_name": "熊野灘",
     "area_slug": "kumano-nada",
     "city": "新宮市",
-    "city_slug": "shing"
+    "city_slug": "shingu"
   },
   "physical_features": {
     "sea_bearing_deg": 107.5,
@@ -29,12 +29,12 @@
     "lead_text": "熊野川の河口に隣接する和歌山県新宮市の大型港湾で、川と海の水が混ざり合う汽水域が岸壁周辺に広がるのが特徴です。大型船が接岸する南側岸壁は水深があり、秋口には水温が23度前後まで上がってスズキの活性が高まります。熊野川から流れ込む淡水の影響で港内に濁りが入りやすく、その濁り潮を好むクロダイが波止際に寄ってくる傾向があります。ハゼは夏から秋にかけて河口寄りの砂泥底に集まり、地元の常連が満潮前後に岸壁際を丹念に探るスタイルで狙います。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

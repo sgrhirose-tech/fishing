@@ -29,12 +29,12 @@
     "lead_text": "泉大津人工島（助松埠頭）は、大阪湾に浮かぶ人工島で「花市場前」「倉庫前」「北岸壁」の3つのポイントを持つ釣り場です。花市場前の岸壁際は水深約3ヒロ（4〜5m）で足場もよく、秋口から初冬にかけて常連さんのタチウオ狙いが増えてきます。外海側に面した北岸壁はテトラ帯で、タチウオや青物の実績もありますが、常夜灯がないため夜釣りにはヘッドライトが必須です。湾奥に位置する花市場前はタチウオの回遊が外向きの釣り場より少し遅れる傾向があり、晩夏以降の半夜釣りが狙い目とされています。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

@@ -31,10 +31,10 @@
     "lead_text": "矢田川の河口に位置する大野漁港は、底質が砂地中心で根掛かりが少なく、クロダイの魚影の濃さに定評があります。両側の堤防外側に入ったテトラ際がクロダイの主なポイントで、地元の常連はウキフカセや前打ちで狙います。満潮時でも水深が2ヒロ前後と浅いため、干潮前後は狙える時間が限られており、満潮の前後2〜3時間に的を絞るのが地元流。川の影響でアジやサバなどのエサ取りが少なく、チヌ狙いには好都合な環境です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

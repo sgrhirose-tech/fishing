@@ -29,12 +29,12 @@
     "lead_text": "藤沢・鵠沼の砂浜に注ぐ引地川の河口は、砂泥混じりの超遠浅な地形が特徴です。干潮時には干上がる箇所が出るほど水深が浅く、満潮前後の限られた時間帯だけ潮が入り込んでクロダイが差してきます。夏から秋にかけては48cmの釣果記録も残っており、川筋と相模湾の潮目がぶつかるポイントを朝夕マズメに狙うアングラーが集まります。サーフ側との境目あたりで潮が動き始めるタイミングが地元勢のよく知るチャンスタイムです。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

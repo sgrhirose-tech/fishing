@@ -32,7 +32,28 @@
       "砂地",
       "岩礁"
     ],
-    "image": "/static/img/fish/aji.jpg"
+    "image": "/static/img/fish/aji.jpg",
+    "min_temp": 10,
+    "max_temp": 28,
+    "peak_temp": 18,
+    "best_months": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
   },
   "マダイ": {
     "slug": "madai",
@@ -67,7 +88,27 @@
       "岩礁",
       "砂地"
     ],
-    "image": "/static/img/fish/madai.png"
+    "image": "/static/img/fish/madai.png",
+    "min_temp": 12,
+    "max_temp": 25,
+    "peak_temp": 18,
+    "best_months": [
+      3,
+      4,
+      5,
+      9,
+      10,
+      11
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
   },
   "ブリ": {
     "slug": "buri",
@@ -100,7 +141,25 @@
       "砂地",
       "岩礁"
     ],
-    "image": "/static/img/fish/buri.jpg"
+    "image": "/static/img/fish/buri.jpg",
+    "min_temp": 8,
+    "max_temp": 25,
+    "peak_temp": 15,
+    "best_months": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
   },
   "アオリイカ": {
     "slug": "aoriika",
@@ -128,7 +187,24 @@
       "岩礁",
       "藻場"
     ],
-    "image": "/static/img/fish/aoriika.jpg"
+    "image": "/static/img/fish/aoriika.jpg",
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      9,
+      10,
+      11
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk",
+      "night"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "タチウオ": {
     "slug": "tachiuo",
@@ -151,7 +227,23 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/tachiuo.jpg"
+    "image": "/static/img/fish/tachiuo.jpg",
+    "min_temp": 18,
+    "max_temp": 28,
+    "peak_temp": 23,
+    "best_months": [
+      8,
+      9,
+      10
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "青森南部",
+    "south_limit": "沖縄"
   },
   "シロギス": {
     "slug": "shirogisu",
@@ -175,7 +267,23 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/shirogisu.jpg"
+    "image": "/static/img/fish/shirogisu.jpg",
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
   },
   "クロダイ": {
     "slug": "kurodai",
@@ -209,7 +317,25 @@
       "岩礁",
       "砂地"
     ],
-    "image": "/static/img/fish/kurodai.jpg"
+    "image": "/static/img/fish/kurodai.jpg",
+    "min_temp": 10,
+    "max_temp": 28,
+    "peak_temp": 18,
+    "best_months": [
+      3,
+      4,
+      5,
+      10,
+      11
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
   },
   "スズキ": {
     "slug": "suzuki",
@@ -242,7 +368,26 @@
       "砂地",
       "岩礁"
     ],
-    "image": "/static/img/fish/suzuki.jpg"
+    "image": "/static/img/fish/suzuki.jpg",
+    "min_temp": 12,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
   },
   "ヒラメ": {
     "slug": "hirame",
@@ -273,7 +418,24 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/hirame.jpg"
+    "image": "/static/img/fish/hirame.jpg",
+    "min_temp": 10,
+    "max_temp": 22,
+    "peak_temp": 15,
+    "best_months": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州南部"
   },
   "カレイ": {
     "slug": "karei",
@@ -298,7 +460,23 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/karei.jpg"
+    "image": "/static/img/fish/karei.jpg",
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 10,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
   },
   "カサゴ": {
     "slug": "kasago",
@@ -329,7 +507,25 @@
     "bottom": [
       "岩礁"
     ],
-    "image": "/static/img/fish/kasago.jpg"
+    "image": "/static/img/fish/kasago.jpg",
+    "min_temp": 8,
+    "max_temp": 24,
+    "peak_temp": 15,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk",
+      "night"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "メバル": {
     "slug": "mebaru",
@@ -359,7 +555,23 @@
     "bottom": [
       "岩礁"
     ],
-    "image": "/static/img/fish/mebaru.jpg"
+    "image": "/static/img/fish/mebaru.jpg",
+    "min_temp": 10,
+    "max_temp": 22,
+    "peak_temp": 15,
+    "best_months": [
+      2,
+      3,
+      4
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
   },
   "アイナメ": {
     "slug": "ainame",
@@ -384,7 +596,23 @@
     "bottom": [
       "岩礁"
     ],
-    "image": "/static/img/fish/ainame.jpg"
+    "image": "/static/img/fish/ainame.jpg",
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "山口"
   },
   "イサキ": {
     "slug": "isaki",
@@ -408,7 +636,23 @@
     "bottom": [
       "岩礁"
     ],
-    "image": "/static/img/fish/isaki.jpg"
+    "image": "/static/img/fish/isaki.jpg",
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 22,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "サバ": {
     "slug": "saba",
@@ -436,7 +680,25 @@
       "砂地",
       "岩礁"
     ],
-    "image": "/static/img/fish/saba.jpg"
+    "image": "/static/img/fish/saba.jpg",
+    "min_temp": 12,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "沖縄"
   },
   "スルメイカ": {
     "slug": "surumeika",
@@ -467,7 +729,23 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/surumeika.jpg",
+    "min_temp": 5,
+    "max_temp": 25,
+    "peak_temp": 18,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
   },
   "ヤリイカ": {
     "slug": "yariika",
@@ -491,7 +769,23 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/yariika.jpg",
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
   },
   "コウイカ": {
     "slug": "kouika",
@@ -514,7 +808,24 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/kouika.jpg",
+    "min_temp": 10,
+    "max_temp": 25,
+    "peak_temp": 18,
+    "best_months": [
+      4,
+      5
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "マゴチ": {
     "slug": "magochi",
@@ -539,7 +850,23 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/magochi.jpg"
+    "image": "/static/img/fish/magochi.jpg",
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
   },
   "カンパチ": {
     "slug": "kanpachi",
@@ -567,7 +894,25 @@
       "岩礁",
       "砂地"
     ],
-    "image": "/static/img/fish/kanpachi.jpg"
+    "image": "/static/img/fish/kanpachi.jpg",
+    "min_temp": 18,
+    "max_temp": 28,
+    "peak_temp": 24,
+    "best_months": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "青森南部",
+    "south_limit": "沖縄"
   },
   "ヒラマサ": {
     "slug": "hiramasa",
@@ -595,7 +940,24 @@
     "bottom": [
       "岩礁"
     ],
-    "image": "/static/img/fish/hiramasa.jpg"
+    "image": "/static/img/fish/hiramasa.jpg",
+    "min_temp": 16,
+    "max_temp": 27,
+    "peak_temp": 22,
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "マハタ": {
     "slug": "mahata",
@@ -625,7 +987,25 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/mahata.jpg",
+    "min_temp": 12,
+    "max_temp": 26,
+    "peak_temp": 18,
+    "best_months": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "カワハギ": {
     "slug": "kawahagi",
@@ -648,7 +1028,22 @@
       "岩礁",
       "砂地"
     ],
-    "image": "/static/img/fish/kawahagi.jpg"
+    "image": "/static/img/fish/kawahagi.jpg",
+    "min_temp": 15,
+    "max_temp": 24,
+    "peak_temp": 18,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "ホウボウ": {
     "slug": "houhou",
@@ -672,7 +1067,22 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/houhou.jpg"
+    "image": "/static/img/fish/houhou.jpg",
+    "min_temp": 5,
+    "max_temp": 20,
+    "peak_temp": 12,
+    "best_months": [
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
   },
   "アマダイ": {
     "slug": "amadai",
@@ -696,7 +1106,22 @@
       "砂地",
       "泥地"
     ],
-    "image": "/static/img/fish/amadai.jpg"
+    "image": "/static/img/fish/amadai.jpg",
+    "min_temp": 10,
+    "max_temp": 22,
+    "peak_temp": 15,
+    "best_months": [
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "オニカサゴ": {
     "slug": "onikasago",
@@ -726,7 +1151,25 @@
     "bottom": [
       "岩礁"
     ],
-    "image": "/static/img/fish/onikasago.jpg"
+    "image": "/static/img/fish/onikasago.jpg",
+    "min_temp": 10,
+    "max_temp": 24,
+    "peak_temp": 16,
+    "best_months": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "マダコ": {
     "slug": "madako",
@@ -751,7 +1194,24 @@
       "岩礁",
       "砂地"
     ],
-    "image": "/static/img/fish/madako.jpg"
+    "image": "/static/img/fish/madako.jpg",
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "イシモチ": {
     "slug": "ishimochi",
@@ -778,7 +1238,25 @@
       "砂地",
       "泥地"
     ],
-    "image": "/static/img/fish/ishimochi.jpg"
+    "image": "/static/img/fish/ishimochi.jpg",
+    "min_temp": 12,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
   },
   "マコガレイ": {
     "slug": "makogarei",
@@ -803,7 +1281,23 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 10,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
   },
   "ハゼ": {
     "slug": "haze",
@@ -829,7 +1323,22 @@
       "砂地",
       "泥地"
     ],
-    "image": "/static/img/fish/haze.jpg"
+    "image": "/static/img/fish/haze.jpg",
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      8,
+      9,
+      10
+    ],
+    "max_wave": 0.5,
+    "tide": "rising",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "沖縄"
   },
   "カマス": {
     "slug": "kamasu",
@@ -853,7 +1362,23 @@
       "砂地",
       "岩礁"
     ],
-    "image": "/static/img/fish/kamasu.jpg"
+    "image": "/static/img/fish/kamasu.jpg",
+    "min_temp": 18,
+    "max_temp": 27,
+    "peak_temp": 23,
+    "best_months": [
+      9,
+      10,
+      11
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
   },
   "シマアジ": {
     "slug": "shimaaji",
@@ -878,7 +1403,25 @@
     "bottom": [
       "岩礁"
     ],
-    "image": "/static/img/fish/shimaaji.jpg"
+    "image": "/static/img/fish/shimaaji.jpg",
+    "min_temp": 18,
+    "max_temp": 27,
+    "peak_temp": 23,
+    "best_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "キジハタ": {
     "slug": "kijihata",
@@ -902,7 +1445,23 @@
     "bottom": [
       "岩礁"
     ],
-    "image": "/static/img/fish/kijihata.jpg"
+    "image": "/static/img/fish/kijihata.jpg",
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 22,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "宮城",
+    "south_limit": "沖縄"
   },
   "オオモンハタ": {
     "slug": "oomonhata",
@@ -925,7 +1484,23 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "min_temp": 18,
+    "max_temp": 28,
+    "peak_temp": 23,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "静岡",
+    "south_limit": "沖縄"
   },
   "クエ": {
     "slug": "kue",
@@ -948,7 +1523,24 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk",
+      "night"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "マグロ": {
     "slug": "maguro",
@@ -973,7 +1565,24 @@
       "砂地",
       "岩礁"
     ],
-    "image": "/static/img/fish/maguro.jpg"
+    "image": "/static/img/fish/maguro.jpg",
+    "min_temp": 16,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 2.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "カツオ": {
     "slug": "katsuo",
@@ -1001,7 +1610,25 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/katsuo.jpg"
+    "image": "/static/img/fish/katsuo.jpg",
+    "min_temp": 18,
+    "max_temp": 27,
+    "peak_temp": 22,
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "青森南部",
+    "south_limit": "沖縄"
   },
   "シイラ": {
     "slug": "shiira",
@@ -1024,7 +1651,22 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/shiira.jpg"
+    "image": "/static/img/fish/shiira.jpg",
+    "min_temp": 20,
+    "max_temp": 30,
+    "peak_temp": 25,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "サワラ": {
     "slug": "sawara",
@@ -1050,7 +1692,24 @@
       "砂地",
       "岩礁"
     ],
-    "image": "/static/img/fish/sawara.jpg"
+    "image": "/static/img/fish/sawara.jpg",
+    "min_temp": 12,
+    "max_temp": 24,
+    "peak_temp": 18,
+    "best_months": [
+      4,
+      5,
+      10,
+      11
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "ムツ": {
     "slug": "mutsu",
@@ -1072,7 +1731,23 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "min_temp": 10,
+    "max_temp": 22,
+    "peak_temp": 16,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "アカムツ": {
     "slug": "akamutsu",
@@ -1095,7 +1770,22 @@
     "bottom": [
       "砂地",
       "泥地"
-    ]
+    ],
+    "min_temp": 5,
+    "max_temp": 15,
+    "peak_temp": 10,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "キンメダイ": {
     "slug": "kinmedai",
@@ -1126,7 +1816,23 @@
       "岩礁",
       "砂地"
     ],
-    "image": "/static/img/fish/kinmedai.jpg"
+    "image": "/static/img/fish/kinmedai.jpg",
+    "min_temp": 5,
+    "max_temp": 15,
+    "peak_temp": 10,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
   },
   "メダイ": {
     "slug": "medai",
@@ -1149,7 +1855,22 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "min_temp": 10,
+    "max_temp": 20,
+    "peak_temp": 14,
+    "best_months": [
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "イシダイ": {
     "slug": "ishidai",
@@ -1174,7 +1895,22 @@
     "bottom": [
       "岩礁"
     ],
-    "image": "/static/img/fish/ishidai.jpg"
+    "image": "/static/img/fish/ishidai.jpg",
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 22,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "イシガキダイ": {
     "slug": "ishigakidai",
@@ -1196,7 +1932,22 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "min_temp": 18,
+    "max_temp": 28,
+    "peak_temp": 24,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "メジナ": {
     "slug": "mejina",
@@ -1228,7 +1979,26 @@
     "bottom": [
       "岩礁"
     ],
-    "image": "/static/img/fish/mejina.jpg"
+    "image": "/static/img/fish/mejina.jpg",
+    "min_temp": 10,
+    "max_temp": 22,
+    "peak_temp": 15,
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
   },
   "ソイ": {
     "slug": "soi",
@@ -1259,7 +2029,24 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "宮城"
   },
   "ウマヅラハギ": {
     "slug": "umadsurahagi",
@@ -1281,7 +2068,22 @@
     "bottom": [
       "岩礁",
       "砂地"
-    ]
+    ],
+    "min_temp": 12,
+    "max_temp": 24,
+    "peak_temp": 18,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
   },
   "ショウサイフグ": {
     "slug": "shousaifugu",
@@ -1304,7 +2106,22 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "min_temp": 12,
+    "max_temp": 22,
+    "peak_temp": 16,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "九州"
   },
   "ニベ": {
     "slug": "nibe",
@@ -1327,7 +2144,24 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      5,
+      6,
+      10,
+      11
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "九州"
   },
   "マトウダイ": {
     "slug": "matoudai",
@@ -1349,7 +2183,22 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
   },
   "マルアジ": {
     "slug": "maruaji",
@@ -1373,7 +2222,23 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "ムロアジ": {
     "slug": "muroaji",
@@ -1397,7 +2262,22 @@
       "砂地",
       "岩礁"
     ],
-    "image": "/static/img/fish/muroaji.jpg"
+    "image": "/static/img/fish/muroaji.jpg",
+    "min_temp": 18,
+    "max_temp": 28,
+    "peak_temp": 23,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "イトヨリダイ": {
     "slug": "itoyoridai",
@@ -1429,7 +2309,24 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/itoyoridai.jpg"
+    "image": "/static/img/fish/itoyoridai.jpg",
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      3,
+      4,
+      5,
+      10,
+      11
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "レンコダイ": {
     "slug": "renkodai",
@@ -1459,7 +2356,23 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "min_temp": 12,
+    "max_temp": 24,
+    "peak_temp": 18,
+    "best_months": [
+      4,
+      5,
+      10,
+      11
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "キダイ": {
     "slug": "kidai",
@@ -1490,7 +2403,23 @@
     "bottom": [
       "砂地",
       "岩礁"
-    ]
+    ],
+    "min_temp": 12,
+    "max_temp": 25,
+    "peak_temp": 18,
+    "best_months": [
+      4,
+      5,
+      10,
+      11
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
   },
   "ホシガレイ": {
     "slug": "hoshigarei",
@@ -1512,7 +2441,22 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 10,
+    "best_months": [
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
   },
   "マゾイ": {
     "slug": "mazoi",
@@ -1542,7 +2486,24 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "関東"
   },
   "クロソイ": {
     "slug": "kurosoi",
@@ -1573,7 +2534,24 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "東北南部"
   },
   "タコ": {
     "slug": "tako",
@@ -1597,7 +2575,22 @@
     "bottom": [
       "岩礁",
       "砂地"
-    ]
+    ],
+    "min_temp": 12,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "沖縄"
   },
   "ソウダガツオ": {
     "slug": "soudagatsuo",
@@ -1622,7 +2615,25 @@
     ],
     "bottom": [
       "砂地"
-    ]
+    ],
+    "min_temp": 18,
+    "max_temp": 27,
+    "peak_temp": 23,
+    "best_months": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
   },
   "ウミタナゴ": {
     "slug": "umitanago",
@@ -1652,7 +2663,25 @@
     ],
     "bottom": [
       "岩礁"
-    ]
+    ],
+    "image": "/static/img/fish/umitanago.jpg",
+    "min_temp": 12,
+    "max_temp": 22,
+    "peak_temp": 16,
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 0.8,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "九州"
   },
   "イワシ": {
     "slug": "iwashi",
@@ -1676,7 +2705,23 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/iwashi.jpg"
+    "image": "/static/img/fish/iwashi.jpg",
+    "min_temp": 12,
+    "max_temp": 24,
+    "peak_temp": 18,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "沖縄"
   },
   "サヨリ": {
     "slug": "sayori",
@@ -1700,6 +2745,21 @@
     "bottom": [
       "砂地"
     ],
-    "image": "/static/img/fish/sayori.jpg"
+    "image": "/static/img/fish/sayori.jpg",
+    "min_temp": 12,
+    "max_temp": 22,
+    "peak_temp": 15,
+    "best_months": [
+      3,
+      4,
+      5
+    ],
+    "max_wave": 0.5,
+    "tide": "rising",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
   }
 }

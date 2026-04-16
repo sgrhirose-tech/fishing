@@ -26,14 +26,13 @@
   },
   "info": {
     "notes": "蒲郡市の突堤、ハゼ・クロダイ・ウキ釣り向き",
-    "access": "形原駅前バス停から徒歩15分",
-    "photo_url": ""
+    "access": "形原駅前バス停から徒歩15分"
   },
   "classification": {
-    "primary_type": "sand_beach",
-    "confidence": 0.59,
+    "primary_type": "breakwater",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@295m",
       "natural=beach@108m"

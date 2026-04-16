@@ -21,7 +21,8 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "透明度高い入り江の漁港、アオリイカ・アジ向き",
@@ -29,19 +30,19 @@
     "lead_text": "西伊豆・田子の入り江に抱かれた小規模漁港で、黒潮由来の透明度の高さが際立ちます。岸から5〜10メートル付近に捨て石が入り魚の寄り場になっており、その先は急激に落ち込んで泥底となり、約50メートル沖には砂地も点在します。アオリイカは秋に小〜中型、春は大型が港内に入り込み、漁港独自の1人2ハイ制限がかかるほど資源管理が徹底されています。アジはカゴ釣りでシマアジが混じることもあり、日が高くなる時間帯に回遊が入りやすいと地元で知られています。"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@272m"
     ]
   },
   "target_fish": [
-    "aoriika",
-    "aji"
+    "aji",
+    "aoriika"
   ],
   "harbor_code": "22-8",
   "harbor_name": "田子"

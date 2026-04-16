@@ -14,14 +14,15 @@
     "city_slug": "sakai"
   },
   "physical_features": {
-    "sea_bearing_deg": 20.2,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 20,
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "堺市西区の海浜エリア。シロギス・ハゼ・イシモチが狙える。浜釣りが楽しめる。",
@@ -29,12 +30,12 @@
     "lead_text": "堺市西区に位置する大阪湾に面した海浜エリアで、砂地主体のなだらかな地形が続きます。護岸沿いは水深が非常に浅く、1メートルに満たない超浅場が広がるのが特徴で、シロギスはその砂地の沖目を狙う必要があります。ハゼは20匹程度の釣果が出ており、ちょい投げで探りながら数をのばすスタイルが実績あります。シロギスは夏から秋口にかけて浜際に寄りやすく、朝まずめの時合いを狙う地元アングラーの姿が見られます。イシモチも同じ砂地の浜釣りで混じって顔を出すことがあり、複数種を一度に狙えるのがこのエリアの魅力です。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "breakwater",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

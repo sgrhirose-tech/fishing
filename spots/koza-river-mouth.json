@@ -11,7 +11,7 @@
     "area_name": "熊野灘",
     "area_slug": "kumano-nada",
     "city": "串本町",
-    "city_slug": "kusimoto"
+    "city_slug": "kushimoto"
   },
   "physical_features": {
     "sea_bearing_deg": 180,
@@ -31,7 +31,7 @@
     "lead_text": "串本町を流れる古座川が熊野灘へと注ぐ河口域の釣り場です。透明度の高い「古座川ブルー」の水色が河口付近まで続き、清冽な淡水と海水が混ざり合うエリアに魚が集まります。東側の岸壁や赤灯周辺がスズキ・ヒラスズキの実績ポイントとして知られており、朝マズメから日の出直後の時間帯に良型が出やすいです。クロダイは河口から少し上流へ差してくる個体を狙う常連も多く、夏から秋にはハゼの数釣りも楽しめます。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",

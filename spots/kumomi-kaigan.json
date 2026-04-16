@@ -21,20 +21,21 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "松崎町南の地磯・海岸、メジナ・アオリイカ向き",
     "access": "雲見浜バス停から徒歩5分"
   },
   "classification": {
-    "primary_type": "sand_beach",
-    "confidence": 0.9,
+    "primary_type": "rocky_shore",
+    "confidence": 1.0,
     "secondary_flags": [
       "cliff",
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@120m",
       "man_made=breakwater@45m",

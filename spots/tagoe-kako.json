@@ -29,7 +29,7 @@
     "access": "逗子・葉山駅から徒歩20分"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 1.0,
     "secondary_flags": [
       "marina",

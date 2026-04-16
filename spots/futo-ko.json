@@ -29,7 +29,7 @@
     "access": "払バス停から徒歩5分"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",

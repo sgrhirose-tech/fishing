@@ -14,25 +14,25 @@
     "city_slug": "chigasaki"
   },
   "physical_features": {
-    "sea_bearing_deg": null,
-    "seabed_type": null,
+    "sea_bearing_deg": 0,
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "この釣り場は釣り禁止・立入禁止となりました。",
-    "access": "",
     "lead_text": "この釣り場は釣り禁止・立入禁止となりました。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "kinshi",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [],

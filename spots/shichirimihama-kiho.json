@@ -26,11 +26,10 @@
   },
   "info": {
     "notes": "七里御浜南端、青物・キス・ルアー向き",
-    "access": "井田駅前バス停から徒歩0分",
-    "photo_url": ""
+    "access": "井田駅前バス停から徒歩0分"
   },
   "classification": {
-    "primary_type": "rocky_shore",
+    "primary_type": "sand_beach",
     "confidence": 1.0,
     "secondary_flags": [
       "cliff"

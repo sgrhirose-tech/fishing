@@ -18,7 +18,7 @@ except ImportError:
     pass
 
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import HTMLResponse, PlainTextResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -52,6 +52,25 @@ def _load_fish_master() -> None:
 
 _METHOD_MASTER: dict = {}
 _METHOD_SLUG_TO_NAME: dict = {}  # {slug: 釣法名}
+
+# ── ページリード文 ────────────────────────────────────────────
+_PAGE_LEADS: dict = {}  # {"pref/area/city-key": "リード文", ...}
+
+def _load_page_leads() -> None:
+    global _PAGE_LEADS
+    import csv
+    path = _BASE / "data" / "page_leads_all.tsv"
+    try:
+        with open(path, encoding="utf-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            _PAGE_LEADS = {
+                row["key"]: row["lead"]
+                for row in reader
+                if row.get("lead", "").strip()
+            }
+        print(f"[page_leads] {len(_PAGE_LEADS)} 件のリード文を読み込みました")
+    except Exception as e:
+        print(f"[page_leads] 読み込みエラー: {e}")
 
 def _load_method_master() -> None:
     global _METHOD_MASTER, _METHOD_SLUG_TO_NAME
@@ -121,6 +140,161 @@ def _build_fish_intro(fish_name: str, fish_data: dict, spot_count: int) -> str:
     return f"{fish_name}のベストシーズンは{peak_str}。{method_part}{bottom_part}{spot_part}"
 
 
+def _month_to_season(month: int) -> str:
+    if month in (3, 4, 5): return "春"
+    if month in (6, 7, 8): return "夏"
+    if month in (9, 10, 11): return "秋"
+    return "冬"
+
+
+def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
+    """スポットの Q&A リストを生成する（最大8問）。"""
+    import math
+    from collections import Counter as _Counter
+
+    info   = spot.get("info") or {}
+    lead   = info.get("lead_text") or info.get("notes") or ""
+    ptype  = (spot.get("classification") or {}).get("primary_type", "")
+    target = spot.get("target_fish") or []
+    loc    = spot.get("location") or {}
+    s_lat, s_lon = loc.get("latitude"), loc.get("longitude")
+
+    def _dist(lat2: float, lon2: float) -> int | None:
+        if not (s_lat and s_lon):
+            return None
+        p1, p2 = math.radians(s_lat), math.radians(lat2)
+        a = math.sin(math.radians(lat2 - s_lat) / 2) ** 2 \
+          + math.cos(p1) * math.cos(p2) * math.sin(math.radians(lon2 - s_lon) / 2) ** 2
+        d = 6371000 * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+        return max(100, round(d / 100) * 100)
+
+    qa: list[dict] = []
+
+    # ── 全スポット共通 ────────────────────────────────────
+    fishing_banned = lead.startswith("この釣り場は") and "禁止" in lead
+    if fishing_banned:
+        qa.append({"q": "このスポットで釣りはできますか？",
+                   "a": "現在このスポットでは釣りができません。"})
+
+    if not fishing_banned and ("立入禁止" in lead or "立ち入り禁止" in lead):
+        qa.append({"q": "立入禁止エリアはありますか？",
+                   "a": "一部立入禁止エリアがあります。現地の表示を必ず確認してください。"})
+
+    if "テトラ" in lead:
+        qa.append({"q": "テトラポットはありますか？",
+                   "a": "テトラポットがあります。足場に注意してください。"})
+
+    if "夜釣り禁止" in lead or "夜間立入禁止" in lead:
+        qa.append({"q": "夜釣りはできますか？", "a": "夜釣りは禁止されています。"})
+    elif "常夜灯" in lead:
+        qa.append({"q": "夜釣りはできますか？", "a": "常夜灯があり夜釣りができます。"})
+    elif "夜釣り" in lead and "禁止" not in lead and "禁じ" not in lead:
+        qa.append({"q": "夜釣りはできますか？", "a": "夜釣りの実績があります。"})
+
+    if "コマセ禁止" in lead:
+        qa.append({"q": "コマセ・撒き餌は使えますか？",
+                   "a": "このスポットはコマセ・撒き餌が禁止です。"})
+
+    if "投げ釣り禁止" in lead:
+        qa.append({"q": "投げ釣り・ルアーのキャストはできますか？",
+                   "a": "このスポットは投げ釣り・キャストが禁止です。足元の釣りのみ可能です。"})
+
+    # 施設（最近傍を1件ずつ）
+    _fac_q = {"駐車場": "駐車場はありますか？", "トイレ": "トイレはありますか？",
+              "釣具屋": "近くに釣具屋はありますか？", "コンビニ": "近くにコンビニはありますか？"}
+    _fac_a = {
+        "駐車場":  "直線およそ{d}mのところに駐車場が確認できます。現地の状況と異なる場合があります。",
+        "トイレ":  "直線およそ{d}mのところにトイレが確認できます。現地の状況と異なる場合があります。",
+        "釣具屋":  "直線およそ{d}mのところに釣具屋が確認できます。現地の状況と異なる場合があります。",
+        "コンビニ":"直線およそ{d}mのところにコンビニが確認できます。現地の状況と異なる場合があります。",
+    }
+    nearest: dict[str, int] = {}
+    for f in cached_facilities:
+        ft = f.get("type", "")
+        if ft not in _fac_q:
+            continue
+        d = _dist(f["lat"], f["lon"])
+        if d is not None and (ft not in nearest or d < nearest[ft]):
+            nearest[ft] = d
+    for ft in ("駐車場", "トイレ", "釣具屋", "コンビニ"):
+        if ft in nearest:
+            qa.append({"q": _fac_q[ft], "a": _fac_a[ft].format(d=nearest[ft])})
+
+    # どんな魚が釣れますか？
+    fish_jp = [_FISH_SLUG_TO_NAME[s] for s in target if s in _FISH_SLUG_TO_NAME]
+    if fish_jp:
+        qa.append({"q": "どんな魚が釣れますか？",
+                   "a": "・".join(fish_jp[:3]) + "などが釣れます。"})
+
+    # 何月頃が釣りやすいですか？
+    if target:
+        mcnt: _Counter = _Counter()
+        for fslug in target:
+            fname = _FISH_SLUG_TO_NAME.get(fslug)
+            if fname and fname in _FISH_MASTER:
+                for m in (_FISH_MASTER[fname].get("best_months") or []):
+                    mcnt[m] += 1
+        if mcnt:
+            top_month = mcnt.most_common(1)[0][0]
+            top3 = sorted(m for m, _ in mcnt.most_common(3))
+            season = _month_to_season(top_month)
+            months_str = "・".join(f"{m}月" for m in top3)
+            qa.append({"q": "何月頃が釣りやすいですか？",
+                       "a": f"{season}（{months_str}頃）が全体的に魚の活性が上がりやすい時期です。"})
+
+    # ── 施設区分別 ────────────────────────────────────────
+    if ptype == "rocky_shore":
+        if any(k in lead for k in ("満潮", "水没", "潮位")):
+            qa.append({"q": "満潮時に入磯できなくなりますか？",
+                       "a": "満潮時は入磯できない場合があります。事前に潮位を確認してから入磯してください。"})
+        if any(k in lead for k in ("風向き", "北東風", "南西風", "北風", "南風", "東風", "西風")):
+            qa.append({"q": "風向きの影響はありますか？",
+                       "a": "風向きによって釣りやすさが変わります。入磯前に風向きを確認してください。"})
+        if any(k in lead for k in ("ウェーダー", "立ち込み")):
+            qa.append({"q": "ウェーダーは必要ですか？",
+                       "a": "磯場では足元が濡れやすいため、ウェーダーがあると快適に釣りができます。"})
+
+    elif ptype == "fishing_facility":
+        if any(k in lead for k in ("干潮", "浅くなる", "海底が見える", "釣りにならない")):
+            qa.append({"q": "干潮時でも釣りはできますか？",
+                       "a": "干潮時は水深が浅くなり釣りがしにくくなります。満潮前後の時間帯がおすすめです。"})
+
+    elif ptype == "sand_beach":
+        if any(k in lead for k in ("根掛かり", "沈みテトラ", "岩礁")):
+            qa.append({"q": "根掛かりはしやすいですか？",
+                       "a": "砂浜ですが根掛かりが発生する場所があります。沈みテトラや岩礁が混じるためご注意ください。"})
+        if any(k in lead for k in ("ウェーダー", "立ち込み")):
+            qa.append({"q": "ウェーダーは必要ですか？",
+                       "a": "遠浅のため立ち込みスタイルが主流です。ウェーダーがあると釣りやすくなります。"})
+        if any(k in lead for k in ("ちょい投げ", "波打ち際", "足元")):
+            qa.append({"q": "どのくらい投げる必要がありますか？",
+                       "a": "ちょい投げ（25m前後）でも狙えます。初心者でも楽しめるポイントです。"})
+        elif any(k in lead for k in ("20m", "30m", "2色", "3色")):
+            qa.append({"q": "どのくらい投げる必要がありますか？",
+                       "a": "20〜50m程度投げられると釣りやすくなります。"})
+        elif any(k in lead for k in ("遠投", "60m", "80m", "4色", "5色")):
+            qa.append({"q": "どのくらい投げる必要がありますか？",
+                       "a": "遠投が必要なポイントです。ある程度の投げの技術が求められます。"})
+
+    # ── 魚種別 ────────────────────────────────────────────
+    if "kurodai" in target:
+        for keywords, answer in (
+            (("ウキフカセ", "フカセ釣り"),       "ウキフカセ釣りで狙う釣り人が多いスポットです。"),
+            (("落とし込み", "ヘチ釣り", "前打ち"), "落とし込み・ヘチ釣りの実績が高いスポットです。"),
+            (("ダンゴ釣り", "紀州釣り", "団子"),  "ダンゴ釣り（紀州釣り）で狙う常連が多いスポットです。"),
+            (("ぶっこみ",),                      "ぶっこみ釣りでの実績があるスポットです。"),
+        ):
+            if any(k in lead for k in keywords):
+                qa.append({"q": "クロダイを狙うおすすめの釣り方は？", "a": answer})
+                break
+
+    if "aoriika" in target and ("禁漁" in lead or "イカ釣りが禁止" in lead):
+        qa.append({"q": "アオリイカの禁漁期間はありますか？",
+                   "a": "このスポットにはアオリイカの禁漁期間があります。釣行前に漁協の規定を確認してください。"})
+
+    return qa[:8]
+
+
 def _tomorrow() -> str:
     return (datetime.now(JST) + timedelta(days=1)).strftime("%Y-%m-%d")
 
@@ -140,7 +314,7 @@ def _format_date_jp(date_str: str) -> str:
 # フォアキャスト結果キャッシュ（スポットページ高速化用）
 # ============================================================
 _FORECAST_CACHE: dict = {}   # {slug: (timestamp, result)}
-_FORECAST_CACHE_TTL = 300    # 5分（秒）
+_FORECAST_CACHE_TTL = 3600   # 1時間（クローラー対策: 同一スポットの重複 API 呼び出しを防ぐ）
 
 # ============================================================
 # FastAPI アプリ
@@ -164,6 +338,7 @@ async def lifespan(app: FastAPI):
     load_facilities_json()
     _load_fish_master()
     _load_method_master()
+    _load_page_leads()
     _slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     templates.env.globals["fish_slug_map"] = _slug_map
     templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
@@ -191,6 +366,7 @@ _ROBOTS_TXT = """\
 User-agent: *
 Allow: /
 Disallow: /api/
+Crawl-delay: 2
 
 # --- AI training crawlers: block ---
 User-agent: GPTBot
@@ -436,7 +612,13 @@ def api_forecast(slug: str):
     spot = load_spot(slug)
     if not spot:
         raise HTTPException(status_code=404, detail="スポットが見つかりません")
-    return _compute_forecast(spot)
+    # ページロード時のキャッシュを再利用（重複 _compute_forecast 呼び出し防止）
+    _cached = _FORECAST_CACHE.get(slug)
+    if _cached and time.time() - _cached[0] < _FORECAST_CACHE_TTL:
+        return _cached[1]
+    result = _compute_forecast(spot)
+    _FORECAST_CACHE[slug] = (time.time(), result)
+    return result
 
 
 @app.get("/api/ai-comment/{slug}")
@@ -517,6 +699,99 @@ def api_tide(slug: str, date: str | None = None):
     if data is None:
         return {"tide": None, "tide_unavailable_reason": "data_not_fetched"}
     return data
+
+
+# ── おすすめ釣り魚 API ──
+_REC_FISH_CACHE: dict = {}   # key: (pref, area, date_str) → {"ts": float, "data": list}
+_REC_FISH_TTL = 86400        # 24h
+
+@app.get("/api/recommended-fish")
+def api_recommended_fish(pref: str = "", area: str = ""):
+    """今月＋現在の海面水温に基づくおすすめ魚種を返す。"""
+    import datetime as _dt
+
+    today = _dt.date.today().isoformat()
+    cache_key = (pref, area, today)
+    cached = _REC_FISH_CACHE.get(cache_key)
+    if cached and (time.time() - cached["ts"]) < _REC_FISH_TTL:
+        return JSONResponse(cached["data"])
+
+    all_spots = load_spots()
+    spots = all_spots
+    if pref:
+        spots = [s for s in spots if s.get("area", {}).get("pref_slug") == pref]
+    if area:
+        spots = [s for s in spots if s.get("area", {}).get("area_slug") == area]
+    if not spots:
+        return JSONResponse([])
+
+    # 重心座標で SST 取得
+    lats = [s.get("location", {}).get("latitude") for s in spots]
+    lons = [s.get("location", {}).get("longitude") for s in spots]
+    lats = [v for v in lats if v is not None]
+    lons = [v for v in lons if v is not None]
+    sst = None
+    if lats and lons:
+        clat = sum(lats) / len(lats)
+        clon = sum(lons) / len(lons)
+        sst = fetch_sst_noaa(clat, clon, today)
+
+    current_month = _dt.date.today().month
+
+    # slug → [spot dicts]
+    fish_slug_to_spots: dict[str, list] = {}
+    for s in spots:
+        for fish_slug in (s.get("target_fish") or []):
+            fish_slug_to_spots.setdefault(fish_slug, []).append(s)
+
+    result = []
+    for fish_name, fish_data in _FISH_MASTER.items():
+        slug = fish_data.get("slug", "")
+        spots_for_fish = fish_slug_to_spots.get(slug, [])
+        if not spots_for_fish:
+            continue
+
+        score = 0
+        if current_month in (fish_data.get("peak_season") or []):
+            score += 35
+        elif current_month in (fish_data.get("season") or []):
+            score += 15
+
+        if sst is not None:
+            mn = fish_data.get("min_temp")
+            mx = fish_data.get("max_temp")
+            pk = fish_data.get("peak_temp")
+            if mn is not None and mx is not None and mn <= sst <= mx:
+                score += 40
+                if pk is not None and abs(sst - pk) <= 2:
+                    score += 15
+
+        if score == 0:
+            continue
+
+        top_spots = []
+        for s in spots_for_fish[:5]:
+            a = s.get("area", {})
+            top_spots.append({
+                "name": s.get("name", ""),
+                "url": f"/{a.get('pref_slug','')}/{a.get('area_slug','')}/{a.get('city_slug','')}/{s.get('slug','')}",
+            })
+        result.append({
+            "name": fish_name,
+            "slug": slug,
+            "image": fish_data.get("image", ""),
+            "method": (fish_data.get("method") or [])[:2],
+            "score": score,
+            "spots": top_spots,
+        })
+
+    result.sort(key=lambda x: -x["score"])
+    result = result[:10]
+    for r in result:
+        del r["score"]
+
+    _REC_FISH_CACHE[cache_key] = {"ts": time.time(), "data": result}
+    return JSONResponse(result)
 
 
 # ============================================================
@@ -1249,6 +1524,38 @@ def page_area_index(request: Request):
     })
 
 
+_TYPE_LABELS_SIMPLE = {
+    "sand_beach":       "砂浜",
+    "rocky_shore":      "磯",
+    "breakwater":       "堤防",
+    "fishing_facility": "漁港・岸壁",
+}
+
+
+def _spot_seo_vars(spots: list) -> dict:
+    """pref / area / city ページ向け SEO 変数（上位魚種・釣り場タイプ）を集計する。"""
+    from collections import Counter
+    fish_ctr: Counter = Counter()
+    type_ctr: Counter = Counter()
+    for s in spots:
+        for f in (s.get("target_fish") or []):
+            fish_ctr[f] += 1
+        ptype = (s.get("classification") or {}).get("primary_type", "")
+        if ptype:
+            type_ctr[ptype] += 1
+    top_fish_jp = [
+        _FISH_SLUG_TO_NAME[slug]
+        for slug, _ in fish_ctr.most_common(5)
+        if slug in _FISH_SLUG_TO_NAME
+    ]
+    spot_type_summary = "・".join(
+        _TYPE_LABELS_SIMPLE[t]
+        for t, _ in type_ctr.most_common(2)
+        if t in _TYPE_LABELS_SIMPLE
+    )
+    return {"top_fish_jp": top_fish_jp, "spot_type_summary": spot_type_summary}
+
+
 @app.get("/{slug}/", response_class=HTMLResponse)
 def page_pref_or_region(request: Request, slug: str):
     # 地方ページ
@@ -1293,6 +1600,15 @@ def page_pref_or_region(request: Request, slug: str):
         if c_slug:
             cities.setdefault(c_slug, {"name": c_name, "count": 0, "area_slug": a_slug})
             cities[c_slug]["count"] += 1
+    _seo = _spot_seo_vars(spots)
+    _spot_count = len(spots)
+    _fish_str = "・".join(_seo["top_fish_jp"][:4])
+    _area_sample = "・".join(info["name"] for info in list(areas.values())[:3])
+    _intro = [f"{pref_name}には{_area_sample}など{len(areas)}エリア・{_spot_count}か所の釣り場があります。"]
+    if _fish_str:
+        _intro.append(f"{_fish_str}などが主なターゲットです。")
+    if _seo["spot_type_summary"]:
+        _intro.append(f"{_seo['spot_type_summary']}など多様な釣り場が揃っています。")
     return templates.TemplateResponse(request, "pref.html", {
         "pref_slug": pref_slug,
         "pref_name": pref_name,
@@ -1301,6 +1617,10 @@ def page_pref_or_region(request: Request, slug: str):
         "areas": areas,
         "cities": cities,
         "spots": spots,
+        "spot_count": _spot_count,
+        "top_fish_jp": _seo["top_fish_jp"],
+        "intro_text": "".join(_intro),
+        "page_lead": _PAGE_LEADS.get(pref_slug, ""),
     })
 
 
@@ -1324,6 +1644,13 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
             continue
         cities.setdefault(c_slug, {"name": c_name, "count": 0})
         cities[c_slug]["count"] += 1
+    _seo = _spot_seo_vars(spots)
+    _spot_count = len(spots)
+    _fish_str = "・".join(_seo["top_fish_jp"][:4])
+    _city_sample = "・".join(info["name"] for info in list(cities.values())[:3])
+    _intro = [f"{area_name}エリア（{pref_name}）には{_city_sample}など{len(cities)}市区町村・{_spot_count}か所の釣り場があります。"]
+    if _fish_str:
+        _intro.append(f"{_fish_str}などが主なターゲットです。")
     return templates.TemplateResponse(request, "area.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -1333,6 +1660,10 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
         "region_name": region_name,
         "cities": cities,
         "spots": spots,
+        "spot_count": _spot_count,
+        "top_fish_jp": _seo["top_fish_jp"],
+        "intro_text": "".join(_intro),
+        "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}", ""),
     })
 
 
@@ -1359,6 +1690,12 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         )
         for s in spots
     }
+    _seo = _spot_seo_vars(spots)
+    _spot_count = len(spots)
+    _fish_str = "・".join(_seo["top_fish_jp"][:4])
+    _intro = [f"{city_name}（{area_name}・{pref_name}）には{_spot_count}か所の釣り場があります。"]
+    if _fish_str:
+        _intro.append(f"{_fish_str}などが主なターゲットです。")
     return templates.TemplateResponse(request, "city.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -1372,6 +1709,10 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
         "spot_descriptions": spot_descriptions,
+        "spot_count": _spot_count,
+        "top_fish_jp": _seo["top_fish_jp"],
+        "intro_text": "".join(_intro),
+        "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}/{city_slug}", ""),
     })
 
 
@@ -1498,6 +1839,7 @@ def page_spot_detail(
         blog_posts = _bf.get_posts_for_spot(spot)
     except Exception:
         blog_posts = []
+    qa_items = _build_spot_qa(spot, cached_facilities)
     # 釣り禁止判定と近隣スポット
     is_kinshi = _is_fully_kinshi(spot)
     nearby_spots = _get_nearby_spots(spot) if is_kinshi else []
@@ -1545,4 +1887,5 @@ def page_spot_detail(
         "blog_posts":         blog_posts,
         "is_kinshi":          is_kinshi,
         "nearby_spots":       nearby_spots,
+        "qa_items":           qa_items,
     })

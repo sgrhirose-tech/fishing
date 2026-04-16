@@ -29,12 +29,12 @@
     "lead_text": "浦賀水道に面した東京湾口の岬で、東京湾シーバスゲームの黎明期から知られる実力派ポイントです。岬の北側・南側ともに遠浅のサーフが広がり、ウェーディングでシーバスを狙うアングラーが多く訪れます。沖に出るほど馬の背が点在して水深が変化し、コノシロなどのベイトが絡むタイミングには良型が出やすいと地元では語られています。富津エリアならではの速い潮流が特徴で、特に先端の砂洲エリアは地形が頻繁に変わるため、足元の水位の変化には細心の注意が必要です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "sand_beach",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

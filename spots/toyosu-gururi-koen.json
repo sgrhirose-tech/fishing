@@ -14,24 +14,25 @@
     "city_slug": "koto"
   },
   "physical_features": {
-    "sea_bearing_deg": 230.6,
+    "sea_bearing_deg": 230,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "4km護岸・常夜灯あり、投げ禁止、シーバス・タチウオ向き",
     "access": "国際展示場駅から徒歩30分"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

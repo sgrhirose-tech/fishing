@@ -29,13 +29,13 @@
     "lead_text": "城ヶ崎海岸の南に位置する八幡野港は、「ヒナダン」「マサキ」という一級地磯を白灯堤防のすぐ裏に控えた、磯釣り感覚で楽しめる小さな漁港です。白灯堤防先端から沖へ35m付近で水深は10〜11mと深く掘れており、潮通しも良いため青物の回遊も期待できます。アジは朝マズメ・夕マズメ〜夜釣りにかけて堤防先端付近が狙い目で、メジナは冬場に型が大きくなる傾向があります。アオリイカは秋と春が本シーズンですが、伊東市漁協の規定で4月〜9月は指定区域内でのイカ釣りが禁止となっている点は要注意です。"
   },
   "classification": {
-    "primary_type": "rocky_shore",
+    "primary_type": "fishing_facility",
     "confidence": 0.41,
     "secondary_flags": [
       "cliff",
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=cliff@274m"
     ]

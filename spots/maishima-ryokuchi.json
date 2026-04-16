@@ -29,12 +29,12 @@
     "lead_text": "大阪市此花区の人工島・舞洲にある釣り解放区で、護岸スリット部分にはイガイが付着しており、チヌが壁際を回遊する夏場に常連が集まります。足元の水深は1〜2m程度とやや浅めで、東側の奥へ向かうほど浅くなる地形です。西側の半円状ベランダ手前は潮の変化が出やすく、フカセや落とし込みで実績が高いポイント。釣り解放区は200m弱と限られるため、週末は朝のうちに入るのが常連の間での定石になっています。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

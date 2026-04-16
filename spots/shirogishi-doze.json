@@ -26,11 +26,10 @@
   },
   "info": {
     "notes": "紀北町の湾内漁港、筏クロダイ・グレ向き",
-    "access": "相賀駅から徒歩15分",
-    "photo_url": ""
+    "access": "相賀駅から徒歩15分"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",

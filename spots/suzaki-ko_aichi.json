@@ -26,25 +26,24 @@
   },
   "info": {
     "notes": "西尾市の港、クロダイ・キス・ハゼ向き、整備護岸",
-    "access": "こどもの国駅から徒歩10分",
-    "photo_url": ""
+    "access": "こどもの国駅から徒歩10分"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "harbour"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "harbour=yes@175m",
       "man_made=breakwater@195m"
     ]
   },
   "target_fish": [
+    "shirogisu",
     "kurodai",
-    "haze",
-    "shirogisu"
+    "haze"
   ],
   "harbor_code": "23-11",
   "harbor_name": "洲崎"

@@ -31,10 +31,10 @@
     "lead_text": "那智勝浦町の奥まった入り江に位置する小規模な漁港です。三方を山に囲まれた地形のため外海の波風が届きにくく、湾内は常に穏やかな水面が保たれています。港内は岩礁と砂泥が混在した底質で、堤防際の捨て石周りにカサゴが居ついており、地元の常連は夜間に短時間で探る釣り方を好みます。クロダイは春先から秋口にかけて湾奥に差してくる個体が多く、潮が動く朝夕の時間帯に実績が集中しています。アオリイカは熊野灘特有の秋シーズンが本番で、湾口付近の藻場周辺が定番ポイントです。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

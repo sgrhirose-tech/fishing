@@ -14,27 +14,28 @@
     "city_slug": "funabashi"
   },
   "physical_features": {
-    "sea_bearing_deg": 290.8,
+    "sea_bearing_deg": 290,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "常夜灯あり足場良好、ハゼ・カレイ・シーバス・タチウオ向き",
     "access": "大神宮下駅から徒歩15分"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.62,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "marina",
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "harbour=yes@181m",
       "leisure=marina@240m",
@@ -45,9 +46,9 @@
   },
   "target_fish": [
     "tachiuo",
+    "suzuki",
     "karei",
-    "haze",
-    "suzuki"
+    "haze"
   ],
   "harbor_code": "12-18",
   "harbor_name": "船橋"

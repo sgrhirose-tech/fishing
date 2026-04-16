@@ -27,17 +27,16 @@
   "info": {
     "notes": "半島先端の港、内港でアジ・キス・クロダイ向き（赤灯堤は立入禁止）",
     "access": "田原市方面から車利用",
-    "photo_url": "",
     "lead_text": "渥美半島の先端・伊良湖岬に位置する伊良湖港は、三河湾と伊勢湾の境目にあたり潮通しのよさが際立つ漁港です。現在釣りができるのは白灯台堤防とフェリー乗り場周辺の2エリアで、赤灯台堤防は2022年より立入禁止となっています。白灯台側は砂地底の内港で、夏場はアジのサビキ釣りが朝マズメに集中し、シロギスは6〜8月に実績が高く地元勢に人気のシーズンです。クロダイはヘチ回りに着く個体が多く、春から秋にかけて常連が足元周辺を丁寧に探るスタイルで知られています。"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby",
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "harbour=yes@212m",
       "man_made=breakwater@160m",
@@ -47,9 +46,9 @@
     ]
   },
   "target_fish": [
-    "kurodai",
     "aji",
-    "shirogisu"
+    "shirogisu",
+    "kurodai"
   ],
   "harbor_code": "23-1",
   "harbor_name": "伊良湖"

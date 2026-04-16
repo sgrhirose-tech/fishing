@@ -29,10 +29,10 @@
     "lead_text": "千葉県最大の流域面積を誇る夷隅川の河口部に広がる汽水域の釣り場です。河口はビーチ状の地形で全体的に浅く、支流の三軒屋川との合流付近でも水深は膝下ほど。干潮時には10m先でも水深60cm前後の砂泥質干潟が広がります。ハゼは夏から秋に数釣りができ、10〜11月には15〜20cmの良型が川の対岸側に集まる傾向があります。堤防の外海側ではシロギスやイシモチを狙え、テトラ周りや橋桁付近はスズキの定番ポイントとして地元に知られています。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
