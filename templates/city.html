@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}{{ city_name }}の釣り場・天気情報 | {{ area_name }}・{{ pref_name }} | Tsuricast{% endblock %}
-{% block description %}{{ city_name }}（{{ area_name }}・{{ pref_name }}）の釣り場{{ spots|length }}か所を掲載。天気・海況情報あり。{% endblock %}
+{% block title %}{{ city_name }}の釣り場{{ spot_count }}か所 | {{ area_name }}・{{ pref_name }} | Tsuricast{% endblock %}
+{% block description %}{{ city_name }}（{{ area_name }}・{{ pref_name }}）の釣り場{{ spot_count }}か所を掲載。{% if top_fish_jp %}{{ top_fish_jp[:3]|join('・') }}などが狙えます。{% endif %}天気・海況情報あり。{% endblock %}
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 
@@ -19,6 +19,27 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{{ city_name }}の釣り場一覧",
+  "numberOfItems": {{ spot_count }},
+  "itemListElement": [
+    {% for spot in spots %}
+    {
+      "@type": "ListItem",
+      "position": {{ loop.index }},
+      "item": {
+        "@type": "TouristAttraction",
+        "name": "{{ spot.name }}",
+        "url": "https://tsuricast.jp/{{ spot.area.pref_slug }}/{{ spot.area.area_slug }}/{{ spot.area.city_slug }}/{{ spot.slug }}"
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
 {% endblock %}
 
 {% block content %}
@@ -31,6 +52,11 @@
 </nav>
 
 <h1>{{ city_name }}の釣り場</h1>
+{% if page_lead %}
+<p class="page-intro">{{ page_lead }}</p>
+{% elif intro_text %}
+<p class="page-intro">{{ intro_text }}</p>
+{% endif %}
 
 <div id="map-city" class="map-container"></div>
 

@@ -1,0 +1,47 @@
+{
+  "slug": "mitaka-ko",
+  "name": "見高港",
+  "location": {
+    "latitude": 34.7524034,
+    "longitude": 139.0100098
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "河津町",
+    "city_slug": "kawazu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 210,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 237.3
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 85,
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "今井浜北の小漁港、クロダイ・メジナ・アオリイカ向き",
+    "access": "見高弁天町バス停から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "keyword:港"
+    ]
+  },
+  "target_fish": [
+    "aoriika",
+    "kurodai",
+    "mejina"
+  ],
+  "harbor_code": "22-4",
+  "harbor_name": "白浜"
+}

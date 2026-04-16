@@ -1,0 +1,41 @@
+{
+  "slug": "shonan-ko-ban",
+  "name": "湘南港（白灯堤防）",
+  "location": {
+    "latitude": 35.298201,
+    "longitude": 139.485369
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "藤沢市",
+    "city_slug": "fujisawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": null,
+    "seabed_type": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "この釣り場は2021年8月より行政が釣り禁止に指定しました。",
+    "access": "",
+    "lead_text": "この釣り場は2021年8月より行政が釣り禁止に指定しました。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "kinshi",
+    "osm_evidence": []
+  },
+  "target_fish": [],
+  "harbor_code": "14-19",
+  "harbor_name": "江ノ島"
+}

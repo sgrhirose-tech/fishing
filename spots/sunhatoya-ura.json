@@ -1,0 +1,44 @@
+{
+  "slug": "sunhatoya-ura",
+  "name": "サンハトヤ裏",
+  "location": {
+    "latitude": 34.9907989,
+    "longitude": 139.0925911
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "伊東市",
+    "city_slug": "ito"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 70,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 212.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "伊東の穴場テトラ帯、オールシーズンメジナ向き",
+    "access": "サンハトヤ前バス停から徒歩10分",
+    "lead_text": "東伊豆・伊東に位置するサンハトヤ裏は、護岸整備以前は「横磯」と呼ばれた磯場で、海中の地形はそのまま引き継がれています。岸から35メートルほどの沖合では水深14メートルに達し、急なかけあがりと岩礁帯が複雑に絡み合っています。メジナの魚影は一年を通じて濃く、真冬でもテトラの隙間から良型が顔を出し、2月前後には30センチ超えの実績も高いです。常連はフカセ釣りでコマセを効かせながらテトラ際を丁寧に探っています。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "mejina"
+  ],
+  "harbor_code": "22-2",
+  "harbor_name": "伊東"
+}

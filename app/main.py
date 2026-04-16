@@ -53,6 +53,25 @@ def _load_fish_master() -> None:
 _METHOD_MASTER: dict = {}
 _METHOD_SLUG_TO_NAME: dict = {}  # {slug: 釣法名}
 
+# ── ページリード文 ────────────────────────────────────────────
+_PAGE_LEADS: dict = {}  # {"pref/area/city-key": "リード文", ...}
+
+def _load_page_leads() -> None:
+    global _PAGE_LEADS
+    import csv
+    path = _BASE / "data" / "page_leads_all.tsv"
+    try:
+        with open(path, encoding="utf-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            _PAGE_LEADS = {
+                row["key"]: row["lead"]
+                for row in reader
+                if row.get("lead", "").strip()
+            }
+        print(f"[page_leads] {len(_PAGE_LEADS)} 件のリード文を読み込みました")
+    except Exception as e:
+        print(f"[page_leads] 読み込みエラー: {e}")
+
 def _load_method_master() -> None:
     global _METHOD_MASTER, _METHOD_SLUG_TO_NAME
     path = _BASE / "data" / "method_master.json"
@@ -140,7 +159,7 @@ def _format_date_jp(date_str: str) -> str:
 # フォアキャスト結果キャッシュ（スポットページ高速化用）
 # ============================================================
 _FORECAST_CACHE: dict = {}   # {slug: (timestamp, result)}
-_FORECAST_CACHE_TTL = 300    # 5分（秒）
+_FORECAST_CACHE_TTL = 3600   # 1時間（クローラー対策: 同一スポットの重複 API 呼び出しを防ぐ）
 
 # ============================================================
 # FastAPI アプリ
@@ -164,6 +183,7 @@ async def lifespan(app: FastAPI):
     load_facilities_json()
     _load_fish_master()
     _load_method_master()
+    _load_page_leads()
     _slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     templates.env.globals["fish_slug_map"] = _slug_map
     templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
@@ -191,6 +211,7 @@ _ROBOTS_TXT = """\
 User-agent: *
 Allow: /
 Disallow: /api/
+Crawl-delay: 2
 
 # --- AI training crawlers: block ---
 User-agent: GPTBot
@@ -436,7 +457,13 @@ def api_forecast(slug: str):
     spot = load_spot(slug)
     if not spot:
         raise HTTPException(status_code=404, detail="スポットが見つかりません")
-    return _compute_forecast(spot)
+    # ページロード時のキャッシュを再利用（重複 _compute_forecast 呼び出し防止）
+    _cached = _FORECAST_CACHE.get(slug)
+    if _cached and time.time() - _cached[0] < _FORECAST_CACHE_TTL:
+        return _cached[1]
+    result = _compute_forecast(spot)
+    _FORECAST_CACHE[slug] = (time.time(), result)
+    return result
 
 
 @app.get("/api/ai-comment/{slug}")
@@ -1249,6 +1276,38 @@ def page_area_index(request: Request):
     })
 
 
+_TYPE_LABELS_SIMPLE = {
+    "sand_beach":       "砂浜",
+    "rocky_shore":      "磯",
+    "breakwater":       "堤防",
+    "fishing_facility": "漁港・岸壁",
+}
+
+
+def _spot_seo_vars(spots: list) -> dict:
+    """pref / area / city ページ向け SEO 変数（上位魚種・釣り場タイプ）を集計する。"""
+    from collections import Counter
+    fish_ctr: Counter = Counter()
+    type_ctr: Counter = Counter()
+    for s in spots:
+        for f in (s.get("target_fish") or []):
+            fish_ctr[f] += 1
+        ptype = (s.get("classification") or {}).get("primary_type", "")
+        if ptype:
+            type_ctr[ptype] += 1
+    top_fish_jp = [
+        _FISH_SLUG_TO_NAME[slug]
+        for slug, _ in fish_ctr.most_common(5)
+        if slug in _FISH_SLUG_TO_NAME
+    ]
+    spot_type_summary = "・".join(
+        _TYPE_LABELS_SIMPLE[t]
+        for t, _ in type_ctr.most_common(2)
+        if t in _TYPE_LABELS_SIMPLE
+    )
+    return {"top_fish_jp": top_fish_jp, "spot_type_summary": spot_type_summary}
+
+
 @app.get("/{slug}/", response_class=HTMLResponse)
 def page_pref_or_region(request: Request, slug: str):
     # 地方ページ
@@ -1293,6 +1352,15 @@ def page_pref_or_region(request: Request, slug: str):
         if c_slug:
             cities.setdefault(c_slug, {"name": c_name, "count": 0, "area_slug": a_slug})
             cities[c_slug]["count"] += 1
+    _seo = _spot_seo_vars(spots)
+    _spot_count = len(spots)
+    _fish_str = "・".join(_seo["top_fish_jp"][:4])
+    _area_sample = "・".join(info["name"] for info in list(areas.values())[:3])
+    _intro = [f"{pref_name}には{_area_sample}など{len(areas)}エリア・{_spot_count}か所の釣り場があります。"]
+    if _fish_str:
+        _intro.append(f"{_fish_str}などが主なターゲットです。")
+    if _seo["spot_type_summary"]:
+        _intro.append(f"{_seo['spot_type_summary']}など多様な釣り場が揃っています。")
     return templates.TemplateResponse(request, "pref.html", {
         "pref_slug": pref_slug,
         "pref_name": pref_name,
@@ -1301,6 +1369,10 @@ def page_pref_or_region(request: Request, slug: str):
         "areas": areas,
         "cities": cities,
         "spots": spots,
+        "spot_count": _spot_count,
+        "top_fish_jp": _seo["top_fish_jp"],
+        "intro_text": "".join(_intro),
+        "page_lead": _PAGE_LEADS.get(pref_slug, ""),
     })
 
 
@@ -1324,6 +1396,13 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
             continue
         cities.setdefault(c_slug, {"name": c_name, "count": 0})
         cities[c_slug]["count"] += 1
+    _seo = _spot_seo_vars(spots)
+    _spot_count = len(spots)
+    _fish_str = "・".join(_seo["top_fish_jp"][:4])
+    _city_sample = "・".join(info["name"] for info in list(cities.values())[:3])
+    _intro = [f"{area_name}エリア（{pref_name}）には{_city_sample}など{len(cities)}市区町村・{_spot_count}か所の釣り場があります。"]
+    if _fish_str:
+        _intro.append(f"{_fish_str}などが主なターゲットです。")
     return templates.TemplateResponse(request, "area.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -1333,6 +1412,10 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
         "region_name": region_name,
         "cities": cities,
         "spots": spots,
+        "spot_count": _spot_count,
+        "top_fish_jp": _seo["top_fish_jp"],
+        "intro_text": "".join(_intro),
+        "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}", ""),
     })
 
 
@@ -1359,6 +1442,12 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         )
         for s in spots
     }
+    _seo = _spot_seo_vars(spots)
+    _spot_count = len(spots)
+    _fish_str = "・".join(_seo["top_fish_jp"][:4])
+    _intro = [f"{city_name}（{area_name}・{pref_name}）には{_spot_count}か所の釣り場があります。"]
+    if _fish_str:
+        _intro.append(f"{_fish_str}などが主なターゲットです。")
     return templates.TemplateResponse(request, "city.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -1372,6 +1461,10 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
         "spot_descriptions": spot_descriptions,
+        "spot_count": _spot_count,
+        "top_fish_jp": _seo["top_fish_jp"],
+        "intro_text": "".join(_intro),
+        "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}/{city_slug}", ""),
     })
 
 

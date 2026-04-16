@@ -1,0 +1,46 @@
+{
+  "slug": "jogasaki-iso",
+  "name": "城ヶ崎磯",
+  "location": {
+    "latitude": 34.8910482,
+    "longitude": 139.1399205
+  },
+  "area": {
+    "prefecture": "静岡県",
+    "pref_slug": "shizuoka",
+    "area_name": "東伊豆",
+    "area_slug": "higashi-izu",
+    "city": "伊東市",
+    "city_slug": "ito"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 177.0,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 38.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "関東屈指の一級磯、メジナ・イシダイ・青物向き上級者向け",
+    "access": "伊豆海洋公園バス停から徒歩20分",
+    "lead_text": "東伊豆・伊東市に展開する城ヶ崎海岸は、モズガ根やカドカケ、イガイガ根など多くの地磯ポイントを擁する、関東の釣り人が「磯釣り道場」と呼ぶエリアです。イガイガ根の先端周辺は水深が優に10mを超えるドン深で、ハエ根の際には大型のオナガメジナが潜んでいます。上り潮が差し込む時間帯は沖向きに潮が走り、この流れを利用した釣りでイシダイやヒラマサの大型実績が高く、常連が干潮前後の潮変わりを狙って長時間粘る姿が見られます。"
+  },
+  "classification": {
+    "primary_type": "rocky_shore",
+    "confidence": 0.38,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=bare_rock@193m"
+    ]
+  },
+  "target_fish": [
+    "ishidai",
+    "mejina"
+  ],
+  "harbor_code": "22-3",
+  "harbor_name": "川奈"
+}

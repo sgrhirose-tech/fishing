@@ -1,0 +1,45 @@
+{
+  "slug": "shiokaze-koen",
+  "name": "都立潮風公園",
+  "location": {
+    "latitude": 35.6241814,
+    "longitude": 139.7689676
+  },
+  "area": {
+    "prefecture": "東京都",
+    "pref_slug": "tokyo",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "品川区",
+    "city_slug": "shinagawa"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 270,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "お台場の護岸、投げ・撒き餌禁止、シーバス・クロダイ・ハゼ向き",
+    "access": "東京国際クルーズターミナル駅から徒歩10分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "kurodai",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "13-2",
+  "harbor_name": "芝浦"
+}

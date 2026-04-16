@@ -19,3 +19,8 @@ logs/*.jsonl
 # AIコメントキャッシュ（日次生成・Gitには含めない）
 data/cache/ai_comment_*.json
 data/cache/xpost_*.json
+
+# macOS
+.DS_Store
+.DS_store
+

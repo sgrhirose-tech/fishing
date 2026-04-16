@@ -1,0 +1,46 @@
+{
+  "slug": "kanaya-kaihin-kaigan",
+  "name": "金谷海浜公園前海岸",
+  "location": {
+    "latitude": 35.1668143,
+    "longitude": 139.8215309
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "富津市",
+    "city_slug": "futtsu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 225.9,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1051.8
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
+  },
+  "info": {
+    "notes": "金谷川河口隣接の砂浜、シロギス・マゴチ向き",
+    "access": "浜金谷駅から徒歩5分"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 0.59,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "natural=beach@60m",
+      "waterway=dock@240m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "magochi"
+  ],
+  "harbor_code": "12-10",
+  "harbor_name": "岩井袋"
+}

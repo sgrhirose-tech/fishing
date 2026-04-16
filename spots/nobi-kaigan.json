@@ -1,0 +1,52 @@
+{
+  "slug": "nobi-kaigan",
+  "name": "野比海岸",
+  "location": {
+    "latitude": 35.208533,
+    "longitude": 139.6890529
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "三浦半島",
+    "area_slug": "miura",
+    "city": "横須賀市",
+    "city_slug": "yokosuka"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 155,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "野比川河口南の砂浜、シロギス・マゴチ・ヒラメ向き",
+    "access": "YRP野比駅から徒歩15分",
+    "lead_text": "三浦半島・横須賀市に広がる野比海岸は、野比川河口の南側を中心に砂地と岩盤が入り混じった海底が続くサーフです。エリアは「病院下」「マンション前」「野比川河口付近」の3つに大別され、根が点在する病院下では良型のシロギスが出ることで知られています。潮流が強く海水浴場に指定されていないため、通年で投げ釣りが楽しめます。春から夏にかけてはシロギス・マゴチ・ヒラメの実績が高まり、地元の常連も早朝から竿を出す姿が見られます。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "man_made=breakwater@118m",
+      "man_made=breakwater@225m",
+      "man_made=breakwater@294m",
+      "natural=beach@201m",
+      "natural=beach@74m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "hirame",
+    "magochi"
+  ],
+  "harbor_code": "14-11",
+  "harbor_name": "金田湾"
+}

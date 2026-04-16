@@ -1,0 +1,47 @@
+{
+  "slug": "zushi-kaigan",
+  "name": "逗子海岸",
+  "location": {
+    "latitude": 35.2918619,
+    "longitude": 139.5726447
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "逗子市",
+    "city_slug": "zushi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 240,
+    "seabed_type": "rock",
+    "surfer_spot": true,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "田越川河口でシーバス・キス、海水浴シーズン中の釣り禁止注意",
+    "access": "逗子・葉山駅から徒歩15分",
+    "lead_text": "相模湾に面した逗子新宿湾とも呼ばれるサーフで、岸から100m以上沖に出てもまだ腰下ほどという遠浅の地形が特徴です。砂地底のため根掛かりは少なく、シロギスは6月ごろから実績が上がり始め、地元常連は人出の少ない早朝まずめ狙いが定番です。田越川河口は堰がなく上流まで潮が入り込む構造で、満潮時には60cmクラスのスズキが新逗子駅裏あたりまで遡上することも知られています。海水浴場が開設される7〜8月のライフセーバー監視時間帯（9〜17時頃）はサーフでの釣りを控えるのが無難で、この時期でも田越川の導流堤周辺は釣りが可能なエリアとして地元アングラーに知られています。"
+  },
+  "classification": {
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": [
+      "natural=beach@161m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "suzuki"
+  ],
+  "harbor_code": "14-18",
+  "harbor_name": "新宿湾"
+}

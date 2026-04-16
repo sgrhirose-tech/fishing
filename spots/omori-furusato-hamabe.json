@@ -1,0 +1,51 @@
+{
+  "slug": "omori-furusato-hamabe",
+  "name": "大森ふるさとの浜辺公園",
+  "location": {
+    "latitude": 35.5735868,
+    "longitude": 139.7417316
+  },
+  "area": {
+    "prefecture": "東京都",
+    "pref_slug": "tokyo",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "大田区",
+    "city_slug": "ota"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 53.9,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "砂浜釣禁・投げ禁止、磯護岸のみ延べ竿可、ハゼ向き",
+    "access": "大森町駅から徒歩20分",
+    "lead_text": "この釣り場は2021年に釣り禁止となりました。"
+  },
+  "classification": {
+    "primary_type": "breakwater",
+    "confidence": 0.62,
+    "secondary_flags": [
+      "pier"
+    ],
+    "source": "osm_rule",
+    "osm_evidence": [
+      "man_made=breakwater@139m",
+      "man_made=breakwater@254m",
+      "man_made=breakwater@285m",
+      "man_made=pier@158m",
+      "man_made=pier@288m"
+    ]
+  },
+  "target_fish": [
+    "haze"
+  ],
+  "harbor_code": "13-3",
+  "harbor_name": "羽田"
+}

@@ -1,0 +1,50 @@
+{
+  "slug": "kotsubo-gyoko",
+  "name": "小坪漁港",
+  "location": {
+    "latitude": 35.2942866,
+    "longitude": 139.5565796
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "逗子市",
+    "city_slug": "zushi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 210,
+    "seabed_type": "rock",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1533.4
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 35,
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "港内は2020年11月より釣禁・立入禁止、外側テトラのみ可",
+    "access": "逗子市方面から車利用",
+    "lead_text": "逗子市の小坪漁港外側に延びるテトラ帯で、小坪海浜公園のプール前あたりまで続く相模湾向きのポイントです。テトラ足元から3〜5m沖にかけて海藻が繁茂しており、流れ込みに近いエリアの水深は3〜5m程度ですが、プール前方向へ進むにつれて6m超になります。小突堤付け根の小河川流れ込みがチヌとメジナの常連人気スポットで、ウキフカセとダンゴ釣りが主流。夏から秋には外海側まで青物が回遊し、ソウダガツオやイナダの姿が見られます。夕方から夜間はメバルとカサゴの活性が上がり、テトラの穴を丁寧に探る釣り人が集まります。"
+  },
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "cliff",
+      "marina",
+      "parking_nearby"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "leisure=marina@136m",
+      "natural=cliff@200m",
+      "natural=cliff@289m"
+    ]
+  },
+  "target_fish": [],
+  "harbor_code": "14-18",
+  "harbor_name": "新宿湾"
+}

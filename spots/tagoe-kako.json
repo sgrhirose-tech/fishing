@@ -1,0 +1,50 @@
+{
+  "slug": "tagoe-kako",
+  "name": "田越川河口",
+  "location": {
+    "latitude": 35.2871424,
+    "longitude": 139.5725012
+  },
+  "area": {
+    "prefecture": "神奈川県",
+    "pref_slug": "kanagawa",
+    "area_name": "相模湾",
+    "area_slug": "sagamibay",
+    "city": "逗子市",
+    "city_slug": "sushi"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 275,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1741.1
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "逗子海岸に注ぐ河口、シーバス・ハゼ・キス向き",
+    "access": "逗子・葉山駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "marina",
+      "parking_nearby"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "leisure=marina@276m"
+    ]
+  },
+  "target_fish": [
+    "shirogisu",
+    "suzuki",
+    "haze"
+  ],
+  "harbor_code": "14-18",
+  "harbor_name": "新宿湾"
+}

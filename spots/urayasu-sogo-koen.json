@@ -1,0 +1,45 @@
+{
+  "slug": "urayasu-sogo-koen",
+  "name": "浦安総合公園護岸",
+  "location": {
+    "latitude": 35.6359026,
+    "longitude": 139.9282149
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "東京湾",
+    "area_slug": "tokyobay",
+    "city": "浦安市",
+    "city_slug": "urayasu"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 146.2,
+    "seabed_type": "unknown",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": ""
+  },
+  "info": {
+    "notes": "猫実川河口の護岸、ハゼ・シーバス・キス向き",
+    "access": "三井ＧＨプラナ東京ベイ（羽田）（羽田空港線・下り）バス停から徒歩5分",
+    "lead_text": "千葉県浦安市明海に位置する猫実川（境川）河口左岸の護岸で、2022年7月に整備・開放された比較的新しい釣り場です。護岸前面にはテトラが並んでおり、岸際から沖は砂泥底が広がります。ハゼは夏から秋に砂泥底で好調で、テトラ越しに探れる5m前後の竿が活躍します。シロギスも同じ砂泥エリアで混じります。スズキは河口の潮の流れが効く夕マズメ以降が定番で、春のバチ抜けシーズンにもルアーへの反応が上がる傾向があります。"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 0.0,
+    "secondary_flags": [],
+    "source": "osm_rule",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "haze",
+    "suzuki",
+    "shirogisu"
+  ],
+  "harbor_code": "12-17",
+  "harbor_name": "市川"
+}

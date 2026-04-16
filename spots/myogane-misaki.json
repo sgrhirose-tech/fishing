@@ -1,0 +1,46 @@
+{
+  "slug": "myogane-misaki",
+  "name": "明鐘岬",
+  "location": {
+    "latitude": 35.1548634,
+    "longitude": 139.8169255
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "鋸南町",
+    "city_slug": "kyonan"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 265,
+    "seabed_type": "sand",
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": null
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 50,
+    "seabed_summary": "",
+    "terrain_summary": ""
+  },
+  "info": {
+    "notes": "内房屈指の地磯、クロダイ・メジナ・キス・シーバス向き",
+    "access": "山麓駅から徒歩20分"
+  },
+  "classification": {
+    "primary_type": "unknown",
+    "confidence": 1.0,
+    "secondary_flags": [],
+    "source": "manual",
+    "osm_evidence": []
+  },
+  "target_fish": [
+    "shirogisu",
+    "kurodai",
+    "suzuki",
+    "mejina"
+  ],
+  "harbor_code": "12-15",
+  "harbor_name": "寒川"
+}
