@@ -29,12 +29,12 @@
     "lead_text": "阪南市・箱作に位置する下荘漁港は、西鳥取漁港とピチピチビーチの間にひっそりと佇む小規模漁港です。波止の曲がり角から先150mほどの小さなテトラ帯がメインの釣り場で、テトラ際にチヌやメバル・ガシラが居着いています。漁港内には常夜灯が等間隔に並んでおり、常連たちは日没後から潮が動き出す時間帯を中心に通います。漁港へ向かう道が細く分かりにくいこともあり、大阪湾南部のなかでも人が少なく静かに竿を出せる場所として知られています。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.62,
     "secondary_flags": [
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@131m",
       "man_made=breakwater@227m",

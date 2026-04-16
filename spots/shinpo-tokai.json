@@ -31,12 +31,12 @@
     "lead_text": "天白川が伊勢湾へ注ぐ東海市側の護岸に広がる新宝緑地は、一帯が干潟に囲まれた典型的な河口フィールドです。全体的に水深が浅く、干潮時にはほぼ釣りにならないため、常連は満潮前後の時間帯を軸に釣行計画を立てています。クロダイは夜間に伊勢湾側から餌を求めて遡上してくる個体が多く、アナジャコやアケミ貝を餌にしたぶっこみで狙うのが地元定番の流儀です。タモ網は4〜5m以上のものが必須です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

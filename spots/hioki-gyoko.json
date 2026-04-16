@@ -31,10 +31,10 @@
     "lead_text": "白浜町日置の漁港で、すぐ南側を日置川が紀伊水道へ注ぐ河口に隣接しているのが最大の特徴です。川と海の水が混じり合うエリアにあるため周年を通じて魚影が濃く、アジ・クロダイ・アオリイカのほかグレやキス、スズキも交じります。漁港には常夜灯があり、夜間から夜明け前後の時間帯にエギングでアオリイカを狙う地元アングラーが多く集まります。クロダイはフカセ釣りの実績が高く、特に夕マズメに活性が上がる傾向があります。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.81,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@170m",
       "man_made=breakwater@229m",

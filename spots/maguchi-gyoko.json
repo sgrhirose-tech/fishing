@@ -30,7 +30,7 @@
     "lead_text": "三浦半島の先端部、剱崎に隣接する間口漁港は2020年以降港内への立ち入りが禁止となり、現在は大浦海岸から入磯する地磯が陸っぱりの主戦場です。根がガチャガチャと入り組んだ浅い磯で、メジナ・クロダイ・メバル・ウミタナゴの実績が高く、荒れ気味の日に良型が出やすいと常連の間では知られています。夏から秋の早朝・夕まずめにはアジやイワシの回遊も入ります。"
   },
   "classification": {
-    "primary_type": "rocky_shore",
+    "primary_type": "fishing_facility",
     "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",

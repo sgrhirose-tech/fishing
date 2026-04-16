@@ -31,10 +31,10 @@
     "lead_text": "清水港の袖師埠頭は、SOLAS条約の影響で立入禁止エリアが多く、釣りができるのは埠頭奥の限られた岸壁エリアです。庵原川の排水・河川流入が近く、潮が動く時間帯には魚の活性が上がりやすい地形です。タチウオは群れが接岸する秋が本番で、常連は暗い時間帯に発電機を持ち込んで電気ウキで狙うスタイルが定番となっています。アオリイカは同じ秋のシーズンにエギングで実績があり、ベイトフィッシュの接岸次第で青物やカマスの回遊も見られます。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

@@ -31,12 +31,12 @@
     "lead_text": "ヒラメ狙いは離岸流を見つけて狙うと良い釣果が期待でき、シロギスの釣果が良い場所や水深に変化のある場所が有望なポイントの目安になります。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "sand_beach",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

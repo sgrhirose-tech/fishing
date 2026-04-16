@@ -29,12 +29,12 @@
     "lead_text": "東京湾に面した木更津の遠浅護岸で、底質は砂地が広がります。干潮時は水深が1m以下になることもあり、釣りになるのは満潮前後の限られた時間帯。シーバスのメジャーポイント・矢那川河口の対岸に位置するため潮通しはよく、春から秋にかけてクロダイやキビレの実績があります。公園東側の河口エリアは汽水を好む魚が入りやすく、夜の時合いにチンチン（クロダイの若魚）が顔を出すことも。場所によっては捨て石が点在し根掛かりに注意が必要です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
