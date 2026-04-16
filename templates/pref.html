@@ -84,6 +84,13 @@
     {% endfor %}
   </div>
 </section>
+<section class="recommended-fish-section" id="rec-fish-section" style="display:none">
+  <h2>今の時期に釣れる魚</h2>
+  <div id="rec-fish-cards" class="rec-fish-scroll">
+    <p class="rec-fish-loading">読み込み中…</p>
+  </div>
+</section>
+
 <a href="/{{ region_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
 
@@ -93,5 +100,36 @@
   document.addEventListener('DOMContentLoaded', function() {
     initSpotListMap('map-pref', SPOTS);
   });
+</script>
+<script>
+(function() {
+  fetch('/api/recommended-fish?pref={{ pref_slug }}')
+    .then(function(r) { return r.json(); })
+    .then(function(items) {
+      var container = document.getElementById('rec-fish-cards');
+      var section = document.getElementById('rec-fish-section');
+      if (!items.length) return;
+      section.style.display = '';
+      container.innerHTML = items.map(function(fish) {
+        var img = fish.image
+          ? '<img src="' + fish.image + '" alt="' + fish.name + '" loading="lazy">'
+          : '<div class="rec-fish-no-img"></div>';
+        var method = fish.method.length
+          ? '<p class="rec-fish-method">' + fish.method.join('・') + '</p>'
+          : '';
+        var spots = fish.spots.map(function(s) {
+          return '<li><a href="' + s.url + '">' + s.name + '</a></li>';
+        }).join('');
+        return '<div class="rec-fish-card">'
+          + img
+          + '<div class="rec-fish-info">'
+          + '<a href="/fish/' + fish.slug + '/" class="rec-fish-name">' + fish.name + '</a>'
+          + method
+          + '<ul class="rec-fish-spots">' + spots + '</ul>'
+          + '</div></div>';
+      }).join('');
+    })
+    .catch(function() {});
+})();
 </script>
 {% endblock %}

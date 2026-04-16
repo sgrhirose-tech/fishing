@@ -1205,6 +1205,49 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .method-fish-card-img { width: 64px; height: 48px; object-fit: cover; border-radius: 5px; display: block; }
 .method-fish-card-img--placeholder { background: #e8f4fb; }
 .method-fish-card-name { font-size: .82rem; font-weight: bold; color: #1a4a7a; text-align: center; }
+
+/* ---- おすすめ釣り魚カード ---- */
+.recommended-fish-section { margin: 2rem 0; }
+.recommended-fish-section h2 { font-size: 1.1rem; margin-bottom: .75rem; }
+.rec-fish-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: .5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.rec-fish-card {
+  flex: 0 0 160px;
+  scroll-snap-align: start;
+  border: 1px solid #d0e4f0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+.rec-fish-card img, .rec-fish-no-img {
+  width: 160px;
+  height: 100px;
+  object-fit: cover;
+  background: #e8f4fb;
+  display: block;
+}
+.rec-fish-info { padding: .5rem; }
+.rec-fish-name {
+  font-weight: bold;
+  font-size: .95rem;
+  display: block;
+  margin-bottom: .25rem;
+  text-decoration: none;
+  color: #1a6fa0;
+}
+.rec-fish-name:hover { text-decoration: underline; }
+.rec-fish-method { font-size: .75rem; color: #666; margin: .2rem 0; }
+.rec-fish-spots { list-style: none; padding: 0; margin: .3rem 0 0; font-size: .75rem; }
+.rec-fish-spots li + li { margin-top: .15rem; }
+.rec-fish-spots li a { color: #444; text-decoration: none; }
+.rec-fish-spots li a:hover { text-decoration: underline; }
+.rec-fish-loading { color: #999; font-size: .85rem; }
 .method-fish-card-count { font-size: .72rem; color: #888; }
 
 /* 近隣スポットセクション（釣り禁止スポット用） */
