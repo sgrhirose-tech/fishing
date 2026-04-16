@@ -14,14 +14,15 @@
     "city_slug": "kainan"
   },
   "physical_features": {
-    "sea_bearing_deg": 10.6,
+    "sea_bearing_deg": 10,
     "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1713.0
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "海南市の漁港。クロダイ、スズキ、アジが狙える。市街地からのアクセスが良い。",
@@ -29,18 +30,18 @@
     "lead_text": "紀伊水道に面した海南漁港は、発電所からの温排水が流れ込む波止を抱えているのが大きな特徴です。この温排水の影響で水温が下がりにくく、クロダイはウキフカセや紀州釣りで春・秋はもちろん、冬場でも釣果が期待できると地元の常連に知られています。スズキはルアーで狙う釣り人が多く、特に夜間の岸壁際が実績ポイントです。アジはサビキやカゴ釣りのほか、夜のアジングでもコンスタントに出ており、夜間に通う釣り人の姿が絶えません。"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@268m"
     ]
   },
   "target_fish": [
+    "aji",
     "kurodai",
-    "suzuki",
-    "aji"
+    "suzuki"
   ],
   "harbor_code": "30-10",
   "harbor_name": "海南"

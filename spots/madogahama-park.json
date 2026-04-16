@@ -21,7 +21,8 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "整備された護岸公園、ファミリー向き",
@@ -29,12 +30,12 @@
     "lead_text": "下田港に面した整備された護岸公園です。底質は石・岩主体で貝殻混じり、海底傾斜がやや急深な地形になっています。公園左端のゴロタ石磯場に隣接するエリアは潮通しが良く、アジ回遊の実績で常連に知られるポイントです。右側護岸はカマスやクロダイ狙い向け、中央エリアはアオリイカのエギングに実績があります。全体的に水深は浅めで、夏場はキスのちょい投げ、夜間はエギングを楽しむアングラーの姿も多いです。駐車場に開放時間の制限があり、朝まずめや夜釣りには対応していない点に注意が必要です。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [],

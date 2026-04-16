@@ -27,16 +27,15 @@
   "info": {
     "notes": "和歌山県東牟婁郡の主要漁港。アジ・サバ・カマス・スズキ・クロダイ・アオリイカが狙える。堤防・岸壁から手軽に釣れる好ポイント。",
     "access": "勝浦温泉バス停から徒歩5分",
-    "photo_url": "",
     "lead_text": "熊野灘に面した那智勝浦港は、「渡の島」と呼ばれる広い護岸と漁港内の岸壁が主な釣り場です。潮通しのよい渡の島エリアは地元では「エギング銀座」の異名で知られ、春と秋にアオリイカの実績が高く、夜間は常夜灯に加えて対岸ホテルの明かりが水面を照らすため、アジングやエギングを楽しむ常連が集まります。アジは回遊次第ながら通年狙えます。クロダイはウキ釣りやヘチ釣りで港内の岸壁際に実績があります。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

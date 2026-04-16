@@ -14,14 +14,15 @@
     "city_slug": "ota"
   },
   "physical_features": {
-    "sea_bearing_deg": 53.9,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 55,
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "砂浜釣禁・投げ禁止、磯護岸のみ延べ竿可、ハゼ向き",
@@ -29,12 +30,12 @@
     "lead_text": "この釣り場は2021年に釣り禁止となりました。"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.62,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@139m",
       "man_made=breakwater@254m",

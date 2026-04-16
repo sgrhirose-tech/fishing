@@ -14,14 +14,15 @@
     "city_slug": "koto"
   },
   "physical_features": {
-    "sea_bearing_deg": 353.3,
+    "sea_bearing_deg": 355,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "砂町運河沿い、バーベキュー併設、ハゼ・シーバス・クロダイ向き",
@@ -29,16 +30,16 @@
     "lead_text": "東京湾と砂町運河に面した新木場ふ頭の護岸公園で、釣りができるのは北面約120mの護岸です。新曙橋と千石橋からの流れが交差するエリアは潮が複雑に動き、海底にカキ殻や障害物が混在しています。千石橋の橋脚まわりにはハゼが多く着き、正面の東京湾向きにはスズキが回遊しやすい傾向があります。ハゼは春から秋が主なシーズンで、スズキとクロダイは通年狙えます。常夜灯があるため夜間の釣行も快適で、常連はまずめ時に橋脚際を集中して狙うスタイルが多いです。なお場内は投げ釣り禁止のため、ちょい投げや足元狙いが基本になります。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
     "kurodai",
-    "haze",
-    "suzuki"
+    "suzuki",
+    "haze"
   ],
   "harbor_code": "13-14",
   "harbor_name": "晴海"

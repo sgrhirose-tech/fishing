@@ -14,14 +14,15 @@
     "city_slug": "mihama"
   },
   "physical_features": {
-    "sea_bearing_deg": 192.3,
+    "sea_bearing_deg": 190,
     "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1440.2
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "美浜町の砂礫海岸。シロギス、カレイ、スズキの投げ釣りが有名。紀伊水道屈指の投げ釣りポイント。",
@@ -29,18 +30,18 @@
     "lead_text": "美浜町・日高川河口の右岸から西の磯場にかけて約5kmにわたって続く砂礫サーフです。波打ち際からすぐに深くなる地形で外洋の潮流が速く、離岸流も随所に発生します。東側の河口寄りはシロギスやスズキの実績が高いです。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
     "shirogisu",
-    "karei",
-    "suzuki"
+    "suzuki",
+    "karei"
   ],
   "harbor_code": "30-7",
   "harbor_name": "比井湾"

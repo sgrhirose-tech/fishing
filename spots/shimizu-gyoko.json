@@ -14,33 +14,34 @@
     "city_slug": "kainan"
   },
   "physical_features": {
-    "sea_bearing_deg": 355.2,
+    "sea_bearing_deg": 355,
     "seabed_type": "gravel",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 65,
-    "seabed_summary": "礫主体、近傍に石要素あり"
+    "seabed_summary": "礫主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "海南市冷水浦の漁港。アジ、クロダイ、アオリイカが狙える。秋のエギングシーズンに混む。",
     "access": "冷水浦駅から徒歩10分"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.62,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@126m",
       "man_made=breakwater@91m"
     ]
   },
   "target_fish": [
+    "aji",
     "aoriika",
-    "kurodai",
-    "aji"
+    "kurodai"
   ],
   "harbor_code": "30-10",
   "harbor_name": "海南"

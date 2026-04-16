@@ -21,20 +21,22 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "seabed_summary": "砂主体"
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "大型港、護岸・狩野川河口で釣り可能エリアあり",
     "access": "沼津魚市場街バス停から徒歩5分",
-    "lead_text": "ただし、釣り人のマナーの悪さが原因で釣り禁止や立入禁止のエリアが増えており、訪問前に最新情報の確認が必要です。"
+    "lead_text": "ただし、釣り人のマナーの悪さが原因で釣り禁止や立入禁止のエリアが増えており、訪問前に最新情報の確認が必要です。",
+    "description": "釣り人のマナーの悪さが原因で釣り禁止や立入禁止のエリアが増えており、訪問前に最新情報の確認が必要です。"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "harbour=yes@230m",
       "man_made=breakwater@266m"

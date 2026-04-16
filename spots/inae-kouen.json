@@ -31,7 +31,7 @@
     "photo_url": "/static/img/spots/inae-kouen.jpg"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"

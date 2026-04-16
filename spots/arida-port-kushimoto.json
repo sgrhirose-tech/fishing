@@ -26,14 +26,13 @@
   },
   "info": {
     "notes": "串本町有田の漁港。アジ・アオリイカ・カサゴ・クロダイが狙える。熊野灘側に開けており回遊魚も期待できる。",
-    "access": "紀伊有田駅から徒歩10分",
-    "photo_url": ""
+    "access": "紀伊有田駅から徒歩10分"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@267m",
       "natural=bare_rock@293m"

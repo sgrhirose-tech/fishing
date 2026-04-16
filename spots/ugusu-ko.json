@@ -21,19 +21,20 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "西伊豆町北の漁港、アジ・メジナ・アオリイカ向き",
     "access": "黄金崎クリスタルパークバス停から徒歩10分"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.81,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@140m",
       "man_made=breakwater@173m",
@@ -43,9 +44,9 @@
     ]
   },
   "target_fish": [
+    "aji",
     "aoriika",
-    "mejina",
-    "aji"
+    "mejina"
   ],
   "harbor_code": "22-9",
   "harbor_name": "宇久須"

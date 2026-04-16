@@ -26,16 +26,15 @@
   },
   "info": {
     "notes": "武豊町南の小漁港、クロダイ・カレイ向き",
-    "access": "富貴駅東駅から徒歩5分",
-    "photo_url": ""
+    "access": "富貴駅東駅から徒歩5分"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

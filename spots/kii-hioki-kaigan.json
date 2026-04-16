@@ -15,7 +15,7 @@
   },
   "physical_features": {
     "sea_bearing_deg": 210,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 996.1
   },
@@ -26,16 +26,15 @@
   },
   "info": {
     "notes": "白浜町日置の海岸。シロギス、カレイの投げ釣りが人気。砂浜が続きキス釣りの好ポイント。",
-    "access": "白浜町方面から車利用",
-    "photo_url": ""
+    "access": "白浜町方面から車利用"
   },
   "classification": {
-    "primary_type": "rocky_shore",
-    "confidence": 0.38,
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=bare_rock@254m",
       "natural=bare_rock@280m"

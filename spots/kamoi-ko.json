@@ -14,32 +14,33 @@
     "city_slug": "yokosuka"
   },
   "physical_features": {
-    "sea_bearing_deg": 120.5,
+    "sea_bearing_deg": 120,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1364.3
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "東京湾口の潮通し良好な小港、アジ・クロダイ・シーバス向き",
     "access": "鴨居バス停から徒歩0分"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@252m",
       "natural=beach@164m"
     ]
   },
   "target_fish": [
-    "kurodai",
     "aji",
+    "kurodai",
     "suzuki"
   ],
   "harbor_code": "14-8",

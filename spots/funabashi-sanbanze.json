@@ -14,30 +14,31 @@
     "city_slug": "funabashi"
   },
   "physical_features": {
-    "sea_bearing_deg": 188.9,
+    "sea_bearing_deg": 190,
     "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "seabed_summary": "砂主体"
+    "seabed_summary": "砂主体",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "干潟と突堤の公園、満潮時推奨、シーバス・クロダイ・ハゼ向き",
     "access": "船橋海浜公園バス停から徒歩5分"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "breakwater",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
     "kurodai",
-    "haze",
-    "suzuki"
+    "suzuki",
+    "haze"
   ],
   "harbor_code": "12-18",
   "harbor_name": "船橋"

@@ -26,11 +26,10 @@
   },
   "info": {
     "notes": "鳥羽市の港護岸、アジ・クロダイ・メバル向き",
-    "access": "中之郷駅から徒歩5分",
-    "photo_url": ""
+    "access": "中之郷駅から徒歩5分"
   },
   "classification": {
-    "primary_type": "rocky_shore",
+    "primary_type": "fishing_facility",
     "confidence": 1.0,
     "secondary_flags": [
       "cliff",
