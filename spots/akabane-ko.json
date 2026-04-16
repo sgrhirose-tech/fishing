@@ -29,12 +29,12 @@
     "lead_text": "渥美半島の太平洋側に面した田原市の遠浅サーフで、沖35m地点でも水深4m前後という地形が続きます。砂泥底が広がりシロギスの好漁場で、春〜夏の接岸シーズンには常連の投げ師が早朝から竿を並べます。夏はサーファーで砂浜が混み合うため、地元勢は6月のピンギスか9月以降の落ちギスシーズンに絞って訪れることが多いです。赤灯台堤防のテトラ越しに西海岸方向へ投げるとキスやイシモチが交じります。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

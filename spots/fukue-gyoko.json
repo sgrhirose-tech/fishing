@@ -31,10 +31,10 @@
     "lead_text": "アジはサビキ釣りで狙え、夕方以降に反応が上向く傾向があります。港内は投げ釣り禁止のため、いずれの魚種も仕掛けは足元主体になります。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.43,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@279m"
     ]

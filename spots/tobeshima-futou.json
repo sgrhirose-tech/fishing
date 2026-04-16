@@ -31,10 +31,10 @@
     "lead_text": "愛知県飛島村の名港西４区に位置する直線約940mのコンクリート護岸。貯木場に隣接した構造で、岸壁際にはクロダイが居着きやすい環境が整っています。夏場はハゼ狙いの常連で護岸が賑わい、水温が落ち始める秋口からクロダイとシーバスを意識した釣り人の姿が増えます。岸壁中央付近から伊勢湾岸道方面のエリアが特に実績が高く、名古屋・三重方面からも足を運ぶ釣り人が多いポイントです。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

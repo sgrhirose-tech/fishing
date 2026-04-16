@@ -29,13 +29,13 @@
     "lead_text": "堺市堺区に位置する旧港緑地は、整備された護岸沿いにクロダイを狙う地元アングラーが通い続ける都市型の釣り場です。湾奥は水深1〜2ヒロほどと浅く、棚を底付近に合わせてシモリを丁寧に探るスタイルが定着しています。チヌやキビレの活性は6月ごろから上向き始める傾向があり、日中はエビ撒き、夜間はアオイソメのウキ釣りで狙う常連も多いとか。旧堺灯台の立つ風景の中、落とし込みやヘチ釣りでコツコツ足で探っていくのがこのポイントの流儀です。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.62,
     "secondary_flags": [
       "parking_nearby",
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@139m",
       "man_made=pier@112m",

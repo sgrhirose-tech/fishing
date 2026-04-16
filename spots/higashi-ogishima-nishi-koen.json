@@ -30,12 +30,12 @@
     "lead_text": "川崎市で唯一の海釣りスポットとして地元では「西公園」の愛称で親しまれています。全長約540mの護岸は北側の火力発電所の温排水の影響で冬場も魚影が安定しやすく、南側の先端部は潮通しが抜群です。タチウオは先端が実績ナンバーワンですが中央付近でも当たりが出ることがあります。出かける前に公園内の勇竿釣具店のSNSで釣況を確認しておくのがこの釣り場の定番です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

@@ -31,12 +31,12 @@
     "lead_text": "知多半島西側、伊勢湾に面した常滑りんくう釣り護岸。約1kmの護岸は海底が砂地続きで、足元の敷石エリアにはウィードが茂りクロダイが付きやすい地形です。護岸中間部にあるセントレア大橋・鉄道橋の橋脚まわりはストラクチャーとなっており、常連がクロダイ狙いで足を運ぶ一級ポイント。夏の夕マヅメには石畳の橋下付近で大型のクロダイが出ることも。秋口の下げ潮では朝7〜10時ごろにアタリが集中する傾向があります。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

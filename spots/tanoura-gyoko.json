@@ -31,13 +31,13 @@
     "lead_text": "冬から春にかけてはメバルの好期で、地続き一文字の姥岩まわりを中心に、シモリが点在する遊歩道の波止や港内の常夜灯まわりがカサゴ・メバルの実績エリアです。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.62,
     "secondary_flags": [
       "parking_nearby",
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@152m",
       "man_made=breakwater@160m",

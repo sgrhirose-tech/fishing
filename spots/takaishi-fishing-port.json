@@ -29,12 +29,12 @@
     "lead_text": "大阪府高石市の浜寺運河沿いに位置する漁港です。防波堤は比較的狭く、足もとの水深が浅いため、タチウオ狙いは遠投が必要になります。秋口になると常連が夜に並び始め、夏から秋にかけてハクやいなっこが湧く運河筋を回遊してくる個体を電気ウキで狙うスタイルが定番です。漁師やマリーナ関係者も使う場所なのでゴミには特に気を遣いたいところです。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.62,
     "secondary_flags": [
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "harbour=yes@84m",
       "man_made=breakwater@132m",

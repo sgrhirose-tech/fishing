@@ -31,10 +31,10 @@
     "lead_text": "常滑市南寄りに位置する小さな漁港で、右手に境川が流れ込むコの字型の堤防が目印です。港全体の水深が浅く、干潮時にはほぼ釣りが成立しないほど潮が引いてしまうため、地元の常連たちは満潮前後の短い時間帯に的を絞って訪れます。アオリイカは防波堤外側のテトラポッド際に入ることが多く、秋の夕マズメから夜間にかけて活性が上がります。また、5月〜10月には航路付近で40cmオーバーのクロダイの釣果報告も出ている静かな一帯です。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.62,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@108m",
       "man_made=breakwater@233m"

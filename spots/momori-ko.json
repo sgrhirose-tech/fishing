@@ -29,10 +29,10 @@
     "lead_text": "田辺湾の最奥にある文里港は、地元の釣具店が「台風の時でも波が来ない」と称するほど穏やかな漁港です。港内全体にクロダイの魚影が濃く、とりわけ港奥の停泊場岸壁や白灯台周辺は常連が足繁く通う定番ポイント。濁りが入ったタイミングや夜間の実績が高く、ウキフカセや紀州釣りスタイルで狙う釣り人が多いです。アジとサバはサビキで群れが入ると一気に数が伸び、湾奥ならではの落ち着いた水面でじっくり待てる釣り場です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

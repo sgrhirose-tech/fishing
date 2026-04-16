@@ -31,12 +31,12 @@
     "lead_text": "知多半島・知多市に位置する全長740mの管理堤防です。水深3〜5m、足元から5mほどの範囲に敷石が沈んでカサゴやメバルの住処になっており、その沖からは砂地が続きます。春先になると手前側に海藻が密生し始め、ポイントが絞られる時期として常連には知られています。夏場はクロダイ・キス・ハゼ、秋になるとアジやセイゴの回遊も加わり魚種が入れ替わります。冬はカレイやアイナメ狙いの釣り人が夜明け前から並んで定位置を確保する姿が見られます。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [],

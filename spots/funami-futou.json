@@ -31,10 +31,10 @@
     "lead_text": "名古屋港エリアに位置する船見埠頭は、潮見埠頭と連結した突堤状の護岸が伸びる岸壁ポイントです。駐車スペースが限られる分、人が少なく落ち着いて竿を出せる穴場として知られています。岸壁のキワを丁寧に探る落とし込みスタイルが定番で、クロダイとシーバスが同じポイントで混在するのがこの場所の面白さ。春の乗っ込み期から夏・秋にかけてクロダイの動きが活発になり、夜釣りではアナゴが交じることもあります。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

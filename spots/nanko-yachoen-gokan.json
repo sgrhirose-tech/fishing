@@ -29,12 +29,12 @@
     "lead_text": "大阪南港の人工干潟に隣接する護岸で、大阪のローカルアングラーが古くから通うクロダイの一級ポイントです。夏から秋にかけてがシーズン本番で、常連はフカセ釣りや紀州釣り、落とし込みを使い分けて狙います。秋には30〜40cmクラスが2ケタ釣果になることも。隣接する野鳥園には渡り鳥が多く飛来するため、釣り糸や針の放置は厳禁です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

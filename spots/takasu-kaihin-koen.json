@@ -29,12 +29,12 @@
     "lead_text": "浦安・高洲の約1km護岸は、岸壁直下にテトラが沈むため足元チョイ投げができず、10m以上の投げが基本スタイルです。ハゼの好機は5〜10月で、公園東端に流れ込む境川河口の砂泥底が地元常連の定番ポイント。上げ潮が効き始める時間帯に人が集まる傾向があり、テトラをかわせる4m以上の竿が必須です。"
   },
   "classification": {
-    "primary_type": "sand_beach",
+    "primary_type": "fishing_facility",
     "confidence": 0.52,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=sand@104m",
       "natural=sand@111m",

@@ -31,12 +31,12 @@
     "lead_text": "南知多町の伊勢湾岸に位置する中洲漁港は、すぐ隣に豊浜漁港がありながらも訪れる釣り人が少なく、知る人ぞ知る穴場的な存在として地元アングラーの間で知られています。クロダイ狙いの常連が好む釣り座は白灯台の先端付近で、海草の切れ間にエサをじっくり送り込むスタイルが定番です。大突堤の南側には藻場が広がっており、春の乗っ込み期には40cmクラスの実績が上がることもあります。夜釣りでは夕刻から夜9時頃の時間帯に北の小突堤へ足を運ぶメバル狙いの常連の姿も見られます。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.43,
     "secondary_flags": [
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@204m",
       "man_made=pier@173m",

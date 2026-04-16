@@ -31,12 +31,12 @@
     "lead_text": "三河湾に面した西尾市の一色港は、市子川の河口に隣接する大きな漁港です。川と海が交わる地形から潮通しがよく、船が行き来する川側は水深が比較的深め。L字突堤や岸壁では、夏の夜になると電気ウキが並ぶほどクロダイ狙いの常連が集まり、落とし込みやヘチ釣りで実績があります。ハゼは「三河湾ハゼ釣り大会」の会場にもなるほど魚影が濃く、秋口は足元より少し投げた先でアタリが多い傾向があります。シロギスも釣果が上がっており、水深が浅いポイントは満潮から下げにかけての時間帯が狙い目です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

@@ -31,12 +31,12 @@
     "lead_text": "和歌浦湾の奥、片男波海浜に隣接する漁港で、紀州釣りのメッカとして地元アングラーに知られた存在です。漁港南側から沖へ伸びる西堤防の外側には大型テトラが入っており、クロダイは落とし込みで狙うスタイルが主流です。東堤防は外海側が開けて潮通しもよく、アジは5〜6月ごろから中層以下に入りはじめ、15〜17cmの良型がコンスタントに出る時期があります。スズキは港内各所で実績があり、夜間の岸壁際でも気配が出ます。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.43,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@204m"
     ]

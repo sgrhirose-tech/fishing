@@ -29,10 +29,10 @@
     "lead_text": "ゴーシュ浦は三浦半島南端・雨崎地区に位置し、砂地に岩がゴロゴロ混在する変化に富んだ底質が特徴の地磯です。水深は比較的浅く、磯場から海底が透けて見えることも。春はクロダイ良型の実績が高く、エギングでアオリイカを狙うなら、岩礁が点在するカケアガリ周辺が定番ポイントです。三浦半島エリアでは5月上旬から接岸が始まり、産卵回遊が重なる6月後半〜7月が最盛期。夕まずめから夜間の時間帯に地元エギンガーが足繁く通います。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "rocky_shore",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

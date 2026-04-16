@@ -31,13 +31,13 @@
     "lead_text": "渥美半島の内側、三河湾に面した小さな漁港です。港内は川の流れ込みがあり、クロダイの魚影が濃いエリアとして知られています。メバルは「タケノコメバル」と呼ばれる20cmを超える型が混じることもあり、冬の根魚釣りに定評があるL字堤防のテトラ帯が主なポイントです。港全体は遠浅で干潮時には水深がかなり浅くなる地形のため、クロダイは堤防先端付近でのテトラ際を狙う落とし込みスタイルが主流。隣接する砂浜寄りの沖は砂地になっており、シロギスはこのエリアへのちょい投げで実績があります。"
   },
   "classification": {
-    "primary_type": "breakwater",
+    "primary_type": "fishing_facility",
     "confidence": 0.62,
     "secondary_flags": [
       "parking_nearby",
       "pier"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@110m",
       "man_made=pier@137m"
