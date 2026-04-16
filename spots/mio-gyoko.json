@@ -26,11 +26,12 @@
   },
   "info": {
     "notes": "美浜町三尾の漁港。アジ、サバ、カサゴ、アオリイカが狙える。地磯への渡船基地でもある。",
-    "access": "美浜町方面から車利用"
+    "access": "美浜町方面から車利用",
+    "photo_url": ""
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 1.0,
+    "confidence": 0.0,
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": []

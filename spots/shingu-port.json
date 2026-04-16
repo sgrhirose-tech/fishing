@@ -14,15 +14,14 @@
     "city_slug": "shingu"
   },
   "physical_features": {
-    "sea_bearing_deg": 110,
+    "sea_bearing_deg": 107.5,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1958.5
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり",
-    "terrain_summary": ""
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
     "notes": "新宮市の大型港湾。クロダイ・スズキ・アジ・ハゼが狙える。熊野川河口に近く、多彩な魚種が集まりやすい。",
@@ -31,7 +30,7 @@
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 1.0,
+    "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
@@ -39,10 +38,10 @@
     "osm_evidence": []
   },
   "target_fish": [
-    "aji",
     "kurodai",
     "suzuki",
-    "haze"
+    "haze",
+    "aji"
   ],
   "harbor_code": "30-1",
   "harbor_name": "紀伊勝浦"

@@ -30,7 +30,7 @@
     "photo_url": ""
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",

@@ -21,8 +21,7 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "seabed_summary": "砂主体",
-    "terrain_summary": ""
+    "seabed_summary": "砂主体"
   },
   "info": {
     "notes": "松崎町の主要港、堤防で多彩魚種、アジ・クロダイ",
@@ -31,14 +30,14 @@
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 1.0,
+    "confidence": 0.0,
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
-    "aji",
-    "kurodai"
+    "kurodai",
+    "aji"
   ],
   "harbor_code": "22-8",
   "harbor_name": "田子"
