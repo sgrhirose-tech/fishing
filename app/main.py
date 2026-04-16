@@ -250,6 +250,9 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
         if any(k in lead for k in ("風向き", "北東風", "南西風", "北風", "南風", "東風", "西風")):
             qa.append({"q": "風向きの影響はありますか？",
                        "a": "風向きによって釣りやすさが変わります。入磯前に風向きを確認してください。"})
+        if any(k in lead for k in ("ウェーダー", "立ち込み")):
+            qa.append({"q": "ウェーダーは必要ですか？",
+                       "a": "磯場では足元が濡れやすいため、ウェーダーがあると快適に釣りができます。"})
 
     elif ptype == "fishing_facility":
         if any(k in lead for k in ("干潮", "浅くなる", "海底が見える", "釣りにならない")):
