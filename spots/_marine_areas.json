@@ -1,48 +1,48 @@
 {
   "areas": {
     "相模湾": {
-      "lat": 34.7,
-      "lon": 139.3,
+      "lat": 35.2687,
+      "lon": 139.3363,
       "center_lat": 35.29,
       "center_lon": 139.35,
       "fetch_km": 80,
       "lat_min": 35.00, "lat_max": 35.45, "lon_min": 138.85, "lon_max": 139.60
     },
     "三浦半島": {
-      "lat": 34.7,
-      "lon": 139.7,
+      "lat": 35.2097,
+      "lon": 139.6470,
       "center_lat": 35.22,
       "center_lon": 139.6,
       "fetch_km": 60,
       "lat_min": 35.08, "lat_max": 35.40, "lon_min": 139.40, "lon_max": 139.82
     },
     "東京湾": {
-      "lat": 35.0,
-      "lon": 140.0,
+      "lat": 35.5156,
+      "lon": 139.8486,
       "center_lat": 35.40,
       "center_lon": 139.85,
       "fetch_km": 30,
       "lat_min": 35.15, "lat_max": 35.75, "lon_min": 139.50, "lon_max": 140.15
     },
     "内房": {
-      "lat": 35.0,
-      "lon": 140.0,
+      "lat": 35.1138,
+      "lon": 139.8293,
       "center_lat": 35.10,
       "center_lon": 139.88,
       "fetch_km": 40,
       "lat_min": 34.95, "lat_max": 35.52, "lon_min": 139.65, "lon_max": 140.15
     },
     "外房": {
-      "lat": 35.1,
-      "lon": 141.0,
+      "lat": 35.1118,
+      "lon": 140.1804,
       "center_lat": 35.2,
       "center_lon": 140.37,
       "fetch_km": 100,
       "lat_min": 34.92, "lat_max": 35.38, "lon_min": 139.85, "lon_max": 140.75
     },
     "九十九里": {
-      "lat": 35.5,
-      "lon": 141.0,
+      "lat": 35.6326,
+      "lon": 140.6367,
       "center_lat": 35.55,
       "center_lon": 140.65,
       "fetch_km": 120,
