@@ -31,10 +31,10 @@
     "lead_text": "西尾市の三河湾に面した吉田新港は、干潟の上に作られた小さな港で、潮位の変化が釣りのカギを握る場所です。干潮時には多くのポイントが干上がってしまうため、常連は満潮前後の時間帯に合わせて竿を出すのが基本スタイルです。堤防先の赤灯台付近は水深が浅く、クロダイやキビレ・セイゴが顔を見せるエリアで、西側堤防との間はブッコミ仕掛けの実績が高いポイントとして知られています。港内側は砂泥底が広がっていて、初夏から秋にかけてハゼが活発に動きます。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

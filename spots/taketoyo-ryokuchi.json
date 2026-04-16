@@ -31,12 +31,12 @@
     "lead_text": "衣浦港に面する知多半島の護岸で、地元では「ファイザー前」の名でも知られています。釣り場はL字型のコンクリート護岸で、左側エリアは水深があり足元のサビキが成立しますが、奥の沖向きは足元に石積みが入っているため仕掛けの落としどころに注意が必要です。アジはL字の曲がり角付近が実績高く、朝5時から場所取りに来る常連がいるほどの競争ポイントです。クロダイは春から秋がメインシーズンで、ヘチ・落とし込みのスタイルで岸壁際を狙う釣り人が多く見られます。夜間はセイゴやアナゴの釣果も上がります。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

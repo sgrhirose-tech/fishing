@@ -14,14 +14,15 @@
     "city_slug": "arida"
   },
   "physical_features": {
-    "sea_bearing_deg": 337.6,
+    "sea_bearing_deg": 340,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 653.8
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "有田市初島の漁港。アジ、クロダイ、スズキが狙える。有田川河口にも近く多彩な魚種が集まる。",
@@ -29,19 +30,19 @@
     "lead_text": "有田市初島町の埋立地内に設けられた大きな波止が主なフィールドです。底地形は広くフラットで、港内でも潮流が強いのがこの港の特徴です。アジは例年7〜12月がシーズンで、常連は波止突き当たりから沖へ50〜60m先を遠投カゴのサビキで狙います。"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.62,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@115m",
       "man_made=breakwater@219m"
     ]
   },
   "target_fish": [
+    "aji",
     "kurodai",
-    "suzuki",
-    "aji"
+    "suzuki"
   ],
   "harbor_code": "30-9",
   "harbor_name": "下津"

@@ -31,10 +31,10 @@
     "lead_text": "潮が引くと川幅の大部分が干上がるほど干満差が大きく、潮位によってポイントの雰囲気が一変するのがこの川の特徴です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

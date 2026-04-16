@@ -29,10 +29,10 @@
     "lead_text": "ヒラメやカレイは遠州灘特有の荒れ後に砂地が攪拌されたタイミングで活性が高まるとされており、地元の常連は波のおさまりかけた朝まずめを狙い打ちにするスタイルが多いです。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

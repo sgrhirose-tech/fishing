@@ -21,7 +21,8 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 65,
-    "seabed_summary": "礫主体、貝殻混じり"
+    "seabed_summary": "礫主体、貝殻混じり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "南伊豆西岸の小漁港、メジナ・アオリイカ向き",
@@ -29,12 +30,12 @@
     "lead_text": "両サイドを切り立った山に囲まれたワンド状の小漁港で、港全体がすり鉢のように海に向かって開いています。堤防先端の外向き面は水深3〜3.5メートルほどで、堤防際には捨て石が入り根が絡む複雑な地形が続いています。港外側の消波ブロック帯はメジナの好ポイントで、岩礁と砂地が混在するこのエリアに魚が着きやすい構造です。アオリイカはヤエン釣りの実績が高く、秋から冬にかけての常連が通うシーズンに重なります。ただし堤防にはエギ・ルアー・夜釣り禁止の表示があるため、エギングでのアオリイカ狙いは不可です。"
   },
   "classification": {
-    "primary_type": "sand_beach",
-    "confidence": 0.41,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=beach@185m"
     ]

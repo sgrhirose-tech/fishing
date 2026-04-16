@@ -29,7 +29,7 @@
     "access": "東京国際クルーズターミナル駅から徒歩10分"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",

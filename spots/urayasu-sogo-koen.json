@@ -14,14 +14,15 @@
     "city_slug": "urayasu"
   },
   "physical_features": {
-    "sea_bearing_deg": 146.2,
-    "seabed_type": "unknown",
+    "sea_bearing_deg": 145,
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "猫実川河口の護岸、ハゼ・シーバス・キス向き",
@@ -29,16 +30,16 @@
     "lead_text": "千葉県浦安市明海に位置する猫実川（境川）河口左岸の護岸で、2022年7月に整備・開放された比較的新しい釣り場です。護岸前面にはテトラが並んでおり、岸際から沖は砂泥底が広がります。ハゼは夏から秋に砂泥底で好調で、テトラ越しに探れる5m前後の竿が活躍します。シロギスも同じ砂泥エリアで混じります。スズキは河口の潮の流れが効く夕マズメ以降が定番で、春のバチ抜けシーズンにもルアーへの反応が上がる傾向があります。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "breakwater",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
-    "haze",
+    "shirogisu",
     "suzuki",
-    "shirogisu"
+    "haze"
   ],
   "harbor_code": "12-17",
   "harbor_name": "市川"

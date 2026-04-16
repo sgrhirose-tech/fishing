@@ -29,10 +29,10 @@
     "lead_text": "忠岡木材コンビナートは、忠岡町の貯木場を囲む工業地帯護岸で、白灯台〜ホクシン前テトラにかけてが最も外海に面したポイントです。タチウオは10月から12月にかけてシーズンが本格化し、この時期の夜間は常連たちで護岸がびっしり埋まるほどの賑わいに。釣り場の多くが内海に面した垂直岸壁のため冬でも水温が安定しやすく、クロダイやハネは年間を通じて顔を見せます。大津川河口に近い水銀灯周辺では、潮の変わり目のタイミングに実績が集まっています。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

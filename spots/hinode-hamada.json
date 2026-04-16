@@ -26,14 +26,13 @@
   },
   "info": {
     "notes": "表浜の代表サーフ、キス・ヒラメ・ルアー向き",
-    "access": "田原市方面から車利用",
-    "photo_url": ""
+    "access": "田原市方面から車利用"
   },
   "classification": {
-    "primary_type": "rocky_shore",
-    "confidence": 0.55,
+    "primary_type": "sand_beach",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=rock@115m",
       "natural=rock@253m",
@@ -41,8 +40,8 @@
     ]
   },
   "target_fish": [
-    "hirame",
-    "shirogisu"
+    "shirogisu",
+    "hirame"
   ],
   "harbor_code": "23-1",
   "harbor_name": "伊良湖"

@@ -15,13 +15,14 @@
   },
   "physical_features": {
     "sea_bearing_deg": 170,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 974.2
   },
   "derived_features": {
     "bottom_kisugo_score": 50,
-    "seabed_summary": ""
+    "seabed_summary": "",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "4km広大なサーフ、キス・マゴチ・ヒラメ・弓角青物向き",
@@ -30,17 +31,17 @@
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.7,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:海岸"
     ]
   },
   "target_fish": [
-    "magochi",
+    "shirogisu",
     "hirame",
-    "shirogisu"
+    "magochi"
   ],
   "harbor_code": "14-19",
   "harbor_name": "江ノ島"

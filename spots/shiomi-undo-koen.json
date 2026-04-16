@@ -14,14 +14,15 @@
     "city_slug": "koto"
   },
   "physical_features": {
-    "sea_bearing_deg": 230.5,
+    "sea_bearing_deg": 230,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "投げ禁止・常夜灯あり、クロダイ実績高くシーバス・ハゼ向き",
@@ -29,10 +30,10 @@
     "lead_text": "江東区潮見に位置する運動公園で、公園外周の護岸が釣り場になっています。東雲北運河・東雲東運河・平久運河など複数の運河が交差する地形のため潮通しがよく、クロダイの聖地として地元釣り人に知られています。護岸際の水深は2〜3メートルほどですが、2本の流れが合流する公園南端では7〜8メートルに達するポイントもあり、夜間はシーバスが海底近くを回遊する姿も確認されています。常夜灯が護岸沿いに等間隔で並ぶため夜釣りがしやすく、深夜帯にシーバスの活性が高まる傾向があります。投げ釣りと撒き餌は禁止で、ヘチ釣りやブッコミ釣りが主流です。"
   },
   "classification": {
-    "primary_type": "sand_beach",
-    "confidence": 0.52,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=sand@135m",
       "natural=sand@146m",
@@ -42,8 +43,8 @@
   },
   "target_fish": [
     "kurodai",
-    "haze",
-    "suzuki"
+    "suzuki",
+    "haze"
   ],
   "harbor_code": "13-14",
   "harbor_name": "晴海"

@@ -15,7 +15,7 @@
   },
   "physical_features": {
     "sea_bearing_deg": 305,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
@@ -26,14 +26,13 @@
   },
   "info": {
     "notes": "広川町の漁港。アジ、サバ、クロダイが狙える。家族連れにも適した足場の良い漁港。",
-    "access": "広川町方面から車利用",
-    "photo_url": ""
+    "access": "広川町方面から車利用"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.81,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@259m",
       "man_made=breakwater@31m"

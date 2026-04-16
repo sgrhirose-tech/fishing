@@ -26,14 +26,13 @@
   },
   "info": {
     "notes": "田原市の小漁港、キス・チョイ投げ向き",
-    "access": "田原市方面から車利用",
-    "photo_url": ""
+    "access": "田原市方面から車利用"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.62,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@56m"
     ]

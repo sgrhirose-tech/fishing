@@ -29,10 +29,10 @@
     "lead_text": "平塚と大磯の間に位置する遠浅サーフの河口で、干潮時には水深が1m前後まで下がります。干満のたびに流れが東西に向きを変える独特の地形で、砂泥底の河口際に潮が当たり始める満潮前後が、クロダイを狙う常連たちの狙い目とされています。春の乗っ込み期から夏場にかけて海側でのウキフカセやブッコミに実績があり、右岸・左岸どちらからでもアプローチできます。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

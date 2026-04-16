@@ -21,7 +21,8 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "南伊豆町の小漁港、クロダイ・アオリイカ向き",
@@ -29,10 +30,10 @@
     "lead_text": "南伊豆町下流地区に位置する小漁港で、2本の堤防と港内岸壁からなる釣り場です。港内の底質は砂泥底でフラットな地形が続き、岸壁から35m付近の水深は約3mほど。東側堤防の先端テトラ帯は外側が岩礁帯に面しており、クロダイのフカセ釣りはこのテトラ際が主戦場です。東側堤防には常夜灯があり、秋のアオリイカシーズンには夜間の常夜灯まわりに地元アングラーが集まります。西側堤防は低くて波被りしやすく、苔も付きやすいため足元の管理は必須です。"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@203m"
     ]

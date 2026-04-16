@@ -31,10 +31,10 @@
     "lead_text": "和歌山県西牟婁郡すさみ町の江須崎に位置する小漁港で、磯渡しの基地としての色合いが強い釣り場です。外側の堤防は立入禁止となっており、港内の堤防は水深が浅めのため、多くの釣り人は渡船を利用して周囲の磯へと向かいます。江須崎周辺の磯は岩礁が入り組んだ地形で、秋から冬にかけてアオリイカのエギングに通う常連が多く、クロダイやカサゴは磯際の穴周りに定着しています。港内ではサビキで小物を狙う姿も見られます。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

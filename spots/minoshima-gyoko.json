@@ -26,14 +26,13 @@
   },
   "info": {
     "notes": "有田市箕島の漁港。サバ、アジ、イワシのサビキ釣りが人気。クロダイも狙える。",
-    "access": "有田市方面から車利用",
-    "photo_url": ""
+    "access": "有田市方面から車利用"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@227m"
     ]

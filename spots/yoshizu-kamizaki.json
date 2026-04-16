@@ -27,19 +27,18 @@
   "info": {
     "notes": "南伊勢町の漁港、グレ・アオリイカ向き",
     "access": "南伊勢町方面から車利用",
-    "photo_url": "",
     "lead_text": "三重県南伊勢町の神前湾奥部に入り込んだ漁港で、湾内・テトラ帯・河口と複数の釣り座を持ちます。漁港内は湾奥ならではの穏やかな水面が続き、湾内には捨て石が点在しているため根周りに魚が着きやすい地形です。メジナは国道260号線下に広がるテトラ帯がフカセ釣りの実績ポイントで、堤防際も外せません。アオリイカのエギングは満潮2時間前前後の時間帯に釣果が集中しやすく、デイゲームで狙う釣り人の姿が見られます。なお防波堤先端部など釣り禁止エリアがありますので、現地の案内板をよく確認してから入釣してください。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 1.0,
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
-    "mejina",
-    "aoriika"
+    "aoriika",
+    "mejina"
   ],
   "harbor_code": "24-9",
   "harbor_name": "吉津"

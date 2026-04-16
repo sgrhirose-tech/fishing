@@ -31,12 +31,12 @@
     "lead_text": "弥富市の鍋田避難港は、干潮時には海底が見えるほど浅くなる水深2m前後の小場所ながら、岸壁に沿って作業船が複数停泊しており、その船底周りにクロダイが居つくことで知られています。地元の常連は落とし込みで岸壁と作業船の隙間を丁寧に探るスタイルを好み、過去には45cmクラスの釣果も報告されています。潮位が下がりすぎると底が露出してしまうため、満潮前後の限られた時間帯に竿を出すのがここでの鉄則です。夏から秋にかけてはハゼの穴場としても地元アングラーに認識されている港です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

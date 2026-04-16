@@ -15,7 +15,7 @@
   },
   "physical_features": {
     "sea_bearing_deg": 155,
-    "seabed_type": "unknown",
+    "seabed_type": "sand",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
@@ -26,17 +26,16 @@
   },
   "info": {
     "notes": "半田市の整備護岸、クロダイ・セイゴ・サヨリ向き",
-    "access": "亀崎駅から徒歩15分",
-    "photo_url": ""
+    "access": "亀崎駅から徒歩15分"
   },
   "classification": {
-    "primary_type": "breakwater",
-    "confidence": 0.43,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "harbour",
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@288m",
       "natural=beach@184m",

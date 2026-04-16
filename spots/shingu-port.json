@@ -14,14 +14,15 @@
     "city_slug": "shingu"
   },
   "physical_features": {
-    "sea_bearing_deg": 107.5,
+    "sea_bearing_deg": 110,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1958.5
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "新宮市の大型港湾。クロダイ・スズキ・アジ・ハゼが狙える。熊野川河口に近く、多彩な魚種が集まりやすい。",
@@ -29,19 +30,19 @@
     "lead_text": "熊野川の河口に隣接する和歌山県新宮市の大型港湾で、川と海の水が混ざり合う汽水域が岸壁周辺に広がるのが特徴です。大型船が接岸する南側岸壁は水深があり、秋口には水温が23度前後まで上がってスズキの活性が高まります。熊野川から流れ込む淡水の影響で港内に濁りが入りやすく、その濁り潮を好むクロダイが波止際に寄ってくる傾向があります。ハゼは夏から秋にかけて河口寄りの砂泥底に集まり、地元の常連が満潮前後に岸壁際を丹念に探るスタイルで狙います。"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
+    "aji",
     "kurodai",
     "suzuki",
-    "haze",
-    "aji"
+    "haze"
   ],
   "harbor_code": "30-1",
   "harbor_name": "紀伊勝浦"

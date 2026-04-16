@@ -29,12 +29,12 @@
     "lead_text": "養老川の河口に設けられた有料桟橋施設で、カレイを狙う常連が向かうのは桟橋の養老川側・先端付近です。川の流れと潮の干満がぶつかる砂泥底エリアに居着きやすく、水深は10m以上あります。冬に子持ちカレイが上がる時期になると施設の公式SNSでも「シーズン到来」と発信されるほど活気づき、開園直後から先端付近の釣り座が埋まっていくことも珍しくありません。桟橋まわりには捨て石や漁礁が多く沈んでいるため根掛かりも起きやすく、予備の仕掛けやオモリは複数持参するのが現地の定石とされています。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

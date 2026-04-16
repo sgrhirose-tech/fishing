@@ -31,10 +31,10 @@
     "lead_text": "名古屋市内を流れる山崎川と堀川が合流する河口部で、伊勢湾からの潮が差し込む汽水域です。護岸にはシートパイルや係留船が点在し、水深は1m前後と浅め。常連の落とし込み師が通うのは乗っ込みが始まる2月後半から3月で、満潮を過ぎて潮が緩み川が逆流し始めるタイミングに食い気が立つとされています。対岸からクロダイを狙う釣り人の姿も見られ、複数の角度からポイントを攻められるのもこの合流部ならではの特徴です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

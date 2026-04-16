@@ -29,10 +29,10 @@
     "lead_text": "この釣り場は現在、立入禁止となっています。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "rocky_shore",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
