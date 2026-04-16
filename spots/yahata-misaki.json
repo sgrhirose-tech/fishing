@@ -28,12 +28,12 @@
     "access": "勝浦駅入口バス停から徒歩25分"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "rocky_shore",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

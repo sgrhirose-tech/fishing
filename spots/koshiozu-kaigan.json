@@ -14,15 +14,14 @@
     "city_slug": "tahara"
   },
   "physical_features": {
-    "sea_bearing_deg": 155,
+    "sea_bearing_deg": 154.9,
     "seabed_type": "rock",
     "surfer_spot": false,
     "nearest_20m_contour_distance_m": null
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、近傍に石要素あり",
-    "terrain_summary": ""
+    "seabed_summary": "石・岩主体、近傍に石要素あり"
   },
   "info": {
     "notes": "渥美半島東端の砂浜、キス・ヒラメ向きサーフ",
@@ -30,14 +29,14 @@
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 1.0,
+    "confidence": 0.0,
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
-    "shirogisu",
-    "hirame"
+    "hirame",
+    "shirogisu"
   ],
   "harbor_code": "23-6",
   "harbor_name": "福江"

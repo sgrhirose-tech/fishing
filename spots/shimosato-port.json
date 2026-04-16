@@ -26,11 +26,12 @@
   },
   "info": {
     "notes": "那智勝浦町下里の漁港。アジ・サバ・カマス・アオリイカが狙える。静かな環境で家族連れにも向くポイント。",
-    "access": "下里駅から徒歩20分"
+    "access": "下里駅から徒歩20分",
+    "photo_url": ""
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 1.0,
+    "confidence": 0.0,
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": []

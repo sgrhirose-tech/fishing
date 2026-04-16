@@ -31,12 +31,12 @@
     "lead_text": "三河湾の奥、矢作川河口から寺津橋上流にかけて広がる平坂入江の護岸が釣り場です。水深は全体的に浅く、干潮時は底が露わになるほどで、潮の満ち引きに合わせてポイントを移動するのが常連流。大潮の上げ潮時に寺津橋付近へ入る人が多く、ヌカエビやイシゴカイを使った延べ竿スタイルが定番です。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "breakwater",
     "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [

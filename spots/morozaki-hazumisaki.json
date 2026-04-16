@@ -26,11 +26,12 @@
   },
   "info": {
     "notes": "半島最南端、大型クロダイの名ポイント",
-    "access": "南知多町方面から車利用"
+    "access": "南知多町方面から車利用",
+    "photo_url": ""
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 1.0,
+    "confidence": 0.0,
     "secondary_flags": [
       "parking_nearby"
     ],
