@@ -65,6 +65,26 @@
   }
 }
 </script>
+{% if qa_items %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in qa_items %}
+    {
+      "@type": "Question",
+      "name": {{ item.q | tojson }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.a | tojson }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -158,6 +178,20 @@
     {% endif %}
   </table>
 </section>
+
+{% if qa_items %}
+<section class="spot-qa">
+  <h2>よくある質問</h2>
+  <dl class="qa-list">
+    {% for item in qa_items %}
+    <div class="qa-item">
+      <dt class="qa-q">{{ item.q }}</dt>
+      <dd class="qa-a">{{ item.a }}</dd>
+    </div>
+    {% endfor %}
+  </dl>
+</section>
+{% endif %}
 
 <!-- 気象・スコア（JS で非同期ロード） -->
 <section class="weather-section">
