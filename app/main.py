@@ -237,10 +237,9 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
         if mcnt:
             top_month = mcnt.most_common(1)[0][0]
             top3 = sorted(m for m, _ in mcnt.most_common(3))
-            season = _month_to_season(top_month)
             months_str = "・".join(f"{m}月" for m in top3)
             qa.append({"q": "何月頃が釣りやすいですか？",
-                       "a": f"{season}（{months_str}頃）が全体的に魚の活性が上がりやすい時期です。"})
+                       "a": f"{months_str}頃が全体的に魚の活性が上がりやすい時期です。"})
 
     # ── 施設区分別 ────────────────────────────────────────
     if ptype == "rocky_shore":
