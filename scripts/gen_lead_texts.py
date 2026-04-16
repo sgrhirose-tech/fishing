@@ -19,6 +19,8 @@ Render cron では実行後に GitHub へプッシュして永続化する。
     #   sagamibay / miura / suruga-bay / nishi-izu / higashi-izu / minami-izu
     #   enshu-nada / isewan / mikawa-bay / shima-minami-ise / kumano-nada
     #   kii-suido-wakayama / osakawan
+    python scripts/gen_lead_texts.py --type fishing_facility   # 施設区分絞り込み（複数可: --type fishing_facility --type sand_beach）
+    # 指定可能な施設区分: fishing_facility / sand_beach / breakwater / rocky_shore
     python scripts/gen_lead_texts.py --force                   # 既存でも強制再生成
     python scripts/gen_lead_texts.py --dry-run                 # 生成のみ、ファイル書き込み・GitHub プッシュなし
     python scripts/gen_lead_texts.py --wip                     # spots_wip/ を対象にする
@@ -141,12 +143,16 @@ def get_spots_to_process(
     slug_filter: str | None = None,
     empty_only: bool = False,
     area_filter: list[str] | None = None,
+    type_filter: list[str] | None = None,
 ) -> list[dict]:
     if slug_filter:
         return [s for s in spots if s.get("slug") == slug_filter]
 
     if area_filter:
         spots = [s for s in spots if (s.get("area") or {}).get("area_slug", "") in area_filter]
+
+    if type_filter:
+        spots = [s for s in spots if (s.get("classification") or {}).get("primary_type", "") in type_filter]
 
     if empty_only:
         # lead_text が空のもののみ（グループ 0 相当）
@@ -230,6 +236,9 @@ def main() -> None:
     parser.add_argument("--slug",       type=str, default=None, help="1件だけ処理するスポットスラッグ")
     parser.add_argument("--area",       type=str, action="append", metavar="AREA_SLUG",
                         help="エリアスラッグで絞り込み（複数指定可: --area tokyobay --area miura）")
+    parser.add_argument("--type",       type=str, action="append", metavar="PRIMARY_TYPE",
+                        help="施設区分で絞り込み（複数指定可: --type fishing_facility --type sand_beach）\n"
+                             "指定可能な値: fishing_facility / sand_beach / breakwater / rocky_shore")
     parser.add_argument("--force",      action="store_true",   help="既存のリード文も強制再生成")
     parser.add_argument("--empty-only", action="store_true",   help="lead_text が空のスポットのみ処理（再生成なし）")
     parser.add_argument("--dry-run",    action="store_true",   help="生成のみ（ファイル書き込み・GitHub プッシュなし）")
@@ -263,6 +272,7 @@ def main() -> None:
         slug_filter=args.slug,
         empty_only=args.empty_only,
         area_filter=args.area,
+        type_filter=args.type,
     )
     print(f"[処理対象] {len(targets)} 件\n")
 
