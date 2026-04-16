@@ -18,7 +18,7 @@ except ImportError:
     pass
 
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import HTMLResponse, PlainTextResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -544,6 +544,99 @@ def api_tide(slug: str, date: str | None = None):
     if data is None:
         return {"tide": None, "tide_unavailable_reason": "data_not_fetched"}
     return data
+
+
+# ── おすすめ釣り魚 API ──
+_REC_FISH_CACHE: dict = {}   # key: (pref, area, date_str) → {"ts": float, "data": list}
+_REC_FISH_TTL = 86400        # 24h
+
+@app.get("/api/recommended-fish")
+def api_recommended_fish(pref: str = "", area: str = ""):
+    """今月＋現在の海面水温に基づくおすすめ魚種を返す。"""
+    import datetime as _dt
+
+    today = _dt.date.today().isoformat()
+    cache_key = (pref, area, today)
+    cached = _REC_FISH_CACHE.get(cache_key)
+    if cached and (time.time() - cached["ts"]) < _REC_FISH_TTL:
+        return JSONResponse(cached["data"])
+
+    all_spots = load_spots()
+    spots = all_spots
+    if pref:
+        spots = [s for s in spots if s.get("area", {}).get("pref_slug") == pref]
+    if area:
+        spots = [s for s in spots if s.get("area", {}).get("area_slug") == area]
+    if not spots:
+        return JSONResponse([])
+
+    # 重心座標で SST 取得
+    lats = [s.get("location", {}).get("latitude") for s in spots]
+    lons = [s.get("location", {}).get("longitude") for s in spots]
+    lats = [v for v in lats if v is not None]
+    lons = [v for v in lons if v is not None]
+    sst = None
+    if lats and lons:
+        clat = sum(lats) / len(lats)
+        clon = sum(lons) / len(lons)
+        sst = fetch_sst_noaa(clat, clon, today)
+
+    current_month = _dt.date.today().month
+
+    # slug → [spot dicts]
+    fish_slug_to_spots: dict[str, list] = {}
+    for s in spots:
+        for fish_slug in (s.get("target_fish") or []):
+            fish_slug_to_spots.setdefault(fish_slug, []).append(s)
+
+    result = []
+    for fish_name, fish_data in _FISH_MASTER.items():
+        slug = fish_data.get("slug", "")
+        spots_for_fish = fish_slug_to_spots.get(slug, [])
+        if not spots_for_fish:
+            continue
+
+        score = 0
+        if current_month in (fish_data.get("peak_season") or []):
+            score += 35
+        elif current_month in (fish_data.get("season") or []):
+            score += 15
+
+        if sst is not None:
+            mn = fish_data.get("min_temp")
+            mx = fish_data.get("max_temp")
+            pk = fish_data.get("peak_temp")
+            if mn is not None and mx is not None and mn <= sst <= mx:
+                score += 40
+                if pk is not None and abs(sst - pk) <= 2:
+                    score += 15
+
+        if score == 0:
+            continue
+
+        top_spots = []
+        for s in spots_for_fish[:5]:
+            a = s.get("area", {})
+            top_spots.append({
+                "name": s.get("name", ""),
+                "url": f"/{a.get('pref_slug','')}/{a.get('area_slug','')}/{a.get('city_slug','')}/{s.get('slug','')}",
+            })
+        result.append({
+            "name": fish_name,
+            "slug": slug,
+            "image": fish_data.get("image", ""),
+            "method": (fish_data.get("method") or [])[:2],
+            "score": score,
+            "spots": top_spots,
+        })
+
+    result.sort(key=lambda x: -x["score"])
+    result = result[:10]
+    for r in result:
+        del r["score"]
+
+    _REC_FISH_CACHE[cache_key] = {"ts": time.time(), "data": result}
+    return JSONResponse(result)
 
 
 # ============================================================
