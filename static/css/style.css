@@ -1258,3 +1258,28 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .kinshi-nearby-name { font-weight: bold; font-size: .9rem; color: #1a4a7a; }
 .kinshi-nearby-city { font-size: .78rem; color: #888; margin-top: .2rem; }
 .kinshi-nearby-all { display: inline-block; font-size: .88rem; color: #1a6b9e; text-decoration: underline; }
+
+/* ---- スポット Q&A ---- */
+.spot-qa { margin: 2rem 0; }
+.spot-qa h2 { font-size: 1.05rem; margin-bottom: .75rem; color: #1a3a5c; }
+.qa-list { margin: 0; padding: 0; }
+.qa-item { border-bottom: 1px solid #e8eef4; padding: .75rem 0; }
+.qa-item:first-child { border-top: 1px solid #e8eef4; }
+.qa-q {
+  font-weight: bold;
+  font-size: .92rem;
+  color: #1a4a7a;
+  margin: 0 0 .3rem;
+  padding-left: 1.4em;
+  position: relative;
+}
+.qa-q::before { content: "Q"; position: absolute; left: 0; color: #1a6b9e; font-weight: bold; }
+.qa-a {
+  font-size: .88rem;
+  color: #444;
+  margin: 0;
+  padding-left: 1.4em;
+  position: relative;
+  line-height: 1.65;
+}
+.qa-a::before { content: "A"; position: absolute; left: 0; color: #e07020; font-weight: bold; }
