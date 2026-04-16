@@ -26,19 +26,20 @@
   },
   "info": {
     "notes": "南知多町の漁港、クロダイ・アジ・カサゴ向き",
-    "access": "南知多町方面から車利用"
+    "access": "南知多町方面から車利用",
+    "photo_url": ""
   },
   "classification": {
     "primary_type": "fishing_facility",
-    "confidence": 1.0,
+    "confidence": 0.0,
     "secondary_flags": [],
     "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
-    "aji",
     "kurodai",
-    "kasago"
+    "kasago",
+    "aji"
   ],
   "harbor_code": "23-14",
   "harbor_name": "師崎"

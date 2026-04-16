@@ -29,10 +29,10 @@
     "lead_text": "この釣り場は護岸改築後に釣り禁止となりました。"
   },
   "classification": {
-    "primary_type": "unknown",
+    "primary_type": "fishing_facility",
     "confidence": 0.0,
     "secondary_flags": [],
-    "source": "kinshi",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [],
