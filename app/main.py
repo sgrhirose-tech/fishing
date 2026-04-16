@@ -1038,6 +1038,16 @@ def page_spots(
         all_spots = [s for s in all_spots
                      if any(f in method_fish_slugs for f in s.get("target_fish", []))]
 
+    # canonical URL（フィルターパラメータを正規化して self-referencing に）
+    import urllib.parse as _urlparse
+    _cparams: dict = {}
+    if area:        _cparams["area"] = area
+    if fish:        _cparams["fish"] = fish
+    if spot_type:   _cparams["type"] = spot_type
+    if method:      _cparams["method"] = method
+    _cqs = _urlparse.urlencode(_cparams)
+    canonical_url = "https://tsuricast.jp/spots/" + (f"?{_cqs}" if _cqs else "")
+
     # 現在の絞り込み結果から魚種の出現頻度を集計（上位10件）
     from collections import Counter
     fish_counts = Counter(f for s in all_spots for f in s.get("target_fish", []))
@@ -1061,6 +1071,7 @@ def page_spots(
         "active_type_label": SPOT_TYPE_LABELS.get(spot_type, "") if spot_type else "",
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
+        "canonical_url":  canonical_url,
     })
 
 
