@@ -257,6 +257,9 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
         if any(k in lead for k in ("干潮", "浅くなる", "海底が見える", "釣りにならない")):
             qa.append({"q": "干潮時でも釣りはできますか？",
                        "a": "干潮時は水深が浅くなり釣りがしにくくなります。満潮前後の時間帯がおすすめです。"})
+        if any(k in lead for k in ("柵", "フェンス")):
+            qa.append({"q": "柵は設置されていますか？",
+                       "a": "柵が設置されていますが、お子様にはライフジャケット着用をお勧めします。"})
 
     elif ptype == "sand_beach":
         if any(k in lead for k in ("根掛かり", "沈みテトラ", "岩礁")):
