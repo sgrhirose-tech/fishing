@@ -1943,6 +1943,19 @@ def page_spot_detail(
         and (s.get("classification") or {}).get("primary_type") == _current_type
         and s.get("slug") != slug
     ][:4] if _current_type else []
+    _spot_path = _BASE / "spots" / f"{slug}.json"
+    _mtime_ts = os.path.getmtime(_spot_path) if _spot_path.exists() else None
+    spot_updated_at = datetime.fromtimestamp(_mtime_ts).strftime("%Y年%m月%d日") if _mtime_ts else ""
+    lead_text_date = ""
+    _lead_meta_path = _BASE / "data" / "lead_meta.json"
+    if _lead_meta_path.exists():
+        try:
+            _lm = json.loads(_lead_meta_path.read_text(encoding="utf-8"))
+            _gen_at = (_lm.get(slug) or {}).get("generated_at", "")
+            if _gen_at:
+                lead_text_date = datetime.fromisoformat(_gen_at).strftime("%Y年%m月%d日")
+        except Exception:
+            pass
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -1965,4 +1978,6 @@ def page_spot_detail(
         "is_kinshi":          is_kinshi,
         "nearby_spots":       nearby_spots,
         "qa_items":           qa_items,
+        "spot_updated_at":    spot_updated_at,
+        "lead_text_date":     lead_text_date,
     })
