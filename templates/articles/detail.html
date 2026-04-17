@@ -21,6 +21,7 @@
   "headline": {{ (meta.title or slug) | tojson }},
   "description": {{ (meta.description or meta.title or slug) | tojson }},
   "url": "https://tsuricast.jp/articles/{{ category }}/{{ slug }}/",
+  {% if updated_at %}"dateModified": {{ updated_at | tojson }},{% endif %}
   "publisher": {
     "@type": "Organization",
     "name": "Tsuricast",
@@ -39,6 +40,7 @@
 
 <article class="tackle-item-article">
   <img src="{{ card_image }}" alt="{{ meta.title or slug }}" class="article-hero-img" loading="eager">
+  {% if updated_at %}<p class="article-updated-at">最終更新：{{ updated_at }}</p>{% endif %}
   <div class="article-body">
     {{ body_html | safe }}
   </div>
