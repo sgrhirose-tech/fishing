@@ -1,8 +1,46 @@
 {% extends "base.html" %}
-{% block robots_meta %}<meta name="robots" content="noindex,follow">{% endblock %}
 {% block title %}運営者情報 | Tsuricast{% endblock %}
 {% block canonical %}https://tsuricast.jp/about{% endblock %}
-{% block description %}Tsuricastの運営者情報です。運営者プロフィール・対象エリア・データソース・更新頻度をご確認ください。{% endblock %}
+{% block description %}Tsuricastの運営者「マクミラン」のプロフィール。神奈川県藤沢市在住のシロギス釣り師が、千葉〜大阪の釣り場の天気・波高・海況情報を届けるサイトを運営しています。{% endblock %}
+{% block og_url %}https://tsuricast.jp/about{% endblock %}
+{% block og_title %}運営者情報 | Tsuricast{% endblock %}
+{% block og_desc %}Tsuricast運営者マクミランのプロフィール。シロギス一筋のサーフアングラーが、千葉〜大阪の釣り場情報サイトを運営しています。{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "url": "https://tsuricast.jp/about",
+  "name": "運営者情報 | Tsuricast",
+  "description": "Tsuricastの運営者プロフィールおよびサイト情報",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "マクミラン",
+    "description": "神奈川県藤沢市在住。会社員として働きながら、海釣り情報サイト Tsuricast を運営。2017年に東扇島西公園での五目釣りをきっかけに海釣りを始め、現在はシロギスの投げ釣り一筋。湘南サーフをホームグラウンドとする。",
+    "homeLocation": {
+      "@type": "Place",
+      "name": "神奈川県藤沢市"
+    },
+    "knowsAbout": ["海釣り", "シロギス", "投げ釣り", "湘南サーフ", "三浦半島", "内房"],
+    "sameAs": ["https://x.com/tsuricast_jp"]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tsuricast",
+    "url": "https://tsuricast.jp/"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "ホーム",     "item": "https://tsuricast.jp/"},
+      {"@type": "ListItem", "position": 2, "name": "運営者情報"}
+    ]
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <h1>運営者情報</h1>
 
