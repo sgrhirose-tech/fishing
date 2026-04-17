@@ -108,7 +108,12 @@
   {% endif %}
 </div>
 <div id="fav-btn-container"></div>
-{% if spot_description %}
+{% if spot_lead or spot_notes %}
+<div class="spot-description">
+  {% if spot_lead %}<p>{{ spot_lead }}</p>{% endif %}
+  {% if spot_notes %}<p class="spot-notes-human">{{ spot_notes }}</p>{% endif %}
+</div>
+{% elif spot_description %}
 <p class="spot-description">{{ spot_description }}</p>
 {% endif %}
 
@@ -163,7 +168,6 @@
       <th>最寄りコンビニ</th>
       <td id="conbini-name"></td>
     </tr>
-    <tr><th>メモ</th><td>{{ spot.info.notes }}</td></tr>
     {% if spot.target_fish %}
     <tr>
       <th>対象魚種</th>
