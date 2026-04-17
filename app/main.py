@@ -498,6 +498,7 @@ def articles_rss_xml():
         text = _re.sub(r'\s+', ' ', text).strip()
         return text[:200]
 
+    articles = [a for a in articles if a.get("category") not in _ARTICLE_HIDDEN_CATEGORIES]
     recent = sorted(articles, key=_mtime, reverse=True)[:50]
 
     items = []
@@ -1426,6 +1427,7 @@ _ARTICLE_CATEGORY_LABELS: dict[str, str] = {
     "report": "店員現地レポート",
 }
 _ARTICLE_CATEGORY_ORDER = ["column", "info", "report"]
+_ARTICLE_HIDDEN_CATEGORIES: set[str] = {"info"}  # 一覧・RSS から除外
 
 
 @app.get("/articles/", response_class=HTMLResponse)
@@ -1439,6 +1441,7 @@ def page_articles_top(request: Request):
     categories = [
         {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": grouped[cat]}
         for cat in _ARTICLE_CATEGORY_ORDER
+        if cat not in _ARTICLE_HIDDEN_CATEGORIES
     ]
     return templates.TemplateResponse(request, "articles/top.html", {
         "categories": categories,
