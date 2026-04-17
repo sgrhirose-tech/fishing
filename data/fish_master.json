@@ -1789,7 +1789,8 @@
       "day"
     ],
     "north_limit": "青森",
-    "south_limit": "沖縄"
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/akamutsu.jpg"
   },
   "キンメダイ": {
     "slug": "kinmedai",
@@ -1874,7 +1875,8 @@
       "day"
     ],
     "north_limit": "青森",
-    "south_limit": "沖縄"
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/medai.jpg"
   },
   "イシダイ": {
     "slug": "ishidai",
@@ -1951,7 +1953,8 @@
       "day"
     ],
     "north_limit": "千葉",
-    "south_limit": "沖縄"
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/ishigakidai.jpg"
   },
   "メジナ": {
     "slug": "mejina",
@@ -2050,7 +2053,8 @@
       "night"
     ],
     "north_limit": "北海道",
-    "south_limit": "宮城"
+    "south_limit": "宮城",
+    "image": "/static/img/fish/soi.jpg"
   },
   "ウマヅラハギ": {
     "slug": "umadsurahagi",

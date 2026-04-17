@@ -108,15 +108,14 @@
   {% endif %}
 </div>
 <div id="fav-btn-container"></div>
-{% if spot_lead or spot_notes or spot_description_human %}
+{% if spot_lead or spot_description_human %}
 <div class="spot-description">
   {% if spot_lead %}<p>{{ spot_lead }}</p>{% endif %}
-  {% if spot_notes %}<p class="spot-notes-human">{{ spot_notes }}</p>{% endif %}
+  {% if lead_text_date %}<p class="spot-lead-date">{{ lead_text_date }}現在</p>{% endif %}
   {% if spot_description_human %}<p class="spot-notes-human"><span class="spot-notes-label">ここだけの話</span>{{ spot_description_human }}</p>{% endif %}
 </div>
 {% elif spot_description %}
 <p class="spot-description">{{ spot_description }}</p>
-{% if lead_text_date %}<p class="spot-lead-date">{{ lead_text_date }}現在</p>{% endif %}
 {% endif %}
 
 <!-- スポット写真 -->
