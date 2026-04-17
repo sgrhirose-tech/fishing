@@ -1954,7 +1954,13 @@ def page_spot_detail(
     # 釣り禁止判定と近隣スポット
     is_kinshi = _is_fully_kinshi(spot)
     nearby_spots = _get_nearby_spots(spot) if is_kinshi else []
-    _base_desc = (spot.get("info") or {}).get("description") or (spot.get("info") or {}).get("lead_text") or _build_spot_description(spot, fish_name_map)
+    _info = spot.get("info") or {}
+    _lead_text = _info.get("lead_text") or ""
+    _notes_text = _info.get("notes") or ""
+    # SEO用: description > lead_text > notes > 生成
+    _base_desc = _info.get("description") or _lead_text or _notes_text or _build_spot_description(spot, fish_name_map)
+    # テンプレート表示用: lead/notesがない場合のみ生成フォールバックを渡す
+    _spot_desc_fallback = _base_desc if (not _lead_text and not _notes_text) else ""
     if is_kinshi:
         _area = spot.get("area") or {}
         _area_name = _area.get("area_name", "")
@@ -2005,7 +2011,9 @@ def page_spot_detail(
         "fish_names_jp":      fish_names_jp,
         "facility_flags":     facility_flags,
         "tackle_links":       tackle_links,
-        "spot_description":   _base_desc,
+        "spot_lead":          _lead_text,
+        "spot_notes":         _notes_text,
+        "spot_description":   _spot_desc_fallback,
         "meta_description":   meta_description,
         "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
         "blog_posts":         blog_posts,
