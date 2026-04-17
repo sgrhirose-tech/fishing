@@ -21,7 +21,8 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 35,
-    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "石・岩主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "シーバス・アジングのメッカ、シーバス・ハゼ・クロダイ向き",
@@ -30,11 +31,11 @@
   },
   "classification": {
     "primary_type": "breakwater",
-    "confidence": 0.62,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@117m",
       "man_made=breakwater@72m",
@@ -42,10 +43,10 @@
     ]
   },
   "target_fish": [
-    "kurodai",
-    "haze",
     "aji",
-    "suzuki"
+    "kurodai",
+    "suzuki",
+    "haze"
   ],
   "harbor_code": "14-9",
   "harbor_name": "浦賀"
