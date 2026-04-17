@@ -238,10 +238,9 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
         if mcnt:
             top_month = mcnt.most_common(1)[0][0]
             top3 = sorted(m for m, _ in mcnt.most_common(3))
-            season = _month_to_season(top_month)
             months_str = "・".join(f"{m}月" for m in top3)
             qa.append({"q": "何月頃が釣りやすいですか？",
-                       "a": f"{season}（{months_str}頃）が全体的に魚の活性が上がりやすい時期です。"})
+                       "a": f"{months_str}頃が全体的に魚の活性が上がりやすい時期です。"})
 
     # ── 施設区分別 ────────────────────────────────────────
     if ptype == "rocky_shore":
@@ -251,11 +250,17 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
         if any(k in lead for k in ("風向き", "北東風", "南西風", "北風", "南風", "東風", "西風")):
             qa.append({"q": "風向きの影響はありますか？",
                        "a": "風向きによって釣りやすさが変わります。入磯前に風向きを確認してください。"})
+        if any(k in lead for k in ("ウェーダー", "立ち込み")):
+            qa.append({"q": "ウェーダーは必要ですか？",
+                       "a": "磯場では足元が濡れやすいため、ウェーダーがあると快適に釣りができます。"})
 
     elif ptype == "fishing_facility":
         if any(k in lead for k in ("干潮", "浅くなる", "海底が見える", "釣りにならない")):
             qa.append({"q": "干潮時でも釣りはできますか？",
                        "a": "干潮時は水深が浅くなり釣りがしにくくなります。満潮前後の時間帯がおすすめです。"})
+        if any(k in lead for k in ("柵", "フェンス")):
+            qa.append({"q": "柵は設置されていますか？",
+                       "a": "柵が設置されていますが、お子様にはライフジャケット着用をお勧めします。"})
 
     elif ptype == "sand_beach":
         if any(k in lead for k in ("根掛かり", "沈みテトラ", "岩礁")):
@@ -1126,6 +1131,16 @@ def page_spots(
         all_spots = [s for s in all_spots
                      if any(f in method_fish_slugs for f in s.get("target_fish", []))]
 
+    # canonical URL（フィルターパラメータを正規化して self-referencing に）
+    import urllib.parse as _urlparse
+    _cparams: dict = {}
+    if area:        _cparams["area"] = area
+    if fish:        _cparams["fish"] = fish
+    if spot_type:   _cparams["type"] = spot_type
+    if method:      _cparams["method"] = method
+    _cqs = _urlparse.urlencode(_cparams)
+    canonical_url = "https://tsuricast.jp/spots/" + (f"?{_cqs}" if _cqs else "")
+
     # 現在の絞り込み結果から魚種の出現頻度を集計（上位10件）
     from collections import Counter
     fish_counts = Counter(f for s in all_spots for f in s.get("target_fish", []))
@@ -1149,6 +1164,7 @@ def page_spots(
         "active_type_label": SPOT_TYPE_LABELS.get(spot_type, "") if spot_type else "",
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
+        "canonical_url":  canonical_url,
     })
 
 
