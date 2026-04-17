@@ -1169,6 +1169,7 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .spot-description p { margin: 0 0 .6rem; }
 .spot-description p:last-child { margin-bottom: 0; }
 .spot-notes-human { font-size: .88rem; color: #5a5a6a; border-left: 3px solid #b0c4d8; padding-left: .7rem; }
+.spot-notes-label { display: inline-block; font-size: .75rem; font-weight: bold; color: #fff; background: #1a6b9e; border-radius: 3px; padding: .1em .5em; margin-right: .5em; vertical-align: middle; letter-spacing: .03em; }
 
 /* fish - intro */
 .fish-intro-text { font-size: 1rem; line-height: 1.8; color: #334; margin: .75rem 0 1.5rem; padding: .85rem 1.1rem; background: #f0f7fb; border-left: 4px solid #1a6b9e; border-radius: 0 6px 6px 0; }
