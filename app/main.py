@@ -3,6 +3,7 @@ FastAPI アプリケーション。
 uvicorn app.main:app --reload で起動。
 """
 
+import html
 import json
 import os
 import re as _re
@@ -465,6 +466,76 @@ def feed_xml():
         '</rss>'
     )
     return Response(xml, media_type="application/rss+xml")
+
+
+@app.get("/articles/rss.xml", include_in_schema=False)
+def articles_rss_xml():
+    articles = _load_articles()
+
+    def _md_path(art: dict):
+        cat  = art.get("category", "")
+        slug = art.get("slug", "")
+        p = _ARTICLES_DIR / cat / slug / "index.md"
+        if not p.exists():
+            p = _ARTICLES_DIR / cat / f"{slug}.md"
+        return p
+
+    def _mtime(art: dict) -> float:
+        p = _md_path(art)
+        return os.path.getmtime(p) if p.exists() else 0.0
+
+    def _plain(art: dict) -> str:
+        p = _md_path(art)
+        if not p.exists():
+            return art.get("description") or ""
+        _, body = _extract_article_meta(p.read_text(encoding="utf-8"), art.get("slug", ""))
+        text = _re.sub(r'<!--.*?-->', '', body, flags=_re.DOTALL)
+        text = _re.sub(r'#{1,6}\s+', '', text)
+        text = _re.sub(r'\*{1,2}(.+?)\*{1,2}', r'\1', text)
+        text = _re.sub(r'\[(.+?)\]\(.+?\)', r'\1', text)
+        text = _re.sub(r'`[^`]+`', '', text)
+        text = _re.sub(r'^\s*[-*>]+\s*', '', text, flags=_re.MULTILINE)
+        text = _re.sub(r'\s+', ' ', text).strip()
+        return text[:200]
+
+    recent = sorted(articles, key=_mtime, reverse=True)[:50]
+
+    items = []
+    for art in recent:
+        cat  = art.get("category", "")
+        slug = art.get("slug", "")
+        url  = f"{_BASE_URL}/articles/{cat}/{slug}/"
+        items.append(
+            f"  <item>\n"
+            f"    <title>{html.escape(art.get('title') or slug)}</title>\n"
+            f"    <link>{url}</link>\n"
+            f"    <description>{html.escape(_plain(art))}</description>\n"
+            f"    <guid isPermaLink=\"true\">{url}</guid>\n"
+            f"    <pubDate>{formatdate(_mtime(art) or None, localtime=True)}</pubDate>\n"
+            f"  </item>"
+        )
+
+    last_build = formatdate(_mtime(recent[0]) if recent else None, localtime=True)
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        '  <channel>\n'
+        '    <title>Tsuricast釣り場コラム</title>\n'
+        f'    <link>{_BASE_URL}/articles/</link>\n'
+        '    <description>釣り場・海釣りに関するコラム</description>\n'
+        '    <language>ja</language>\n'
+        f'    <lastBuildDate>{last_build}</lastBuildDate>\n'
+        f'    <atom:link href="{_BASE_URL}/articles/rss.xml" rel="self" type="application/rss+xml"/>\n'
+        + "\n".join(items) + "\n"
+        '  </channel>\n'
+        '</rss>'
+    )
+    return Response(
+        xml,
+        media_type="application/rss+xml; charset=utf-8",
+        headers={"Cache-Control": "public, max-age=3600"},
+    )
+
 
 _BASE_URL = "https://tsuricast.jp"
 
@@ -1407,6 +1478,8 @@ def page_article_detail(request: Request, category: str, slug: str):
     card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
     related_spots = [s for rs in (meta.get("related_spots") or []) if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
+    mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
+    updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
     return templates.TemplateResponse(request, "articles/detail.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1415,6 +1488,7 @@ def page_article_detail(request: Request, category: str, slug: str):
         "card_image": card_image,
         "parts": part_metas,
         "related_spots": related_spots,
+        "updated_at": updated_at,
     })
 
 
@@ -1441,6 +1515,8 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
         _parent_slugs = _pm.get("related_spots") or []
     related_spots = [s for rs in _parent_slugs if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
+    mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
+    updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
     return templates.TemplateResponse(request, "articles/part.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1451,6 +1527,7 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
         "prev_part": prev_part,
         "next_part": next_part,
         "related_spots": related_spots,
+        "updated_at": updated_at,
     })
 
 
