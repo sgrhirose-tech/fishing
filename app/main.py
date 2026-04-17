@@ -330,6 +330,20 @@ def _rss_refresh_loop() -> None:
         _th.Event().wait(4 * 3600)
 
 
+_BLOGMURA_PING_URL = "https://ping.blogmura.com/xmlrpc/hdbk152e2inm/"
+_BLOGMURA_PING_FLAG = "/tmp/blogmura_pinged"
+
+
+async def _ping_blogmura() -> None:
+    try:
+        import httpx
+        async with httpx.AsyncClient(timeout=10) as client:
+            await client.post(_BLOGMURA_PING_URL)
+        print("[blogmura] ping 送信完了")
+    except Exception as e:
+        print(f"[blogmura] ping 失敗（無視）: {e}")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     load_spots()
@@ -347,6 +361,10 @@ async def lifespan(app: FastAPI):
     _bf.load_feeds(fish_master=_FISH_MASTER)
     _t = _th.Thread(target=_rss_refresh_loop, daemon=True)
     _t.start()
+    # にほんブログ村 ping（デプロイ = 記事更新タイミングとして起動時に1回送信）
+    if not os.path.exists(_BLOGMURA_PING_FLAG):
+        open(_BLOGMURA_PING_FLAG, "w").close()
+        await _ping_blogmura()
     yield
 
 
