@@ -115,6 +115,7 @@
 </div>
 {% elif spot_description %}
 <p class="spot-description">{{ spot_description }}</p>
+{% if lead_text_date %}<p class="spot-lead-date">{{ lead_text_date }}現在</p>{% endif %}
 {% endif %}
 
 <!-- スポット写真 -->

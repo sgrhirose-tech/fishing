@@ -21,6 +21,7 @@
   "headline": {{ (meta.title or slug) | tojson }},
   "description": {{ (meta.description or meta.title or slug) | tojson }},
   "url": "https://tsuricast.jp/articles/{{ category }}/{{ slug }}/",
+  {% if updated_at %}"dateModified": {{ updated_at | tojson }},{% endif %}
   "publisher": {
     "@type": "Organization",
     "name": "Tsuricast",
@@ -39,6 +40,7 @@
 
 <article class="tackle-item-article">
   <img src="{{ card_image }}" alt="{{ meta.title or slug }}" class="article-hero-img" loading="eager">
+  {% if updated_at %}<p class="article-updated-at">最終更新：{{ updated_at }}</p>{% endif %}
   <div class="article-body">
     {{ body_html | safe }}
   </div>
@@ -55,6 +57,14 @@
   </ul>
 </section>
 {% endif %}
+
+<div class="blogmura-cta">
+  <p class="blogmura-cta-text">この記事が役に立ったら応援クリックをお願いします！</p>
+  <a href="https://fishing.blogmura.com/umiduri/ranking/in?p_cid=11214089"
+     target="_blank" rel="nofollow noopener" class="blogmura-cta-link">
+    にほんブログ村 海釣りブログへ
+  </a>
+</div>
 
 <a href="/articles/" class="back-link">‹ コラム一覧に戻る</a>
 {% endblock %}

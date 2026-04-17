@@ -1288,10 +1288,8 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 }
 .qa-a::before { content: "A"; position: absolute; left: 0; color: #e07020; font-weight: bold; }
 
-/* ---- 運営者情報（about）ページ ---- */
-.about-profile { margin: 1.5rem 0 2rem; padding: 1rem 1.2rem; background: #f0f6fb; border-left: 4px solid #1a6b9e; border-radius: 4px; }
-.about-profile h2 { margin: 0 0 .3rem; font-size: 1.25rem; color: #1a3a5c; }
-.about-subtitle { margin: 0; color: #666; font-size: .92rem; }
-.about-section { margin: 2rem 0; }
-.about-section h2 { font-size: 1.08rem; color: #1a3a5c; border-bottom: 1px solid #dde7ef; padding-bottom: .4rem; margin-bottom: .9rem; }
-.about-section p { margin: .6rem 0; line-height: 1.75; color: #333; }
+/* にほんブログ村 CTA */
+.blogmura-cta { text-align: center; margin: 2rem 0 1.5rem; padding: 1.25rem 1rem; background: #f0f6fc; border-radius: 10px; border: 1px solid #c8dff0; }
+.blogmura-cta-text { margin: 0 0 .75rem; font-size: .9rem; color: #555; }
+.blogmura-cta-link { display: inline-block; padding: .55rem 1.4rem; background: #1a6b9e; color: #fff; border-radius: 6px; font-size: .95rem; font-weight: bold; text-decoration: none; }
+.blogmura-cta-link:hover { background: #145580; }
