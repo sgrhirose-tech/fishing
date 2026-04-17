@@ -1297,7 +1297,8 @@
       "day"
     ],
     "north_limit": "北海道",
-    "south_limit": "九州"
+    "south_limit": "九州",
+    "image": "/static/img/fish/makogarei.jpg"
   },
   "ハゼ": {
     "slug": "haze",
@@ -1500,7 +1501,8 @@
       "dusk"
     ],
     "north_limit": "静岡",
-    "south_limit": "沖縄"
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/oomonhata.jpg"
   },
   "クエ": {
     "slug": "kue",
@@ -1540,7 +1542,8 @@
       "night"
     ],
     "north_limit": "千葉",
-    "south_limit": "沖縄"
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/kue.jpg"
   },
   "マグロ": {
     "slug": "maguro",
@@ -1747,7 +1750,8 @@
       "night"
     ],
     "north_limit": "青森",
-    "south_limit": "沖縄"
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/mutsu.jpg"
   },
   "アカムツ": {
     "slug": "akamutsu",
