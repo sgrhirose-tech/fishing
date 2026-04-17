@@ -335,6 +335,20 @@ def _rss_refresh_loop() -> None:
         _th.Event().wait(4 * 3600)
 
 
+_BLOGMURA_PING_URL = "https://ping.blogmura.com/xmlrpc/hdbk152e2inm/"
+_BLOGMURA_PING_FLAG = "/tmp/blogmura_pinged"
+
+
+async def _ping_blogmura() -> None:
+    try:
+        import httpx
+        async with httpx.AsyncClient(timeout=10) as client:
+            await client.post(_BLOGMURA_PING_URL)
+        print("[blogmura] ping 送信完了")
+    except Exception as e:
+        print(f"[blogmura] ping 失敗（無視）: {e}")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     load_spots()
@@ -352,6 +366,10 @@ async def lifespan(app: FastAPI):
     _bf.load_feeds(fish_master=_FISH_MASTER)
     _t = _th.Thread(target=_rss_refresh_loop, daemon=True)
     _t.start()
+    # にほんブログ村 ping（デプロイ = 記事更新タイミングとして起動時に1回送信）
+    if not os.path.exists(_BLOGMURA_PING_FLAG):
+        open(_BLOGMURA_PING_FLAG, "w").close()
+        await _ping_blogmura()
     yield
 
 
@@ -1959,6 +1977,19 @@ def page_spot_detail(
         and (s.get("classification") or {}).get("primary_type") == _current_type
         and s.get("slug") != slug
     ][:4] if _current_type else []
+    _spot_path = _BASE / "spots" / f"{slug}.json"
+    _mtime_ts = os.path.getmtime(_spot_path) if _spot_path.exists() else None
+    spot_updated_at = datetime.fromtimestamp(_mtime_ts).strftime("%Y年%m月%d日") if _mtime_ts else ""
+    lead_text_date = ""
+    _lead_meta_path = _BASE / "data" / "lead_meta.json"
+    if _lead_meta_path.exists():
+        try:
+            _lm = json.loads(_lead_meta_path.read_text(encoding="utf-8"))
+            _gen_at = (_lm.get(slug) or {}).get("generated_at", "")
+            if _gen_at:
+                lead_text_date = datetime.fromisoformat(_gen_at).strftime("%Y年%m月%d日")
+        except Exception:
+            pass
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -1981,4 +2012,6 @@ def page_spot_detail(
         "is_kinshi":          is_kinshi,
         "nearby_spots":       nearby_spots,
         "qa_items":           qa_items,
+        "spot_updated_at":    spot_updated_at,
+        "lead_text_date":     lead_text_date,
     })
