@@ -7,6 +7,7 @@ related_spots:
   - wakasu-kaihin-koen
   - oiso-ko
   - tsujido
+updated: 2026-04-07
 ---
 
 # 釣りガールの悩みに全部答えます  

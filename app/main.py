@@ -336,6 +336,7 @@ def _rss_refresh_loop() -> None:
 
 
 _BLOGMURA_PING_URL = "https://ping.blogmura.com/xmlrpc/hdbk152e2inm/"
+_RANKING_PING_URL = "https://blog.with2.net/ping.php/2139987/1776486464"
 
 _BLOGMURA_PING_XML = (
     '<?xml version="1.0" encoding="UTF-8"?>'
@@ -363,6 +364,16 @@ async def _ping_blogmura() -> None:
         print(f"[blogmura] ping 失敗（無視）: {e}")
 
 
+async def _ping_ranking() -> None:
+    try:
+        import httpx
+        async with httpx.AsyncClient(timeout=10) as client:
+            await client.get(_RANKING_PING_URL)
+        print("[ranking] ping 送信完了")
+    except Exception as e:
+        print(f"[ranking] ping 失敗（無視）: {e}")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     load_spots()
@@ -380,8 +391,9 @@ async def lifespan(app: FastAPI):
     _bf.load_feeds(fish_master=_FISH_MASTER)
     _t = _th.Thread(target=_rss_refresh_loop, daemon=True)
     _t.start()
-    # にほんブログ村 ping（起動時に毎回送信）
+    # 起動時に毎回ping送信
     await _ping_blogmura()
+    await _ping_ranking()
     yield
 
 
@@ -516,6 +528,16 @@ def articles_rss_xml():
         return p
 
     def _mtime(art: dict) -> float:
+        """updated フィールド優先、なければ mtime にフォールバック。"""
+        updated = art.get("updated") or art.get("updated_at") or ""
+        if updated:
+            try:
+                from datetime import date as _date
+                d = _date.fromisoformat(updated)
+                import calendar
+                return float(calendar.timegm(d.timetuple()))
+            except Exception:
+                pass
         p = _md_path(art)
         return os.path.getmtime(p) if p.exists() else 0.0
 
@@ -1527,8 +1549,15 @@ def page_article_detail(request: Request, category: str, slug: str):
     card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
     related_spots = [s for rs in (meta.get("related_spots") or []) if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
-    mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
-    updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
+    _raw_date = meta.get("updated") or meta.get("updated_at") or ""
+    if _raw_date:
+        try:
+            updated_at = datetime.strptime(_raw_date, "%Y-%m-%d").strftime("%Y年%m月%d日")
+        except ValueError:
+            updated_at = _raw_date
+    else:
+        mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
+        updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
     return templates.TemplateResponse(request, "articles/detail.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1564,8 +1593,15 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
         _parent_slugs = _pm.get("related_spots") or []
     related_spots = [s for rs in _parent_slugs if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
-    mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
-    updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
+    _raw_date = meta.get("updated") or meta.get("updated_at") or ""
+    if _raw_date:
+        try:
+            updated_at = datetime.strptime(_raw_date, "%Y-%m-%d").strftime("%Y年%m月%d日")
+        except ValueError:
+            updated_at = _raw_date
+    else:
+        mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
+        updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
     return templates.TemplateResponse(request, "articles/part.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1996,9 +2032,16 @@ def page_spot_detail(
         and (s.get("classification") or {}).get("primary_type") == _current_type
         and s.get("slug") != slug
     ][:4] if _current_type else []
-    _spot_path = _BASE / "spots" / f"{slug}.json"
-    _mtime_ts = os.path.getmtime(_spot_path) if _spot_path.exists() else None
-    spot_updated_at = datetime.fromtimestamp(_mtime_ts).strftime("%Y年%m月%d日") if _mtime_ts else ""
+    _raw_spot_date = spot.get("updated_at") or ""
+    if _raw_spot_date:
+        try:
+            spot_updated_at = datetime.strptime(_raw_spot_date, "%Y-%m-%d").strftime("%Y年%m月%d日")
+        except ValueError:
+            spot_updated_at = _raw_spot_date
+    else:
+        _spot_path = _BASE / "spots" / f"{slug}.json"
+        _mtime_ts = os.path.getmtime(_spot_path) if _spot_path.exists() else None
+        spot_updated_at = datetime.fromtimestamp(_mtime_ts).strftime("%Y年%m月%d日") if _mtime_ts else ""
     lead_text_date = ""
     _lead_meta_path = _BASE / "data" / "lead_meta.json"
     if _lead_meta_path.exists():

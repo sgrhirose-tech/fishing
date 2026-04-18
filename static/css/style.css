@@ -1297,3 +1297,4 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 
 /* AI作成開示 */
 .ai-disclosure { font-size: .75rem; color: #999; margin: .25rem 0 1rem; }
+.blogmura-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
