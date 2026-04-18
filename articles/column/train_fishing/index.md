@@ -44,6 +44,7 @@ related_spots:
   - wakasu-kaihin-koen
   - yuigahama
   - zaimokuza-kaigan
+updated: 2026-04-18
 ---
 
 # 電車釣行完全ガイド  
@@ -337,7 +338,6 @@ related_spots:
 
 ### コンパクトロッドケース
 
-<!-- affiliate: 1 -->
 
 ---
 
@@ -382,7 +382,6 @@ related_spots:
 
 ### 小型ソフトクーラー
 
-<!-- affiliate: 2 -->
 
 ---
 
@@ -426,7 +425,6 @@ related_spots:
 
 ### 折りたたみバケツ
 
-<!-- affiliate: 3 -->
 
 ---
 

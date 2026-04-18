@@ -25,6 +25,7 @@ Google Places Nearby Search + Directions API を使い、
 
 import argparse
 import csv
+import datetime
 import json
 import math
 import re
@@ -433,6 +434,7 @@ def main():
 
         if args.apply:
             spot.setdefault("info", {})["access"] = new_access
+            spot["updated_at"] = datetime.date.today().isoformat()
             path.write_text(json.dumps(spot, ensure_ascii=False, indent=2),
                             encoding="utf-8")
             print(f"  → 書き込み完了")

@@ -6,6 +6,7 @@ related_spots:
   - kurihama
   - miura
   - shichirigahama
+updated: 2026-04-07
 ---
 
 # 虫エサが苦手でも釣りはできる

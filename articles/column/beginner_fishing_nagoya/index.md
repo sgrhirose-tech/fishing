@@ -50,6 +50,7 @@ related_spots:
   - wagu-hiroma
   - yamiumi-gyoko
   - yokkaichi-yumekujira
+updated: 2026-04-15
 ---
 
 # はじめての海釣りに向いている釣り場【名古屋版】

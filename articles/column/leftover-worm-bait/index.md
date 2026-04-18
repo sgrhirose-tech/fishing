@@ -7,6 +7,7 @@ related_spots:
   - chigasaki-headland
   - isshiki
   - morito
+updated: 2026-04-07
 ---
 
 # 余った虫エサの保管方法と「今日期限」の考え方  
