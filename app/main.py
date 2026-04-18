@@ -19,11 +19,10 @@ except ImportError:
     pass
 
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
-from starlette.middleware.base import BaseHTTPMiddleware
 
 from .constants import REGIONS, VALID_REGION_SLUGS, PREF_TO_REGION, REGION_NAMES
 from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_slug
@@ -387,21 +386,6 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Tsuricast", lifespan=lifespan, redirect_slashes=True)
-
-
-class _StripTrailingSlash(BaseHTTPMiddleware):
-    async def dispatch(self, request: Request, call_next):
-        path = request.url.path
-        # /a/b/ のような2段以上のパスのみ trailing slash を除去
-        # /fish/ /area/ /articles/ 等の1段パスは除外
-        if path.endswith("/") and path.count("/") >= 3:
-            qs = request.url.query
-            new_url = path.rstrip("/") + (f"?{qs}" if qs else "")
-            return RedirectResponse(url=new_url, status_code=301)
-        return await call_next(request)
-
-
-app.add_middleware(_StripTrailingSlash)
 
 # 静的ファイルとテンプレート
 import pathlib
