@@ -38,5 +38,15 @@
       "attribution_url": "http://www.pref.kanagawa.jp/docs/f4i/tsunami/p613103.html",
       "coverage_note": "三浦東京湾側"
     }
+  ],
+  "shichirigahama": [
+    {
+      "name": "七里ヶ浜・江ノ島ライブカメラ",
+      "youtube_video_id": "xAc_Z34aE1A",
+      "source_url": "https://www.youtube.com/live/xAc_Z34aE1A",
+      "attribution_text": "配信: 湘南ライブカメラ",
+      "attribution_url": "https://www.youtube.com/@shonan-livecam",
+      "coverage_note": "七里ヶ浜"
+    }
   ]
 }
