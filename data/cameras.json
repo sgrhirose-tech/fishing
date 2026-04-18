@@ -19,6 +19,36 @@
       "coverage_note": "平塚漁港〜海岸付近"
     }
   ],
+  "chigasaki-kaigan": [
+    {
+      "name": "茅ヶ崎サザンビーチライブカメラ",
+      "youtube_video_id": "OJYcNsIpyx0",
+      "source_url": "https://www.youtube.com/live/OJYcNsIpyx0",
+      "attribution_text": "配信: WITH SEA",
+      "attribution_url": "https://www.youtube.com/@WITHSEA_by_UMITOLIFE",
+      "coverage_note": "サザンビーチ"
+    }
+  ],
+  "katase_east": [
+    {
+      "name": "片瀬海岸東浜ライブカメラ",
+      "youtube_video_id": "xPgeZzojY5o",
+      "source_url": "https://www.youtube.com/live/xPgeZzojY5o",
+      "attribution_text": "配信: FlyingSuika",
+      "attribution_url": "https://www.youtube.com/@FlyingSuika",
+      "coverage_note": "片瀬東浜（江ノ島）"
+    }
+  ],
+  "shichirigahama": [
+    {
+      "name": "七里ヶ浜・江ノ島ライブカメラ",
+      "youtube_video_id": "xAc_Z34aE1A",
+      "source_url": "https://www.youtube.com/live/xAc_Z34aE1A",
+      "attribution_text": "配信: 湘南ライブカメラ",
+      "attribution_url": "https://www.youtube.com/@shonan-livecam",
+      "coverage_note": "七里ヶ浜"
+    }
+  ],
   "zushi-kaigan": [
     {
       "name": "逗子海岸ライブカメラ",
@@ -27,6 +57,32 @@
       "attribution_text": "配信: 神奈川県",
       "attribution_url": "http://www.pref.kanagawa.jp/docs/f4i/tsunami/p613103.html",
       "coverage_note": "逗子海岸の直下"
+    },
+    {
+      "name": "逗子海岸ライブカメラ1（海岸線）",
+      "youtube_video_id": "5yYQpzRSiAw",
+      "source_url": "https://www.youtube.com/live/5yYQpzRSiAw",
+      "attribution_text": "配信: FlyingSuika",
+      "attribution_url": "https://www.youtube.com/@FlyingSuika",
+      "coverage_note": "逗子海岸北側から"
+    },
+    {
+      "name": "逗子海岸ライブカメラ2（ワイド）",
+      "youtube_video_id": "p3UvSS7_CsA",
+      "source_url": "https://www.youtube.com/live/p3UvSS7_CsA",
+      "attribution_text": "配信: FlyingSuika",
+      "attribution_url": "https://www.youtube.com/@FlyingSuika",
+      "coverage_note": "逗子海岸砂浜側から"
+    }
+  ],
+  "miura": [
+    {
+      "name": "三浦海岸ライブカメラ",
+      "youtube_video_id": "49NubJ78KWU",
+      "source_url": "https://www.youtube.com/live/49NubJ78KWU",
+      "attribution_text": "配信: WITH SEA",
+      "attribution_url": "https://www.youtube.com/@WITHSEA_by_UMITOLIFE",
+      "coverage_note": "三浦海岸北側"
     }
   ],
   "miura-gyoko-kihoku": [
@@ -39,14 +95,14 @@
       "coverage_note": "三浦東京湾側"
     }
   ],
-  "shichirigahama": [
+  "kurihama": [
     {
-      "name": "七里ヶ浜・江ノ島ライブカメラ",
-      "youtube_video_id": "xAc_Z34aE1A",
-      "source_url": "https://www.youtube.com/live/xAc_Z34aE1A",
-      "attribution_text": "配信: 湘南ライブカメラ",
-      "attribution_url": "https://www.youtube.com/@shonan-livecam",
-      "coverage_note": "七里ヶ浜"
+      "name": "横須賀市災害監視カメラ 久里浜海岸",
+      "youtube_video_id": "klqiayelF5E",
+      "source_url": "https://www.youtube.com/live/klqiayelF5E",
+      "attribution_text": "配信: 横須賀市公式チャンネル",
+      "attribution_url": "https://www.youtube.com/@yokosukacityoffice",
+      "coverage_note": "久里浜海岸"
     }
   ]
 }
