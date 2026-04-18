@@ -21,6 +21,7 @@ TSV ファイルを入力とし、以下の順でデータを充填して spots/
 """
 
 import argparse
+import datetime
 import json
 import math
 import re
@@ -825,6 +826,7 @@ def process_record(rec: dict, idx: int, total: int, cfg: dict,
         },
         "classification": classification,
         "target_fish": extract_fish_from_notes(notes, _NAME_TO_SLUG),
+        "updated_at": datetime.date.today().isoformat(),
     }
 
     # 最近傍港コードを埋め込み

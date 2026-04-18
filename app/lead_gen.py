@@ -13,6 +13,7 @@ import ssl
 import time
 import urllib.error
 import urllib.request
+import datetime as _dt
 from pathlib import Path
 
 try:
@@ -311,6 +312,7 @@ def update_spot_json(slug: str, lead_text: str, spots_dir: "Path | None" = None)
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
         data.setdefault("info", {})["lead_text"] = lead_text
+        data["updated_at"] = _dt.date.today().isoformat()
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
             f.write("\n")

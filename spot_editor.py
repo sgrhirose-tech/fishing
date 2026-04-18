@@ -9,6 +9,7 @@ unadjusted/*.json を Leaflet.js WebView で編集・保存する。
   デスクトップ: python spot_editor.py → ブラウザで HTML を開く（参照確認用）
 """
 
+import datetime
 import json
 import math
 import os
@@ -1120,6 +1121,8 @@ def _save_spot(payload):
     if "target_fish" in payload:
         spot["target_fish"] = [f for f in payload["target_fish"] if isinstance(f, str)]
 
+    spot["updated_at"] = datetime.date.today().isoformat()
+
     with open(path, "w", encoding="utf-8") as f:
         json.dump(spot, f, ensure_ascii=False, indent=2)
         f.write("\n")
@@ -1174,7 +1177,8 @@ def _create_spot(payload):
             "notes":     "",
             "access":    "",
             "photo_url": f"https://raw.githubusercontent.com/sgrhirose-tech/fishing/resources/photos/{slug}.jpg"
-        }
+        },
+        "updated_at": datetime.date.today().isoformat()
     }
 
     with open(path, "w", encoding="utf-8") as f:
