@@ -337,7 +337,6 @@ related_spots:
 
 ### コンパクトロッドケース
 
-<!-- affiliate: 1 -->
 
 ---
 
@@ -382,7 +381,6 @@ related_spots:
 
 ### 小型ソフトクーラー
 
-<!-- affiliate: 2 -->
 
 ---
 
@@ -426,7 +424,6 @@ related_spots:
 
 ### 折りたたみバケツ
 
-<!-- affiliate: 3 -->
 
 ---
 
