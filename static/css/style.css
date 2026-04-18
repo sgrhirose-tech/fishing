@@ -1301,6 +1301,9 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .camera-coverage { color: #666; }
 .camera-attribution { font-size: .8rem; color: #777; }
 .camera-source-link { font-size: .8rem; margin-left: auto; }
+.camera-link-card { display: flex; align-items: center; gap: .75rem; padding: 1rem 1.25rem; background: #1a1a1a; color: #fff; border-radius: 8px; text-decoration: none; font-size: .95rem; }
+.camera-link-card:hover { background: #333; }
+.camera-link-icon { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
 .camera-more { margin-top: .25rem; }
 .camera-more summary { cursor: pointer; font-size: .9rem; color: #1a6b9e; padding: .4rem 0; user-select: none; }
 .camera-more summary:hover { text-decoration: underline; }
