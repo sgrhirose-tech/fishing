@@ -516,6 +516,16 @@ def articles_rss_xml():
         return p
 
     def _mtime(art: dict) -> float:
+        """updated フィールド優先、なければ mtime にフォールバック。"""
+        updated = art.get("updated") or art.get("updated_at") or ""
+        if updated:
+            try:
+                from datetime import date as _date
+                d = _date.fromisoformat(updated)
+                import calendar
+                return float(calendar.timegm(d.timetuple()))
+            except Exception:
+                pass
         p = _md_path(art)
         return os.path.getmtime(p) if p.exists() else 0.0
 
@@ -1527,8 +1537,15 @@ def page_article_detail(request: Request, category: str, slug: str):
     card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
     related_spots = [s for rs in (meta.get("related_spots") or []) if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
-    mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
-    updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
+    _raw_date = meta.get("updated") or meta.get("updated_at") or ""
+    if _raw_date:
+        try:
+            updated_at = datetime.strptime(_raw_date, "%Y-%m-%d").strftime("%Y年%m月%d日")
+        except ValueError:
+            updated_at = _raw_date
+    else:
+        mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
+        updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
     return templates.TemplateResponse(request, "articles/detail.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1564,8 +1581,15 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
         _parent_slugs = _pm.get("related_spots") or []
     related_spots = [s for rs in _parent_slugs if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
-    mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
-    updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
+    _raw_date = meta.get("updated") or meta.get("updated_at") or ""
+    if _raw_date:
+        try:
+            updated_at = datetime.strptime(_raw_date, "%Y-%m-%d").strftime("%Y年%m月%d日")
+        except ValueError:
+            updated_at = _raw_date
+    else:
+        mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
+        updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
     return templates.TemplateResponse(request, "articles/part.html", {
         "meta": meta,
         "body_html": body_html,
@@ -1996,9 +2020,16 @@ def page_spot_detail(
         and (s.get("classification") or {}).get("primary_type") == _current_type
         and s.get("slug") != slug
     ][:4] if _current_type else []
-    _spot_path = _BASE / "spots" / f"{slug}.json"
-    _mtime_ts = os.path.getmtime(_spot_path) if _spot_path.exists() else None
-    spot_updated_at = datetime.fromtimestamp(_mtime_ts).strftime("%Y年%m月%d日") if _mtime_ts else ""
+    _raw_spot_date = spot.get("updated_at") or ""
+    if _raw_spot_date:
+        try:
+            spot_updated_at = datetime.strptime(_raw_spot_date, "%Y-%m-%d").strftime("%Y年%m月%d日")
+        except ValueError:
+            spot_updated_at = _raw_spot_date
+    else:
+        _spot_path = _BASE / "spots" / f"{slug}.json"
+        _mtime_ts = os.path.getmtime(_spot_path) if _spot_path.exists() else None
+        spot_updated_at = datetime.fromtimestamp(_mtime_ts).strftime("%Y年%m月%d日") if _mtime_ts else ""
     lead_text_date = ""
     _lead_meta_path = _BASE / "data" / "lead_meta.json"
     if _lead_meta_path.exists():

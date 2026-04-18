@@ -30,6 +30,7 @@ related_spots:
   - uchinourawanko-gogan
   - wakanoura-gyoko
   - wakayama-ko
+updated: 2026-04-15
 ---
 
 # トイレのある海釣り場【大阪版】

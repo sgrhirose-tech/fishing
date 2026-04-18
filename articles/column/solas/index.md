@@ -8,6 +8,7 @@ related_spots:
   - shimizu-fujimi
   - maishima-ryokuchi
   - nanko-yachoen-gokan
+updated: 2026-04-13
 ---
 
 # 釣り場が減り続けている理由｜SOLAS条約と、釣り禁止になる本当の原因

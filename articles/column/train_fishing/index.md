@@ -44,6 +44,7 @@ related_spots:
   - wakasu-kaihin-koen
   - yuigahama
   - zaimokuza-kaigan
+updated: 2026-04-18
 ---
 
 # 電車釣行完全ガイド  

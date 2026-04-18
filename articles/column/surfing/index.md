@@ -121,6 +121,7 @@ related_spots:
   - yumigahama-aonogawa
   - zaimokuza-kaigan
   - zushi
+updated: 2026-04-15
 ---
 
 # サーフィンに適した海と、釣りに適した海  

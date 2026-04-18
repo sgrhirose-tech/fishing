@@ -108,6 +108,7 @@ related_spots:
   - yugawara-kaihin-koen
   - yuigahama
   - zaimokuza-kaigan
+updated: 2026-04-15
 ---
 
 # トイレのある海釣り場【関東版】
