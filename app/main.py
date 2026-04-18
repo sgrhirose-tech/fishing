@@ -336,14 +336,28 @@ def _rss_refresh_loop() -> None:
 
 
 _BLOGMURA_PING_URL = "https://ping.blogmura.com/xmlrpc/hdbk152e2inm/"
-_BLOGMURA_PING_FLAG = "/tmp/blogmura_pinged"
+
+_BLOGMURA_PING_XML = (
+    '<?xml version="1.0" encoding="UTF-8"?>'
+    "<methodCall>"
+    "<methodName>weblogUpdates.ping</methodName>"
+    "<params>"
+    "<param><value><string>Tsuricast</string></value></param>"
+    "<param><value><string>https://tsuricast.jp</string></value></param>"
+    "</params>"
+    "</methodCall>"
+)
 
 
 async def _ping_blogmura() -> None:
     try:
         import httpx
         async with httpx.AsyncClient(timeout=10) as client:
-            await client.post(_BLOGMURA_PING_URL)
+            await client.post(
+                _BLOGMURA_PING_URL,
+                content=_BLOGMURA_PING_XML.encode("utf-8"),
+                headers={"Content-Type": "text/xml; charset=utf-8"},
+            )
         print("[blogmura] ping 送信完了")
     except Exception as e:
         print(f"[blogmura] ping 失敗（無視）: {e}")
@@ -366,10 +380,8 @@ async def lifespan(app: FastAPI):
     _bf.load_feeds(fish_master=_FISH_MASTER)
     _t = _th.Thread(target=_rss_refresh_loop, daemon=True)
     _t.start()
-    # にほんブログ村 ping（デプロイ = 記事更新タイミングとして起動時に1回送信）
-    if not os.path.exists(_BLOGMURA_PING_FLAG):
-        open(_BLOGMURA_PING_FLAG, "w").close()
-        await _ping_blogmura()
+    # にほんブログ村 ping（起動時に毎回送信）
+    await _ping_blogmura()
     yield
 
 
