@@ -306,6 +306,59 @@
   </div>
 </section>
 
+{% if cameras %}
+<section class="spot-cameras">
+  <h2 class="spot-cameras-title">現地の様子</h2>
+  <p class="spot-cameras-note">映像は各配信元から直接配信されています。Tsuricastは独自の海況予測を行っていません。</p>
+  {% set cam = cameras[0] %}
+  <figure class="camera-embed">
+    <div class="camera-aspect">
+      <iframe
+        src="https://www.youtube.com/embed/{{ cam.youtube_video_id }}?rel=0&modestbranding=1"
+        title="{{ spot.name }}のライブカメラ: {{ cam.name }}"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <figcaption class="camera-caption">
+      <span class="camera-name">{{ cam.name }}</span>
+      {% if cam.coverage_note %}<span class="camera-coverage">（{{ cam.coverage_note }}）</span>{% endif %}
+      <span class="camera-attribution">
+        {% if cam.attribution_url %}<a href="{{ cam.attribution_url }}" target="_blank" rel="noopener noreferrer">{{ cam.attribution_text }}</a>{% else %}{{ cam.attribution_text }}{% endif %}
+      </span>
+      <a href="{{ cam.source_url }}" target="_blank" rel="noopener noreferrer" class="camera-source-link">元配信を見る ↗</a>
+    </figcaption>
+  </figure>
+  {% if cameras|length > 1 %}
+  <details class="camera-more">
+    <summary>他のカメラも見る（{{ cameras|length - 1 }}件）</summary>
+    {% for cam in cameras[1:] %}
+    <figure class="camera-embed">
+      <div class="camera-aspect">
+        <iframe
+          src="https://www.youtube.com/embed/{{ cam.youtube_video_id }}?rel=0&modestbranding=1"
+          title="{{ spot.name }}のライブカメラ: {{ cam.name }}"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <figcaption class="camera-caption">
+        <span class="camera-name">{{ cam.name }}</span>
+        {% if cam.coverage_note %}<span class="camera-coverage">（{{ cam.coverage_note }}）</span>{% endif %}
+        <span class="camera-attribution">
+          {% if cam.attribution_url %}<a href="{{ cam.attribution_url }}" target="_blank" rel="noopener noreferrer">{{ cam.attribution_text }}</a>{% else %}{{ cam.attribution_text }}{% endif %}
+        </span>
+        <a href="{{ cam.source_url }}" target="_blank" rel="noopener noreferrer" class="camera-source-link">元配信を見る ↗</a>
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </details>
+  {% endif %}
+</section>
+{% endif %}
+
 <!-- AdSense 枠（コメントアウト） -->
 <!--
 <section class="ad-section">
