@@ -1,0 +1,42 @@
+{
+  "oiso": [
+    {
+      "name": "大磯海岸ライブカメラ",
+      "youtube_video_id": "WV9DtVXgwqE",
+      "source_url": "https://www.youtube.com/live/WV9DtVXgwqE",
+      "attribution_text": "配信: 神奈川県",
+      "attribution_url": "http://www.pref.kanagawa.jp/docs/f4i/tsunami/p613103.html",
+      "coverage_note": "大磯海岸・照ヶ崎付近"
+    }
+  ],
+  "hiratsuka-kaigan": [
+    {
+      "name": "平塚海岸ライブカメラ",
+      "youtube_video_id": "62_twW5uXd4",
+      "source_url": "https://youtu.be/62_twW5uXd4",
+      "attribution_text": "配信: 神奈川県",
+      "attribution_url": "http://www.pref.kanagawa.jp/docs/f4i/tsunami/p613103.html",
+      "coverage_note": "平塚漁港〜海岸付近"
+    }
+  ],
+  "zushi-kaigan": [
+    {
+      "name": "逗子海岸ライブカメラ",
+      "youtube_video_id": "Q5AAi9KOjG0",
+      "source_url": "https://youtube.com/live/Q5AAi9KOjG0",
+      "attribution_text": "配信: 神奈川県",
+      "attribution_url": "http://www.pref.kanagawa.jp/docs/f4i/tsunami/p613103.html",
+      "coverage_note": "逗子海岸の直下"
+    }
+  ],
+  "miura-gyoko-kihoku": [
+    {
+      "name": "三浦・東京湾ライブカメラ",
+      "youtube_video_id": "Blh-OB2JDR4",
+      "source_url": "https://youtube.com/live/Blh-OB2JDR4",
+      "attribution_text": "配信: 神奈川県",
+      "attribution_url": "http://www.pref.kanagawa.jp/docs/f4i/tsunami/p613103.html",
+      "coverage_note": "三浦東京湾側"
+    }
+  ]
+}

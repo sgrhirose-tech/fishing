@@ -26,7 +26,7 @@ from fastapi import Request
 
 from .constants import REGIONS, VALID_REGION_SLUGS, PREF_TO_REGION, REGION_NAMES
 from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_slug
-from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, spot_slope_type, spot_type_label, assign_area, get_area_centers, get_photos
+from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, spot_slope_type, spot_type_label, assign_area, get_area_centers, get_photos, get_spot_cameras
 from .weather import (fetch_weather, fetch_weather_range,
                        fetch_marine_weatherapi, fetch_marine, fetch_marine_range,
                        fetch_sst_noaa, get_weather_fetched_at)
@@ -2036,4 +2036,5 @@ def page_spot_detail(
         "qa_items":           qa_items,
         "spot_updated_at":    spot_updated_at,
         "lead_text_date":     lead_text_date,
+        "cameras":            get_spot_cameras(slug),
     })
