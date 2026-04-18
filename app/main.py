@@ -336,6 +336,7 @@ def _rss_refresh_loop() -> None:
 
 
 _BLOGMURA_PING_URL = "https://ping.blogmura.com/xmlrpc/hdbk152e2inm/"
+_RANKING_PING_URL = "https://blog.with2.net/ping.php/2139987/1776486464"
 
 _BLOGMURA_PING_XML = (
     '<?xml version="1.0" encoding="UTF-8"?>'
@@ -363,6 +364,16 @@ async def _ping_blogmura() -> None:
         print(f"[blogmura] ping 失敗（無視）: {e}")
 
 
+async def _ping_ranking() -> None:
+    try:
+        import httpx
+        async with httpx.AsyncClient(timeout=10) as client:
+            await client.get(_RANKING_PING_URL)
+        print("[ranking] ping 送信完了")
+    except Exception as e:
+        print(f"[ranking] ping 失敗（無視）: {e}")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     load_spots()
@@ -380,8 +391,9 @@ async def lifespan(app: FastAPI):
     _bf.load_feeds(fish_master=_FISH_MASTER)
     _t = _th.Thread(target=_rss_refresh_loop, daemon=True)
     _t.start()
-    # にほんブログ村 ping（起動時に毎回送信）
+    # 起動時に毎回ping送信
     await _ping_blogmura()
+    await _ping_ranking()
     yield
 
 
