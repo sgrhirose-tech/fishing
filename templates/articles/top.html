@@ -23,6 +23,22 @@
 </nav>
 
 {% for cat in categories %}
+{% if cat.key == "column" and tanaka_intro %}
+<section class="articles-columnist-intro">
+  <h2 class="articles-category-heading">執筆者紹介</h2>
+  <ul class="article-list">
+    <li>
+      <a href="/articles/{{ tanaka_intro.category }}/{{ tanaka_intro.slug }}/" class="article-row-card">
+        <img src="{{ tanaka_intro.card_image }}" alt="{{ tanaka_intro.title or tanaka_intro.slug }}" loading="lazy">
+        <span class="article-row-info">
+          <span class="article-row-title">{{ tanaka_intro.title or tanaka_intro.slug }}</span>
+          {% if tanaka_intro.updated_at %}<span class="article-row-date">更新 {{ tanaka_intro.updated_at }}</span>{% endif %}
+        </span>
+      </a>
+    </li>
+  </ul>
+</section>
+{% endif %}
 <section class="articles-category-section" id="{{ cat.key }}">
   <h2 class="articles-category-heading">{{ cat.label }}</h2>
   {% if cat.articles %}

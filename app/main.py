@@ -1541,8 +1541,13 @@ def page_articles_top(request: Request):
         for cat in _ARTICLE_CATEGORY_ORDER
         if cat not in _ARTICLE_HIDDEN_CATEGORIES
     ]
+    tanaka_intro = next(
+        (a for a in all_articles if a.get("category") == "info" and a.get("slug") == "tanaka_introduction"),
+        None,
+    )
     return templates.TemplateResponse(request, "articles/top.html", {
         "categories": categories,
+        "tanaka_intro": tanaka_intro,
     })
 
 
