@@ -358,19 +358,19 @@
 {% if related_reports %}
 <section class="spot-related-reports">
   <h2>この釣り場の釣行レポート</h2>
-  <div class="spot-report-cards">
+  <ul class="article-list">
     {% for r in related_reports %}
-    <a href="/articles/{{ r.category }}/{{ r.slug }}/" class="spot-report-card">
-      <img src="{{ r.card_image }}" alt="{{ r.title or r.slug }}" loading="lazy">
-      <div class="spot-report-card-body">
-        <p class="spot-report-card-title">{{ r.title or r.slug }}</p>
-        {% if r.catch_display %}
-        <p class="spot-report-catch">🐟 {% for c in r.catch_display %}{{ c.name }}{% if c.count %} {{ c.count }}匹{% endif %}{% if not loop.last %}・{% endif %}{% endfor %}</p>
-        {% endif %}
-      </div>
-    </a>
+    <li>
+      <a href="/articles/{{ r.category }}/{{ r.slug }}/" class="article-row-card">
+        <img src="{{ r.card_image }}" alt="{{ r.title or r.slug }}" loading="lazy">
+        <div class="spot-report-row-body">
+          <span class="article-row-title">{{ r.title or r.slug }}</span>
+          {% if r.updated_jp %}<span class="spot-report-row-meta">更新 {{ r.updated_jp }}{% if r.catch_display %}　🐟 {% for c in r.catch_display %}{{ c.name }}{% if c.count %} {{ c.count }}匹{% endif %}{% if not loop.last %}・{% endif %}{% endfor %}{% endif %}</span>{% endif %}
+        </div>
+      </a>
+    </li>
     {% endfor %}
-  </div>
+  </ul>
 </section>
 {% endif %}
 

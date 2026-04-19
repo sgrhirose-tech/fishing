@@ -1323,13 +1323,8 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .ai-disclosure { font-size: .75rem; color: #999; margin: .25rem 0 1rem; }
 .blogmura-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
 
-/* ---- スポット: 釣行レポートカード ---- */
+/* ---- スポット: 釣行レポート ---- */
 .spot-related-reports { margin: 1.5rem 0; }
 .spot-related-reports h2 { font-size: 1.1rem; margin-bottom: .75rem; }
-.spot-report-cards { display: flex; flex-wrap: wrap; gap: .75rem; }
-.spot-report-card { display: flex; flex-direction: column; width: 180px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: box-shadow .15s; flex-shrink: 0; }
-.spot-report-card:hover { box-shadow: 0 3px 10px rgba(0,0,0,.12); }
-.spot-report-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
-.spot-report-card-body { padding: .5rem .65rem; }
-.spot-report-card-title { font-size: .8rem; font-weight: bold; margin: 0 0 .3rem; line-height: 1.4; }
-.spot-report-catch { font-size: .75rem; color: #555; margin: 0; }
+.spot-report-row-body { display: flex; flex-direction: column; gap: .2rem; }
+.spot-report-row-meta { font-size: .8rem; color: #888; }

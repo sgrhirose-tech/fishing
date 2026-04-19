@@ -2103,7 +2103,10 @@ def page_spot_detail(
         "spot_description":        _spot_desc_fallback,
         "meta_description":   meta_description,
         "related_articles":   [_a for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") != "report"],
-        "related_reports":    [{**_a, "catch_display": _parse_catch(_a.get("catch") or [], _FISH_MASTER)} for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") == "report"],
+        "related_reports":    [{**_a,
+                                "catch_display": _parse_catch(_a.get("catch") or [], _FISH_MASTER),
+                                "updated_jp": (datetime.strptime(_a["updated"], "%Y-%m-%d").strftime("%Y年%m月%d日") if _a.get("updated") else "")}
+                               for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") == "report"],
         "blog_posts":         blog_posts,
         "is_kinshi":          is_kinshi,
         "nearby_spots":       nearby_spots,
