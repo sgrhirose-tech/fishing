@@ -1420,6 +1420,20 @@ def _load_articles() -> list:
             meta, _ = _extract_article_meta(content, slug)
             meta["category"] = cat_dir.name
             meta["card_image"] = _article_card_image(cat_dir.name, slug)
+            _updated_str = (meta.get("updated") or "").strip()
+            if _updated_str:
+                try:
+                    _dt = datetime.strptime(_updated_str, "%Y-%m-%d")
+                    meta["mtime"] = _dt.timestamp()
+                    meta["updated_at"] = _dt.strftime("%Y年%m月%d日")
+                except ValueError:
+                    _mts = os.path.getmtime(md_path)
+                    meta["mtime"] = _mts
+                    meta["updated_at"] = datetime.fromtimestamp(_mts).strftime("%Y年%m月%d日")
+            else:
+                _mts = os.path.getmtime(md_path)
+                meta["mtime"] = _mts
+                meta["updated_at"] = datetime.fromtimestamp(_mts).strftime("%Y年%m月%d日")
             result.append(meta)
     return result
 
@@ -1507,7 +1521,7 @@ def page_articles_top(request: Request):
         if cat in grouped:
             grouped[cat].append(a)
     categories = [
-        {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": grouped[cat]}
+        {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": sorted(grouped[cat], key=lambda a: a.get("mtime", 0), reverse=True)}
         for cat in _ARTICLE_CATEGORY_ORDER
         if cat not in _ARTICLE_HIDDEN_CATEGORIES
     ]
