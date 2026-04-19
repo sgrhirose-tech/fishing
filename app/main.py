@@ -1398,6 +1398,9 @@ def _load_articles() -> list:
             meta, _ = _extract_article_meta(content, slug)
             meta["category"] = cat_dir.name
             meta["card_image"] = _article_card_image(cat_dir.name, slug)
+            mtime_ts = os.path.getmtime(md_path)
+            meta["mtime"] = mtime_ts
+            meta["updated_at"] = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日")
             result.append(meta)
     return result
 
@@ -1485,7 +1488,7 @@ def page_articles_top(request: Request):
         if cat in grouped:
             grouped[cat].append(a)
     categories = [
-        {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": grouped[cat]}
+        {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": sorted(grouped[cat], key=lambda a: a.get("mtime", 0), reverse=True)}
         for cat in _ARTICLE_CATEGORY_ORDER
         if cat not in _ARTICLE_HIDDEN_CATEGORIES
     ]

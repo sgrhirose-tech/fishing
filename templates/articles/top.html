@@ -31,7 +31,10 @@
     <li>
       <a href="/articles/{{ a.category }}/{{ a.slug }}/" class="article-row-card">
         <img src="{{ a.card_image }}" alt="{{ a.title or a.slug }}" loading="lazy">
-        <span class="article-row-title">{{ a.title or a.slug }}</span>
+        <span class="article-row-info">
+          <span class="article-row-title">{{ a.title or a.slug }}</span>
+          {% if a.updated_at %}<span class="article-row-date">更新 {{ a.updated_at }}</span>{% endif %}
+        </span>
       </a>
     </li>
     {% endfor %}

@@ -1137,7 +1137,9 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .article-row-card { display: flex; align-items: center; gap: .9rem; padding: .5rem .75rem; border: 1px solid #e0e0e0; border-radius: 8px; text-decoration: none; color: inherit; transition: box-shadow .15s, background .15s; }
 .article-row-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); background: #f8fbff; }
 .article-row-card img { width: 80px; height: 54px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+.article-row-info { display: flex; flex-direction: column; gap: .2rem; }
 .article-row-title { font-size: .95rem; font-weight: bold; line-height: 1.4; }
+.article-row-date { font-size: .75rem; color: #888; }
 .articles-empty { color: #888; font-size: .9rem; }
 
 /* 記事本文 */
