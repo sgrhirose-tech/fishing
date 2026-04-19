@@ -255,7 +255,7 @@ related_spots:
   - yui-gyoko
   - yuigahama
   - zaimokuza-kaigan
-updated: 2026-04-15
+updated: 2026-04-18
 ---
 
 # 釣りとトイレ問題  

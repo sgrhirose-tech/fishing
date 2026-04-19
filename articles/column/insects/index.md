@@ -5,7 +5,7 @@ related_spots:
   - morito
   - isshiki
   - enoshima
-updated: 2026-04-07
+updated: 2026-04-18
 ---
 
 # 海釣りで厄介な虫  
