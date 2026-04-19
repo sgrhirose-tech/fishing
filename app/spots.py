@@ -270,4 +270,4 @@ def load_cameras() -> dict:
 
 
 def get_spot_cameras(slug: str) -> list:
-    return [c for c in load_cameras().get(slug, []) if c.get("youtube_video_id")]
+    return [c for c in load_cameras().get(slug, []) if c.get("youtube_video_id") or c.get("source_url")]
