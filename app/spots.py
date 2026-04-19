@@ -253,3 +253,21 @@ def assign_area(spot: dict) -> str:
     lat = spot_lat(spot)
     lon = spot_lon(spot)
     return min(area_centers, key=lambda n: (area_centers[n][0] - lat) ** 2 + (area_centers[n][1] - lon) ** 2)
+
+
+_CAMERAS_PATH = _ROOT / "data" / "cameras.json"
+_cameras_cache: dict | None = None
+
+
+def load_cameras() -> dict:
+    global _cameras_cache
+    if _cameras_cache is None:
+        try:
+            _cameras_cache = json.loads(_CAMERAS_PATH.read_text("utf-8"))
+        except (FileNotFoundError, json.JSONDecodeError):
+            _cameras_cache = {}
+    return _cameras_cache
+
+
+def get_spot_cameras(slug: str) -> list:
+    return [c for c in load_cameras().get(slug, []) if c.get("youtube_video_id") or c.get("source_url")]

@@ -26,7 +26,7 @@ from fastapi import Request
 
 from .constants import REGIONS, VALID_REGION_SLUGS, PREF_TO_REGION, REGION_NAMES
 from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_slug
-from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, spot_slope_type, spot_type_label, assign_area, get_area_centers, get_photos
+from .spots import spot_area, spot_area_name, spot_bearing, spot_kisugo, spot_terrain, spot_slope_type, spot_type_label, assign_area, get_area_centers, get_photos, get_spot_cameras
 from .weather import (fetch_weather, fetch_weather_range,
                        fetch_marine_weatherapi, fetch_marine, fetch_marine_range,
                        fetch_sst_noaa, get_weather_fetched_at)
@@ -1420,6 +1420,20 @@ def _load_articles() -> list:
             meta, _ = _extract_article_meta(content, slug)
             meta["category"] = cat_dir.name
             meta["card_image"] = _article_card_image(cat_dir.name, slug)
+            _updated_str = (meta.get("updated") or "").strip()
+            if _updated_str:
+                try:
+                    _dt = datetime.strptime(_updated_str, "%Y-%m-%d")
+                    meta["mtime"] = _dt.timestamp()
+                    meta["updated_at"] = _dt.strftime("%Y年%m月%d日")
+                except ValueError:
+                    _mts = os.path.getmtime(md_path)
+                    meta["mtime"] = _mts
+                    meta["updated_at"] = datetime.fromtimestamp(_mts).strftime("%Y年%m月%d日")
+            else:
+                _mts = os.path.getmtime(md_path)
+                meta["mtime"] = _mts
+                meta["updated_at"] = datetime.fromtimestamp(_mts).strftime("%Y年%m月%d日")
             result.append(meta)
     return result
 
@@ -1523,7 +1537,7 @@ def page_articles_top(request: Request):
         if cat in grouped:
             grouped[cat].append(a)
     categories = [
-        {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": grouped[cat]}
+        {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": sorted(grouped[cat], key=lambda a: a.get("mtime", 0), reverse=True)}
         for cat in _ARTICLE_CATEGORY_ORDER
         if cat not in _ARTICLE_HIDDEN_CATEGORIES
     ]
@@ -2096,4 +2110,5 @@ def page_spot_detail(
         "qa_items":           qa_items,
         "spot_updated_at":    spot_updated_at,
         "lead_text_date":     lead_text_date,
+        "cameras":            get_spot_cameras(slug),
     })

@@ -256,7 +256,7 @@ related_spots:
   - yui-gyoko
   - yuigahama
   - zaimokuza-kaigan
-updated: 2026-04-15
+updated: 2026-04-18
 ---
 
 # 3家族合同で釣りに行くなら  
