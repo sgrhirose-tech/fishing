@@ -50,7 +50,7 @@ related_spots:
   - wagu-hiroma
   - yamiumi-gyoko
   - yokkaichi-yumekujira
-updated: 2026-04-15
+updated: 2026-04-18
 ---
 
 # 子連れで行ける海釣り場【名古屋版】

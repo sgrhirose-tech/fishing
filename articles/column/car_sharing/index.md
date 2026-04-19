@@ -8,7 +8,7 @@ related_spots:
   - shichirigahama
   - chigasaki-headland
   - enoshima
-updated: 2026-04-15
+updated: 2026-04-18
 ---
 
 # 釣りとカーシェアリング  

@@ -108,7 +108,7 @@ related_spots:
   - yugawara-kaihin-koen
   - yuigahama
   - zaimokuza-kaigan
-updated: 2026-04-15
+updated: 2026-04-18
 ---
 
 # 子連れで行ける海釣り場【関東版】
