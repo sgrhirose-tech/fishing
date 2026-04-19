@@ -1541,8 +1541,14 @@ def page_articles_top(request: Request):
         for cat in _ARTICLE_CATEGORY_ORDER
         if cat not in _ARTICLE_HIDDEN_CATEGORIES
     ]
+    _ti = next((a for a in all_articles if a.get("category") == "info" and a.get("slug") == "tanaka_introduction"), None)
+    tanaka_intro = {**_ti, "card_image": "/static/img/fishing_master_card.png"} if _ti else None
+    _ri = next((a for a in all_articles if a.get("category") == "report" and a.get("slug") == "reporter_introduction"), None)
+    reporter_intro = {**_ri, "card_image": "/static/img/reporter_card.png"} if _ri else None
     return templates.TemplateResponse(request, "articles/top.html", {
         "categories": categories,
+        "tanaka_intro": tanaka_intro,
+        "reporter_intro": reporter_intro,
     })
 
 
