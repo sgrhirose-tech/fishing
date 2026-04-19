@@ -41,6 +41,19 @@
 {% endif %}
 <section class="articles-category-section" id="{{ cat.key }}">
   <h2 class="articles-category-heading">{{ cat.label }}</h2>
+  {% if cat.key == "report" and reporter_intro %}
+  <ul class="article-list">
+    <li>
+      <a href="/articles/{{ reporter_intro.category }}/{{ reporter_intro.slug }}/" class="article-row-card">
+        <img src="{{ reporter_intro.card_image }}" alt="{{ reporter_intro.title or reporter_intro.slug }}" loading="lazy">
+        <span class="article-row-info">
+          <span class="article-row-title">{{ reporter_intro.title or reporter_intro.slug }}</span>
+          {% if reporter_intro.updated_at %}<span class="article-row-date">更新 {{ reporter_intro.updated_at }}</span>{% endif %}
+        </span>
+      </a>
+    </li>
+  </ul>
+  {% endif %}
   {% if cat.articles %}
   <ul class="article-list">
     {% for a in cat.articles %}
@@ -59,22 +72,6 @@
   <p class="articles-empty">記事はまだありません。</p>
   {% endif %}
 </section>
-{% if cat.key == "report" and reporter_intro %}
-<section class="articles-columnist-intro">
-  <h2 class="articles-category-heading">執筆者紹介</h2>
-  <ul class="article-list">
-    <li>
-      <a href="/articles/{{ reporter_intro.category }}/{{ reporter_intro.slug }}/" class="article-row-card">
-        <img src="{{ reporter_intro.card_image }}" alt="{{ reporter_intro.title or reporter_intro.slug }}" loading="lazy">
-        <span class="article-row-info">
-          <span class="article-row-title">{{ reporter_intro.title or reporter_intro.slug }}</span>
-          {% if reporter_intro.updated_at %}<span class="article-row-date">更新 {{ reporter_intro.updated_at }}</span>{% endif %}
-        </span>
-      </a>
-    </li>
-  </ul>
-</section>
-{% endif %}
 {% endfor %}
 
 {% endblock %}
