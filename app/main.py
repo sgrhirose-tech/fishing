@@ -1438,6 +1438,22 @@ def _load_articles() -> list:
     return result
 
 
+def _parse_catch(catch_list: list, fish_master: dict) -> list[dict]:
+    """catch frontmatter → [{name, slug, count}, ...] — fish_master にあるものだけ返す。"""
+    name_to_slug = {n: v["slug"] for n, v in fish_master.items() if "slug" in v}
+    slug_to_name = {v["slug"]: n for n, v in fish_master.items() if "slug" in v}
+    result = []
+    for item in (catch_list or []):
+        key, _, cnt = str(item).partition(":")
+        key = key.strip()
+        count = int(cnt.strip()) if cnt.strip().isdigit() else None
+        if key in name_to_slug:
+            result.append({"name": key, "slug": name_to_slug[key], "count": count})
+        elif key in slug_to_name:
+            result.append({"name": slug_to_name[key], "slug": key, "count": count})
+    return result
+
+
 def _build_spot_article_index() -> dict[str, list]:
     """spot_slug → [article_meta, ...] の逆引き辞書を返す。"""
     index: dict[str, list] = {}
@@ -1633,8 +1649,13 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
 @app.get("/tackle/", response_class=HTMLResponse)
 def page_tackle_top(request: Request):
     categories = _load_tackle_categories()
+    staff_intro = next(
+        (a for a in _load_articles() if a.get("category") == "info" and a.get("slug") == "staff_introduction"),
+        None,
+    )
     return templates.TemplateResponse(request, "tackle/top.html", {
         "categories": categories,
+        "staff_intro": staff_intro,
     })
 
 
@@ -2086,7 +2107,11 @@ def page_spot_detail(
         "spot_description_human":  _desc_human,
         "spot_description":        _spot_desc_fallback,
         "meta_description":   meta_description,
-        "related_articles":   _SPOT_ARTICLE_INDEX.get(slug, []),
+        "related_articles":   [_a for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") != "report"],
+        "related_reports":    [{**_a,
+                                "catch_display": _parse_catch(_a.get("catch") or [], _FISH_MASTER),
+                                "updated_jp": (datetime.strptime(_a["updated"], "%Y-%m-%d").strftime("%Y年%m月%d日") if _a.get("updated") else "")}
+                               for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") == "report"],
         "blog_posts":         blog_posts,
         "is_kinshi":          is_kinshi,
         "nearby_spots":       nearby_spots,

@@ -354,6 +354,26 @@
   <ins class="adsbygoogle" ...></ins>
 </section>
 -->
+
+{% if related_reports %}
+<section class="spot-related-reports">
+  <h2>この釣り場の釣行レポート</h2>
+  <ul class="article-list">
+    {% for r in related_reports %}
+    <li>
+      <a href="/articles/{{ r.category }}/{{ r.slug }}/" class="article-row-card">
+        <img src="{{ r.card_image }}" alt="{{ r.title or r.slug }}" loading="lazy">
+        <div class="spot-report-row-body">
+          <span class="article-row-title">{{ r.title or r.slug }}</span>
+          {% if r.updated_jp %}<span class="spot-report-row-meta">更新 {{ r.updated_jp }}{% if r.catch_display %}　🐟 {% for c in r.catch_display %}{{ c.name }}{% if c.count %} {{ c.count }}匹{% endif %}{% if not loop.last %}・{% endif %}{% endfor %}{% endif %}</span>{% endif %}
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
 {% if tackle_links %}
 <section class="spot-tackle-section">
   <h2>このスポットで使うタックル</h2>
