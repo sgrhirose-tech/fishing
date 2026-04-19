@@ -1322,3 +1322,9 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 /* AI作成開示 */
 .ai-disclosure { font-size: .75rem; color: #999; margin: .25rem 0 1rem; }
 .blogmura-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+
+/* ---- スポット: 釣行レポート ---- */
+.spot-related-reports { margin: 1.5rem 0; }
+.spot-related-reports h2 { font-size: 1.1rem; margin-bottom: .75rem; }
+.spot-report-row-body { display: flex; flex-direction: column; gap: .2rem; }
+.spot-report-row-meta { font-size: .8rem; color: #888; }
