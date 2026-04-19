@@ -21,6 +21,23 @@
   <p>釣りを始めるとき、最初に迷うのが「何を買えばいいの？」という道具選びです。竿・リール・糸・仕掛け……種類が多すぎて、釣具店に行くだけで心が折れそうになりますよね。でも大丈夫。釣り具には「釣り方ごとの正解」があります。このページでは、釣り初心者の方でも迷わず選べるよう、タックル（釣り道具一式）をカテゴリ別にやさしく解説しています。まずは自分がやりたい釣りを思い浮かべながら読み進めてみてください。</p>
 </section>
 
+{% if staff_intro %}
+<section class="tackle-staff-intro">
+  <h2>スタッフ紹介</h2>
+  <ul class="article-list">
+    <li>
+      <a href="/articles/{{ staff_intro.category }}/{{ staff_intro.slug }}/" class="article-row-card">
+        <img src="{{ staff_intro.card_image }}" alt="{{ staff_intro.title or staff_intro.slug }}" loading="lazy">
+        <div class="article-row-body">
+          <span class="article-row-title">{{ staff_intro.title or staff_intro.slug }}</span>
+          {% if staff_intro.updated_at %}<span class="article-row-meta">更新 {{ staff_intro.updated_at }}</span>{% endif %}
+        </div>
+      </a>
+    </li>
+  </ul>
+</section>
+{% endif %}
+
 <section class="area-links">
   <h2>カテゴリから選ぶ</h2>
   <div class="tackle-category-grid">

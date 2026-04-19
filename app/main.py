@@ -1649,8 +1649,13 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
 @app.get("/tackle/", response_class=HTMLResponse)
 def page_tackle_top(request: Request):
     categories = _load_tackle_categories()
+    staff_intro = next(
+        (a for a in _load_articles() if a.get("category") == "info" and a.get("slug") == "staff_introduction"),
+        None,
+    )
     return templates.TemplateResponse(request, "tackle/top.html", {
         "categories": categories,
+        "staff_intro": staff_intro,
     })
 
 
