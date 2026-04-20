@@ -1531,10 +1531,11 @@ _ARTICLE_HIDDEN_CATEGORIES: set[str] = {"info"}  # 一覧・RSS から除外
 @app.get("/articles/", response_class=HTMLResponse)
 def page_articles_top(request: Request):
     all_articles = _load_articles()
+    _PINNED_SLUGS = {"report": "reporter_introduction"}
     grouped: dict[str, list] = {cat: [] for cat in _ARTICLE_CATEGORY_ORDER}
     for a in all_articles:
         cat = a.get("category", "")
-        if cat in grouped:
+        if cat in grouped and a.get("slug") != _PINNED_SLUGS.get(cat):
             grouped[cat].append(a)
     categories = [
         {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": sorted(grouped[cat], key=lambda a: a.get("mtime", 0), reverse=True)}
