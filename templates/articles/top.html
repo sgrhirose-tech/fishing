@@ -42,7 +42,7 @@
 <section class="articles-category-section" id="{{ cat.key }}">
   <h2 class="articles-category-heading">{{ cat.label }}</h2>
   {% if cat.key == "report" and reporter_intro %}
-  <ul class="article-list">
+  <ul class="article-list article-list--intro">
     <li>
       <a href="/articles/{{ reporter_intro.category }}/{{ reporter_intro.slug }}/" class="article-row-card">
         <img src="{{ reporter_intro.card_image }}" alt="{{ reporter_intro.title or reporter_intro.slug }}" loading="lazy">
