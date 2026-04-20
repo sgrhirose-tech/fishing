@@ -2091,7 +2091,8 @@
       "day"
     ],
     "north_limit": "青森",
-    "south_limit": "沖縄"
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/umadsurahagi.jpg"
   },
   "ショウサイフグ": {
     "slug": "shousaifugu",
@@ -2169,7 +2170,8 @@
       "dusk"
     ],
     "north_limit": "茨城",
-    "south_limit": "九州"
+    "south_limit": "九州",
+    "image": "/static/img/fish/nibe.jpg"
   },
   "マトウダイ": {
     "slug": "matoudai",
@@ -2206,7 +2208,8 @@
       "day"
     ],
     "north_limit": "北海道南部",
-    "south_limit": "沖縄"
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/matoudai.jpg"
   },
   "マルアジ": {
     "slug": "maruaji",
@@ -2246,7 +2249,8 @@
       "dusk"
     ],
     "north_limit": "千葉",
-    "south_limit": "沖縄"
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/maruaji.jpg"
   },
   "ムロアジ": {
     "slug": "muroaji",
@@ -2559,7 +2563,8 @@
       "night"
     ],
     "north_limit": "北海道",
-    "south_limit": "東北南部"
+    "south_limit": "東北南部",
+    "image": "/static/img/fish/kurosoi.jpg"
   },
   "タコ": {
     "slug": "tako",
@@ -2641,7 +2646,8 @@
       "dusk"
     ],
     "north_limit": "茨城",
-    "south_limit": "沖縄"
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/soudagatsuo.jpg"
   },
   "ウミタナゴ": {
     "slug": "umitanago",
