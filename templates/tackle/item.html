@@ -59,6 +59,13 @@
 
   <div class="tackle-item-body">
     {{ body_html | safe }}
+    {% if visible_qa %}
+    <h2>よくある質問（FAQ）</h2>
+    {% for qa in visible_qa %}
+    <h3>Q. {{ qa.q }}</h3>
+    <p>{{ qa.a }}</p>
+    {% endfor %}
+    {% endif %}
   </div>
 
   {% if not body_from_md and item.suitable_for %}
