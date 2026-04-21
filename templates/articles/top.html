@@ -36,13 +36,7 @@
         </span>
       </a>
     </li>
-  </ul>
-</section>
-{% endif %}
-<section class="articles-category-section" id="{{ cat.key }}">
-  <h2 class="articles-category-heading">{{ cat.label }}</h2>
-  {% if cat.key == "report" and reporter_intro %}
-  <ul class="article-list">
+    {% if reporter_intro %}
     <li>
       <a href="/articles/{{ reporter_intro.category }}/{{ reporter_intro.slug }}/" class="article-row-card">
         <img src="{{ reporter_intro.card_image }}" alt="{{ reporter_intro.title or reporter_intro.slug }}" loading="lazy">
@@ -52,8 +46,12 @@
         </span>
       </a>
     </li>
+    {% endif %}
   </ul>
-  {% endif %}
+</section>
+{% endif %}
+<section class="articles-category-section" id="{{ cat.key }}">
+  <h2 class="articles-category-heading">{{ cat.label }}</h2>
   {% if cat.articles %}
   <ul class="article-list">
     {% for a in cat.articles %}
