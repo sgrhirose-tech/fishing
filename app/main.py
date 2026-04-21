@@ -1233,6 +1233,11 @@ except ImportError:
 _AFFILIATE_MARKER = _re.compile(r'<!--\s*affiliate:\s*(\d+)\s*-->')
 _LINK_CARD_RE = _re.compile(r'<!--\s*link-card:\s*([^|>\n]+)\|([^|>\n]+)(?:\|([^>\n]*))?\s*-->')
 
+_JSONLD_SCRIPT_RE = _re.compile(
+    r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+    _re.DOTALL | _re.IGNORECASE,
+)
+
 _FAQ_HEADING_RE = _re.compile(r'^##\s+(?:よくある質問|FAQ|Q&A|Q＆A).*$', _re.MULTILINE)
 _FAQ_NEXT_H2_RE = _re.compile(r'^##\s+', _re.MULTILINE)
 _FAQ_Q_RE = _re.compile(
@@ -1322,6 +1327,9 @@ def _render_tackle_body(category_slug: str, item: dict) -> tuple:
         return item.get("body", "").replace("\n", "<br>"), False
 
     md_text = md_path.read_text(encoding="utf-8")
+    # Markdown 内に埋め込まれた JSON-LD <script> ブロックは本文レンダリング前に除去する
+    # (mistune が <script> をエスケープして可視テキストとして出力するのを防ぐ)
+    md_text = _JSONLD_SCRIPT_RE.sub("", md_text)
     slots = item.get("affiliate_slots", {}) or {}
 
     parts = _AFFILIATE_MARKER.split(md_text)
@@ -1340,6 +1348,15 @@ def _render_tackle_body(category_slug: str, item: dict) -> tuple:
             if links:
                 html_parts.append(_build_affiliate_html(links))
     return "".join(html_parts), True
+
+
+def _load_tackle_jsonld_scripts(category_slug: str, item_slug: str) -> list[str]:
+    """Markdown 内に埋め込まれた JSON-LD script の中身（JSON文字列）を返す。"""
+    md_path = _TACKLE_DIR / category_slug / f"{item_slug}.md"
+    if not md_path.exists():
+        return []
+    md_text = md_path.read_text(encoding="utf-8")
+    return [m.group(1).strip() for m in _JSONLD_SCRIPT_RE.finditer(md_text)]
 
 
 def _load_tackle_faq(category_slug: str, item_slug: str) -> list[dict]:
@@ -1736,7 +1753,9 @@ def page_tackle_item(request: Request, category_slug: str, item_slug: str):
     if not item:
         raise HTTPException(status_code=404, detail="アイテムが見つかりません")
     body_html, body_from_md = _render_tackle_body(category_slug, item)
-    qa_items = _load_tackle_faq(category_slug, item_slug)
+    inline_jsonld = _load_tackle_jsonld_scripts(category_slug, item_slug)
+    # Markdown に JSON-LD が直書きされていればそれを優先し、無ければ FAQ 節から自動生成する
+    qa_items = [] if inline_jsonld else _load_tackle_faq(category_slug, item_slug)
     return templates.TemplateResponse(request, "tackle/item.html", {
         "category": category,
         "categories": categories,
@@ -1745,6 +1764,7 @@ def page_tackle_item(request: Request, category_slug: str, item_slug: str):
         "body_html": body_html,
         "body_from_md": body_from_md,
         "qa_items": qa_items,
+        "inline_jsonld": inline_jsonld,
     })
 
 
