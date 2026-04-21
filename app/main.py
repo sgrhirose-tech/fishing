@@ -1233,6 +1233,43 @@ except ImportError:
 _AFFILIATE_MARKER = _re.compile(r'<!--\s*affiliate:\s*(\d+)\s*-->')
 _LINK_CARD_RE = _re.compile(r'<!--\s*link-card:\s*([^|>\n]+)\|([^|>\n]+)(?:\|([^>\n]*))?\s*-->')
 
+_FAQ_HEADING_RE = _re.compile(r'^##\s+(?:よくある質問|FAQ|Q&A|Q＆A).*$', _re.MULTILINE)
+_FAQ_NEXT_H2_RE = _re.compile(r'^##\s+', _re.MULTILINE)
+_FAQ_Q_RE = _re.compile(
+    r'^(?:###\s+Q[\.．:：]?\s*(?P<q1>.+?)|\*\*Q[\.．:：]?\s*(?P<q2>.+?)\*\*)\s*$',
+    _re.MULTILINE,
+)
+
+
+def _extract_faq_from_markdown(md_text: str) -> list[dict]:
+    """Markdown の FAQ 節から Q&A を抽出する。見つからなければ空リスト。"""
+    m = _FAQ_HEADING_RE.search(md_text)
+    if not m:
+        return []
+    after = md_text[m.end():]
+    m2 = _FAQ_NEXT_H2_RE.search(after)
+    section = after[:m2.start()] if m2 else after
+
+    matches = list(_FAQ_Q_RE.finditer(section))
+    qas: list[dict] = []
+    for i, qm in enumerate(matches):
+        q = (qm.group('q1') or qm.group('q2') or '').strip()
+        ans_start = qm.end()
+        ans_end = matches[i + 1].start() if i + 1 < len(matches) else len(section)
+        block = section[ans_start:ans_end].strip()
+        lines = []
+        for line in block.splitlines():
+            s = line.strip()
+            if not s:
+                continue
+            if s.startswith('→'):
+                s = s.lstrip('→').strip()
+            lines.append(s)
+        a = ' '.join(lines)
+        if q and a:
+            qas.append({'q': q, 'a': a})
+    return qas
+
 
 def _build_link_card_html(url: str, title: str, desc: str = "") -> str:
     url = url.strip()
@@ -1303,6 +1340,14 @@ def _render_tackle_body(category_slug: str, item: dict) -> tuple:
             if links:
                 html_parts.append(_build_affiliate_html(links))
     return "".join(html_parts), True
+
+
+def _load_tackle_faq(category_slug: str, item_slug: str) -> list[dict]:
+    """タックル Markdown の FAQ 節を読み込み Q&A リストを返す。"""
+    md_path = _TACKLE_DIR / category_slug / f"{item_slug}.md"
+    if not md_path.exists():
+        return []
+    return _extract_faq_from_markdown(md_path.read_text(encoding="utf-8"))
 
 
 def _load_tackle_categories() -> list:
@@ -1691,6 +1736,7 @@ def page_tackle_item(request: Request, category_slug: str, item_slug: str):
     if not item:
         raise HTTPException(status_code=404, detail="アイテムが見つかりません")
     body_html, body_from_md = _render_tackle_body(category_slug, item)
+    qa_items = _load_tackle_faq(category_slug, item_slug)
     return templates.TemplateResponse(request, "tackle/item.html", {
         "category": category,
         "categories": categories,
@@ -1698,6 +1744,7 @@ def page_tackle_item(request: Request, category_slug: str, item_slug: str):
         "items": items,
         "body_html": body_html,
         "body_from_md": body_from_md,
+        "qa_items": qa_items,
     })
 
 
