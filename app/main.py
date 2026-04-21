@@ -1359,12 +1359,43 @@ def _load_tackle_jsonld_scripts(category_slug: str, item_slug: str) -> list[str]
     return [m.group(1).strip() for m in _JSONLD_SCRIPT_RE.finditer(md_text)]
 
 
+def _parse_faqpage_jsonld(text: str) -> list[dict]:
+    """JSON-LD FAQPage の JSON 文字列から Q&A リストを取り出す。"""
+    try:
+        data = json.loads(text)
+    except (json.JSONDecodeError, ValueError):
+        return []
+    if not isinstance(data, dict) or data.get("@type") != "FAQPage":
+        return []
+    entities = data.get("mainEntity") or []
+    if not isinstance(entities, list):
+        return []
+    qas: list[dict] = []
+    for e in entities:
+        if not isinstance(e, dict):
+            continue
+        q = (e.get("name") or "").strip()
+        ans = e.get("acceptedAnswer") or {}
+        a = (ans.get("text") or "").strip() if isinstance(ans, dict) else ""
+        if q and a:
+            qas.append({"q": q, "a": a})
+    return qas
+
+
 def _load_tackle_faq(category_slug: str, item_slug: str) -> list[dict]:
     """タックル Markdown の FAQ 節を読み込み Q&A リストを返す。"""
     md_path = _TACKLE_DIR / category_slug / f"{item_slug}.md"
     if not md_path.exists():
         return []
     return _extract_faq_from_markdown(md_path.read_text(encoding="utf-8"))
+
+
+def _has_visible_faq_in_markdown(category_slug: str, item_slug: str) -> bool:
+    """Markdown 本文に \"## よくある質問（FAQ）\" など可視FAQ節があるか判定する。"""
+    md_path = _TACKLE_DIR / category_slug / f"{item_slug}.md"
+    if not md_path.exists():
+        return False
+    return bool(_FAQ_HEADING_RE.search(md_path.read_text(encoding="utf-8")))
 
 
 def _load_tackle_categories() -> list:
@@ -1754,7 +1785,15 @@ def page_tackle_item(request: Request, category_slug: str, item_slug: str):
         raise HTTPException(status_code=404, detail="アイテムが見つかりません")
     body_html, body_from_md = _render_tackle_body(category_slug, item)
     inline_jsonld = _load_tackle_jsonld_scripts(category_slug, item_slug)
-    # Markdown に JSON-LD が直書きされていればそれを優先し、無ければ FAQ 節から自動生成する
+    # 本文側に FAQ 節があるなら Q&A は既に可視化されているため、JSON-LD は
+    # inline_jsonld をそのまま出す or Markdown Q&A から生成する。
+    # 本文側に FAQ 節が無く JSON-LD 直書きだけある場合は、JSON-LD をパースして
+    # visible_qa として本文末尾に HTML で表示する。
+    has_visible_faq = _has_visible_faq_in_markdown(category_slug, item_slug)
+    visible_qa: list[dict] = []
+    if inline_jsonld and not has_visible_faq:
+        for script in inline_jsonld:
+            visible_qa.extend(_parse_faqpage_jsonld(script))
     qa_items = [] if inline_jsonld else _load_tackle_faq(category_slug, item_slug)
     return templates.TemplateResponse(request, "tackle/item.html", {
         "category": category,
@@ -1765,6 +1804,7 @@ def page_tackle_item(request: Request, category_slug: str, item_slug: str):
         "body_from_md": body_from_md,
         "qa_items": qa_items,
         "inline_jsonld": inline_jsonld,
+        "visible_qa": visible_qa,
     })
 
 
