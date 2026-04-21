@@ -7,6 +7,11 @@
 
 {% block jsonld %}
 {{ super() }}
+{% for block in inline_jsonld %}
+<script type="application/ld+json">
+{{ block | safe }}
+</script>
+{% endfor %}
 {% if qa_items %}
 <script type="application/ld+json">
 {
