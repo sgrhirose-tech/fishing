@@ -1331,3 +1331,13 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .spot-related-reports h2 { font-size: 1.1rem; margin-bottom: .75rem; }
 .spot-report-row-body { display: flex; flex-direction: column; gap: .2rem; }
 .spot-report-row-meta { font-size: .8rem; color: #888; }
+
+/* ---- 404 ページ ---- */
+.notfound { text-align: center; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+.notfound-title { font-size: 1.6rem; margin: 1rem 0 .5rem; }
+.notfound-apology { font-size: 1rem; color: #666; margin: 0 0 1.5rem; }
+.notfound-video-wrap { margin: 1.5rem auto; max-width: 480px; }
+.notfound-video { width: 100%; height: auto; border-radius: 12px; background: #000; display: block; }
+.notfound-back { margin: 1.75rem 0 2.5rem; }
+.notfound-back-link { display: inline-block; padding: .7rem 1.6rem; background: #1a6b9e; color: #fff; border-radius: 6px; font-size: 1rem; font-weight: bold; text-decoration: none; }
+.notfound-back-link:hover { background: #145580; }
