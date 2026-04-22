@@ -96,12 +96,12 @@ _METHOD_TO_TACKLE: dict[str, list[tuple[str, str, str]]] = {
     "フカセ釣り":   [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
     "カゴ釣り":     [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "nylon", "ナイロンライン")],
     "エギング":     [("rod", "eging-rod", "エギングロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "egi", "エギ（餌木）")],
-    "アジング":     [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
-    "メバリング":   [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
-    "ルアー釣り":   [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
-    "ジギング":     [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
-    "タイラバ":     [("rod", "boat-rod", "船竿"),         ("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
-    "船釣り":       [("rod", "boat-rod", "船竿"),         ("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
+    "アジング":     [("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "メバリング":   [("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "ルアー釣り":   [("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
+    "ジギング":     [("rod", "shore-jigging-rod", "ショアジギングロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
+    "タイラバ":     [("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
+    "船釣り":       [("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
     "バス釣り":     [("rod", "bass-rod", "バスロッド"),   ("reel", "spinning", "スピニングリール"), ("terminal", "lure", "ルアー・ワーム")],
 }
 
