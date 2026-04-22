@@ -8,13 +8,48 @@
     "beginner_tip": "8〜8.6ft・MLクラスが定番。秋（9〜11月）のハイシーズンに活躍。",
     "affiliate_links": [],
     "affiliate_slots": {
-      "0": [],
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": []
+      "0": [{
+          "name": "エギングロッド 検索結果",
+          "url": "https://www.amazon.co.jp/s?k=エギングロッド&tag=tsuricast-22",
+          "asin": null,
+          "note": "まとめリンク｜Amazon「エギングロッド」検索結果ページ"
+        }],
+      "1": [{
+          "name": "ダイワ エギングX 各種（83M/83ML/86M/86ML）2022年モデル",
+          "url": "https://www.amazon.co.jp/dp/B0B6TVV74X?tag=tsuricast-22",
+          "asin": "B0B6TVV74X",
+          "note": "入門クラス｜ダイワ入門・Kガイド・ブレーディングX・実売9,000〜10,000円"
+        }],
+      "2": [{
+          "name": "ダイワ エメラルダスX 各種（2025年モデル）",
+          "url": "https://www.amazon.co.jp/dp/B07THGG264?tag=tsuricast-22",
+          "asin": "B07THGG264",
+          "note": "入門〜ミドル｜Amazon エギングロッドベストセラー1位・実売15,000円前後"
+        }],
+      "3": [{
+          "name": "ダイワ エメラルダスMX 各種（アウトガイド/インターライン）",
+          "url": "https://www.amazon.co.jp/dp/B07FK8ZBBW?tag=tsuricast-22",
+          "asin": "B07FK8ZBBW",
+          "note": "ミドルクラス｜HVFナノプラス・X45・実売21,000〜28,000円・レビュー多数"
+        }],
+      "4": [{
+          "name": "シマノ 23 セフィアSS S86M",
+          "url": "https://www.amazon.co.jp/dp/B0CGCPTZMP?tag=tsuricast-22",
+          "asin": "B0CGCPTZMP",
+          "note": "ミドルクラス｜スパイラルX+ハイパワーX・実売21,000〜25,000円"
+        }],
+      "5": [{
+          "name": "シマノ セフィアXR S86M（カーボンモノコックグリップ）",
+          "url": "https://www.amazon.co.jp/dp/B0CMFDPK3G?tag=tsuricast-22",
+          "asin": "B0CMFDPK3G",
+          "note": "ハイエンド入口｜スパイラルXコア搭載・コスパ良好なハイエンド"
+        }],
+      "6": [{
+          "name": "シマノ セフィアリミテッド 各種",
+          "url": "https://www.amazon.co.jp/dp/B08GKJRMHD?tag=tsuricast-22",
+          "asin": "B08GKJRMHD",
+          "note": "ハイエンド最上位｜カーボンシェルグリップ・XガイドエアロチタンAmazon在庫あり"
+        }]
     }
   },
   {
@@ -26,14 +61,54 @@
     "beginner_tip": "9.6ft・MHクラスのライトショアジギング向けから。20〜40gのジグが扱える1本を。",
     "affiliate_links": [],
     "affiliate_slots": {
-      "0": [],
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": [],
-      "7": []
+      "0": [{
+          "name": "ショアジギングロッド 検索結果",
+          "url": "https://www.amazon.co.jp/s?k=ショアジギングロッド&tag=tsuricast-22",
+          "asin": null,
+          "note": "まとめリンク｜Amazon「ショアジギングロッド」検索結果ページ"
+        }],
+      "1": [{
+          "name": "シマノ ルアーマチック MB S96ML-4 （パックロッド4ピース）",
+          "url": "https://www.amazon.co.jp/dp/B087F8J5M1?tag=tsuricast-22",
+          "asin": "B087F8J5M1",
+          "note": "パックロッド｜仕舞約53cm・旅行・電車釣行向け・LSJにも投げ釣り流用にも"
+        }],
+      "2": [{
+          "name": "ダイワ 21ジグキャスター・N 各種",
+          "url": "https://www.amazon.co.jp/dp/B095YMFTRJ?tag=tsuricast-22",
+          "asin": "B095YMFTRJ",
+          "note": "入門クラス｜ダイワ入門ショアジギ・実売8,000〜12,000円"
+        }],
+      "3": [{
+          "name": "シマノ 21コルトスナイパーBB 各種",
+          "url": "https://www.amazon.co.jp/dp/B08ZSWCG84?tag=tsuricast-22",
+          "asin": "B08ZSWCG84",
+          "note": "入門クラス｜ハイパワーX搭載・ショアジギング入門定番・実売15,000〜20,000円"
+        }],
+      "4": [{
+          "name": "シマノ コルトスナイパーBB 各種（サーフ・防波堤・磯）",
+          "url": "https://www.amazon.co.jp/dp/B08GGBTZ1N?tag=tsuricast-22",
+          "asin": "B08GGBTZ1N",
+          "note": "入門クラス｜バリエーションページ・各機種から選択可"
+        }],
+      "5": [{
+          "name": "ダイワ オーバーゼア 各種（2024/2025年モデル）",
+          "url": "https://www.amazon.co.jp/dp/B0B6GDFH6N?tag=tsuricast-22",
+          "asin": "B0B6GDFH6N",
+          "note": "ミドルクラス｜ヒラメ・シーバス・青物の万能ロッド・実売20,000〜30,000円"
+        }],
+      "6": [{
+          "name": "シマノ コルトスナイパーXR S96ML（ハイエンド）",
+          "url": "https://www.amazon.co.jp/dp/B08GGBWXMS?tag=tsuricast-22",
+          "asin": "B08GGBWXMS",
+          "note": "ハイエンド｜スパイラルXコア・感度・軽さを突き詰めたい方へ"
+        }],
+      "7": [{
+          "name": "ダイワ 21オーバーゼアグランデ 各種",
+          "url": "https://www.amazon.co.jp/dp/B09K42FYFN?tag=tsuricast-22",
+          "asin": "B09K42FYFN",
+          "note": "ハイエンド｜ダイワ上位・大型青物本格対応"
+        }]
     }
   },
   {
@@ -45,14 +120,54 @@
     "beginner_tip": "1〜1.5号・4〜5mが汎用性◎。まずはこのサイズから。",
     "affiliate_links": [],
     "affiliate_slots": {
-      "0": [],
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": [],
-      "7": []
+      "0": [{
+          "name": "磯竿 検索結果",
+          "url": "https://www.amazon.co.jp/s?k=磯竿&tag=tsuricast-22",
+          "asin": null,
+          "note": "まとめリンク｜Amazon「磯竿」検索結果ページ"
+        }],
+      "1": {
+          "name": "シマノ ホリデー磯 各種（1.5〜3号）",
+          "url": "https://www.amazon.co.jp/dp/B0CMF4D7H2?tag=tsuricast-22",
+          "asin": "B0CMF4D7H2",
+          "note": "入門・サビキ〜ウキ釣り｜シマノ入門磯竿・レビュー多数・実売7,000〜9,000円"
+        },
+      "2": [{
+          "name": "ダイワ リバティクラブ磯風 1.5〜3号 各種",
+          "url": "https://www.amazon.co.jp/dp/B09SZT83F4?tag=tsuricast-22",
+          "asin": "B09SZT83F4",
+          "note": "入門・サビキ〜ウキ釣り｜5.3m・1.5号が汎用性最高・最初の1本に"
+        }],
+      "3": [{
+          "name": "ダイワ リーガル 3〜5号遠投 各種",
+          "url": "https://www.amazon.co.jp/dp/B014A48RF6?tag=tsuricast-22",
+          "asin": "B014A48RF6",
+          "note": "カゴ釣り・遠投入門｜ダイワ入門カゴ釣り竿・実売10,000〜14,000円"
+        }],
+      "4": [{
+          "name": "シマノ ホリデーイソ 遠投PTSモデル 各種",
+          "url": "https://www.amazon.co.jp/dp/B08GKMDW37?tag=tsuricast-22",
+          "asin": "B08GKMDW37",
+          "note": "カゴ釣り・遠投入門｜シマノ遠投入門・DPSパイプシート・バリエーション選択"
+        }],
+      "5": [{
+          "name": "ダイワ インプレッサ 1〜3号 各種",
+          "url": "https://www.amazon.co.jp/dp/B014A48RF6?tag=tsuricast-22",
+          "asin": "B014A48RF6",
+          "note": "電気ウキ釣り・ミドル｜メガトップ・HVFカーボン・実売15,000〜20,000円"
+        }],
+      "6": [{
+          "name": "シマノ 20アドバンスイソ 各種",
+          "url": "https://www.amazon.co.jp/dp/B08GGBTZ1N?tag=tsuricast-22",
+          "asin": "B08GGBTZ1N",
+          "note": "ミドルクラス｜シマノミドル磯竿・実売12,000〜15,000円"
+        }],
+      "7": [{
+          "name": "ダイワ 21波濤 各種",
+          "url": "https://www.amazon.co.jp/dp/B0CMF4D7H2?tag=tsuricast-22",
+          "asin": "B0CMF4D7H2",
+          "note": "ハイエンド｜上物フカセ本格・競技志向"
+        }]
     }
   },
   {
@@ -65,12 +180,42 @@
     "affiliate_links": [],
     "affiliate_slots": {
       "0": [],
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": []
+      "1": [{
+          "name": "ダイワ バスX 662LS（スピニング）",
+          "url": "https://www.amazon.co.jp/dp/B00HTD0M4A?tag=tsuricast-22",
+          "asin": "B00HTD0M4A",
+          "note": "入門・スピニング｜ダイワ入門定番・6.6ft・Lクラス・実売5,000〜8,000円"
+        }],
+      "2": [{
+          "name": "シマノ 23バスワンXT+ スピニング/ベイト 各種",
+          "url": "https://www.amazon.co.jp/dp/B0BW45F57C?tag=tsuricast-22",
+          "asin": "B0BW45F57C",
+          "note": "入門・スピニング/ベイト｜CI4+リールシート・実売8,000〜10,000円"
+        }],
+      "3": [{
+          "name": "ダイワ タトゥーラXT 各種（2024年モデル）",
+          "url": "https://www.amazon.co.jp/dp/B0CTKNBLQL?tag=tsuricast-22",
+          "asin": "B0CTKNBLQL",
+          "note": "ミドルクラス｜2024年新作・HVFカーボン・コスパ最高峰"
+        }],
+      "4": [{
+          "name": "シマノ ゾディアス スピニング各種",
+          "url": "https://www.amazon.co.jp/dp/B01B3QYUXC?tag=tsuricast-22",
+          "asin": "B01B3QYUXC",
+          "note": "ミドルクラス｜スピニングモデルのバーサタイル番手・感度重視"
+        }],
+      "5": [{
+          "name": "シマノ ポイズンアルティマ スピニング 264/66SUL-S",
+          "url": "https://www.amazon.co.jp/dp/B08GMMDFVR?tag=tsuricast-22",
+          "asin": "B08GMMDFVR",
+          "note": "ハイエンド｜スパイラルXコア・フルカーボンモノコックグリップ・実売50,000〜60,000円"
+        }],
+      "6": [{
+          "name": "シマノ ポイズンアルティマ スピニング 各種",
+          "url": "https://www.amazon.co.jp/dp/B08GMMDFVR?tag=tsuricast-22",
+          "asin": "B08GMMDFVR",
+          "note": "ハイエンド最上位｜シマノ×ジャッカル共同開発・軽さと感度の極致"
+        }]
     }
   },
   {
@@ -82,17 +227,67 @@
     "beginner_tip": "25〜30号対応の並継ぎモデルから。砂浜でのキス釣りに最適。",
     "affiliate_links": [],
     "affiliate_slots": {
-      "0": [],
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
+      "0": [{
+          "name": "投げ竿 検索結果",
+          "url": "https://www.amazon.co.jp/s?k=投げ竿&tag=tsuricast-22",
+          "asin": null,
+          "note": "まとめリンク｜Amazon「投げ竿」検索結果ページ"
+        }],
+      "1": [{
+          "name": "シマノ ホリデースピン ショートモデル（振出）各種",
+          "url": "https://www.amazon.co.jp/dp/B08GKKZGQS?tag=tsuricast-22",
+          "asin": "B08GKKZGQS",
+          "note": "ショートモデル｜バリエーション選択ページ"
+        }],
+      "2": [{
+          "name": "ダイワ リバティクラブ ショートスイング 10号-240〜30号各種",
+          "url": "https://www.amazon.co.jp/dp/B097YKMTWW?tag=tsuricast-22",
+          "asin": "B097YKMTWW",
+          "note": "ショートモデル｜ダイワ入門・ちょい投げ定番"
+        }],
+      "3": [{
+          "name": "ダイワ リバティクラブ サーフT 各種（25-405等）",
+          "url": "https://www.amazon.co.jp/dp/B097YKMTWW?tag=tsuricast-22",
+          "asin": "B097YKMTWW",
+          "note": "入門クラス・振出｜ダイワ入門サーフ定番・実売3,000〜5,000円"
+        }],
+      "4": [{
+          "name": "シマノ ホリデースピン 405EXT（振出）",
+          "url": "https://www.amazon.co.jp/dp/B08GKKZGQS?tag=tsuricast-22",
+          "asin": "B08GKKZGQS",
+          "note": "入門クラス・振出｜シマノ入門・25号・4.05m"
+        }],
       "5": [],
-      "6": [],
-      "7": [],
-      "8": [],
-      "9": [],
-      "10": []
+      "6": [{
+          "name": "ダイワ プライムサーフT 25-405・W（振出）",
+          "url": "https://www.amazon.co.jp/dp/B0D354SZ9N?tag=tsuricast-22",
+          "asin": "B0D354SZ9N",
+          "note": "ミドル・振出｜HVFカーボン・コスパ最強・レビュー多数"
+        }],
+      "7": [{
+          "name": "シマノ サーフゲイザー 振出 各種",
+          "url": "要確認",
+          "asin": "要確認",
+          "note": "ミドル・振出｜Amazon在庫確認要・シマノ公式またはPoint等で取扱あり"
+        }],
+      "8": [{
+          "name": "シマノ サーフゲイザー 並継 各種",
+          "url": "https://www.amazon.co.jp/dp/B08GG8D56Q?tag=tsuricast-22",
+          "asin": "B08GG8D56Q",
+          "note": "ミドル・並継｜引き釣り向け・レビュー高評価"
+        }],
+      "9": [{
+          "name": "シマノ スピンパワー 20 405BX（並継）",
+          "url": "https://www.amazon.co.jp/dp/B084LD5JXF?tag=tsuricast-22",
+          "asin": "B084LD5JXF",
+          "note": "ハイエンド・並継｜スパイラルXコア搭載・競技〜本格派向け"
+        }],
+      "10": [{
+          "name": "シマノ スピンパワーPF 405BX-T（振出・大物置き竿）",
+          "url": "https://www.amazon.co.jp/dp/B00JZ7VH88?tag=tsuricast-22",
+          "asin": "B00JZ7VH88",
+          "note": "ハイエンド・振出｜大物置き竿専用・旧モデル流通品"
+        }]
     }
   }
 ]
