@@ -193,8 +193,8 @@
       "5": [
         {
           "name": "ダイワ インプレッサ 1〜3号 各種",
-          "url": "",
-          "asin": null,
+          "url": "https://www.amazon.co.jp/dp/B014A48RF6?tag=tsuricast-22",
+          "asin": "B014A48RF6",
           "note": "電気ウキ釣り・ミドル｜メガトップ・HVFカーボン・実売15,000〜20,000円"
         }
       ],
@@ -208,10 +208,10 @@
       ],
       "7": [
         {
-          "name": "ダイワ 21波濤 各種",
-          "url": "",
-          "asin": null,
-          "note": "ハイエンド｜上物フカセ本格・競技志向"
+          "name": "ダイワ トーナメント磯 5-53遠投・K",
+          "url": "https://www.amazon.co.jp/dp/B0DDNW8FCK?tag=tsuricast-22",
+          "asin": "B0DDNW8FCK",
+          "note": "ハイエンド遠投｜トーナメントクラス遠投磯竿・本格カゴ釣り競技向け"
         }
       ]
     }
@@ -225,7 +225,14 @@
     "beginner_tip": "スピニングタイプ・Mクラス・6〜7ftから。ベイトは慣れてから。",
     "affiliate_links": [],
     "affiliate_slots": {
-      "0": [],
+      "0": [
+          {
+            "name": "バスロッド 検索結果",
+            "url": "https://www.amazon.co.jp/s?k=バスロッド&tag=tsuricast-22",
+            "asin": null,
+            "note": "まとめリンク｜Amazon「バスロッド」検索結果ページ"
+          }
+        ],
       "1": [
         {
           "name": "ダイワ バスX 662LS（スピニング）",
@@ -260,20 +267,13 @@
       ],
       "5": [
         {
-          "name": "シマノ ポイズンアルティマ スピニング 264/66SUL-S",
-          "url": "",
-          "asin": null,
-          "note": "ハイエンド｜スパイラルXコア・フルカーボンモノコックグリップ・実売50,000〜60,000円"
+          "name": "ダイワ タトゥーラXT 各種（2024年モデル・ハイエンド入口として）",
+          "url": "https://www.amazon.co.jp/dp/B0CTKNBLQL?tag=tsuricast-22",
+          "asin": "B0CTKNBLQL",
+          "note": "ミドル〜ハイエンド入口｜コスパ最強・スティーズへの踏み台にも"
         }
       ],
-      "6": [
-        {
-          "name": "シマノ ポイズンアルティマ スピニング 各種",
-          "url": "",
-          "asin": null,
-          "note": "ハイエンド最上位｜シマノ×ジャッカル共同開発・軽さと感度の極致"
-        }
-      ]
+      "6": []
     }
   },
   {
@@ -296,32 +296,32 @@
       "1": [
         {
           "name": "シマノ ホリデースピン ショートモデル（振出）各種",
-          "url": "",
-          "asin": null,
+          "url": "https://amzn.to/4cslv8i",
+          "asin": "B071G21H5R",
           "note": "ショートモデル｜バリエーション選択ページ"
         }
       ],
       "2": [
         {
-          "name": "ダイワ リバティクラブ ショートスイング 10号-240〜30号各種",
-          "url": "",
-          "asin": null,
+          "name": "ダイワ(DAIWA) 投げ竿 21 リバティクラブ ショートスイング 10号~30号",
+          "url": "https://amzn.to/4cGSAMm",
+          "asin": "B0948DTVNY",
           "note": "ショートモデル｜ダイワ入門・ちょい投げ定番"
         }
       ],
       "3": [
         {
-          "name": "ダイワ リバティクラブ サーフT 各種（25-405等）",
-          "url": "",
-          "asin": null,
+          "name": "ダイワ(DAIWA) 投竿/振出し LBTC(リバティクラブ) SURF(サーフ) T 15号~30号",
+          "url": "https://amzn.to/48MiXiS",
+          "asin": "B00T494M2A",
           "note": "入門クラス・振出｜ダイワ入門サーフ定番・実売3,000〜5,000円"
         }
       ],
       "4": [
         {
-          "name": "シマノ ホリデースピン 405EXT（振出）",
-          "url": "",
-          "asin": null,
+          "name": "シマノ(SHIMANO) ロッド 投げ竿 17 ホリデースピン (振出) 各種 軽快な投げ釣り用",
+          "url": "https://amzn.to/3OEWmxN",
+          "asin": "B072QCFQFN",
           "note": "入門クラス・振出｜シマノ入門・25号・4.05m"
         }
       ],
@@ -336,9 +336,9 @@
       ],
       "7": [
         {
-          "name": "シマノ サーフゲイザー 振出 各種",
-          "url": "",
-          "asin": null,
+          "name": "シマノ(SHIMANO) サーフゲイザー 並継 各種 オールマイティ 遠投釣り用",
+          "url": "https://amzn.to/4mNAHAi",
+          "asin": "B07BF69TQW",
           "note": "ミドル・振出｜Amazon在庫確認要・シマノ公式またはPoint等で取扱あり"
         }
       ],
