@@ -6,7 +6,16 @@
     "body": "アオリイカをエギ（餌木）という疑似餌で狙う「エギング」専用の竿です。エギングは近年爆発的に人気が高まっており、専用ロッドの完成度も非常に高くなっています。\n\nエギングロッドは<strong>ティップ（穂先）の繊細さ</strong>が命。アオリイカのかすかな当たりを手元に伝えるため、先端部分が特別な素材で作られています。汎用ルアーロッドでも代用できなくはありませんが、専用竿を使うと釣れる数が大きく変わります。\n\n長さは<strong>8〜8.6ft・MLクラス</strong>が初心者にとって最も扱いやすいサイズです。",
     "suitable_for": "エギング（アオリイカ・コウイカ）",
     "beginner_tip": "8〜8.6ft・MLクラスが定番。秋（9〜11月）のハイシーズンに活躍。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": {
+      "0": [],
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
+    }
   },
   {
     "slug": "shore-jigging-rod",
@@ -15,7 +24,17 @@
     "body": "堤防・磯・サーフから30〜60gのメタルジグを遠投し、ブリ・カンパチ・サワラなどの青物を狙う「ショアジギング」専用の竿です。一般的なルアーロッドよりも長く硬く、重いジグを振り抜けるパワーと、走り回る青物の引きに耐える張りを兼ね備えています。\n\n長さは<strong>9.6〜10.6ft</strong>、硬さは<strong>MH〜H（ミディアムヘビー〜ヘビー）</strong>が定番。最初の1本なら、軽めのジグ（20〜40g）も扱える「ライトショアジギング」向けの<strong>9.6ft・MHクラス</strong>がおすすめです。これより重いジグや大型青物を本格的に狙う場合は、10ft以上のヘビークラスを検討します。\n\nリールは4000〜6000番のスピニング、ラインはPE1.5〜2号にショックリーダーを組むのが基本構成です。朝マヅメ・夕マヅメに群れが回遊してきたタイミングが最大のチャンスです。",
     "suitable_for": "ショアジギング・ライトショアジギング（ブリ・カンパチ・サワラ・サバ・ヒラマサ・シイラ）",
     "beginner_tip": "9.6ft・MHクラスのライトショアジギング向けから。20〜40gのジグが扱える1本を。",
-    "affiliate_links": []
+    "affiliate_links": [],
+    "affiliate_slots": {
+      "0": [],
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": []
+    }
   },
   {
     "slug": "iso-rod",
@@ -26,59 +45,14 @@
     "beginner_tip": "1〜1.5号・4〜5mが汎用性◎。まずはこのサイズから。",
     "affiliate_links": [],
     "affiliate_slots": {
-      "0": [
-        {
-          "name": "磯竿の商品一覧はこちら",
-          "url": "https://www.amazon.co.jp/s?k=%E7%A3%AF%E7%AB%BF&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=DEO2VMJVMWSP&sprefix=%E7%A3%AF%E7%AB%BF%2Caps%2C225&linkCode=ll2&tag=tsuricast-22&linkId=129750998f0160748fa6777ef07ff4b6&ref_=as_li_ss_tl"
-        }
-      ],
-      "1": [
-        {
-          "name": "ダイワ(DAIWA) 磯竿/防波堤 リーガル 1.5~3号",
-          "url": "https://www.amazon.co.jp/dp/B09SZWDLQ8?tag=tsuricast-22",
-          "asin": "B09SZWDLQ8",
-          "note": "入門クラス｜防波堤入門で選びやすいダイワ定番"
-        }
-      ],
-      "2": [
-        {
-          "name": "シマノ(SHIMANO) 磯竿 ホリデー 磯 各種",
-          "url": "https://www.amazon.co.jp/dp/B0CMF4D7H2?tag=tsuricast-22",
-          "asin": "B0CMF4D7H2",
-          "note": "入門クラス｜ホリデー磯系の定番候補"
-        }
-      ],
-      "3": [
-        {
-          "name": "ダイワ(DAIWA) 磯竿 21 波濤 0.8~2号 各種",
-          "url": "https://www.amazon.co.jp/dp/B0BT33Z4S6?tag=tsuricast-22",
-          "asin": "B0BT33Z4S6",
-          "note": "ミドルクラス｜軽さと基本性能のバランス重視"
-        }
-      ],
-      "4": [
-        {
-          "name": "シマノ(SHIMANO) 20 アドバンス イソ",
-          "url": "https://www.amazon.co.jp/dp/B08HS73XLK?tag=tsuricast-22",
-          "asin": "B08HS73XLK",
-          "note": "ミドルクラス｜感度と操作性を伸ばしたい人向け"
-        }
-      ],
-      "5": [
-        {
-          "name": "ダイワ(DAIWA) 磯竿 トーナメント磯AGS L/ML/M/MH/H 各種",
-          "url": "https://www.amazon.co.jp/dp/B0FL1JYBLD?tag=tsuricast-22",
-          "asin": "B0FL1JYBLD",
-          "note": "ハイエンドクラス｜本気で釣る人向けのダイワ上位"
-        }
-      ],
-      "6": [
-        {
-          "name": "",
-          "url": "",
-          "asin": ""
-        }
-      ]
+      "0": [],
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": []
     }
   },
   {
@@ -90,60 +64,13 @@
     "beginner_tip": "スピニングタイプ・Mクラス・6〜7ftから。ベイトは慣れてから。",
     "affiliate_links": [],
     "affiliate_slots": {
-      "0": [
-        {
-          "name": "バスロッドの商品一覧はこちら",
-          "url": "https://www.amazon.co.jp/s?k=%E3%83%90%E3%82%B9%E3%83%AD%E3%83%83%E3%83%89&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2ZDXYZZEEFCNW&sprefix=%E3%83%90%E3%82%B9%E3%83%AD%E3%83%83%E3%83%89%2Caps%2C202&linkCode=ll2&tag=tsuricast-22&linkId=339b450cc6f78f5adcaf101e4309abd7&ref_=as_li_ss_tl"
-        }
-      ],
-      "1": [
-        {
-          "name": "ダイワ(DAIWA) バスロッド 2ピース スピニング/ベイト BASS X 各種",
-          "url": "https://www.amazon.co.jp/dp/B09SZTL4JX?tag=tsuricast-22",
-          "asin": "B09SZTL4JX",
-          "note": "入門クラス｜扱いやすい現行BASS Xの定番候補"
-        }
-      ],
-      "2": [
-        {
-          "name": "シマノ(SHIMANO) バスロッド 23 バスワン XT+ スピニング ベイト 釣り竿",
-          "url": "https://www.amazon.co.jp/dp/B0BW45F57C?tag=tsuricast-22",
-          "asin": "B0BW45F57C",
-          "note": "入門クラス｜サイズ展開が広い現行バスワンXT+"
-        }
-      ],
-      "3": [
-        {
-          "name": "ダイワ(DAIWA) バスロッド リベリオン 631MHRB",
-          "url": "https://www.amazon.co.jp/dp/B09SZW4B9R?tag=tsuricast-22",
-          "asin": "B09SZW4B9R",
-          "note": "ミドルクラス｜感度と操作性のバランスが良い"
-        }
-      ],
-      "4": [
-        {
-          "name": "シマノ(SHIMANO) バスロッド 20 ゾディアス 166M-2",
-          "url": "https://www.amazon.co.jp/dp/B083ZV182H?tag=tsuricast-22",
-          "asin": "B083ZV182H",
-          "note": "ミドルクラス｜バーサタイルに使いやすい166M-2"
-        }
-      ],
-      "5": [
-        {
-          "name": "ダイワ(DAIWA) 21 スティーズ SC C66ML-G ベイトキャスティングモデル",
-          "url": "https://www.amazon.co.jp/dp/B08VCVKZJN?tag=tsuricast-22",
-          "asin": "B08VCVKZJN",
-          "note": "ハイエンドクラス｜軽さと感度を追求するスティーズ"
-        }
-      ],
-      "6": [
-        {
-          "name": "シマノ(SHIMANO) バスロッド ポイズンアルティマ 5ピースモデル各種",
-          "url": "https://www.amazon.co.jp/dp/B08ZST6XHJ?tag=tsuricast-22",
-          "asin": "B08ZST6XHJ",
-          "note": "ハイエンドクラス｜究極系の名にふさわしい上位機"
-        }
-      ]
+      "0": [],
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -155,76 +82,17 @@
     "beginner_tip": "25〜30号対応の並継ぎモデルから。砂浜でのキス釣りに最適。",
     "affiliate_links": [],
     "affiliate_slots": {
-      "0": [
-        {
-          "name": "投げ竿の商品一覧はこちら",
-          "url": "https://www.amazon.co.jp/s?k=%E6%8A%95%E7%AB%BF&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1QERW67HZ9SDW&sprefix=%E6%8A%95%E7%AB%BF%2Caps%2C184&linkCode=ll2&tag=tsuricast-22&linkId=7d47bb6376759161060ecec3d0ea393a&ref_=as_li_ss_tl"
-        }
-      ],
-      "1": [
-        {
-          "name": "ダイワ(DAIWA) 投竿/振出し LBTC(リバティクラブ) SURF(サーフ) T 15号~30号 各種",
-          "url": "https://www.amazon.co.jp/dp/B09SZWLCJK?tag=tsuricast-22",
-          "asin": "B09SZWLCJK",
-          "note": "入門クラス｜25号-390前後で始めやすい定番振出モデル"
-        }
-      ],
-      "2": [
-        {
-          "name": "シマノ(SHIMANO) ロッド 投げ竿 17 ホリデースピン (振出) 各種 軽快な投げ釣り用",
-          "url": "https://www.amazon.co.jp/dp/B08GKKZGQS?tag=tsuricast-22",
-          "asin": "B08GKKZGQS",
-          "note": "入門クラス｜30号帯で堤防からサーフまで使いやすい定番"
-        }
-      ],
-      "3": [
-        {
-          "name": "PRO MARINE ワンステップ投釣りセット",
-          "url": "https://www.amazon.co.jp/dp/B08TR26F23?tag=tsuricast-22",
-          "asin": "B08TR26F23",
-          "note": "入門クラス｜ロッドとリールをまとめて揃えやすいセット候補"
-        }
-      ],
-      "4": [
-        {
-          "name": "ダイワ(DAIWA) 投竿/振出し PRIMESURF T(プライムサーフ) 25号~33号 各種",
-          "url": "https://www.amazon.co.jp/dp/B0D354SZ9N?tag=tsuricast-22",
-          "asin": "B0D354SZ9N",
-          "note": "ミドルクラス｜25-405前後で長く使いやすいプライムサーフ系"
-        }
-      ],
-      "5": [
-        {
-          "name": "シマノ(SHIMANO) ロッド 投げ竿 20 サーフリーダー 振出 各種 軽快なキャスティング",
-          "url": "https://www.amazon.co.jp/dp/B08P4XXLX7?tag=tsuricast-22",
-          "asin": "B08P4XXLX7",
-          "note": "ミドルクラス｜軽快なキャスティングで満足度が高い定番"
-        }
-      ],
-      "6": [
-        {
-          "name": "シマノ(SHIMANO) 投げ竿 26サーフゲイザー (並継) 27-405",
-          "url": "https://www.amazon.co.jp/dp/B0GFTWJL8Y?tag=tsuricast-22",
-          "asin": "B0GFTWJL8Y",
-          "note": "ミドルクラス｜27-405前後で感度と飛距離を伸ばしやすい並継モデル"
-        }
-      ],
-      "7": [
-        {
-          "name": "ダイワ(DAIWA) 投げ竿 21 プライムキャスター 23号~33号",
-          "url": "https://www.amazon.co.jp/dp/B09879MV8P?tag=tsuricast-22",
-          "asin": "B09879MV8P",
-          "note": "ハイエンドクラス｜遠投性能と仕上げにこだわりたい人向け"
-        }
-      ],
-      "8": [
-        {
-          "name": "シマノ(SHIMANO) 投げ竿 21 プロセレクト(振出) 各種",
-          "url": "https://www.amazon.co.jp/dp/B09CQFQBQY?tag=tsuricast-22",
-          "asin": "B09CQFQBQY",
-          "note": "ハイエンドクラス｜競技志向まで視野に入る上位振出モデル"
-        }
-      ]
+      "0": [],
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": []
     }
   }
 ]
