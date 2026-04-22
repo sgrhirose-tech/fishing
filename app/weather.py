@@ -377,6 +377,60 @@ def fetch_marine_with_fallback(lat: float, lon: float, date_str: str) -> dict:
     return {}
 
 
+def _weather_is_complete(result: dict) -> bool:
+    """気象レスポンスに日次気温と朝8時の風速・風向が揃っているか判定する。"""
+    if not result:
+        return False
+    daily = result.get("daily") or {}
+    hourly = result.get("hourly") or {}
+    temp_list = daily.get("temperature_2m_max") or []
+    spd_list = hourly.get("wind_speed_10m") or []
+    dir_list = hourly.get("wind_direction_10m") or []
+    if not temp_list or temp_list[0] is None:
+        return False
+    if len(spd_list) <= 8 or spd_list[8] is None:
+        return False
+    if len(dir_list) <= 8 or dir_list[8] is None:
+        return False
+    return True
+
+
+def fetch_weather_with_fallback(
+    lat: float,
+    lon: float,
+    fallback_coords: list,
+    date_str: str,
+) -> dict:
+    """プライマリ → フォールバック座標の順で気象データを取得する。
+    `_weather_is_complete` を満たすレスポンスが得られたらそれを返す。
+    満たすものが無ければ最後に取得できたベストエフォートの結果を返す。"""
+    primary = fetch_weather(lat, lon, date_str)
+    if _weather_is_complete(primary):
+        return primary
+
+    # プライマリからの距離が近い順に試す（marine の fallback ソートと同じ方式）
+    ordered = sorted(
+        fallback_coords or [],
+        key=lambda p: (p[0] - lat) ** 2 + (p[1] - lon) ** 2,
+    )
+    best = primary
+    for fb_lat, fb_lon in ordered:
+        # 429 クールダウン中は追加コールしない
+        if _time.time() < _WEATHER_RATE_LIMIT_UNTIL:
+            break
+        # プライマリと同じグリッドに丸められる座標はスキップ
+        if round(round(fb_lat * 10) / 10, 1) == round(round(lat * 10) / 10, 1) \
+           and round(round(fb_lon * 10) / 10, 1) == round(round(lon * 10) / 10, 1):
+            continue
+        result = fetch_weather(fb_lat, fb_lon, date_str)
+        if _weather_is_complete(result):
+            result["_is_fallback"] = True
+            return result
+        if result and not best:
+            best = result
+    return best or {}
+
+
 def fetch_sst_noaa(lat: float, lon: float, date_str: str) -> float | None:
     """海面水温を取得（NOAA ERDDAP → Open-Meteo Marine の順で試行）。"""
     grid_lat = round(round(lat * 10) / 10, 1)

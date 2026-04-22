@@ -19,10 +19,12 @@ except ImportError:
     pass
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.exception_handlers import http_exception_handler
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from .constants import REGIONS, VALID_REGION_SLUGS, PREF_TO_REGION, REGION_NAMES
 from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_slug
@@ -94,12 +96,12 @@ _METHOD_TO_TACKLE: dict[str, list[tuple[str, str, str]]] = {
     "フカセ釣り":   [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
     "カゴ釣り":     [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "nylon", "ナイロンライン")],
     "エギング":     [("rod", "eging-rod", "エギングロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "egi", "エギ（餌木）")],
-    "アジング":     [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
-    "メバリング":   [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
-    "ルアー釣り":   [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
-    "ジギング":     [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
-    "タイラバ":     [("rod", "boat-rod", "船竿"),         ("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
-    "船釣り":       [("rod", "boat-rod", "船竿"),         ("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
+    "アジング":     [("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "メバリング":   [("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "ルアー釣り":   [("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
+    "ジギング":     [("rod", "shore-jigging-rod", "ショアジギングロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
+    "タイラバ":     [("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
+    "船釣り":       [("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
     "バス釣り":     [("rod", "bass-rod", "バスロッド"),   ("reel", "spinning", "スピニングリール"), ("terminal", "lure", "ルアー・ワーム")],
 }
 
@@ -406,6 +408,19 @@ _BASE = pathlib.Path(__file__).parent.parent
 app.mount("/static", StaticFiles(directory=str(_BASE / "static")), name="static")
 app.mount("/article-assets", StaticFiles(directory=str(_BASE / "articles")), name="article_assets")
 templates = Jinja2Templates(directory=str(_BASE / "templates"))
+
+
+@app.exception_handler(StarletteHTTPException)
+async def not_found_handler(request: Request, exc: StarletteHTTPException):
+    """404 を HTML ページとして返す。それ以外のステータスは JSON のデフォルト挙動に委ねる。"""
+    if exc.status_code != 404:
+        return await http_exception_handler(request, exc)
+    if request.url.path.startswith("/api/"):
+        return JSONResponse(
+            status_code=404,
+            content={"detail": getattr(exc, "detail", "Not Found")},
+        )
+    return templates.TemplateResponse(request, "404.html", {}, status_code=404)
 
 _ROBOTS_TXT = """\
 User-agent: *
