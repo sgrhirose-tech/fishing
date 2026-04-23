@@ -790,6 +790,61 @@ def api_weather(slug: str, date: str | None = None):
     }
 
 
+@app.get("/api/spots/{slug}/chart")
+def api_chart(slug: str, date: str | None = None):
+    """スポットの24時間チャートデータを返す（波高・波周期・風・気温・潮汐・水温）。"""
+    from datetime import date as _date_cls
+    spot = load_spot(slug)
+    if not spot:
+        raise HTTPException(status_code=404, detail="スポットが見つかりません")
+    date_str = date or _date_cls.today().isoformat()
+    lat = spot_lat(spot)
+    lon = spot_lon(spot)
+
+    weather = fetch_weather_range(lat, lon, date_str, date_str)
+    marine  = fetch_marine_range(lat, lon, date_str, date_str)
+    if not marine:
+        from .weather import fetch_marine_with_fallback
+        marine = fetch_marine_with_fallback(lat, lon, date_str)
+    sst_scalar = fetch_sst_noaa(lat, lon, date_str)
+
+    from .tides import get_tide_data
+    tide_info = get_tide_data(spot_slug(spot), date_str)
+
+    hourly_w = weather.get("hourly", {})
+    hourly_m = marine.get("hourly", {})
+
+    def _h(lst, n=24):
+        return [lst[i] if i < len(lst) else None for i in range(n)]
+
+    sst_hourly = _h(hourly_m.get("sea_surface_temperature", []))
+    if all(v is None for v in sst_hourly):
+        sst_hourly = [sst_scalar] * 24
+
+    tide_cm = [None] * 24
+    if tide_info and tide_info.get("hourly"):
+        for entry in tide_info["hourly"]:
+            parts = entry["time"].split(":")
+            h, m = int(parts[0]), int(parts[1])
+            if m == 0 and h < 24:
+                tide_cm[h] = entry["cm"]
+
+    return {
+        "date":         date_str,
+        "spot_name":    spot.get("name", ""),
+        "temp":         _h(hourly_w.get("temperature_2m", [])),
+        "wind_speed":   _h(hourly_w.get("wind_speed_10m", [])),
+        "wind_dir":     _h(hourly_w.get("wind_direction_10m", [])),
+        "weather_code": _h(hourly_w.get("weather_code", [])),
+        "wave_height":  _h(hourly_m.get("wave_height", [])),
+        "wave_period":  _h(hourly_m.get("wave_period", [])),
+        "tide_cm":      tide_cm,
+        "sst":          sst_hourly,
+        "sunrise":      tide_info.get("sunrise") if tide_info else None,
+        "sunset":       tide_info.get("sunset") if tide_info else None,
+    }
+
+
 @app.get("/api/spots/{slug}/tide")
 def api_tide(slug: str, date: str | None = None):
     """スポットの潮汐データを返す。data/tides/ のキャッシュから読み込む。
