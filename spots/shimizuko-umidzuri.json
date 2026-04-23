@@ -31,10 +31,10 @@
     "description": "待ちに待った新しい海釣り施設のオープン！▼管理された施設なので施設のルールを確認してきちんと準備をしてから出かけましょう！"
   },
   "classification": {
-    "primary_type": "unknown",
-    "confidence": 0.0,
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": []
   },
   "target_fish": [
