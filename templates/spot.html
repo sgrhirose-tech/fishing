@@ -255,25 +255,25 @@
   <div id="chart24-body" style="display:none;" class="chart24-container">
     <div class="chart24-scroll-wrap">
       <div class="chart24-inner">
-        <div class="chart24-row">
+        <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
           <div class="chart24-row-label">天気</div>
           <div class="chart24-row-data" id="chart24-sky"></div>
         </div>
-        <div class="chart24-row">
+        <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
           <div class="chart24-row-label">気温<br>℃</div>
           <div class="chart24-row-data" id="chart24-temp"></div>
         </div>
-        <div class="chart24-row">
+        <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
           <div class="chart24-row-label">風</div>
           <div class="chart24-row-data" id="chart24-wind"></div>
         </div>
-        <div class="chart24-row">
+        <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
           <div class="chart24-row-label">波・潮</div>
-          <div class="chart24-chart-area">
+          <div class="chart24-chart-area" style="flex:1;min-width:0">
             <canvas id="chart24-canvas"></canvas>
           </div>
         </div>
-        <div class="chart24-row">
+        <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
           <div class="chart24-row-label">水温<br>℃</div>
           <div class="chart24-row-data" id="chart24-sea"></div>
         </div>
@@ -636,10 +636,12 @@
       }
       function buildRow(id, fn) {
         var el = document.getElementById(id);
+        el.style.cssText = 'flex:1;min-width:0;display:grid;grid-template-columns:repeat(24,1fr)';
         el.innerHTML = '';
         for (var h = 0; h < 24; h++) {
           var cell = document.createElement('div');
           cell.className = 'chart24-cell';
+          cell.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;border-left:1px solid rgba(30,58,95,0.4);padding:3px 0;min-width:0;overflow:hidden';
           cell.innerHTML = fn(h);
           el.appendChild(cell);
         }
