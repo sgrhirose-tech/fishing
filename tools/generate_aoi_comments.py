@@ -186,7 +186,7 @@ def call_claude(system_prompt: str, user_message: str) -> tuple[str, dict]:
     with urllib.request.urlopen(req, timeout=30) as resp:
         data = json.loads(resp.read())
 
-    comment = data["content"][0]["text"].strip()
+    comment = data["content"][0]["text"].strip().replace("\n", "")
     usage = data.get("usage", {})
     return comment, usage
 
