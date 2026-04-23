@@ -40,18 +40,21 @@ DEFAULT_SLUGS = [
     "shichirigahama",
     "zushi-kaigan",
     "katase_east",
+    "katase",             # 片瀬西浜（江ノ島）
     "oiso",
     # sand_beach — 外房・内房
     "hebara-kaigan",
     "iwai-kaigan",
     # rocky_shore
     "inamuragasaki",
+    "katsuura-todai-shita",  # 勝浦灯台下
     # fishing_facility / breakwater
     "hayama-ko",
     "akiya-gyoko",
     "misaki-ko",
     "otsu-shinteibo",
     "kurihama",
+    "higashi-ogishima-nishi-koen",  # 東扇島西公園
 ]
 
 
