@@ -233,13 +233,8 @@
 <!-- 安全リンク -->
 <p class="safety-link-inline"><a href="/safety">釣行前に安全事項をご確認ください →</a></p>
 
-<!-- 安全警告 + AIコメント -->
-<section class="ai-comment-section">
-  <div id="safety-warning" style="display:none;"></div>
-  <div id="ai-comment-loading" class="loading" style="display:none;">コメントを生成中...</div>
-  <p id="ai-comment-label" class="ai-comment-label" style="display:none;">フィッシングガイドAIからアドバイス</p>
-  <div id="ai-comment-result" style="display:none;" class="ai-comment-box"></div>
-</section>
+<!-- 安全警告 -->
+<div id="safety-warning" style="display:none;"></div>
 
 <!-- 今日の海況・気象情報 -->
 <section class="weather-section weather-section--today">
@@ -825,23 +820,6 @@
         }
       }
     })();
-
-    // AIコメント
-    document.getElementById('ai-comment-loading').style.display = 'block';
-    fetch('/api/ai-comment/' + SPOT.slug)
-      .then(r => r.json())
-      .then(data => {
-        document.getElementById('ai-comment-loading').style.display = 'none';
-        if (data.comment) {
-          var el = document.getElementById('ai-comment-result');
-          el.textContent = data.comment;
-          el.style.display = 'block';
-          document.getElementById('ai-comment-label').style.display = 'block';
-        }
-      })
-      .catch(() => {
-        document.getElementById('ai-comment-loading').style.display = 'none';
-      });
 
     initFavoriteButton(SPOT.slug);
   });
