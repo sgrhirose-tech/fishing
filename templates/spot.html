@@ -781,12 +781,19 @@
         }
       }
 
+      var chart24Cache = {};
+
       function loadChart24(dateStr) {
+        if (chart24Cache[dateStr]) {
+          renderChart24(chart24Cache[dateStr]);
+          return;
+        }
         document.getElementById('chart24-loading').style.display = '';
         document.getElementById('chart24-body').style.display = 'none';
         fetch('/api/spots/' + SPOT.slug + '/chart?date=' + dateStr)
           .then(function(r) { return r.json(); })
           .then(function(data) {
+            chart24Cache[dateStr] = data;
             renderChart24(data);
             document.getElementById('chart24-loading').style.display = 'none';
             document.getElementById('chart24-body').style.display = '';
