@@ -392,7 +392,7 @@ footer a { color: #8bc; }
 .chart24-icon { font-size: 18px; line-height: 1; }
 .chart24-val { font-size: 13px; font-weight: 700; }
 .chart24-val-temp { color: #ffb74d; }
-.chart24-arrow { font-size: 18px; line-height: 1; }
+.chart24-arrow { font-size: 18px; line-height: 1; color: #e8f4f8; }
 .chart24-val-wind { color: #80cbc4; }
 .chart24-wind-caution { color: #ffb74d !important; }
 .chart24-wind-danger  { color: #ef5350 !important; }
