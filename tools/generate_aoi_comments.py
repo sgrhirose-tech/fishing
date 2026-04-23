@@ -119,7 +119,7 @@ def _fmt(v, digits: int = 1) -> str:
     return f"{v:.{digits}f}"
 
 
-def build_user_message(spot: dict, period: dict, user_tmpl: str) -> str:
+def build_user_message(spot: dict, period: dict, user_tmpl: str, month: int = 0) -> str:
     """USER テンプレートに値を埋めて返す。"""
     sky_raw = period.get("sky", "")
     # emoji を除去
@@ -144,6 +144,7 @@ def build_user_message(spot: dict, period: dict, user_tmpl: str) -> str:
         "tide_info":  period.get("tide", "ー"),
         "rain":       rain,
         "spot_type":  spot_type,
+        "month":      str(month),
     }
 
     msg = user_tmpl
@@ -266,7 +267,7 @@ def main() -> None:
                 skip += 1
                 continue
 
-            user_msg = build_user_message(spot, p, user_tmpl)
+            user_msg = build_user_message(spot, p, user_tmpl, month=int(tomorrow[5:7]))
             comment, usage = call_claude(system_tmpl, user_msg)
 
             record = {

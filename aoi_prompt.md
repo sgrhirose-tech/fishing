@@ -104,6 +104,7 @@ rocky_shore
 ## USER
 {spot_name}
 
+月：{month}
 天気：{weather}
 気温：{temp}℃
 波高：{wave}m
