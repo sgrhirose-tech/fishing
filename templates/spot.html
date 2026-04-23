@@ -253,6 +253,7 @@
   <div id="safety-warning" style="display:none;"></div>
   <div id="chart24-loading" class="loading">気象データを取得中...</div>
   <div id="chart24-body" style="display:none;" class="chart24-container">
+    <div class="chart24-title">24時間予報</div>
     <div class="chart24-scroll-wrap">
       <div class="chart24-inner">
         <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
@@ -597,7 +598,7 @@
       });
 
       var currentChart24 = null;
-      var INNER_W = 960, LABEL_W = 46, CHART_H = 160;
+      var INNER_W = 960, LABEL_W = 38, CHART_H = 160;
 
       function wCodeToEmoji(wc) {
         if (wc == null) return '–';
@@ -649,20 +650,21 @@
 
       function renderChart24(data) {
         buildRow('chart24-sky', function(h) {
-          return '<div class="chart24-hour">' + h + '</div>'
+          return '<div class="chart24-hour">' + h + '時</div>'
                + '<div class="chart24-icon">' + wCodeToEmoji(data.weather_code[h]) + '</div>';
         });
         buildRow('chart24-temp', function(h) {
           var v = data.temp[h];
-          return '<div class="chart24-val chart24-val-temp">' + (v != null ? (+v).toFixed(1) : '–') + '</div>';
+          return '<div class="chart24-val chart24-val-temp">' + (v != null ? Math.round(+v) : '–') + '</div>';
         });
         buildRow('chart24-wind', function(h) {
           var spd = data.wind_speed[h];
-          var cls = spd != null && spd >= 10 ? ' chart24-wind-danger'
-                  : spd != null && spd >= 7  ? ' chart24-wind-caution' : '';
+          var spdInt = spd != null ? Math.round(+spd) : null;
+          var cls = spdInt != null && spdInt >= 10 ? ' chart24-wind-danger'
+                  : spdInt != null && spdInt >= 7  ? ' chart24-wind-caution' : '';
           return '<div class="chart24-arrow">' + degToArrow(data.wind_dir[h]) + '</div>'
                + '<div class="chart24-val chart24-val-wind' + cls + '">'
-               + (spd != null ? (+spd).toFixed(1) : '–') + '</div>';
+               + (spdInt != null ? spdInt : '–') + '</div>';
         });
         buildRow('chart24-sea', function(h) {
           var v = Array.isArray(data.sst) ? data.sst[h] : data.sst;
