@@ -1522,8 +1522,14 @@ def _load_articles() -> list:
     return result
 
 
-def _parse_catch(catch_list: list, fish_master: dict) -> list[dict]:
-    """catch frontmatter → [{name, slug, count}, ...] — fish_master にあるものだけ返す。"""
+def _parse_catch(
+    catch_list: list,
+    fish_master: dict,
+    article_updated: str | None = None,
+) -> list[dict]:
+    """catch frontmatter → [{name, slug, count}, ...] — fish_master にあるものだけ返す。
+    article_updated が指定され、updated+7日以内 かつ 合計10匹以上の場合は masked 結果を返す。
+    """
     name_to_slug = {n: v["slug"] for n, v in fish_master.items() if "slug" in v}
     slug_to_name = {v["slug"]: n for n, v in fish_master.items() if "slug" in v}
     result = []
@@ -1535,6 +1541,15 @@ def _parse_catch(catch_list: list, fish_master: dict) -> list[dict]:
             result.append({"name": key, "slug": name_to_slug[key], "count": count})
         elif key in slug_to_name:
             result.append({"name": slug_to_name[key], "slug": key, "count": count})
+    if article_updated and result:
+        try:
+            updated_date = datetime.strptime(article_updated, "%Y-%m-%d").date()
+            if datetime.now().date() < updated_date + timedelta(days=7):
+                total = sum(c["count"] or 0 for c in result)
+                if total >= 10:
+                    return [{"masked": True, "summary": "つ抜け達成！🎉"}]
+        except ValueError:
+            pass
     return result
 
 
@@ -2214,7 +2229,7 @@ def page_spot_detail(
         "meta_description":   meta_description,
         "related_articles":   [_a for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") != "report"],
         "related_reports":    [{**_a,
-                                "catch_display": _parse_catch(_a.get("catch") or [], _FISH_MASTER),
+                                "catch_display": _parse_catch(_a.get("catch") or [], _FISH_MASTER, article_updated=_a.get("updated")),
                                 "updated_jp": (datetime.strptime(_a["updated"], "%Y-%m-%d").strftime("%Y年%m月%d日") if _a.get("updated") else "")}
                                for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") == "report"],
         "blog_posts":         blog_posts,

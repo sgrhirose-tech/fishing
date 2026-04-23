@@ -11,17 +11,21 @@ Usage:
 Output:
     logs/aoi_comments.jsonl  (JSONL追記)
     stdout に人間が読めるサマリー
+    メール送信（MAIL_FROM / MAIL_TO / MAIL_PASSWORD 設定時）
 """
 
 import argparse
+import io
 import json
 import os
 import re
+import smtplib
 import sys
 import time
 import urllib.request
 import urllib.error
 from datetime import datetime, timedelta, timezone
+from email.mime.text import MIMEText
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -182,9 +186,31 @@ def call_claude(system_prompt: str, user_message: str) -> tuple[str, dict]:
     with urllib.request.urlopen(req, timeout=30) as resp:
         data = json.loads(resp.read())
 
-    comment = data["content"][0]["text"].strip()
+    comment = data["content"][0]["text"].strip().replace("\n", "")
     usage = data.get("usage", {})
     return comment, usage
+
+
+def send_mail(subject: str, body: str) -> None:
+    """Gmail SMTP でメール送信。環境変数未設定時はスキップ。"""
+    mail_from = os.environ.get("MAIL_FROM", "")
+    mail_to   = os.environ.get("MAIL_TO", "")
+    password  = os.environ.get("MAIL_PASSWORD", "")
+    if not (mail_from and mail_to and password):
+        print("⚠ MAIL_FROM / MAIL_TO / MAIL_PASSWORD が未設定のためメール送信をスキップ")
+        return
+
+    msg = MIMEText(body, "plain", "utf-8")
+    msg["Subject"] = subject
+    msg["From"]    = mail_from
+    msg["To"]      = mail_to
+
+    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+        smtp.ehlo()
+        smtp.starttls()
+        smtp.login(mail_from, password)
+        smtp.sendmail(mail_from, mail_to, msg.as_string())
+    print(f"✉ メール送信: {mail_to}")
 
 
 def main() -> None:
@@ -193,6 +219,8 @@ def main() -> None:
                         help="時間帯（省略時は時刻で自動判定）")
     parser.add_argument("--slugs", nargs="+", default=None,
                         help="対象スポットslug（省略時はデフォルトリスト）")
+    parser.add_argument("--no-mail", action="store_true",
+                        help="メール送信を抑制（ローカルテスト用）")
     args = parser.parse_args()
 
     now = datetime.now(JST)
@@ -200,8 +228,15 @@ def main() -> None:
     tomorrow = (now + timedelta(days=1)).strftime("%Y-%m-%d")
     slugs = args.slugs or DEFAULT_SLUGS
 
-    print(f"=== 葵コメント生成 {now.strftime('%Y-%m-%d %H:%M')} JST　スロット:{slot}　対象:{tomorrow} ===")
-    print(f"モデル: {MODEL}  max_tokens: {MAX_TOKENS}  対象: {len(slugs)}スポット\n")
+    buf = io.StringIO()
+
+    def _p(msg: str = "") -> None:
+        print(msg)
+        buf.write(msg + "\n")
+
+    _p(f"=== 葵コメント生成 {now.strftime('%Y-%m-%d %H:%M')} JST　スロット:{slot}　対象:{tomorrow} ===")
+    _p(f"モデル: {MODEL}  max_tokens: {MAX_TOKENS}  対象: {len(slugs)}スポット")
+    _p()
 
     system_tmpl, user_tmpl = load_prompt()
 
@@ -213,7 +248,7 @@ def main() -> None:
     for slug in slugs:
         spot = load_spot(slug)
         if not spot:
-            print(f"  [SKIP] {slug}: スポット不明")
+            _p(f"  [SKIP] {slug}: スポット不明")
             skip += 1
             continue
 
@@ -221,13 +256,13 @@ def main() -> None:
         try:
             day = get_spot_data(spot, tomorrow)
             if not day:
-                print(f"  [SKIP] {slug} ({spot_name}): 気象データなし")
+                _p(f"  [SKIP] {slug} ({spot_name}): 気象データなし")
                 skip += 1
                 continue
 
             p = pick_period(day)
             if not p:
-                print(f"  [SKIP] {slug} ({spot_name}): periodなし")
+                _p(f"  [SKIP] {slug} ({spot_name}): periodなし")
                 skip += 1
                 continue
 
@@ -255,26 +290,31 @@ def main() -> None:
 
             wave_str = _fmt(p.get("wave_height_raw")) + "m"
             wind_str = _fmt(p.get("wind_speed_raw")) + "m/s"
-            print(f"  [{slug}] 波{wave_str} 風{wind_str} ({len(comment)}字)")
-            print(f"  --- 入力データ ---")
+            _p(f"  [{slug}] 波{wave_str} 風{wind_str} ({len(comment)}字)")
+            _p(f"  --- 入力データ ---")
             for line in user_msg.splitlines():
-                print(f"    {line}")
-            print(f"  --- 生成コメント ---")
-            print(f"    {comment}")
-            print()
+                _p(f"    {line}")
+            _p(f"  --- 生成コメント ---")
+            _p(f"    {comment}")
+            _p()
             ok += 1
 
         except urllib.error.HTTPError as e:
             body = e.read().decode(errors="replace")
-            print(f"  [ERROR] {slug}: HTTP {e.code} — {body[:120]}")
+            _p(f"  [ERROR] {slug}: HTTP {e.code} — {body[:120]}")
             err += 1
         except Exception as e:
-            print(f"  [ERROR] {slug}: {e}")
+            _p(f"  [ERROR] {slug}: {e}")
             err += 1
 
         time.sleep(0.3)  # レート制限対策
 
-    print(f"完了: 成功{ok}件 / スキップ{skip}件 / エラー{err}件 → {LOG_PATH}")
+    summary = f"完了: 成功{ok}件 / スキップ{skip}件 / エラー{err}件"
+    _p(summary)
+
+    if not args.no_mail:
+        subject = f"[葵コメント] {tomorrow} {slot} (成功{ok}件 / スキップ{skip}件 / エラー{err}件)"
+        send_mail(subject, buf.getvalue())
 
 
 if __name__ == "__main__":
