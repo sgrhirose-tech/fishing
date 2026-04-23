@@ -236,10 +236,10 @@
     <button class="chart24-tab active" data-which="today"></button>
     <button class="chart24-tab" data-which="tomorrow"></button>
   </div>
-  {% if preloaded_forecast and preloaded_forecast.days %}
-  {% set tmr = preloaded_forecast.days[0] %}
-  <div class="ssr-weather-summary" aria-hidden="false">
-    {% for p in tmr.periods %}
+  {% if preloaded_forecast %}
+  {% macro period_rows(day) %}
+    {% if day and day.periods %}
+    {% for p in day.periods %}
     <div class="ssr-period">
       <strong>{{ p.period }}</strong>：
       {% if p.wave_height_raw is not none %}波 {{ p.wave_height_raw | round(1, 'ceil') }}m{% else %}波 --{% endif %}
@@ -247,6 +247,14 @@
       ／ {{ p.sky }}{% if p.sst_raw is not none %} ／ 水温 {{ p.sst_raw | round(1, 'ceil') }}°C{% endif %}
     </div>
     {% endfor %}
+    {% endif %}
+  {% endmacro %}
+  <div id="ssr-summary-today" class="ssr-weather-summary" aria-hidden="false">
+    {{ period_rows(preloaded_forecast.today) }}
+    {% if preloaded_forecast.fetched_at %}<div class="ssr-fetched-at">取得 {{ preloaded_forecast.fetched_at }} JST</div>{% endif %}
+  </div>
+  <div id="ssr-summary-tomorrow" class="ssr-weather-summary" aria-hidden="false" style="display:none">
+    {% if preloaded_forecast.days %}{{ period_rows(preloaded_forecast.days[0]) }}{% endif %}
     {% if preloaded_forecast.fetched_at %}<div class="ssr-fetched-at">取得 {{ preloaded_forecast.fetched_at }} JST</div>{% endif %}
   </div>
   {% endif %}
@@ -793,6 +801,11 @@
           tabs.forEach(function(b) { b.classList.remove('active'); });
           btn.classList.add('active');
           loadChart24(btn.dataset.date);
+          var isToday = btn.dataset.which === 'today';
+          var st = document.getElementById('ssr-summary-today');
+          var sm = document.getElementById('ssr-summary-tomorrow');
+          if (st) st.style.display = isToday ? '' : 'none';
+          if (sm) sm.style.display = isToday ? 'none' : '';
         });
       });
       loadChart24(todayD.str);
