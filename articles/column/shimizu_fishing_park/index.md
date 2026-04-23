@@ -1,10 +1,16 @@
+---
+title: 清水港海づり公園が4月29日オープン｜15年越しの復活、行く前に知っておくこと
+description: 静岡市清水区新興津地区に2026年4月29日オープンした清水港海づり公園の基本情報・利用ルール・想定魚種まとめ。ライフジャケット・竿・エサは持参必須です。
+updated: 2026-04-23
+---
+
 # 清水港海づり公園が4月29日オープン｜15年越しの復活、行く前に知っておくこと
 
 ## 清水の海釣り公園が、15年ぶりに戻ってきます
 
 静岡市清水区に、新しい海釣り公園がオープンします。
 
-**[清水港海づり公園](https://tsuricast.jp/shizuoka/suruga-bay/shizuoka/shimizuko-umidzuri)**、オープン日は2026年4月29日（水・祝）。  
+**[清水港海づり公園](/shizuoka/suruga-bay/shizuoka/shimizuko-umidzuri)**、オープン日は2026年4月29日（水・祝）。  
 令和8年度は暫定供用として土日祝のみの営業で、桟橋部分からスタートします。  
 本格開園は2027年春を予定しています。
 
@@ -73,7 +79,7 @@
 
 静岡市が公表している想定魚種は以下の通りです。
 
-[アジ](https://tsuricast.jp/fish/aji)・[サバ](https://tsuricast.jp/fish/saba)・イサキ・[マダイ](https://tsuricast.jp/fish/madai)・[スズキ](https://tsuricast.jp/fish/suzuki)・[メジナ](https://tsuricast.jp/fish/mejina)・[クロダイ](https://tsuricast.jp/fish/kurodai)・ヒイラギ・イシダイ・[シロギス](https://tsuricast.jp/fish/shirogisu)・[ヒラメ](https://tsuricast.jp/fish/hirame)・[カサゴ](https://tsuricast.jp/fish/kasago)
+[アジ](/fish/aji)・[サバ](/fish/saba)・イサキ・[マダイ](/fish/madai)・[スズキ](/fish/suzuki)・[メジナ](/fish/mejina)・[クロダイ](/fish/kurodai)・ヒイラギ・イシダイ・[シロギス](/fish/shirogisu)・[ヒラメ](/fish/hirame)・[カサゴ](/fish/kasago)
 
 駿河湾に面した清水港の特性上、魚種の多彩さは期待できます。  
 ただし「必ず釣れることを約束するものではない」と静岡市も明示しています。  
@@ -83,12 +89,12 @@
 
 ## 清水港という場所の背景
 
-清水港は2020年8月に国土交通省の[釣り文化振興モデル港](https://tsuricast.jp/articles/column/fishing_model_port/)（2次指定）に認定されています。  
+清水港は2020年8月に国土交通省の[釣り文化振興モデル港](/articles/column/fishing_model_port/)（2次指定）に認定されています。  
 日の出ふ頭では年に数回、釣り開放イベントも実施されており、  
 釣り場として活用する取り組みが官民で進んでいる港です。
 
 今回の海づり公園オープンは、その流れのひとつとして位置づけられます。  
-[SOLAS条約](https://tsuricast.jp/articles/column/solas/)によって多くの港湾施設が立入禁止となった中で、  
+[SOLAS条約](/articles/column/solas/)によって多くの港湾施設が立入禁止となった中で、  
 整備された釣り場として開放される施設が増えることは、釣り人にとって歓迎すべき動きです。
 
 ---
@@ -104,7 +110,7 @@
 繰り返しになりますが、**竿・エサ・ライフジャケットは必ず持参してください。**  
 準備不足で入場できないという事態は避けたいです。
 
-[清水港海づり公園のスポット詳細・潮汐情報はこちら →](https://tsuricast.jp/shizuoka/suruga-bay/shizuoka/shimizuko-umidzuri)
+[清水港海づり公園のスポット詳細・潮汐情報はこちら →](/shizuoka/suruga-bay/shizuoka/shimizuko-umidzuri)
 
 最新情報は静岡市の公式ページで随時更新されます。  
 訪問前に確認することをおすすめします。
