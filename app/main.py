@@ -5,6 +5,7 @@ uvicorn app.main:app --reload で起動。
 
 import html
 import json
+import math
 import os
 import re as _re
 import time
@@ -1926,6 +1927,20 @@ def _build_spot_description(spot: dict, fish_name_map: dict) -> str:
     return intro + fish_str + terrain_str + notes_str
 
 
+def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = math.sin(dlat / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dlon / 2) ** 2
+    return 6371000 * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+
+def _fmt_dist(m: float) -> str:
+    if m < 1000:
+        return f"{max(100, round(m / 100) * 100):.0f}m"
+    return f"{m / 1000:.1f}km"
+
+
 def _is_fully_kinshi(spot: dict) -> bool:
     """スポット全体が釣り禁止かどうかを判定する。lead_text が短い禁止宣言文のみの場合に True。"""
     lead = (spot.get("info") or {}).get("lead_text", "") or ""
@@ -1933,23 +1948,29 @@ def _is_fully_kinshi(spot: dict) -> bool:
 
 
 def _get_nearby_spots(spot: dict, limit: int = 6) -> list:
-    """同エリア（同prefecture + 同area_slug）の非禁止スポットを最大 limit 件返す。"""
-    area = spot.get("area", {})
-    pref = area.get("prefecture", "")
-    aslug = area.get("area_slug", "")
+    """距離が近い順に非禁止スポットを limit 件返す。各要素に _dist_display を付加。"""
     current = spot.get("slug", "")
-    result = []
+    try:
+        lat0, lon0 = spot_lat(spot), spot_lon(spot)
+    except Exception:
+        return []
+    candidates = []
     for s in load_spots():
         if s.get("slug") == current:
             continue
-        sa = s.get("area", {})
-        if sa.get("prefecture") != pref or sa.get("area_slug") != aslug:
-            continue
         if _is_fully_kinshi(s):
             continue
-        result.append(s)
-        if len(result) >= limit:
-            break
+        try:
+            d = _haversine_m(lat0, lon0, spot_lat(s), spot_lon(s))
+        except Exception:
+            continue
+        candidates.append((d, s))
+    candidates.sort(key=lambda x: x[0])
+    result = []
+    for d, s in candidates[:limit]:
+        entry = dict(s)
+        entry["_dist_display"] = _fmt_dist(d)
+        result.append(entry)
     return result
 
 
@@ -2005,9 +2026,9 @@ def page_spot_detail(
     except Exception:
         blog_posts = []
     qa_items = _build_spot_qa(spot, cached_facilities)
-    # 釣り禁止判定と近隣スポット
+    # 釣り禁止判定と代替スポット
     is_kinshi = _is_fully_kinshi(spot)
-    nearby_spots = _get_nearby_spots(spot) if is_kinshi else []
+    kinshi_nearby = _get_nearby_spots(spot) if is_kinshi else []
     _info = spot.get("info") or {}
     _lead_text = _info.get("lead_text") or ""
     _notes_text = _info.get("notes") or ""
@@ -2021,7 +2042,7 @@ def page_spot_detail(
         _area_name = _area.get("area_name", "")
         _area_slug = _area.get("area_slug", "")
         _area_count = sum(1 for s in load_spots() if (s.get("area") or {}).get("area_slug") == _area_slug and not _is_fully_kinshi(s))
-        _alt = nearby_spots[0]["name"] if nearby_spots else ""
+        _alt = kinshi_nearby[0]["name"] if kinshi_nearby else ""
         meta_description = (
             f"{spot['name']}は現在釣り禁止です。"
             f"{_area_name}エリアには他に{_area_count}か所の釣り場があります。"
@@ -2085,6 +2106,7 @@ def page_spot_detail(
                                for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") == "report"],
         "blog_posts":         blog_posts,
         "is_kinshi":          is_kinshi,
+        "kinshi_nearby":      kinshi_nearby,
         "nearby_spots":       nearby_spots,
         "qa_items":           qa_items,
         "spot_updated_at":    spot_updated_at,

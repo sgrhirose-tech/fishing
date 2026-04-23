@@ -108,7 +108,36 @@
   {% endif %}
 </div>
 <div id="fav-btn-container"></div>
-{% if spot_lead or spot_description_human %}
+
+{% if is_kinshi %}
+<div class="kinshi-banner">
+  <p class="kinshi-banner-msg">このスポットは現在釣り禁止です</p>
+</div>
+{% if kinshi_nearby %}
+<section class="kinshi-nearby-section">
+  <h2 class="kinshi-nearby-title">近くで釣れる場所</h2>
+  <div class="kinshi-nearby-grid">
+    {% for ns in kinshi_nearby %}
+    {% set nsa = ns.area %}
+    <a href="/{{ nsa.pref_slug }}/{{ nsa.area_slug }}/{{ nsa.city_slug }}/{{ ns.slug }}"
+       class="kinshi-nearby-card">
+      <span class="kinshi-nearby-name">{{ ns.name }}</span>
+      <span class="kinshi-nearby-meta">
+        {% if ns._dist_display %}<span class="kinshi-nearby-dist">{{ ns._dist_display }}</span>{% endif %}
+        <span class="kinshi-nearby-city">{{ nsa.city }}</span>
+      </span>
+      {% if ns.target_fish %}
+      <span class="kinshi-nearby-fish">{% for f in ns.target_fish[:3] %}{{ fish_name_map.get(f, f) }}{% if not loop.last %}・{% endif %}{% endfor %}</span>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  <a href="/spots?area={{ area.area_slug }}" class="kinshi-nearby-all">{{ area.area_name }}の釣り場をすべて見る →</a>
+</section>
+{% endif %}
+{% endif %}
+
+{% if not is_kinshi and (spot_lead or spot_description_human) %}
 <div class="spot-description">
   {% if spot_lead %}<p>{{ spot_lead }}</p>{% endif %}
   {% if lead_text_date %}<p class="spot-lead-date">{{ lead_text_date }}現在</p>{% endif %}
@@ -418,24 +447,7 @@
 </section>
 {% endif %}
 
-{% if is_kinshi and nearby_spots %}
-<section class="kinshi-nearby-section">
-  <h2>近くで釣れる場所（{{ area.area_name }}）</h2>
-  <div class="kinshi-nearby-grid">
-    {% for ns in nearby_spots %}
-    {% set nsa = ns.area %}
-    <a href="/{{ nsa.pref_slug }}/{{ nsa.area_slug }}/{{ nsa.city_slug }}/{{ ns.slug }}"
-       class="kinshi-nearby-card">
-      <span class="kinshi-nearby-name">{{ ns.name }}</span>
-      <span class="kinshi-nearby-city">{{ nsa.city }}</span>
-    </a>
-    {% endfor %}
-  </div>
-  <a href="/spots?area={{ area.area_slug }}" class="kinshi-nearby-all">
-    {{ area.area_name }}の釣り場をすべて見る →
-  </a>
-</section>
-{% endif %}
+
 <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
 
