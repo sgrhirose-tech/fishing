@@ -326,9 +326,6 @@ footer a { color: #8bc; }
 .safety-link-inline a { color: #555; text-decoration: underline; }
 .safety-link-inline a:hover { color: #1a6b9e; }
 
-/* ---- 安全警告・AIコメント ---- */
-.ai-comment-section { margin: 1rem 0; }
-
 /* ---- 今日の海況セクション（グレー基調） ---- */
 .weather-section--today {
   background: #f3f4f5;
@@ -363,24 +360,6 @@ footer a { color: #8bc; }
   padding: .4rem .8rem;
   margin-bottom: .5rem;
 }
-.ai-comment-label {
-  font-size: .75rem;
-  font-weight: 600;
-  color: #1a6b9e;
-  letter-spacing: .04em;
-  margin: 0 0 .3rem 0;
-  text-transform: none;
-}
-.ai-comment-box {
-  background: #f0f7ff;
-  border-left: 4px solid #1a6b9e;
-  padding: 1rem 1.2rem;
-  border-radius: 0 6px 6px 0;
-  line-height: 1.7;
-  white-space: pre-wrap;
-  margin-top: 0;
-}
-
 /* ---- 7日間タブ ---- */
 .forecast-tabs { display: flex; gap: .5rem; margin-bottom: 1rem; }
 .tab-btn {
