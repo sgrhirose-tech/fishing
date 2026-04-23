@@ -21,7 +21,7 @@ except ImportError:
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.exception_handlers import http_exception_handler
-from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -1177,7 +1177,13 @@ SPOT_TYPE_LABELS = {
     "fishing_facility": "釣り公園・施設",
 }
 
-@app.get("/spots/", response_class=HTMLResponse)
+@app.get("/spots/")
+def redirect_spots_slash(request: Request):
+    qs = request.url.query
+    target = "/spots?" + qs if qs else "/spots"
+    return RedirectResponse(url=target, status_code=301)
+
+@app.get("/spots", response_class=HTMLResponse)
 def page_spots(
     request: Request,
     area: str = Query(None),
