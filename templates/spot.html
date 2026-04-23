@@ -365,7 +365,7 @@
         <img src="{{ r.card_image }}" alt="{{ r.title or r.slug }}" loading="lazy">
         <div class="spot-report-row-body">
           <span class="article-row-title">{{ r.title or r.slug }}</span>
-          {% if r.updated_jp %}<span class="spot-report-row-meta">更新 {{ r.updated_jp }}{% if r.catch_display %}　🐟 {% for c in r.catch_display %}{{ c.name }}{% if c.count %} {{ c.count }}匹{% endif %}{% if not loop.last %}・{% endif %}{% endfor %}{% endif %}</span>{% endif %}
+          {% if r.updated_jp %}<span class="spot-report-row-meta">更新 {{ r.updated_jp }}{% if r.catch_display %}　🐟 {% for c in r.catch_display %}{% if c.masked %}{{ c.summary }}{% else %}{{ c.name }}{% if c.count %} {{ c.count }}匹{% endif %}{% if not loop.last %}・{% endif %}{% endif %}{% endfor %}{% endif %}</span>{% endif %}
         </div>
       </a>
     </li>
