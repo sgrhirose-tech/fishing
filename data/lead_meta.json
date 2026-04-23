@@ -1623,5 +1623,10 @@
     "generated_at": "2026-04-17T09:08:20.074671+09:00",
     "quality": "fallback",
     "needs_review": true
+  },
+  "tateyama_port": {
+    "generated_at": "2026-04-21T13:13:53.818340+09:00",
+    "quality": "ok",
+    "needs_review": false
   }
 }

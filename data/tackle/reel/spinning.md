@@ -111,7 +111,8 @@
 ---
 
 ## 合わせて揃えたいもの
-- [ルアーロッド](/tackle/rod/lure-rod/)
+- [エギングロッド](/tackle/rod/eging-rod/)
+- [ショアジギングロッド](/tackle/rod/shore-jigging-rod/)
 - [磯竿](/tackle/rod/iso-rod/)
 - [投げ専用リール（投げ釣りの場合）](/tackle/reel/nage/)
 - PEライン（0.6〜1.5号）

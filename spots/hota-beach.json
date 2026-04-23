@@ -21,17 +21,19 @@
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、近傍に石要素あり"
+    "seabed_summary": "砂主体、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "金谷南の砂浜、投げ釣りでキス中心",
-    "access": "保田駅から徒歩5分"
+    "access": "保田駅から徒歩5分",
+    "description": "多くのキス釣り大会が開催される有名なポイントです。▼海岸沿いに比較的大きな駐車場が整備されているのもGOODです。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.7,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "name_keyword",
+    "source": "manual",
     "osm_evidence": [
       "keyword:海岸"
     ]
@@ -41,5 +43,5 @@
   ],
   "harbor_code": "12-10",
   "harbor_name": "岩井袋",
-  "updated_at": "2026-04-18"
+  "updated_at": "2026-04-20"
 }

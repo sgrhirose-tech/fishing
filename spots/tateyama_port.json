@@ -1,0 +1,54 @@
+{
+  "slug": "tateyama_port",
+  "name": "館山港",
+  "location": {
+    "latitude": 34.9865,
+    "longitude": 139.8441
+  },
+  "area": {
+    "prefecture": "千葉県",
+    "pref_slug": "chiba",
+    "area_name": "内房",
+    "area_slug": "uchibo",
+    "city": "館山市",
+    "city_slug": "tateyama"
+  },
+  "physical_features": {
+    "sea_bearing_deg": 0,
+    "seabed_type": "sand",
+    "depth_near_m": null,
+    "depth_far_m": null,
+    "surfer_spot": false,
+    "nearest_20m_contour_distance_m": 1296.2
+  },
+  "derived_features": {
+    "bottom_kisugo_score": 80,
+    "terrain_summary": "",
+    "seabed_summary": "砂主体、近傍に石要素あり"
+  },
+  "info": {
+    "access": "館山航空隊バス停から徒歩5分",
+    "lead_text": "館山港は釣り人の間で「砂揚げ場」の愛称で親しまれる岸壁で、2024年に国土交通省の釣り文化振興モデル港に指定されました。水深は3〜5.5mほどで、比較的どの方角からの風にも強い釣り場です。常にコマセが入って魚が寄りやすい反面、早朝には釣り座が埋まりやすいのが玉にキズ。アジは5月頃からサビキで狙い始められ、夏〜秋はアオリイカのエギングが盛んになります。シロギスはちょい投げで砂底を探るスタイルが定番です。なお常夜灯がないため、夜釣りには明かり対策が必須です。",
+    "description": "港ですので、船優先です。船が接岸しているときは釣りは遠慮しましょう。▼砂揚げ場の愛称通り砂を運搬する基地港で、風が強い日には砂嵐になります。▼関東地方では珍しい南風に強い釣り場です。▼大変混み合いますので、譲り合って釣りをしましょう。▼近所の釣具屋さんが貸竿をしてくれます。"
+  },
+  "updated_at": "2026-04-21",
+  "classification": {
+    "primary_type": "fishing_facility",
+    "confidence": 1.0,
+    "secondary_flags": [
+      "parking_nearby"
+    ],
+    "source": "manual",
+    "osm_evidence": [
+      "waterway=dock@131m"
+    ]
+  },
+  "harbor_code": "12-19",
+  "harbor_name": "館山",
+  "target_fish": [
+    "aji",
+    "aoriika",
+    "shirogisu",
+    "kurodai"
+  ]
+}

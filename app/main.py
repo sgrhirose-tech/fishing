@@ -19,10 +19,12 @@ except ImportError:
     pass
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.exception_handlers import http_exception_handler
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from .constants import REGIONS, VALID_REGION_SLUGS, PREF_TO_REGION, REGION_NAMES
 from .spots import load_spots, load_spot, spot_lat, spot_lon, spot_name, spot_slug
@@ -94,12 +96,12 @@ _METHOD_TO_TACKLE: dict[str, list[tuple[str, str, str]]] = {
     "フカセ釣り":   [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
     "カゴ釣り":     [("rod", "iso-rod", "磯竿"),          ("reel", "spinning", "スピニングリール"), ("line", "nylon", "ナイロンライン")],
     "エギング":     [("rod", "eging-rod", "エギングロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "egi", "エギ（餌木）")],
-    "アジング":     [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
-    "メバリング":   [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
-    "ルアー釣り":   [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
-    "ジギング":     [("rod", "lure-rod", "ルアーロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
-    "タイラバ":     [("rod", "boat-rod", "船竿"),         ("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
-    "船釣り":       [("rod", "boat-rod", "船竿"),         ("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
+    "アジング":     [("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "メバリング":   [("reel", "spinning", "スピニングリール"), ("line", "fluorocarbon", "フロロカーボンライン")],
+    "ルアー釣り":   [("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
+    "ジギング":     [("rod", "shore-jigging-rod", "ショアジギングロッド"), ("reel", "spinning", "スピニングリール"), ("line", "pe", "PEライン"), ("terminal", "lure", "ルアー・ワーム")],
+    "タイラバ":     [("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
+    "船釣り":       [("reel", "conventional", "両軸リール（船用）"), ("line", "pe", "PEライン")],
     "バス釣り":     [("rod", "bass-rod", "バスロッド"),   ("reel", "spinning", "スピニングリール"), ("terminal", "lure", "ルアー・ワーム")],
 }
 
@@ -406,6 +408,19 @@ _BASE = pathlib.Path(__file__).parent.parent
 app.mount("/static", StaticFiles(directory=str(_BASE / "static")), name="static")
 app.mount("/article-assets", StaticFiles(directory=str(_BASE / "articles")), name="article_assets")
 templates = Jinja2Templates(directory=str(_BASE / "templates"))
+
+
+@app.exception_handler(StarletteHTTPException)
+async def not_found_handler(request: Request, exc: StarletteHTTPException):
+    """404 を HTML ページとして返す。それ以外のステータスは JSON のデフォルト挙動に委ねる。"""
+    if exc.status_code != 404:
+        return await http_exception_handler(request, exc)
+    if request.url.path.startswith("/api/"):
+        return JSONResponse(
+            status_code=404,
+            content={"detail": getattr(exc, "detail", "Not Found")},
+        )
+    return templates.TemplateResponse(request, "404.html", {}, status_code=404)
 
 _ROBOTS_TXT = """\
 User-agent: *
@@ -1233,6 +1248,48 @@ except ImportError:
 _AFFILIATE_MARKER = _re.compile(r'<!--\s*affiliate:\s*(\d+)\s*-->')
 _LINK_CARD_RE = _re.compile(r'<!--\s*link-card:\s*([^|>\n]+)\|([^|>\n]+)(?:\|([^>\n]*))?\s*-->')
 
+_JSONLD_SCRIPT_RE = _re.compile(
+    r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+    _re.DOTALL | _re.IGNORECASE,
+)
+
+_FAQ_HEADING_RE = _re.compile(r'^##\s+(?:よくある質問|FAQ|Q&A|Q＆A).*$', _re.MULTILINE)
+_FAQ_NEXT_H2_RE = _re.compile(r'^##\s+', _re.MULTILINE)
+_FAQ_Q_RE = _re.compile(
+    r'^(?:###\s+Q[\.．:：]?\s*(?P<q1>.+?)|\*\*Q[\.．:：]?\s*(?P<q2>.+?)\*\*)\s*$',
+    _re.MULTILINE,
+)
+
+
+def _extract_faq_from_markdown(md_text: str) -> list[dict]:
+    """Markdown の FAQ 節から Q&A を抽出する。見つからなければ空リスト。"""
+    m = _FAQ_HEADING_RE.search(md_text)
+    if not m:
+        return []
+    after = md_text[m.end():]
+    m2 = _FAQ_NEXT_H2_RE.search(after)
+    section = after[:m2.start()] if m2 else after
+
+    matches = list(_FAQ_Q_RE.finditer(section))
+    qas: list[dict] = []
+    for i, qm in enumerate(matches):
+        q = (qm.group('q1') or qm.group('q2') or '').strip()
+        ans_start = qm.end()
+        ans_end = matches[i + 1].start() if i + 1 < len(matches) else len(section)
+        block = section[ans_start:ans_end].strip()
+        lines = []
+        for line in block.splitlines():
+            s = line.strip()
+            if not s:
+                continue
+            if s.startswith('→'):
+                s = s.lstrip('→').strip()
+            lines.append(s)
+        a = ' '.join(lines)
+        if q and a:
+            qas.append({'q': q, 'a': a})
+    return qas
+
 
 def _build_link_card_html(url: str, title: str, desc: str = "") -> str:
     url = url.strip()
@@ -1285,6 +1342,9 @@ def _render_tackle_body(category_slug: str, item: dict) -> tuple:
         return item.get("body", "").replace("\n", "<br>"), False
 
     md_text = md_path.read_text(encoding="utf-8")
+    # Markdown 内に埋め込まれた JSON-LD <script> ブロックは本文レンダリング前に除去する
+    # (mistune が <script> をエスケープして可視テキストとして出力するのを防ぐ)
+    md_text = _JSONLD_SCRIPT_RE.sub("", md_text)
     slots = item.get("affiliate_slots", {}) or {}
 
     parts = _AFFILIATE_MARKER.split(md_text)
@@ -1303,6 +1363,54 @@ def _render_tackle_body(category_slug: str, item: dict) -> tuple:
             if links:
                 html_parts.append(_build_affiliate_html(links))
     return "".join(html_parts), True
+
+
+def _load_tackle_jsonld_scripts(category_slug: str, item_slug: str) -> list[str]:
+    """Markdown 内に埋め込まれた JSON-LD script の中身（JSON文字列）を返す。"""
+    md_path = _TACKLE_DIR / category_slug / f"{item_slug}.md"
+    if not md_path.exists():
+        return []
+    md_text = md_path.read_text(encoding="utf-8")
+    return [m.group(1).strip() for m in _JSONLD_SCRIPT_RE.finditer(md_text)]
+
+
+def _parse_faqpage_jsonld(text: str) -> list[dict]:
+    """JSON-LD FAQPage の JSON 文字列から Q&A リストを取り出す。"""
+    try:
+        data = json.loads(text)
+    except (json.JSONDecodeError, ValueError):
+        return []
+    if not isinstance(data, dict) or data.get("@type") != "FAQPage":
+        return []
+    entities = data.get("mainEntity") or []
+    if not isinstance(entities, list):
+        return []
+    qas: list[dict] = []
+    for e in entities:
+        if not isinstance(e, dict):
+            continue
+        q = (e.get("name") or "").strip()
+        ans = e.get("acceptedAnswer") or {}
+        a = (ans.get("text") or "").strip() if isinstance(ans, dict) else ""
+        if q and a:
+            qas.append({"q": q, "a": a})
+    return qas
+
+
+def _load_tackle_faq(category_slug: str, item_slug: str) -> list[dict]:
+    """タックル Markdown の FAQ 節を読み込み Q&A リストを返す。"""
+    md_path = _TACKLE_DIR / category_slug / f"{item_slug}.md"
+    if not md_path.exists():
+        return []
+    return _extract_faq_from_markdown(md_path.read_text(encoding="utf-8"))
+
+
+def _has_visible_faq_in_markdown(category_slug: str, item_slug: str) -> bool:
+    """Markdown 本文に \"## よくある質問（FAQ）\" など可視FAQ節があるか判定する。"""
+    md_path = _TACKLE_DIR / category_slug / f"{item_slug}.md"
+    if not md_path.exists():
+        return False
+    return bool(_FAQ_HEADING_RE.search(md_path.read_text(encoding="utf-8")))
 
 
 def _load_tackle_categories() -> list:
@@ -1691,6 +1799,17 @@ def page_tackle_item(request: Request, category_slug: str, item_slug: str):
     if not item:
         raise HTTPException(status_code=404, detail="アイテムが見つかりません")
     body_html, body_from_md = _render_tackle_body(category_slug, item)
+    inline_jsonld = _load_tackle_jsonld_scripts(category_slug, item_slug)
+    # 本文側に FAQ 節があるなら Q&A は既に可視化されているため、JSON-LD は
+    # inline_jsonld をそのまま出す or Markdown Q&A から生成する。
+    # 本文側に FAQ 節が無く JSON-LD 直書きだけある場合は、JSON-LD をパースして
+    # visible_qa として本文末尾に HTML で表示する。
+    has_visible_faq = _has_visible_faq_in_markdown(category_slug, item_slug)
+    visible_qa: list[dict] = []
+    if inline_jsonld and not has_visible_faq:
+        for script in inline_jsonld:
+            visible_qa.extend(_parse_faqpage_jsonld(script))
+    qa_items = [] if inline_jsonld else _load_tackle_faq(category_slug, item_slug)
     return templates.TemplateResponse(request, "tackle/item.html", {
         "category": category,
         "categories": categories,
@@ -1698,6 +1817,9 @@ def page_tackle_item(request: Request, category_slug: str, item_slug: str):
         "items": items,
         "body_html": body_html,
         "body_from_md": body_from_md,
+        "qa_items": qa_items,
+        "inline_jsonld": inline_jsonld,
+        "visible_qa": visible_qa,
     })
 
 

@@ -11,8 +11,12 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-from .spots import _get_marine_cache
-from .weather import fetch_weather, fetch_marine_with_fallback, fetch_sst_noaa
+from .spots import _get_marine_cache, get_marine_fallbacks
+from .weather import (
+    fetch_weather_with_fallback,
+    fetch_marine_with_fallback,
+    fetch_sst_noaa,
+)
 from .scoring import direction_label, weather_code_label, WEATHER_EMOJI
 from .lunar import tide_label
 
@@ -79,7 +83,12 @@ def get_area_weather(area_name_jp: str, date_str: str) -> dict:
     center_lat, center_lon, fetch_km = area_centers[area_name_jp]
     proxy_lat, proxy_lon = proxy_dict.get(area_name_jp, (center_lat, center_lon))
 
-    weather = fetch_weather(center_lat, center_lon, date_str)
+    # 気象はプライマリ(center) → proxy → 共通フォールバックの順で引く。
+    # 湾内など center が海上座標のエリアで気温・風が null を返す問題に対応。
+    weather_fallbacks = [(proxy_lat, proxy_lon)] + list(get_marine_fallbacks())
+    weather = fetch_weather_with_fallback(
+        center_lat, center_lon, weather_fallbacks, date_str
+    )
     marine = fetch_marine_with_fallback(proxy_lat, proxy_lon, date_str)
 
     daily = weather.get("daily", {})

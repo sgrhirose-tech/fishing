@@ -4,6 +4,37 @@
 {% block description %}{{ item.summary }}{% endblock %}
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
+{% block og_image %}<meta property="og:image" content="https://tsuricast.jp/static/img/shop_girl_card.png">{% endblock %}
+{% block tw_image %}https://tsuricast.jp/static/img/shop_girl_card.png{% endblock %}
+
+{% block jsonld %}
+{{ super() }}
+{% for block in inline_jsonld %}
+<script type="application/ld+json">
+{{ block | safe }}
+</script>
+{% endfor %}
+{% if qa_items %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for qa in qa_items %}
+    {
+      "@type": "Question",
+      "name": {{ qa.q | tojson }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ qa.a | tojson }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{% endblock %}
 
 {% block content %}
 <nav class="breadcrumb">
@@ -30,6 +61,13 @@
 
   <div class="tackle-item-body">
     {{ body_html | safe }}
+    {% if visible_qa %}
+    <h2>よくある質問（FAQ）</h2>
+    {% for qa in visible_qa %}
+    <h3>Q. {{ qa.q }}</h3>
+    <p>{{ qa.a }}</p>
+    {% endfor %}
+    {% endif %}
   </div>
 
   {% if not body_from_md and item.suitable_for %}
