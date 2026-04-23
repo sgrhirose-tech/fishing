@@ -374,7 +374,7 @@ footer a { color: #8bc; }
   background: #112240; border: 1px solid #1e3a5f;
   border-radius: 12px; padding: 14px 12px;
 }
-.chart24-scroll-wrap { overflow-x: auto; overflow-y: visible; -webkit-overflow-scrolling: touch; }
+.chart24-scroll-wrap { width: 100%; overflow-x: auto; overflow-y: visible; -webkit-overflow-scrolling: touch; }
 .chart24-inner { width: 960px; }
 .chart24-row { display: flex; align-items: stretch; margin-bottom: 4px; }
 .chart24-row-label {
