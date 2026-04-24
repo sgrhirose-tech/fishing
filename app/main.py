@@ -5,6 +5,7 @@ uvicorn app.main:app --reload で起動。
 
 import html
 import json
+import math
 import os
 import re as _re
 import time
@@ -20,7 +21,7 @@ except ImportError:
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.exception_handlers import http_exception_handler
-from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -804,6 +805,61 @@ def api_weather(slug: str, date: str | None = None):
     }
 
 
+@app.get("/api/spots/{slug}/chart")
+def api_chart(slug: str, date: str | None = None):
+    """スポットの24時間チャートデータを返す（波高・波周期・風・気温・潮汐・水温）。"""
+    from datetime import date as _date_cls
+    spot = load_spot(slug)
+    if not spot:
+        raise HTTPException(status_code=404, detail="スポットが見つかりません")
+    date_str = date or _date_cls.today().isoformat()
+    lat = spot_lat(spot)
+    lon = spot_lon(spot)
+
+    weather = fetch_weather_range(lat, lon, date_str, date_str)
+    marine  = fetch_marine_range(lat, lon, date_str, date_str)
+    if not marine:
+        from .weather import fetch_marine_with_fallback
+        marine = fetch_marine_with_fallback(lat, lon, date_str)
+    sst_scalar = fetch_sst_noaa(lat, lon, date_str)
+
+    from .tides import get_tide_data
+    tide_info = get_tide_data(spot_slug(spot), date_str)
+
+    hourly_w = weather.get("hourly", {})
+    hourly_m = marine.get("hourly", {})
+
+    def _h(lst, n=24):
+        return [lst[i] if i < len(lst) else None for i in range(n)]
+
+    sst_hourly = _h(hourly_m.get("sea_surface_temperature", []))
+    if all(v is None for v in sst_hourly):
+        sst_hourly = [sst_scalar] * 24
+
+    tide_cm = [None] * 24
+    if tide_info and tide_info.get("hourly"):
+        for entry in tide_info["hourly"]:
+            parts = entry["time"].split(":")
+            h, m = int(parts[0]), int(parts[1])
+            if m == 0 and h < 24:
+                tide_cm[h] = entry["cm"]
+
+    return {
+        "date":         date_str,
+        "spot_name":    spot.get("name", ""),
+        "temp":         _h(hourly_w.get("temperature_2m", [])),
+        "wind_speed":   _h(hourly_w.get("wind_speed_10m", [])),
+        "wind_dir":     _h(hourly_w.get("wind_direction_10m", [])),
+        "weather_code": _h(hourly_w.get("weather_code", [])),
+        "wave_height":  _h(hourly_m.get("wave_height", [])),
+        "wave_period":  _h(hourly_m.get("wave_period", [])),
+        "tide_cm":      tide_cm,
+        "sst":          sst_hourly,
+        "sunrise":      tide_info.get("sunrise") if tide_info else None,
+        "sunset":       tide_info.get("sunset") if tide_info else None,
+    }
+
+
 @app.get("/api/spots/{slug}/tide")
 def api_tide(slug: str, date: str | None = None):
     """スポットの潮汐データを返す。data/tides/ のキャッシュから読み込む。
@@ -1121,7 +1177,13 @@ SPOT_TYPE_LABELS = {
     "fishing_facility": "釣り公園・施設",
 }
 
-@app.get("/spots/", response_class=HTMLResponse)
+@app.get("/spots/")
+def redirect_spots_slash(request: Request):
+    qs = request.url.query
+    target = "/spots?" + qs if qs else "/spots"
+    return RedirectResponse(url=target, status_code=301)
+
+@app.get("/spots", response_class=HTMLResponse)
 def page_spots(
     request: Request,
     area: str = Query(None),
@@ -2075,6 +2137,20 @@ def _build_spot_description(spot: dict, fish_name_map: dict) -> str:
     return intro + fish_str + terrain_str + notes_str
 
 
+def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = math.sin(dlat / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dlon / 2) ** 2
+    return 6371000 * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+
+def _fmt_dist(m: float) -> str:
+    if m < 1000:
+        return f"{max(100, round(m / 100) * 100):.0f}m"
+    return f"{m / 1000:.1f}km"
+
+
 def _is_fully_kinshi(spot: dict) -> bool:
     """スポット全体が釣り禁止かどうかを判定する。lead_text が短い禁止宣言文のみの場合に True。"""
     lead = (spot.get("info") or {}).get("lead_text", "") or ""
@@ -2082,23 +2158,29 @@ def _is_fully_kinshi(spot: dict) -> bool:
 
 
 def _get_nearby_spots(spot: dict, limit: int = 6) -> list:
-    """同エリア（同prefecture + 同area_slug）の非禁止スポットを最大 limit 件返す。"""
-    area = spot.get("area", {})
-    pref = area.get("prefecture", "")
-    aslug = area.get("area_slug", "")
+    """距離が近い順に非禁止スポットを limit 件返す。各要素に _dist_display を付加。"""
     current = spot.get("slug", "")
-    result = []
+    try:
+        lat0, lon0 = spot_lat(spot), spot_lon(spot)
+    except Exception:
+        return []
+    candidates = []
     for s in load_spots():
         if s.get("slug") == current:
             continue
-        sa = s.get("area", {})
-        if sa.get("prefecture") != pref or sa.get("area_slug") != aslug:
-            continue
         if _is_fully_kinshi(s):
             continue
-        result.append(s)
-        if len(result) >= limit:
-            break
+        try:
+            d = _haversine_m(lat0, lon0, spot_lat(s), spot_lon(s))
+        except Exception:
+            continue
+        candidates.append((d, s))
+    candidates.sort(key=lambda x: x[0])
+    result = []
+    for d, s in candidates[:limit]:
+        entry = dict(s)
+        entry["_dist_display"] = _fmt_dist(d)
+        result.append(entry)
     return result
 
 
@@ -2154,9 +2236,9 @@ def page_spot_detail(
     except Exception:
         blog_posts = []
     qa_items = _build_spot_qa(spot, cached_facilities)
-    # 釣り禁止判定と近隣スポット
+    # 釣り禁止判定と代替スポット
     is_kinshi = _is_fully_kinshi(spot)
-    nearby_spots = _get_nearby_spots(spot) if is_kinshi else []
+    kinshi_nearby = _get_nearby_spots(spot) if is_kinshi else []
     _info = spot.get("info") or {}
     _lead_text = _info.get("lead_text") or ""
     _notes_text = _info.get("notes") or ""
@@ -2170,7 +2252,7 @@ def page_spot_detail(
         _area_name = _area.get("area_name", "")
         _area_slug = _area.get("area_slug", "")
         _area_count = sum(1 for s in load_spots() if (s.get("area") or {}).get("area_slug") == _area_slug and not _is_fully_kinshi(s))
-        _alt = nearby_spots[0]["name"] if nearby_spots else ""
+        _alt = kinshi_nearby[0]["name"] if kinshi_nearby else ""
         meta_description = (
             f"{spot['name']}は現在釣り禁止です。"
             f"{_area_name}エリアには他に{_area_count}か所の釣り場があります。"
@@ -2234,6 +2316,7 @@ def page_spot_detail(
                                for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") == "report"],
         "blog_posts":         blog_posts,
         "is_kinshi":          is_kinshi,
+        "kinshi_nearby":      kinshi_nearby,
         "nearby_spots":       nearby_spots,
         "qa_items":           qa_items,
         "spot_updated_at":    spot_updated_at,
