@@ -9,44 +9,44 @@
     "affiliate_links": [],
     "affiliate_slots": {
       "0": [
-          {
-            "name": "スピニングリール 検索結果",
-            "url": "https://www.amazon.co.jp/s?k=スピニングリール&tag=tsuricast-22",
-            "asin": null,
-            "note": "まとめリンク｜Amazon「スピニングリール」検索結果ページ"
-          }
+        {
+          "name": "スピニングリール 検索結果",
+          "url": "https://www.amazon.co.jp/s?k=スピニングリール&tag=tsuricast-22",
+          "asin": null,
+          "note": "まとめリンク｜Amazon「スピニングリール」検索結果ページ"
+        }
       ],
       "1": [
-          {
-              "name": "シマノ 22サハラ 各種（2500SHG・C3000HG等）",
-              "url": "https://www.amazon.co.jp/dp/B09VNXVFLD?tag=tsuricast-22",
-              "asin": "B09VNXVFLD",
-              "note": "入門クラス｜サイレントドライブ搭載・実売6,000〜8,000円・バリエーション選択"
-            }
+        {
+          "name": "シマノ 22サハラ 各種（2500SHG・C3000HG等）",
+          "url": "https://www.amazon.co.jp/dp/B09VNXVFLD?tag=tsuricast-22",
+          "asin": "B09VNXVFLD",
+          "note": "入門クラス｜サイレントドライブ搭載・実売6,000〜8,000円・バリエーション選択"
+        }
       ],
       "2": [
-          {
-              "name": "ダイワ 24レブロス LT2500S-XH（2024年モデル）",
-              "url": "https://www.amazon.co.jp/dp/B0CMFDPK3G?tag=tsuricast-22",
-              "asin": "B0CMFDPK3G",
-              "note": "入門クラス・ダイワ｜エアドライブデザイン・実売6,000〜8,000円"
-            }
+        {
+          "name": "ダイワ 24レブロス LT2500S-XH（2024年モデル）",
+          "url": "https://www.amazon.co.jp/dp/B0CMFDPK3G?tag=tsuricast-22",
+          "asin": "B0CMFDPK3G",
+          "note": "入門クラス・ダイワ｜エアドライブデザイン・実売6,000〜8,000円"
+        }
       ],
       "3": [
-          {
-              "name": "ダイワ 25カルディア LT3000-XH（2025年モデル）",
-              "url": "https://www.amazon.co.jp/dp/B0F1WFDHW8?tag=tsuricast-22",
-              "asin": "B0F1WFDHW8",
-              "note": "ミドルクラス・ダイワ｜エアドライブデザイン・軽量重視・実売18,000〜22,000円"
-            }
+        {
+          "name": "ダイワ 25カルディア LT3000-XH（2025年モデル）",
+          "url": "https://www.amazon.co.jp/dp/B0F1WFDHW8?tag=tsuricast-22",
+          "asin": "B0F1WFDHW8",
+          "note": "ミドルクラス・ダイワ｜エアドライブデザイン・軽量重視・実売18,000〜22,000円"
+        }
       ],
       "4": [
-          {
-              "name": "シマノ 25アルテグラ C3000HG（2025年モデル）",
-              "url": "https://www.amazon.co.jp/dp/B0CVKLWRYX?tag=tsuricast-22",
-              "asin": "B0CVKLWRYX",
-              "note": "ミドルクラス｜フラッグシップ機能を低価格で・実売12,000〜16,000円・2025年新作"
-            }
+        {
+          "name": "シマノ 25アルテグラ C3000HG（2025年モデル）",
+          "url": "https://www.amazon.co.jp/dp/B0CVKLWRYX?tag=tsuricast-22",
+          "asin": "B0CVKLWRYX",
+          "note": "ミドルクラス｜フラッグシップ機能を低価格で・実売12,000〜16,000円・2025年新作"
+        }
       ],
       "5": [
         {
@@ -57,12 +57,12 @@
         }
       ],
       "6": [
-          {
-              "name": "シマノ 22ステラ 各種（C3000SHG・C3000HG等）",
-              "url": "https://www.amazon.co.jp/dp/B09VPBC5P4?tag=tsuricast-22",
-              "asin": "B09VPBC5P4",
-              "note": "ハイエンド最高峰｜実売70,000〜85,000円・シマノスピニングリールの頂点・買える人はどうぞ"
-            }
+        {
+          "name": "シマノ 22ステラ 各種（C3000SHG・C3000HG等）",
+          "url": "https://www.amazon.co.jp/dp/B09VPBC5P4?tag=tsuricast-22",
+          "asin": "B09VPBC5P4",
+          "note": "ハイエンド最高峰｜実売70,000〜85,000円・シマノスピニングリールの頂点・買える人はどうぞ"
+        }
       ]
     }
   },
@@ -76,148 +76,59 @@
     "affiliate_links": [],
     "affiliate_slots": {
       "0": [
-          {
-              "name": "ベイトリール 検索結果",
-              "url": "https://www.amazon.co.jp/s?k=ベイトリール&tag=tsuricast-22",
-              "asin": null,
-              "note": "まとめリンク｜Amazon「ベイトリール」検索結果ページ"
-            }
-      ],
-      "1": [
-          {
-              "name": "ダイワ 19バスX（右/左ハンドル）",
-              "url": "https://www.amazon.co.jp/dp/B07H3RVPPK?tag=tsuricast-22",
-              "asin": "B07H3RVPPK",
-              "note": "入門・マグネットブレーキ｜ダイワ入門・軽量ルアーに強い32mmスプール・実売6,000〜8,000円"
-            }
-      ],
-      "2": [
-          {
-              "name": "シマノ バスワンXT 150/151（右/左ハンドル）",
-              "url": "https://www.amazon.co.jp/dp/B08GMMSDGX?tag=tsuricast-22",
-              "asin": "B08GMMSDGX",
-              "note": "入門クラス｜遠心ブレーキ・バーサタイル入門の定番・バリエーション選択"
-            }
-      ],
-      "3": [
-          {
-              "name": "ダイワ タトゥーラTW 100 各種（2024年モデル）",
-              "url": "https://www.amazon.co.jp/dp/B0CTNF2CKS?tag=tsuricast-22",
-              "asin": "B0CTNF2CKS",
-              "note": "ミドル｜TWSシステム・ハイパードライブデザイン・実売25,000〜35,000円"
-            }
-      ],
-      "4": [
-          {
-              "name": "シマノ 22SLX DC XT 70/71 各種",
-              "url": "https://www.amazon.co.jp/dp/B09TZK9V98?tag=tsuricast-22",
-              "asin": "B09TZK9V98",
-              "note": "ミドル上位・DCブレーキ｜SLX DCの上位版・実売18,000〜25,000円"
-            }
-      ],
-      "5": [
-          {
-              "name": "ダイワ スティーズ CT SV TW 各種",
-              "url": "https://www.amazon.co.jp/dp/B09SZTL4JX?tag=tsuricast-22",
-              "asin": "B09SZTL4JX",
-              "note": "ハイエンド・ダイワ｜SVFコンパイルX・軽量コンパクト・実売45,000〜60,000円"
-            }
-      ],
-      "6": [
-          {
-              "name": "シマノ 24メタニウムDC 各種",
-              "url": "https://www.amazon.co.jp/dp/B0CYT2C8MV?tag=tsuricast-22",
-              "asin": "B0CYT2C8MV",
-              "note": "ハイエンド・DCブレーキ最高峰｜NEW I-DC5搭載・実売50,000〜65,000円"
-            }
-      ]
-    }
-  },
-  {
-    "slug": "conventional",
-    "name": "両軸リール（船用）",
-    "summary": "船釣り専用。深場の釣りに向いた構造で、タチウオ・マダイ・根魚に活躍。",
-    "body": "船釣り専用のリールで、竿の上側に取り付けて使います。ラインを真下に出す構造が深場の釣りに向いており、タチウオ・マダイ・根魚などの船釣りで主に使われます。\n\n手巻きタイプと電動タイプがあり、水深や体力・予算に応じて選びます。まずは<strong>手巻きタイプで釣りを覚えてから</strong>電動を検討するのが賢い順序です。",
-    "suitable_for": "タチウオ・マダイ・根魚・ヒラメ（船釣り全般）",
-    "beginner_tip": "手巻きタイプから始めよう。船宿での釣りに慣れてから購入を検討。",
-    "affiliate_links": [],
-    "affiliate_slots": {
-      "0": [
         {
-          "name": "両軸リール（船用）の商品一覧はこちら",
-          "url": "https://www.amazon.co.jp/s?k=%E9%9B%BB%E5%8B%95%E3%83%AA%E3%83%BC%E3%83%AB&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1NMADN0F7Z4B0&sprefix=%E9%9B%BB%E5%8B%95%E3%83%AA%E3%83%BC%E3%83%AB%2Caps%2C190&linkCode=ll2&tag=tsuricast-22&linkId=de0fb31f67fad40155b9da70c6b429f7&ref_=as_li_ss_tl"
+          "name": "ベイトリール 検索結果",
+          "url": "https://www.amazon.co.jp/s?k=ベイトリール&tag=tsuricast-22",
+          "asin": null,
+          "note": "まとめリンク｜Amazon「ベイトリール」検索結果ページ"
         }
       ],
       "1": [
         {
-          "name": "シマノ(SHIMANO) 電動リール プレイズ 各種",
-          "url": "https://www.amazon.co.jp/dp/B0DBH1JW2L?tag=tsuricast-22",
-          "asin": "B0DBH1JW2L",
-          "note": "入門クラス｜小型電動を試しやすいベーシックモデル"
+          "name": "ダイワ 19バスX（右/左ハンドル）",
+          "url": "https://www.amazon.co.jp/dp/B07H3RVPPK?tag=tsuricast-22",
+          "asin": "B07H3RVPPK",
+          "note": "入門・マグネットブレーキ｜ダイワ入門・軽量ルアーに強い32mmスプール・実売6,000〜8,000円"
         }
       ],
       "2": [
         {
-          "name": "シマノ(SHIMANO) 電動リール フォースマスター 2021 200DH",
-          "url": "https://www.amazon.co.jp/dp/B09CYTG3KD?tag=tsuricast-22",
-          "asin": "B09CYTG3KD",
-          "note": "入門クラス｜カウンター付きで扱いやすい小型電動"
+          "name": "シマノ バスワンXT 150/151（右/左ハンドル）",
+          "url": "https://www.amazon.co.jp/dp/B08GMMSDGX?tag=tsuricast-22",
+          "asin": "B08GMMSDGX",
+          "note": "入門クラス｜遠心ブレーキ・バーサタイル入門の定番・バリエーション選択"
         }
       ],
       "3": [
         {
-          "name": "ダイワ(DAIWA) 電動リール 23レオブリッツ 200J/200JL 右/左ハンドル 各種 (2023年モデル)",
-          "url": "https://www.amazon.co.jp/dp/B0C9ZJ7CD4?tag=tsuricast-22",
-          "asin": "B0C9ZJ7CD4",
-          "note": "ミドルクラス｜ライト船釣りで幅広く使いやすい電動定番"
+          "name": "ダイワ タトゥーラTW 100 各種（2024年モデル）",
+          "url": "https://www.amazon.co.jp/dp/B0CTNF2CKS?tag=tsuricast-22",
+          "asin": "B0CTNF2CKS",
+          "note": "ミドル｜TWSシステム・ハイパードライブデザイン・実売25,000〜35,000円"
         }
       ],
       "4": [
         {
-          "name": "シマノ(SHIMANO) 電動リール 23 フォースマスター 600DH",
-          "url": "https://www.amazon.co.jp/dp/B0DBGZPNH6?tag=tsuricast-22",
-          "asin": "B0DBGZPNH6",
-          "note": "ミドルクラス｜巻き性能と汎用性のバランスが良い600番電動"
+          "name": "シマノ 22SLX DC XT 70/71 各種",
+          "url": "https://www.amazon.co.jp/dp/B09TZK9V98?tag=tsuricast-22",
+          "asin": "B09TZK9V98",
+          "note": "ミドル上位・DCブレーキ｜SLX DCの上位版・実売18,000〜25,000円"
         }
       ],
       "5": [
         {
-          "name": "ダイワ(DAIWA) 電動リール シーボーグ G200J",
-          "url": "https://www.amazon.co.jp/dp/B0BMW2SV8Y?tag=tsuricast-22",
-          "asin": "B0BMW2SV8Y",
-          "note": "ハイエンドクラス｜高耐久 高出力で差が出る上位電動"
+          "name": "ダイワ スティーズ CT SV TW 各種",
+          "url": "https://www.amazon.co.jp/dp/B09SZTL4JX?tag=tsuricast-22",
+          "asin": "B09SZTL4JX",
+          "note": "ハイエンド・ダイワ｜SVFコンパイルX・軽量コンパクト・実売45,000〜60,000円"
         }
       ],
       "6": [
         {
-          "name": "シマノ(SHIMANO) 電動リール 22 ビーストマスター 2000",
-          "url": "https://www.amazon.co.jp/dp/B0CLRBBTHS?tag=tsuricast-22",
-          "asin": "B0CLRBBTHS",
-          "note": "ハイエンドクラス｜剛性とパワーを備えた上位電動"
-        }
-      ],
-      "7": [
-        {
-          "name": "ハピソン(Hapyson) 中・小型電動リール用充電式 12Ahバッテリーパック YQ-118",
-          "url": "https://www.amazon.co.jp/dp/B009V5CRXS?tag=tsuricast-22",
-          "asin": "B009V5CRXS",
-          "note": "バッテリー｜入門向けの充電式12Ah定番モデル"
-        }
-      ],
-      "8": [
-        {
-          "name": "BMO JAPAN(ビーエムオージャパン) リチウムイオンバッテリー11.6Ahチャージャーセット BM-L116-SET",
-          "url": "https://www.amazon.co.jp/dp/B06XVJFLLF?tag=tsuricast-22",
-          "asin": "B06XVJFLLF",
-          "note": "バッテリー｜軽量で扱いやすい11.6Ahリチウム"
-        }
-      ],
-      "9": [
-        {
-          "name": "シマノ(SHIMANO) 電動リール 22 BTマスター 11Ah 電動丸",
-          "url": "https://www.amazon.co.jp/dp/B09R9JL84R?tag=tsuricast-22",
-          "asin": "B09R9JL84R",
-          "note": "バッテリー｜純正志向で安心感の高い11Ahモデル"
+          "name": "シマノ 24メタニウムDC 各種",
+          "url": "https://www.amazon.co.jp/dp/B0CYT2C8MV?tag=tsuricast-22",
+          "asin": "B0CYT2C8MV",
+          "note": "ハイエンド・DCブレーキ最高峰｜NEW I-DC5搭載・実売50,000〜65,000円"
         }
       ]
     }
@@ -232,86 +143,77 @@
     "affiliate_links": [],
     "affiliate_slots": {
       "0": [
-          {
-              "name": "投げリール 検索結果",
-              "url": "https://www.amazon.co.jp/s?k=投げリール&tag=tsuricast-22",
-              "asin": null,
-              "note": "まとめリンク｜Amazon「投げリール」検索結果ページ"
-            }
-      ]
+        {
+          "name": "投げリール 検索結果",
+          "url": "https://www.amazon.co.jp/s?k=投げリール&tag=tsuricast-22",
+          "asin": null,
+          "note": "まとめリンク｜Amazon「投げリール」検索結果ページ"
+        }
+      ],
       "1": [
-          {
-              "name": "シマノ 25アクティブキャスト 各種（細・標準・SD1060）",
-              "url": "https://www.amazon.co.jp/dp/B0DSZLPCB2?tag=tsuricast-22",
-              "asin": "B0DSZLPCB2",
-              "note": "入門・ドラグなし｜2025年新モデル・サイレントドライブ搭載・実売9,000〜12,000円・バリエーション選択"
-            }
-      ]
+        {
+          "name": "シマノ 25アクティブキャスト 各種（細・標準・SD1060）",
+          "url": "https://www.amazon.co.jp/dp/B0DSZLPCB2?tag=tsuricast-22",
+          "asin": "B0DSZLPCB2",
+          "note": "入門・ドラグなし｜2025年新モデル・サイレントドライブ搭載・実売9,000〜12,000円・バリエーション選択"
+        }
+      ],
       "2": [
-          {
-              "name": "ダイワ 17クロスキャスト 各種（4500・4000QD等）",
-              "url": "https://www.amazon.co.jp/dp/B08HZW4MHV?tag=tsuricast-22",
-              "asin": "B08HZW4MHV",
-              "note": "入門・ドラグなし/QD｜ダイワ入門定番・レビュー660件以上・実売7,000〜10,000円"
-            }
-      ]
+        {
+          "name": "ダイワ 17クロスキャスト 各種（4500・4000QD等）",
+          "url": "https://www.amazon.co.jp/dp/B08HZW4MHV?tag=tsuricast-22",
+          "asin": "B08HZW4MHV",
+          "note": "入門・ドラグなし/QD｜ダイワ入門定番・レビュー660件以上・実売7,000〜10,000円"
+        }
+      ],
       "3": [
-          {
-              "name": "シマノ 25サーフリーダー 各種（35極細/35細/SD35標準）",
-              "url": "https://www.amazon.co.jp/dp/B0DSZRHWJP?tag=tsuricast-22",
-              "asin": "B0DSZRHWJP",
-              "note": "ミドル・ドラグなし｜2025年新モデル・実売15,000〜22,000円・バリエーション選択"
-            }
-      ]
+        {
+          "name": "シマノ 25サーフリーダー 各種（35極細/35細/SD35標準）",
+          "url": "https://www.amazon.co.jp/dp/B0DSZRHWJP?tag=tsuricast-22",
+          "asin": "B0DSZRHWJP",
+          "note": "ミドル・ドラグなし｜2025年新モデル・実売15,000〜22,000円・バリエーション選択"
+        }
+      ],
       "4": [
-          {
-              "name": "ダイワ 23ロングビーム35 06PE（ドラグなし・シロギス引き釣り）",
-              "url": "https://www.amazon.co.jp/dp/B0BT32XDRR?tag=tsuricast-22",
-              "asin": "B0BT32XDRR",
-              "note": "ミドル・ドラグなし｜PE0.6号対応・飛距離追求モデル・バリエーションで06PE選択"
-            }
-      ]
+        {
+          "name": "ダイワ 23ロングビーム35 06PE（ドラグなし・シロギス引き釣り）",
+          "url": "https://www.amazon.co.jp/dp/B0BT32XDRR?tag=tsuricast-22",
+          "asin": "B0BT32XDRR",
+          "note": "ミドル・ドラグなし｜PE0.6号対応・飛距離追求モデル・バリエーションで06PE選択"
+        }
+      ],
       "5": [
-          {
-              "name": "シマノ 25サーフリーダー SD35標準（QD付き・ぶっ込み用）",
-              "url": "https://www.amazon.co.jp/dp/B0DSZRHWJP?tag=tsuricast-22",
-              "asin": "B0DSZRHWJP",
-              "note": "ミドル・QD付き・ぶっ込み用｜SD標準仕様・置き竿・大物狙い対応"
-            }
-      ]
+        {
+          "name": "シマノ 25サーフリーダー SD35標準（QD付き・ぶっ込み用）",
+          "url": "https://www.amazon.co.jp/dp/B0DSZRHWJP?tag=tsuricast-22",
+          "asin": "B0DSZRHWJP",
+          "note": "ミドル・QD付き・ぶっ込み用｜SD標準仕様・置き竿・大物狙い対応"
+        }
+      ],
       "6": [
-          {
-              "name": "ダイワ 23エンブレム 35 SCW QD（ハイエンド・QD付き）",
-              "url": "https://www.amazon.co.jp/dp/B0CMQNCLWR?tag=tsuricast-22",
-              "asin": "B0CMQNCLWR",
-              "note": "ハイエンド・QD付き｜ダイワ上位機種・実売35,000〜45,000円"
-            }
-      ]
+        {
+          "name": "ダイワ 23エンブレム 35 SCW QD（ハイエンド・QD付き）",
+          "url": "https://www.amazon.co.jp/dp/B0CMQNCLWR?tag=tsuricast-22",
+          "asin": "B0CMQNCLWR",
+          "note": "ハイエンド・QD付き｜ダイワ上位機種・実売35,000〜45,000円"
+        }
+      ],
       "7": [
-          {
-              "name": "シマノ 24フリーゲン 各種（バリエーションページ）",
-              "url": "https://www.amazon.co.jp/dp/B0CS5WT4RY?tag=tsuricast-22",
-              "asin": "B0CS5WT4RY",
-              "note": "ハイエンド・ドラグなし/SD｜極細・細糸・SD標準の3ラインナップから選択可"
-            }
-      ]
+        {
+          "name": "シマノ 24フリーゲン 各種（バリエーションページ）",
+          "url": "https://www.amazon.co.jp/dp/B0CS5WT4RY?tag=tsuricast-22",
+          "asin": "B0CS5WT4RY",
+          "note": "ハイエンド・ドラグなし/SD｜極細・細糸・SD標準の3ラインナップから選択可"
+        }
+      ],
       "8": [
-          {
-              "name": "シマノ 22キススペシャル 45 極細／CE極細（最高峰）",
-              "url": "https://www.amazon.co.jp/dp/B09VP3F8ZV?tag=tsuricast-22",
-              "asin": "B09VP3F8ZV",
-              "note": "最高峰の性能と値段｜実売100,000円前後・競技専用・シマノ投げリールの頂点"
-            }
+        {
+          "name": "シマノ 22キススペシャル 45 極細／CE極細（最高峰）",
+          "url": "https://www.amazon.co.jp/dp/B09VP3F8ZV?tag=tsuricast-22",
+          "asin": "B09VP3F8ZV",
+          "note": "最高峰の性能と値段｜実売100,000円前後・競技専用・シマノ投げリールの頂点"
+        }
       ]
     }
-  },
-  {
-    "slug": "electric",
-    "name": "電動リール",
-    "summary": "深海釣りや深場のタチウオ釣りに欠かせない。価格は高いが疲れにくく手返しが速い。",
-    "body": "深場の釣りで自動的に糸を巻き上げてくれる電動リールは、深海釣りや水深100m以上のタチウオ釣りなどに欠かせません。疲れにくく、手返しも速いため、船釣りに慣れてくると自然と欲しくなってきます。\n\n価格は3万〜10万円以上と高額なため、釣り宿でのレンタルで試してから購入判断するのがおすすめです。",
-    "suitable_for": "深海釣り・タチウオ（深場）・マダイ・カツオ・マグロ（遠洋）",
-    "beginner_tip": "まずは船宿のレンタルで試してから。水深100m以上の釣りに真価を発揮。",
-    "affiliate_links": []
   }
 ]
