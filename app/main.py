@@ -1250,6 +1250,16 @@ def page_spots(
     ]
 
     _spots_seo = _AREA_SEO.get(area, {}) if area else {}
+    # フォールバック用の動的ディスクリプション
+    _prefs = list(dict.fromkeys(
+        s.get("area", {}).get("prefecture", "") for s in all_spots
+        if s.get("area", {}).get("prefecture")
+    ))
+    _pref_str = "・".join(_prefs[:4])
+    if area_name:
+        _auto_desc = f"{area_name}の釣り場{len(all_spots)}か所。天気・波高・潮汐情報あり。"
+    else:
+        _auto_desc = f"{_pref_str}の釣り場一覧。全{len(all_spots)}か所の天気・海況・アクセス情報。"
     return templates.TemplateResponse(request, "spots.html", {
         "spots": all_spots,
         "area_name": area_name,
@@ -1267,6 +1277,7 @@ def page_spots(
         "canonical_url":  canonical_url,
         "seo_title": _spots_seo.get("title", ""),
         "seo_description": _spots_seo.get("description", ""),
+        "auto_description": _auto_desc,
     })
 
 
