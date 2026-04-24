@@ -1249,6 +1249,7 @@ def page_spots(
         if slug in fish_name_map
     ]
 
+    _spots_seo = _AREA_SEO.get(area, {}) if area else {}
     return templates.TemplateResponse(request, "spots.html", {
         "spots": all_spots,
         "area_name": area_name,
@@ -1264,6 +1265,8 @@ def page_spots(
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
         "canonical_url":  canonical_url,
+        "seo_title": _spots_seo.get("title", ""),
+        "seo_description": _spots_seo.get("description", ""),
     })
 
 
