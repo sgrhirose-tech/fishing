@@ -574,12 +574,17 @@ def articles_rss_xml():
         if not p.exists():
             return art.get("description") or ""
         _, body = _extract_article_meta(p.read_text(encoding="utf-8"), art.get("slug", ""))
+        if art.get("catch_masked"):
+            body = _apply_catch_mask(body)
+        else:
+            body = _strip_catch_mask_markers(body)
         text = _re.sub(r'<!--.*?-->', '', body, flags=_re.DOTALL)
         text = _re.sub(r'#{1,6}\s+', '', text)
         text = _re.sub(r'\*{1,2}(.+?)\*{1,2}', r'\1', text)
         text = _re.sub(r'\[(.+?)\]\(.+?\)', r'\1', text)
         text = _re.sub(r'`[^`]+`', '', text)
         text = _re.sub(r'^\s*[-*>]+\s*', '', text, flags=_re.MULTILINE)
+        text = _re.sub(r'<[^>]+>', '', text)  # 残った HTML タグを除去
         text = _re.sub(r'\s+', ' ', text).strip()
         return text[:200]
 
@@ -1607,7 +1612,7 @@ def _load_articles() -> list:
                 meta["mtime"] = _mts
                 meta["updated_at"] = datetime.fromtimestamp(_mts).strftime("%Y年%m月%d日")
             if _is_catch_masked(meta):
-                meta["title"] = _re.sub(r'\d+尾', 'つ抜け達成！🎉', meta.get("title") or "")
+                _apply_article_meta_mask(meta)
             result.append(meta)
     return result
 
@@ -1669,13 +1674,38 @@ _CATCH_MASK_RE = _re.compile(
     r'<!--\s*catch-mask-start\s*-->(.*?)<!--\s*catch-mask-end\s*-->',
     _re.DOTALL,
 )
+_TSUNUKE_LABEL = 'つ抜け達成！🎉'
+_TSUNUKE_INLINE_RE = _re.compile(r'\d+尾')
 
 
-def _apply_catch_mask(body_html: str) -> str:
-    """catch-mask-start/end コメント間の内容をつ抜け表現に置換する。"""
-    return _CATCH_MASK_RE.sub(
-        '<span class="catch-masked">つ抜け達成！🎉</span>', body_html
-    )
+def _apply_catch_mask(text: str) -> str:
+    """catch-mask-start/end コメント間の内容をつ抜け表現に置換する。
+    Markdown 段階でも HTML 段階でも安全に呼べるよう、置換後はプレーンテキスト。
+    """
+    return _CATCH_MASK_RE.sub(_TSUNUKE_LABEL, text)
+
+
+def _strip_catch_mask_markers(text: str) -> str:
+    """catch-mask-start/end マーカーだけ除去し中身は残す（マスク無効時用）。
+    mistune が HTML コメントをエスケープしてユーザーに見せる事故を防ぐ。
+    """
+    return _CATCH_MASK_RE.sub(lambda m: m.group(1), text)
+
+
+def _mask_inline_count(text: str) -> str:
+    """タイトル・description 中の "{N}尾" をつ抜け表現に置換する。"""
+    return _TSUNUKE_INLINE_RE.sub(_TSUNUKE_LABEL, text or "")
+
+
+def _apply_article_meta_mask(meta: dict) -> dict:
+    """meta の title / description を in-place でマスクし catch_masked フラグを立てる。
+    呼び出し側で _is_catch_masked(meta) が True であることが前提。
+    """
+    meta["title"] = _mask_inline_count(meta.get("title") or "")
+    if meta.get("description"):
+        meta["description"] = _mask_inline_count(meta["description"])
+    meta["catch_masked"] = True
+    return meta
 
 
 def _build_spot_article_index() -> dict[str, list]:
@@ -1800,6 +1830,11 @@ def page_article_detail(request: Request, category: str, slug: str):
 
     content = md_path.read_text(encoding="utf-8")
     meta, body = _extract_article_meta(content, slug)
+    if _is_catch_masked(meta):
+        _apply_article_meta_mask(meta)
+        body = _apply_catch_mask(body)
+    else:
+        body = _strip_catch_mask_markers(body)
     slots = _load_article_slots(category, slug)
     body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
     part_metas = []
@@ -1819,11 +1854,7 @@ def page_article_detail(request: Request, category: str, slug: str):
     else:
         mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
         updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
-    catch_masked = _is_catch_masked(meta)
     display_title = meta.get("title") or slug
-    if catch_masked:
-        display_title = _re.sub(r'\d+尾', 'つ抜け達成！🎉', display_title)
-        body_html = _apply_catch_mask(body_html)
     return templates.TemplateResponse(request, "articles/detail.html", {
         "meta": meta,
         "display_title": display_title,
@@ -1845,6 +1876,19 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
         raise HTTPException(status_code=404)
     content = md_path.read_text(encoding="utf-8")
     meta, body = _extract_article_meta(content, slug)
+    # 親記事の catch マスクを継承
+    parent_md = slug_dir / "index.md"
+    _parent_slugs: list = []
+    parent_masked = False
+    if parent_md.exists():
+        _pm, _ = _extract_article_meta(parent_md.read_text(encoding="utf-8"), slug)
+        _parent_slugs = _pm.get("related_spots") or []
+        parent_masked = _is_catch_masked(_pm)
+    if parent_masked:
+        _apply_article_meta_mask(meta)
+        body = _apply_catch_mask(body)
+    else:
+        body = _strip_catch_mask_markers(body)
     slots = _load_article_slots(category, slug)
     body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
     all_parts = sorted(p.stem for p in slug_dir.glob("*.md") if p.name != "index.md")
@@ -1852,12 +1896,6 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
     prev_part = all_parts[idx - 1] if idx > 0 else None
     next_part = all_parts[idx + 1] if 0 <= idx < len(all_parts) - 1 else None
     card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
-    # related_spots は親記事（index.md）のフロントマターから取得
-    parent_md = slug_dir / "index.md"
-    _parent_slugs: list = []
-    if parent_md.exists():
-        _pm, _ = _extract_article_meta(parent_md.read_text(encoding="utf-8"), slug)
-        _parent_slugs = _pm.get("related_spots") or []
     related_spots = [s for rs in _parent_slugs if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
     _raw_date = meta.get("updated") or meta.get("updated_at") or ""
