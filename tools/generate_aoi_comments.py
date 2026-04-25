@@ -34,8 +34,72 @@ sys.path.insert(0, str(ROOT))
 JST = timezone(timedelta(hours=9))
 MODEL = "claude-haiku-4-5-20251001"
 MAX_TOKENS = 200
-AOI_PROMPT_PATH = ROOT / "aoi_prompt.md"
+AOI_PROMPT_PATH = ROOT / "aoi_prompt_v2_2.md"
 LOG_PATH = ROOT / "logs" / "aoi_comments.jsonl"
+
+# 16方位 → 度数
+COMPASS16_TO_DEG: dict[str, float] = {
+    "北": 0,   "北北東": 22.5, "北東": 45,  "東北東": 67.5,
+    "東": 90,  "東南東": 112.5,"南東": 135, "南南東": 157.5,
+    "南": 180, "南南西": 202.5,"南西": 225, "西南西": 247.5,
+    "西": 270, "西北西": 292.5,"北西": 315, "北北西": 337.5,
+}
+
+# 潮汐名 → 活発さ
+_TIDE_ACTIVITY: dict[str, str] = {
+    "大潮": "活発", "中潮": "活発",
+    "小潮": "穏やか", "長潮": "穏やか", "若潮": "穏やか",
+}
+
+
+def deg_to_8dir(deg: float) -> str:
+    """度数を8方位文字列（N/NE/…/NW）に変換。"""
+    dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+    return dirs[round(deg / 45) % 8]
+
+
+def calc_wind_relative(
+    wind_dir_compass: str, wind_speed_raw, spot_facing_deg
+) -> str | None:
+    """釣り人から見た風の相対方向を5区分で返す。
+    風速 < 1.0 m/s → 'ほぼ無風'
+    spot_facing_deg が None またはコンパス未知 → None
+    """
+    try:
+        spd = float(wind_speed_raw)
+    except (TypeError, ValueError):
+        spd = None
+    if spd is not None and spd < 1.0:
+        return "ほぼ無風"
+    if spot_facing_deg is None:
+        return None
+    wind_deg = COMPASS16_TO_DEG.get(wind_dir_compass)
+    if wind_deg is None:
+        return None
+    diff = (wind_deg - float(spot_facing_deg) + 360) % 360
+    if diff < 22.5 or diff >= 337.5:
+        return "向かい風"
+    if diff < 67.5:
+        return "斜め向かい風"
+    if diff < 112.5:
+        return "横風"
+    if diff < 157.5:
+        return "斜め追い風"
+    if diff < 202.5:
+        return "追い風"
+    if diff < 247.5:
+        return "斜め追い風"
+    if diff < 292.5:
+        return "横風"
+    return "斜め向かい風"
+
+
+def calc_tide_activity(tide_info: str) -> str | None:
+    """潮汐名から潮の活発さを3区分で返す。パース失敗時は None。"""
+    for name, activity in _TIDE_ACTIVITY.items():
+        if name in tide_info:
+            return activity
+    return None
 
 # モニタリング対象スポット（各施設種別・地域をカバー）
 DEFAULT_SLUGS = [
@@ -122,29 +186,44 @@ def _fmt(v, digits: int = 1) -> str:
 def build_user_message(spot: dict, period: dict, user_tmpl: str, month: int = 0) -> str:
     """USER テンプレートに値を埋めて返す。"""
     sky_raw = period.get("sky", "")
-    # emoji を除去
     weather = re.sub(r"[^\w\s・℃°％\-]", "", sky_raw).strip()
     weather = re.sub(r"\s+", " ", weather).strip() or "ー"
 
-    # precip は "0.0mm" 形式なので数値部分のみ抽出
     precip_str = period.get("precip", "0.0mm")
     rain = re.sub(r"[^\d.]", "", precip_str) or "0.0"
 
     spot_type = (spot.get("classification") or {}).get("primary_type") or "fishing_facility"
 
+    # --- 拡張3変数 ---
+    spot_facing_deg = (spot.get("physical_features") or {}).get("sea_bearing_deg")
+    wind_dir_compass = period.get("wind_dir_compass", "ー")
+    tide_info = period.get("tide", "ー")
+
+    spot_facing   = deg_to_8dir(float(spot_facing_deg)) if spot_facing_deg is not None else None
+    wind_relative = calc_wind_relative(wind_dir_compass, period.get("wind_speed_raw"), spot_facing_deg)
+    tide_activity = calc_tide_activity(tide_info)
+
+    # null の場合は括弧ごと / 行ごと省略
+    wind_relative_clause  = f"（{wind_relative}）" if wind_relative else ""
+    tide_activity_clause  = f"（潮の動き：{tide_activity}）" if tide_activity else ""
+    facing_line           = f"\n釣り場の正面：{spot_facing}" if spot_facing else ""
+
     mapping = {
-        "spot_name":  spot.get("name", ""),
-        "weather":    weather,
-        "temp":       _fmt(period.get("temp_raw")),
-        "wave":       _fmt(period.get("wave_height_raw")),
-        "wind_dir":   period.get("wind_dir_compass", "ー"),
-        "wind_speed": _fmt(period.get("wind_speed_raw")),
-        "period":     _fmt(period.get("wave_period_raw")),
-        "sea_temp":   _fmt(period.get("sst_raw")),
-        "tide_info":  period.get("tide", "ー"),
-        "rain":       rain,
-        "spot_type":  spot_type,
-        "month":      str(month),
+        "spot_name":            spot.get("name", ""),
+        "weather":              weather,
+        "temp":                 _fmt(period.get("temp_raw")),
+        "wave":                 _fmt(period.get("wave_height_raw")),
+        "wind_dir":             wind_dir_compass,
+        "wind_speed":           _fmt(period.get("wind_speed_raw")),
+        "period":               _fmt(period.get("wave_period_raw")),
+        "sea_temp":             _fmt(period.get("sst_raw")),
+        "tide_info":            tide_info,
+        "rain":                 rain,
+        "spot_type":            spot_type,
+        "month":                str(month),
+        "wind_relative_clause": wind_relative_clause,
+        "tide_activity_clause": tide_activity_clause,
+        "facing_line":          facing_line,
     }
 
     msg = user_tmpl
