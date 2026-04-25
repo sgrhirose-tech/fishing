@@ -480,7 +480,7 @@ OK表現
 ---
 
 ## USER
-{spot_name}
+{date_label}の{spot_name}
 
 月：{month}月
 天気：{weather}
