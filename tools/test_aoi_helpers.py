@@ -17,6 +17,7 @@ from tools.generate_aoi_comments import (
     calc_wind_relative,
     calc_tide_activity,
     build_user_message,
+    _scrub_placeholders,
     COMPASS16_TO_DEG,
 )
 
@@ -214,6 +215,26 @@ check("date_label=明日 → '明日のテスト海岸'",
 msg_default = build_user_message(spot_with_facing, period_base, TMPL_LABEL, month=4)
 check("date_label デフォルト → 明日",
       msg_default.startswith("明日のテスト海岸"), True)
+
+# ──────────────────────────────────────────────
+# _scrub_placeholders — LLM がリテラルを出した場合の保険
+# ──────────────────────────────────────────────
+print("\n=== _scrub_placeholders ===")
+
+leaked = "{date_label}の葉山港、追い風で投げやすい。"
+check("{date_label} → 今日 に置換",
+      _scrub_placeholders(leaked, "今日", "葉山港"),
+      "今日の葉山港、追い風で投げやすい。")
+
+leaked2 = "{date_label}の{spot_name}、完全に勝ちです。"
+check("{date_label} と {spot_name} の両方を置換",
+      _scrub_placeholders(leaked2, "明日", "茅ヶ崎海岸"),
+      "明日の茅ヶ崎海岸、完全に勝ちです。")
+
+clean = "茅ヶ崎、明日完全に勝ちです。"
+check("プレースホルダ無しは無変更",
+      _scrub_placeholders(clean, "明日", "茅ヶ崎海岸"),
+      clean)
 
 # ──────────────────────────────────────────────
 # 集計
