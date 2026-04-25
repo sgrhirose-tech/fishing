@@ -1606,6 +1606,8 @@ def _load_articles() -> list:
                 _mts = os.path.getmtime(md_path)
                 meta["mtime"] = _mts
                 meta["updated_at"] = datetime.fromtimestamp(_mts).strftime("%Y年%m月%d日")
+            if _is_catch_masked(meta):
+                meta["title"] = _re.sub(r'\d+尾', 'つ抜け達成！🎉', meta.get("title") or "")
             result.append(meta)
     return result
 
@@ -1639,6 +1641,41 @@ def _parse_catch(
         except ValueError:
             pass
     return result
+
+
+def _is_catch_masked(meta: dict) -> bool:
+    """updated+7日以内 かつ catch合計10以上のとき True を返す。"""
+    updated = (meta.get("updated") or "").strip()
+    if not updated:
+        return False
+    catch_list = meta.get("catch") or []
+    if not catch_list:
+        return False
+    try:
+        updated_date = datetime.strptime(updated, "%Y-%m-%d").date()
+        if datetime.now().date() >= updated_date + timedelta(days=7):
+            return False
+    except ValueError:
+        return False
+    total = sum(
+        int(str(item).partition(":")[2].strip())
+        for item in catch_list
+        if str(item).partition(":")[2].strip().isdigit()
+    )
+    return total >= 10
+
+
+_CATCH_MASK_RE = _re.compile(
+    r'<!--\s*catch-mask-start\s*-->(.*?)<!--\s*catch-mask-end\s*-->',
+    _re.DOTALL,
+)
+
+
+def _apply_catch_mask(body_html: str) -> str:
+    """catch-mask-start/end コメント間の内容をつ抜け表現に置換する。"""
+    return _CATCH_MASK_RE.sub(
+        '<span class="catch-masked">つ抜け達成！🎉</span>', body_html
+    )
 
 
 def _build_spot_article_index() -> dict[str, list]:
@@ -1782,8 +1819,14 @@ def page_article_detail(request: Request, category: str, slug: str):
     else:
         mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
         updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
+    catch_masked = _is_catch_masked(meta)
+    display_title = meta.get("title") or slug
+    if catch_masked:
+        display_title = _re.sub(r'\d+尾', 'つ抜け達成！🎉', display_title)
+        body_html = _apply_catch_mask(body_html)
     return templates.TemplateResponse(request, "articles/detail.html", {
         "meta": meta,
+        "display_title": display_title,
         "body_html": body_html,
         "slug": slug,
         "category": category,
