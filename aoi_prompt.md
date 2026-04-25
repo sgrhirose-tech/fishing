@@ -439,18 +439,3 @@ rocky_shore（磯）
 潮汐：{tide_info}{tide_activity_clause}
 降水量：{rain}mm
 施設区分：{spot_type}{facing_line}
-
-※ {wind_relative_clause}, {tide_activity_clause},
-　{facing_line} はシステム側で前処理される
-　合成変数。
-　値が無い場合は空文字となり、
-　括弧や行が自動的に消える設計。
-　例（値あり）：
-　　風：北北東 3.6m/s（追い風）
-　　潮汐：若潮（月齢9.6）（潮の動き：穏やか）
-　例（値なし）：
-　　風：北北東 3.6m/s
-　　潮汐：若潮（月齢9.6）
-　{facing_line} は値がある場合のみ
-　「\n釣り場の正面：SE」のように
-　改行付きで挿入される。
