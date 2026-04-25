@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}{% if area_name %}{{ area_name }}の釣り場一覧{% else %}釣り場一覧{% endif %} | Tsuricast{% endblock %}
-{% block description %}千葉・東京・神奈川の釣り場一覧。全{{ spots|length }}か所の天気・海況・アクセス情報。{% endblock %}
+{% block title %}{% if seo_title %}{{ seo_title }}{% elif area_name %}{{ area_name }}の釣り場一覧{% else %}釣り場一覧{% endif %} | Tsuricast{% endblock %}
+{% block description %}{{ seo_description or auto_description }}{% endblock %}
 {% block og_url %}{{ canonical_url }}{% endblock %}
 {% block canonical %}{{ canonical_url }}{% endblock %}
 

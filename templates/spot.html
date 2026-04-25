@@ -625,7 +625,7 @@
       function degToArrow(deg) {
         if (deg == null) return '–';
         var dirs = ['↓','↙','←','↖','↑','↗','→','↘'];
-        return dirs[Math.round(((+deg + 180) % 360) / 45) % 8];
+        return dirs[Math.round(((+deg % 360) + 360) % 360 / 45) % 8];
       }
       function periodToColor(p) {
         if (p == null) return 'rgba(150,150,150,0.5)';

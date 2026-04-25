@@ -59,6 +59,17 @@ _METHOD_SLUG_TO_NAME: dict = {}  # {slug: 釣法名}
 
 # ── ページリード文 ────────────────────────────────────────────
 _PAGE_LEADS: dict = {}  # {"pref/area/city-key": "リード文", ...}
+_AREA_SEO: dict = {}   # {"pref/area-key": {"title": ..., "description": ...}, ...}
+
+def _load_area_seo() -> None:
+    global _AREA_SEO
+    path = _BASE / "data" / "area_seo.json"
+    try:
+        with open(path, encoding="utf-8") as f:
+            _AREA_SEO = json.load(f)
+        print(f"[area_seo] {len(_AREA_SEO)} 件のSEO上書き設定を読み込みました")
+    except Exception as e:
+        print(f"[area_seo] 読み込みエラー: {e}")
 
 def _load_page_leads() -> None:
     global _PAGE_LEADS
@@ -384,6 +395,7 @@ async def lifespan(app: FastAPI):
     _load_fish_master()
     _load_method_master()
     _load_page_leads()
+    _load_area_seo()
     _slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     templates.env.globals["fish_slug_map"] = _slug_map
     templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
@@ -1237,6 +1249,17 @@ def page_spots(
         if slug in fish_name_map
     ]
 
+    _spots_seo = _AREA_SEO.get(area, {}) if area else {}
+    # フォールバック用の動的ディスクリプション
+    _prefs = list(dict.fromkeys(
+        s.get("area", {}).get("prefecture", "") for s in all_spots
+        if s.get("area", {}).get("prefecture")
+    ))
+    _pref_str = "・".join(_prefs[:4])
+    if area_name:
+        _auto_desc = f"{area_name}の釣り場{len(all_spots)}か所。天気・波高・潮汐情報あり。"
+    else:
+        _auto_desc = f"{_pref_str}の釣り場一覧。全{len(all_spots)}か所の天気・海況・アクセス情報。"
     return templates.TemplateResponse(request, "spots.html", {
         "spots": all_spots,
         "area_name": area_name,
@@ -1252,6 +1275,9 @@ def page_spots(
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
         "canonical_url":  canonical_url,
+        "seo_title": _spots_seo.get("title", ""),
+        "seo_description": _spots_seo.get("description", ""),
+        "auto_description": _auto_desc,
     })
 
 
@@ -2027,6 +2053,7 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
     _intro = [f"{area_name}エリア（{pref_name}）には{_city_sample}など{len(cities)}市区町村・{_spot_count}か所の釣り場があります。"]
     if _fish_str:
         _intro.append(f"{_fish_str}などが主なターゲットです。")
+    _area_seo = _AREA_SEO.get(f"{pref_slug}/{area_slug}", {})
     return templates.TemplateResponse(request, "area.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -2040,6 +2067,8 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
         "top_fish_jp": _seo["top_fish_jp"],
         "intro_text": "".join(_intro),
         "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}", ""),
+        "seo_title": _area_seo.get("title", ""),
+        "seo_description": _area_seo.get("description", ""),
     })
 
 
