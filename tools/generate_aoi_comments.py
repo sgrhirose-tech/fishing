@@ -212,6 +212,8 @@ def build_user_message(spot: dict, period: dict, user_tmpl: str, month: int = 0)
         "spot_name":            spot.get("name", ""),
         "weather":              weather,
         "temp":                 _fmt(period.get("temp_raw")),
+        "temp_min":             _fmt(period.get("temp_min_raw")),
+        "temp_max":             _fmt(period.get("temp_max_raw")),
         "wave":                 _fmt(period.get("wave_height_raw")),
         "wind_dir":             wind_dir_compass,
         "wind_speed":           _fmt(period.get("wind_speed_raw")),

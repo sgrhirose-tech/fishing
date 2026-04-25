@@ -174,6 +174,28 @@ check("C: spot_facing なし → facing_line なし",
       "釣り場の正面" not in msg_b, True)
 
 # ──────────────────────────────────────────────
+# build_user_message — temp_min / temp_max
+# ──────────────────────────────────────────────
+print("\n=== build_user_message (temp_min / temp_max) ===")
+
+TMPL_TEMP = (
+    "{spot_name}\n"
+    "気温：{temp}℃\n"
+    "最低気温：{temp_min}℃\n"
+    "最高気温：{temp_max}℃"
+)
+
+period_temp = {**period_base, "temp_min_raw": 11.5, "temp_max_raw": 23.4}
+msg_temp = build_user_message(spot_with_facing, period_temp, TMPL_TEMP, month=4)
+check("temp_min 値あり → 11.5",  "最低気温：11.5℃" in msg_temp, True)
+check("temp_max 値あり → 23.4",  "最高気温：23.4℃" in msg_temp, True)
+
+period_temp_none = {**period_base, "temp_min_raw": None, "temp_max_raw": None}
+msg_none = build_user_message(spot_with_facing, period_temp_none, TMPL_TEMP, month=4)
+check("temp_min None → ー",      "最低気温：ー℃" in msg_none, True)
+check("temp_max None → ー",      "最高気温：ー℃" in msg_none, True)
+
+# ──────────────────────────────────────────────
 # 集計
 # ──────────────────────────────────────────────
 total = len(_results)

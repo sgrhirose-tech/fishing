@@ -410,6 +410,22 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
                  and hourly["temperature_2m"][i] is not None]
     temp_avg = sum(temp_vals) / len(temp_vals) if temp_vals else None
 
+    # 1日の最低／最高気温（daily値が無い場合は時間別から算出）
+    tmax_list = daily.get("temperature_2m_max", [])
+    tmin_list = daily.get("temperature_2m_min", [])
+    temp_max_day = tmax_list[day_index] if day_index < len(tmax_list) and tmax_list[day_index] is not None else None
+    temp_min_day = tmin_list[day_index] if day_index < len(tmin_list) and tmin_list[day_index] is not None else None
+    if temp_max_day is None or temp_min_day is None:
+        full_day = [hourly.get("temperature_2m", [])[i]
+                    for i in (_hourly_index(day_index, h) for h in range(24))
+                    if i < len(hourly.get("temperature_2m", []))
+                    and hourly["temperature_2m"][i] is not None]
+        if full_day:
+            if temp_max_day is None:
+                temp_max_day = max(full_day)
+            if temp_min_day is None:
+                temp_min_day = min(full_day)
+
     # 体感温度（時間帯平均）
     apparent_temp_vals = [
         hourly.get("apparent_temperature", [])[i]
@@ -498,6 +514,8 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
         "wind_speed_raw": wind_speed,
         "sst_raw": sst,
         "temp_raw": temp_avg,
+        "temp_max_raw": temp_max_day,
+        "temp_min_raw": temp_min_day,
         "apparent_temp_max_raw": apparent_temp_max,
         "apparent_temp_min_raw": apparent_temp_min,
         "sst": tp["label"],
