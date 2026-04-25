@@ -430,7 +430,6 @@ rocky_shore（磯）
 
 月：{month}月
 天気：{weather}
-気温：{temp}℃
 最低気温：{temp_min}℃
 最高気温：{temp_max}℃
 波高：{wave}m

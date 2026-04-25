@@ -180,7 +180,6 @@ print("\n=== build_user_message (temp_min / temp_max) ===")
 
 TMPL_TEMP = (
     "{spot_name}\n"
-    "気温：{temp}℃\n"
     "最低気温：{temp_min}℃\n"
     "最高気温：{temp_max}℃"
 )
