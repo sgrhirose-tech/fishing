@@ -136,8 +136,15 @@ def load_prompt() -> tuple[str, str]:
     return system_match.group(1).strip(), user_match.group(1).strip()
 
 
-def get_spot_data(spot: dict, tomorrow: str) -> dict | None:
-    """翌日の朝の気象データを取得してスコアリング済み period を返す。"""
+def get_spot_targets(spot: dict, targets_spec: list[tuple[str, str]]) -> list[dict]:
+    """指定された (date_label, date_str) のリストに対応する1日分のスコア結果を返す。
+
+    targets_spec: [("今日", "2026-04-26"), ("明日", "2026-04-27"), ...]
+    返り値:
+        [{"date_label": "今日", "date": "2026-04-26", "day": <score_7days[i]>}, ...]
+        - 取得に失敗した日付はスキップ（部分的に成功したものだけ返す）
+        - SSTは一回だけ取得して全日に流用する（変動が小さく API 呼びを節約するため）
+    """
     from app.weather import (
         fetch_weather_range, fetch_marine_range,
         fetch_sst_noaa, fetch_marine_with_fallback,
@@ -145,21 +152,38 @@ def get_spot_data(spot: dict, tomorrow: str) -> dict | None:
     from app.scoring import score_7days
     from app.spots import spot_lat, spot_lon, assign_area, get_area_centers
 
+    if not targets_spec:
+        return []
+
     lat, lon = spot_lat(spot), spot_lon(spot)
-    weather = fetch_weather_range(lat, lon, tomorrow, tomorrow)
-    marine = fetch_marine_range(lat, lon, tomorrow, tomorrow)
+    dates = [d for _, d in targets_spec]
+    start_date, end_date = min(dates), max(dates)
+
+    weather = fetch_weather_range(lat, lon, start_date, end_date)
+    marine = fetch_marine_range(lat, lon, start_date, end_date)
     if not marine:
-        marine = fetch_marine_with_fallback(lat, lon, tomorrow)
-    sst = fetch_sst_noaa(lat, lon, tomorrow)
+        marine = fetch_marine_with_fallback(lat, lon, start_date)
+    sst = fetch_sst_noaa(lat, lon, start_date)  # 一回だけ取得して全日に流用
 
     area = assign_area(spot)
     area_centers = get_area_centers()
     fetch_km = area_centers[area][2] if area in area_centers else 50
 
     days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
-    if not days:
-        return None
-    return days[0]
+    by_date = {d.get("date"): d for d in days}
+
+    out = []
+    for label, date_str in targets_spec:
+        day = by_date.get(date_str)
+        if day:
+            out.append({"date_label": label, "date": date_str, "day": day})
+    return out
+
+
+def get_spot_data(spot: dict, tomorrow: str) -> dict | None:
+    """[後方互換] 単一日の day を返す。新規利用は get_spot_targets を推奨。"""
+    targets = get_spot_targets(spot, [("明日", tomorrow)])
+    return targets[0]["day"] if targets else None
 
 
 def pick_period(day: dict, pref: str = "朝") -> dict | None:
@@ -183,7 +207,8 @@ def _fmt(v, digits: int = 1) -> str:
     return f"{v:.{digits}f}"
 
 
-def build_user_message(spot: dict, period: dict, user_tmpl: str, month: int = 0) -> str:
+def build_user_message(spot: dict, period: dict, user_tmpl: str,
+                       month: int = 0, date_label: str = "明日") -> str:
     """USER テンプレートに値を埋めて返す。"""
     sky_raw = period.get("sky", "")
     weather = re.sub(r"[^\w\s・℃°％\-]", "", sky_raw).strip()
@@ -209,6 +234,7 @@ def build_user_message(spot: dict, period: dict, user_tmpl: str, month: int = 0)
     facing_line           = f"\n釣り場の正面：{spot_facing}" if spot_facing else ""
 
     mapping = {
+        "date_label":           date_label,
         "spot_name":            spot.get("name", ""),
         "weather":              weather,
         "temp_min":             _fmt(period.get("temp_min_raw")),
@@ -294,6 +320,27 @@ def send_mail(subject: str, body: str) -> None:
     print(f"✉ メール送信: {mail_to}")
 
 
+def call_claude_with_retry(system_prompt: str, user_message: str,
+                           max_attempts: int = 2) -> tuple[str, dict]:
+    """call_claude を 1回だけリトライするラッパー。
+    HTTPError 5xx / タイムアウト系のみリトライ、4xx は即時 raise。
+    """
+    last_err: Exception | None = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            return call_claude(system_prompt, user_message)
+        except urllib.error.HTTPError as e:
+            if 400 <= e.code < 500:
+                raise
+            last_err = e
+        except (urllib.error.URLError, TimeoutError) as e:
+            last_err = e
+        if attempt < max_attempts:
+            time.sleep(1.0 * attempt)
+    assert last_err is not None
+    raise last_err
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="葵コメント監視バッチ")
     parser.add_argument("--slot", choices=["朝", "夜"], default=None,
@@ -306,8 +353,10 @@ def main() -> None:
 
     now = datetime.now(JST)
     slot = args.slot or ("朝" if now.hour < 12 else "夜")
+    today    = now.strftime("%Y-%m-%d")
     tomorrow = (now + timedelta(days=1)).strftime("%Y-%m-%d")
     slugs = args.slugs or DEFAULT_SLUGS
+    targets_spec = [("今日", today), ("明日", tomorrow)]
 
     buf = io.StringIO()
 
@@ -315,8 +364,9 @@ def main() -> None:
         print(msg)
         buf.write(msg + "\n")
 
-    _p(f"=== 葵コメント生成 {now.strftime('%Y-%m-%d %H:%M')} JST　スロット:{slot}　対象:{tomorrow} ===")
-    _p(f"モデル: {MODEL}  max_tokens: {MAX_TOKENS}  対象: {len(slugs)}スポット")
+    _p(f"=== 葵コメント生成 {now.strftime('%Y-%m-%d %H:%M')} JST　スロット:{slot} ===")
+    _p(f"対象日: {today} (今日) / {tomorrow} (明日)")
+    _p(f"モデル: {MODEL}  max_tokens: {MAX_TOKENS}  対象: {len(slugs)}スポット × {len(targets_spec)}日 = {len(slugs)*len(targets_spec)}コメント")
     _p()
 
     system_tmpl, user_tmpl = load_prompt()
@@ -329,31 +379,66 @@ def main() -> None:
     for slug in slugs:
         spot = load_spot(slug)
         if not spot:
-            _p(f"  [SKIP] {slug}: スポット不明")
-            skip += 1
+            _p(f"  [SKIP] {slug}: スポット不明 (×{len(targets_spec)})")
+            skip += len(targets_spec)
             continue
 
         spot_name = spot.get("name", slug)
+
+        # 1スポット 1回だけ気象データを取得 (日付範囲で両日まとめて返る)
         try:
-            day = get_spot_data(spot, tomorrow)
-            if not day:
-                _p(f"  [SKIP] {slug} ({spot_name}): 気象データなし")
+            targets = get_spot_targets(spot, targets_spec)
+        except Exception as e:
+            _p(f"  [ERROR] {slug} ({spot_name}): 気象データ取得失敗 — {e}")
+            err += len(targets_spec)
+            continue
+
+        if not targets:
+            _p(f"  [SKIP] {slug} ({spot_name}): 気象データなし (×{len(targets_spec)})")
+            skip += len(targets_spec)
+            continue
+
+        # 取得できなかった日付は skip としてカウント
+        got_dates = {t["date_label"] for t in targets}
+        for label, _ in targets_spec:
+            if label not in got_dates:
+                _p(f"  [SKIP] {slug} ({spot_name}) {label}: その日の気象データが取得結果に無い")
                 skip += 1
-                continue
+
+        for t in targets:
+            label    = t["date_label"]
+            date_str = t["date"]
+            day      = t["day"]
 
             p = pick_period(day)
             if not p:
-                _p(f"  [SKIP] {slug} ({spot_name}): periodなし")
+                _p(f"  [SKIP] {slug} ({spot_name}) {label}: periodなし")
                 skip += 1
                 continue
 
-            user_msg = build_user_message(spot, p, user_tmpl, month=int(tomorrow[5:7]))
-            comment, usage = call_claude(system_tmpl, user_msg)
+            user_msg = build_user_message(
+                spot, p, user_tmpl,
+                month=int(date_str[5:7]),
+                date_label=label,
+            )
+
+            try:
+                comment, usage = call_claude_with_retry(system_tmpl, user_msg)
+            except urllib.error.HTTPError as e:
+                body = e.read().decode(errors="replace")
+                _p(f"  [ERROR] {slug} {label}: HTTP {e.code} — {body[:120]}")
+                err += 1
+                continue
+            except Exception as e:
+                _p(f"  [ERROR] {slug} {label}: {e}")
+                err += 1
+                continue
 
             record = {
                 "ts":          now.isoformat(),
                 "slot":        slot,
-                "date":        tomorrow,
+                "date_label":  label,
+                "date":        date_str,
                 "slug":        slug,
                 "spot_name":   spot_name,
                 "spot_type":   (spot.get("classification") or {}).get("primary_type", ""),
@@ -371,7 +456,7 @@ def main() -> None:
 
             wave_str = _fmt(p.get("wave_height_raw")) + "m"
             wind_str = _fmt(p.get("wind_speed_raw")) + "m/s"
-            _p(f"  [{slug}] 波{wave_str} 風{wind_str} ({len(comment)}字)")
+            _p(f"  [{slug}] {label} 波{wave_str} 風{wind_str} ({len(comment)}字)")
             _p(f"  --- 入力データ ---")
             for line in user_msg.splitlines():
                 _p(f"    {line}")
@@ -380,21 +465,13 @@ def main() -> None:
             _p()
             ok += 1
 
-        except urllib.error.HTTPError as e:
-            body = e.read().decode(errors="replace")
-            _p(f"  [ERROR] {slug}: HTTP {e.code} — {body[:120]}")
-            err += 1
-        except Exception as e:
-            _p(f"  [ERROR] {slug}: {e}")
-            err += 1
-
-        time.sleep(0.3)  # レート制限対策
+            time.sleep(0.3)  # レート制限対策
 
     summary = f"完了: 成功{ok}件 / スキップ{skip}件 / エラー{err}件"
     _p(summary)
 
     if not args.no_mail:
-        subject = f"[葵コメント] {tomorrow} {slot} (成功{ok}件 / スキップ{skip}件 / エラー{err}件)"
+        subject = f"[葵コメント] {today}/{tomorrow} {slot} (成功{ok}件 / スキップ{skip}件 / エラー{err}件)"
         send_mail(subject, buf.getvalue())
 
 

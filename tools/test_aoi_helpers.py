@@ -195,6 +195,27 @@ check("temp_min None → ー",      "最低気温：ー℃" in msg_none, True)
 check("temp_max None → ー",      "最高気温：ー℃" in msg_none, True)
 
 # ──────────────────────────────────────────────
+# build_user_message — date_label
+# ──────────────────────────────────────────────
+print("\n=== build_user_message (date_label) ===")
+
+TMPL_LABEL = "{date_label}の{spot_name}\n波高：{wave}m"
+
+msg_today = build_user_message(spot_with_facing, period_base, TMPL_LABEL,
+                                month=4, date_label="今日")
+check("date_label=今日 → '今日のテスト海岸'",
+      msg_today.startswith("今日のテスト海岸"), True)
+
+msg_tomorrow = build_user_message(spot_with_facing, period_base, TMPL_LABEL,
+                                   month=4, date_label="明日")
+check("date_label=明日 → '明日のテスト海岸'",
+      msg_tomorrow.startswith("明日のテスト海岸"), True)
+
+msg_default = build_user_message(spot_with_facing, period_base, TMPL_LABEL, month=4)
+check("date_label デフォルト → 明日",
+      msg_default.startswith("明日のテスト海岸"), True)
+
+# ──────────────────────────────────────────────
 # 集計
 # ──────────────────────────────────────────────
 total = len(_results)
