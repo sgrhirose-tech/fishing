@@ -34,7 +34,7 @@ sys.path.insert(0, str(ROOT))
 JST = timezone(timedelta(hours=9))
 MODEL = "claude-haiku-4-5-20251001"
 MAX_TOKENS = 200
-AOI_PROMPT_PATH = ROOT / "aoi_prompt_v2_2.md"
+AOI_PROMPT_PATH = ROOT / "aoi_prompt.md"
 LOG_PATH = ROOT / "logs" / "aoi_comments.jsonl"
 
 # 16方位 → 度数
