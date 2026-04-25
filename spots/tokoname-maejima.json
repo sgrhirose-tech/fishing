@@ -28,7 +28,8 @@
     "notes": "常滑港の護岸・岸壁、カレイ・ハゼ・クロダイ向き",
     "access": "常滑駅から徒歩25分",
     "lead_text": "知多半島の伊勢湾側に位置する常滑港は、陸に囲まれた湾地形のおかげで西風が強い日でも水面が穏やかで、常連たちが朝マヅメから釣り座を確保しに集まります。岸壁の足元には石積みの基礎が入っており、クロダイが通年居着きやすい構造です。春の乗っ込み期には40cm超の良型を狙い、秋はチンタの数釣りで通い詰める釣り人も多いエリアです。前島港の赤灯波止は潮当たりがよく、岸壁沿いには40cm以上の魚体が目視できる日もあります。",
-    "photo_url": "/static/img/spots/tokoname-maejima.jpg"
+    "photo_url": "/static/img/spots/tokoname-maejima.jpg",
+    "description": "路上駐車が前提になる釣り場です。駐車禁止に指定されていませんが、清掃車など大きな車が通る道なので邪魔にならないようにしましょう。▼人通り車通りも少ないですから、車上荒らしが怖いです。"
   },
   "classification": {
     "primary_type": "fishing_facility",
@@ -38,11 +39,11 @@
     "osm_evidence": []
   },
   "target_fish": [
-    "kurodai",
     "karei",
+    "kurodai",
     "haze"
   ],
   "harbor_code": "23-15",
   "harbor_name": "常滑",
-  "updated_at": "2026-04-18"
+  "updated_at": "2026-04-25"
 }
