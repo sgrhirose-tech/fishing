@@ -207,6 +207,24 @@ def _fmt(v, digits: int = 1) -> str:
     return f"{v:.{digits}f}"
 
 
+def _fmt_precip_mmh(v) -> str:
+    """1時間降水量を mm/h 整数文字列に。None → '-'。"""
+    if v is None:
+        return "-"
+    return str(int(round(v)))
+
+
+def _scrub_placeholders(comment: str, date_label: str, spot_name: str) -> str:
+    """LLM が SYSTEM 例パターン中の {date_label} / {spot_name} を
+    リテラル出力した場合に実値へ置換する。
+    """
+    return (
+        comment
+        .replace("{date_label}", date_label)
+        .replace("{spot_name}", spot_name)
+    )
+
+
 def build_user_message(spot: dict, period: dict, user_tmpl: str,
                        month: int = 0, date_label: str = "明日") -> str:
     """USER テンプレートに値を埋めて返す。"""
@@ -246,6 +264,10 @@ def build_user_message(spot: dict, period: dict, user_tmpl: str,
         "sea_temp":             _fmt(period.get("sst_raw")),
         "tide_info":            tide_info,
         "rain":                 rain,
+        "precip_morning":       _fmt_precip_mmh(period.get("precip_max_morning_raw")),
+        "precip_noon":          _fmt_precip_mmh(period.get("precip_max_noon_raw")),
+        "precip_evening":       _fmt_precip_mmh(period.get("precip_max_evening_raw")),
+        "precip_night":         _fmt_precip_mmh(period.get("precip_max_night_raw")),
         "spot_type":            spot_type,
         "month":                str(month),
         "wind_relative_clause": wind_relative_clause,
@@ -433,6 +455,10 @@ def main() -> None:
                 _p(f"  [ERROR] {slug} {label}: {e}")
                 err += 1
                 continue
+
+            # LLM が SYSTEM の例パターン {date_label} / {spot_name} を
+            # リテラルで出力する事故が稀にあるためサニタイズ
+            comment = _scrub_placeholders(comment, label, spot_name)
 
             record = {
                 "ts":          now.isoformat(),
