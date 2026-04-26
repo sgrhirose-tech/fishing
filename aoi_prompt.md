@@ -753,17 +753,3 @@ OK表現
 潮汐：{tide_info}{tide_activity_clause}
 降水量(mm/h)：朝{precip_morning}, 昼{precip_noon}, 夕{precip_evening}, 夜{precip_night}
 施設区分：{spot_type}{facing_line}
-
-
-<!--
-降水量フィールドは Claude Code 側で
-時間帯別への切り替え対応中。
-切り替え完了後、上記の「降水量：{rain}mm」を
-Claude Code が決めた新フォーマットに置き換える。
-
-期待する新フォーマット例:
-  降水量(mm/h)：朝0, 昼6, 夕8, 夜2
-
-切り替えが完了してから本ファイルの
-USER部を更新すること。
--->

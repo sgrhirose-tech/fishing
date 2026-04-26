@@ -18,6 +18,7 @@ from tools.generate_aoi_comments import (
     calc_tide_activity,
     build_user_message,
     _scrub_placeholders,
+    _fmt_precip_mmh,
     COMPASS16_TO_DEG,
 )
 
@@ -235,6 +236,47 @@ clean = "茅ヶ崎、明日完全に勝ちです。"
 check("プレースホルダ無しは無変更",
       _scrub_placeholders(clean, "明日", "茅ヶ崎海岸"),
       clean)
+
+# ──────────────────────────────────────────────
+# _fmt_precip_mmh — 時間帯別1時間降水量の整数化
+# ──────────────────────────────────────────────
+print("\n=== _fmt_precip_mmh ===")
+
+check("0.0 → '0'",     _fmt_precip_mmh(0.0), "0")
+check("0.4 → '0' (四捨五入)", _fmt_precip_mmh(0.4), "0")
+check("0.5 → '0' (banker丸め)", _fmt_precip_mmh(0.5), "0")
+check("0.6 → '1'",     _fmt_precip_mmh(0.6), "1")
+check("6.2 → '6'",     _fmt_precip_mmh(6.2), "6")
+check("None → '-'",    _fmt_precip_mmh(None), "-")
+
+# ──────────────────────────────────────────────
+# build_user_message — precip_morning/noon/evening/night
+# ──────────────────────────────────────────────
+print("\n=== build_user_message (時間帯別降水量) ===")
+
+TMPL_PRECIP = "{spot_name}\n降水量(mm/h)：朝{precip_morning}, 昼{precip_noon}, 夕{precip_evening}, 夜{precip_night}"
+
+period_with_precip = {
+    **period_base,
+    "precip_max_morning_raw": 0.0,
+    "precip_max_noon_raw":    6.2,
+    "precip_max_evening_raw": 8.1,
+    "precip_max_night_raw":   1.7,
+}
+msg_precip = build_user_message(spot_with_facing, period_with_precip, TMPL_PRECIP, month=4)
+check("precip 各値あり → 整数化",
+      "降水量(mm/h)：朝0, 昼6, 夕8, 夜2" in msg_precip, True)
+
+period_precip_none = {
+    **period_base,
+    "precip_max_morning_raw": None,
+    "precip_max_noon_raw":    None,
+    "precip_max_evening_raw": None,
+    "precip_max_night_raw":   None,
+}
+msg_precip_none = build_user_message(spot_with_facing, period_precip_none, TMPL_PRECIP, month=4)
+check("precip 全て None → '-'",
+      "降水量(mm/h)：朝-, 昼-, 夕-, 夜-" in msg_precip_none, True)
 
 # ──────────────────────────────────────────────
 # 集計
