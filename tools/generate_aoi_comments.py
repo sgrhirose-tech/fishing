@@ -375,12 +375,13 @@ def main() -> None:
                         help="対象スポットslug（省略時はデフォルトリスト）")
     parser.add_argument("--no-mail", action="store_true",
                         help="メール送信を抑制（ローカルテスト用）")
-    parser.add_argument("--model", choices=["haiku", "sonnet"], default="haiku",
-                        help="使用モデル（デフォルト: haiku）")
+    parser.add_argument("--model", choices=["haiku", "sonnet"], default=None,
+                        help="使用モデル（デフォルト: haiku、環境変数 AOI_MODEL でも指定可）")
     args = parser.parse_args()
 
     global MODEL
-    MODEL = MODELS[args.model]
+    model_key = args.model or os.environ.get("AOI_MODEL", "haiku")
+    MODEL = MODELS.get(model_key, MODELS["haiku"])
 
     now = datetime.now(JST)
     slot = args.slot or ("朝" if now.hour < 12 else "夜")
