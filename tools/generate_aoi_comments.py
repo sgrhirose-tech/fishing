@@ -32,7 +32,11 @@ ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 
 JST = timezone(timedelta(hours=9))
-MODEL = "claude-haiku-4-5-20251001"
+MODELS = {
+    "haiku":  "claude-haiku-4-5-20251001",
+    "sonnet": "claude-sonnet-4-6",
+}
+MODEL = MODELS["haiku"]
 MAX_TOKENS = 200
 AOI_PROMPT_PATH = ROOT / "aoi_prompt.md"
 LOG_PATH = ROOT / "logs" / "aoi_comments.jsonl"
@@ -371,7 +375,12 @@ def main() -> None:
                         help="対象スポットslug（省略時はデフォルトリスト）")
     parser.add_argument("--no-mail", action="store_true",
                         help="メール送信を抑制（ローカルテスト用）")
+    parser.add_argument("--model", choices=["haiku", "sonnet"], default="haiku",
+                        help="使用モデル（デフォルト: haiku）")
     args = parser.parse_args()
+
+    global MODEL
+    MODEL = MODELS[args.model]
 
     now = datetime.now(JST)
     slot = args.slot or ("朝" if now.hour < 12 else "夜")
