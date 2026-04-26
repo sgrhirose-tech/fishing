@@ -403,6 +403,19 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
                    and hourly["precipitation"][i] is not None]
     precip = sum(precip_vals) if precip_vals else None
 
+    # 1日の時間帯ごとの最大1時間降水量（mm/h）— 全 period dict で共有
+    def _max_precip_for_hours(hours):
+        vals = [hourly.get("precipitation", [])[_hourly_index(day_index, h)]
+                for h in hours
+                if _hourly_index(day_index, h) < len(hourly.get("precipitation", []))
+                and hourly["precipitation"][_hourly_index(day_index, h)] is not None]
+        return max(vals) if vals else None
+
+    precip_max_by_band = {
+        label: _max_precip_for_hours(range(s, e))
+        for label, s, e in TIME_PERIODS
+    }
+
     # 気温（時間帯平均）
     temp_vals = [hourly.get("temperature_2m", [])[i]
                  for i in idxs
@@ -516,6 +529,10 @@ def score_period(weather_data: dict, marine_data: dict, day_index: int,
         "temp_raw": temp_avg,
         "temp_max_raw": temp_max_day,
         "temp_min_raw": temp_min_day,
+        "precip_max_morning_raw": precip_max_by_band.get("朝"),
+        "precip_max_noon_raw":    precip_max_by_band.get("昼"),
+        "precip_max_evening_raw": precip_max_by_band.get("夕"),
+        "precip_max_night_raw":   precip_max_by_band.get("夜"),
         "apparent_temp_max_raw": apparent_temp_max,
         "apparent_temp_min_raw": apparent_temp_min,
         "sst": tp["label"],
