@@ -35,6 +35,7 @@ from .weather import (fetch_weather, fetch_weather_range,
                        fetch_sst_noaa, get_weather_fetched_at)
 from .scoring import score_spot, direction_label, score_7days
 from .osm import fetch_nearby_facilities, load_facilities_json, get_cached_facilities
+from .aoi import get_or_generate_comment
 
 JST = timezone(timedelta(hours=9))
 
@@ -1193,6 +1194,27 @@ SPOT_TYPE_LABELS = {
     "sand_beach":       "砂浜",
     "fishing_facility": "釣り公園・施設",
 }
+
+@app.get("/api/aoi/{slug}")
+def aoi_comment_api(slug: str, date_label: str = "today", request: Request = None):
+    """葵ちゃんコメント取得エンドポイント。キャッシュヒット時は即返却、ミス時は生成。
+
+    date_label: "today" or "tomorrow"
+    Returns: {"comment": str, "mode": str} or {} on failure/rate-limit/banned.
+    """
+    spot = load_spot(slug)
+    if not spot or spot.get("banned"):
+        return {}
+    now = datetime.now(JST)
+    if date_label == "today":
+        date_str = now.strftime("%Y-%m-%d")
+        label_jp = "今日"
+    else:
+        date_str = (now + timedelta(days=1)).strftime("%Y-%m-%d")
+        label_jp = "明日"
+    result = get_or_generate_comment(slug, spot, label_jp, date_str)
+    return result or {}
+
 
 @app.get("/spots/")
 def redirect_spots_slash(request: Request):
