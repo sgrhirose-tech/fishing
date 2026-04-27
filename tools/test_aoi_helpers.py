@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_aoi_comments.py のヘルパー関数単体テスト
+app/aoi.py のヘルパー関数単体テスト
 
 Usage:
     python tools/test_aoi_helpers.py
@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 
-from tools.generate_aoi_comments import (
+from app.aoi import (
     deg_to_8dir,
     calc_wind_relative,
     calc_tide_activity,
@@ -20,6 +20,9 @@ from tools.generate_aoi_comments import (
     _scrub_placeholders,
     _fmt_precip_mmh,
     COMPASS16_TO_DEG,
+    detect_mode,
+    calc_weather_hash,
+    AoiRateLimiter,
 )
 
 PASS = "\033[32mPASS\033[0m"
@@ -277,6 +280,66 @@ period_precip_none = {
 msg_precip_none = build_user_message(spot_with_facing, period_precip_none, TMPL_PRECIP, month=4)
 check("precip 全て None → '-'",
       "降水量(mm/h)：朝-, 昼-, 夕-, 夜-" in msg_precip_none, True)
+
+# ──────────────────────────────────────────────
+# detect_mode
+# ──────────────────────────────────────────────
+print("\n=== detect_mode ===")
+
+check("danger: 安全第一",      detect_mode("安全第一でやめときます。"),  "danger")
+check("danger: 無理は禁物",    detect_mode("無理は禁物、家で待機です。"), "danger")
+check("ng: 家の日",            detect_mode("家の日にします。"),           "ng")
+check("ng: 装備しても厳しい",  detect_mode("装備しても厳しい状況です。"), "ng")
+check("good: これは行く日",    detect_mode("これは行く日です。"),         "good")
+check("good: 完全に勝ち",      detect_mode("完全に勝ちのコンディション。"), "good")
+check("good: 迷う必要ありません", detect_mode("迷う必要ありません、晴れです。"), "good")
+check("good: コンディション出来上がってます", detect_mode("コンディション出来上がってます。"), "good")
+check("good: ベタ凪ぎ",        detect_mode("ベタ凪ぎで最高です。"),       "good")
+check("unsure: その他",        detect_mode("ちょっと迷います。"),         "unsure")
+check("unsure: 空文字",        detect_mode(""),                           "unsure")
+# 優先順: danger > ng > good (本文に複数フレーズが混在するケース)
+check("danger が ng より優先",  detect_mode("家の日だけど安全第一で。"),   "danger")
+check("ng が good より優先",    detect_mode("これは行く日だが家の日にします。"), "ng")
+
+# ──────────────────────────────────────────────
+# calc_weather_hash
+# ──────────────────────────────────────────────
+print("\n=== calc_weather_hash ===")
+
+h1 = calc_weather_hash(0.6, 3.7, 0, 0, 0, 0, "快晴")
+h2 = calc_weather_hash(0.6, 3.7, 0, 0, 0, 0, "快晴")
+h3 = calc_weather_hash(1.2, 3.7, 0, 0, 0, 0, "快晴")  # 波高が違う
+h4 = calc_weather_hash(0.6, 3.7, 0, 0, 0, 0, "雨")    # 天気が違う
+
+check("同一データ → 同一ハッシュ",   h1 == h2, True)
+check("波高違い → 異なるハッシュ",   h1 == h3, False)
+check("天気違い → 異なるハッシュ",   h1 == h4, False)
+check("ハッシュ長は16文字",           len(h1) == 16, True)
+
+# ──────────────────────────────────────────────
+# AoiRateLimiter
+# ──────────────────────────────────────────────
+print("\n=== AoiRateLimiter ===")
+
+rl = AoiRateLimiter()
+rl.RATE_LIMIT_DAY   = 3  # テスト用に小さい値
+rl.RATE_LIMIT_NIGHT = 2
+rl.RATE_LIMIT_DAILY = 5
+
+results_rl = [rl.check_and_consume() for _ in range(6)]
+# 昼間(6:00-22:00)想定なら最初の3回True、4回目以降False (日次5に達するまで)
+# 夜間なら最初の2回True
+# どちらかに応じて判定する（テスト時刻依存なので柔軟に）
+
+from datetime import datetime, timezone, timedelta
+jst_now_hour = datetime.now(timezone(timedelta(hours=9))).hour
+is_night_test = jst_now_hour < 6 or jst_now_hour >= 22
+h_limit = rl.RATE_LIMIT_NIGHT if is_night_test else rl.RATE_LIMIT_DAY
+daily_limit = rl.RATE_LIMIT_DAILY
+
+expected = [True] * min(h_limit, daily_limit) + [False] * (6 - min(h_limit, daily_limit))
+check(f"時間制限 ({h_limit}/h) + 日次制限 ({daily_limit}/day) が正しく機能する",
+      results_rl, expected)
 
 # ──────────────────────────────────────────────
 # 集計
