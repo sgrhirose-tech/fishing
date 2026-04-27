@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import ssl; ssl._create_default_https_context = ssl._create_unverified_context  # ローカル実行時のSSL証明書エラー回避
 """
 葵コメント監視バッチ
 
