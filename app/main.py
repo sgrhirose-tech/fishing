@@ -35,7 +35,7 @@ from .weather import (fetch_weather, fetch_weather_range,
                        fetch_sst_noaa, get_weather_fetched_at)
 from .scoring import score_spot, direction_label, score_7days
 from .osm import fetch_nearby_facilities, load_facilities_json, get_cached_facilities
-from .aoi import get_or_generate_comment
+from .aoi import get_or_generate_comment, get_web_log_records, clear_web_log_records, send_aoi_report_email
 
 JST = timezone(timedelta(hours=9))
 
@@ -350,6 +350,30 @@ def _rss_refresh_loop() -> None:
         _th.Event().wait(4 * 3600)
 
 
+def _aoi_report_loop() -> None:
+    """毎朝6時(JST)に前日分の葵ちゃんコメント生成ログをメール送信するループ。"""
+    import threading as _th
+    while True:
+        now = datetime.now(JST)
+        next_6am = now.replace(hour=6, minute=0, second=0, microsecond=0)
+        if now >= next_6am:
+            next_6am += timedelta(days=1)
+        _th.Event().wait((next_6am - now).total_seconds())
+
+        yesterday = (datetime.now(JST) - timedelta(days=1)).strftime("%Y-%m-%d")
+        try:
+            records = get_web_log_records(yesterday)
+            send_aoi_report_email(yesterday, records)
+        except Exception as e:
+            print(f"[aoi] 日次レポートメール送信エラー: {e}")
+
+        try:
+            today = datetime.now(JST).strftime("%Y-%m-%d")
+            clear_web_log_records(today)
+        except Exception as e:
+            print(f"[aoi] 古いレコード削除エラー: {e}")
+
+
 _BLOGMURA_PING_URL = "https://ping.blogmura.com/xmlrpc/hdbk152e2inm/"
 _RANKING_PING_URL = "https://blog.with2.net/ping.php/2139987/1776486464"
 
@@ -407,6 +431,8 @@ async def lifespan(app: FastAPI):
     _bf.load_feeds(fish_master=_FISH_MASTER)
     _t = _th.Thread(target=_rss_refresh_loop, daemon=True)
     _t.start()
+    _t2 = _th.Thread(target=_aoi_report_loop, daemon=True)
+    _t2.start()
     # 起動時に毎回ping送信
     await _ping_blogmura()
     await _ping_ranking()
