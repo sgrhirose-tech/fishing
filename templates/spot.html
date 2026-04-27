@@ -312,6 +312,26 @@
   </div>
 </section>
 
+<!-- 葵ちゃんコメント -->
+<section class="aoi-section" id="aoi-section" style="display:none">
+  <div class="aoi-card" id="aoi-today">
+    <img class="aoi-illust" id="aoi-illust-today" src="" alt="葵ちゃん" width="80" height="80">
+    <div class="aoi-body">
+      <div class="aoi-label">今日の葵ちゃんコメント</div>
+      <p class="aoi-comment" id="aoi-comment-today"></p>
+      <span class="aoi-disclaimer">※AIによる個人的な感想です。気象情報ではありません。</span>
+    </div>
+  </div>
+  <div class="aoi-card" id="aoi-tomorrow" style="display:none">
+    <img class="aoi-illust" id="aoi-illust-tomorrow" src="" alt="葵ちゃん" width="80" height="80">
+    <div class="aoi-body">
+      <div class="aoi-label">明日の葵ちゃんコメント</div>
+      <p class="aoi-comment" id="aoi-comment-tomorrow"></p>
+      <span class="aoi-disclaimer">※AIによる個人的な感想です。気象情報ではありません。</span>
+    </div>
+  </div>
+</section>
+
 <!-- 安全リンク -->
 <p class="safety-link-inline"><a href="/safety">釣行前に安全事項をご確認ください →</a></p>
 
@@ -1016,5 +1036,50 @@
 
     initFavoriteButton(SPOT.slug);
   });
+</script>
+
+<script>
+// 葵ちゃんコメント
+(function() {
+  var slug = {{ spot.slug | tojson }};
+
+  function fetchAoi(dateLabel) {
+    return fetch('/api/aoi/' + encodeURIComponent(slug) + '?date_label=' + dateLabel)
+      .then(function(r) { return r.ok ? r.json() : {}; })
+      .catch(function() { return {}; });
+  }
+
+  function populateCard(which, data) {
+    if (!data || !data.comment) return false;
+    var commentEl = document.getElementById('aoi-comment-' + which);
+    var illustEl  = document.getElementById('aoi-illust-' + which);
+    if (commentEl) commentEl.textContent = data.comment;
+    if (illustEl && data.mode) illustEl.src = '/static/img/aoi/weather_' + data.mode + '.png';
+    return true;
+  }
+
+  Promise.all([fetchAoi('today'), fetchAoi('tomorrow')]).then(function(results) {
+    var hasToday    = populateCard('today', results[0]);
+    var hasTomorrow = populateCard('tomorrow', results[1]);
+    if (!hasToday && !hasTomorrow) return;
+
+    var section      = document.getElementById('aoi-section');
+    var todayCard    = document.getElementById('aoi-today');
+    var tomorrowCard = document.getElementById('aoi-tomorrow');
+
+    var initWhich = hasToday ? 'today' : 'tomorrow';
+    if (todayCard)    todayCard.style.display    = initWhich === 'today'    ? '' : 'none';
+    if (tomorrowCard) tomorrowCard.style.display = initWhich === 'tomorrow' ? '' : 'none';
+    section.style.display = '';
+
+    document.querySelectorAll('.chart24-tab').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var isToday = btn.dataset.which === 'today';
+        if (todayCard)    todayCard.style.display    = isToday ? '' : 'none';
+        if (tomorrowCard) tomorrowCard.style.display = isToday ? 'none' : '';
+      });
+    });
+  });
+})();
 </script>
 {% endblock %}
