@@ -29,6 +29,7 @@ _model_key = os.environ.get("AOI_MODEL", "haiku")
 MODEL: str = MODELS.get(_model_key, MODELS["haiku"])
 MAX_TOKENS: int = 200
 AOI_PROMPT_PATH = ROOT / "aoi_prompt.md"
+_WEB_LOG_PATH   = ROOT / "logs" / "aoi_web.jsonl"
 
 # ── 方位定数 ──────────────────────────────────────────────────────────────────
 
@@ -318,6 +319,32 @@ def send_mail(subject: str, body: str) -> None:
         smtp.sendmail(mail_from, mail_to, msg.as_string())
 
 
+# ── Webエンドポイント生成ログ ─────────────────────────────────────────────────
+
+def _log_web_generation(slug: str, spot_name: str, date_label: str, date_str: str,
+                        mode: str, comment: str, user_msg: str, usage: dict) -> None:
+    """Web エンドポイント経由で生成したコメントを aoi_web.jsonl に追記する。"""
+    record = {
+        "ts":          datetime.now(JST).isoformat(),
+        "source":      "web",
+        "slug":        slug,
+        "spot_name":   spot_name,
+        "date_label":  date_label,
+        "date":        date_str,
+        "mode":        mode,
+        "comment":     comment,
+        "char_len":    len(comment),
+        "user_prompt": user_msg,
+        "tokens":      usage,
+    }
+    try:
+        _WEB_LOG_PATH.parent.mkdir(exist_ok=True)
+        with open(_WEB_LOG_PATH, "a", encoding="utf-8") as f:
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    except Exception:
+        pass
+
+
 # ── モード判定 ────────────────────────────────────────────────────────────────
 
 def detect_mode(comment: str) -> str:
@@ -575,6 +602,10 @@ def get_or_generate_comment(
 
         # 10. キャッシュ保存
         _cache.set(cache_key, {"comment": comment, "mode": mode})
+
+        # 11. ログ追記
+        _log_web_generation(slug, spot.get("name", slug), date_label, date_str,
+                            mode, comment, user_msg, _usage)
 
         return {"comment": comment, "mode": mode}
 
