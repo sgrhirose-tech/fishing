@@ -281,13 +281,6 @@ def call_claude(system_prompt: str, user_message: str) -> tuple[str, dict]:
 
     comment = data["content"][0]["text"].strip().replace("\n", "")
     usage = data.get("usage", {})
-    print(
-        f"[aoi] usage slug=? in={usage.get('input_tokens')} "
-        f"cache_create={usage.get('cache_creation_input_tokens',0)} "
-        f"cache_read={usage.get('cache_read_input_tokens',0)} "
-        f"out={usage.get('output_tokens')}",
-        flush=True,
-    )
     return comment, usage
 
 
@@ -570,7 +563,8 @@ _rate_limiter = AoiRateLimiter()
 
 # ── コメントキャッシュ ────────────────────────────────────────────────────────
 
-_CACHE_PATH = ROOT / "data" / "aoi_cache.json"
+_AOI_CACHE_DIR = Path(os.environ.get("AOI_CACHE_DIR", str(ROOT / "data" / "cache")))
+_CACHE_PATH    = _AOI_CACHE_DIR / "aoi_cache.json"
 
 
 class AoiCache:
