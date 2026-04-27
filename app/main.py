@@ -1972,13 +1972,19 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
 @app.get("/tackle/", response_class=HTMLResponse)
 def page_tackle_top(request: Request):
     categories = _load_tackle_categories()
+    articles = _load_articles()
     staff_intro = next(
-        (a for a in _load_articles() if a.get("category") == "info" and a.get("slug") == "staff_introduction"),
+        (a for a in articles if a.get("category") == "info" and a.get("slug") == "staff_introduction"),
+        None,
+    )
+    aoi_interview = next(
+        (a for a in articles if a.get("category") == "info" and a.get("slug") == "aoi_interview"),
         None,
     )
     return templates.TemplateResponse(request, "tackle/top.html", {
         "categories": categories,
         "staff_intro": staff_intro,
+        "aoi_interview": aoi_interview,
     })
 
 
