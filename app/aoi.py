@@ -14,7 +14,9 @@ import threading
 import time
 import urllib.error
 import urllib.request
+from collections import Counter
 from datetime import datetime, timedelta, timezone
+from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
 
@@ -29,7 +31,11 @@ _model_key = os.environ.get("AOI_MODEL", "haiku")
 MODEL: str = MODELS.get(_model_key, MODELS["haiku"])
 MAX_TOKENS: int = 200
 AOI_PROMPT_PATH = ROOT / "aoi_prompt.md"
-_WEB_LOG_PATH   = ROOT / "logs" / "aoi_web.jsonl"
+_WEB_LOG_PATH        = ROOT / "logs" / "aoi_web.jsonl"
+
+# in-memory ログ蓄積（Render はコンテナが分離されるため cron job からファイルを読めない）
+_web_log_memory: list[dict] = []
+_web_log_memory_lock = threading.Lock()
 
 # ── 方位定数 ──────────────────────────────────────────────────────────────────
 
@@ -323,7 +329,7 @@ def send_mail(subject: str, body: str) -> None:
 
 def _log_web_generation(slug: str, spot_name: str, date_label: str, date_str: str,
                         mode: str, comment: str, user_msg: str, usage: dict) -> None:
-    """Web エンドポイント経由で生成したコメントを aoi_web.jsonl に追記する。"""
+    """Web エンドポイント経由で生成したコメントをメモリとファイルに記録する。"""
     record = {
         "ts":          datetime.now(JST).isoformat(),
         "source":      "web",
@@ -337,12 +343,123 @@ def _log_web_generation(slug: str, spot_name: str, date_label: str, date_str: st
         "user_prompt": user_msg,
         "tokens":      usage,
     }
+    with _web_log_memory_lock:
+        _web_log_memory.append(record)
     try:
         _WEB_LOG_PATH.parent.mkdir(exist_ok=True)
         with open(_WEB_LOG_PATH, "a", encoding="utf-8") as f:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
     except Exception:
         pass
+
+
+def get_web_log_records(target_date: str) -> list[dict]:
+    """in-memory ログから指定日付のレコードを返す。"""
+    with _web_log_memory_lock:
+        return [r for r in _web_log_memory if r.get("ts", "").startswith(target_date)]
+
+
+def clear_web_log_records(before_date: str) -> None:
+    """before_date より前の日付のレコードを in-memory リストから削除する。"""
+    with _web_log_memory_lock:
+        _web_log_memory[:] = [r for r in _web_log_memory if r.get("ts", "")[:10] >= before_date]
+
+
+def format_aoi_report(target_date: str, records: list[dict]) -> str:
+    """日次レポートテキストを生成する。"""
+    lines: list[str] = []
+    lines.append(f"=== 葵ちゃんコメント生成レポート {target_date} ===\n")
+
+    total = len(records)
+    mode_counter = Counter(r.get("mode", "?") for r in records)
+
+    lines.append(f"合計生成数  : {total}件")
+    lines.append("")
+    lines.append("モード分布:")
+    for mode in ["good", "unsure", "ng", "danger"]:
+        lines.append(f"  {mode:8s}: {mode_counter.get(mode, 0)}件")
+    lines.append("")
+
+    total_input  = sum(r.get("tokens", {}).get("input_tokens", 0) for r in records)
+    total_cache  = sum(r.get("tokens", {}).get("cache_read_input_tokens", 0) for r in records)
+    total_output = sum(r.get("tokens", {}).get("output_tokens", 0) for r in records)
+    if total > 0:
+        cost = (total_input / 1_000_000) * 0.80 * 150 \
+             + (total_cache  / 1_000_000) * 0.08 * 150 \
+             + (total_output / 1_000_000) * 4.00 * 150
+        lines.append(f"推定コスト  : {cost:.1f}円")
+        lines.append(f"  入力トークン    : {total_input:,} tok")
+        lines.append(f"  キャッシュ読出  : {total_cache:,} tok")
+        lines.append(f"  出力トークン    : {total_output:,} tok")
+    lines.append("")
+
+    lines.append("=" * 60)
+    lines.append("詳細ログ")
+    lines.append("=" * 60)
+
+    for r in records:
+        ts    = r.get("ts", "")[:19].replace("T", " ")
+        name  = r.get("spot_name", r.get("slug", ""))
+        label = r.get("date_label", "")
+        mode  = r.get("mode", "?")
+        tok   = r.get("tokens", {})
+        lines.append("")
+        lines.append(f"[{ts}] {name} / {label} / mode:{mode}")
+        lines.append(
+            f"  入力: {tok.get('input_tokens', '-')}tok"
+            f"  キャッシュ読出: {tok.get('cache_read_input_tokens', '-')}tok"
+            f"  出力: {tok.get('output_tokens', '-')}tok"
+        )
+        lines.append(f"  {r.get('comment', '')}")
+
+    if not records:
+        lines.append("\n（本日の生成レコードなし）")
+
+    lines.append("")
+    lines.append(f"--- 生成: {datetime.now(JST).strftime('%Y-%m-%d %H:%M')} JST ---")
+    return "\n".join(lines)
+
+
+def send_aoi_report_email(target_date: str, records: list[dict]) -> None:
+    """日次レポートをテキストファイル添付でメール送信する。"""
+    mail_from = os.environ.get("MAIL_FROM", "")
+    mail_to   = os.environ.get("MAIL_TO", "")
+    password  = os.environ.get("MAIL_PASSWORD", "")
+    if not (mail_from and mail_to and password):
+        print(f"[aoi] MAIL 環境変数未設定のためレポートをスキップ ({target_date})")
+        return
+
+    total = len(records)
+    mode_counter = Counter(r.get("mode", "?") for r in records)
+    body_text = (
+        f"葵ちゃんコメント生成レポート {target_date}\n\n"
+        f"合計: {total}件\n"
+        f"モード: good={mode_counter['good']} / unsure={mode_counter['unsure']} "
+        f"/ ng={mode_counter['ng']} / danger={mode_counter['danger']}\n\n"
+        f"詳細は添付ファイルをご覧ください。"
+    )
+    report_text = format_aoi_report(target_date, records)
+
+    msg = MIMEMultipart()
+    msg["Subject"] = f"[Tsuricast] 葵ちゃんコメント生成ログ {target_date}"
+    msg["From"]    = mail_from
+    msg["To"]      = mail_to
+    msg.attach(MIMEText(body_text, "plain", "utf-8"))
+
+    attachment = MIMEText(report_text, "plain", "utf-8")
+    attachment.add_header(
+        "Content-Disposition", "attachment",
+        filename=f"aoi_report_{target_date}.txt",
+    )
+    msg.attach(attachment)
+
+    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+        smtp.ehlo()
+        smtp.starttls()
+        smtp.login(mail_from, password)
+        smtp.sendmail(mail_from, mail_to, msg.as_string())
+
+    print(f"[aoi] 日次レポートメール送信完了: {mail_to} ({total}件)")
 
 
 # ── モード判定 ────────────────────────────────────────────────────────────────
