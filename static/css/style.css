@@ -1382,8 +1382,8 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
   padding: 1rem;
 }
 .aoi-illust {
-  width: 72px;
-  height: 72px;
+  width: 110px;
+  height: 110px;
   object-fit: contain;
   border-radius: 8px;
   flex-shrink: 0;
