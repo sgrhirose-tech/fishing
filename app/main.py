@@ -1459,9 +1459,17 @@ def _render_tackle_body(category_slug: str, item: dict) -> tuple:
         return item.get("body", "").replace("\n", "<br>"), False
 
     md_text = md_path.read_text(encoding="utf-8")
-    # Markdown 内に埋め込まれた JSON-LD <script> ブロックは本文レンダリング前に除去する
-    # (mistune が <script> をエスケープして可視テキストとして出力するのを防ぐ)
+    # JSON-LD <script> ブロックを除去（mistune がエスケープして可視テキスト化するのを防ぐ）
     md_text = _JSONLD_SCRIPT_RE.sub("", md_text)
+    # FAQ見出しの直後にQ&Aテキストがない場合（JSON-LDのみだった）は見出しも除去
+    # → テンプレート側の visible_qa セクションで見出しを1度だけ表示する
+    _faq_m = _FAQ_HEADING_RE.search(md_text)
+    if _faq_m:
+        _after = md_text[_faq_m.end():]
+        _next = _FAQ_NEXT_H2_RE.search(_after)
+        _section = _after[:_next.start()] if _next else _after
+        if not _FAQ_Q_RE.search(_section):
+            md_text = md_text[:_faq_m.start()] + (_after[_next.start():] if _next else "")
     slots = item.get("affiliate_slots", {}) or {}
 
     parts = _AFFILIATE_MARKER.split(md_text)
@@ -1523,11 +1531,14 @@ def _load_tackle_faq(category_slug: str, item_slug: str) -> list[dict]:
 
 
 def _has_visible_faq_in_markdown(category_slug: str, item_slug: str) -> bool:
-    """Markdown 本文に \"## よくある質問（FAQ）\" など可視FAQ節があるか判定する。"""
+    """Markdown 本文に可視Q&Aテキストを含むFAQ節があるか判定する。
+    見出しのみでJSON-LDしか内容がない場合はFalseを返す。
+    """
     md_path = _TACKLE_DIR / category_slug / f"{item_slug}.md"
     if not md_path.exists():
         return False
-    return bool(_FAQ_HEADING_RE.search(md_path.read_text(encoding="utf-8")))
+    stripped = _JSONLD_SCRIPT_RE.sub("", md_path.read_text(encoding="utf-8"))
+    return bool(_FAQ_Q_RE.search(stripped))
 
 
 def _load_tackle_categories() -> list:
