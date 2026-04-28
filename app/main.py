@@ -1238,7 +1238,8 @@ def aoi_comment_api(slug: str, date_label: str = "today", request: Request = Non
     else:
         date_str = (now + timedelta(days=1)).strftime("%Y-%m-%d")
         label_jp = "明日"
-    result = get_or_generate_comment(slug, spot, label_jp, date_str)
+    client_ip = request.client.host if request and request.client else None
+    result = get_or_generate_comment(slug, spot, label_jp, date_str, client_ip=client_ip)
     return result or {}
 
 
