@@ -31,9 +31,10 @@ _model_key = os.environ.get("AOI_MODEL", "haiku")
 MODEL: str = MODELS.get(_model_key, MODELS["haiku"])
 MAX_TOKENS: int = 200
 AOI_PROMPT_PATH = ROOT / "aoi_prompt.md"
-_WEB_LOG_PATH        = ROOT / "logs" / "aoi_web.jsonl"
+_AOI_CACHE_DIR  = Path(os.environ.get("AOI_CACHE_DIR", str(ROOT / "data" / "cache")))
+_WEB_LOG_PATH   = _AOI_CACHE_DIR / "aoi_web.jsonl"
 
-# in-memory ログ蓄積（Render はコンテナが分離されるため cron job からファイルを読めない）
+# in-memory ログ蓄積（同一プロセス内の高速参照用）
 _web_log_memory: list[dict] = []
 _web_log_memory_lock = threading.Lock()
 
@@ -354,13 +355,46 @@ def _log_web_generation(slug: str, spot_name: str, date_label: str, date_str: st
 
 
 def get_web_log_records(target_date: str) -> list[dict]:
-    """in-memory ログから指定日付のレコードを返す。"""
-    with _web_log_memory_lock:
-        return [r for r in _web_log_memory if r.get("ts", "").startswith(target_date)]
+    """永続ディスクのログファイルから指定日付のレコードを返す（再起動後も読める）。"""
+    records: list[dict] = []
+    try:
+        with open(_WEB_LOG_PATH, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    r = json.loads(line)
+                    if r.get("ts", "").startswith(target_date):
+                        records.append(r)
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        pass
+    return records
 
 
 def clear_web_log_records(before_date: str) -> None:
-    """before_date より前の日付のレコードを in-memory リストから削除する。"""
+    """before_date より前の日付のレコードをログファイルから削除する。"""
+    try:
+        with open(_WEB_LOG_PATH, encoding="utf-8") as f:
+            lines = f.readlines()
+        kept = []
+        for line in lines:
+            stripped = line.strip()
+            if not stripped:
+                continue
+            try:
+                r = json.loads(stripped)
+                if r.get("ts", "")[:10] >= before_date:
+                    kept.append(line)
+            except json.JSONDecodeError:
+                pass
+        with open(_WEB_LOG_PATH, "w", encoding="utf-8") as f:
+            f.writelines(kept)
+    except FileNotFoundError:
+        pass
+    # in-memory も合わせてクリーン
     with _web_log_memory_lock:
         _web_log_memory[:] = [r for r in _web_log_memory if r.get("ts", "")[:10] >= before_date]
 
@@ -640,8 +674,7 @@ _cost_tracker = AoiCostTracker()
 
 # ── コメントキャッシュ ────────────────────────────────────────────────────────
 
-_AOI_CACHE_DIR = Path(os.environ.get("AOI_CACHE_DIR", str(ROOT / "data" / "cache")))
-_CACHE_PATH    = _AOI_CACHE_DIR / "aoi_cache.json"
+_CACHE_PATH = _AOI_CACHE_DIR / "aoi_cache.json"
 
 
 class AoiCache:
