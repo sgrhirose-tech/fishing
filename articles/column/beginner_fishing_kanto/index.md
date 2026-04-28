@@ -108,7 +108,10 @@ related_spots:
   - yugawara-kaihin-koen
   - yuigahama
   - zaimokuza-kaigan
+<<<<<<< HEAD
 updated: 2026-04-18
+=======
+>>>>>>> master
 ---
 
 # はじめての海釣りに向いている釣り場【関東版】

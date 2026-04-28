@@ -179,6 +179,7 @@
     ],
     "north_limit": "北海道南部",
     "south_limit": "沖縄"
+<<<<<<< HEAD
   },
   "アマダイ": {
     "slug": "amadai",
@@ -2251,6 +2252,8 @@
     ],
     "north_limit": "北海道",
     "south_limit": "関東"
+=======
+>>>>>>> master
   },
   "マダイ": {
     "slug": "madai",
@@ -2290,6 +2293,11 @@
     "max_temp": 25,
     "peak_temp": 18,
     "best_months": [
+<<<<<<< HEAD
+      3,
+      4,
+      5,
+=======
       3,
       4,
       5,
@@ -2305,6 +2313,1128 @@
       "dusk"
     ],
     "north_limit": "北海道南部",
+    "south_limit": "沖縄"
+  },
+  "ブリ": {
+    "slug": "buri",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "method": [
+      "ジギング",
+      "カゴ釣り",
+      "ルアー釣り"
+    ],
+    "bottom": [
+      "砂地",
+      "岩礁"
+    ],
+    "image": "/static/img/fish/buri.jpg",
+    "min_temp": 8,
+    "max_temp": 25,
+    "peak_temp": 15,
+    "best_months": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
+  },
+  "アオリイカ": {
+    "slug": "aoriika",
+    "season": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+>>>>>>> master
+      9,
+      10,
+      11
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+<<<<<<< HEAD
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
+  },
+  "マダコ": {
+    "slug": "madako",
+=======
+    "bottom": [
+      "岩礁",
+      "藻場"
+    ],
+    "image": "/static/img/fish/aoriika.jpg",
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      9,
+      10,
+      11
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk",
+      "night"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
+  },
+  "タチウオ": {
+    "slug": "tachiuo",
+    "season": [
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "peak_season": [
+      9,
+      10
+    ],
+    "method": [
+      "ウキ釣り",
+      "ジギング",
+      "ルアー釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "image": "/static/img/fish/tachiuo.jpg",
+    "min_temp": 18,
+    "max_temp": 28,
+    "peak_temp": 23,
+    "best_months": [
+      8,
+      9,
+      10
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "青森南部",
+    "south_limit": "沖縄"
+  },
+  "シロギス": {
+    "slug": "shirogisu",
+>>>>>>> master
+    "season": [
+      4,
+      5,
+      6,
+      7,
+      8,
+<<<<<<< HEAD
+      9
+    ],
+=======
+      9,
+      10
+    ],
+    "peak_season": [
+      6,
+      7,
+      8
+    ],
+    "method": [
+      "投げ釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "image": "/static/img/fish/shirogisu.jpg",
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
+  },
+  "クロダイ": {
+    "slug": "kurodai",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      3,
+      4,
+      5,
+      10,
+      11
+    ],
+    "method": [
+      "フカセ釣り",
+      "ヘチ釣り",
+      "ダンゴ釣り"
+    ],
+    "bottom": [
+      "岩礁",
+      "砂地"
+    ],
+    "image": "/static/img/fish/kurodai.jpg",
+    "min_temp": 10,
+    "max_temp": 28,
+    "peak_temp": 18,
+    "best_months": [
+      3,
+      4,
+      5,
+      10,
+      11
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
+  },
+  "スズキ": {
+    "slug": "suzuki",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "method": [
+      "ルアー釣り",
+      "エビ撒き"
+    ],
+    "bottom": [
+      "砂地",
+      "岩礁"
+    ],
+    "image": "/static/img/fish/suzuki.jpg",
+    "min_temp": 12,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
+  },
+  "ヒラメ": {
+    "slug": "hirame",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "method": [
+      "泳がせ釣り",
+      "ルアー釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "image": "/static/img/fish/hirame.jpg",
+    "min_temp": 10,
+    "max_temp": 22,
+    "peak_temp": 15,
+    "best_months": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州南部"
+  },
+  "カレイ": {
+    "slug": "karei",
+    "season": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "peak_season": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "method": [
+      "投げ釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "image": "/static/img/fish/karei.jpg",
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 10,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
+  },
+  "カサゴ": {
+    "slug": "kasago",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "method": [
+      "穴釣り",
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "image": "/static/img/fish/kasago.jpg",
+    "min_temp": 8,
+    "max_temp": 24,
+    "peak_temp": 15,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk",
+      "night"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
+  },
+  "メバル": {
+    "slug": "mebaru",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      2,
+      3,
+      4
+    ],
+    "method": [
+      "ウキ釣り",
+      "メバリング"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "image": "/static/img/fish/mebaru.jpg",
+    "min_temp": 10,
+    "max_temp": 22,
+    "peak_temp": 15,
+    "best_months": [
+      2,
+      3,
+      4
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
+  },
+  "アイナメ": {
+    "slug": "ainame",
+    "season": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      11,
+      12,
+      1
+    ],
+    "method": [
+      "投げ釣り",
+      "ルアー釣り",
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "image": "/static/img/fish/ainame.jpg",
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "山口"
+  },
+  "イサキ": {
+    "slug": "isaki",
+    "season": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+>>>>>>> master
+    "peak_season": [
+      6,
+      7,
+      8
+    ],
+    "method": [
+      "タコエギ",
+      "タコテンヤ"
+    ],
+    "bottom": [
+      "岩礁",
+      "砂地"
+    ],
+<<<<<<< HEAD
+    "image": "/static/img/fish/madako.jpg",
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+=======
+    "image": "/static/img/fish/isaki.jpg",
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 22,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+  },
+  "サバ": {
+    "slug": "saba",
+    "season": [
+      4,
+      5,
+>>>>>>> master
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+<<<<<<< HEAD
+    "north_limit": "青森",
+    "south_limit": "沖縄"
+  },
+  "マトウダイ": {
+    "slug": "matoudai",
+=======
+    "method": [
+      "サビキ釣り",
+      "ジギング"
+    ],
+    "bottom": [
+      "砂地",
+      "岩礁"
+    ],
+    "image": "/static/img/fish/saba.jpg",
+    "min_temp": 12,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "沖縄"
+  },
+  "スルメイカ": {
+    "slug": "surumeika",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      7,
+      8,
+      9
+    ],
+    "method": [
+      "ヤエン釣り",
+      "エギング",
+      "スッテ仕掛け"
+    ],
+    "bottom": [
+      "砂地",
+      "岩礁"
+    ],
+    "image": "/static/img/fish/surumeika.jpg",
+    "min_temp": 5,
+    "max_temp": 25,
+    "peak_temp": 18,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
+  },
+  "ヤリイカ": {
+    "slug": "yariika",
+>>>>>>> master
+    "season": [
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "peak_season": [
+      12,
+      1,
+      2
+    ],
+    "method": [
+<<<<<<< HEAD
+      "胴突き仕掛け",
+=======
+      "エギング",
+      "スッテ仕掛け"
+    ],
+    "bottom": [
+      "砂地",
+      "岩礁"
+    ],
+    "image": "/static/img/fish/yariika.jpg",
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
+  },
+  "コウイカ": {
+    "slug": "kouika",
+    "season": [
+      3,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11
+    ],
+    "peak_season": [
+      4,
+      5
+    ],
+    "method": [
+      "エギング"
+    ],
+    "bottom": [
+      "砂地",
+      "岩礁"
+    ],
+    "image": "/static/img/fish/kouika.jpg",
+    "min_temp": 10,
+    "max_temp": 25,
+    "peak_temp": 18,
+    "best_months": [
+      4,
+      5
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
+  },
+  "マゴチ": {
+    "slug": "magochi",
+    "season": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "peak_season": [
+      6,
+      7,
+      8
+    ],
+    "method": [
+      "泳がせ釣り",
+      "ルアー釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "image": "/static/img/fish/magochi.jpg",
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
+  },
+  "カンパチ": {
+    "slug": "kanpachi",
+    "season": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "peak_season": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "method": [
+      "ジギング",
+      "カゴ釣り",
+>>>>>>> master
+      "泳がせ釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+<<<<<<< HEAD
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      12,
+      1,
+      2
+=======
+    "image": "/static/img/fish/kanpachi.jpg",
+    "min_temp": 18,
+    "max_temp": 28,
+    "peak_temp": 24,
+    "best_months": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "青森南部",
+    "south_limit": "沖縄"
+  },
+  "ヒラマサ": {
+    "slug": "hiramasa",
+    "season": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+>>>>>>> master
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+<<<<<<< HEAD
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄",
+    "image": "/static/img/fish/matoudai.jpg"
+=======
+    "method": [
+      "ジギング",
+      "カゴ釣り",
+      "ルアー釣り"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "image": "/static/img/fish/hiramasa.jpg",
+    "min_temp": 16,
+    "max_temp": 27,
+    "peak_temp": 22,
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
+>>>>>>> master
+  },
+  "マハタ": {
+    "slug": "mahata",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "method": [
+      "胴突き仕掛け",
+      "泳がせ釣り"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "image": "/static/img/fish/mahata.jpg",
+    "min_temp": 12,
+    "max_temp": 26,
+    "peak_temp": 18,
+    "best_months": [
+<<<<<<< HEAD
+=======
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+  },
+  "カワハギ": {
+    "slug": "kawahagi",
+    "season": [
+      9,
+>>>>>>> master
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+<<<<<<< HEAD
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+  },
+  "マルアジ": {
+    "slug": "maruaji",
+=======
+    "method": [
+      "カワハギ仕掛け"
+    ],
+    "bottom": [
+      "岩礁",
+      "砂地"
+    ],
+    "image": "/static/img/fish/kawahagi.jpg",
+    "min_temp": 15,
+    "max_temp": 24,
+    "peak_temp": 18,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+  },
+  "ホウボウ": {
+    "slug": "houhou",
+    "season": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "peak_season": [
+      11,
+      12,
+      1
+    ],
+    "method": [
+      "投げ釣り",
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "image": "/static/img/fish/houhou.jpg",
+    "min_temp": 5,
+    "max_temp": 20,
+    "peak_temp": 12,
+    "best_months": [
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
+  },
+  "アマダイ": {
+    "slug": "amadai",
+    "season": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "peak_season": [
+      11,
+      12,
+      1
+    ],
+    "method": [
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "砂地",
+      "泥地"
+    ],
+    "image": "/static/img/fish/amadai.jpg",
+    "min_temp": 10,
+    "max_temp": 22,
+    "peak_temp": 15,
+    "best_months": [
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+  },
+  "オニカサゴ": {
+    "slug": "onikasago",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "method": [
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "image": "/static/img/fish/onikasago.jpg",
+    "min_temp": 10,
+    "max_temp": 24,
+    "peak_temp": 16,
+    "best_months": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "千葉",
     "south_limit": "沖縄"
   },
   "マダコ": {
@@ -2349,54 +3479,136 @@
     "north_limit": "青森",
     "south_limit": "沖縄"
   },
-  "マトウダイ": {
-    "slug": "matoudai",
+  "イシモチ": {
+    "slug": "ishimochi",
     "season": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "peak_season": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "method": [
+      "投げ釣り",
+      "ちょい投げ"
+    ],
+    "bottom": [
+      "砂地",
+      "泥地"
+    ],
+    "image": "/static/img/fish/ishimochi.jpg",
+    "min_temp": 12,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
+  },
+  "マコガレイ": {
+    "slug": "makogarei",
+    "season": [
+      9,
+      10,
       11,
       12,
       1,
       2,
-      3
+      3,
+      4
     ],
     "peak_season": [
+      11,
       12,
       1,
       2
     ],
     "method": [
-      "胴突き仕掛け",
-      "泳がせ釣り"
+      "投げ釣り"
     ],
     "bottom": [
       "砂地"
     ],
     "min_temp": 5,
     "max_temp": 18,
-    "peak_temp": 12,
+    "peak_temp": 10,
     "best_months": [
+      11,
       12,
       1,
       2
     ],
-    "max_wave": 1.5,
+    "max_wave": 1.0,
     "tide": "either",
     "time": [
       "day"
     ],
-    "north_limit": "北海道南部",
-    "south_limit": "沖縄",
-    "image": "/static/img/fish/matoudai.jpg"
+    "north_limit": "北海道",
+    "south_limit": "九州"
   },
-  "マハタ": {
-    "slug": "mahata",
+  "ハゼ": {
+    "slug": "haze",
     "season": [
-      1,
-      2,
-      3,
-      4,
       5,
       6,
       7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "peak_season": [
+      8,
+      9,
+      10
+    ],
+    "method": [
+      "脈釣り",
+      "ちょい投げ"
+    ],
+    "bottom": [
+      "砂地",
+      "泥地"
+    ],
+    "image": "/static/img/fish/haze.jpg",
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      8,
+      9,
+      10
+    ],
+    "max_wave": 0.5,
+    "tide": "rising",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "沖縄"
+  },
+  "カマス": {
+    "slug": "kamasu",
+    "season": [
       8,
       9,
       10,
@@ -2404,39 +3616,82 @@
       12
     ],
     "peak_season": [
+      9,
       10,
-      11,
-      12,
-      1
+      11
     ],
     "method": [
-      "胴突き仕掛け",
-      "泳がせ釣り"
+      "ルアー釣り",
+      "サビキ釣り"
     ],
     "bottom": [
+      "砂地",
       "岩礁"
     ],
-    "image": "/static/img/fish/mahata.jpg",
-    "min_temp": 12,
-    "max_temp": 26,
-    "peak_temp": 18,
+    "image": "/static/img/fish/kamasu.jpg",
+    "min_temp": 18,
+    "max_temp": 27,
+    "peak_temp": 23,
     "best_months": [
+      9,
       10,
-      11,
-      12,
-      1
+      11
     ],
-    "max_wave": 1.5,
+    "max_wave": 1.0,
     "tide": "either",
     "time": [
       "dawn",
       "dusk"
     ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
+  },
+  "シマアジ": {
+    "slug": "shimaaji",
+    "season": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "peak_season": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "method": [
+      "カゴ釣り",
+      "サビキ釣り"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "image": "/static/img/fish/shimaaji.jpg",
+    "min_temp": 18,
+    "max_temp": 27,
+    "peak_temp": 23,
+    "best_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
     "north_limit": "千葉",
     "south_limit": "沖縄"
   },
-  "マルアジ": {
-    "slug": "maruaji",
+  "キジハタ": {
+    "slug": "kijihata",
+>>>>>>> master
     "season": [
       5,
       6,
@@ -2451,14 +3706,138 @@
       9
     ],
     "method": [
+<<<<<<< HEAD
       "サビキ釣り",
       "アジング"
+=======
+      "ワーム釣り",
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "image": "/static/img/fish/kijihata.jpg",
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 22,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "宮城",
+    "south_limit": "沖縄"
+  },
+  "オオモンハタ": {
+    "slug": "oomonhata",
+    "season": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "peak_season": [
+      7,
+      8,
+      9
+    ],
+    "method": [
+      "ワーム釣り",
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "min_temp": 18,
+    "max_temp": 28,
+    "peak_temp": 23,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "静岡",
+    "south_limit": "沖縄"
+  },
+  "クエ": {
+    "slug": "kue",
+    "season": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
+    "peak_season": [
+      10,
+      11,
+      12
+    ],
+    "method": [
+      "泳がせ釣り",
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk",
+      "night"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+  },
+  "マグロ": {
+    "slug": "maguro",
+    "season": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "peak_season": [
+      7,
+      8,
+      9
+    ],
+    "method": [
+      "ジギング",
+      "ルアー釣り",
+      "カゴ釣り"
     ],
     "bottom": [
       "砂地",
       "岩礁"
     ],
-    "min_temp": 15,
+    "image": "/static/img/fish/maguro.jpg",
+    "min_temp": 16,
     "max_temp": 28,
     "peak_temp": 22,
     "best_months": [
@@ -2466,15 +3845,159 @@
       8,
       9
     ],
+    "max_wave": 2.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
+  },
+  "カツオ": {
+    "slug": "katsuo",
+    "season": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "peak_season": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "method": [
+      "カゴ釣り",
+      "サビキ釣り",
+      "ルアー釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "image": "/static/img/fish/katsuo.jpg",
+    "min_temp": 18,
+    "max_temp": 27,
+    "peak_temp": 22,
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "青森南部",
+    "south_limit": "沖縄"
+  },
+  "シイラ": {
+    "slug": "shiira",
+    "season": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "peak_season": [
+      7,
+      8,
+      9
+    ],
+    "method": [
+      "ルアー釣り",
+      "カゴ釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "image": "/static/img/fish/shiira.jpg",
+    "min_temp": 20,
+    "max_temp": 30,
+    "peak_temp": 25,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+  },
+  "サワラ": {
+    "slug": "sawara",
+    "season": [
+      3,
+      4,
+      5,
+      9,
+      10,
+      11
+    ],
+    "peak_season": [
+      4,
+      5,
+      10,
+      11
+    ],
+    "method": [
+      "ジギング",
+      "ルアー釣り"
+>>>>>>> master
+    ],
+    "bottom": [
+      "砂地",
+      "岩礁"
+    ],
+<<<<<<< HEAD
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      7,
+      8,
+      9
+=======
+    "image": "/static/img/fish/sawara.jpg",
+    "min_temp": 12,
+    "max_temp": 24,
+    "peak_temp": 18,
+    "best_months": [
+      4,
+      5,
+      10,
+      11
+>>>>>>> master
+    ],
     "max_wave": 1.5,
     "tide": "either",
     "time": [
       "dawn",
       "dusk"
     ],
+<<<<<<< HEAD
     "north_limit": "千葉",
     "south_limit": "沖縄",
     "image": "/static/img/fish/maruaji.jpg"
+=======
+    "north_limit": "青森",
+    "south_limit": "沖縄"
+>>>>>>> master
   },
   "ムツ": {
     "slug": "mutsu",
@@ -2496,6 +4019,8 @@
     ],
     "bottom": [
       "岩礁"
+<<<<<<< HEAD
+=======
     ],
     "min_temp": 10,
     "max_temp": 22,
@@ -2512,11 +4037,189 @@
       "night"
     ],
     "north_limit": "青森",
+    "south_limit": "沖縄"
+  },
+  "アカムツ": {
+    "slug": "akamutsu",
+    "season": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2
+>>>>>>> master
+    ],
+    "min_temp": 10,
+    "max_temp": 22,
+    "peak_temp": 16,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dusk",
+      "night"
+    ],
+<<<<<<< HEAD
+    "north_limit": "青森",
     "south_limit": "沖縄",
     "image": "/static/img/fish/mutsu.jpg"
   },
   "ムロアジ": {
     "slug": "muroaji",
+=======
+    "bottom": [
+      "砂地",
+      "泥地"
+    ],
+    "min_temp": 5,
+    "max_temp": 15,
+    "peak_temp": 10,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
+  },
+  "キンメダイ": {
+    "slug": "kinmedai",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "method": [
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "岩礁",
+      "砂地"
+    ],
+    "image": "/static/img/fish/kinmedai.jpg",
+    "min_temp": 5,
+    "max_temp": 15,
+    "peak_temp": 10,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 2.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
+  },
+  "メダイ": {
+    "slug": "medai",
+    "season": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "peak_season": [
+      11,
+      12,
+      1
+    ],
+    "method": [
+      "カゴ釣り",
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "min_temp": 10,
+    "max_temp": 20,
+    "peak_temp": 14,
+    "best_months": [
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
+  },
+  "イシダイ": {
+    "slug": "ishidai",
+    "season": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "peak_season": [
+      7,
+      8,
+      9
+    ],
+    "method": [
+      "投げ釣り"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "image": "/static/img/fish/ishidai.jpg",
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 22,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+  },
+  "イシガキダイ": {
+    "slug": "ishigakidai",
+>>>>>>> master
     "season": [
       5,
       6,
@@ -2537,17 +4240,27 @@
       "砂地",
       "岩礁"
     ],
+<<<<<<< HEAD
     "image": "/static/img/fish/muroaji.jpg",
     "min_temp": 18,
     "max_temp": 28,
     "peak_temp": 23,
+=======
+    "min_temp": 18,
+    "max_temp": 28,
+    "peak_temp": 24,
+>>>>>>> master
     "best_months": [
       7,
       8,
       9
     ],
     "max_wave": 1.5,
+<<<<<<< HEAD
     "tide": "either",
+=======
+    "tide": "rising",
+>>>>>>> master
     "time": [
       "day"
     ],
@@ -2589,6 +4302,8 @@
     "max_temp": 22,
     "peak_temp": 15,
     "best_months": [
+<<<<<<< HEAD
+=======
       10,
       11,
       12,
@@ -2605,10 +4320,179 @@
     "north_limit": "北海道南部",
     "south_limit": "沖縄"
   },
+  "ソイ": {
+    "slug": "soi",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "method": [
+      "穴釣り",
+      "胴突き仕掛け",
+      "ワーム釣り"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "宮城"
+  },
+  "ウマヅラハギ": {
+    "slug": "umadsurahagi",
+    "season": [
+      9,
+      10,
+      11,
+      12,
+      1
+    ],
+    "peak_season": [
+      10,
+      11,
+      12
+    ],
+    "method": [
+      "カワハギ仕掛け"
+    ],
+    "bottom": [
+      "岩礁",
+      "砂地"
+    ],
+    "min_temp": 12,
+    "max_temp": 24,
+    "peak_temp": 18,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "青森",
+    "south_limit": "沖縄"
+  },
+  "ショウサイフグ": {
+    "slug": "shousaifugu",
+    "season": [
+      9,
+>>>>>>> master
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.5,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+<<<<<<< HEAD
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
+=======
+    "method": [
+      "テンヤ釣り",
+      "胴突き仕掛け"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "min_temp": 12,
+    "max_temp": 22,
+    "peak_temp": 16,
+    "best_months": [
+      10,
+      11,
+      12
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "九州"
+>>>>>>> master
+  },
   "メダイ": {
     "slug": "medai",
     "season": [
       10,
+<<<<<<< HEAD
+=======
+      11
+    ],
+    "peak_season": [
+      5,
+      6,
+      10,
+      11
+    ],
+    "method": [
+      "投げ釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      5,
+      6,
+      10,
+      11
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "九州"
+  },
+  "マトウダイ": {
+    "slug": "matoudai",
+    "season": [
+>>>>>>> master
       11,
       12,
       1,
@@ -2625,6 +4509,7 @@
       "胴突き仕掛け"
     ],
     "bottom": [
+<<<<<<< HEAD
       "岩礁"
     ],
     "min_temp": 10,
@@ -2634,15 +4519,110 @@
       11,
       12,
       1
+=======
+      "砂地"
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      12,
+      1,
+      2
     ],
     "max_wave": 1.5,
     "tide": "either",
     "time": [
       "day"
     ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
+  },
+  "マルアジ": {
+    "slug": "maruaji",
+    "season": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "peak_season": [
+      7,
+      8,
+      9
+    ],
+    "method": [
+      "サビキ釣り",
+      "アジング"
+    ],
+    "bottom": [
+      "砂地",
+      "岩礁"
+    ],
+    "min_temp": 15,
+    "max_temp": 28,
+    "peak_temp": 22,
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "dusk"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+  },
+  "ムロアジ": {
+    "slug": "muroaji",
+    "season": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "peak_season": [
+      7,
+      8,
+      9
+    ],
+    "method": [
+      "サビキ釣り"
+    ],
+    "bottom": [
+      "砂地",
+      "岩礁"
+    ],
+    "image": "/static/img/fish/muroaji.jpg",
+    "min_temp": 18,
+    "max_temp": 28,
+    "peak_temp": 23,
+    "best_months": [
+      7,
+      8,
+      9
+>>>>>>> master
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+<<<<<<< HEAD
     "north_limit": "青森",
     "south_limit": "沖縄",
     "image": "/static/img/fish/medai.jpg"
+=======
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+>>>>>>> master
   },
   "メバル": {
     "slug": "mebaru",
@@ -2672,6 +4652,7 @@
     "bottom": [
       "岩礁"
     ],
+<<<<<<< HEAD
     "image": "/static/img/fish/mebaru.jpg",
     "min_temp": 10,
     "max_temp": 22,
@@ -2721,14 +4702,33 @@
       12,
       1,
       2
+=======
+    "image": "/static/img/fish/itoyoridai.jpg",
+    "min_temp": 15,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      3,
+      4,
+      5,
+      10,
+      11
+>>>>>>> master
     ],
     "max_wave": 1.0,
     "tide": "either",
     "time": [
+<<<<<<< HEAD
       "night"
     ],
     "north_limit": "北海道",
     "south_limit": "九州"
+=======
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+>>>>>>> master
   },
   "レンコダイ": {
     "slug": "renkodai",
@@ -2758,6 +4758,8 @@
     "bottom": [
       "砂地",
       "岩礁"
+<<<<<<< HEAD
+=======
     ],
     "min_temp": 12,
     "max_temp": 24,
@@ -2775,5 +4777,403 @@
     ],
     "north_limit": "千葉",
     "south_limit": "沖縄"
+  },
+  "キダイ": {
+    "slug": "kidai",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+>>>>>>> master
+    ],
+    "min_temp": 12,
+    "max_temp": 24,
+    "peak_temp": 18,
+    "best_months": [
+      4,
+      5,
+      10,
+      11
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+<<<<<<< HEAD
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+=======
+    "bottom": [
+      "砂地",
+      "岩礁"
+    ],
+    "min_temp": 12,
+    "max_temp": 25,
+    "peak_temp": 18,
+    "best_months": [
+      4,
+      5,
+      10,
+      11
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "千葉",
+    "south_limit": "沖縄"
+  },
+  "ホシガレイ": {
+    "slug": "hoshigarei",
+    "season": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
+    "peak_season": [
+      11,
+      12,
+      1
+    ],
+    "method": [
+      "投げ釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 10,
+    "best_months": [
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "九州"
+  },
+  "マゾイ": {
+    "slug": "mazoi",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "method": [
+      "胴突き仕掛け",
+      "ワーム釣り"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      10,
+      11,
+      12,
+      1
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "関東"
+  },
+  "クロソイ": {
+    "slug": "kurosoi",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "method": [
+      "胴突き仕掛け",
+      "ワーム釣り",
+      "穴釣り"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "min_temp": 5,
+    "max_temp": 18,
+    "peak_temp": 12,
+    "best_months": [
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dusk",
+      "night"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "東北南部"
+  },
+  "タコ": {
+    "slug": "tako",
+    "season": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "peak_season": [
+      6,
+      7,
+      8
+    ],
+    "method": [
+      "タコエギ",
+      "タコテンヤ"
+    ],
+    "bottom": [
+      "岩礁",
+      "砂地"
+    ],
+    "min_temp": 12,
+    "max_temp": 26,
+    "peak_temp": 20,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "rising",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "沖縄"
+  },
+  "ソウダガツオ": {
+    "slug": "soudagatsuo",
+    "season": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "peak_season": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "method": [
+      "カゴ釣り",
+      "サビキ釣り",
+      "ルアー釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "min_temp": 18,
+    "max_temp": 27,
+    "peak_temp": 23,
+    "best_months": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "max_wave": 1.5,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day",
+      "dusk"
+    ],
+    "north_limit": "茨城",
+    "south_limit": "沖縄"
+  },
+  "ウミタナゴ": {
+    "slug": "umitanago",
+    "season": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
+    "method": [
+      "ウキ釣り"
+    ],
+    "bottom": [
+      "岩礁"
+    ],
+    "image": "/static/img/fish/umitanago.jpg",
+    "min_temp": 12,
+    "max_temp": 22,
+    "peak_temp": 16,
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
+    "max_wave": 0.8,
+    "tide": "either",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "九州"
+  },
+  "イワシ": {
+    "slug": "iwashi",
+    "season": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "peak_season": [
+      6,
+      7,
+      8
+    ],
+    "method": [
+      "サビキ釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "image": "/static/img/fish/iwashi.jpg",
+    "min_temp": 12,
+    "max_temp": 24,
+    "peak_temp": 18,
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "max_wave": 1.0,
+    "tide": "either",
+    "time": [
+      "dawn",
+      "day"
+    ],
+    "north_limit": "北海道",
+    "south_limit": "沖縄"
+  },
+  "サヨリ": {
+    "slug": "sayori",
+    "season": [
+      3,
+      4,
+      5,
+      6,
+      10,
+      11,
+      12
+    ],
+    "peak_season": [
+      3,
+      4,
+      5
+    ],
+    "method": [
+      "ウキ釣り"
+    ],
+    "bottom": [
+      "砂地"
+    ],
+    "image": "/static/img/fish/sayori.jpg",
+    "min_temp": 12,
+    "max_temp": 22,
+    "peak_temp": 15,
+    "best_months": [
+      3,
+      4,
+      5
+    ],
+    "max_wave": 0.5,
+    "tide": "rising",
+    "time": [
+      "day"
+    ],
+    "north_limit": "北海道南部",
+    "south_limit": "沖縄"
+>>>>>>> master
   }
 }

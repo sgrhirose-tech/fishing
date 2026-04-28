@@ -45,6 +45,10 @@
     "iwashi"
   ],
   "harbor_code": "30-7",
+<<<<<<< HEAD
   "harbor_name": "比井湾",
   "updated_at": "2026-04-18"
+=======
+  "harbor_name": "比井湾"
+>>>>>>> master
 }

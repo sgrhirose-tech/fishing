@@ -42,6 +42,10 @@
     "haze"
   ],
   "harbor_code": "13-2",
+<<<<<<< HEAD
   "harbor_name": "芝浦",
   "updated_at": "2026-04-18"
+=======
+  "harbor_name": "芝浦"
+>>>>>>> master
 }

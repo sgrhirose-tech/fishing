@@ -256,7 +256,10 @@ related_spots:
   - yui-gyoko
   - yuigahama
   - zaimokuza-kaigan
+<<<<<<< HEAD
 updated: 2026-04-18
+=======
+>>>>>>> master
 ---
 
 # 親子釣り完全ガイド
