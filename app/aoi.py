@@ -258,7 +258,7 @@ def call_claude(system_prompt: str, user_message: str) -> tuple[str, dict]:
             {
                 "type": "text",
                 "text": system_prompt,
-                "cache_control": {"type": "ephemeral"},
+                "cache_control": {"type": "ephemeral", "ttl": "1h"},
             }
         ],
         "messages": [{"role": "user", "content": user_message}],
@@ -270,7 +270,7 @@ def call_claude(system_prompt: str, user_message: str) -> tuple[str, dict]:
         headers={
             "x-api-key": api_key,
             "anthropic-version": "2023-06-01",
-            "anthropic-beta": "prompt-caching-2024-07-31",
+            "anthropic-beta": "prompt-caching-2024-07-31,extended-cache-ttl-2025-04-11",
             "content-type": "application/json",
         },
         method="POST",
@@ -505,23 +505,27 @@ class AoiRateLimiter:
     """
 
     RATE_LIMIT_DAY   = 50
-    RATE_LIMIT_NIGHT = 20
+    RATE_LIMIT_NIGHT = 10
     RATE_LIMIT_DAILY = 300
+    RATE_LIMIT_IP_DAY   = 20
+    RATE_LIMIT_IP_NIGHT = 5
 
     def __init__(self) -> None:
         self._lock              = threading.Lock()
         self._hourly: dict[str, int] = {}
         self._daily:  dict[str, int] = {}
+        self._ip_hourly: dict[str, int] = {}
         self._alerted_hour: set[str] = set()
         self._alerted_daily_date     = ""
 
-    def check_and_consume(self) -> bool:
+    def check_and_consume(self, client_ip: str | None = None) -> bool:
         """呼び出し可能なら True（カウント増）、超過なら False（ノーカウント）。"""
         now      = datetime.now(JST)
         hour_key = now.strftime("%Y-%m-%dT%H")
         date_key = now.strftime("%Y-%m-%d")
         is_night = now.hour < 6 or now.hour >= 22
-        limit_h  = self.RATE_LIMIT_NIGHT if is_night else self.RATE_LIMIT_DAY
+        limit_h    = self.RATE_LIMIT_NIGHT    if is_night else self.RATE_LIMIT_DAY
+        limit_ip_h = self.RATE_LIMIT_IP_NIGHT if is_night else self.RATE_LIMIT_IP_DAY
 
         with self._lock:
             hourly_count = self._hourly.get(hour_key, 0)
@@ -546,6 +550,13 @@ class AoiRateLimiter:
                     )
                 return False
 
+            if client_ip:
+                ip_key = f"{client_ip}@{hour_key}"
+                ip_count = self._ip_hourly.get(ip_key, 0)
+                if ip_count >= limit_ip_h:
+                    return False
+                self._ip_hourly[ip_key] = ip_count + 1
+
             self._hourly[hour_key] = hourly_count + 1
             self._daily[date_key]  = daily_count  + 1
             return True
@@ -559,6 +570,72 @@ class AoiRateLimiter:
 
 
 _rate_limiter = AoiRateLimiter()
+
+
+# ── コストアラート ────────────────────────────────────────────────────────────
+
+class AoiCostTracker:
+    """日次・月次の API コストを追跡し、閾値超過でメール通知する。
+
+    - 1日合計 ALERT_DAILY_YEN 円超で警告（1日1回）
+    - 月間合計 ALERT_MONTHLY_YEN 円超で警告（月1回）
+    """
+
+    ALERT_DAILY_YEN   = 300
+    ALERT_MONTHLY_YEN = 5_000
+    _USD_TO_JPY       = 150
+
+    def __init__(self) -> None:
+        self._lock                   = threading.Lock()
+        self._daily:  dict[str, float] = {}
+        self._monthly: dict[str, float] = {}
+        self._alerted_daily:  set[str]  = set()
+        self._alerted_monthly: set[str] = set()
+
+    def record(self, usage: dict) -> None:
+        """usage dict からコストを計算して累計に加算し、閾値超過をチェックする。"""
+        cost = (
+            usage.get("input_tokens", 0)                  / 1_000_000 * 0.80 * self._USD_TO_JPY
+            + usage.get("cache_creation_input_tokens", 0) / 1_000_000 * 1.00 * self._USD_TO_JPY
+            + usage.get("cache_read_input_tokens", 0)     / 1_000_000 * 0.08 * self._USD_TO_JPY
+            + usage.get("output_tokens", 0)               / 1_000_000 * 4.00 * self._USD_TO_JPY
+        )
+        now       = datetime.now(JST)
+        date_key  = now.strftime("%Y-%m-%d")
+        month_key = now.strftime("%Y-%m")
+
+        with self._lock:
+            daily_total   = self._daily.get(date_key, 0.0) + cost
+            monthly_total = self._monthly.get(month_key, 0.0) + cost
+            self._daily[date_key]    = daily_total
+            self._monthly[month_key] = monthly_total
+
+            if daily_total >= self.ALERT_DAILY_YEN and date_key not in self._alerted_daily:
+                self._alerted_daily.add(date_key)
+                self._send_alert(
+                    f"[Tsuricast 警告] 葵ちゃん1日コスト {self.ALERT_DAILY_YEN}円超 {date_key}",
+                    f"{date_key} の推定コストが {daily_total:.0f}円 に達しました"
+                    f"（上限 {self.ALERT_DAILY_YEN}円）。\n"
+                    f"月間累計: {monthly_total:.0f}円",
+                )
+
+            if monthly_total >= self.ALERT_MONTHLY_YEN and month_key not in self._alerted_monthly:
+                self._alerted_monthly.add(month_key)
+                self._send_alert(
+                    f"[Tsuricast 警告] 葵ちゃん月間コスト {self.ALERT_MONTHLY_YEN}円超 {month_key}",
+                    f"{month_key} の推定コストが {monthly_total:.0f}円 に達しました"
+                    f"（上限 {self.ALERT_MONTHLY_YEN}円）。",
+                )
+
+    @staticmethod
+    def _send_alert(subject: str, body: str) -> None:
+        try:
+            send_mail(subject, body)
+        except Exception:
+            pass
+
+
+_cost_tracker = AoiCostTracker()
 
 
 # ── コメントキャッシュ ────────────────────────────────────────────────────────
@@ -653,6 +730,7 @@ def get_or_generate_comment(
     spot: dict,
     date_label: str,
     date_str: str,
+    client_ip: str | None = None,
 ) -> dict | None:
     """キャッシュからコメントを返す。なければ生成してキャッシュに保存する。
 
@@ -661,6 +739,7 @@ def get_or_generate_comment(
         spot: スポット dict
         date_label: "今日" or "明日"
         date_str: "2026-04-27" 形式
+        client_ip: クライアントIP（IP別レート制限用、省略可）
 
     Returns:
         {"comment": str, "mode": str} or None (失敗・レート制限超過時)
@@ -685,7 +764,7 @@ def get_or_generate_comment(
             return {"comment": cached["comment"], "mode": cached["mode"]}
 
         # 4. レート制限チェック（API呼び出し直前にのみ消費）
-        if not _rate_limiter.check_and_consume():
+        if not _rate_limiter.check_and_consume(client_ip):
             return None
 
         # 5. 気象データ取得
@@ -721,7 +800,10 @@ def get_or_generate_comment(
         # 10. キャッシュ保存
         _cache.set(cache_key, {"comment": comment, "mode": mode})
 
-        # 11. ログ追記
+        # 11. コスト追跡（閾値超過でメール通知）
+        _cost_tracker.record(_usage)
+
+        # 12. ログ追記
         _log_web_generation(slug, spot.get("name", slug), date_label, date_str,
                             mode, comment, user_msg, _usage)
 
