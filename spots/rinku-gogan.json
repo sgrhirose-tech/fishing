@@ -33,7 +33,11 @@
   },
   "classification": {
     "primary_type": "breakwater",
+<<<<<<< HEAD
     "confidence": 1.0,
+=======
+    "confidence": 0.0,
+>>>>>>> master
     "secondary_flags": [
       "parking_nearby"
     ],

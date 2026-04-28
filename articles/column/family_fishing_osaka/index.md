@@ -30,7 +30,10 @@ related_spots:
   - uchinourawanko-gogan
   - wakanoura-gyoko
   - wakayama-ko
+<<<<<<< HEAD
 updated: 2026-04-18
+=======
+>>>>>>> master
 ---
 
 # 子連れで行ける海釣り場【大阪版】

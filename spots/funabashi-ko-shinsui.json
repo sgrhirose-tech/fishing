@@ -51,6 +51,10 @@
     "haze"
   ],
   "harbor_code": "12-18",
+<<<<<<< HEAD
   "harbor_name": "船橋",
   "updated_at": "2026-04-18"
+=======
+  "harbor_name": "船橋"
+>>>>>>> master
 }
