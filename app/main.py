@@ -353,16 +353,21 @@ def _rss_refresh_loop() -> None:
 def _aoi_report_loop() -> None:
     """毎朝6時(JST)に前日分の葵ちゃんコメント生成ログをメール送信するループ。"""
     import threading as _th
+    print("[aoi] 日次レポートループ起動")
     while True:
         now = datetime.now(JST)
         next_6am = now.replace(hour=6, minute=0, second=0, microsecond=0)
         if now >= next_6am:
             next_6am += timedelta(days=1)
-        _th.Event().wait((next_6am - now).total_seconds())
+        wait_sec = (next_6am - now).total_seconds()
+        print(f"[aoi] 次回送信予定: {next_6am.strftime('%Y-%m-%d %H:%M JST')} ({wait_sec/3600:.1f}h後)")
+        _th.Event().wait(wait_sec)
 
         yesterday = (datetime.now(JST) - timedelta(days=1)).strftime("%Y-%m-%d")
+        print(f"[aoi] 日次レポート処理開始: {yesterday}")
         try:
             records = get_web_log_records(yesterday)
+            print(f"[aoi] レコード取得: {len(records)}件")
             send_aoi_report_email(yesterday, records)
         except Exception as e:
             print(f"[aoi] 日次レポートメール送信エラー: {e}")
@@ -1291,6 +1296,31 @@ SPOT_TYPE_LABELS = {
     "sand_beach":       "砂浜",
     "fishing_facility": "釣り公園・施設",
 }
+
+@app.get("/api/aoi/log")
+def aoi_log_api(n: int = 50, date: str = ""):
+    """コメントログの最新N件を返す。date=YYYY-MM-DD で絞り込み可。"""
+    from app.aoi import _WEB_LOG_PATH
+    import json as _json
+    records: list[dict] = []
+    try:
+        with open(_WEB_LOG_PATH, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    r = _json.loads(line)
+                    if not date or r.get("ts", "").startswith(date):
+                        records.append(r)
+                except _json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        pass
+    recent = records[-n:]
+    recent.reverse()
+    return {"count": len(recent), "records": recent}
+
 
 @app.get("/api/aoi/{slug}")
 def aoi_comment_api(slug: str, date_label: str = "today", request: Request = None):
