@@ -1558,6 +1558,30 @@ _CATEGORY_CARD: dict[str, str] = {
 _ARTICLE_CARD_DIR = _BASE / "static" / "img" / "articles"
 
 
+def _jpeg_dims(path: "Path") -> tuple[int, int]:
+    """JPEG ファイルの (width, height) を返す。読み取れない場合は (1200, 628)。"""
+    import struct
+    try:
+        data = path.read_bytes()
+        i = 0
+        while i < len(data) - 3:
+            if data[i] != 0xFF:
+                break
+            marker = data[i + 1]
+            if marker in (0xC0, 0xC1, 0xC2):
+                h = struct.unpack(">H", data[i + 5:i + 7])[0]
+                w = struct.unpack(">H", data[i + 7:i + 9])[0]
+                return w, h
+            if marker in (0xD8, 0xD9, 0x01):
+                i += 2
+                continue
+            length = struct.unpack(">H", data[i + 2:i + 4])[0]
+            i += 2 + length
+    except Exception:
+        pass
+    return 1200, 628
+
+
 def _article_card_image(category: str, slug: str) -> str:
     """記事専用サムネイルの絶対 URL パス（/ 始まり）を返す。優先順位:
     1. articles/{category}/{slug}/img/card.jpg  → /article-assets/{category}/{slug}/img/card.jpg
@@ -1891,9 +1915,10 @@ def page_article_detail(request: Request, category: str, slug: str):
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
         pm["part_slug"] = p.stem
         part_metas.append(pm)
-    card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
     related_spots = [s for rs in (meta.get("related_spots") or []) if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
+    local_card = _ARTICLES_DIR / category / slug / "img" / "card.jpg"
+    card_w, card_h = _jpeg_dims(local_card) if local_card.exists() else (1200, 628)
     _raw_date = meta.get("updated") or meta.get("updated_at") or ""
     if _raw_date:
         try:
@@ -1911,6 +1936,8 @@ def page_article_detail(request: Request, category: str, slug: str):
         "slug": slug,
         "category": category,
         "card_image": card_image,
+        "card_image_width": card_w,
+        "card_image_height": card_h,
         "parts": part_metas,
         "related_spots": related_spots,
         "updated_at": updated_at,
@@ -1944,9 +1971,10 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
     idx = all_parts.index(part_slug) if part_slug in all_parts else -1
     prev_part = all_parts[idx - 1] if idx > 0 else None
     next_part = all_parts[idx + 1] if 0 <= idx < len(all_parts) - 1 else None
-    card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
     related_spots = [s for rs in _parent_slugs if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
+    local_card = _ARTICLES_DIR / category / slug / "img" / "card.jpg"
+    card_w, card_h = _jpeg_dims(local_card) if local_card.exists() else (1200, 628)
     _raw_date = meta.get("updated") or meta.get("updated_at") or ""
     if _raw_date:
         try:
@@ -1962,6 +1990,8 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
         "slug": slug,
         "category": category,
         "card_image": card_image,
+        "card_image_width": card_w,
+        "card_image_height": card_h,
         "part_slug": part_slug,
         "prev_part": prev_part,
         "next_part": next_part,

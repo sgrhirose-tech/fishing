@@ -8,7 +8,9 @@
 {% block canonical %}https://tsuricast.jp/articles/{{ category }}/{{ slug }}/{% endblock %}
 {% block og_title %}{{ _title }} | Tsuricast{% endblock %}
 {% block og_desc %}{{ meta.description or _title }}{% endblock %}
-{% block og_image %}<meta property="og:image" content="https://tsuricast.jp{{ card_image }}">{% endblock %}
+{% block og_image %}<meta property="og:image" content="https://tsuricast.jp{{ card_image }}">
+  <meta property="og:image:width"  content="{{ card_image_width  | default(1200) }}">
+  <meta property="og:image:height" content="{{ card_image_height | default(628)  }}">{% endblock %}
 {% block tw_title %}{{ _title }}{% endblock %}
 {% block tw_desc %}{{ meta.description or _title }}{% endblock %}
 {% block tw_image %}https://tsuricast.jp{{ card_image }}{% endblock %}
