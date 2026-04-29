@@ -230,15 +230,6 @@
 </section>
 {% endif %}
 
-<<<<<<< HEAD
-<!-- 気象・スコア（JS で非同期ロード） -->
-<section class="weather-section">
-  <h2>明日&emsp;{{ tomorrow_jp }}の海況・気象情報</h2>
-  {% if preloaded_forecast and preloaded_forecast.days %}
-  {% set tmr = preloaded_forecast.days[0] %}
-  <div class="ssr-weather-summary" aria-hidden="false">
-    {% for p in tmr.periods %}
-=======
 <!-- 24時間チャート -->
 <section class="chart24-section">
   <div class="chart24-day-tabs">
@@ -249,7 +240,6 @@
   {% macro period_rows(day) %}
     {% if day and day.periods %}
     {% for p in day.periods %}
->>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     <div class="ssr-period">
       <strong>{{ p.period }}</strong>：
       {% if p.wave_height_raw is not none %}波 {{ p.wave_height_raw | round(1, 'ceil') }}m{% else %}波 --{% endif %}
@@ -604,13 +594,8 @@
     }
     var _pf = window.PRELOADED_FORECAST;
     if (_pf !== null && _pf !== undefined) {
-<<<<<<< HEAD
-      // サーバー側で計算済み（days が空でも API 再呼び出しはしない）
-=======
->>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
       renderForecast(_pf);
     } else {
-      // サーバー側がタイムアウト → JS 側で取得
       fetch('/api/forecast/' + SPOT.slug)
         .then(r => r.json())
         .then(data => renderForecast(data))

@@ -14,9 +14,9 @@
   <meta property="og:url"         content="{% block og_url %}https://tsuricast.jp{% endblock %}">
   <meta property="og:title"       content="{% block og_title %}{% block title2 %}Tsuricast{% endblock %}{% endblock %}">
   <meta property="og:description" content="{% block og_desc %}千葉・東京・神奈川・静岡・愛知・三重・大阪・和歌山の釣り場天気・波高情報。天気・風・波高・水温を毎日更新。{% endblock %}">
-  {% block og_image %}<meta property="og:image" content="https://tsuricast.jp/static/img/ogp.png?v=3">{% endblock %}
+  {% block og_image %}<meta property="og:image" content="https://tsuricast.jp/static/img/ogp.png?v=3">
   <meta property="og:image:width"  content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:height" content="630">{% endblock %}
   <link rel="canonical" href="{% block canonical %}https://tsuricast.jp{% endblock %}">
 
   <!-- Twitter Card -->
@@ -42,11 +42,7 @@
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <!-- カスタムCSS -->
-<<<<<<< HEAD
-  <link rel="stylesheet" href="/static/css/style.css?v=22">
-=======
   <link rel="stylesheet" href="/static/css/style.css?v=32">
->>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SCVHBC5134"></script>
   <script>
@@ -58,6 +54,7 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1877528534583136"
        crossorigin="anonymous"></script>
+  {% block extra_head %}{% endblock %}
 </head>
 <body>
   <header>
