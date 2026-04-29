@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block extra_head %}<link rel="alternate" type="application/rss+xml" title="Tsuricast釣り場コラム" href="https://tsuricast.jp/articles/rss.xml">{% endblock %}
+
 {% set _title = display_title or meta.title or slug %}
 {% block title %}{{ _title }} | 釣りコラム | Tsuricast{% endblock %}
 {% block description %}{{ meta.description or _title }}{% endblock %}
