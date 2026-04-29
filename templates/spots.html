@@ -4,6 +4,7 @@
 {% block description %}{{ seo_description or auto_description }}{% endblock %}
 {% block og_url %}{{ canonical_url }}{% endblock %}
 {% block canonical %}{{ canonical_url }}{% endblock %}
+{% if noindex %}{% block robots_meta %}<meta name="robots" content="noindex,follow">{% endblock %}{% endif %}
 
 {% block content %}
 {% if area_name %}
