@@ -1,12 +1,7 @@
 {% extends "base.html" %}
 
-<<<<<<< HEAD
-{% block title %}{{ area_name }}の釣り場{{ spot_count }}か所 | {{ pref_name }} | Tsuricast{% endblock %}
-{% block description %}{{ area_name }}（{{ pref_name }}）の釣り場{{ spot_count }}か所。{% if top_fish_jp %}{{ top_fish_jp[:3]|join('・') }}などが狙えます。{% endif %}天気・波高・潮汐情報あり。{% endblock %}
-=======
 {% block title %}{% if seo_title %}{{ seo_title }}{% else %}{{ area_name }}の釣り場{{ spot_count }}か所 | {{ pref_name }} | Tsuricast{% endif %}{% endblock %}
 {% block description %}{% if seo_description %}{{ seo_description }}{% else %}{{ area_name }}（{{ pref_name }}）の釣り場{{ spot_count }}か所。{% if top_fish_jp %}{{ top_fish_jp[:3]|join('・') }}などが狙えます。{% endif %}天気・波高・潮汐情報あり。{% endif %}{% endblock %}
->>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 
