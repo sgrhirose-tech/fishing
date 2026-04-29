@@ -441,6 +441,46 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Tsuricast", lifespan=lifespan, redirect_slashes=True)
 
+# ---- 旧URL・404 リダイレクトマップ -----------------------------------------
+# Google Search Console で確認した 404 URL を正しい URL へ 301 リダイレクト
+_LEGACY_REDIRECTS: dict[str, str] = {
+    # スポットが存在しない → エリア / 市区町村ページへ
+    "/shizuoka/higashi-izu/atami/atami-fishing-facility": "/shizuoka/higashi-izu/",
+    "/wakayama/kii-suido-wakayama/tanabe/tanabe-gyoko":   "/wakayama/kii-suido-wakayama/",
+    "/kanagawa/sagamibay/odawara/kozukaigan":             "/kanagawa/sagamibay/odawara/",
+    "/chiba/sotobo/onjuku/onjuku-kaigan":                 "/chiba/sotobo/onjuku/",
+    "/kanagawa/miura/yokosuka/tsukuihama":                "/kanagawa/miura/yokosuka/",
+    "/chiba/uchibo/tateyama/mera-ko":                     "/chiba/uchibo/tateyama/mera-ko-uchibo",
+    "/wakayama/kumano-nada/isakizaki-port":               "/wakayama/kumano-nada/",
+    # double-slash 正規化後に残るゴミ path
+    "/shizuoka/higashi-izu/ito-ko":                       "/shizuoka/higashi-izu/",
+    "/wakayama/kii-suido-wakayama/tanabe-gyoko":          "/wakayama/kii-suido-wakayama/",
+    # pref / area 組み合わせ誤り → 正しいエリアへ
+    "/kanagawa/miura/zushi":                              "/kanagawa/sagamibay/zushi/",
+    "/kanagawa/isewan/fujisawa":                          "/kanagawa/sagamibay/fujisawa/",
+    "/kanagawa/isewan":                                   "/kanagawa/",
+    "/kanagawa/shima-minami-ise/fujisawa":                "/kanagawa/sagamibay/fujisawa/",
+    "/kanagawa/shima-minami-ise/toba":                    "/kanagawa/",
+    "/kanagawa/shima-minami-ise":                         "/kanagawa/",
+    "/mie/miura/miura":                                   "/kanagawa/miura/",
+    # 記事・API
+    "/articles/info/tournament_procaster_a":              "/tackle/rod/casting-rod/",
+    "/cdn-cgi/l/email-protection":                        "/",
+    "/api/spots":                                         "/spots/",
+    "/chart":                                             "/",
+    "/tide":                                              "/",
+}
+
+@app.middleware("http")
+async def legacy_redirect_middleware(request: Request, call_next):
+    """旧URL・404 URL を正規 URL へ 301 リダイレクトする。
+    double-slash (//) を正規化してからマップを引く。"""
+    path = _re.sub(r"/+", "/", request.url.path)  # // → / に正規化
+    dest = _LEGACY_REDIRECTS.get(path.rstrip("/")) or _LEGACY_REDIRECTS.get(path)
+    if dest:
+        return RedirectResponse(url=dest, status_code=301)
+    return await call_next(request)
+
 # 静的ファイルとテンプレート
 import pathlib
 _BASE = pathlib.Path(__file__).parent.parent
