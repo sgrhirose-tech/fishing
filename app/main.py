@@ -742,14 +742,45 @@ def sitemap_xml():
             urls.append((f"{_BASE_URL}/{p}/{ar}/{c}/", "weekly", "0.6"))
         urls.append((f"{_BASE_URL}/{p}/{ar}/{c}/{sl}", "weekly", "0.5"))
 
+    # 記事ページ（noindex 記事は除外）
+    urls.append((f"{_BASE_URL}/articles/", "weekly", "0.8"))
+    for art in _load_articles():
+        if art.get("noindex") == "true":
+            continue
+        cat  = art.get("category", "")
+        slug = art.get("slug", "")
+        if not cat or not slug:
+            continue
+        lastmod = (art.get("updated") or "").strip()
+        base_url = f"{_BASE_URL}/articles/{cat}/{slug}/"
+        if lastmod:
+            urls.append((base_url, "monthly", "0.7", lastmod))
+        else:
+            urls.append((base_url, "monthly", "0.7"))
+        # パート記事（{slug}/*.md、index.md 以外）
+        slug_dir = _ARTICLES_DIR / cat / slug
+        if slug_dir.is_dir():
+            for part_md in sorted(slug_dir.glob("*.md")):
+                if part_md.name == "index.md":
+                    continue
+                part_lastmod = lastmod  # 親と同じ日付を使用
+                part_url = f"{_BASE_URL}/articles/{cat}/{slug}/{part_md.stem}/"
+                if part_lastmod:
+                    urls.append((part_url, "monthly", "0.6", part_lastmod))
+                else:
+                    urls.append((part_url, "monthly", "0.6"))
+
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ]
-    for loc, freq, pri in urls:
+    for entry in urls:
+        loc, freq, pri = entry[0], entry[1], entry[2]
+        lastmod = entry[3] if len(entry) > 3 else None
+        lines += ["  <url>", f"    <loc>{loc}</loc>"]
+        if lastmod:
+            lines.append(f"    <lastmod>{lastmod}</lastmod>")
         lines += [
-            "  <url>",
-            f"    <loc>{loc}</loc>",
             f"    <changefreq>{freq}</changefreq>",
             f"    <priority>{pri}</priority>",
             "  </url>",
@@ -1711,6 +1742,7 @@ def _load_articles() -> list:
             content = md_path.read_text(encoding="utf-8")
             meta, _ = _extract_article_meta(content, slug)
             meta["category"] = cat_dir.name
+            meta["slug"] = slug
             meta["card_image"] = _article_card_image(cat_dir.name, slug)
             _updated_str = (meta.get("updated") or "").strip()
             if _updated_str:
