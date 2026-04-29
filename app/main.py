@@ -1257,6 +1257,31 @@ SPOT_TYPE_LABELS = {
     "fishing_facility": "釣り公園・施設",
 }
 
+@app.get("/api/aoi/log")
+def aoi_log_api(n: int = 50, date: str = ""):
+    """コメントログの最新N件を返す。date=YYYY-MM-DD で絞り込み可。"""
+    from app.aoi import _WEB_LOG_PATH
+    import json as _json
+    records: list[dict] = []
+    try:
+        with open(_WEB_LOG_PATH, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    r = _json.loads(line)
+                    if not date or r.get("ts", "").startswith(date):
+                        records.append(r)
+                except _json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        pass
+    recent = records[-n:]
+    recent.reverse()
+    return {"count": len(recent), "records": recent}
+
+
 @app.get("/api/aoi/{slug}")
 def aoi_comment_api(slug: str, date_label: str = "today", request: Request = None):
     """葵ちゃんコメント取得エンドポイント。キャッシュヒット時は即返却、ミス時は生成。
