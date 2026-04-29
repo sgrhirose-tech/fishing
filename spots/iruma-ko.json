@@ -46,9 +46,9 @@
   ],
   "harbor_code": "22-7",
 <<<<<<< HEAD
+  "harbor_name": "妻良子浦"
+=======
   "harbor_name": "妻良子浦",
   "updated_at": "2026-04-18"
-=======
-  "harbor_name": "妻良子浦"
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 }

@@ -42,9 +42,9 @@
   ],
   "harbor_code": "13-14",
 <<<<<<< HEAD
+  "harbor_name": "晴海"
+=======
   "harbor_name": "晴海",
   "updated_at": "2026-04-18"
-=======
-  "harbor_name": "晴海"
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 }

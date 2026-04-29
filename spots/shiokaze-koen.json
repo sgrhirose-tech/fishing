@@ -43,9 +43,9 @@
   ],
   "harbor_code": "13-2",
 <<<<<<< HEAD
+  "harbor_name": "芝浦"
+=======
   "harbor_name": "芝浦",
   "updated_at": "2026-04-18"
-=======
-  "harbor_name": "芝浦"
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 }

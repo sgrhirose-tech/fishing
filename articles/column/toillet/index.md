@@ -256,9 +256,9 @@ related_spots:
   - yuigahama
   - zaimokuza-kaigan
 <<<<<<< HEAD
-updated: 2026-04-18
 =======
->>>>>>> master
+updated: 2026-04-18
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 ---
 
 # 釣りとトイレ問題  

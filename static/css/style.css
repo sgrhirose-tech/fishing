@@ -1332,6 +1332,7 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 }
 .qa-a::before { content: "A"; position: absolute; left: 0; color: #e07020; font-weight: bold; }
 <<<<<<< HEAD
+=======
 
 /* ライブカメラセクション */
 .spot-cameras { margin: 2rem 0; }
@@ -1403,5 +1404,4 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .notfound-back { margin: 1.75rem 0 2.5rem; }
 .notfound-back-link { display: inline-block; padding: .7rem 1.6rem; background: #1a6b9e; color: #fff; border-radius: 6px; font-size: 1rem; font-weight: bold; text-decoration: none; }
 .notfound-back-link:hover { background: #145580; }
-=======
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7

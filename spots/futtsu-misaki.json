@@ -33,10 +33,10 @@
   "classification": {
     "primary_type": "sand_beach",
 <<<<<<< HEAD
-    "confidence": 1.0,
-=======
     "confidence": 0.0,
->>>>>>> master
+=======
+    "confidence": 1.0,
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     "secondary_flags": [
       "parking_nearby"
     ],

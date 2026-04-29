@@ -1107,7 +1107,6 @@
     }
   ],
 <<<<<<< HEAD
-=======
   "atami-fishing-facility": [
     {
       "type": "トイレ",
@@ -1182,7 +1181,8 @@
       "symbol": "P"
     }
   ],
->>>>>>> master
+=======
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
   "atami-ko-umizuri": [
     {
       "type": "トイレ",
@@ -1329,6 +1329,7 @@
     },
     {
 <<<<<<< HEAD
+=======
       "type": "駐車場",
       "name": "駐車場",
       "lat": 34.6887317,
@@ -1345,8 +1346,7 @@
       "symbol": "P"
     },
     {
-=======
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
       "type": "コンビニ",
       "name": "ファミリーマート",
       "lat": 34.6903786,
@@ -5775,7 +5775,6 @@
   ],
   "inatori-ko": [
 <<<<<<< HEAD
-=======
     {
       "type": "駐車場",
       "name": "駐車場",
@@ -7066,7 +7065,8 @@
       "color": "#1565C0",
       "symbol": "P"
     },
->>>>>>> master
+=======
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     {
       "type": "駐車場",
       "name": "駐車場",
@@ -7093,6 +7093,7 @@
     }
   ],
 <<<<<<< HEAD
+=======
   "inatorigawa-ko": [
     {
       "type": "駐車場",
@@ -7349,8 +7350,7 @@
       "symbol": "P"
     }
   ],
-=======
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
   "ishibu-beach": [],
   "ishikagami-gyoko": [],
   "ishikoura-ko": [],
@@ -15605,9 +15605,6 @@
       "type": "駐車場",
       "name": "駐車場",
 <<<<<<< HEAD
-      "lat": 35.1865105,
-      "lon": 139.6518534,
-=======
       "lat": 35.1865118,
       "lon": 139.6518567,
       "color": "#1565C0",
@@ -15618,7 +15615,10 @@
       "name": "駐車場",
       "lat": 35.1859148,
       "lon": 139.651998,
->>>>>>> master
+=======
+      "lat": 35.1865105,
+      "lon": 139.6518534,
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
       "color": "#1565C0",
       "symbol": "P"
     },
@@ -15648,7 +15648,6 @@
     },
     {
 <<<<<<< HEAD
-=======
       "type": "トイレ",
       "name": "トイレ",
       "lat": 35.1825718,
@@ -15657,7 +15656,8 @@
       "symbol": "WC"
     },
     {
->>>>>>> master
+=======
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
       "type": "駐車場",
       "name": "駐車場",
       "lat": 35.1811387,
@@ -15721,6 +15721,7 @@
       "color": "#1565C0",
       "symbol": "P"
 <<<<<<< HEAD
+=======
     },
     {
       "type": "駐車場",
@@ -15817,8 +15818,7 @@
       "lon": 139.6516395,
       "color": "#1565C0",
       "symbol": "P"
-=======
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     }
   ],
   "miwasaki-port": [],
@@ -19492,7 +19492,6 @@
   ],
   "otohama-ko": [],
 <<<<<<< HEAD
-=======
   "otsu-ko-shinteibo": [
     {
       "type": "コンビニ",
@@ -19599,7 +19598,8 @@
       "symbol": "P"
     }
   ],
->>>>>>> master
+=======
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
   "otsu-shinteibo": [
     {
       "type": "コンビニ",
@@ -20878,9 +20878,9 @@
   "shimizu-gyoko": [],
   "shimizu-sodeshi-futo": [],
 <<<<<<< HEAD
-  "shimizuko-umidzuri": [],
 =======
->>>>>>> master
+  "shimizuko-umidzuri": [],
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
   "shimoda-ko-inubashiri": [
     {
       "type": "トイレ",
@@ -21032,7 +21032,6 @@
   "shimosato-port": [],
   "shimosu-ko-ban": [
 <<<<<<< HEAD
-=======
     {
       "type": "駐車場",
       "name": "駐車場",
@@ -21051,7 +21050,8 @@
     }
   ],
   "shimosu-port": [
->>>>>>> master
+=======
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     {
       "type": "駐車場",
       "name": "駐車場",
@@ -22276,7 +22276,6 @@
   ],
   "sodegaura-imai-ban": [],
 <<<<<<< HEAD
-=======
   "sodegaura-kaihin-koen": [
     {
       "type": "駐車場",
@@ -22295,7 +22294,8 @@
       "symbol": "P"
     }
   ],
->>>>>>> master
+=======
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
   "sodegaura-kitasode": [
     {
       "type": "駐車場",
@@ -26201,12 +26201,12 @@
   ],
   "_meta": {
 <<<<<<< HEAD
-    "generated_at": "2026-04-27T03:51:59.240608+09:00",
-    "spot_count": 629,
-=======
     "generated_at": "2026-04-16T11:07:20.624773+09:00",
     "spot_count": 634,
->>>>>>> master
+=======
+    "generated_at": "2026-04-27T03:51:59.240608+09:00",
+    "spot_count": 629,
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     "radius_m": 500
   }
 }

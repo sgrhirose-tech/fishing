@@ -31,9 +31,9 @@ related_spots:
   - wakanoura-gyoko
   - wakayama-ko
 <<<<<<< HEAD
-updated: 2026-04-18
 =======
->>>>>>> master
+updated: 2026-04-18
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 ---
 
 # 子連れで行ける海釣り場【大阪版】

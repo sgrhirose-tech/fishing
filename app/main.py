@@ -21,11 +21,11 @@ except ImportError:
 
 from fastapi import FastAPI, HTTPException, Query
 <<<<<<< HEAD
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
+=======
 from fastapi.exception_handlers import http_exception_handler
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
-=======
-from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -65,6 +65,7 @@ _METHOD_SLUG_TO_NAME: dict = {}  # {slug: 釣法名}
 # ── ページリード文 ────────────────────────────────────────────
 _PAGE_LEADS: dict = {}  # {"pref/area/city-key": "リード文", ...}
 <<<<<<< HEAD
+=======
 _AREA_SEO: dict = {}   # {"pref/area-key": {"title": ..., "description": ...}, ...}
 
 def _load_area_seo() -> None:
@@ -76,8 +77,7 @@ def _load_area_seo() -> None:
         print(f"[area_seo] {len(_AREA_SEO)} 件のSEO上書き設定を読み込みました")
     except Exception as e:
         print(f"[area_seo] 読み込みエラー: {e}")
-=======
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 
 def _load_page_leads() -> None:
     global _PAGE_LEADS
@@ -261,15 +261,15 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
             top_month = mcnt.most_common(1)[0][0]
             top3 = sorted(m for m, _ in mcnt.most_common(3))
 <<<<<<< HEAD
-            months_str = "・".join(f"{m}月" for m in top3)
-            qa.append({"q": "何月頃が釣りやすいですか？",
-                       "a": f"{months_str}頃が全体的に魚の活性が上がりやすい時期です。"})
-=======
             season = _month_to_season(top_month)
             months_str = "・".join(f"{m}月" for m in top3)
             qa.append({"q": "何月頃が釣りやすいですか？",
                        "a": f"{season}（{months_str}頃）が全体的に魚の活性が上がりやすい時期です。"})
->>>>>>> master
+=======
+            months_str = "・".join(f"{m}月" for m in top3)
+            qa.append({"q": "何月頃が釣りやすいですか？",
+                       "a": f"{months_str}頃が全体的に魚の活性が上がりやすい時期です。"})
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 
     # ── 施設区分別 ────────────────────────────────────────
     if ptype == "rocky_shore":
@@ -288,11 +288,11 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
             qa.append({"q": "干潮時でも釣りはできますか？",
                        "a": "干潮時は水深が浅くなり釣りがしにくくなります。満潮前後の時間帯がおすすめです。"})
 <<<<<<< HEAD
+=======
         if any(k in lead for k in ("柵", "フェンス")):
             qa.append({"q": "柵は設置されていますか？",
                        "a": "柵が設置されていますが、お子様にはライフジャケット着用をお勧めします。"})
-=======
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 
     elif ptype == "sand_beach":
         if any(k in lead for k in ("根掛かり", "沈みテトラ", "岩礁")):
@@ -438,9 +438,9 @@ async def lifespan(app: FastAPI):
     _load_method_master()
     _load_page_leads()
 <<<<<<< HEAD
-    _load_area_seo()
 =======
->>>>>>> master
+    _load_area_seo()
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     _slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     templates.env.globals["fish_slug_map"] = _slug_map
     templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
@@ -826,7 +826,6 @@ def api_forecast(slug: str):
     _FORECAST_CACHE[slug] = (time.time(), result)
     return result
 <<<<<<< HEAD
-=======
 
 
 @app.get("/api/ai-comment/{slug}")
@@ -851,7 +850,8 @@ def api_ai_comment(slug: str):
     periods = days[0]["periods"] if days else []
     text = generate_spot_comment(spot, periods, tomorrow)
     return {"comment": text, "date": tomorrow}
->>>>>>> master
+=======
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 
 
 @app.get("/api/osm/{slug}")
@@ -2248,9 +2248,9 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
     if _fish_str:
         _intro.append(f"{_fish_str}などが主なターゲットです。")
 <<<<<<< HEAD
-    _area_seo = _AREA_SEO.get(f"{pref_slug}/{area_slug}", {})
 =======
->>>>>>> master
+    _area_seo = _AREA_SEO.get(f"{pref_slug}/{area_slug}", {})
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     return templates.TemplateResponse(request, "area.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -2265,10 +2265,10 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
         "intro_text": "".join(_intro),
         "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}", ""),
 <<<<<<< HEAD
+=======
         "seo_title": _area_seo.get("title", ""),
         "seo_description": _area_seo.get("description", ""),
-=======
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     })
 
 
@@ -2466,10 +2466,10 @@ def page_spot_detail(
         blog_posts = []
     qa_items = _build_spot_qa(spot, cached_facilities)
 <<<<<<< HEAD
-    # 釣り禁止判定と代替スポット
-=======
     # 釣り禁止判定と近隣スポット
->>>>>>> master
+=======
+    # 釣り禁止判定と代替スポット
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     is_kinshi = _is_fully_kinshi(spot)
     kinshi_nearby = _get_nearby_spots(spot) if is_kinshi else []
     _info = spot.get("info") or {}
@@ -2553,9 +2553,9 @@ def page_spot_detail(
         "nearby_spots":       nearby_spots,
         "qa_items":           qa_items,
 <<<<<<< HEAD
+=======
         "spot_updated_at":    spot_updated_at,
         "lead_text_date":     lead_text_date,
         "cameras":            get_spot_cameras(slug),
-=======
->>>>>>> master
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     })
