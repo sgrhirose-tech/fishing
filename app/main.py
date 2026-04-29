@@ -1243,13 +1243,13 @@ def aoi_comment_api(slug: str, date_label: str = "today", request: Request = Non
     return result or {}
 
 
-@app.get("/spots/")
-def redirect_spots_slash(request: Request):
+@app.get("/spots")
+def redirect_spots_noslash(request: Request):
     qs = request.url.query
-    target = "/spots?" + qs if qs else "/spots"
+    target = "/spots/?" + qs if qs else "/spots/"
     return RedirectResponse(url=target, status_code=301)
 
-@app.get("/spots", response_class=HTMLResponse)
+@app.get("/spots/", response_class=HTMLResponse)
 def page_spots(
     request: Request,
     area: str = Query(None),
@@ -1291,8 +1291,9 @@ def page_spots(
     if fish:        _cparams["fish"] = fish
     if spot_type:   _cparams["type"] = spot_type
     if method:      _cparams["method"] = method
-    _cqs = _urlparse.urlencode(_cparams)
-    canonical_url = "https://tsuricast.jp/spots/" + (f"?{_cqs}" if _cqs else "")
+    has_filter = bool(_cparams)
+    # フィルター付き URL は canonical をベースページに固定して noindex
+    canonical_url = "https://tsuricast.jp/spots/"
 
     # 現在の絞り込み結果から魚種の出現頻度を集計（上位10件）
     from collections import Counter
@@ -1329,6 +1330,7 @@ def page_spots(
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
         "canonical_url":  canonical_url,
+        "noindex": has_filter,
         "seo_title": _spots_seo.get("title", ""),
         "seo_description": _spots_seo.get("description", ""),
         "auto_description": _auto_desc,
