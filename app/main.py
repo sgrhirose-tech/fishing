@@ -1784,21 +1784,18 @@ _MD_LINK_RE = _re.compile(r'href="\./([\w-]+)\.md"')
 _MD_IMG_RE  = _re.compile(r'src="(?:\./)?(img/[\w.@-]+)"')
 
 
+# mistune は "![alt](src)\ntext" を <p><img />\ntext</p> にまとめて出力する
 _AOI_SECTION_RE = _re.compile(
-    r'<h2>葵ちゃんコメント</h2>\s*(<img[^>]*>)?\s*<p>(.*?)</p>',
+    r'<h2>葵ちゃんコメント</h2>\s*<p>(<img[^>]*/?>)\s*(.*?)</p>',
     _re.DOTALL,
 )
 
 def _apply_aoi_card(html: str) -> str:
     """記事本文中の「葵ちゃんコメント」h2 セクションを .aoi-card スタイルに変換する。"""
     def _replace(m: _re.Match) -> str:
-        img_tag = m.group(1) or ""
-        comment = m.group(2)
-        if img_tag:
-            img_tag = _re.sub(r'class="[^"]*"', '', img_tag)
-            img_tag = img_tag.replace('<img ', '<img class="aoi-illust" ')
-        else:
-            img_tag = f'<img class="aoi-illust" src="/static/img/shop_girl_card.png" alt="葵ちゃん">'
+        img_tag = _re.sub(r'\s*class="[^"]*"', '', m.group(1))
+        img_tag = img_tag.replace('<img ', '<img class="aoi-illust" ')
+        comment = m.group(2).strip()
         return (
             '<div class="aoi-section">'
             '<div class="aoi-card">'
