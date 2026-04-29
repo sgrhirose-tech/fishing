@@ -1370,6 +1370,29 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .spot-report-row-body { display: flex; flex-direction: column; gap: .2rem; }
 .spot-report-row-meta { font-size: .8rem; color: #888; }
 
+/* ---- 葵ちゃんコメント ---- */
+.aoi-section { margin: 1.5rem 0; }
+.aoi-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: #f0f7ff;
+  border: 1px solid #c8dff5;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.aoi-illust {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.aoi-body { flex: 1; min-width: 0; }
+.aoi-label { font-size: 0.72rem; color: #888; margin-bottom: 0.3rem; }
+.aoi-comment { margin: 0 0 0.4rem; font-size: 0.95rem; line-height: 1.65; color: #222; }
+.aoi-disclaimer { font-size: 0.68rem; color: #bbb; }
+
 /* ---- 404 ページ ---- */
 .notfound { text-align: center; max-width: 720px; margin: 2rem auto; padding: 0 1rem; box-sizing: border-box; }
 .notfound-title { font-size: 1.6rem; margin: 1rem 0 .5rem; }
