@@ -28,7 +28,8 @@
     "notes": "ハゼ釣りの名所、公園設備充実でファミリー向き",
     "access": "稲永スポーツＣ［団地側］バス停から徒歩5分",
     "lead_text": "名古屋市港区・庄内川河口に広がる藤前干潟に面した稲永公園は、6月下旬〜10月がハゼのシーズンです。護岸から5mほど先にゴツゴツした岩が点在し、その沖は砂地になっています。満潮から潮が引くタイミングは川の流れと潮流が重なって流れが速くなり、常連さんはオモリを10号まで上げて対応しています。11月になると護岸より少し下流側のポイントで15cm超の良型が顔を出すといわれています。",
-    "photo_url": "/static/img/spots/inae-kouen.jpg"
+    "photo_url": "/static/img/spots/inae-kouen.jpg",
+    "description": "柵がありますが、お子様はすり抜け可能ですのでライフジャケット推奨です。"
   },
   "classification": {
     "primary_type": "fishing_facility",
@@ -43,5 +44,6 @@
     "haze"
   ],
   "harbor_code": "23-17",
-  "harbor_name": "名古屋"
+  "harbor_name": "名古屋",
+  "updated_at": "2026-04-25"
 }

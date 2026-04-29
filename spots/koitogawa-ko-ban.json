@@ -26,7 +26,7 @@
   },
   "info": {
     "notes": "この釣り場は2020年10月より釣り禁止となりました。",
-    "lead_text": "この釣り場は2020年10月より釣り禁止となりました。"
+    "lead_text": "この釣り場は2020年10月に釣り禁止となりました。"
   },
   "classification": {
     "primary_type": "fishing_facility",
@@ -39,5 +39,6 @@
   },
   "target_fish": [],
   "harbor_code": "12-15",
-  "harbor_name": "寒川"
+  "harbor_name": "寒川",
+  "updated_at": "2026-04-18"
 }

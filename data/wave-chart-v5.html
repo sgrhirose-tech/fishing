@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海況グラフ v5 - Tsuricast</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a1628;
+    color: #e8f4f8;
+    font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    padding: 16px;
+    min-height: 100vh;
+  }
+
+  .spot-header { margin-bottom: 20px; }
+  .spot-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .spot-meta { font-size: 13px; color: #6b8fa8; }
+
+  .chart-container {
+    background: #112240;
+    border: 1px solid #1e3a5f;
+    border-radius: 14px;
+    padding: 16px 12px 14px;
+  }
+
+  .chart-title {
+    font-size: 12px;
+    color: #6b8fa8;
+    margin-bottom: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .scroll-wrap {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .inner {
+    width: 960px;
+    position: relative;
+  }
+
+  .row {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .row-label {
+    width: 38px;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: #4a6fa8;
+    text-align: right;
+    padding-right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    line-height: 1.3;
+  }
+
+  .row-data {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  .cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(30, 58, 95, 0.4);
+    padding: 3px 0;
+  }
+
+  /* 天気行 */
+  .row-sky { margin-bottom: 4px; }
+  .cell-sky .hour {
+    font-size: 11px;
+    color: #6b8fa8;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .cell-sky .icon { font-size: 18px; line-height: 1; }
+
+  /* 気温行 */
+  .row-temp { margin-bottom: 4px; }
+  .cell-temp .val {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffb74d;
+  }
+
+  /* 風行 */
+  .row-wind { margin-bottom: 4px; }
+  .cell-wind .arrow { font-size: 18px; line-height: 1; margin-bottom: 2px; }
+  .cell-wind .spd {
+    font-size: 13px;
+    font-weight: 700;
+    color: #80cbc4;
+  }
+
+  /* グラフ行 */
+  .row-chart { margin-bottom: 4px; }
+  .chart-area { flex: 1; position: relative; }
+
+  /* 水温行 */
+  .row-seatemp { margin-top: 2px; }
+  .cell-sea .val {
+    font-size: 13px;
+    font-weight: 700;
+    color: #4fc3f7;
+  }
+
+  /* 凡例 */
+  .legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+    padding-left: 38px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #6b8fa8;
+  }
+  .legend-gradient {
+    width: 40px; height: 9px; border-radius: 2px;
+    background: linear-gradient(to right, #2196F3, #4CAF50, #FF9800, #F44336);
+  }
+  .legend-line { width: 20px; height: 2px; }
+
+  .period-scale {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 6px; font-size: 12px; color: #6b8fa8;
+    padding-left: 38px;
+  }
+</style>
+</head>
+<body>
+
+<div class="spot-header">
+  <div class="spot-name">茅ヶ崎ヘッドランド</div>
+  <div class="spot-meta">神奈川県 · 相模湾 · 砂浜 · 2026年4月24日</div>
+</div>
+
+<div class="chart-container">
+  <div class="chart-title">24時間予報</div>
+  <div class="scroll-wrap">
+    <div class="inner">
+
+      <div class="row row-sky">
+        <div class="row-label">天気</div>
+        <div class="row-data" id="rowSky"></div>
+      </div>
+
+      <div class="row row-temp">
+        <div class="row-label">気温<br>℃</div>
+        <div class="row-data" id="rowTemp"></div>
+      </div>
+
+      <div class="row row-wind">
+        <div class="row-label">風</div>
+        <div class="row-data" id="rowWind"></div>
+      </div>
+
+      <div class="row row-chart">
+        <div class="row-label">波・潮</div>
+        <div class="chart-area">
+          <canvas id="waveChart"></canvas>
+        </div>
+      </div>
+
+      <div class="row row-seatemp">
+        <div class="row-label">水温<br>℃</div>
+        <div class="row-data" id="rowSea"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-gradient"></div>
+      <span>波高（色=周期：青=短・赤=長）</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background:#4fc3f7"></div>
+      <span>潮汐</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background:#ef5350"></div>
+      <span>日の出・日の入り</span>
+    </div>
+  </div>
+  <div class="period-scale">
+    <span>周期:</span>
+    <span style="color:#2196F3">■ 4s</span>
+    <span style="color:#4CAF50">■ 8s</span>
+    <span style="color:#FF9800">■ 12s</span>
+    <span style="color:#F44336">■ 16s+</span>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+const hours = Array.from({length: 24}, (_, i) => i);
+
+const waveHeight   = [0.5,0.5,0.6,0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.2,1.1,1.0,0.9,0.8,0.8,0.7,0.7,0.6,0.6,0.5,0.5,0.5,0.5];
+const wavePeriod   = [5,5,5,6,6,7,7,8,9,10,11,11,10,9,8,7,7,6,6,5,5,5,5,5];
+const tide         = [120,100,85,75,72,80,98,125,155,180,195,200,195,180,158,135,112,95,85,82,88,103,125,148];
+const weatherIcons = ['🌧','🌧','🌧','🌦','🌦','🌦','⛅','⛅','⛅','🌤','🌤','🌤','⛅','⛅','🌦','🌦','🌦','🌧','🌧','🌧','🌧','🌧','🌧','🌧'];
+const temperature  = [11,11,11,11,12,12,13,13,13,14,14,13,13,12,12,12,11,11,11,11,10,10,10,10];
+const windSpeed    = [6,6,7,7,8,8,8,7,7,6,6,6,7,7,8,9,9,8,8,7,7,6,6,6];
+const windDir      = [0,0,10,10,15,20,20,15,10,5,0,355,350,345,340,335,330,330,335,340,345,350,355,0];
+const seaTemp      = [18.7,18.7,18.6,18.6,18.6,18.7,18.7,18.8,18.8,18.9,18.9,18.9,18.8,18.8,18.7,18.7,18.6,18.6,18.5,18.5,18.5,18.5,18.6,18.6];
+
+const sunrise = 5;
+const sunset  = 18;
+
+function periodToColor(p) {
+  const t = Math.min(Math.max((p - 4) / 12, 0), 1);
+  if (t < 0.33) {
+    const s = t / 0.33;
+    return `rgba(${Math.round(33+s*167)},${Math.round(150-s*75)},${Math.round(243-s*167)},0.9)`;
+  } else if (t < 0.66) {
+    const s = (t-0.33)/0.33;
+    return `rgba(${Math.round(200+s*55)},${Math.round(75+s*72)},${Math.round(76-s*56)},0.9)`;
+  } else {
+    const s = (t-0.66)/0.34;
+    return `rgba(255,${Math.round(147-s*110)},${Math.round(20-s*14)},0.9)`;
+  }
+}
+
+function degToArrow(deg) {
+  const a = ['↓','↙','←','↖','↑','↗','→','↘'];
+  return a[Math.round(((deg+180)%360)/45)%8];
+}
+
+function buildRow(id, cls, fn) {
+  const row = document.getElementById(id);
+  hours.forEach(h => {
+    const cell = document.createElement('div');
+    cell.className = `cell ${cls}`;
+    cell.innerHTML = fn(h);
+    row.appendChild(cell);
+  });
+}
+
+buildRow('rowSky',  'cell-sky',  h => `<div class="hour">${h}時</div><div class="icon">${weatherIcons[h]}</div>`);
+buildRow('rowTemp', 'cell-temp', h => `<div class="val">${temperature[h]}</div>`);
+buildRow('rowWind', 'cell-wind', h => `<div class="arrow">${degToArrow(windDir[h])}</div><div class="spd">${windSpeed[h]}</div>`);
+buildRow('rowSea',  'cell-sea',  h => `<div class="val">${seaTemp[h].toFixed(1)}</div>`);
+
+const chartArea = document.querySelector('.chart-area');
+const canvas = document.getElementById('waveChart');
+const areaWidth = 960 - 38;
+canvas.width  = areaWidth;
+canvas.height = 160;
+
+const barColors = wavePeriod.map(p => periodToColor(p));
+
+const verticalLinesPlugin = {
+  id: 'verticalLines',
+  afterDraw(chart) {
+    const {ctx, chartArea: ca, scales} = chart;
+    if (!ca) return;
+    [sunrise, sunset].forEach(h => {
+      const xPos = scales.x.getPixelForValue(h);
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(xPos, ca.top);
+      ctx.lineTo(xPos, ca.bottom);
+      ctx.strokeStyle = '#ef5350';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([4,3]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#ef5350';
+      ctx.font = 'bold 10px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(h === sunrise ? '日の出' : '日の入', xPos, ca.top + 10);
+      ctx.restore();
+    });
+  }
+};
+
+const ctx = canvas.getContext('2d');
+
+new Chart(ctx, {
+  data: {
+    labels: hours,
+    datasets: [
+      {
+        type: 'bar',
+        label: '波高',
+        data: waveHeight,
+        backgroundColor: barColors,
+        borderWidth: 0,
+        borderRadius: 3,
+        order: 2,
+        yAxisID: 'y',
+        barPercentage: 0.9,
+        categoryPercentage: 1.0,
+      },
+      {
+        type: 'line',
+        label: '潮汐',
+        data: tide,
+        borderColor: '#4fc3f7',
+        borderWidth: 2,
+        pointRadius: 0,
+        tension: 0.4,
+        fill: false,
+        order: 1,
+        yAxisID: 'y2',
+      }
+    ]
+  },
+  options: {
+    responsive: false,
+    animation: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0a1628',
+        borderColor: '#1e3a5f',
+        borderWidth: 1,
+        titleColor: '#e8f4f8',
+        bodyColor: '#aac4d8',
+        titleFont: { size: 13 },
+        bodyFont: { size: 12 },
+        callbacks: {
+          title: items => `${items[0].label}時`,
+          label: c => {
+            if (c.dataset.label === '波高') return ` 波高 ${c.parsed.y.toFixed(1)}m  周期 ${wavePeriod[c.dataIndex]}s`;
+            if (c.dataset.label === '潮汐') return ` 潮位 ${c.parsed.y}cm`;
+          }
+        }
+      }
+    },
+    layout: { padding: { top: 16 } },
+    scales: {
+      x: {
+        type: 'category',
+        offset: false,
+        grid: { color: 'rgba(30,58,95,0.4)', offset: false },
+        ticks: { display: false },
+        border: { display: false },
+      },
+      y: {
+        position: 'left',
+        min: 0, max: 2.0,
+        grid: { color: 'rgba(30,58,95,0.4)' },
+        ticks: {
+          color: '#6b8fa8',
+          font: { size: 11 },
+          callback: v => `${v}m`,
+          maxTicksLimit: 5
+        },
+        border: { display: false },
+      },
+      y2: {
+        position: 'right',
+        min: 0, max: 250,
+        grid: { display: false },
+        ticks: {
+          color: '#4fc3f7',
+          font: { size: 11 },
+          callback: v => `${v}cm`,
+          maxTicksLimit: 5
+        },
+        border: { display: false },
+      }
+    }
+  },
+  plugins: [verticalLinesPlugin]
+});
+</script>
+</body>
+</html>

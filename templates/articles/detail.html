@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}{{ meta.title or slug }} | 釣りコラム | Tsuricast{% endblock %}
-{% block description %}{{ meta.description or meta.title or slug }}{% endblock %}
+{% set _title = display_title or meta.title or slug %}
+{% block title %}{{ _title }} | 釣りコラム | Tsuricast{% endblock %}
+{% block description %}{{ meta.description or _title }}{% endblock %}
 {% block og_type %}article{% endblock %}
 {% block og_url %}https://tsuricast.jp/articles/{{ category }}/{{ slug }}/{% endblock %}
 {% block canonical %}https://tsuricast.jp/articles/{{ category }}/{{ slug }}/{% endblock %}
-{% block og_title %}{{ meta.title or slug }} | Tsuricast{% endblock %}
-{% block og_desc %}{{ meta.description or meta.title or slug }}{% endblock %}
+{% block og_title %}{{ _title }} | Tsuricast{% endblock %}
+{% block og_desc %}{{ meta.description or _title }}{% endblock %}
 {% block og_image %}<meta property="og:image" content="https://tsuricast.jp{{ card_image }}">{% endblock %}
-{% block tw_title %}{{ meta.title or slug }}{% endblock %}
-{% block tw_desc %}{{ meta.description or meta.title or slug }}{% endblock %}
+{% block tw_title %}{{ _title }}{% endblock %}
+{% block tw_desc %}{{ meta.description or _title }}{% endblock %}
 {% block tw_image %}https://tsuricast.jp{{ card_image }}{% endblock %}
 {% if meta.noindex == "true" %}{% block robots_meta %}<meta name="robots" content="noindex,follow">{% endblock %}{% endif %}
 
@@ -18,9 +19,10 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": {{ (meta.title or slug) | tojson }},
-  "description": {{ (meta.description or meta.title or slug) | tojson }},
+  "headline": {{ _title | tojson }},
+  "description": {{ (meta.description or _title) | tojson }},
   "url": "https://tsuricast.jp/articles/{{ category }}/{{ slug }}/",
+  {% if updated_at %}"dateModified": {{ updated_at | tojson }},{% endif %}
   "publisher": {
     "@type": "Organization",
     "name": "Tsuricast",
@@ -34,11 +36,12 @@
 <nav class="breadcrumb">
   <a href="/">ホーム</a> &rsaquo;
   <a href="/articles/">釣りコラム</a> &rsaquo;
-  <span>{{ meta.title or slug }}</span>
+  <span>{{ _title }}</span>
 </nav>
 
 <article class="tackle-item-article">
-  <img src="{{ card_image }}" alt="{{ meta.title or slug }}" class="article-hero-img" loading="eager">
+  <img src="{{ card_image }}" alt="{{ _title }}" class="article-hero-img" loading="eager">
+  {% if updated_at %}<p class="article-updated-at">最終更新：{{ updated_at }}</p>{% endif %}
   <div class="article-body">
     {{ body_html | safe }}
   </div>
@@ -55,6 +58,20 @@
   </ul>
 </section>
 {% endif %}
+
+<div class="blogmura-cta">
+  <p class="blogmura-cta-text">この記事が役に立ったら応援クリックをお願いします！</p>
+  <div class="blogmura-cta-buttons">
+    <a href="https://fishing.blogmura.com/umiduri/ranking/in?p_cid=11214089"
+       target="_blank" rel="nofollow noopener" class="blogmura-cta-link">
+      にほんブログ村 海釣りブログへ
+    </a>
+    <a href="https://blog.with2.net/link/?id=2139987"
+       target="_blank" rel="nofollow noopener" class="blogmura-cta-link">
+      人気ブログランキングへ
+    </a>
+  </div>
+</div>
 
 <a href="/articles/" class="back-link">‹ コラム一覧に戻る</a>
 {% endblock %}

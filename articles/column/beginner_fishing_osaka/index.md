@@ -30,6 +30,10 @@ related_spots:
   - uchinourawanko-gogan
   - wakanoura-gyoko
   - wakayama-ko
+<<<<<<< HEAD
+=======
+updated: 2026-04-18
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 ---
 
 # はじめての海釣りに向いている釣り場【大阪版】

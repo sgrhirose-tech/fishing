@@ -5,6 +5,7 @@ related_spots:
   - wakasu-kaihin-koen
   - jonanjima-kaihin-koen
   - higashi-ogishima-nishi-koen
+updated: 2026-04-18
 ---
 
 # 魚の生臭さ対策  

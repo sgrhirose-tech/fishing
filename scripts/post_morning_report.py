@@ -14,7 +14,7 @@ from pathlib import Path
 # プロジェクトルートを Python パスに追加
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from app.x_poster import AREA_SCHEDULE, post_area  # noqa: E402
+from app.x_poster import AREA_SCHEDULE, post_group  # noqa: E402
 
 JST = datetime.timezone(datetime.timedelta(hours=9))
 
@@ -53,16 +53,20 @@ def main() -> None:
 
     print(f"[INFO] 投稿日付: {date_str}")
 
+    now = datetime.datetime.now(JST)
+    timestamp = now.strftime("%-m/%-d %H:%M")
+
     results = []
-    for i, (slug, name, url) in enumerate(AREA_SCHEDULE):
+    for i, group in enumerate(AREA_SCHEDULE):
         if i > 0:
             print(f"[INFO] 5分待機中...")
             time.sleep(5 * 60)
 
-        success = post_area(slug, name, url, date_str, mode=mode)
+        success = post_group(group, date_str, mode=mode, timestamp=timestamp)
         status = "OK" if success else "FAILED"
-        print(f"[{status}] {name}")
-        results.append((name, status))
+        label = group["post_label"]
+        print(f"[{status}] {label}")
+        results.append((label, status))
 
     print(f"\n[DONE] {datetime.datetime.now(JST).isoformat()}")
     for name, status in results:

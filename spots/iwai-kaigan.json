@@ -14,33 +14,36 @@
     "city_slug": "minamiboso"
   },
   "physical_features": {
-    "sea_bearing_deg": 248.9,
+    "sea_bearing_deg": 250,
     "seabed_type": "sand",
-    "surfer_spot": null,
+    "surfer_spot": false,
     "nearest_20m_contour_distance_m": 1343.1
   },
   "derived_features": {
     "bottom_kisugo_score": 80,
-    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり"
+    "seabed_summary": "砂主体、貝殻混じり、近傍に石要素あり",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "岩井袋の南に続く砂浜、キス・マゴチ向きサーフ",
     "access": "富山地域センターバス停から徒歩15分",
-    "lead_text": "千葉県南房総市に広がる全長約2キロのサーフで、底質は砂地の遠浅地形が続きます。シロギスは春から秋にかけてが本番で、遠浅ゆえに飛距離が出るほど有利とされており、監視所周辺は常連に「鉄火場」と呼ばれるほどの実績エリアです。19センチ超のヒネ交じりで数が出る日もあります。満潮後しばらく経った時間帯に当たりが集中する傾向があり、一度ヒットゾーンを掴んだら同距離を丁寧に引き続けるのがこのサーフ流。マゴチは岩井川河口付近がポイントとして知られています。"
+    "lead_text": "千葉県南房総市に広がる全長約2キロのサーフで、底質は砂地の遠浅地形が続きます。シロギスは春から秋にかけてが本番で、遠浅ゆえに飛距離が出るほど有利とされており、監視所周辺は常連に「鉄火場」と呼ばれるほどの実績エリアです。19センチ超のヒネ交じりで数が出る日もあります。満潮後しばらく経った時間帯に当たりが集中する傾向があり、一度ヒットゾーンを掴んだら同距離を丁寧に引き続けるのがこのサーフ流。マゴチは岩井川河口付近がポイントとして知られています。",
+    "description": "砂浜の南端・北端に駐車場が用意されています。▼駐車場付近はカヤックやボードなどのエントリーが多い箇所になりますので、ゆっくり釣りをしたい方は中央寄りがおすすめです。▼公共トイレがあります。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.59,
+    "confidence": 1.0,
     "secondary_flags": [],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "natural=beach@86m"
     ]
   },
   "target_fish": [
-    "magochi",
-    "shirogisu"
+    "shirogisu",
+    "magochi"
   ],
   "harbor_code": "12-10",
-  "harbor_name": "岩井袋"
+  "harbor_name": "岩井袋",
+  "updated_at": "2026-04-20"
 }

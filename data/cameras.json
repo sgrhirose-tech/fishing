@@ -1,0 +1,335 @@
+{
+  "oiso": [
+    {
+      "name": "大磯海岸ライブカメラ",
+      "youtube_video_id": "WV9DtVXgwqE",
+      "source_url": "https://www.youtube.com/live/WV9DtVXgwqE",
+      "attribution_text": "配信: 神奈川県",
+      "attribution_url": "https://www.youtube.com/@kanagawa_nagisa_livecamera",
+      "coverage_note": "大磯・メインサーフポイント"
+    }
+  ],
+  "hiratsuka-kaigan": [
+    {
+      "name": "平塚海岸ライブカメラ",
+      "youtube_video_id": "62_twW5uXd4",
+      "source_url": "https://youtu.be/62_twW5uXd4",
+      "attribution_text": "配信: 神奈川県",
+      "attribution_url": "https://www.youtube.com/@kanagawa_nagisa_livecamera",
+      "coverage_note": "平塚漁港〜海岸付近"
+    }
+  ],
+  "chigasaki-kaigan": [
+    {
+      "name": "茅ヶ崎サザンビーチライブカメラ",
+      "youtube_video_id": "OJYcNsIpyx0",
+      "source_url": "https://www.youtube.com/live/OJYcNsIpyx0",
+      "attribution_text": "配信: WITH SEA",
+      "attribution_url": "https://www.youtube.com/@WITHSEA_by_UMITOLIFE",
+      "coverage_note": "サザンビーチ"
+    },
+    {
+      "name": "チサン（緑が浜）ライブカメラ",
+      "youtube_video_id": "ZsmAwP3VXLE",
+      "source_url": "https://www.youtube.com/live/ZsmAwP3VXLE",
+      "attribution_text": "配信: 湘南茅ヶ崎 Beach and Waves",
+      "attribution_url": "https://www.youtube.com/@cozybeachlive",
+      "coverage_note": "緑が浜・第2駐車場前"
+    }
+  ],
+  "katase_east": [
+    {
+      "name": "片瀬海岸東浜ライブカメラ",
+      "youtube_video_id": "xPgeZzojY5o",
+      "source_url": "https://www.youtube.com/watch?v=xPgeZzojY5o",
+      "attribution_text": "配信: FlyingSuika",
+      "attribution_url": "https://www.youtube.com/@FlyingSuika",
+      "coverage_note": "片瀬東浜・腰越漁港ビュー"
+    },
+    {
+      "name": "江の島ライブカメラ（別アングル）",
+      "youtube_video_id": "ESsZ9iB7tz0",
+      "source_url": "https://www.youtube.com/watch?v=ESsZ9iB7tz0",
+      "attribution_text": "配信: FlyingSuika",
+      "attribution_url": "https://www.youtube.com/@FlyingSuika",
+      "coverage_note": "片瀬東浜・南東向き"
+    }
+  ],
+  "kugenuma-kaigan": [
+    {
+      "name": "湘南 鵠沼〜新江ノ島水族館前 ライブカメラ",
+      "youtube_video_id": "iHZhSFb_VIg",
+      "source_url": "https://www.youtube.com/live/iHZhSFb_VIg",
+      "attribution_text": "配信: NAMIARUMOVIE",
+      "attribution_url": "https://www.youtube.com/@NAMIARUMOVIE",
+      "coverage_note": "鵠沼サーフポイント正面"
+    }
+  ],
+  "zaimokuza-kaigan": [
+    {
+      "name": "材木座海岸ライブカメラ",
+      "youtube_video_id": "hxKBnoLH0uk",
+      "source_url": "https://www.youtube.com/live/hxKBnoLH0uk",
+      "attribution_text": "配信: FlyingSuika",
+      "attribution_url": "https://www.youtube.com/@FlyingSuika",
+      "coverage_note": "材木座・西南西向き"
+    }
+  ],
+  "inamuragasaki": [
+    {
+      "name": "稲村ガ崎ライブカメラ",
+      "youtube_video_id": "_ddxDN0eMnA",
+      "source_url": "https://www.youtube.com/live/_ddxDN0eMnA",
+      "attribution_text": "配信: Japan Live Camera",
+      "attribution_url": "https://www.youtube.com/@shonan-livecam",
+      "coverage_note": "稲村ガ崎・西向き"
+    }
+  ],
+  "shichirigahama": [
+    {
+      "name": "七里ヶ浜・江ノ島ライブカメラ",
+      "youtube_video_id": "xAc_Z34aE1A",
+      "source_url": "https://www.youtube.com/live/xAc_Z34aE1A",
+      "attribution_text": "配信: Japan Live Camera",
+      "attribution_url": "https://www.youtube.com/@shonan-livecam",
+      "coverage_note": "七里ヶ浜"
+    }
+  ],
+  "hayama-ko": [
+    {
+      "name": "葉山ダイビングサービス ライブカメラ",
+      "youtube_video_id": "GKem31OI1rA",
+      "source_url": "https://www.youtube.com/live/GKem31OI1rA",
+      "attribution_text": "配信: 湘南DIVEcom",
+      "attribution_url": "https://www.youtube.com/@shonandive",
+      "coverage_note": "小磯の鼻・相模湾"
+    }
+  ],
+  "akiya": [
+    {
+      "name": "久留和漁港ライブカメラ",
+      "youtube_video_id": "jdPHYcpj3as",
+      "source_url": "https://www.youtube.com/live/jdPHYcpj3as",
+      "attribution_text": "配信: 横須賀市",
+      "attribution_url": "https://www.youtube.com/@yokosukacityoffice",
+      "coverage_note": "横須賀市秋谷・相模湾"
+    }
+  ],
+  "akiya-gyoko": [
+    {
+      "name": "秋谷漁港ライブカメラ",
+      "youtube_video_id": "GUVHlrxsEos",
+      "source_url": "https://www.youtube.com/live/GUVHlrxsEos",
+      "attribution_text": "配信: 横須賀市",
+      "attribution_url": "https://www.youtube.com/@yokosukacityoffice",
+      "coverage_note": "秋谷漁港・相模湾"
+    }
+  ],
+  "nagahama-kaihin": [
+    {
+      "name": "長浜海岸ライブカメラ",
+      "youtube_video_id": "47KZd8Oy1u0",
+      "source_url": "https://www.youtube.com/live/47KZd8Oy1u0",
+      "attribution_text": "配信: 横須賀市",
+      "attribution_url": "https://www.youtube.com/@yokosukacityoffice",
+      "coverage_note": "横須賀市長井"
+    }
+  ],
+  "zushi-kaigan": [
+    {
+      "name": "逗子海岸ライブカメラ2（ワイド）",
+      "youtube_video_id": "p3UvSS7_CsA",
+      "source_url": "https://www.youtube.com/live/p3UvSS7_CsA",
+      "attribution_text": "配信: FlyingSuika",
+      "attribution_url": "https://www.youtube.com/@FlyingSuika",
+      "coverage_note": "逗子海岸砂浜側から"
+    },
+    {
+      "name": "逗子海岸ライブカメラ1（海岸線）",
+      "youtube_video_id": "5yYQpzRSiAw",
+      "source_url": "https://www.youtube.com/live/5yYQpzRSiAw",
+      "attribution_text": "配信: FlyingSuika",
+      "attribution_url": "https://www.youtube.com/@FlyingSuika",
+      "coverage_note": "逗子海岸北側から"
+    },
+    {
+      "name": "逗子海岸ライブカメラ（神奈川県）",
+      "source_url": "https://youtube.com/live/Q5AAi9KOjG0",
+      "attribution_text": "配信: 神奈川県",
+      "attribution_url": "https://www.youtube.com/@kanagawa_nagisa_livecamera",
+      "coverage_note": "逗子海岸の直下"
+    }
+  ],
+  "nobi-kaigan": [
+    {
+      "name": "野比海岸ライブカメラ",
+      "youtube_video_id": "FywhX-2zuMU",
+      "source_url": "https://www.youtube.com/live/FywhX-2zuMU",
+      "attribution_text": "配信: 横須賀市",
+      "attribution_url": "https://www.youtube.com/@yokosukacityoffice",
+      "coverage_note": "野比海岸・東向き"
+    }
+  ],
+  "kurihama": [
+    {
+      "name": "横須賀市災害監視カメラ 久里浜海岸",
+      "youtube_video_id": "klqiayelF5E",
+      "source_url": "https://www.youtube.com/live/klqiayelF5E",
+      "attribution_text": "配信: 横須賀市",
+      "attribution_url": "https://www.youtube.com/@yokosukacityoffice",
+      "coverage_note": "久里浜海岸"
+    }
+  ],
+  "koajiro-teibo-ban": [
+    {
+      "name": "リビエラシーボニアマリーナ ライブカメラ",
+      "youtube_video_id": "KG_NX5YkkOo",
+      "source_url": "https://www.youtube.com/live/KG_NX5YkkOo",
+      "attribution_text": "配信: リビエラリゾート",
+      "attribution_url": "https://www.youtube.com/@rivieraofficial8715",
+      "coverage_note": "小網代・北西向き"
+    }
+  ],
+  "miura": [
+    {
+      "name": "三浦海岸ライブカメラ",
+      "youtube_video_id": "49NubJ78KWU",
+      "source_url": "https://www.youtube.com/live/49NubJ78KWU",
+      "attribution_text": "配信: WITH SEA",
+      "attribution_url": "https://www.youtube.com/@WITHSEA_by_UMITOLIFE",
+      "coverage_note": "三浦海岸北側"
+    },
+    {
+      "name": "三浦テレワークオフィス 三浦海岸ライブカメラ",
+      "youtube_video_id": "81mZg3UrlQE",
+      "source_url": "https://www.youtube.com/live/81mZg3UrlQE",
+      "attribution_text": "配信: 時短ナビ",
+      "attribution_url": "https://www.youtube.com/@AINavigatorJP",
+      "coverage_note": "三浦海岸・南向き"
+    },
+    {
+      "name": "三浦海岸ライブカメラ（湾岸Go）",
+      "youtube_video_id": "PrGQsGUAnk0",
+      "source_url": "https://www.youtube.com/live/PrGQsGUAnk0",
+      "attribution_text": "配信: 湾岸Go",
+      "attribution_url": "https://www.youtube.com/@WanganGo",
+      "coverage_note": "三浦海岸・アングル切替"
+    }
+  ],
+  "miura-gyoko-kihoku": [
+    {
+      "name": "三浦・東京湾ライブカメラ（神奈川県）",
+      "source_url": "https://youtube.com/live/Blh-OB2JDR4",
+      "attribution_text": "配信: 神奈川県",
+      "attribution_url": "https://www.youtube.com/@kanagawa_nagisa_livecamera",
+      "coverage_note": "三浦東京湾側"
+    }
+  ],
+  "taito-kaigan": [
+    {
+      "name": "太東ライブカメラ",
+      "source_url": "https://www.youtube.com/live/G0u_46x1yE4",
+      "attribution_text": "配信: アーゴプロジェクト",
+      "attribution_url": "https://www.youtube.com/@agoproject",
+      "coverage_note": "太東サーフポイント・東向き"
+    }
+  ],
+  "maebara": [
+    {
+      "name": "前原海水浴場ライブカメラ",
+      "youtube_video_id": "YvlWnMgmf0E",
+      "source_url": "https://www.youtube.com/live/YvlWnMgmf0E",
+      "attribution_text": "配信: 波のスケッチ",
+      "attribution_url": "https://www.youtube.com/@波のスケッチ",
+      "coverage_note": "シーサイドサーフポイント・東北東向き"
+    }
+  ],
+  "hebara-kaigan": [
+    {
+      "name": "部原海岸ライブカメラ",
+      "youtube_video_id": "G2tN6QaDbJQ",
+      "source_url": "https://www.youtube.com/live/G2tN6QaDbJQ",
+      "attribution_text": "配信: wowpowcom",
+      "attribution_url": "https://www.youtube.com/@wowpowcom",
+      "coverage_note": "部原海岸"
+    },
+    {
+      "name": "部原海岸ライブカメラ（サンセットタウン）",
+      "youtube_video_id": "jwyEChMNpE0",
+      "source_url": "https://www.youtube.com/live/jwyEChMNpE0",
+      "attribution_text": "配信: サンセットタウン",
+      "attribution_url": "https://www.youtube.com/@サンセットタウン",
+      "coverage_note": "部原正面・徒歩0分"
+    }
+  ],
+  "chikura-ko": [
+    {
+      "name": "道の駅ちくら潮風王国ライブカメラ",
+      "youtube_video_id": "q1Nxn99NwJ4",
+      "source_url": "https://www.youtube.com/live/q1Nxn99NwJ4",
+      "attribution_text": "配信: 南房総市",
+      "attribution_url": "https://www.youtube.com/@南房総いいとこどりライブカメラ",
+      "coverage_note": "千倉サーフポイント近辺・南東向き"
+    }
+  ],
+  "tomiura-old-port": [
+    {
+      "name": "原岡海岸（岡本桟橋）ライブカメラ",
+      "youtube_video_id": "WYKiv3EuqoE",
+      "source_url": "https://www.youtube.com/live/WYKiv3EuqoE",
+      "attribution_text": "配信: 南房総市",
+      "attribution_url": "https://www.youtube.com/@南房総いいとこどりライブカメラ",
+      "coverage_note": "岡本桟橋・東京湾側"
+    }
+  ],
+  "iwai-kaigan": [
+    {
+      "name": "岩井海岸ライブカメラ",
+      "youtube_video_id": "68UXF0bFjac",
+      "source_url": "https://www.youtube.com/live/68UXF0bFjac",
+      "attribution_text": "配信: 南房総市",
+      "attribution_url": "https://www.youtube.com/@南房総いいとこどりライブカメラ",
+      "coverage_note": "岩井サーフポイント・西向き"
+    }
+  ],
+  "futtsu-kaigan": [
+    {
+      "name": "民宿錦海亭ライブカメラ（新舞子海岸）",
+      "youtube_video_id": "2yPKkT2EQSA",
+      "source_url": "https://www.youtube.com/live/2yPKkT2EQSA",
+      "attribution_text": "配信: 民宿錦海亭",
+      "attribution_url": "https://www.youtube.com/@kinkaitey",
+      "coverage_note": "新舞子海岸・東京湾・西向き"
+    }
+  ],
+  "kanaya-kaihin-kaigan": [
+    {
+      "name": "房総クラブハウスライブカメラ（明鐘岬）",
+      "youtube_video_id": "Rp6Ut0kBQoE",
+      "source_url": "https://www.youtube.com/live/Rp6Ut0kBQoE",
+      "attribution_text": "配信: 房総クラブハウス",
+      "attribution_url": "https://www.youtube.com/@ネットワークカメラライブ",
+      "coverage_note": "明鐘岬"
+    }
+  ],
+  "tateyama-sunset-pier": [
+    {
+      "name": "マリンハウス 8BAY ライブカメラ",
+      "youtube_video_id": "Gf5NpwlF_yI",
+      "source_url": "https://www.youtube.com/live/Gf5NpwlF_yI",
+      "attribution_text": "配信: e-CAMチャンネル",
+      "attribution_url": "https://www.youtube.com/@e-CAM",
+      "coverage_note": "館山湾・西向き"
+    }
+  ],
+  "odaiba-kaihin-koen": [
+    {
+      "name": "お台場海浜公園ライブカメラ",
+      "youtube_video_id": "n3B8fp-Henc",
+      "source_url": "https://www.youtube.com/live/n3B8fp-Henc",
+      "attribution_text": "配信: Tokyo Odaiba Live Camera",
+      "attribution_url": "https://www.youtube.com/@finescape9925",
+      "coverage_note": "お台場海浜公園"
+    }
+  ]
+}

@@ -14,36 +14,39 @@
     "city_slug": "odawara"
   },
   "physical_features": {
-    "sea_bearing_deg": 140.1,
+    "sea_bearing_deg": 140,
     "seabed_type": "sand",
     "surfer_spot": true,
     "nearest_20m_contour_distance_m": 215.1
   },
   "derived_features": {
     "bottom_kisugo_score": 85,
-    "seabed_summary": "砂主体、急深寄り"
+    "seabed_summary": "砂主体、急深寄り",
+    "terrain_summary": ""
   },
   "info": {
     "notes": "小田原漁港隣接の砂浜、キス・マゴチ向き、比較的空いた穴場",
     "access": "小田原駅から徒歩20分",
-    "lead_text": "小田原漁港に隣接する西湘エリア西端の砂浜で、沖には砂の流出防止用のテトラ堤が断続的に入っています。砂底に砂利・小石が混じる底質で、テトラ堤の切れ目から狙えるのがこの浜ならではの地形です。夏から秋にかけてマゴチが突堤付近に潜むことで知られ、海水浴シーズンを外した秋口以降は浜が空いてきます。早川河口に近いぶん大雨後は濁りが入りやすく、穏やかな日和のマヅメ時が狙い目です。"
+    "lead_text": "小田原漁港に隣接する西湘エリア西端の砂浜で、沖には砂の流出防止用のテトラ堤が断続的に入っています。砂底に砂利・小石が混じる底質で、テトラ堤の切れ目から狙えるのがこの浜ならではの地形です。夏から秋にかけてマゴチが突堤付近に潜むことで知られ、海水浴シーズンを外した秋口以降は浜が空いてきます。早川河口に近いぶん大雨後は濁りが入りやすく、穏やかな日和のマヅメ時が狙い目です。",
+    "description": "マップアプリ等で航空写真を見ると分かりますが、かなり手前の方に人工リーフが入っています。遠投すると高確率で仕掛けをロストします。そのリーフに根魚が居付いているので悩ましいところです。▼出前館のサービスエリア内です。真冬にラーメンを届けてもらったことがあります。▼ロックバランシング（石を立てる遊び）にちょうどいい石がゴロゴロしています。ぶっ込みの優雅な時間を石とともに。"
   },
   "classification": {
     "primary_type": "sand_beach",
-    "confidence": 0.59,
+    "confidence": 1.0,
     "secondary_flags": [
       "parking_nearby"
     ],
-    "source": "osm_rule",
+    "source": "manual",
     "osm_evidence": [
       "man_made=breakwater@186m",
       "natural=beach@123m"
     ]
   },
   "target_fish": [
-    "magochi",
-    "shirogisu"
+    "shirogisu",
+    "magochi"
   ],
   "harbor_code": "14-20",
-  "harbor_name": "真鶴"
+  "harbor_name": "真鶴",
+  "updated_at": "2026-04-18"
 }

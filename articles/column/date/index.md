@@ -7,6 +7,7 @@ related_spots:
   - morito
   - zaimokuza-kaigan
   - isshiki
+updated: 2026-04-18
 ---
 
 # 釣りデートを成功させる

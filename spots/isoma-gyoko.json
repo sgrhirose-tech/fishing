@@ -42,5 +42,10 @@
     "kurodai"
   ],
   "harbor_code": "30-5",
+<<<<<<< HEAD
   "harbor_name": "田辺（旧）"
+=======
+  "harbor_name": "田辺（旧）",
+  "updated_at": "2026-04-18"
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 }

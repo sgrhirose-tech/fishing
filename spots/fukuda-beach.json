@@ -41,5 +41,10 @@
     "hirame"
   ],
   "harbor_code": "22-16",
+<<<<<<< HEAD
   "harbor_name": "相良"
+=======
+  "harbor_name": "相良",
+  "updated_at": "2026-04-18"
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
 }

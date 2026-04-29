@@ -1,33 +1,33 @@
 {
   "honmoku-umizuri-shisetsu": {
-    "generated_at": "2026-04-15T08:57:38.751961+09:00",
+    "generated_at": "2026-04-17T08:12:36.999515+09:00",
     "quality": "fallback",
     "needs_review": true
   },
   "ichihara-umizuri-shisetsu": {
-    "generated_at": "2026-04-07T23:24:14.428887+09:00",
+    "generated_at": "2026-04-17T08:20:35.142482+09:00",
     "quality": "fallback",
     "needs_review": true
   },
   "ichikawa-ko": {
-    "generated_at": "2026-04-07T23:32:39.654811+09:00",
+    "generated_at": "2026-04-17T08:44:45.784167+09:00",
     "quality": "ok",
     "needs_review": false
   },
   "inage-kaihin-koen": {
-    "generated_at": "2026-04-07T23:33:14.254242+09:00",
+    "generated_at": "2026-04-17T08:46:07.763593+09:00",
     "quality": "ok",
     "needs_review": false
   },
   "isogo-umizuri-shisetsu": {
-    "generated_at": "2026-04-15T08:58:54.785530+09:00",
-    "quality": "fallback",
-    "needs_review": true
-  },
-  "jonanjima-kaihin-koen": {
-    "generated_at": "2026-04-07T23:36:49.117313+09:00",
+    "generated_at": "2026-04-17T08:13:58.200258+09:00",
     "quality": "ok",
     "needs_review": false
+  },
+  "jonanjima-kaihin-koen": {
+    "generated_at": "2026-04-17T08:47:26.890743+09:00",
+    "quality": "fallback",
+    "needs_review": true
   },
   "kaneda-mitate-kaigan": {
     "generated_at": "2026-04-07T23:38:46.943509+09:00",
@@ -35,14 +35,14 @@
     "needs_review": true
   },
   "kasai-rinkai-koen": {
-    "generated_at": "2026-04-15T09:00:16.473829+09:00",
+    "generated_at": "2026-04-17T08:48:44.542401+09:00",
     "quality": "ok",
     "needs_review": false
   },
   "keihinjima-tsubasa-koen": {
-    "generated_at": "2026-04-15T09:01:32.554635+09:00",
-    "quality": "ok",
-    "needs_review": false
+    "generated_at": "2026-04-17T08:50:02.994922+09:00",
+    "quality": "fallback",
+    "needs_review": true
   },
   "kemigawahama-tottei": {
     "generated_at": "2026-04-07T23:46:18.818400+09:00",
@@ -50,14 +50,14 @@
     "needs_review": false
   },
   "kisarazu-ko": {
-    "generated_at": "2026-04-07T23:49:09.112954+09:00",
-    "quality": "fallback",
-    "needs_review": true
-  },
-  "kisarazu-shiohama-koen": {
-    "generated_at": "2026-04-07T23:50:53.382296+09:00",
+    "generated_at": "2026-04-17T08:21:58.640759+09:00",
     "quality": "ok",
     "needs_review": false
+  },
+  "kisarazu-shiohama-koen": {
+    "generated_at": "2026-04-17T08:51:18.303076+09:00",
+    "quality": "fallback",
+    "needs_review": true
   },
   "kuzuma-kaigan": {
     "generated_at": "2026-04-07T23:53:53.069566+09:00",
@@ -65,17 +65,17 @@
     "needs_review": true
   },
   "mizu-no-hiroba-koen": {
-    "generated_at": "2026-04-07T23:54:24.564202+09:00",
-    "quality": "ok",
-    "needs_review": false
+    "generated_at": "2026-04-17T08:53:41.826134+09:00",
+    "quality": "fallback",
+    "needs_review": true
   },
   "nakanoshima-koen": {
-    "generated_at": "2026-04-07T23:56:03.153658+09:00",
+    "generated_at": "2026-04-17T08:56:26.960264+09:00",
     "quality": "ok",
     "needs_review": false
   },
   "oi-futo-chuo-kaihin-koen-nagisa-no-mori": {
-    "generated_at": "2026-04-07T23:56:37.737093+09:00",
+    "generated_at": "2026-04-17T08:59:11.002609+09:00",
     "quality": "ok",
     "needs_review": false
   },
@@ -85,19 +85,19 @@
     "needs_review": true
   },
   "takasu-kaihin-koen": {
-    "generated_at": "2026-04-08T00:02:00.296919+09:00",
+    "generated_at": "2026-04-17T08:24:34.619660+09:00",
     "quality": "fallback",
     "needs_review": true
   },
   "tokai-futo-koen": {
-    "generated_at": "2026-04-08T00:03:52.671127+09:00",
-    "quality": "ok",
-    "needs_review": false
-  },
-  "toyosu-gururi-koen": {
-    "generated_at": "2026-04-15T09:18:27.214706+09:00",
+    "generated_at": "2026-04-17T09:05:39.858416+09:00",
     "quality": "fallback",
     "needs_review": true
+  },
+  "toyosu-gururi-koen": {
+    "generated_at": "2026-04-17T08:17:58.027736+09:00",
+    "quality": "ok",
+    "needs_review": false
   },
   "futoma-kaigan": {
     "generated_at": "2026-04-10T18:54:45.648723+09:00",
@@ -265,9 +265,9 @@
     "needs_review": false
   },
   "nunobiki-beach": {
-    "generated_at": "2026-04-10T19:42:38.764296+09:00",
-    "quality": "fallback",
-    "needs_review": true
+    "generated_at": "2026-04-17T19:17:16.388065+09:00",
+    "quality": "ok",
+    "needs_review": false
   },
   "okinoshima": {
     "generated_at": "2026-04-10T19:43:57.590544+09:00",
@@ -1210,12 +1210,12 @@
     "needs_review": true
   },
   "daikoku-umizuri-shisetsu": {
-    "generated_at": "2026-04-15T08:50:54.425254+09:00",
-    "quality": "ok",
-    "needs_review": false
+    "generated_at": "2026-04-17T08:36:49.531619+09:00",
+    "quality": "fallback",
+    "needs_review": true
   },
   "funabashi-ko-shinsui": {
-    "generated_at": "2026-04-15T08:52:13.145120+09:00",
+    "generated_at": "2026-04-17T08:11:15.829498+09:00",
     "quality": "fallback",
     "needs_review": true
   },
@@ -1230,9 +1230,9 @@
     "needs_review": false
   },
   "harumibashi-koen": {
-    "generated_at": "2026-04-15T08:56:19.736588+09:00",
-    "quality": "ok",
-    "needs_review": false
+    "generated_at": "2026-04-17T08:42:03.612543+09:00",
+    "quality": "fallback",
+    "needs_review": true
   },
   "kisarazu-choukokujo": {
     "generated_at": "2026-04-15T09:02:51.351289+09:00",
@@ -1240,19 +1240,19 @@
     "needs_review": true
   },
   "mitate-gyoko": {
-    "generated_at": "2026-04-15T09:04:07.791952+09:00",
+    "generated_at": "2026-04-17T08:15:15.058593+09:00",
     "quality": "fallback",
     "needs_review": true
   },
   "nagaura-ko": {
-    "generated_at": "2026-04-15T09:05:22.872304+09:00",
+    "generated_at": "2026-04-17T08:55:04.783489+09:00",
     "quality": "ok",
     "needs_review": false
   },
   "nojima-koen": {
-    "generated_at": "2026-04-15T09:06:44.793013+09:00",
-    "quality": "ok",
-    "needs_review": false
+    "generated_at": "2026-04-17T08:57:45.971240+09:00",
+    "quality": "fallback",
+    "needs_review": true
   },
   "odaiba-kaihin-koen": {
     "generated_at": "2026-04-15T09:08:01.833733+09:00",
@@ -1260,37 +1260,37 @@
     "needs_review": true
   },
   "omori-furusato-hamabe": {
-    "generated_at": "2026-04-15T09:09:14.823864+09:00",
+    "generated_at": "2026-04-17T09:00:23.299256+09:00",
     "quality": "ok",
     "needs_review": false
   },
   "shinkiba-koen": {
-    "generated_at": "2026-04-15T09:10:38.047398+09:00",
+    "generated_at": "2026-04-17T09:01:44.080534+09:00",
     "quality": "ok",
     "needs_review": false
   },
   "shiokaze-koen": {
-    "generated_at": "2026-04-15T09:11:54.974921+09:00",
-    "quality": "fallback",
-    "needs_review": true
+    "generated_at": "2026-04-17T08:16:35.383148+09:00",
+    "quality": "ok",
+    "needs_review": false
   },
   "shiomi-undo-koen": {
-    "generated_at": "2026-04-15T09:13:20.991035+09:00",
+    "generated_at": "2026-04-17T08:23:17.515724+09:00",
     "quality": "fallback",
     "needs_review": true
   },
   "sodegaura-kitasode": {
-    "generated_at": "2026-04-15T09:14:32.190323+09:00",
+    "generated_at": "2026-04-17T09:02:56.554649+09:00",
     "quality": "ok",
     "needs_review": false
   },
   "sugita-rinkai-ryokuchi": {
-    "generated_at": "2026-04-15T09:15:51.395822+09:00",
+    "generated_at": "2026-04-17T09:04:18.918406+09:00",
     "quality": "ok",
     "needs_review": false
   },
   "toyomi-undo-koen": {
-    "generated_at": "2026-04-15T09:17:09.762357+09:00",
+    "generated_at": "2026-04-17T08:25:54.011688+09:00",
     "quality": "fallback",
     "needs_review": true
   },
@@ -1305,7 +1305,7 @@
     "needs_review": false
   },
   "yorogawa-rinkai-koen": {
-    "generated_at": "2026-04-15T09:22:34.776043+09:00",
+    "generated_at": "2026-04-17T08:19:17.359509+09:00",
     "quality": "fallback",
     "needs_review": true
   },
@@ -1566,6 +1566,66 @@
   },
   "takasaki-ko": {
     "generated_at": "2026-04-15T10:48:57.835243+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "akatsuki-futo-koen": {
+    "generated_at": "2026-04-17T08:27:10.284412+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "anesaki-ko": {
+    "generated_at": "2026-04-17T08:28:32.392894+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "ariake-nishi-futo-koen": {
+    "generated_at": "2026-04-17T08:29:51.146373+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "chiba-ko-chuo-futo": {
+    "generated_at": "2026-04-17T08:35:34.813353+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "fukuura-ganpeki": {
+    "generated_at": "2026-04-17T08:38:11.048212+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "futtsu-shinko": {
+    "generated_at": "2026-04-17T08:39:23.818171+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "hakkeijima-taigan": {
+    "generated_at": "2026-04-17T08:40:47.003254+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "higashi-ogishima-nishi-koen": {
+    "generated_at": "2026-04-17T08:43:24.726347+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "koitogawa-ko-ban": {
+    "generated_at": "2026-04-17T08:52:24.552820+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "ushigome-kaigan": {
+    "generated_at": "2026-04-17T09:07:01.323430+09:00",
+    "quality": "ok",
+    "needs_review": false
+  },
+  "wakasu-kaihin-koen": {
+    "generated_at": "2026-04-17T09:08:20.074671+09:00",
+    "quality": "fallback",
+    "needs_review": true
+  },
+  "tateyama_port": {
+    "generated_at": "2026-04-21T13:13:53.818340+09:00",
     "quality": "ok",
     "needs_review": false
   }

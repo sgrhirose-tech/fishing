@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}ページが見つかりません | Tsuricast{% endblock %}
+{% block description %}お探しのページは見つかりませんでした。Tsuricastトップから釣り場情報をお探しください。{% endblock %}
+{% block og_title %}ページが見つかりません | Tsuricast{% endblock %}
+{% block og_desc %}お探しのページは見つかりませんでした。{% endblock %}
+{% block robots_meta %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+<section class="notfound">
+  <h1 class="notfound-title">このページは見つかりませんでした</h1>
+  <p class="notfound-apology">ごめんなさい</p>
+
+  <div class="notfound-video-wrap">
+    <video class="notfound-video" autoplay muted loop playsinline
+           poster="/static/img/shop_girl_card.png">
+      <source src="/static/img/404.mp4" type="video/mp4">
+      お使いのブラウザでは動画を再生できません。
+    </video>
+  </div>
+
+  <p class="notfound-back">
+    <a href="/" class="notfound-back-link">Tsuricastトップに戻る</a>
+  </p>
+</section>
+{% endblock %}

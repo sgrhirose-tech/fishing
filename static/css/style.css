@@ -326,9 +326,6 @@ footer a { color: #8bc; }
 .safety-link-inline a { color: #555; text-decoration: underline; }
 .safety-link-inline a:hover { color: #1a6b9e; }
 
-/* ---- 安全警告・AIコメント ---- */
-.ai-comment-section { margin: 1rem 0; }
-
 /* ---- 今日の海況セクション（グレー基調） ---- */
 .weather-section--today {
   background: #f3f4f5;
@@ -363,24 +360,57 @@ footer a { color: #8bc; }
   padding: .4rem .8rem;
   margin-bottom: .5rem;
 }
-.ai-comment-label {
-  font-size: .75rem;
-  font-weight: 600;
-  color: #1a6b9e;
-  letter-spacing: .04em;
-  margin: 0 0 .3rem 0;
-  text-transform: none;
+/* ---- 24時間チャート ---- */
+.chart24-section { margin: 0 0 1.5rem; }
+.chart24-day-tabs { display: flex; gap: .4rem; margin-bottom: .75rem; }
+.chart24-tab {
+  flex: 1; padding: .5rem .75rem;
+  background: #f0f4f8; border: 1px solid #c8d8e8; border-radius: 6px;
+  font-size: .9rem; font-weight: 600; color: #4a6080; cursor: pointer;
+  transition: background .15s, color .15s;
 }
-.ai-comment-box {
-  background: #f0f7ff;
-  border-left: 4px solid #1a6b9e;
-  padding: 1rem 1.2rem;
-  border-radius: 0 6px 6px 0;
-  line-height: 1.7;
-  white-space: pre-wrap;
-  margin-top: 0;
+.chart24-tab.active { background: #1a5f8a; color: white; border-color: #1a5f8a; }
+.chart24-container {
+  background: #112240; border: 1px solid #1e3a5f;
+  border-radius: 12px; padding: 16px 12px 14px;
 }
-
+.chart24-title { font-size: 12px; color: #6b8fa8; margin-bottom: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.chart24-scroll-wrap { width: 100%; overflow-x: auto; overflow-y: visible; -webkit-overflow-scrolling: touch; }
+.chart24-inner { width: 960px; }
+.chart24-row { display: flex; align-items: stretch; margin-bottom: 4px; }
+.chart24-row-label {
+  width: 38px; flex-shrink: 0; font-size: 11px; color: #4a6fa8;
+  text-align: right; padding-right: 6px;
+  display: flex; align-items: center; justify-content: flex-end; line-height: 1.3;
+}
+.chart24-row-data { flex: 1; display: grid; grid-template-columns: repeat(24, 1fr); }
+.chart24-cell {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-left: 1px solid rgba(30,58,95,0.4); padding: 3px 0;
+}
+.chart24-hour { font-size: 11px; color: #6b8fa8; font-weight: 600; margin-bottom: 2px; }
+.chart24-icon { font-size: 18px; line-height: 1; }
+.chart24-val { font-size: 13px; font-weight: 700; }
+.chart24-val-temp { color: #ffb74d; }
+.chart24-arrow { font-size: 18px; line-height: 1; color: #e8f4f8; }
+.chart24-val-wind { color: #80cbc4; }
+.chart24-wind-caution { color: #ffb74d !important; }
+.chart24-wind-danger  { color: #ef5350 !important; }
+.chart24-chart-area { flex: 1; }
+.chart24-val-sea { color: #4fc3f7; }
+.chart24-legend {
+  display: flex; gap: 14px; margin-top: 12px; flex-wrap: wrap; padding-left: 46px;
+}
+.chart24-legend-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #6b8fa8; }
+.chart24-legend-gradient {
+  width: 36px; height: 8px; border-radius: 2px;
+  background: linear-gradient(to right, #2196F3, #4CAF50, #FF9800, #F44336);
+}
+.chart24-legend-line { width: 18px; height: 2px; }
+.chart24-period-scale {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 5px; font-size: 12px; color: #6b8fa8; padding-left: 46px;
+}
 /* ---- 7日間タブ ---- */
 .forecast-tabs { display: flex; gap: .5rem; margin-bottom: 1rem; }
 .tab-btn {
@@ -1132,12 +1162,17 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .articles-page-nav a { font-size: .9rem; font-weight: bold; color: #1a6b9e; text-decoration: none; white-space: nowrap; }
 .articles-page-nav a:hover { text-decoration: underline; }
 .articles-category-section { margin: 0 0 2.5rem; }
+.articles-columnist-intro { margin: 0 0 2rem; }
+.article-list--intro { margin-bottom: 1.5rem; }
+.tackle-staff-intro { margin: 0 0 2rem; }
 .articles-category-heading { font-size: 1.25rem; font-weight: bold; border-left: 4px solid #1a6b9e; padding-left: .6rem; margin: 0 0 1rem; color: #1a3a5c; }
 .article-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; }
 .article-row-card { display: flex; align-items: center; gap: .9rem; padding: .5rem .75rem; border: 1px solid #e0e0e0; border-radius: 8px; text-decoration: none; color: inherit; transition: box-shadow .15s, background .15s; }
 .article-row-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); background: #f8fbff; }
 .article-row-card img { width: 80px; height: 54px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+.article-row-info { display: flex; flex-direction: column; gap: .2rem; }
 .article-row-title { font-size: .95rem; font-weight: bold; line-height: 1.4; }
+.article-row-date { font-size: .75rem; color: #888; }
 .articles-empty { color: #888; font-size: .9rem; }
 
 /* 記事本文 */
@@ -1152,6 +1187,7 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .article-body th, .article-body td { border: 1px solid #ddd; padding: .5rem .75rem; text-align: left; }
 .article-body th { background: #f5f5f5; font-weight: bold; }
 .article-body hr { border: none; border-top: 1px solid #e8e8e8; margin: 2rem 0; }
+.article-body img { max-width: 100%; height: auto; display: block; border-radius: 6px; margin: 1rem auto; }
 .article-hero-img { width: 100%; max-width: 720px; height: auto; border-radius: 8px; display: block; margin: 0 0 1.5rem; }
 
 /* シリーズ目次 */
@@ -1166,6 +1202,10 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 
 /* スポット説明文 */
 .spot-description { font-size: .95rem; line-height: 1.8; color: #3a3a4a; margin: .75rem 0 1.25rem; }
+.spot-description p { margin: 0 0 .6rem; }
+.spot-description p:last-child { margin-bottom: 0; }
+.spot-notes-human { font-size: .88rem; color: #5a5a6a; border-left: 3px solid #b0c4d8; padding-left: .7rem; }
+.spot-notes-label { display: inline-block; font-size: .75rem; font-weight: bold; color: #fff; background: #1a6b9e; border-radius: 3px; padding: .1em .5em; margin-right: .5em; vertical-align: middle; letter-spacing: .03em; }
 
 /* fish - intro */
 .fish-intro-text { font-size: 1rem; line-height: 1.8; color: #334; margin: .75rem 0 1.5rem; padding: .85rem 1.1rem; background: #f0f7fb; border-left: 4px solid #1a6b9e; border-radius: 0 6px 6px 0; }
@@ -1250,13 +1290,21 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .rec-fish-loading { color: #999; font-size: .85rem; }
 .method-fish-card-count { font-size: .72rem; color: #888; }
 
+/* 釣り禁止バナー */
+.kinshi-banner { background: #fff0f0; border-left: 4px solid #c0392b; padding: .65rem 1rem; border-radius: 0 4px 4px 0; margin: .6rem 0 1rem; }
+.kinshi-banner-msg { font-weight: bold; color: #c0392b; margin: 0; font-size: .95rem; }
+
 /* 近隣スポットセクション（釣り禁止スポット用） */
-.kinshi-nearby-section { margin: 1.5rem 0 1rem; }
-.kinshi-nearby-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .6rem; margin: .6rem 0 .85rem; }
+.kinshi-nearby-section { margin: 0 0 1.5rem; }
+.kinshi-nearby-title { font-size: 1rem; font-weight: bold; margin-bottom: .5rem; }
+.kinshi-nearby-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .6rem; margin: 0 0 .85rem; }
 .kinshi-nearby-card { display: flex; flex-direction: column; background: white; border: 1px solid #b8d4ea; border-radius: 8px; padding: .6rem .8rem; text-decoration: none; color: inherit; transition: box-shadow .15s, border-color .15s; }
 .kinshi-nearby-card:hover { box-shadow: 0 2px 8px rgba(26,107,158,.15); border-color: #1a6b9e; }
 .kinshi-nearby-name { font-weight: bold; font-size: .9rem; color: #1a4a7a; }
-.kinshi-nearby-city { font-size: .78rem; color: #888; margin-top: .2rem; }
+.kinshi-nearby-meta { display: flex; gap: .35rem; align-items: center; margin-top: .2rem; flex-wrap: wrap; }
+.kinshi-nearby-dist { background: #e8f0f8; color: #1a4a7a; padding: .1rem .35rem; border-radius: 10px; font-size: .72rem; font-weight: 600; }
+.kinshi-nearby-city { font-size: .78rem; color: #888; }
+.kinshi-nearby-fish { font-size: .75rem; color: #666; margin-top: .25rem; }
 .kinshi-nearby-all { display: inline-block; font-size: .88rem; color: #1a6b9e; text-decoration: underline; }
 
 /* ---- スポット Q&A ---- */
@@ -1283,3 +1331,77 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
   line-height: 1.65;
 }
 .qa-a::before { content: "A"; position: absolute; left: 0; color: #e07020; font-weight: bold; }
+<<<<<<< HEAD
+=======
+
+/* ライブカメラセクション */
+.spot-cameras { margin: 2rem 0; }
+.spot-cameras-title { font-size: 1.05rem; font-weight: bold; margin-bottom: .5rem; }
+.spot-cameras-note { font-size: .8rem; color: #666; margin-bottom: 1rem; padding: .5rem .75rem; background: #f5f5f5; border-left: 3px solid #aaa; border-radius: 3px; }
+.camera-embed { margin: 0 0 1rem; }
+.camera-aspect { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: #000; -webkit-transform: translateZ(0); transform: translateZ(0); }
+.camera-aspect iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.camera-caption { margin-top: .4rem; font-size: .85rem; display: flex; flex-wrap: wrap; gap: .2rem .6rem; align-items: baseline; color: #444; }
+.camera-name { font-weight: bold; }
+.camera-coverage { color: #666; }
+.camera-attribution { font-size: .8rem; color: #777; }
+.camera-source-link { font-size: .8rem; margin-left: auto; }
+.camera-link-card { display: flex; align-items: center; gap: .75rem; padding: 1rem 1.25rem; background: #1a1a1a; color: #fff; border-radius: 8px; text-decoration: none; font-size: .95rem; }
+.camera-link-card:hover { background: #333; }
+.camera-link-icon { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
+.camera-more { margin-top: .25rem; }
+.camera-more summary { cursor: pointer; font-size: .9rem; color: #1a6b9e; padding: .4rem 0; user-select: none; }
+.camera-more summary:hover { text-decoration: underline; }
+.camera-more[open] summary { margin-bottom: .75rem; }
+@media (max-width: 600px) { .camera-source-link { margin-left: 0; width: 100%; } }
+
+/* にほんブログ村 CTA */
+.blogmura-cta { text-align: center; margin: 2rem 0 1.5rem; padding: 1.25rem 1rem; background: #f0f6fc; border-radius: 10px; border: 1px solid #c8dff0; }
+.blogmura-cta-text { margin: 0 0 .75rem; font-size: .9rem; color: #555; }
+.blogmura-cta-buttons { display: flex; justify-content: center; gap: .75rem; flex-wrap: wrap; }
+.blogmura-cta-link { display: inline-block; padding: .55rem 1.4rem; background: #1a6b9e; color: #fff; border-radius: 6px; font-size: .95rem; font-weight: bold; text-decoration: none; }
+.blogmura-cta-link:hover { background: #145580; }
+
+/* AI作成開示 */
+.ai-disclosure { font-size: .75rem; color: #999; margin: .25rem 0 1rem; }
+.blogmura-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+
+/* ---- スポット: 釣行レポート ---- */
+.spot-related-reports { margin: 1.5rem 0; }
+.spot-related-reports h2 { font-size: 1.1rem; margin-bottom: .75rem; }
+.spot-report-row-body { display: flex; flex-direction: column; gap: .2rem; }
+.spot-report-row-meta { font-size: .8rem; color: #888; }
+
+/* ---- 葵ちゃんコメント ---- */
+.aoi-section { margin: 1.5rem 0; }
+.aoi-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: #f0f7ff;
+  border: 1px solid #c8dff5;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.aoi-illust {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.aoi-body { flex: 1; min-width: 0; }
+.aoi-label { font-size: 0.72rem; color: #888; margin-bottom: 0.3rem; }
+.aoi-comment { margin: 0 0 0.4rem; font-size: 0.95rem; line-height: 1.65; color: #222; }
+.aoi-disclaimer { font-size: 0.68rem; color: #bbb; }
+
+/* ---- 404 ページ ---- */
+.notfound { text-align: center; max-width: 720px; margin: 2rem auto; padding: 0 1rem; box-sizing: border-box; }
+.notfound-title { font-size: 1.6rem; margin: 1rem 0 .5rem; }
+.notfound-apology { font-size: 1rem; color: #666; margin: 0 0 1.5rem; }
+.notfound-video-wrap { margin: 1.5rem auto; width: 100%; max-width: 360px; }
+.notfound-video { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 12px; background: #000; }
+.notfound-back { margin: 1.75rem 0 2.5rem; }
+.notfound-back-link { display: inline-block; padding: .7rem 1.6rem; background: #1a6b9e; color: #fff; border-radius: 6px; font-size: 1rem; font-weight: bold; text-decoration: none; }
+.notfound-back-link:hover { background: #145580; }
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7

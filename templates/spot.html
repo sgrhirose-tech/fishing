@@ -108,7 +108,42 @@
   {% endif %}
 </div>
 <div id="fav-btn-container"></div>
-{% if spot_description %}
+
+{% if is_kinshi %}
+<div class="kinshi-banner">
+  <p class="kinshi-banner-msg">このスポットは現在釣り禁止です</p>
+</div>
+{% if kinshi_nearby %}
+<section class="kinshi-nearby-section">
+  <h2 class="kinshi-nearby-title">近くで釣れる場所</h2>
+  <div class="kinshi-nearby-grid">
+    {% for ns in kinshi_nearby %}
+    {% set nsa = ns.area %}
+    <a href="/{{ nsa.pref_slug }}/{{ nsa.area_slug }}/{{ nsa.city_slug }}/{{ ns.slug }}"
+       class="kinshi-nearby-card">
+      <span class="kinshi-nearby-name">{{ ns.name }}</span>
+      <span class="kinshi-nearby-meta">
+        {% if ns._dist_display %}<span class="kinshi-nearby-dist">{{ ns._dist_display }}</span>{% endif %}
+        <span class="kinshi-nearby-city">{{ nsa.city }}</span>
+      </span>
+      {% if ns.target_fish %}
+      <span class="kinshi-nearby-fish">{% for f in ns.target_fish[:3] %}{{ fish_name_map.get(f, f) }}{% if not loop.last %}・{% endif %}{% endfor %}</span>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  <a href="/spots?area={{ area.area_slug }}" class="kinshi-nearby-all">{{ area.area_name }}の釣り場をすべて見る →</a>
+</section>
+{% endif %}
+{% endif %}
+
+{% if not is_kinshi and (spot_lead or spot_description_human) %}
+<div class="spot-description">
+  {% if spot_lead %}<p>{{ spot_lead }}</p>{% endif %}
+  {% if lead_text_date %}<p class="spot-lead-date">{{ lead_text_date }}現在</p>{% endif %}
+  {% if spot_description_human %}<p class="spot-notes-human"><span class="spot-notes-label">ここだけの話</span>{{ spot_description_human }}</p>{% endif %}
+</div>
+{% elif spot_description %}
 <p class="spot-description">{{ spot_description }}</p>
 {% endif %}
 
@@ -163,7 +198,6 @@
       <th>最寄りコンビニ</th>
       <td id="conbini-name"></td>
     </tr>
-    <tr><th>メモ</th><td>{{ spot.info.notes }}</td></tr>
     {% if spot.target_fish %}
     <tr>
       <th>対象魚種</th>
@@ -175,6 +209,9 @@
         </div>
       </td>
     </tr>
+    {% endif %}
+    {% if spot_updated_at %}
+    <tr><th>情報更新日</th><td>{{ spot_updated_at }}</td></tr>
     {% endif %}
   </table>
 </section>
@@ -193,6 +230,7 @@
 </section>
 {% endif %}
 
+<<<<<<< HEAD
 <!-- 気象・スコア（JS で非同期ロード） -->
 <section class="weather-section">
   <h2>明日&emsp;{{ tomorrow_jp }}の海況・気象情報</h2>
@@ -200,6 +238,18 @@
   {% set tmr = preloaded_forecast.days[0] %}
   <div class="ssr-weather-summary" aria-hidden="false">
     {% for p in tmr.periods %}
+=======
+<!-- 24時間チャート -->
+<section class="chart24-section">
+  <div class="chart24-day-tabs">
+    <button class="chart24-tab active" data-which="today"></button>
+    <button class="chart24-tab" data-which="tomorrow"></button>
+  </div>
+  {% if preloaded_forecast %}
+  {% macro period_rows(day) %}
+    {% if day and day.periods %}
+    {% for p in day.periods %}
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
     <div class="ssr-period">
       <strong>{{ p.period }}</strong>：
       {% if p.wave_height_raw is not none %}波 {{ p.wave_height_raw | round(1, 'ceil') }}m{% else %}波 --{% endif %}
@@ -207,46 +257,93 @@
       ／ {{ p.sky }}{% if p.sst_raw is not none %} ／ 水温 {{ p.sst_raw | round(1, 'ceil') }}°C{% endif %}
     </div>
     {% endfor %}
+    {% endif %}
+  {% endmacro %}
+  <div id="ssr-summary-today" class="ssr-weather-summary" aria-hidden="false">
+    {{ period_rows(preloaded_forecast.today) }}
+    {% if preloaded_forecast.fetched_at %}<div class="ssr-fetched-at">取得 {{ preloaded_forecast.fetched_at }} JST</div>{% endif %}
+  </div>
+  <div id="ssr-summary-tomorrow" class="ssr-weather-summary" aria-hidden="false" style="display:none">
+    {% if preloaded_forecast.days %}{{ period_rows(preloaded_forecast.days[0]) }}{% endif %}
     {% if preloaded_forecast.fetched_at %}<div class="ssr-fetched-at">取得 {{ preloaded_forecast.fetched_at }} JST</div>{% endif %}
   </div>
   {% endif %}
-  <div id="weather-loading" class="loading">気象データを取得中...</div>
-  <div id="weather-result" style="display:none;">
-    <div class="forecast-tabs tomorrow-tabs">
-      <button class="tab-btn tab-tomorrow active" data-period="朝">朝</button>
-      <button class="tab-btn tab-tomorrow" data-period="昼">昼</button>
-      <button class="tab-btn tab-tomorrow" data-period="夕">夕</button>
-      <button class="tab-btn tab-tomorrow" data-period="夜">夜</button>
+  <div id="safety-warning" style="display:none;"></div>
+  <div id="chart24-loading" class="loading">気象データを取得中...</div>
+  <div id="chart24-body" style="display:none;" class="chart24-container">
+    <div class="chart24-title">24時間情報</div>
+    <div class="chart24-scroll-wrap">
+      <div class="chart24-inner">
+        <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
+          <div class="chart24-row-label">天気</div>
+          <div class="chart24-row-data" id="chart24-sky"></div>
+        </div>
+        <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
+          <div class="chart24-row-label">気温<br>℃</div>
+          <div class="chart24-row-data" id="chart24-temp"></div>
+        </div>
+        <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
+          <div class="chart24-row-label">風</div>
+          <div class="chart24-row-data" id="chart24-wind"></div>
+        </div>
+        <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
+          <div class="chart24-row-label">波・潮</div>
+          <div class="chart24-chart-area" style="flex:1;min-width:0">
+            <canvas id="chart24-canvas"></canvas>
+          </div>
+        </div>
+        <div class="chart24-row" style="display:flex;align-items:stretch;margin-bottom:4px">
+          <div class="chart24-row-label">水温<br>℃</div>
+          <div class="chart24-row-data" id="chart24-sea"></div>
+        </div>
+      </div>
     </div>
-    <table class="info-table" id="weather-table"></table>
+    <div class="chart24-legend">
+      <div class="chart24-legend-item">
+        <div class="chart24-legend-gradient"></div>
+        <span>波高（色=波周期：青=短・赤=長）</span>
+      </div>
+      <div class="chart24-legend-item">
+        <div class="chart24-legend-line" style="background:#4fc3f7"></div>
+        <span>潮汐</span>
+      </div>
+      <div class="chart24-legend-item">
+        <div class="chart24-legend-line" style="background:#ef5350"></div>
+        <span>日の出・日の入り</span>
+      </div>
+    </div>
+    <div class="chart24-period-scale">
+      <span>波周期:</span>
+      <span style="color:#2196F3">■ 4s</span>
+      <span style="color:#4CAF50">■ 8s</span>
+      <span style="color:#FF9800">■ 12s</span>
+      <span style="color:#F44336">■ 16s+</span>
+    </div>
+  </div>
+</section>
+
+<!-- 葵ちゃんコメント -->
+<section class="aoi-section" id="aoi-section" style="display:none">
+  <div class="aoi-card" id="aoi-today">
+    <img class="aoi-illust" id="aoi-illust-today" src="" alt="葵ちゃん" width="110" height="110">
+    <div class="aoi-body">
+      <div class="aoi-label">今日の葵ちゃんコメント</div>
+      <p class="aoi-comment" id="aoi-comment-today"></p>
+      <span class="aoi-disclaimer">※AIによる個人的な感想です。気象情報ではありません。</span>
+    </div>
+  </div>
+  <div class="aoi-card" id="aoi-tomorrow" style="display:none">
+    <img class="aoi-illust" id="aoi-illust-tomorrow" src="" alt="葵ちゃん" width="110" height="110">
+    <div class="aoi-body">
+      <div class="aoi-label">明日の葵ちゃんコメント</div>
+      <p class="aoi-comment" id="aoi-comment-tomorrow"></p>
+      <span class="aoi-disclaimer">※AIによる個人的な感想です。気象情報ではありません。</span>
+    </div>
   </div>
 </section>
 
 <!-- 安全リンク -->
 <p class="safety-link-inline"><a href="/safety">釣行前に安全事項をご確認ください →</a></p>
-
-<!-- 安全警告 + AIコメント -->
-<section class="ai-comment-section">
-  <div id="safety-warning" style="display:none;"></div>
-  <div id="ai-comment-loading" class="loading" style="display:none;">コメントを生成中...</div>
-  <p id="ai-comment-label" class="ai-comment-label" style="display:none;">フィッシングガイドAIからアドバイス</p>
-  <div id="ai-comment-result" style="display:none;" class="ai-comment-box"></div>
-</section>
-
-<!-- 今日の海況・気象情報 -->
-<section class="weather-section weather-section--today">
-  <h2>今日&emsp;{{ today_jp }}の海況・気象情報</h2>
-  <div id="today-loading" class="loading">気象データを取得中...</div>
-  <div id="today-result" style="display:none;">
-    <div class="forecast-tabs today-tabs">
-      <button class="tab-btn tab-today active" data-period="朝">朝</button>
-      <button class="tab-btn tab-today" data-period="昼">昼</button>
-      <button class="tab-btn tab-today" data-period="夕">夕</button>
-      <button class="tab-btn tab-today" data-period="夜">夜</button>
-    </div>
-    <table class="info-table" id="today-table"></table>
-  </div>
-</section>
 
 <!-- タイドグラフ（一週間） -->
 <section class="tide-section" id="tide-section" style="display:none;">
@@ -298,12 +395,74 @@
   </div>
 </section>
 
+{% macro camera_figure(cam) %}
+<figure class="camera-embed">
+  {% if cam.youtube_video_id %}
+  <div class="camera-aspect">
+    <iframe
+      src="https://www.youtube.com/embed/{{ cam.youtube_video_id }}?rel=0&modestbranding=1"
+      title="{{ spot.name }}のライブカメラ: {{ cam.name }}"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+  {% else %}
+  <a href="{{ cam.source_url }}" target="_blank" rel="noopener noreferrer" class="camera-link-card">
+    <span class="camera-link-icon">▶</span>
+    <span>YouTubeで見る（外部サイト）</span>
+  </a>
+  {% endif %}
+  <figcaption class="camera-caption">
+    <span class="camera-name">{{ cam.name }}</span>
+    {% if cam.coverage_note %}<span class="camera-coverage">（{{ cam.coverage_note }}）</span>{% endif %}
+    <span class="camera-attribution">
+      {% if cam.attribution_url %}<a href="{{ cam.attribution_url }}" target="_blank" rel="noopener noreferrer">{{ cam.attribution_text }}</a>{% else %}{{ cam.attribution_text }}{% endif %}
+    </span>
+    {% if cam.youtube_video_id %}<a href="{{ cam.source_url }}" target="_blank" rel="noopener noreferrer" class="camera-source-link">元配信を見る ↗</a>{% endif %}
+  </figcaption>
+</figure>
+{% endmacro %}
+{% if cameras %}
+<section class="spot-cameras">
+  <h2 class="spot-cameras-title">現地の様子</h2>
+  <p class="spot-cameras-note">映像は各配信元から直接配信されています。Tsuricastは独自の海況予測を行っていません。</p>
+  {{ camera_figure(cameras[0]) }}
+  {% if cameras|length > 1 %}
+  <details class="camera-more">
+    <summary>他のカメラも見る（{{ cameras|length - 1 }}件）</summary>
+    {% for cam in cameras[1:] %}{{ camera_figure(cam) }}{% endfor %}
+  </details>
+  {% endif %}
+</section>
+{% endif %}
+
 <!-- AdSense 枠（コメントアウト） -->
 <!--
 <section class="ad-section">
   <ins class="adsbygoogle" ...></ins>
 </section>
 -->
+
+{% if related_reports %}
+<section class="spot-related-reports">
+  <h2>この釣り場の釣行レポート</h2>
+  <ul class="article-list">
+    {% for r in related_reports %}
+    <li>
+      <a href="/articles/{{ r.category }}/{{ r.slug }}/" class="article-row-card">
+        <img src="{{ r.card_image }}" alt="{{ r.title or r.slug }}" loading="lazy">
+        <div class="spot-report-row-body">
+          <span class="article-row-title">{{ r.title or r.slug }}</span>
+          {% if r.updated_jp %}<span class="spot-report-row-meta">更新 {{ r.updated_jp }}{% if r.catch_display %}　🐟 {% for c in r.catch_display %}{% if c.masked %}{{ c.summary }}{% else %}{{ c.name }}{% if c.count %} {{ c.count }}匹{% endif %}{% if not loop.last %}・{% endif %}{% endif %}{% endfor %}{% endif %}</span>{% endif %}
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
 {% if tackle_links %}
 <section class="spot-tackle-section">
   <h2>このスポットで使うタックル</h2>
@@ -353,24 +512,7 @@
 </section>
 {% endif %}
 
-{% if is_kinshi and nearby_spots %}
-<section class="kinshi-nearby-section">
-  <h2>近くで釣れる場所（{{ area.area_name }}）</h2>
-  <div class="kinshi-nearby-grid">
-    {% for ns in nearby_spots %}
-    {% set nsa = ns.area %}
-    <a href="/{{ nsa.pref_slug }}/{{ nsa.area_slug }}/{{ nsa.city_slug }}/{{ ns.slug }}"
-       class="kinshi-nearby-card">
-      <span class="kinshi-nearby-name">{{ ns.name }}</span>
-      <span class="kinshi-nearby-city">{{ nsa.city }}</span>
-    </a>
-    {% endfor %}
-  </div>
-  <a href="/spots?area={{ area.area_slug }}" class="kinshi-nearby-all">
-    {{ area.area_name }}の釣り場をすべて見る →
-  </a>
-</section>
-{% endif %}
+
 <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
 
@@ -421,40 +563,13 @@
       })
       .catch(() => {});  // 施設取得失敗は無視
 
-    // 安全警告（閾値チェック）— 現在表示中の区分のみで判定
-    function checkSafetyWarning(p) {
-      var el = document.getElementById('safety-warning');
-      if (!p) { el.style.display = 'none'; return; }
-      var maxWave   = p.wave_height_raw != null ? p.wave_height_raw : null;
-      var maxPeriod = p.wave_period_raw != null ? p.wave_period_raw : null;
-      var maxWind   = p.wind_speed_raw  != null ? p.wind_speed_raw  : null;
-      var isDanger  = (maxWave   != null && maxWave   >  1.2)
-                   || (maxPeriod != null && maxPeriod >  8)
-                   || (maxWind   != null && maxWind   > 10);
-      var isCaution = !isDanger && (
-                       (maxWave   != null && maxWave   >= 0.8)
-                    || (maxPeriod != null && maxPeriod >= 8)
-                    || (maxWind   != null && maxWind   >= 7));
-      if (isDanger) {
-        el.innerHTML = '<strong>⚠️ 釣行は控えることをおすすめします</strong>';
-        el.className = 'safety-danger';
-        el.style.display = 'block';
-      } else if (isCaution) {
-        el.innerHTML = '<strong>⚠️ 注意して釣行してください</strong>';
-        el.className = 'safety-caution';
-        el.style.display = 'block';
-      } else {
-        el.style.display = 'none';
-      }
-    }
-
-    // 7日間タブ＋明日タブを非同期取得
+    // ===== 7日間予報 =====
     var forecastDays = [];
     function fmtNum(val, unit, dec) {
       return val != null ? val.toFixed(dec) + unit : 'データなし';
     }
     function renderTab(period) {
-      document.querySelectorAll('.tab-btn:not(.tab-tomorrow)').forEach(b =>
+      document.querySelectorAll('.tab-btn').forEach(b =>
         b.classList.toggle('active', b.dataset.period === period));
       const tbody = document.getElementById('forecast-tbody');
       tbody.innerHTML = '';
@@ -479,74 +594,20 @@
         tbody.appendChild(tr);
       });
     }
-    function renderTomorrowTab(period) {
-      document.querySelectorAll('.tab-tomorrow').forEach(b =>
-        b.classList.toggle('active', b.dataset.period === period));
-      const p = buildPeriodTable('weather-table', forecastDays[0], period);
-      if (p && p.rain_warning) {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<th>注意</th><td class="warn">${p.rain_warning}</td>`;
-        document.getElementById('weather-table').appendChild(tr);
-      }
-      checkSafetyWarning(p || null);
-    }
-    // 今日タブ描画
-    var todayData = null;
-    function buildPeriodTable(tableId, dayObj, period) {
-      const table = document.getElementById(tableId);
-      table.innerHTML = '';
-      if (!dayObj) return;
-      const p = (dayObj.periods || []).find(p => p.period === period);
-      if (!p) return;
-      const w = p.wind_speed_raw, wv = p.wave_height_raw, wp = p.wave_period_raw;
-      const windVal = w != null ? `${w.toFixed(1)}m/s ${p.wind_dir_compass || ''}` : 'データなし';
-      const rows = [
-        ['天気',       p.sky || 'データなし',         false],
-        ['気温',       fmtNum(p.temp_raw, '°C', 1),   false],
-        ['潮',         p.tide || 'ー',                false],
-        ['風速・風向', windVal,                         w != null && w >= 7],
-        ['波高',       fmtNum(wv, 'm',  1), wv != null && wv >= 0.8],
-        ['波周期',     fmtNum(wp, 's',  0), wp != null && wp >= 8],
-        ['海水温',     fmtNum(p.sst_raw, '°C', 1),    false],
-        ['降水量',     p.precip || 'データなし',       false],
-      ];
-      rows.forEach(([label, val, over]) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<th>${label}</th><td${over ? ' class="warn"' : ''}>${val}</td>`;
-        table.appendChild(tr);
-      });
-      return p;
-    }
-    function renderTodayTab(period) {
-      document.querySelectorAll('.tab-today').forEach(b =>
-        b.classList.toggle('active', b.dataset.period === period));
-      buildPeriodTable('today-table', todayData, period);
-    }
     function renderForecast(data) {
       forecastDays = data.days || [];
-      todayData    = data.today  || null;
-      // 明日セクション
-      document.getElementById('weather-loading').style.display = 'none';
-      document.getElementById('weather-result').style.display = 'block';
-      renderTomorrowTab('朝');
-      document.querySelectorAll('.tab-tomorrow').forEach(b =>
-        b.addEventListener('click', () => renderTomorrowTab(b.dataset.period)));
-      // 今日セクション
-      document.getElementById('today-loading').style.display = 'none';
-      document.getElementById('today-result').style.display = 'block';
-      renderTodayTab('朝');
-      document.querySelectorAll('.tab-today').forEach(b =>
-        b.addEventListener('click', () => renderTodayTab(b.dataset.period)));
-      // 7日間セクション
       document.getElementById('forecast-loading').style.display = 'none';
       document.getElementById('forecast-result').style.display = 'block';
       renderTab('朝');
-      document.querySelectorAll('.tab-btn:not(.tab-tomorrow):not(.tab-today)').forEach(b =>
+      document.querySelectorAll('.tab-btn').forEach(b =>
         b.addEventListener('click', () => renderTab(b.dataset.period)));
     }
     var _pf = window.PRELOADED_FORECAST;
     if (_pf !== null && _pf !== undefined) {
+<<<<<<< HEAD
       // サーバー側で計算済み（days が空でも API 再呼び出しはしない）
+=======
+>>>>>>> ea28f405fa079d2430256bf2472c3af797bc02b7
       renderForecast(_pf);
     } else {
       // サーバー側がタイムアウト → JS 側で取得
@@ -554,11 +615,243 @@
         .then(r => r.json())
         .then(data => renderForecast(data))
         .catch(() => {
-          document.getElementById('weather-loading').textContent = '気象データの取得に失敗しました';
-          document.getElementById('today-loading').textContent = '気象データの取得に失敗しました';
           document.getElementById('forecast-loading').textContent = '海況データの取得に失敗しました';
         });
     }
+
+    // ===== 24時間チャート =====
+    (function() {
+      var DOW = ['日','月','火','水','木','金','土'];
+      function getJSTDate(offsetDays) {
+        var ms = Date.now() + 9 * 3600 * 1000 + offsetDays * 86400 * 1000;
+        var d = new Date(ms);
+        var m = d.getUTCMonth() + 1, day = d.getUTCDate();
+        return {
+          str: d.toISOString().slice(0, 10),
+          label: m + '/' + day + '(' + DOW[d.getUTCDay()] + ')',
+        };
+      }
+      var todayD    = getJSTDate(0);
+      var tomorrowD = getJSTDate(1);
+      var tabs = document.querySelectorAll('.chart24-tab');
+      tabs.forEach(function(btn) {
+        var d = btn.dataset.which === 'today' ? todayD : tomorrowD;
+        btn.textContent = (btn.dataset.which === 'today' ? '今日 ' : '明日 ') + d.label;
+        btn.dataset.date = d.str;
+      });
+
+      var currentChart24 = null;
+      var INNER_W = 960, LABEL_W = 38, CHART_H = 160;
+
+      function wCodeToEmoji(wc) {
+        if (wc == null) return '–';
+        wc = +wc;
+        if (wc === 0)  return '☀️';
+        if (wc <= 1)   return '🌤';
+        if (wc <= 2)   return '⛅';
+        if (wc <= 3)   return '☁️';
+        if (wc <= 48)  return '🌫';
+        if (wc <= 55)  return '🌦';
+        if (wc <= 67)  return '🌧';
+        if (wc <= 77)  return '🌨';
+        if (wc <= 82)  return '🌧';
+        return '⛈';
+      }
+      function degToArrow(deg) {
+        if (deg == null) return '–';
+        var dirs = ['↓','↙','←','↖','↑','↗','→','↘'];
+        return dirs[Math.round(((+deg % 360) + 360) % 360 / 45) % 8];
+      }
+      function periodToColor(p) {
+        if (p == null) return 'rgba(150,150,150,0.5)';
+        var t = Math.min(Math.max((p - 4) / 12, 0), 1);
+        var r, g, b, s;
+        if (t < 0.33) {
+          s = t / 0.33;
+          r = Math.round(33 + s*167); g = Math.round(150 - s*75); b = Math.round(243 - s*167);
+        } else if (t < 0.66) {
+          s = (t - 0.33) / 0.33;
+          r = Math.round(200 + s*55); g = Math.round(75 + s*72); b = Math.round(76 - s*56);
+        } else {
+          s = (t - 0.66) / 0.34;
+          r = 255; g = Math.round(147 - s*110); b = Math.round(20 - s*14);
+        }
+        return 'rgba(' + r + ',' + g + ',' + b + ',0.9)';
+      }
+      function buildRow(id, fn) {
+        var el = document.getElementById(id);
+        el.style.cssText = 'flex:1;min-width:0;display:grid;grid-template-columns:repeat(24,1fr)';
+        el.innerHTML = '';
+        for (var h = 0; h < 24; h++) {
+          var cell = document.createElement('div');
+          cell.className = 'chart24-cell';
+          cell.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;border-left:1px solid rgba(30,58,95,0.4);padding:3px 0;min-width:0;overflow:hidden';
+          cell.innerHTML = fn(h);
+          el.appendChild(cell);
+        }
+      }
+
+      function renderChart24(data) {
+        buildRow('chart24-sky', function(h) {
+          return '<div class="chart24-hour">' + h + '時</div>'
+               + '<div class="chart24-icon">' + wCodeToEmoji(data.weather_code[h]) + '</div>';
+        });
+        buildRow('chart24-temp', function(h) {
+          var v = data.temp[h];
+          return '<div class="chart24-val chart24-val-temp">' + (v != null ? Math.round(+v) : '–') + '</div>';
+        });
+        buildRow('chart24-wind', function(h) {
+          var spd = data.wind_speed[h];
+          var spdInt = spd != null ? Math.round(+spd) : null;
+          var cls = spdInt != null && spdInt >= 10 ? ' chart24-wind-danger'
+                  : spdInt != null && spdInt >= 7  ? ' chart24-wind-caution' : '';
+          return '<div class="chart24-arrow">' + degToArrow(data.wind_dir[h]) + '</div>'
+               + '<div class="chart24-val chart24-val-wind' + cls + '">'
+               + (spdInt != null ? spdInt : '–') + '</div>';
+        });
+        buildRow('chart24-sea', function(h) {
+          var v = Array.isArray(data.sst) ? data.sst[h] : data.sst;
+          return '<div class="chart24-val chart24-val-sea">' + (v != null ? (+v).toFixed(1) : '–') + '</div>';
+        });
+
+        if (currentChart24) { currentChart24.destroy(); currentChart24 = null; }
+        var canvas = document.getElementById('chart24-canvas');
+        canvas.width  = INNER_W - LABEL_W;
+        canvas.height = CHART_H;
+
+        var hours = Array.from({length: 24}, function(_, i) { return i; });
+        var barColors = data.wave_period.map(function(p) { return periodToColor(p); });
+        var waveData  = data.wave_height.map(function(v) { return v != null ? +v : 0; });
+        var tideData  = data.tide_cm.map(function(v) { return v != null ? +v : null; });
+        var hasTide   = tideData.some(function(v) { return v != null; });
+        var maxWave   = Math.max.apply(null, waveData.concat([0.1]));
+        var yMax      = maxWave <= 1.5 ? 2.0 : maxWave <= 2.5 ? 3.0 : 4.0;
+
+        function timeToH(t) { return t ? +t.split(':')[0] : null; }
+        var sunriseH = timeToH(data.sunrise), sunsetH = timeToH(data.sunset);
+
+        var sunPlugin = {
+          id: 'chart24Sun',
+          afterDraw: function(chart) {
+            var ca = chart.chartArea;
+            if (!ca) return;
+            var ctx = chart.ctx;
+            [sunriseH, sunsetH].forEach(function(h) {
+              if (h == null) return;
+              var x = chart.scales.x.getPixelForValue(h);
+              ctx.save();
+              ctx.beginPath(); ctx.moveTo(x, ca.top); ctx.lineTo(x, ca.bottom);
+              ctx.strokeStyle = '#ef5350'; ctx.lineWidth = 1.5;
+              ctx.setLineDash([4,3]); ctx.stroke(); ctx.setLineDash([]);
+              ctx.restore();
+            });
+          }
+        };
+
+        var datasets = [{
+          type: 'bar', label: '波高', data: waveData,
+          backgroundColor: barColors, borderWidth: 0, borderRadius: 3,
+          order: 2, yAxisID: 'y', barPercentage: 0.9, categoryPercentage: 1.0,
+        }];
+        if (hasTide) datasets.push({
+          type: 'line', label: '潮汐', data: tideData,
+          borderColor: '#4fc3f7', borderWidth: 2, pointRadius: 0,
+          tension: 0.4, fill: false, order: 1, yAxisID: 'y2', spanGaps: true,
+        });
+
+        currentChart24 = new Chart(canvas.getContext('2d'), {
+          data: { labels: hours, datasets: datasets },
+          options: {
+            responsive: false, animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: '#0a1628', borderColor: '#1e3a5f', borderWidth: 1,
+                titleColor: '#e8f4f8', bodyColor: '#aac4d8',
+                callbacks: {
+                  title: function(items) { return items[0].label + '時'; },
+                  label: function(c) {
+                    if (c.dataset.label === '波高') {
+                      var p = data.wave_period[c.dataIndex];
+                      return ' 波高 ' + c.parsed.y.toFixed(1) + 'm' + (p != null ? '  周期 ' + (+p).toFixed(0) + 's' : '');
+                    }
+                    if (c.dataset.label === '潮汐') return ' 潮位 ' + c.parsed.y + 'cm';
+                  }
+                }
+              }
+            },
+            layout: { padding: { top: 16 } },
+            scales: {
+              x: { type: 'category', offset: false,
+                   grid: { color: 'rgba(30,58,95,0.4)', offset: false },
+                   ticks: { display: false }, border: { display: false } },
+              y: { position: 'left', min: 0, max: yMax,
+                   grid: { color: 'rgba(30,58,95,0.4)' },
+                   ticks: { color: '#6b8fa8', font: { size: 11 },
+                            callback: function(v) { return v + 'm'; }, maxTicksLimit: 5 },
+                   border: { display: false } },
+              y2: { position: 'right', min: 0, max: 250, display: hasTide,
+                    grid: { display: false },
+                    ticks: { color: '#4fc3f7', font: { size: 11 },
+                             callback: function(v) { return v + 'cm'; }, maxTicksLimit: 5 },
+                    border: { display: false } }
+            }
+          },
+          plugins: [sunPlugin]
+        });
+
+        // 安全警告（表示中の日の最大値で判定）
+        var maxWv = Math.max.apply(null, data.wave_height.filter(function(v){ return v != null; }).concat([0]));
+        var maxWd = Math.max.apply(null, data.wind_speed.filter(function(v){ return v != null; }).concat([0]));
+        var safetyEl = document.getElementById('safety-warning');
+        if (maxWv > 1.2 || maxWd > 10) {
+          safetyEl.innerHTML = '<strong>⚠️ 釣行は控えることをおすすめします</strong>';
+          safetyEl.className = 'safety-danger'; safetyEl.style.display = 'block';
+        } else if (maxWv >= 0.8 || maxWd >= 7) {
+          safetyEl.innerHTML = '<strong>⚠️ 注意して釣行してください</strong>';
+          safetyEl.className = 'safety-caution'; safetyEl.style.display = 'block';
+        } else {
+          safetyEl.style.display = 'none';
+        }
+      }
+
+      var chart24Cache = {};
+
+      function loadChart24(dateStr) {
+        if (chart24Cache[dateStr]) {
+          renderChart24(chart24Cache[dateStr]);
+          return;
+        }
+        document.getElementById('chart24-loading').style.display = '';
+        document.getElementById('chart24-body').style.display = 'none';
+        fetch('/api/spots/' + SPOT.slug + '/chart?date=' + dateStr)
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            chart24Cache[dateStr] = data;
+            renderChart24(data);
+            document.getElementById('chart24-loading').style.display = 'none';
+            document.getElementById('chart24-body').style.display = '';
+          })
+          .catch(function() {
+            document.getElementById('chart24-loading').textContent = '気象データの取得に失敗しました';
+          });
+      }
+
+      tabs.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          tabs.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          loadChart24(btn.dataset.date);
+          var isToday = btn.dataset.which === 'today';
+          var st = document.getElementById('ssr-summary-today');
+          var sm = document.getElementById('ssr-summary-tomorrow');
+          if (st) st.style.display = isToday ? '' : 'none';
+          if (sm) sm.style.display = isToday ? 'none' : '';
+        });
+      });
+      loadChart24(todayD.str);
+    })();
 
     // タイドグラフ（一週間）
     (function() {
@@ -756,24 +1049,52 @@
       }
     })();
 
-    // AIコメント
-    document.getElementById('ai-comment-loading').style.display = 'block';
-    fetch('/api/ai-comment/' + SPOT.slug)
-      .then(r => r.json())
-      .then(data => {
-        document.getElementById('ai-comment-loading').style.display = 'none';
-        if (data.comment) {
-          var el = document.getElementById('ai-comment-result');
-          el.textContent = data.comment;
-          el.style.display = 'block';
-          document.getElementById('ai-comment-label').style.display = 'block';
-        }
-      })
-      .catch(() => {
-        document.getElementById('ai-comment-loading').style.display = 'none';
-      });
-
     initFavoriteButton(SPOT.slug);
   });
+</script>
+
+<script>
+// 葵ちゃんコメント
+(function() {
+  var slug = {{ spot.slug | tojson }};
+
+  function fetchAoi(dateLabel) {
+    return fetch('/api/aoi/' + encodeURIComponent(slug) + '?date_label=' + dateLabel)
+      .then(function(r) { return r.ok ? r.json() : {}; })
+      .catch(function() { return {}; });
+  }
+
+  function populateCard(which, data) {
+    if (!data || !data.comment) return false;
+    var commentEl = document.getElementById('aoi-comment-' + which);
+    var illustEl  = document.getElementById('aoi-illust-' + which);
+    if (commentEl) commentEl.textContent = data.comment;
+    if (illustEl && data.mode) illustEl.src = '/static/img/aoi/weather_' + data.mode + '.png';
+    return true;
+  }
+
+  Promise.all([fetchAoi('today'), fetchAoi('tomorrow')]).then(function(results) {
+    var hasToday    = populateCard('today', results[0]);
+    var hasTomorrow = populateCard('tomorrow', results[1]);
+    if (!hasToday && !hasTomorrow) return;
+
+    var section      = document.getElementById('aoi-section');
+    var todayCard    = document.getElementById('aoi-today');
+    var tomorrowCard = document.getElementById('aoi-tomorrow');
+
+    var initWhich = hasToday ? 'today' : 'tomorrow';
+    if (todayCard)    todayCard.style.display    = initWhich === 'today'    ? '' : 'none';
+    if (tomorrowCard) tomorrowCard.style.display = initWhich === 'tomorrow' ? '' : 'none';
+    section.style.display = '';
+
+    document.querySelectorAll('.chart24-tab').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var isToday = btn.dataset.which === 'today';
+        if (todayCard)    todayCard.style.display    = isToday ? '' : 'none';
+        if (tomorrowCard) tomorrowCard.style.display = isToday ? 'none' : '';
+      });
+    });
+  });
+})();
 </script>
 {% endblock %}

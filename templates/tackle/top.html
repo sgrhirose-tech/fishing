@@ -4,12 +4,15 @@
 {% block description %}釣り初心者でも迷わず選べる釣り道具（タックル）ガイド。ロッド・リール・ライン・仕掛けをカテゴリ別にわかりやすく解説します。{% endblock %}
 {% block og_url %}https://tsuricast.jp/tackle/{% endblock %}
 {% block canonical %}https://tsuricast.jp/tackle/{% endblock %}
+{% block og_image %}<meta property="og:image" content="https://tsuricast.jp/static/img/shop_girl_card.png">{% endblock %}
+{% block tw_image %}https://tsuricast.jp/static/img/shop_girl_card.png{% endblock %}
 
 {% block content %}
 <nav class="breadcrumb">
   <a href="/">ホーム</a> &rsaquo;
   <span>タックルガイド</span>
 </nav>
+<p class="ai-disclosure">このページはAIを活用して作成しています。内容は確認・編集のうえ掲載しています。</p>
 
 <section class="page-header">
   <h1>タックルガイド</h1>
@@ -19,6 +22,39 @@
 <section class="tackle-intro">
   <p>釣りを始めるとき、最初に迷うのが「何を買えばいいの？」という道具選びです。竿・リール・糸・仕掛け……種類が多すぎて、釣具店に行くだけで心が折れそうになりますよね。でも大丈夫。釣り具には「釣り方ごとの正解」があります。このページでは、釣り初心者の方でも迷わず選べるよう、タックル（釣り道具一式）をカテゴリ別にやさしく解説しています。まずは自分がやりたい釣りを思い浮かべながら読み進めてみてください。</p>
 </section>
+
+{% if staff_intro or aoi_interview %}
+<section class="tackle-staff-intro">
+  <h2>スタッフ紹介</h2>
+  <ul class="article-list">
+    {% if staff_intro %}
+    <li>
+      <a href="/articles/{{ staff_intro.category }}/{{ staff_intro.slug }}/" class="article-row-card">
+        <img src="{{ staff_intro.card_image }}" alt="{{ staff_intro.title or staff_intro.slug }}" loading="lazy">
+        <div class="article-row-body">
+          <span class="article-row-title">{{ staff_intro.title or staff_intro.slug }}</span>
+          {% if staff_intro.updated_at %}<span class="article-row-meta">更新 {{ staff_intro.updated_at }}</span>{% endif %}
+        </div>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+  {% if aoi_interview %}
+  <h2>スタッフインタビュー</h2>
+  <ul class="article-list">
+    <li>
+      <a href="/articles/{{ aoi_interview.category }}/{{ aoi_interview.slug }}/" class="article-row-card">
+        <img src="{{ aoi_interview.card_image }}" alt="{{ aoi_interview.title or aoi_interview.slug }}" loading="lazy">
+        <div class="article-row-body">
+          <span class="article-row-title">{{ aoi_interview.title or aoi_interview.slug }}</span>
+          {% if aoi_interview.updated_at %}<span class="article-row-meta">更新 {{ aoi_interview.updated_at }}</span>{% endif %}
+        </div>
+      </a>
+    </li>
+  </ul>
+  {% endif %}
+</section>
+{% endif %}
 
 <section class="area-links">
   <h2>カテゴリから選ぶ</h2>

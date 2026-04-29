@@ -5,6 +5,7 @@ related_spots:
   - higashi-ogishima-nishi-koen
   - jonanjima-kaihin-koen
   - wakasu-kaihin-koen
+updated: 2026-04-18
 ---
 
 # 釣りをしない家族との折り合いの付け方  

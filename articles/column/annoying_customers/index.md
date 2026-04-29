@@ -6,6 +6,7 @@ related_spots:
   - shichirigahama
   - tsujido
   - chigasaki-headland
+updated: 2026-04-18
 ---
 
 # 釣具屋に来る、迷惑な客ベスト3  
