@@ -20,8 +20,12 @@ except ImportError:
     pass
 
 from fastapi import FastAPI, HTTPException, Query
+<<<<<<< HEAD
 from fastapi.exception_handlers import http_exception_handler
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
+=======
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Response
+>>>>>>> master
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -35,6 +39,7 @@ from .weather import (fetch_weather, fetch_weather_range,
                        fetch_sst_noaa, get_weather_fetched_at)
 from .scoring import score_spot, direction_label, score_7days
 from .osm import fetch_nearby_facilities, load_facilities_json, get_cached_facilities
+from .aoi import get_or_generate_comment, get_web_log_records, clear_web_log_records, send_aoi_report_email
 
 JST = timezone(timedelta(hours=9))
 
@@ -59,6 +64,7 @@ _METHOD_SLUG_TO_NAME: dict = {}  # {slug: 釣法名}
 
 # ── ページリード文 ────────────────────────────────────────────
 _PAGE_LEADS: dict = {}  # {"pref/area/city-key": "リード文", ...}
+<<<<<<< HEAD
 _AREA_SEO: dict = {}   # {"pref/area-key": {"title": ..., "description": ...}, ...}
 
 def _load_area_seo() -> None:
@@ -70,6 +76,8 @@ def _load_area_seo() -> None:
         print(f"[area_seo] {len(_AREA_SEO)} 件のSEO上書き設定を読み込みました")
     except Exception as e:
         print(f"[area_seo] 読み込みエラー: {e}")
+=======
+>>>>>>> master
 
 def _load_page_leads() -> None:
     global _PAGE_LEADS
@@ -252,9 +260,16 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
         if mcnt:
             top_month = mcnt.most_common(1)[0][0]
             top3 = sorted(m for m, _ in mcnt.most_common(3))
+<<<<<<< HEAD
             months_str = "・".join(f"{m}月" for m in top3)
             qa.append({"q": "何月頃が釣りやすいですか？",
                        "a": f"{months_str}頃が全体的に魚の活性が上がりやすい時期です。"})
+=======
+            season = _month_to_season(top_month)
+            months_str = "・".join(f"{m}月" for m in top3)
+            qa.append({"q": "何月頃が釣りやすいですか？",
+                       "a": f"{season}（{months_str}頃）が全体的に魚の活性が上がりやすい時期です。"})
+>>>>>>> master
 
     # ── 施設区分別 ────────────────────────────────────────
     if ptype == "rocky_shore":
@@ -272,9 +287,12 @@ def _build_spot_qa(spot: dict, cached_facilities: list) -> list[dict]:
         if any(k in lead for k in ("干潮", "浅くなる", "海底が見える", "釣りにならない")):
             qa.append({"q": "干潮時でも釣りはできますか？",
                        "a": "干潮時は水深が浅くなり釣りがしにくくなります。満潮前後の時間帯がおすすめです。"})
+<<<<<<< HEAD
         if any(k in lead for k in ("柵", "フェンス")):
             qa.append({"q": "柵は設置されていますか？",
                        "a": "柵が設置されていますが、お子様にはライフジャケット着用をお勧めします。"})
+=======
+>>>>>>> master
 
     elif ptype == "sand_beach":
         if any(k in lead for k in ("根掛かり", "沈みテトラ", "岩礁")):
@@ -349,6 +367,30 @@ def _rss_refresh_loop() -> None:
         _th.Event().wait(4 * 3600)
 
 
+def _aoi_report_loop() -> None:
+    """毎朝6時(JST)に前日分の葵ちゃんコメント生成ログをメール送信するループ。"""
+    import threading as _th
+    while True:
+        now = datetime.now(JST)
+        next_6am = now.replace(hour=6, minute=0, second=0, microsecond=0)
+        if now >= next_6am:
+            next_6am += timedelta(days=1)
+        _th.Event().wait((next_6am - now).total_seconds())
+
+        yesterday = (datetime.now(JST) - timedelta(days=1)).strftime("%Y-%m-%d")
+        try:
+            records = get_web_log_records(yesterday)
+            send_aoi_report_email(yesterday, records)
+        except Exception as e:
+            print(f"[aoi] 日次レポートメール送信エラー: {e}")
+
+        try:
+            today = datetime.now(JST).strftime("%Y-%m-%d")
+            clear_web_log_records(today)
+        except Exception as e:
+            print(f"[aoi] 古いレコード削除エラー: {e}")
+
+
 _BLOGMURA_PING_URL = "https://ping.blogmura.com/xmlrpc/hdbk152e2inm/"
 _RANKING_PING_URL = "https://blog.with2.net/ping.php/2139987/1776486464"
 
@@ -395,7 +437,10 @@ async def lifespan(app: FastAPI):
     _load_fish_master()
     _load_method_master()
     _load_page_leads()
+<<<<<<< HEAD
     _load_area_seo()
+=======
+>>>>>>> master
     _slug_map = {k: v["slug"] for k, v in _FISH_MASTER.items() if "slug" in v}
     templates.env.globals["fish_slug_map"] = _slug_map
     templates.env.globals["fish_name_map"] = {v: k for k, v in _slug_map.items()}
@@ -406,6 +451,8 @@ async def lifespan(app: FastAPI):
     _bf.load_feeds(fish_master=_FISH_MASTER)
     _t = _th.Thread(target=_rss_refresh_loop, daemon=True)
     _t.start()
+    _t2 = _th.Thread(target=_aoi_report_loop, daemon=True)
+    _t2.start()
     # 起動時に毎回ping送信
     await _ping_blogmura()
     await _ping_ranking()
@@ -574,12 +621,17 @@ def articles_rss_xml():
         if not p.exists():
             return art.get("description") or ""
         _, body = _extract_article_meta(p.read_text(encoding="utf-8"), art.get("slug", ""))
+        if art.get("catch_masked"):
+            body = _apply_catch_mask(body)
+        else:
+            body = _strip_catch_mask_markers(body)
         text = _re.sub(r'<!--.*?-->', '', body, flags=_re.DOTALL)
         text = _re.sub(r'#{1,6}\s+', '', text)
         text = _re.sub(r'\*{1,2}(.+?)\*{1,2}', r'\1', text)
         text = _re.sub(r'\[(.+?)\]\(.+?\)', r'\1', text)
         text = _re.sub(r'`[^`]+`', '', text)
         text = _re.sub(r'^\s*[-*>]+\s*', '', text, flags=_re.MULTILINE)
+        text = _re.sub(r'<[^>]+>', '', text)  # 残った HTML タグを除去
         text = _re.sub(r'\s+', ' ', text).strip()
         return text[:200]
 
@@ -773,6 +825,33 @@ def api_forecast(slug: str):
     result = _compute_forecast(spot)
     _FORECAST_CACHE[slug] = (time.time(), result)
     return result
+<<<<<<< HEAD
+=======
+
+
+@app.get("/api/ai-comment/{slug}")
+def api_ai_comment(slug: str):
+    """翌日のAIコメントを生成して返す。ai_prompt.md が必要。"""
+    from .ai import generate_spot_comment
+    spot = load_spot(slug)
+    if not spot:
+        raise HTTPException(status_code=404, detail="スポットが見つかりません")
+    tomorrow = _tomorrow()
+    lat, lon = spot_lat(spot), spot_lon(spot)
+    area = assign_area(spot)
+    area_centers = get_area_centers()
+    fetch_km = area_centers[area][2] if area in area_centers else 50
+    weather = fetch_weather_range(lat, lon, tomorrow, tomorrow)
+    marine = fetch_marine_range(lat, lon, tomorrow, tomorrow)
+    if not marine:
+        from .weather import fetch_marine_with_fallback
+        marine = fetch_marine_with_fallback(lat, lon, tomorrow)
+    sst = fetch_sst_noaa(lat, lon, tomorrow)
+    days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
+    periods = days[0]["periods"] if days else []
+    text = generate_spot_comment(spot, periods, tomorrow)
+    return {"comment": text, "date": tomorrow}
+>>>>>>> master
 
 
 @app.get("/api/osm/{slug}")
@@ -1188,6 +1267,28 @@ SPOT_TYPE_LABELS = {
     "sand_beach":       "砂浜",
     "fishing_facility": "釣り公園・施設",
 }
+
+@app.get("/api/aoi/{slug}")
+def aoi_comment_api(slug: str, date_label: str = "today", request: Request = None):
+    """葵ちゃんコメント取得エンドポイント。キャッシュヒット時は即返却、ミス時は生成。
+
+    date_label: "today" or "tomorrow"
+    Returns: {"comment": str, "mode": str} or {} on failure/rate-limit/banned.
+    """
+    spot = load_spot(slug)
+    if not spot or spot.get("banned"):
+        return {}
+    now = datetime.now(JST)
+    if date_label == "today":
+        date_str = now.strftime("%Y-%m-%d")
+        label_jp = "今日"
+    else:
+        date_str = (now + timedelta(days=1)).strftime("%Y-%m-%d")
+        label_jp = "明日"
+    client_ip = request.client.host if request and request.client else None
+    result = get_or_generate_comment(slug, spot, label_jp, date_str, client_ip=client_ip)
+    return result or {}
+
 
 @app.get("/spots/")
 def redirect_spots_slash(request: Request):
@@ -1618,7 +1719,7 @@ def _load_articles() -> list:
                 meta["mtime"] = _mts
                 meta["updated_at"] = datetime.fromtimestamp(_mts).strftime("%Y年%m月%d日")
             if _is_catch_masked(meta):
-                meta["title"] = _re.sub(r'\d+尾', 'つ抜け達成！🎉', meta.get("title") or "")
+                _apply_article_meta_mask(meta)
             result.append(meta)
     return result
 
@@ -1680,13 +1781,38 @@ _CATCH_MASK_RE = _re.compile(
     r'<!--\s*catch-mask-start\s*-->(.*?)<!--\s*catch-mask-end\s*-->',
     _re.DOTALL,
 )
+_TSUNUKE_LABEL = 'つ抜け達成！🎉'
+_TSUNUKE_INLINE_RE = _re.compile(r'\d+尾')
 
 
-def _apply_catch_mask(body_html: str) -> str:
-    """catch-mask-start/end コメント間の内容をつ抜け表現に置換する。"""
-    return _CATCH_MASK_RE.sub(
-        '<span class="catch-masked">つ抜け達成！🎉</span>', body_html
-    )
+def _apply_catch_mask(text: str) -> str:
+    """catch-mask-start/end コメント間の内容をつ抜け表現に置換する。
+    Markdown 段階でも HTML 段階でも安全に呼べるよう、置換後はプレーンテキスト。
+    """
+    return _CATCH_MASK_RE.sub(_TSUNUKE_LABEL, text)
+
+
+def _strip_catch_mask_markers(text: str) -> str:
+    """catch-mask-start/end マーカーだけ除去し中身は残す（マスク無効時用）。
+    mistune が HTML コメントをエスケープしてユーザーに見せる事故を防ぐ。
+    """
+    return _CATCH_MASK_RE.sub(lambda m: m.group(1), text)
+
+
+def _mask_inline_count(text: str) -> str:
+    """タイトル・description 中の "{N}尾" をつ抜け表現に置換する。"""
+    return _TSUNUKE_INLINE_RE.sub(_TSUNUKE_LABEL, text or "")
+
+
+def _apply_article_meta_mask(meta: dict) -> dict:
+    """meta の title / description を in-place でマスクし catch_masked フラグを立てる。
+    呼び出し側で _is_catch_masked(meta) が True であることが前提。
+    """
+    meta["title"] = _mask_inline_count(meta.get("title") or "")
+    if meta.get("description"):
+        meta["description"] = _mask_inline_count(meta["description"])
+    meta["catch_masked"] = True
+    return meta
 
 
 def _build_spot_article_index() -> dict[str, list]:
@@ -1811,6 +1937,11 @@ def page_article_detail(request: Request, category: str, slug: str):
 
     content = md_path.read_text(encoding="utf-8")
     meta, body = _extract_article_meta(content, slug)
+    if _is_catch_masked(meta):
+        _apply_article_meta_mask(meta)
+        body = _apply_catch_mask(body)
+    else:
+        body = _strip_catch_mask_markers(body)
     slots = _load_article_slots(category, slug)
     body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
     part_metas = []
@@ -1830,11 +1961,7 @@ def page_article_detail(request: Request, category: str, slug: str):
     else:
         mtime_ts = os.path.getmtime(md_path) if md_path.exists() else None
         updated_at = datetime.fromtimestamp(mtime_ts).strftime("%Y年%m月%d日") if mtime_ts else ""
-    catch_masked = _is_catch_masked(meta)
     display_title = meta.get("title") or slug
-    if catch_masked:
-        display_title = _re.sub(r'\d+尾', 'つ抜け達成！🎉', display_title)
-        body_html = _apply_catch_mask(body_html)
     return templates.TemplateResponse(request, "articles/detail.html", {
         "meta": meta,
         "display_title": display_title,
@@ -1856,6 +1983,19 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
         raise HTTPException(status_code=404)
     content = md_path.read_text(encoding="utf-8")
     meta, body = _extract_article_meta(content, slug)
+    # 親記事の catch マスクを継承
+    parent_md = slug_dir / "index.md"
+    _parent_slugs: list = []
+    parent_masked = False
+    if parent_md.exists():
+        _pm, _ = _extract_article_meta(parent_md.read_text(encoding="utf-8"), slug)
+        _parent_slugs = _pm.get("related_spots") or []
+        parent_masked = _is_catch_masked(_pm)
+    if parent_masked:
+        _apply_article_meta_mask(meta)
+        body = _apply_catch_mask(body)
+    else:
+        body = _strip_catch_mask_markers(body)
     slots = _load_article_slots(category, slug)
     body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
     all_parts = sorted(p.stem for p in slug_dir.glob("*.md") if p.name != "index.md")
@@ -1863,12 +2003,6 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
     prev_part = all_parts[idx - 1] if idx > 0 else None
     next_part = all_parts[idx + 1] if 0 <= idx < len(all_parts) - 1 else None
     card_image = _CATEGORY_CARD.get(category, "fishing_master_card.png")
-    # related_spots は親記事（index.md）のフロントマターから取得
-    parent_md = slug_dir / "index.md"
-    _parent_slugs: list = []
-    if parent_md.exists():
-        _pm, _ = _extract_article_meta(parent_md.read_text(encoding="utf-8"), slug)
-        _parent_slugs = _pm.get("related_spots") or []
     related_spots = [s for rs in _parent_slugs if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
     _raw_date = meta.get("updated") or meta.get("updated_at") or ""
@@ -1897,13 +2031,19 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
 @app.get("/tackle/", response_class=HTMLResponse)
 def page_tackle_top(request: Request):
     categories = _load_tackle_categories()
+    articles = _load_articles()
     staff_intro = next(
-        (a for a in _load_articles() if a.get("category") == "info" and a.get("slug") == "staff_introduction"),
+        (a for a in articles if a.get("category") == "info" and a.get("slug") == "staff_introduction"),
+        None,
+    )
+    aoi_interview = next(
+        (a for a in articles if a.get("category") == "info" and a.get("slug") == "aoi_interview"),
         None,
     )
     return templates.TemplateResponse(request, "tackle/top.html", {
         "categories": categories,
         "staff_intro": staff_intro,
+        "aoi_interview": aoi_interview,
     })
 
 
@@ -2107,7 +2247,10 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
     _intro = [f"{area_name}エリア（{pref_name}）には{_city_sample}など{len(cities)}市区町村・{_spot_count}か所の釣り場があります。"]
     if _fish_str:
         _intro.append(f"{_fish_str}などが主なターゲットです。")
+<<<<<<< HEAD
     _area_seo = _AREA_SEO.get(f"{pref_slug}/{area_slug}", {})
+=======
+>>>>>>> master
     return templates.TemplateResponse(request, "area.html", {
         "pref_slug": pref_slug,
         "area_slug": area_slug,
@@ -2121,8 +2264,11 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
         "top_fish_jp": _seo["top_fish_jp"],
         "intro_text": "".join(_intro),
         "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}", ""),
+<<<<<<< HEAD
         "seo_title": _area_seo.get("title", ""),
         "seo_description": _area_seo.get("description", ""),
+=======
+>>>>>>> master
     })
 
 
@@ -2319,7 +2465,11 @@ def page_spot_detail(
     except Exception:
         blog_posts = []
     qa_items = _build_spot_qa(spot, cached_facilities)
+<<<<<<< HEAD
     # 釣り禁止判定と代替スポット
+=======
+    # 釣り禁止判定と近隣スポット
+>>>>>>> master
     is_kinshi = _is_fully_kinshi(spot)
     kinshi_nearby = _get_nearby_spots(spot) if is_kinshi else []
     _info = spot.get("info") or {}
@@ -2402,7 +2552,10 @@ def page_spot_detail(
         "kinshi_nearby":      kinshi_nearby,
         "nearby_spots":       nearby_spots,
         "qa_items":           qa_items,
+<<<<<<< HEAD
         "spot_updated_at":    spot_updated_at,
         "lead_text_date":     lead_text_date,
         "cameras":            get_spot_cameras(slug),
+=======
+>>>>>>> master
     })

@@ -230,6 +230,7 @@
 </section>
 {% endif %}
 
+<<<<<<< HEAD
 <!-- 24時間チャート -->
 <section class="chart24-section">
   <div class="chart24-day-tabs">
@@ -240,6 +241,15 @@
   {% macro period_rows(day) %}
     {% if day and day.periods %}
     {% for p in day.periods %}
+=======
+<!-- 気象・スコア（JS で非同期ロード） -->
+<section class="weather-section">
+  <h2>明日&emsp;{{ tomorrow_jp }}の海況・気象情報</h2>
+  {% if preloaded_forecast and preloaded_forecast.days %}
+  {% set tmr = preloaded_forecast.days[0] %}
+  <div class="ssr-weather-summary" aria-hidden="false">
+    {% for p in tmr.periods %}
+>>>>>>> master
     <div class="ssr-period">
       <strong>{{ p.period }}</strong>：
       {% if p.wave_height_raw is not none %}波 {{ p.wave_height_raw | round(1, 'ceil') }}m{% else %}波 --{% endif %}
@@ -308,6 +318,26 @@
       <span style="color:#4CAF50">■ 8s</span>
       <span style="color:#FF9800">■ 12s</span>
       <span style="color:#F44336">■ 16s+</span>
+    </div>
+  </div>
+</section>
+
+<!-- 葵ちゃんコメント -->
+<section class="aoi-section" id="aoi-section" style="display:none">
+  <div class="aoi-card" id="aoi-today">
+    <img class="aoi-illust" id="aoi-illust-today" src="" alt="葵ちゃん" width="110" height="110">
+    <div class="aoi-body">
+      <div class="aoi-label">今日の葵ちゃんコメント</div>
+      <p class="aoi-comment" id="aoi-comment-today"></p>
+      <span class="aoi-disclaimer">※AIによる個人的な感想です。気象情報ではありません。</span>
+    </div>
+  </div>
+  <div class="aoi-card" id="aoi-tomorrow" style="display:none">
+    <img class="aoi-illust" id="aoi-illust-tomorrow" src="" alt="葵ちゃん" width="110" height="110">
+    <div class="aoi-body">
+      <div class="aoi-label">明日の葵ちゃんコメント</div>
+      <p class="aoi-comment" id="aoi-comment-tomorrow"></p>
+      <span class="aoi-disclaimer">※AIによる個人的な感想です。気象情報ではありません。</span>
     </div>
   </div>
 </section>
@@ -574,8 +604,13 @@
     }
     var _pf = window.PRELOADED_FORECAST;
     if (_pf !== null && _pf !== undefined) {
+<<<<<<< HEAD
+=======
+      // サーバー側で計算済み（days が空でも API 再呼び出しはしない）
+>>>>>>> master
       renderForecast(_pf);
     } else {
+      // サーバー側がタイムアウト → JS 側で取得
       fetch('/api/forecast/' + SPOT.slug)
         .then(r => r.json())
         .then(data => renderForecast(data))
@@ -625,7 +660,7 @@
       function degToArrow(deg) {
         if (deg == null) return '–';
         var dirs = ['↓','↙','←','↖','↑','↗','→','↘'];
-        return dirs[Math.round(((+deg + 180) % 360) / 45) % 8];
+        return dirs[Math.round(((+deg % 360) + 360) % 360 / 45) % 8];
       }
       function periodToColor(p) {
         if (p == null) return 'rgba(150,150,150,0.5)';
@@ -1016,5 +1051,50 @@
 
     initFavoriteButton(SPOT.slug);
   });
+</script>
+
+<script>
+// 葵ちゃんコメント
+(function() {
+  var slug = {{ spot.slug | tojson }};
+
+  function fetchAoi(dateLabel) {
+    return fetch('/api/aoi/' + encodeURIComponent(slug) + '?date_label=' + dateLabel)
+      .then(function(r) { return r.ok ? r.json() : {}; })
+      .catch(function() { return {}; });
+  }
+
+  function populateCard(which, data) {
+    if (!data || !data.comment) return false;
+    var commentEl = document.getElementById('aoi-comment-' + which);
+    var illustEl  = document.getElementById('aoi-illust-' + which);
+    if (commentEl) commentEl.textContent = data.comment;
+    if (illustEl && data.mode) illustEl.src = '/static/img/aoi/weather_' + data.mode + '.png';
+    return true;
+  }
+
+  Promise.all([fetchAoi('today'), fetchAoi('tomorrow')]).then(function(results) {
+    var hasToday    = populateCard('today', results[0]);
+    var hasTomorrow = populateCard('tomorrow', results[1]);
+    if (!hasToday && !hasTomorrow) return;
+
+    var section      = document.getElementById('aoi-section');
+    var todayCard    = document.getElementById('aoi-today');
+    var tomorrowCard = document.getElementById('aoi-tomorrow');
+
+    var initWhich = hasToday ? 'today' : 'tomorrow';
+    if (todayCard)    todayCard.style.display    = initWhich === 'today'    ? '' : 'none';
+    if (tomorrowCard) tomorrowCard.style.display = initWhich === 'tomorrow' ? '' : 'none';
+    section.style.display = '';
+
+    document.querySelectorAll('.chart24-tab').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var isToday = btn.dataset.which === 'today';
+        if (todayCard)    todayCard.style.display    = isToday ? '' : 'none';
+        if (tomorrowCard) tomorrowCard.style.display = isToday ? 'none' : '';
+      });
+    });
+  });
+})();
 </script>
 {% endblock %}

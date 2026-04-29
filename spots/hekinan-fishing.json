@@ -43,6 +43,10 @@
     "haze"
   ],
   "harbor_code": "23-13",
+<<<<<<< HEAD
   "harbor_name": "武豊",
   "updated_at": "2026-04-18"
+=======
+  "harbor_name": "武豊"
+>>>>>>> master
 }

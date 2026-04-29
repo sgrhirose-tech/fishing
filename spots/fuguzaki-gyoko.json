@@ -51,6 +51,10 @@
     "kurodai"
   ],
   "harbor_code": "23-15",
+<<<<<<< HEAD
   "harbor_name": "常滑",
   "updated_at": "2026-04-18"
+=======
+  "harbor_name": "常滑"
+>>>>>>> master
 }

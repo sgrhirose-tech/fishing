@@ -173,6 +173,7 @@ def fetch_weather_range(lat: float, lon: float,
         ("daily", "precipitation_sum"),
         ("daily", "weather_code"),
         ("daily", "temperature_2m_max"),
+        ("daily", "temperature_2m_min"),
         # 時間別データ（4区分スコア用）
         ("hourly", "wind_speed_10m"),
         ("hourly", "wind_direction_10m"),

@@ -42,6 +42,10 @@
     "mejina"
   ],
   "harbor_code": "12-15",
+<<<<<<< HEAD
   "harbor_name": "寒川",
   "updated_at": "2026-04-18"
+=======
+  "harbor_name": "寒川"
+>>>>>>> master
 }
