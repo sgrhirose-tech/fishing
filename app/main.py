@@ -1784,6 +1784,33 @@ _MD_LINK_RE = _re.compile(r'href="\./([\w-]+)\.md"')
 _MD_IMG_RE  = _re.compile(r'src="(?:\./)?(img/[\w.@-]+)"')
 
 
+_AOI_SECTION_RE = _re.compile(
+    r'<h2>葵ちゃんコメント</h2>\s*(<img[^>]*>)?\s*<p>(.*?)</p>',
+    _re.DOTALL,
+)
+
+def _apply_aoi_card(html: str) -> str:
+    """記事本文中の「葵ちゃんコメント」h2 セクションを .aoi-card スタイルに変換する。"""
+    def _replace(m: _re.Match) -> str:
+        img_tag = m.group(1) or ""
+        comment = m.group(2)
+        if img_tag:
+            img_tag = _re.sub(r'class="[^"]*"', '', img_tag)
+            img_tag = img_tag.replace('<img ', '<img class="aoi-illust" ')
+        else:
+            img_tag = f'<img class="aoi-illust" src="/static/img/shop_girl_card.png" alt="葵ちゃん">'
+        return (
+            '<div class="aoi-section">'
+            '<div class="aoi-card">'
+            f'{img_tag}'
+            '<div class="aoi-body">'
+            '<p class="aoi-label">葵ちゃんコメント</p>'
+            f'<p class="aoi-comment">{comment}</p>'
+            '</div></div></div>'
+        )
+    return _AOI_SECTION_RE.sub(_replace, html)
+
+
 def _render_md_with_affiliates(content: str, slots: list, article_path: str = "") -> str:
     """MarkdownをアフィリエイトスロットHTMLに展開してHTMLに変換する。"""
     if _MARKDOWN is None:
@@ -1885,7 +1912,7 @@ def page_article_detail(request: Request, category: str, slug: str):
     else:
         body = _strip_catch_mask_markers(body)
     slots = _load_article_slots(category, slug)
-    body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
+    body_html = _apply_aoi_card(_render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}"))
     part_metas = []
     for p in parts_paths:
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
