@@ -110,3 +110,25 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
+
+  - type: cron
+    name: tsuricast-aoi-test-prompt
+    runtime: python
+    repo: https://github.com/sgrhirose-tech/fishing
+    branch: master
+    schedule: "0 0 31 2 *"   # 手動トリガー専用（2月31日 = 自動実行なし）
+    buildCommand: pip install -r requirements.txt
+    startCommand: python tools/test_aoi_prompt.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: WEATHERAPI_KEY
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+      - key: MAIL_TO
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
