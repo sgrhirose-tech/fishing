@@ -264,7 +264,6 @@ def call_claude(system_prompt: str, user_message: str) -> tuple[str, dict]:
         ],
         "messages": [
             {"role": "user", "content": user_message},
-            {"role": "assistant", "content": "<mode>"},
         ],
     }
 
@@ -283,7 +282,7 @@ def call_claude(system_prompt: str, user_message: str) -> tuple[str, dict]:
     with urllib.request.urlopen(req, timeout=30) as resp:
         data = json.loads(resp.read())
 
-    comment = "<mode>" + data["content"][0]["text"].strip().replace("\n", "")
+    comment = data["content"][0]["text"].strip().replace("\n", "")
     usage = data.get("usage", {})
     return comment, usage
 
