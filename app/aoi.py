@@ -498,18 +498,21 @@ def send_aoi_report_email(target_date: str, records: list[dict]) -> None:
 
 # ── モード判定 ────────────────────────────────────────────────────────────────
 
-def detect_mode(comment: str) -> str:
-    """コメント本文からモードを判定する。優先順: danger > ng > good > unsure"""
-    if "安全第一" in comment or "無理は禁物" in comment:
-        return "danger"
-    if "家の日" in comment or "装備しても厳しい" in comment:
-        return "ng"
-    if any(p in comment for p in [
-        "これは行く日", "完全に勝ち", "迷う必要ありません",
-        "コンディション出来上がってます", "ベタ凪ぎ",
-    ]):
-        return "good"
-    return "unsure"
+_MODE_RE = re.compile(r"<mode>(good|unsure|ng|danger)</mode>[ \t]*\n?", re.IGNORECASE)
+
+
+def parse_mode_from_response(response: str) -> tuple[str, str]:
+    """Claude レスポンスから <mode> タグを抽出し (mode, 本文) を返す。
+    タグが見つからない・不正な場合は mode='unsure' にフォールバック。
+    """
+    m = _MODE_RE.search(response)
+    if m:
+        mode    = m.group(1).lower()
+        comment = _MODE_RE.sub("", response, count=1).strip()
+    else:
+        mode    = "unsure"
+        comment = response.strip()
+    return mode, comment
 
 
 def calc_weather_hash(
@@ -826,9 +829,9 @@ def get_or_generate_comment(
         except Exception:
             return None
 
-        # 9. プレースホルダーサニタイズ + モード判定
+        # 9. モード抽出 → プレースホルダーサニタイズ
+        mode, comment = parse_mode_from_response(comment)
         comment = _scrub_placeholders(comment, date_label, spot.get("name", ""))
-        mode = detect_mode(comment)
 
         # 10. キャッシュ保存
         _cache.set(cache_key, {"comment": comment, "mode": mode})
