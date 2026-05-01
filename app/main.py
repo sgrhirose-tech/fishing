@@ -446,6 +446,46 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Tsuricast", lifespan=lifespan, redirect_slashes=True)
 
+# ---- 旧URL・404 リダイレクトマップ -----------------------------------------
+# Google Search Console で確認した 404 URL を正しい URL へ 301 リダイレクト
+_LEGACY_REDIRECTS: dict[str, str] = {
+    # スポットが存在しない → エリア / 市区町村ページへ
+    "/shizuoka/higashi-izu/atami/atami-fishing-facility": "/shizuoka/higashi-izu/",
+    "/wakayama/kii-suido-wakayama/tanabe/tanabe-gyoko":   "/wakayama/kii-suido-wakayama/",
+    "/kanagawa/sagamibay/odawara/kozukaigan":             "/kanagawa/sagamibay/odawara/",
+    "/chiba/sotobo/onjuku/onjuku-kaigan":                 "/chiba/sotobo/onjuku/",
+    "/kanagawa/miura/yokosuka/tsukuihama":                "/kanagawa/miura/yokosuka/",
+    "/chiba/uchibo/tateyama/mera-ko":                     "/chiba/uchibo/tateyama/mera-ko-uchibo",
+    "/wakayama/kumano-nada/isakizaki-port":               "/wakayama/kumano-nada/",
+    # double-slash 正規化後に残るゴミ path
+    "/shizuoka/higashi-izu/ito-ko":                       "/shizuoka/higashi-izu/",
+    "/wakayama/kii-suido-wakayama/tanabe-gyoko":          "/wakayama/kii-suido-wakayama/",
+    # pref / area 組み合わせ誤り → 正しいエリアへ
+    "/kanagawa/miura/zushi":                              "/kanagawa/sagamibay/zushi/",
+    "/kanagawa/isewan/fujisawa":                          "/kanagawa/sagamibay/fujisawa/",
+    "/kanagawa/isewan":                                   "/kanagawa/",
+    "/kanagawa/shima-minami-ise/fujisawa":                "/kanagawa/sagamibay/fujisawa/",
+    "/kanagawa/shima-minami-ise/toba":                    "/kanagawa/",
+    "/kanagawa/shima-minami-ise":                         "/kanagawa/",
+    "/mie/miura/miura":                                   "/kanagawa/miura/",
+    # 記事・API
+    "/articles/info/tournament_procaster_a":              "/tackle/rod/casting-rod/",
+    "/cdn-cgi/l/email-protection":                        "/",
+    "/api/spots":                                         "/spots/",
+    "/chart":                                             "/",
+    "/tide":                                              "/",
+}
+
+@app.middleware("http")
+async def legacy_redirect_middleware(request: Request, call_next):
+    """旧URL・404 URL を正規 URL へ 301 リダイレクトする。
+    double-slash (//) を正規化してからマップを引く。"""
+    path = _re.sub(r"/+", "/", request.url.path)  # // → / に正規化
+    dest = _LEGACY_REDIRECTS.get(path.rstrip("/")) or _LEGACY_REDIRECTS.get(path)
+    if dest:
+        return RedirectResponse(url=dest, status_code=301)
+    return await call_next(request)
+
 # 静的ファイルとテンプレート
 import pathlib
 _BASE = pathlib.Path(__file__).parent.parent
@@ -1304,13 +1344,13 @@ def aoi_comment_api(slug: str, date_label: str = "today", request: Request = Non
     return result or {}
 
 
-@app.get("/spots/")
-def redirect_spots_slash(request: Request):
+@app.get("/spots")
+def redirect_spots_noslash(request: Request):
     qs = request.url.query
-    target = "/spots?" + qs if qs else "/spots"
+    target = "/spots/?" + qs if qs else "/spots/"
     return RedirectResponse(url=target, status_code=301)
 
-@app.get("/spots", response_class=HTMLResponse)
+@app.get("/spots/", response_class=HTMLResponse)
 def page_spots(
     request: Request,
     area: str = Query(None),
@@ -1352,8 +1392,9 @@ def page_spots(
     if fish:        _cparams["fish"] = fish
     if spot_type:   _cparams["type"] = spot_type
     if method:      _cparams["method"] = method
-    _cqs = _urlparse.urlencode(_cparams)
-    canonical_url = "https://tsuricast.jp/spots/" + (f"?{_cqs}" if _cqs else "")
+    has_filter = bool(_cparams)
+    # フィルター付き URL は canonical をベースページに固定して noindex
+    canonical_url = "https://tsuricast.jp/spots/"
 
     # 現在の絞り込み結果から魚種の出現頻度を集計（上位10件）
     from collections import Counter
@@ -1390,6 +1431,7 @@ def page_spots(
         "fish_slug_map": fish_slug_map,
         "fish_name_map": fish_name_map,
         "canonical_url":  canonical_url,
+        "noindex": has_filter,
         "seo_title": _spots_seo.get("title", ""),
         "seo_description": _spots_seo.get("description", ""),
         "auto_description": _auto_desc,
@@ -1870,6 +1912,30 @@ _MD_LINK_RE = _re.compile(r'href="\./([\w-]+)\.md"')
 _MD_IMG_RE  = _re.compile(r'src="(?:\./)?(img/[\w.@-]+)"')
 
 
+# mistune は "![alt](src)\ntext" を <p><img />\ntext</p> にまとめて出力する
+_AOI_SECTION_RE = _re.compile(
+    r'<h2>葵ちゃんコメント</h2>\s*<p>(<img[^>]*/?>)\s*(.*?)</p>',
+    _re.DOTALL,
+)
+
+def _apply_aoi_card(html: str) -> str:
+    """記事本文中の「葵ちゃんコメント」h2 セクションを .aoi-card スタイルに変換する。"""
+    def _replace(m: _re.Match) -> str:
+        img_tag = _re.sub(r'\s*class="[^"]*"', '', m.group(1))
+        img_tag = img_tag.replace('<img ', '<img class="aoi-illust" ')
+        comment = m.group(2).strip()
+        return (
+            '<div class="aoi-section">'
+            '<div class="aoi-card">'
+            f'{img_tag}'
+            '<div class="aoi-body">'
+            '<p class="aoi-label">葵ちゃんコメント</p>'
+            f'<p class="aoi-comment">{comment}</p>'
+            '</div></div></div>'
+        )
+    return _AOI_SECTION_RE.sub(_replace, html)
+
+
 def _render_md_with_affiliates(content: str, slots: list, article_path: str = "") -> str:
     """MarkdownをアフィリエイトスロットHTMLに展開してHTMLに変換する。"""
     if _MARKDOWN is None:
@@ -1971,7 +2037,7 @@ def page_article_detail(request: Request, category: str, slug: str):
     else:
         body = _strip_catch_mask_markers(body)
     slots = _load_article_slots(category, slug)
-    body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
+    body_html = _apply_aoi_card(_render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}"))
     part_metas = []
     for p in parts_paths:
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
