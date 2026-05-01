@@ -262,7 +262,10 @@ def call_claude(system_prompt: str, user_message: str) -> tuple[str, dict]:
                 "cache_control": {"type": "ephemeral", "ttl": "1h"},
             }
         ],
-        "messages": [{"role": "user", "content": user_message}],
+        "messages": [
+            {"role": "user", "content": user_message},
+            {"role": "assistant", "content": "<mode>"},
+        ],
     }
 
     req = urllib.request.Request(
@@ -280,7 +283,7 @@ def call_claude(system_prompt: str, user_message: str) -> tuple[str, dict]:
     with urllib.request.urlopen(req, timeout=30) as resp:
         data = json.loads(resp.read())
 
-    comment = data["content"][0]["text"].strip().replace("\n", "")
+    comment = "<mode>" + data["content"][0]["text"].strip().replace("\n", "")
     usage = data.get("usage", {})
     return comment, usage
 
@@ -511,7 +514,7 @@ def parse_mode_from_response(response: str) -> tuple[str, str]:
         comment = _MODE_RE.sub("", response, count=1).strip()
     else:
         mode    = "unsure"
-        comment = response.strip()
+        comment = re.sub(r"^<mode>", "", response).strip()
     return mode, comment
 
 
