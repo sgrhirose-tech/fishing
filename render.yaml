@@ -4,7 +4,7 @@ services:
     runtime: python
     repo: https://github.com/sgrhirose-tech/fishing
     branch: master
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: gunicorn app.main:app -w 1 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
     healthCheckPath: /
     previews:
@@ -25,7 +25,7 @@ services:
     repo: https://github.com/sgrhirose-tech/fishing
     branch: master
     schedule: "55 10,18 * * *"   # 3:55 AM JST (18:55 UTC) + 7:55 PM JST (10:55 UTC)
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: python scripts/post_morning_report.py
     envVars:
       - key: PYTHON_VERSION
@@ -47,7 +47,7 @@ services:
     repo: https://github.com/sgrhirose-tech/fishing
     branch: master
     schedule: "0 18 * * 0"   # UTC日曜18:00 = JST月曜03:00
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: python scripts/fetch_facilities.py
     envVars:
       - key: PYTHON_VERSION
@@ -61,7 +61,7 @@ services:
     repo: https://github.com/sgrhirose-tech/fishing
     branch: master
     schedule: "0 18 1 * *"   # 毎月2日 AM3:00 JST（当月分を取得）
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: python scripts/fetch_tides.py
     envVars:
       - key: PYTHON_VERSION
@@ -75,7 +75,7 @@ services:
     repo: https://github.com/sgrhirose-tech/fishing
     branch: master
     schedule: "0 18 24 * *"  # 毎月25日 AM3:00 JST（翌月分を先行取得）
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: python scripts/fetch_tides.py --month next
     envVars:
       - key: PYTHON_VERSION
@@ -89,7 +89,7 @@ services:
     repo: https://github.com/sgrhirose-tech/fishing
     branch: master
     schedule: "0 16 * * 0"   # 毎週日曜 01:00 JST（UTC 16:00）、30件ずつ処理（約19週で全563件完走）
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: python scripts/gen_lead_texts.py --limit 30
     envVars:
       - key: PYTHON_VERSION
@@ -105,7 +105,7 @@ services:
     repo: https://github.com/sgrhirose-tech/fishing
     branch: master
     schedule: "0 15 10 * *"  # 毎月10日 AM0:00 JST（UTC 15:00）
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: python scripts/check_affiliate_links.py
     envVars:
       - key: PYTHON_VERSION
