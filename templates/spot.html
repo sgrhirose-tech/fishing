@@ -1051,11 +1051,12 @@
 
   function populateCard(which, data) {
     if (!data || !data.comment) return false;
+    var comment   = data.comment.replace(/<mode>[^<]*<\/mode>/gi, '').trim();
     var commentEl = document.getElementById('aoi-comment-' + which);
     var illustEl  = document.getElementById('aoi-illust-' + which);
-    if (commentEl) commentEl.textContent = data.comment;
+    if (commentEl) commentEl.textContent = comment;
     if (illustEl && data.mode) illustEl.src = '/static/img/aoi/weather_' + data.mode + '.png';
-    return true;
+    return !!(comment);
   }
 
   Promise.all([fetchAoi('today'), fetchAoi('tomorrow')]).then(function(results) {

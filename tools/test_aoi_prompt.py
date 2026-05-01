@@ -101,7 +101,8 @@ def load_test_prompt() -> tuple[str, str, str, list[str]]:
     if user_match:   using.append("USER=テスト版")
     else:            using.append("USER=本番")
 
-    version = text.splitlines()[0].strip() if text else "unknown"
+    lines = text.splitlines()
+    version = lines[1].strip() if len(lines) >= 2 else (lines[0].strip() if lines else "unknown")
 
     return system, user, version, using
 
