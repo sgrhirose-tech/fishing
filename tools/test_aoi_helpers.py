@@ -20,10 +20,15 @@ from app.aoi import (
     _scrub_placeholders,
     _fmt_precip_mmh,
     COMPASS16_TO_DEG,
-    detect_mode,
+    parse_mode_from_response,
     calc_weather_hash,
     AoiRateLimiter,
 )
+
+
+def mk_day(period_dict: dict) -> dict:
+    """period dict を build_user_message が受け取る day dict に変換する。"""
+    return {"periods": [{**period_dict, "period": "朝"}]}
 
 PASS = "\033[32mPASS\033[0m"
 FAIL = "\033[31mFAIL\033[0m"
@@ -151,12 +156,12 @@ period_base = {
 
 # A: wind_relative が有効なとき括弧付き
 # 北風×南向き岸=追い風 なので「（追い風）」が含まれる
-msg_a = build_user_message(spot_with_facing, period_base, TMPL, month=4)
+msg_a = build_user_message(spot_with_facing, mk_day(period_base), TMPL, month=4)
 check("A: wind_relative 有効 → 括弧付き",
       "（追い風）" in msg_a, True)
 
 # A: spot_facing なし → wind_relative_clause が空
-msg_b = build_user_message(spot_no_facing, period_base, TMPL, month=4)
+msg_b = build_user_message(spot_no_facing, mk_day(period_base), TMPL, month=4)
 check("A: spot_facing なし → 括弧なし",
       "（" not in msg_b.split("\n")[1], True)
 
@@ -166,7 +171,7 @@ check("B: 若潮 → （潮の動き：穏やか）",
 
 # B: tide_info が ー → tide_activity_clause が空
 period_no_tide = {**period_base, "tide": "ー"}
-msg_c = build_user_message(spot_with_facing, period_no_tide, TMPL, month=4)
+msg_c = build_user_message(spot_with_facing, mk_day(period_no_tide), TMPL, month=4)
 check("B: tide ー → 潮の動き行なし",
       "潮の動き" not in msg_c, True)
 
@@ -190,12 +195,12 @@ TMPL_TEMP = (
 )
 
 period_temp = {**period_base, "temp_min_raw": 11.5, "temp_max_raw": 23.4}
-msg_temp = build_user_message(spot_with_facing, period_temp, TMPL_TEMP, month=4)
+msg_temp = build_user_message(spot_with_facing, mk_day(period_temp), TMPL_TEMP, month=4)
 check("temp_min 値あり → 11.5",  "最低気温：11.5℃" in msg_temp, True)
 check("temp_max 値あり → 23.4",  "最高気温：23.4℃" in msg_temp, True)
 
 period_temp_none = {**period_base, "temp_min_raw": None, "temp_max_raw": None}
-msg_none = build_user_message(spot_with_facing, period_temp_none, TMPL_TEMP, month=4)
+msg_none = build_user_message(spot_with_facing, mk_day(period_temp_none), TMPL_TEMP, month=4)
 check("temp_min None → ー",      "最低気温：ー℃" in msg_none, True)
 check("temp_max None → ー",      "最高気温：ー℃" in msg_none, True)
 
@@ -206,17 +211,17 @@ print("\n=== build_user_message (date_label) ===")
 
 TMPL_LABEL = "{date_label}の{spot_name}\n波高：{wave}m"
 
-msg_today = build_user_message(spot_with_facing, period_base, TMPL_LABEL,
+msg_today = build_user_message(spot_with_facing, mk_day(period_base), TMPL_LABEL,
                                 month=4, date_label="今日")
 check("date_label=今日 → '今日のテスト海岸'",
       msg_today.startswith("今日のテスト海岸"), True)
 
-msg_tomorrow = build_user_message(spot_with_facing, period_base, TMPL_LABEL,
+msg_tomorrow = build_user_message(spot_with_facing, mk_day(period_base), TMPL_LABEL,
                                    month=4, date_label="明日")
 check("date_label=明日 → '明日のテスト海岸'",
       msg_tomorrow.startswith("明日のテスト海岸"), True)
 
-msg_default = build_user_message(spot_with_facing, period_base, TMPL_LABEL, month=4)
+msg_default = build_user_message(spot_with_facing, mk_day(period_base), TMPL_LABEL, month=4)
 check("date_label デフォルト → 明日",
       msg_default.startswith("明日のテスト海岸"), True)
 
@@ -266,7 +271,7 @@ period_with_precip = {
     "precip_max_evening_raw": 8.1,
     "precip_max_night_raw":   1.7,
 }
-msg_precip = build_user_message(spot_with_facing, period_with_precip, TMPL_PRECIP, month=4)
+msg_precip = build_user_message(spot_with_facing, mk_day(period_with_precip), TMPL_PRECIP, month=4)
 check("precip 各値あり → 整数化",
       "降水量(mm/h)：朝0, 昼6, 夕8, 夜2" in msg_precip, True)
 
@@ -277,29 +282,36 @@ period_precip_none = {
     "precip_max_evening_raw": None,
     "precip_max_night_raw":   None,
 }
-msg_precip_none = build_user_message(spot_with_facing, period_precip_none, TMPL_PRECIP, month=4)
+msg_precip_none = build_user_message(spot_with_facing, mk_day(period_precip_none), TMPL_PRECIP, month=4)
 check("precip 全て None → '-'",
       "降水量(mm/h)：朝-, 昼-, 夕-, 夜-" in msg_precip_none, True)
 
 # ──────────────────────────────────────────────
-# detect_mode
+# parse_mode_from_response
 # ──────────────────────────────────────────────
-print("\n=== detect_mode ===")
+print("\n=== parse_mode_from_response ===")
 
-check("danger: 安全第一",      detect_mode("安全第一でやめときます。"),  "danger")
-check("danger: 無理は禁物",    detect_mode("無理は禁物、家で待機です。"), "danger")
-check("ng: 家の日",            detect_mode("家の日にします。"),           "ng")
-check("ng: 装備しても厳しい",  detect_mode("装備しても厳しい状況です。"), "ng")
-check("good: これは行く日",    detect_mode("これは行く日です。"),         "good")
-check("good: 完全に勝ち",      detect_mode("完全に勝ちのコンディション。"), "good")
-check("good: 迷う必要ありません", detect_mode("迷う必要ありません、晴れです。"), "good")
-check("good: コンディション出来上がってます", detect_mode("コンディション出来上がってます。"), "good")
-check("good: ベタ凪ぎ",        detect_mode("ベタ凪ぎで最高です。"),       "good")
-check("unsure: その他",        detect_mode("ちょっと迷います。"),         "unsure")
-check("unsure: 空文字",        detect_mode(""),                           "unsure")
-# 優先順: danger > ng > good (本文に複数フレーズが混在するケース)
-check("danger が ng より優先",  detect_mode("家の日だけど安全第一で。"),   "danger")
-check("ng が good より優先",    detect_mode("これは行く日だが家の日にします。"), "ng")
+check("good タグ → (good, 本文)",
+      parse_mode_from_response("<mode>good</mode>\n今日は行く日です。"),
+      ("good", "今日は行く日です。"))
+check("unsure タグ → (unsure, 本文)",
+      parse_mode_from_response("<mode>unsure</mode>\nちょっと迷います。"),
+      ("unsure", "ちょっと迷います。"))
+check("ng タグ → (ng, 本文)",
+      parse_mode_from_response("<mode>ng</mode>\n家の日にします。"),
+      ("ng", "家の日にします。"))
+check("danger タグ → (danger, 本文)",
+      parse_mode_from_response("<mode>danger</mode>\n安全第一でやめときます。"),
+      ("danger", "安全第一でやめときます。"))
+check("大文字タグ → lowercase",
+      parse_mode_from_response("<mode>GOOD</mode>\n行く。"),
+      ("good", "行く。"))
+check("タグなし → (unsure, 本文そのまま)",
+      parse_mode_from_response("タグなし本文です。"),
+      ("unsure", "タグなし本文です。"))
+check("空文字 → (unsure, '')",
+      parse_mode_from_response(""),
+      ("unsure", ""))
 
 # ──────────────────────────────────────────────
 # calc_weather_hash
