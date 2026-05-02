@@ -152,7 +152,7 @@ def main() -> None:
                 continue
 
             user_msg = build_user_message(
-                spot, p, user_tmpl,
+                spot, day, user_tmpl,
                 month=int(date_str[5:7]),
                 date_label=label,
             )

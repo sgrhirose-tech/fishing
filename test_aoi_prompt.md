@@ -633,9 +633,10 @@ NG: 朝が一番降る日に「午前中ねばる」
 天気：{weather}
 最低気温：{temp_min}℃
 最高気温：{temp_max}℃
-波高：{wave}m
-風：{wind_dir} {wind_speed}m/s{wind_relative_clause}
-波周期：{period}s
+波高(m)：朝{wave_morning}, 昼{wave_noon}, 夕{wave_evening}, 夜{wave_night}
+波周期(s)：朝{period_morning}, 昼{period_noon}, 夕{period_evening}, 夜{period_night}
+風速(m/s)：朝{wind_morning}, 昼{wind_noon}, 夕{wind_evening}, 夜{wind_night}
+風向：朝{wdir_morning}{wrel_morning}, 昼{wdir_noon}{wrel_noon}, 夕{wdir_evening}{wrel_evening}, 夜{wdir_night}{wrel_night}
 海水温：{sea_temp}℃
 潮汐：{tide_info}{tide_activity_clause}
 降水量(mm/h)：朝{precip_morning}, 昼{precip_noon}, 夕{precip_evening}, 夜{precip_night}
