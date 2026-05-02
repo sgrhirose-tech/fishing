@@ -123,53 +123,73 @@ def _scrub_placeholders(comment: str, date_label: str, spot_name: str) -> str:
     )
 
 
-def build_user_message(spot: dict, period: dict, user_tmpl: str,
+def build_user_message(spot: dict, day: dict, user_tmpl: str,
                        month: int = 0, date_label: str = "明日") -> str:
     """USER テンプレートにスポット・気象データを埋め込んで返す。"""
-    sky_raw = period.get("sky", "")
+    periods = day.get("periods", [])
+    by_band = {p["period"]: p for p in periods}
+
+    # 単一値フィールド（temp/sky/sst/tide）は朝または最初のperiodから取得
+    rep = by_band.get("朝") or (periods[0] if periods else {})
+
+    sky_raw = rep.get("sky", "")
     weather = re.sub(r"[^\w\s・℃°％\-]", "", sky_raw).strip()
     weather = re.sub(r"\s+", " ", weather).strip() or "ー"
 
-    precip_str = period.get("precip", "0.0mm")
+    precip_str = rep.get("precip", "0.0mm")
     rain = re.sub(r"[^\d.]", "", precip_str) or "0.0"
 
     spot_type = (spot.get("classification") or {}).get("primary_type") or "fishing_facility"
 
-    spot_facing_deg   = (spot.get("physical_features") or {}).get("sea_bearing_deg")
-    wind_dir_compass  = period.get("wind_dir_compass", "ー")
-    tide_info         = period.get("tide", "ー")
+    spot_facing_deg = (spot.get("physical_features") or {}).get("sea_bearing_deg")
+    tide_info       = rep.get("tide", "ー")
 
     spot_facing   = deg_to_8dir(float(spot_facing_deg)) if spot_facing_deg is not None else None
-    wind_relative = calc_wind_relative(wind_dir_compass, period.get("wind_speed_raw"), spot_facing_deg)
     tide_activity = calc_tide_activity(tide_info)
 
-    wind_relative_clause = f"（{wind_relative}）" if wind_relative else ""
     tide_activity_clause = f"（潮の動き：{tide_activity}）" if tide_activity else ""
     facing_line          = f"\n釣り場の正面：{spot_facing}" if spot_facing else ""
+
+    # 朝の風向相対値（backward compat 用）
+    朝_p   = rep
+    朝_wrel = calc_wind_relative(朝_p.get("wind_dir_compass", "ー"), 朝_p.get("wind_speed_raw"), spot_facing_deg)
 
     mapping = {
         "date_label":           date_label,
         "spot_name":            spot.get("name", ""),
         "weather":              weather,
-        "temp_min":             _fmt(period.get("temp_min_raw")),
-        "temp_max":             _fmt(period.get("temp_max_raw")),
-        "wave":                 _fmt(period.get("wave_height_raw")),
-        "wind_dir":             wind_dir_compass,
-        "wind_speed":           _fmt(period.get("wind_speed_raw")),
-        "period":               _fmt(period.get("wave_period_raw")),
-        "sea_temp":             _fmt(period.get("sst_raw")),
+        "temp_min":             _fmt(rep.get("temp_min_raw")),
+        "temp_max":             _fmt(rep.get("temp_max_raw")),
+        "sea_temp":             _fmt(rep.get("sst_raw")),
         "tide_info":            tide_info,
         "rain":                 rain,
-        "precip_morning":       _fmt_precip_mmh(period.get("precip_max_morning_raw")),
-        "precip_noon":          _fmt_precip_mmh(period.get("precip_max_noon_raw")),
-        "precip_evening":       _fmt_precip_mmh(period.get("precip_max_evening_raw")),
-        "precip_night":         _fmt_precip_mmh(period.get("precip_max_night_raw")),
+        "precip_morning":       _fmt_precip_mmh(rep.get("precip_max_morning_raw")),
+        "precip_noon":          _fmt_precip_mmh(rep.get("precip_max_noon_raw")),
+        "precip_evening":       _fmt_precip_mmh(rep.get("precip_max_evening_raw")),
+        "precip_night":         _fmt_precip_mmh(rep.get("precip_max_night_raw")),
         "spot_type":            spot_type,
         "month":                str(month),
-        "wind_relative_clause": wind_relative_clause,
         "tide_activity_clause": tide_activity_clause,
         "facing_line":          facing_line,
+        # backward compat: 朝の代表値
+        "wave":                 _fmt(朝_p.get("wave_height_raw")),
+        "wind_dir":             朝_p.get("wind_dir_compass", "ー"),
+        "wind_speed":           _fmt(朝_p.get("wind_speed_raw")),
+        "period":               _fmt(朝_p.get("wave_period_raw")),
+        "wind_relative_clause": f"（{朝_wrel}）" if 朝_wrel else "",
     }
+
+    # 4時間帯別: wave_*/period_*/wind_*/wdir_*/wrel_*
+    for band_key, band_label in [("morning", "朝"), ("noon", "昼"), ("evening", "夕"), ("night", "夜")]:
+        p    = by_band.get(band_label, {})
+        wdir = p.get("wind_dir_compass", "ー")
+        wspd = p.get("wind_speed_raw")
+        wrel = calc_wind_relative(wdir, wspd, spot_facing_deg)
+        mapping[f"wave_{band_key}"]   = _fmt(p.get("wave_height_raw"))
+        mapping[f"period_{band_key}"] = _fmt(p.get("wave_period_raw"))
+        mapping[f"wind_{band_key}"]   = _fmt(wspd)
+        mapping[f"wdir_{band_key}"]   = wdir
+        mapping[f"wrel_{band_key}"]   = f"（{wrel}）" if wrel else ""
 
     msg = user_tmpl
     for k, v in mapping.items():
@@ -823,7 +843,7 @@ def get_or_generate_comment(
 
         # 7. USER部組み立て
         month = int(date_str[5:7])
-        user_msg = build_user_message(spot, period, user_tmpl, month=month, date_label=date_label)
+        user_msg = build_user_message(spot, day, user_tmpl, month=month, date_label=date_label)
 
         # 8. API呼び出し
         try:
