@@ -396,8 +396,10 @@ def _aoi_warmup_all_spots() -> None:
                 with _detail_lock:
                     if result:
                         mode     = result.get("mode", "?")
-                        char_len = len(result.get("comment", ""))
+                        comment  = result.get("comment", "")
+                        char_len = len(comment)
                         detail_lines.append(f"{name:<40} {label:<6} {mode:<10} {char_len:>6}  OK")
+                        detail_lines.append(f"  {comment}")
                         ok += 1
                     else:
                         detail_lines.append(f"{name:<40} {label:<6} {'':10} {'':>6}  SKIP")
