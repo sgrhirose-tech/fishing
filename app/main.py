@@ -379,6 +379,67 @@ def _aoi_report_loop() -> None:
             print(f"[aoi] 古いレコード削除エラー: {e}")
 
 
+def _aoi_warmup_all_spots() -> None:
+    """全非禁止スポットの葵ちゃんコメント（今日・明日）を事前生成してキャッシュを温める。"""
+    import concurrent.futures as _cf
+    today_str    = _today()
+    tomorrow_str = _tomorrow()
+    spots = [s for s in load_spots() if not s.get("banned")]
+    total = len(spots)
+    print(f"[aoi-warmup] 開始: {total}スポット × 今日({today_str})・明日({tomorrow_str})")
+    ok = err = skip = 0
+
+    def _warm(spot: dict) -> None:
+        nonlocal ok, err, skip
+        slug = spot.get("slug", "")
+        if not slug:
+            return
+        for label, date_str in [("今日", today_str), ("明日", tomorrow_str)]:
+            try:
+                result = get_or_generate_comment(slug, spot, label, date_str,
+                                                 bypass_rate_limit=True)
+                if result:
+                    ok += 1
+                else:
+                    skip += 1
+            except Exception as e:
+                print(f"[aoi-warmup] ERROR {slug} {label}: {e}")
+                err += 1
+
+    with _cf.ThreadPoolExecutor(max_workers=3) as ex:
+        list(ex.map(_warm, spots))
+
+    print(f"[aoi-warmup] 完了: 成功{ok} / スキップ{skip} / エラー{err}")
+
+
+def _aoi_warmup_loop() -> None:
+    """4:00/16:00 JST に全スポットキャッシュを温めるループ。"""
+    import threading as _th
+    _WARMUP_HOURS = [4, 16]
+    print("[aoi-warmup] ループ起動 — 起動直後に即時実行")
+    first = True
+    while True:
+        if not first:
+            now = datetime.now(JST)
+            next_run = None
+            for h in _WARMUP_HOURS:
+                candidate = now.replace(hour=h, minute=0, second=0, microsecond=0)
+                if candidate > now:
+                    next_run = candidate
+                    break
+            if next_run is None:
+                next_run = (now + timedelta(days=1)).replace(
+                    hour=_WARMUP_HOURS[0], minute=0, second=0, microsecond=0)
+            wait_sec = (next_run - now).total_seconds()
+            print(f"[aoi-warmup] 次回: {next_run.strftime('%Y-%m-%d %H:%M JST')} ({wait_sec/3600:.1f}h後)")
+            _th.Event().wait(wait_sec)
+        first = False
+        try:
+            _aoi_warmup_all_spots()
+        except Exception as e:
+            print(f"[aoi-warmup] 実行エラー: {e}")
+
+
 _BLOGMURA_PING_URL = "https://ping.blogmura.com/xmlrpc/hdbk152e2inm/"
 _RANKING_PING_URL = "https://blog.with2.net/ping.php/2139987/1776486464"
 
@@ -438,6 +499,8 @@ async def lifespan(app: FastAPI):
     _t.start()
     _t2 = _th.Thread(target=_aoi_report_loop, daemon=True)
     _t2.start()
+    _t3 = _th.Thread(target=_aoi_warmup_loop, daemon=True)
+    _t3.start()
     # 起動時に毎回ping送信
     await _ping_blogmura()
     await _ping_ranking()
