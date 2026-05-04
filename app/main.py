@@ -2040,7 +2040,7 @@ _ARTICLE_HIDDEN_CATEGORIES: set[str] = {"introduction"}  # introduction は非�
 
 _CATEGORY_INTRO: dict[str, tuple[str, str, str]] = {
     "column": ("introduction", "tanaka_introduction",  "/static/img/fishing_master_card.png"),
-    "info":   ("info",         "staff_introduction",   "/static/img/shop_girl_card.png"),
+    "info":   ("introduction", "aoi_introduction",     "/static/img/shop_girl_card.png"),
     "report": ("introduction", "reporter_introduction", "/static/img/reporter_card.png"),
 }
 
@@ -2068,7 +2068,7 @@ def page_articles_top(request: Request):
     tanaka_intro = {**_ti, "card_image": "/static/img/fishing_master_card.png"} if _ti else None
     _ri = next((a for a in all_articles if a.get("category") == "introduction" and a.get("slug") == "reporter_introduction"), None)
     reporter_intro = {**_ri, "card_image": "/static/img/reporter_card.png"} if _ri else None
-    _ai = next((a for a in all_articles if a.get("category") == "info" and a.get("slug") == "staff_introduction"), None)
+    _ai = next((a for a in all_articles if a.get("category") == "introduction" and a.get("slug") == "aoi_introduction"), None)
     aoi_intro = {**_ai, "card_image": "/static/img/shop_girl_card.png"} if _ai else None
     return templates.TemplateResponse(request, "articles/top.html", {
         "categories":     categories,
@@ -2083,11 +2083,8 @@ def page_articles_category(request: Request, category: str):
     if category not in _ARTICLE_CATEGORY_ORDER:
         raise HTTPException(status_code=404)
     all_articles = _load_articles()
-    _PINNED_SLUGS = {"report": "reporter_introduction"}
     articles = sorted(
-        [a for a in all_articles
-         if a.get("category") == category
-         and a.get("slug") != _PINNED_SLUGS.get(category)],
+        [a for a in all_articles if a.get("category") == category],
         key=lambda a: a.get("mtime", 0), reverse=True,
     )
     intro_cat, intro_slug, intro_card = _CATEGORY_INTRO[category]
@@ -2188,7 +2185,7 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
     else:
         body = _strip_catch_mask_markers(body)
     slots = _load_article_slots(category, slug)
-    body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
+    body_html = _apply_aoi_summary(_apply_aoi_card(_render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")))
     all_parts = sorted(p.stem for p in slug_dir.glob("*.md") if p.name != "index.md")
     idx = all_parts.index(part_slug) if part_slug in all_parts else -1
     prev_part = all_parts[idx - 1] if idx > 0 else None
