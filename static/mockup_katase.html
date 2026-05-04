@@ -13,22 +13,24 @@
       padding: .45rem 1rem; font-size: .78rem;
       display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; align-items: center;
     }
-    .mockup-bar strong { font-size: .82rem; }
     .tag-new   { background:#e74c3c; color:#fff; font-size:.65rem; font-weight:700;
                  padding:.15rem .4rem; border-radius:3px; }
     .tag-moved { background:#e67e22; color:#fff; font-size:.65rem; font-weight:700;
                  padding:.15rem .4rem; border-radius:3px; }
-
-    /* ── 新規追加要素のハイライト ───────────────────────── */
     .is-new   { border-left: 3px solid #e74c3c !important;
                 padding-left: .75rem !important; margin-left: -0.75rem !important; }
     .is-moved { border-left: 3px solid #e67e22 !important;
                 padding-left: .75rem !important; margin-left: -0.75rem !important; }
+    .change-note {
+      margin: .3rem 0 .5rem; font-size: .73rem; font-weight: 600;
+    }
+    .change-note.is-new-note   { color: #e74c3c; }
+    .change-note.is-moved-note { color: #e67e22; }
 
-    /* ── A. 葵ちゃん動線 ────────────────────────────────── */
+    /* ── 葵ちゃん動線 ────────────────────────────────── */
     .aoi-cta-block {
       display: flex; flex-wrap: wrap; gap: .55rem;
-      margin: .6rem 0 1.1rem;
+      margin: .6rem 0 1.25rem;
     }
     .aoi-cta-block a {
       display: inline-flex; align-items: center; gap: .35rem;
@@ -40,9 +42,18 @@
       transition: background .15s, box-shadow .15s;
     }
     .aoi-cta-block a:hover { background: #ddeeff; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
-    .aoi-cta-block a .ico { font-size: .9rem; }
 
-    /* ── B-4. 関連コラム カード化 ─────────────────────── */
+    /* ── C-1 魚種ターゲット ─────────────────────────── */
+    .spot-fish-target {
+      margin: 1rem 0;
+      padding: .85rem 1rem;
+      background: #f6fdf2; border: 1px solid #bfdfaa; border-radius: 8px;
+    }
+    .spot-fish-target h2 { font-size: .95rem; margin: 0 0 .55rem; color: #2a5c1a; }
+    .spot-fish-target .fish-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .spot-fish-target .fish-sub { font-size: .76rem; color: #5a7a4a; margin: .45rem 0 0; }
+
+    /* ── B-4 コラムカード ──────────────────────────── */
     .article-col-card {
       display: flex; align-items: flex-start; gap: .9rem;
       padding: .55rem .75rem; border: 1px solid #e0e0e0; border-radius: 8px;
@@ -62,19 +73,7 @@
     }
     .article-col-card-author { font-size: .73rem; color: #999; margin-top: .25rem; }
 
-    /* ── C-1. 魚種ターゲットセクション ─────────────────── */
-    .spot-fish-target {
-      margin: 1rem 0;
-      padding: .85rem 1rem;
-      background: #f6fdf2; border: 1px solid #bfdfaa; border-radius: 8px;
-    }
-    .spot-fish-target h2 { font-size: .95rem; margin: 0 0 .55rem; color: #2a5c1a; }
-    .spot-fish-target .fish-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .spot-fish-target .fish-sub {
-      font-size: .76rem; color: #5a7a4a; margin: .45rem 0 0;
-    }
-
-    /* ── SSR天気サマリー ────────────────────────────────── */
+    /* ── 天気サマリー（モック）──────────────────────── */
     .ssr-mock-summary {
       border: 1px solid #d8e4f0; border-radius: 0 6px 6px 6px;
       padding: .7rem 1rem; background: #fafcff;
@@ -88,35 +87,31 @@
     .ssr-mock-period { font-weight: 600; width: 5.5rem; flex-shrink: 0; color: #1a4a6e; }
     .ssr-mock-note { font-size: .73rem; color: #aaa; margin-top: .4rem; }
 
-    /* ── 天気タブ（静的モック） ─────────────────────────── */
     .mock-tabs { display: flex; gap: 0; margin-bottom: 0; }
     .mock-tab {
-      padding: .4rem 1.1rem; font-size: .85rem; cursor: pointer;
+      padding: .4rem 1.1rem; font-size: .85rem;
       border: 1px solid #cce; border-bottom: none;
       border-radius: 6px 6px 0 0; background: #f0f4ff; color: #555;
     }
     .mock-tab.active { background: #fafcff; color: #1a3a6e; font-weight: 600; }
 
-    /* プレースホルダー */
     .placeholder-box {
       height: 160px; background: #e8eef4; border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      color: #99a;  font-size: .82rem;
+      color: #99a; font-size: .82rem;
     }
     .placeholder-box.short { height: 110px; }
   </style>
 </head>
 <body>
 
-<!-- モックアップ注記バー -->
 <div class="mockup-bar">
-  <strong>📐 レイアウト改善モックアップ — 片瀬西浜（江ノ島）</strong>
-  <span><span class="tag-moved">MOVED</span> セクション順序変更</span>
-  <span><span class="tag-new">NEW</span> 新規追加要素</span>
+  <strong>📐 レイアウト改善モックアップ v2 — 片瀬西浜（江ノ島）</strong>
+  <span><span class="tag-moved">MOVED</span> 順序変更</span>
+  <span><span class="tag-new">NEW</span> 新規追加</span>
   <span style="color:#aaa">※ 気象数値はダミーデータ</span>
 </div>
 
-<!-- サイトヘッダー（簡略） -->
 <header style="background:#1a3a5c;color:#fff;padding:.6rem 1rem;font-size:.9rem;display:flex;gap:1.5rem;align-items:center">
   <strong style="font-size:1rem">Tsuricast</strong>
   <span style="opacity:.6">ホーム｜釣り場｜タックル｜コラム｜釣果相談室</span>
@@ -124,7 +119,6 @@
 
 <div class="container">
 
-<!-- ─── パンくずリスト ─────────────────────────────────────────── -->
 <nav class="breadcrumb">
   <a href="/">ホーム</a> &rsaquo;
   <a href="/kanto/">関東</a> &rsaquo;
@@ -134,6 +128,7 @@
   <span>片瀬西浜（江ノ島）</span>
 </nav>
 
+<!-- ① スポット名 ──────────────────────────────────── -->
 <h1>片瀬西浜（江ノ島）</h1>
 <div class="spot-meta">
   <span class="badge">神奈川県</span>
@@ -142,11 +137,17 @@
   <span class="badge badge-warning">サーファーと仲良く</span>
 </div>
 
-<!-- ─── ① MOVED: 今日・明日の海況（最上部へ移動）──────────────── -->
-<section class="chart24-section is-moved">
-  <p style="margin:.4rem 0 .5rem;font-size:.76rem;color:#e67e22;font-weight:600">
-    <span class="tag-moved">MOVED</span> 旧: ページ中段 → 新: タイトル直下
+<!-- ② リード文・ここだけの話（ファーストビューに固定）──── -->
+<div class="spot-description">
+  <p>江ノ島大橋の西側に広がる相模湾の遠浅サーフです。砂底主体で根がかりが少なく、足もとの水深は3m前後とかなり浅め。シロギスを狙う常連の多くは夏の海水浴シーズンを避け、サーファーが引いた日没後か早朝に竿を出します。境川河口寄りのエリアは砂の堆積による地形変化があり、キスが溜まりやすいポイントとして知られています。秋の落ちギスの時期は岸寄りの浅場でも反応が出ることがあり、ヒイラギやメゴチも多く混じります。</p>
+  <p class="spot-notes-human">
+    <span class="spot-notes-label">ここだけの話</span>夜明け前に現地入りして、水族館の前や地引網の前で思う存分釣りをしてください。その後はだんだんマリンスポーツの方が増えてきます。そうしたら東の片瀬漁港の付近で釣りを続けます。ここもしばらくするとSUPのエントリーポイントになるので、その頃には納竿です。▼江ノ電駐車センターが最寄りの駐車場です。朝４時から入庫できます。最大料金がないです。ご注意を。▼近所の船宿さんで虫エサが買えます。
   </p>
+</div>
+
+<!-- ③ 天気（今日/明日）24時間グラフ ────── MOVED UP ─── -->
+<section class="chart24-section is-moved">
+  <p class="change-note is-moved-note"><span class="tag-moved">MOVED</span> 旧: FAQ・基本情報の後 → 新: リード文の直後</p>
   <div class="mock-tabs">
     <div class="mock-tab active">今日 5/5（月）</div>
     <div class="mock-tab">明日 5/6（火）</div>
@@ -172,11 +173,9 @@
   </div>
 </section>
 
-<!-- ─── ② MOVED: 葵ちゃんコメント（天気直後へ移動）───────────── -->
+<!-- ④ 葵ちゃんコメント + 回遊CTA ── MOVED UP + NEW ──── -->
 <section class="aoi-section is-moved">
-  <p style="margin:.3rem 0 .5rem;font-size:.76rem;color:#e67e22;font-weight:600">
-    <span class="tag-moved">MOVED</span> 旧: 天気の後 → 新: 天気の直後（同ブロック内）
-  </p>
+  <p class="change-note is-moved-note"><span class="tag-moved">MOVED</span> 天気の直後に固定</p>
   <div class="aoi-card">
     <img class="aoi-illust" src="img/aoi/weather_good.png" alt="葵ちゃん" width="110" height="110">
     <div class="aoi-body">
@@ -186,48 +185,27 @@
     </div>
   </div>
 </section>
-
-<!-- ─── ③ NEW: 葵ちゃん動線 ─────────────────────────────────── -->
 <div class="aoi-cta-block is-new">
-  <p style="margin:0 0 .35rem;font-size:.76rem;color:#e74c3c;font-weight:600;width:100%">
-    <span class="tag-new">NEW</span> 葵ちゃん動線（コメント直下）
-  </p>
-  <a href="/tackle/scene/surf-fishing/">
-    <span class="ico">🎣</span>砂浜サーフのタックルを葵ちゃんが解説
-  </a>
-  <a href="/articles/info/">
-    <span class="ico">💬</span>葵ちゃんの相談室
-  </a>
+  <p class="change-note is-new-note" style="width:100%"><span class="tag-new">NEW</span> 葵ちゃん回遊CTA</p>
+  <a href="/tackle/scene/surf-fishing/">🎣 葵ちゃんのタックルガイド</a>
+  <a href="/articles/info/">💬 葵ちゃんの相談室</a>
 </div>
 
-<!-- ─── ④ NEW: C-2 釣法CTA ───────────────────────────────────── -->
-<p class="is-new" style="margin:.2rem 0 1.1rem;">
-  <span style="font-size:.76rem;color:#e74c3c;font-weight:600">
-    <span class="tag-new">NEW</span> C-2 釣法CTA
-  </span><br>
-  <a href="/tackle/scene/surf-fishing/" style="color:#1a6b9e;font-size:.875rem;text-decoration:none;font-weight:500">
-    砂浜での釣り方ガイドを読む →
-  </a>
-</p>
-
-<!-- ─── ⑤ リード文 + ここだけの話（元の位置）──────────────── -->
-<div class="spot-description">
-  <p>江ノ島大橋の西側に広がる相模湾の遠浅サーフです。砂底主体で根がかりが少なく、足もとの水深は3m前後とかなり浅め。シロギスを狙う常連の多くは夏の海水浴シーズンを避け、サーファーが引いた日没後か早朝に竿を出します。境川河口寄りのエリアは砂の堆積による地形変化があり、キスが溜まりやすいポイントとして知られています。秋の落ちギスの時期は岸寄りの浅場でも反応が出ることがあり、ヒイラギやメゴチも多く混じります。</p>
-  <p class="spot-notes-human">
-    <span class="spot-notes-label">ここだけの話</span>夜明け前に現地入りして、水族館の前や地引網の前で思う存分釣りをしてください。その後はだんだんマリンスポーツの方が増えてきます。そうしたら東の片瀬漁港の付近で釣りを続けます。ここもしばらくするとSUPのエントリーポイントになるので、その頃には納竿です。▼江ノ電駐車センターが最寄りの駐車場です。朝４時から入庫できます。最大料金がないです。ご注意を。▼近所の船宿さんで虫エサが買えます。
-  </p>
-</div>
-
-<!-- ─── ⑥ スポット写真 ──────────────────────────────────────── -->
+<!-- ⑤ 写真・地図 ──────────────────────────────────── -->
 <div class="spot-photo">
   <img src="img/spots/katase.jpg" alt="片瀬西浜（江ノ島）">
 </div>
+<div class="placeholder-box" style="margin:.5rem 0 .25rem">地図（OpenStreetMap + 周辺施設マーカー）</div>
+<div class="map-legend">
+  <span class="legend-item"><span class="legend-badge" style="background:#1565C0">P</span>駐車場</span>
+  <span class="legend-item"><span class="legend-badge" style="background:#2E7D32">WC</span>トイレ</span>
+  <span class="legend-item"><span class="legend-badge" style="background:#E65100">釣</span>釣具屋</span>
+  <span class="legend-item"><span class="legend-badge" style="background:#6A1B9A">C</span>コンビニ</span>
+</div>
 
-<!-- ─── ⑦ NEW: C-1 魚種ターゲット ───────────────────────────── -->
+<!-- ⑥ このスポットで狙える魚（C-1）── NEW ────────────── -->
 <section class="spot-fish-target is-new">
-  <p style="margin:0 0 .4rem;font-size:.76rem;color:#e74c3c;font-weight:600">
-    <span class="tag-new">NEW</span> C-1 魚種バッジ → 各魚種ページへの動線
-  </p>
+  <p class="change-note is-new-note"><span class="tag-new">NEW</span> C-1 魚種バッジ → 各魚種ページへの動線</p>
   <h2>このスポットで狙える魚</h2>
   <div class="fish-chips">
     <a href="/fish/shirogisu/" class="fish-chip">シロギス</a>
@@ -237,16 +215,7 @@
   <p class="fish-sub">各魚種の釣れる時期・おすすめタックルなど詳細を見る</p>
 </section>
 
-<!-- ─── ⑧ 地図 ──────────────────────────────────────────────── -->
-<div class="placeholder-box" style="margin:1rem 0">地図（OpenStreetMap + 周辺施設マーカー）</div>
-<div class="map-legend">
-  <span class="legend-item"><span class="legend-badge" style="background:#1565C0">P</span>駐車場</span>
-  <span class="legend-item"><span class="legend-badge" style="background:#2E7D32">WC</span>トイレ</span>
-  <span class="legend-item"><span class="legend-badge" style="background:#E65100">釣</span>釣具屋</span>
-  <span class="legend-item"><span class="legend-badge" style="background:#6A1B9A">C</span>コンビニ</span>
-</div>
-
-<!-- ─── ⑨ 周辺施設 ────────────────────────────────────────── -->
+<!-- ⑦ 周辺施設・基本情報 ──────────────────────────── -->
 <section class="spot-facilities">
   <h2>周辺施設</h2>
   <div class="facility-chips">
@@ -257,7 +226,6 @@
   <p class="facility-note">マーカーの場所は上の地図でご確認ください（500m以内）。</p>
 </section>
 
-<!-- ─── ⑩ 基本情報 ────────────────────────────────────────── -->
 <section class="spot-info">
   <h2>基本情報</h2>
   <table class="info-table">
@@ -279,8 +247,121 @@
   </table>
 </section>
 
-<!-- ─── ⑪ よくある質問 ──────────────────────────────────── -->
-<section class="spot-qa">
+<!-- ⑧ 一週間の潮汐・海況 ──────────────────────────── -->
+<section class="tide-section">
+  <h2>一週間の潮汐</h2>
+  <div class="placeholder-box short">潮汐グラフ（Chart.js）</div>
+</section>
+
+<section class="forecast-section">
+  <h2>一週間の海況・気象情報</h2>
+  <div class="forecast-tabs">
+    <button class="tab-btn active">朝</button>
+    <button class="tab-btn">昼</button>
+    <button class="tab-btn">夕</button>
+    <button class="tab-btn">夜</button>
+  </div>
+  <div class="forecast-scroll">
+    <table class="forecast-table">
+      <thead>
+        <tr>
+          <th>日付</th><th>天気</th><th>気温</th><th>潮</th>
+          <th>風速・風向</th><th>波高</th><th>波周期</th><th>海水温</th><th>降水量</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>5/5(月)</td><td>晴れ</td><td>18.3℃</td><td>中（大潮）</td><td>2.4m/s 西南西</td><td>1.3m</td><td>7s</td><td>16.4℃</td><td>0.0mm</td></tr>
+        <tr><td>5/6(火)</td><td>晴れ</td><td>17.7℃</td><td>小（大潮）</td><td>1.9m/s 南南西</td><td>1.0m</td><td>6s</td><td>16.6℃</td><td>0.0mm</td></tr>
+        <tr><td>5/7(水)</td><td>くもり</td><td>16.5℃</td><td>小（中潮）</td><td>3.2m/s 西南西</td><td>1.2m</td><td>7s</td><td>16.4℃</td><td>0.0mm</td></tr>
+        <tr><td>5/8(木)</td><td>晴れ</td><td>17.2℃</td><td>大（小潮）</td><td>2.8m/s 南西</td><td>0.5m</td><td>8s</td><td>16.4℃</td><td>0.0mm</td></tr>
+        <tr><td>5/9(金)</td><td>くもり</td><td>16.3℃</td><td>中（小潮）</td><td>2.5m/s 南西</td><td>0.8m</td><td>8s</td><td>16.4℃</td><td>0.0mm</td></tr>
+        <tr><td>5/10(土)</td><td>雨のちくもり</td><td>15.5℃</td><td>中（長潮）</td><td>2.5m/s 南西</td><td>0.5m</td><td>8s</td><td>16.4℃</td><td>0.0mm</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ⑨ 釣行レポート・タックル・コラム ──────────────── -->
+<section class="spot-related-reports">
+  <h2>この釣り場の釣行レポート</h2>
+  <ul class="article-list">
+    <li>
+      <a href="#" class="article-row-card">
+        <img src="img/aoi_comment_report.png" alt="レポート">
+        <div class="spot-report-row-body">
+          <span class="article-row-title">【片瀬西浜 釣行レポート】平日狙いでシロギスをお祈りキャッチ！江ノ島を望む絶景の砂浜で着の身着のまま釣行を満喫</span>
+          <span class="spot-report-row-meta">更新 2026年04月30日　🐟 シロギス 5匹</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section class="spot-tackle-section">
+  <h2>このスポットで使うタックル</h2>
+  <div class="filter-chips">
+    <a href="/tackle/scene/surf-fishing/" class="filter-chip">堤防から砂浜へ</a>
+  </div>
+</section>
+
+<section class="is-new" style="margin:1.5rem 0">
+  <p class="change-note is-new-note"><span class="tag-new">NEW</span> B-4 関連コラム → サムネイル付きカード化（旧: テキストリスト）</p>
+  <h2 style="font-size:1.1rem;margin-bottom:.75rem">この釣り場に関連するコラム</h2>
+  <ul class="article-list">
+    <li>
+      <a href="/articles/column/surfing/" class="article-col-card">
+        <img src="article-assets/column/surfing/img/card.jpg" alt="">
+        <div class="article-col-card-body">
+          <span class="article-col-card-title">サーフィンと釣りが共存する砂浜のルール｜すみ分けの考え方をベテラン店長が解説</span>
+          <span class="article-col-card-author">田中店長 コラム</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="/articles/column/shirogisu_shio_tomari/" class="article-col-card">
+        <img src="article-assets/column/shirogisu_shio_tomari/img/card.jpg" alt="">
+        <div class="article-col-card-body">
+          <span class="article-col-card-title">なぜシロギスは潮止まりでも釣れるのか｜生態から読み解くキス釣りの不思議</span>
+          <span class="article-col-card-author">田中店長 コラム</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="/articles/column/beginner_fishing_kanto/" class="article-col-card">
+        <img src="img/fishing_master_card.png" alt="">
+        <div class="article-col-card-body">
+          <span class="article-col-card-title">はじめての海釣りに向いている釣り場【関東版】｜初心者が失敗しにくい3か所</span>
+          <span class="article-col-card-author">田中店長 コラム</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="/articles/column/train_fishing/" class="article-col-card">
+        <img src="article-assets/column/train_fishing/img/card.jpg" alt="">
+        <div class="article-col-card-body">
+          <span class="article-col-card-title">電車釣行完全ガイド｜車なしで釣りを楽しむコツをベテラン店長が解説</span>
+          <span class="article-col-card-author">田中店長 コラム</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<!-- ⑩ 近くの釣りスポット ── MOVED DOWN ──────────────── -->
+<section class="nearby-spots-section is-moved">
+  <p class="change-note is-moved-note"><span class="tag-moved">MOVED</span> コンテンツ群の後に移動</p>
+  <h2>近くのサンドビーチスポット</h2>
+  <ul class="nearby-spots-list">
+    <li><a href="#" class="nearby-spot-link">片瀬東浜</a><span class="nearby-spot-area">（藤沢市）</span></li>
+    <li><a href="#" class="nearby-spot-link">茅ヶ崎海岸</a><span class="nearby-spot-area">（茅ヶ崎市）</span></li>
+    <li><a href="#" class="nearby-spot-link">七里ヶ浜</a><span class="nearby-spot-area">（鎌倉市）</span></li>
+    <li><a href="#" class="nearby-spot-link">片瀬白田</a><span class="nearby-spot-area">（藤沢市）</span></li>
+  </ul>
+</section>
+
+<!-- ⑪ Q&A ── MOVED DOWN（SEO/GEO用、最下部）─────────── -->
+<section class="spot-qa is-moved">
+  <p class="change-note is-moved-note"><span class="tag-moved">MOVED</span> SEO/GEO用途 → 最下部に移動</p>
   <h2>よくある質問</h2>
   <dl class="qa-list">
     <div class="qa-item">
@@ -306,181 +387,26 @@
   </dl>
 </section>
 
-<!-- ─── ⑫ 一週間の潮汐 ──────────────────────────────────── -->
-<section class="tide-section">
-  <h2>一週間の潮汐</h2>
-  <div class="placeholder-box short">潮汐グラフ（Chart.js）</div>
-</section>
-
-<!-- ─── ⑬ 一週間の海況テーブル ─────────────────────────── -->
-<section class="forecast-section">
-  <h2>一週間の海況・気象情報</h2>
-  <div class="forecast-tabs">
-    <button class="tab-btn active">朝</button>
-    <button class="tab-btn">昼</button>
-    <button class="tab-btn">夕</button>
-    <button class="tab-btn">夜</button>
-  </div>
-  <div class="forecast-scroll">
-    <table class="forecast-table">
-      <thead>
-        <tr>
-          <th>日付</th><th>天気</th><th>気温</th><th>潮</th>
-          <th>風速・風向</th><th>波高</th><th>波周期</th><th>海水温</th><th>降水量</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>5/5(月)</td><td>晴れ (快晴)</td><td>18.3℃</td><td>中（大潮）</td><td>2.4m/s 西南西</td><td>1.3m</td><td>7s</td><td>16.4℃</td><td>0.0mm</td></tr>
-        <tr><td>5/6(火)</td><td>晴れ (快晴)</td><td>17.7℃</td><td>小（大潮）</td><td>1.9m/s 南南西</td><td>1.0m</td><td>6s</td><td>16.6℃</td><td>0.0mm</td></tr>
-        <tr><td>5/7(水)</td><td>くもり</td><td>16.5℃</td><td>小（中潮）</td><td>3.2m/s 西南西</td><td>1.2m</td><td>7s</td><td>16.4℃</td><td>0.0mm</td></tr>
-        <tr><td>5/8(木)</td><td>晴れ</td><td>17.2℃</td><td>大（小潮）</td><td>2.8m/s 南西</td><td>0.5m</td><td>8s</td><td>16.4℃</td><td>0.0mm</td></tr>
-        <tr><td>5/9(金)</td><td>くもり</td><td>16.3℃</td><td>中（小潮）</td><td>2.5m/s 南西</td><td>0.8m</td><td>8s</td><td>16.4℃</td><td>0.0mm</td></tr>
-        <tr><td>5/10(土)</td><td>雨のちくもり</td><td>15.5℃</td><td>中（長潮）</td><td>2.5m/s 南西</td><td>0.5m</td><td>8s</td><td>16.4℃</td><td>0.0mm</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ─── ⑭ 釣行レポート（変更なし）──────────────────────── -->
-<section class="spot-related-reports">
-  <h2>この釣り場の釣行レポート</h2>
-  <ul class="article-list">
-    <li>
-      <a href="#" class="article-row-card">
-        <img src="img/aoi_comment_report.png" alt="レポート">
-        <div class="spot-report-row-body">
-          <span class="article-row-title">【片瀬西浜 釣行レポート】平日狙いでシロギスをお祈りキャッチ！江ノ島を望む絶景の砂浜で着の身着のまま釣行を満喫</span>
-          <span class="spot-report-row-meta">更新 2026年04月30日　🐟 シロギス 5匹</span>
-        </div>
-      </a>
-    </li>
-  </ul>
-</section>
-
-<!-- ─── ⑮ タックル（変更なし）──────────────────────────── -->
-<section class="spot-tackle-section">
-  <h2>このスポットで使うタックル</h2>
-  <div class="filter-chips">
-    <a href="/tackle/scene/surf-fishing/" class="filter-chip">堤防から砂浜へ</a>
-  </div>
-</section>
-
-<!-- ─── ⑯ 近くのスポット（変更なし）────────────────────── -->
-<section class="nearby-spots-section">
-  <h2>近くのサンドビーチスポット</h2>
-  <ul class="nearby-spots-list">
-    <li><a href="#" class="nearby-spot-link">片瀬東浜</a><span class="nearby-spot-area">（藤沢市）</span></li>
-    <li><a href="#" class="nearby-spot-link">茅ヶ崎海岸</a><span class="nearby-spot-area">（茅ヶ崎市）</span></li>
-    <li><a href="#" class="nearby-spot-link">七里ヶ浜</a><span class="nearby-spot-area">（鎌倉市）</span></li>
-    <li><a href="#" class="nearby-spot-link">片瀬白田</a><span class="nearby-spot-area">（藤沢市）</span></li>
-  </ul>
-</section>
-
-<!-- ─── ⑰ NEW: B-4 関連コラム（カード化）──────────────── -->
-<section style="margin:1.5rem 0" class="is-new">
-  <p style="margin:0 0 .4rem;font-size:.76rem;color:#e74c3c;font-weight:600">
-    <span class="tag-new">NEW</span> B-4 関連コラムをカード化（旧: テキストリスト）
-  </p>
-  <h2 style="font-size:1.1rem;margin-bottom:.75rem">この釣り場に関連するコラム</h2>
-  <ul class="article-list">
-    <li>
-      <a href="/articles/column/surfing/" class="article-col-card">
-        <img src="article-assets/column/surfing/img/card.jpg" alt="サーフィンと釣りの共存">
-        <div class="article-col-card-body">
-          <span class="article-col-card-title">サーフィンと釣りが共存する砂浜のルール｜すみ分けの考え方をベテラン店長が解説</span>
-          <span class="article-col-card-author">田中店長 コラム</span>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="/articles/column/shirogisu_shio_tomari/" class="article-col-card">
-        <img src="article-assets/column/shirogisu_shio_tomari/img/card.jpg" alt="シロギスは潮止まりでも釣れる">
-        <div class="article-col-card-body">
-          <span class="article-col-card-title">なぜシロギスは潮止まりでも釣れるのか｜生態から読み解くキス釣りの不思議</span>
-          <span class="article-col-card-author">田中店長 コラム</span>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="/articles/column/beginner_fishing_kanto/" class="article-col-card">
-        <img src="img/fishing_master_card.png" alt="はじめての海釣り関東版">
-        <div class="article-col-card-body">
-          <span class="article-col-card-title">はじめての海釣りに向いている釣り場【関東版】｜初心者が失敗しにくい3か所</span>
-          <span class="article-col-card-author">田中店長 コラム</span>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="/articles/column/train_fishing/" class="article-col-card">
-        <img src="article-assets/column/train_fishing/img/card.jpg" alt="電車釣行完全ガイド">
-        <div class="article-col-card-body">
-          <span class="article-col-card-title">電車釣行完全ガイド｜車なしで釣りを楽しむコツをベテラン店長が解説</span>
-          <span class="article-col-card-author">田中店長 コラム</span>
-        </div>
-      </a>
-    </li>
-  </ul>
-</section>
-
-<!-- ─── ⑱ ブログ記事（変更なし）────────────────────────── -->
-<section class="blog-posts-section">
-  <h2 class="section-title">関連ブログ最新記事</h2>
-  <ul class="blog-posts-list">
-    <li class="blog-post-item">
-      <a href="#" class="blog-post-link">【片瀬西浜】シロギスをジェット天秤でキャッチ！2026年5月の釣行記</a>
-      <span class="blog-post-meta">湘南フィッシングライフ · May 01, 2026</span>
-    </li>
-    <li class="blog-post-item">
-      <a href="#" class="blog-post-link">江ノ島周辺サーフで落ちギス調査 — 秋の片瀬西浜 2025年10月</a>
-      <span class="blog-post-meta">釣りブログ湘南 · Oct 24, 2025</span>
-    </li>
-  </ul>
-</section>
-
 <a href="/kanagawa/sagamibay/fujisawa/" class="back-link">‹ 戻る</a>
 
 </div><!-- /container -->
 
-<!-- ─── 変更サマリー（ページ末尾）─────────────────────────────── -->
+<!-- 変更サマリー -->
 <div style="background:#f8f8f8;border-top:2px solid #2c3e50;padding:1.5rem;margin-top:2rem;font-size:.82rem;color:#444">
-  <strong style="font-size:.9rem">📋 変更サマリー</strong>
-  <table style="margin-top:.75rem;border-collapse:collapse;width:100%;max-width:720px">
-    <tr style="background:#2c3e50;color:#fff">
-      <th style="padding:.35rem .6rem;text-align:left">要素</th>
-      <th style="padding:.35rem .6rem;text-align:left">種別</th>
-      <th style="padding:.35rem .6rem;text-align:left">内容</th>
-    </tr>
-    <tr style="background:#fff7f0">
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee">24時間天気チャート</td>
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee"><span class="tag-moved">MOVED</span></td>
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee">ページ中段 → タイトル直下に移動</td>
-    </tr>
-    <tr style="background:#fff7f0">
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee">葵ちゃんコメント</td>
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee"><span class="tag-moved">MOVED</span></td>
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee">天気タブの直後に移動（セット化）</td>
-    </tr>
-    <tr style="background:#fff0f0">
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee">葵ちゃん動線</td>
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee"><span class="tag-new">NEW</span></td>
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee">コメント直下に「タックル解説」「相談室」の2リンク</td>
-    </tr>
-    <tr style="background:#fff0f0">
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee">C-2 釣法CTA</td>
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee"><span class="tag-new">NEW</span></td>
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee">「砂浜での釣り方ガイドを読む →」テキストリンク</td>
-    </tr>
-    <tr style="background:#fff0f0">
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee">C-1 魚種バッジ</td>
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee"><span class="tag-new">NEW</span></td>
-      <td style="padding:.3rem .6rem;border-bottom:1px solid #eee">写真の直後に「このスポットで狙える魚」バッジ → 魚種ページへ</td>
-    </tr>
-    <tr style="background:#fff0f0">
-      <td style="padding:.3rem .6rem">B-4 関連コラム</td>
-      <td style="padding:.3rem .6rem"><span class="tag-new">NEW</span></td>
-      <td style="padding:.3rem .6rem">テキストリスト → サムネイル付きカード化</td>
-    </tr>
-  </table>
+  <strong style="font-size:.9rem">📋 最終セクション順序</strong>
+  <ol style="margin:.75rem 0 0;padding-left:1.4rem;line-height:2">
+    <li>スポット名</li>
+    <li>リード文・ここだけの話</li>
+    <li>天気（今日/明日）24時間グラフ <span class="tag-moved">MOVED</span></li>
+    <li>葵ちゃんコメント + 回遊CTA <span class="tag-moved">MOVED</span> <span class="tag-new">+NEW</span></li>
+    <li>写真・地図</li>
+    <li>このスポットで狙える魚 <span class="tag-new">NEW</span></li>
+    <li>周辺施設・基本情報</li>
+    <li>一週間の潮汐・海況</li>
+    <li>釣行レポート・タックル・コラム <span class="tag-new">B-4カード化</span></li>
+    <li>近くの釣りスポット <span class="tag-moved">MOVED</span></li>
+    <li>Q&A（SEO/GEO用） <span class="tag-moved">MOVED↓</span></li>
+  </ol>
 </div>
 
 </body>
