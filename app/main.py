@@ -1658,6 +1658,8 @@ def _render_tackle_scene_body(scene: dict) -> str:
     if not md_path.exists() or _MARKDOWN is None:
         return ""
     md_text = md_path.read_text(encoding="utf-8")
+    # Strip leading h1 (rendered as <h1> in scene.html)
+    md_text = _re.sub(r"^#[^#][^\n]*\n+", "", md_text)
     slots = scene.get("affiliate_slots", {}) or {}
     parts = _AFFILIATE_MARKER.split(md_text)
     html_parts = []

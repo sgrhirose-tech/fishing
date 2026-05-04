@@ -1,168 +1,63 @@
 [
   {
-    "slug": "beginner-tsutsumi",
+    "slug": "family-fishing",
     "name": "はじめての堤防釣り",
-    "icon": "🏄",
-    "summary": "初めて堤防釣りに挑戦する方へ。竿・リール・仕掛け一式、何を揃えればいいかを最低限に絞って解説します。",
+    "title": "はじめての堤防釣り完全ガイド｜家族で行く休日釣行の準備から釣り方まで",
+    "icon": "🎣",
+    "summary": "サビキ・ちょい投げ・ブラクリなど釣り方別に必要な道具を解説。釣具店での相談方法も。",
     "affiliate_slots": {
-      "0": [
-        {
-          "name": "釣り入門セット（竿＋リール）検索",
-          "url": "https://www.amazon.co.jp/s?k=釣り+入門セット+竿+リール&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜Amazon「釣り入門セット」検索結果"
-        }
-      ],
-      "1": [
-        {
-          "name": "シマノ ホリデー磯 2号-3.6m",
-          "url": "https://www.amazon.co.jp/s?k=シマノ+ホリデー磯&tag=tsuricast-22",
-          "asin": null,
-          "note": "入門磯竿｜汎用性が高く初心者に定番のエントリーモデル"
-        },
-        {
-          "name": "ダイワ リバティクラブ 磯風 2号-3.6m",
-          "url": "https://www.amazon.co.jp/s?k=ダイワ+リバティクラブ+磯風&tag=tsuricast-22",
-          "asin": null,
-          "note": "入門磯竿｜実売3,000〜4,000円のコスパモデル"
-        }
-      ],
-      "2": [
-        {
-          "name": "堤防釣り仕掛けセット 検索",
-          "url": "https://www.amazon.co.jp/s?k=堤防釣り+仕掛けセット&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜市販の完成仕掛けセット各種"
-        }
-      ]
+      "0": [],
+      "1": [],
+      "2": []
     }
   },
   {
-    "slug": "sabiki-tackle",
-    "name": "サビキ釣りタックル",
+    "slug": "sabiki",
+    "name": "サビキ釣りタックル選び",
+    "title": "サビキ釣りタックル完全ガイド｜スタイル別に最適な道具を選ぶ",
     "icon": "🐟",
-    "summary": "アジ・サバ・イワシを手軽に数釣り。サビキ釣りに必要なタックルをそろえ方から丁寧に説明します。",
+    "summary": "足元・投げ・夜・トリックと4スタイルに分けてタックルを解説。スタイルが違えば道具も変わります。",
     "affiliate_slots": {
-      "0": [
-        {
-          "name": "サビキ釣りセット 検索",
-          "url": "https://www.amazon.co.jp/s?k=サビキ釣り+セット&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜竿・リール・仕掛けがセットになった商品"
-        }
-      ],
-      "1": [
-        {
-          "name": "シマノ ホリデー磯 2号-4.5m",
-          "url": "https://www.amazon.co.jp/s?k=シマノ+ホリデー磯+4.5m&tag=tsuricast-22",
-          "asin": null,
-          "note": "サビキ向け磯竿｜4.5mの長さがサビキに使いやすい"
-        }
-      ],
-      "2": [
-        {
-          "name": "サビキ仕掛け ハゲ皮 4〜5号 各種",
-          "url": "https://www.amazon.co.jp/s?k=サビキ仕掛け+ハゲ皮&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜ハゲ皮サビキ仕掛け各種"
-        }
-      ],
-      "3": [
-        {
-          "name": "アミコマセ（チューブ型・常温） 各種",
-          "url": "https://www.amazon.co.jp/s?k=アミコマセ+チューブ&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜常温保存できるチューブ型アミコマセ"
-        }
-      ]
+      "0": [],
+      "1": [],
+      "2": [],
+      "3": []
     }
   },
   {
-    "slug": "tsutsumi-to-sunabama",
+    "slug": "surf-fishing",
     "name": "堤防から砂浜へ",
+    "title": "堤防から砂浜へ｜手持ちのタックルで始めるサーフ釣り入門",
     "icon": "🏖️",
-    "summary": "堤防釣りに慣れてきたら投げ釣りに挑戦。砂浜からシロギスを狙うタックル選びと投げ釣りの基礎。",
+    "summary": "手持ちのタックルで砂浜に出るための考え方。何が使い回せて、何を見直すべきかを整理します。",
     "affiliate_slots": {
-      "0": [
-        {
-          "name": "投げ竿 30号 4m クラス 検索",
-          "url": "https://www.amazon.co.jp/s?k=投げ竿+30号+4m&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜標準的な投げ竿の検索結果"
-        },
-        {
-          "name": "シマノ スピンパワー 405CX＋",
-          "url": "https://www.amazon.co.jp/s?k=シマノ+スピンパワー+405&tag=tsuricast-22",
-          "asin": null,
-          "note": "投げ竿定番モデル｜遠投性能と汎用性のバランスが取れたスタンダード"
-        }
-      ],
-      "1": [
-        {
-          "name": "シマノ サーフリーダー CI4＋ 35 遠投",
-          "url": "https://www.amazon.co.jp/s?k=シマノ+サーフリーダー&tag=tsuricast-22",
-          "asin": null,
-          "note": "投げリール定番｜遠投スピニングリールの定番モデル"
-        }
-      ],
-      "2": [
-        {
-          "name": "キス仕掛け 4〜6号 各種",
-          "url": "https://www.amazon.co.jp/s?k=キス仕掛け&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜市販キス専用仕掛け各種"
-        }
-      ]
+      "0": [],
+      "1": [],
+      "2": []
     }
   },
   {
     "slug": "kurodai-tackle",
-    "name": "クロダイ釣法別タックル",
+    "name": "クロダイ釣り道具ガイド",
+    "title": "クロダイ釣法別タックルガイド｜釣り方が違えば道具が変わる",
     "icon": "🎯",
-    "summary": "フカセ・落とし込み／ヘチ・チニングの3釣法別に、クロダイ狙いのタックルと選び方を比較解説。",
+    "summary": "フカセ・ヘチ・チニングなど釣り方ごとに最適な竿とリールを解説。タイコリールが必要な釣りも。",
     "affiliate_slots": {
-      "0": [
-        {
-          "name": "磯竿 1号 5.3m クロダイフカセ 検索",
-          "url": "https://www.amazon.co.jp/s?k=磯竿+1号+5.3m+フカセ&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜フカセ釣り用磯竿の検索結果"
-        },
-        {
-          "name": "シマノ ホリデー磯 1.5号-5.3m",
-          "url": "https://www.amazon.co.jp/s?k=シマノ+ホリデー磯+1.5号+5.3m&tag=tsuricast-22",
-          "asin": null,
-          "note": "入門フカセ竿｜コスパの高い定番エントリーモデル"
-        }
-      ],
-      "1": [
-        {
-          "name": "ヘチ竿・落とし込み竿 検索",
-          "url": "https://www.amazon.co.jp/s?k=ヘチ竿+落とし込み&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜ヘチ・落とし込み専用竿の検索結果"
-        },
-        {
-          "name": "黒鯛工房 ヘチ竿・ヘチリール 各種",
-          "url": "https://www.amazon.co.jp/s?k=黒鯛工房+ヘチ&tag=tsuricast-22",
-          "asin": null,
-          "note": "ヘチ釣り定番ブランド｜落とし込み・ヘチ釣り専用品"
-        }
-      ],
-      "2": [
-        {
-          "name": "チニングロッド 検索",
-          "url": "https://www.amazon.co.jp/s?k=チニングロッド&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜チニング専用ロッドの検索結果"
-        },
-        {
-          "name": "チニング ワーム ジグヘッド 各種",
-          "url": "https://www.amazon.co.jp/s?k=チニング+ワーム&tag=tsuricast-22",
-          "asin": null,
-          "note": "まとめリンク｜チニング用ワーム・ジグヘッド各種"
-        }
-      ]
+      "0": [],
+      "1": [],
+      "2": []
+    }
+  },
+  {
+    "slug": "one-day-fishing",
+    "name": "1日だけの釣りタックル選び",
+    "title": "1日だけ釣りをするのに何を買えばいい？セット品・100均・レンタルを正直に比較",
+    "icon": "🧺",
+    "summary": "セット品・100均・レンタルを正直に比較。1人8000円以内のおすすめ組み合わせも提案します。",
+    "affiliate_slots": {
+      "0": [],
+      "1": [],
+      "2": []
     }
   }
 ]
