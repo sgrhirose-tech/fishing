@@ -313,7 +313,7 @@
   <h2>このスポットで狙える魚</h2>
   <div class="fish-chips">
     {% for fish in spot.target_fish %}
-    <a href="/fish/{{ fish }}/" class="fish-chip">{{ fish_name_map.get(fish, fish) }}</a>
+    <a href="/fish/{{ fish }}" class="fish-chip">{{ fish_name_map.get(fish, fish) }}</a>
     {% endfor %}
   </div>
 </section>
