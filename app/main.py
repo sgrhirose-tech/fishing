@@ -1640,6 +1640,38 @@ def _load_tackle_categories() -> list:
         return json.load(f)
 
 
+def _load_tackle_scenes() -> list:
+    path = _TACKLE_DIR / "scenes.json"
+    if not path.exists():
+        return []
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _load_tackle_scene(slug: str) -> dict | None:
+    scenes = _load_tackle_scenes()
+    return next((s for s in scenes if s["slug"] == slug), None)
+
+
+def _render_tackle_scene_body(scene: dict) -> str:
+    md_path = _TACKLE_DIR / "scene" / f"{scene['slug']}.md"
+    if not md_path.exists() or _MARKDOWN is None:
+        return ""
+    md_text = md_path.read_text(encoding="utf-8")
+    slots = scene.get("affiliate_slots", {}) or {}
+    parts = _AFFILIATE_MARKER.split(md_text)
+    html_parts = []
+    for i, part in enumerate(parts):
+        if i % 2 == 0:
+            html_parts.append(_MARKDOWN(part))
+        else:
+            links = slots.get(part, [])
+            if links:
+                html_parts.append(_build_affiliate_html(links))
+    return "".join(html_parts)
+
+
+
 def _load_tackle_items(category_slug: str) -> list:
     path = _TACKLE_DIR / f"{category_slug}.json"
     if not path.exists():
@@ -2131,6 +2163,7 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
 @app.get("/tackle/", response_class=HTMLResponse)
 def page_tackle_top(request: Request):
     categories = _load_tackle_categories()
+    scenes = _load_tackle_scenes()
     articles = _load_articles()
     staff_intro = next(
         (a for a in articles if a.get("category") == "info" and a.get("slug") == "staff_introduction"),
@@ -2142,8 +2175,23 @@ def page_tackle_top(request: Request):
     )
     return templates.TemplateResponse(request, "tackle/top.html", {
         "categories": categories,
+        "scenes": scenes,
         "staff_intro": staff_intro,
         "aoi_interview": aoi_interview,
+    })
+
+
+@app.get("/tackle/scene/{slug}/", response_class=HTMLResponse)
+def page_tackle_scene(request: Request, slug: str):
+    scene = _load_tackle_scene(slug)
+    if not scene:
+        raise HTTPException(status_code=404, detail="記事が見つかりません")
+    scenes = _load_tackle_scenes()
+    body_html = _render_tackle_scene_body(scene)
+    return templates.TemplateResponse(request, "tackle/scene.html", {
+        "scene": scene,
+        "scenes": scenes,
+        "body_html": body_html,
     })
 
 

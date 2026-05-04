@@ -56,6 +56,23 @@
 </section>
 {% endif %}
 
+{% if scenes %}
+<section class="area-links">
+  <h2>シーンで選ぶ</h2>
+  <div class="tackle-category-grid">
+    {% for scene in scenes %}
+    <a href="/tackle/scene/{{ scene.slug }}/" class="tackle-category-card">
+      <span class="tackle-cat-icon">{{ scene.icon }}</span>
+      <div class="tackle-cat-body">
+        <h3>{{ scene.name }}</h3>
+        <p>{{ scene.summary }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <section class="area-links">
   <h2>カテゴリから選ぶ</h2>
   <div class="tackle-category-grid">
