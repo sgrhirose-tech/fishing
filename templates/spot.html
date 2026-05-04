@@ -319,7 +319,7 @@
   <div class="aoi-card" id="aoi-today">
     <img class="aoi-illust" src="/static/img/aoi/weather_{{ aoi_today.mode }}.png" alt="葵ちゃん" width="110" height="110">
     <div class="aoi-body">
-      <div class="aoi-label">今日の葵ちゃんコメント</div>
+      <p class="aoi-date">{{ today_md }}の葵ちゃんコメント</p>
       <p class="aoi-comment">{{ aoi_today.comment }}</p>
       <span class="aoi-disclaimer">※AIによる個人的な感想です。気象情報ではありません。</span>
     </div>
@@ -329,7 +329,7 @@
   <div class="aoi-card" id="aoi-tomorrow"{% if aoi_today %} style="display:none"{% endif %}>
     <img class="aoi-illust" src="/static/img/aoi/weather_{{ aoi_tomorrow.mode }}.png" alt="葵ちゃん" width="110" height="110">
     <div class="aoi-body">
-      <div class="aoi-label">明日の葵ちゃんコメント</div>
+      <p class="aoi-date">{{ tomorrow_md }}の葵ちゃんコメント</p>
       <p class="aoi-comment">{{ aoi_tomorrow.comment }}</p>
       <span class="aoi-disclaimer">※AIによる個人的な感想です。気象情報ではありません。</span>
     </div>

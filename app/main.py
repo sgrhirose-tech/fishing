@@ -2736,6 +2736,8 @@ def page_spot_detail(
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
         "tomorrow_jp":        _format_date_jp(tomorrow_str),
+        "today_md":           f"{int(today_str[5:7])}月{int(today_str[8:10])}日",
+        "tomorrow_md":        f"{int(tomorrow_str[5:7])}月{int(tomorrow_str[8:10])}日",
         "slope_type":         spot_slope_type(spot),
         "spot_type":          spot_type_label(spot),
         "photos":             get_photos(slug),
