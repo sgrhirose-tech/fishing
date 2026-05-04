@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ scene.name }} | シーンで選ぶタックルガイド | Tsuricast{% endblock %}
+{% block title %}{{ scene.title or scene.name }} | シーンで選ぶタックルガイド | Tsuricast{% endblock %}
 {% block description %}{{ scene.summary }}{% endblock %}
 {% block og_url %}https://tsuricast.jp/tackle/scene/{{ scene.slug }}/{% endblock %}
 {% block canonical %}https://tsuricast.jp/tackle/scene/{{ scene.slug }}/{% endblock %}

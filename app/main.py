@@ -1658,6 +1658,8 @@ def _render_tackle_scene_body(scene: dict) -> str:
     if not md_path.exists() or _MARKDOWN is None:
         return ""
     md_text = md_path.read_text(encoding="utf-8")
+    # Strip leading h1 (rendered as <h1> in scene.html)
+    md_text = _re.sub(r"^#[^#][^\n]*\n+", "", md_text)
     slots = scene.get("affiliate_slots", {}) or {}
     parts = _AFFILIATE_MARKER.split(md_text)
     html_parts = []
@@ -1968,6 +1970,27 @@ def _apply_aoi_card(html: str) -> str:
     return _AOI_SECTION_RE.sub(_replace, html)
 
 
+_AOI_SUMMARY_RE = _re.compile(
+    r'<h2>葵ちゃんのまとめ</h2>(.*?)(?=<hr\b|$)',
+    _re.DOTALL,
+)
+
+def _apply_aoi_summary(html: str) -> str:
+    """info 記事末尾の「葵ちゃんのまとめ」h2 セクションを .aoi-card スタイルに変換する。"""
+    def _replace(m: _re.Match) -> str:
+        content = m.group(1).strip()
+        return (
+            '<div class="aoi-section">'
+            '<div class="aoi-card">'
+            '<img class="aoi-illust" src="/static/img/aoi_comment_info.png" alt="葵ちゃん">'
+            '<div class="aoi-body">'
+            '<p class="aoi-label">葵ちゃんのまとめ</p>'
+            f'<div class="aoi-comment aoi-summary-body">{content}</div>'
+            '</div></div></div>'
+        )
+    return _AOI_SUMMARY_RE.sub(_replace, html)
+
+
 def _render_md_with_affiliates(content: str, slots: list, article_path: str = "") -> str:
     """MarkdownをアフィリエイトスロットHTMLに展開してHTMLに変換する。"""
     if _MARKDOWN is None:
@@ -2007,36 +2030,75 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
 
 
 _ARTICLE_CATEGORY_LABELS: dict[str, str] = {
-    "column": "店長コラム",
-    "info":   "店員インフォメーション",
-    "report": "店員現地レポート",
+    "column":       "店長コラム",
+    "info":         "葵ちゃんの相談室",
+    "report":       "店員現地レポート",
+    "introduction": "スタッフ紹介",
 }
-_ARTICLE_CATEGORY_ORDER = ["column", "info", "report"]
-_ARTICLE_HIDDEN_CATEGORIES: set[str] = {"info"}  # 一覧・RSS から除外
+_ARTICLE_CATEGORY_ORDER = ["column", "info", "report", "introduction"]
+_ARTICLE_HIDDEN_CATEGORIES: set[str] = {"introduction"}  # introduction は非表示、info は公開
+
+_CATEGORY_INTRO: dict[str, tuple[str, str, str]] = {
+    "column": ("introduction", "tanaka_introduction",  "/static/img/fishing_master_card.png"),
+    "info":   ("info",         "staff_introduction",   "/static/img/shop_girl_card.png"),
+    "report": ("introduction", "reporter_introduction", "/static/img/reporter_card.png"),
+}
 
 
 @app.get("/articles/", response_class=HTMLResponse)
 def page_articles_top(request: Request):
     all_articles = _load_articles()
-    _PINNED_SLUGS = {"report": "reporter_introduction"}
     grouped: dict[str, list] = {cat: [] for cat in _ARTICLE_CATEGORY_ORDER}
     for a in all_articles:
         cat = a.get("category", "")
-        if cat in grouped and a.get("slug") != _PINNED_SLUGS.get(cat):
+        if cat in grouped:
             grouped[cat].append(a)
+    TOP_N = 8
     categories = [
-        {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": sorted(grouped[cat], key=lambda a: a.get("mtime", 0), reverse=True)}
+        {
+            "key":      cat,
+            "label":    _ARTICLE_CATEGORY_LABELS[cat],
+            "articles": sorted(grouped[cat], key=lambda a: a.get("mtime", 0), reverse=True)[:TOP_N],
+            "total":    len(grouped[cat]),
+        }
         for cat in _ARTICLE_CATEGORY_ORDER
         if cat not in _ARTICLE_HIDDEN_CATEGORIES
     ]
-    _ti = next((a for a in all_articles if a.get("category") == "info" and a.get("slug") == "tanaka_introduction"), None)
+    _ti = next((a for a in all_articles if a.get("category") == "introduction" and a.get("slug") == "tanaka_introduction"), None)
     tanaka_intro = {**_ti, "card_image": "/static/img/fishing_master_card.png"} if _ti else None
-    _ri = next((a for a in all_articles if a.get("category") == "report" and a.get("slug") == "reporter_introduction"), None)
+    _ri = next((a for a in all_articles if a.get("category") == "introduction" and a.get("slug") == "reporter_introduction"), None)
     reporter_intro = {**_ri, "card_image": "/static/img/reporter_card.png"} if _ri else None
+    _ai = next((a for a in all_articles if a.get("category") == "info" and a.get("slug") == "staff_introduction"), None)
+    aoi_intro = {**_ai, "card_image": "/static/img/shop_girl_card.png"} if _ai else None
     return templates.TemplateResponse(request, "articles/top.html", {
-        "categories": categories,
-        "tanaka_intro": tanaka_intro,
+        "categories":     categories,
+        "tanaka_intro":   tanaka_intro,
+        "aoi_intro":      aoi_intro,
         "reporter_intro": reporter_intro,
+    })
+
+
+@app.get("/articles/{category}/", response_class=HTMLResponse)
+def page_articles_category(request: Request, category: str):
+    if category not in _ARTICLE_CATEGORY_ORDER:
+        raise HTTPException(status_code=404)
+    all_articles = _load_articles()
+    _PINNED_SLUGS = {"report": "reporter_introduction"}
+    articles = sorted(
+        [a for a in all_articles
+         if a.get("category") == category
+         and a.get("slug") != _PINNED_SLUGS.get(category)],
+        key=lambda a: a.get("mtime", 0), reverse=True,
+    )
+    intro_cat, intro_slug, intro_card = _CATEGORY_INTRO[category]
+    _intro = next((a for a in all_articles
+                   if a.get("category") == intro_cat and a.get("slug") == intro_slug), None)
+    intro = {**_intro, "card_image": intro_card} if _intro else None
+    return templates.TemplateResponse(request, "articles/category.html", {
+        "category_key":   category,
+        "category_label": _ARTICLE_CATEGORY_LABELS[category],
+        "articles":       articles,
+        "intro":          intro,
     })
 
 
@@ -2069,7 +2131,7 @@ def page_article_detail(request: Request, category: str, slug: str):
     else:
         body = _strip_catch_mask_markers(body)
     slots = _load_article_slots(category, slug)
-    body_html = _apply_aoi_card(_render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}"))
+    body_html = _apply_aoi_summary(_apply_aoi_card(_render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")))
     part_metas = []
     for p in parts_paths:
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
@@ -2166,7 +2228,7 @@ def page_tackle_top(request: Request):
     scenes = _load_tackle_scenes()
     articles = _load_articles()
     staff_intro = next(
-        (a for a in articles if a.get("category") == "info" and a.get("slug") == "staff_introduction"),
+        (a for a in articles if a.get("category") == "introduction" and a.get("slug") == "aoi_introduction"),
         None,
     )
     aoi_interview = next(

@@ -38,6 +38,17 @@
         </span>
       </a>
     </li>
+    {% if aoi_intro %}
+    <li>
+      <a href="/articles/{{ aoi_intro.category }}/{{ aoi_intro.slug }}/" class="article-row-card">
+        <img src="{{ aoi_intro.card_image }}" alt="{{ aoi_intro.title or aoi_intro.slug }}" loading="lazy">
+        <span class="article-row-info">
+          <span class="article-row-title">{{ aoi_intro.title or aoi_intro.slug }}</span>
+          {% if aoi_intro.updated_at %}<span class="article-row-date">更新 {{ aoi_intro.updated_at }}</span>{% endif %}
+        </span>
+      </a>
+    </li>
+    {% endif %}
     {% if reporter_intro %}
     <li>
       <a href="/articles/{{ reporter_intro.category }}/{{ reporter_intro.slug }}/" class="article-row-card">
@@ -68,6 +79,11 @@
     </li>
     {% endfor %}
   </ul>
+  {% if cat.total > 8 %}
+  <div class="articles-more-link">
+    <a href="/articles/{{ cat.key }}/">もっと見る（全{{ cat.total }}件）&rsaquo;</a>
+  </div>
+  {% endif %}
   {% else %}
   <p class="articles-empty">記事はまだありません。</p>
   {% endif %}
