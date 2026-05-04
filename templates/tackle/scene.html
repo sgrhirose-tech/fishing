@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}{{ scene.name }} | シーンで選ぶタックルガイド | Tsuricast{% endblock %}
+{% block description %}{{ scene.summary }}{% endblock %}
+{% block og_url %}https://tsuricast.jp/tackle/scene/{{ scene.slug }}/{% endblock %}
+{% block canonical %}https://tsuricast.jp/tackle/scene/{{ scene.slug }}/{% endblock %}
+{% block og_image %}<meta property="og:image" content="https://tsuricast.jp/static/img/shop_girl_card.png">{% endblock %}
+{% block tw_image %}https://tsuricast.jp/static/img/shop_girl_card.png{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <a href="/tackle/">タックルガイド</a> &rsaquo;
+  <span>{{ scene.name }}</span>
+</nav>
+<p class="ai-disclosure">このページはAIを活用して作成しています。内容は確認・編集のうえ掲載しています。</p>
+
+<section class="page-header">
+  <h1>{{ scene.icon }} {{ scene.name }}</h1>
+  <p>{{ scene.summary }}</p>
+</section>
+
+<article class="tackle-item-article">
+  <div class="tackle-item-body">
+    {{ body_html | safe }}
+  </div>
+</article>
+
+{% if scenes | length > 1 %}
+<section class="tackle-nav-other">
+  <p>他のシーンで選ぶ</p>
+  <div class="filter-chips">
+    {% for other in scenes %}
+    {% if other.slug != scene.slug %}
+    <a href="/tackle/scene/{{ other.slug }}/" class="filter-chip">{{ other.icon }} {{ other.name }}</a>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<div class="tackle-nav-other">
+  <p>カテゴリから選ぶ</p>
+  <div class="filter-chips">
+    <a href="/tackle/rod/" class="filter-chip">🎣 ロッド</a>
+    <a href="/tackle/reel/" class="filter-chip">⚙️ リール</a>
+    <a href="/tackle/line/" class="filter-chip">🧵 ライン</a>
+    <a href="/tackle/terminal/" class="filter-chip">🪝 仕掛け</a>
+    <a href="/tackle/accessories/" class="filter-chip">🧰 小物</a>
+  </div>
+</div>
+{% endblock %}
