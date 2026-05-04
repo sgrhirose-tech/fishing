@@ -2185,7 +2185,7 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
     else:
         body = _strip_catch_mask_markers(body)
     slots = _load_article_slots(category, slug)
-    body_html = _render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")
+    body_html = _apply_aoi_summary(_apply_aoi_card(_render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")))
     all_parts = sorted(p.stem for p in slug_dir.glob("*.md") if p.name != "index.md")
     idx = all_parts.index(part_slug) if part_slug in all_parts else -1
     prev_part = all_parts[idx - 1] if idx > 0 else None
