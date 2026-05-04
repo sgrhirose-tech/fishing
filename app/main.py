@@ -1804,13 +1804,6 @@ def _article_card_image(category: str, slug: str) -> str:
     if static.exists():
         return f"/static/img/articles/{category}/{slug}.jpg"
     # 3. フォールバック
-    _INTRODUCTION_CARD: dict[str, str] = {
-        "reporter_introduction": "reporter_card.png",
-        "aoi_introduction":      "shop_girl_card.png",
-        "tanaka_introduction":   "fishing_master_card.png",
-    }
-    if category == "introduction":
-        return f"/static/img/{_INTRODUCTION_CARD.get(slug, 'fishing_master_card.png')}"
     return f"/static/img/{_CATEGORY_CARD.get(category, 'fishing_master_card.png')}"
 
 
