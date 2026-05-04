@@ -518,6 +518,54 @@ def send_aoi_report_email(target_date: str, records: list[dict]) -> None:
     print(f"[aoi] 日次レポートメール送信完了: {mail_to} ({total}件)")
 
 
+def send_warmup_report_email(run_time_jst: str, ok: int, skip: int, err: int, detail_lines: list[str]) -> None:
+    """ウォームアップ結果をテキストファイル添付でメール送信する。"""
+    mail_from = os.environ.get("MAIL_FROM", "")
+    mail_to   = os.environ.get("MAIL_TO", "")
+    password  = os.environ.get("MAIL_PASSWORD", "")
+    if not (mail_from and mail_to and password):
+        print("[aoi-warmup] MAIL 環境変数未設定のためレポートをスキップ")
+        return
+
+    subject = f"[葵ウォームアップ] {run_time_jst} (成功{ok}/スキップ{skip}/エラー{err})"
+    body_text = (
+        f"ウォームアップ完了: {run_time_jst}\n\n"
+        f"成功: {ok}件\nスキップ: {skip}件\nエラー: {err}件\n\n"
+        "詳細は添付ファイルをご覧ください。"
+    )
+
+    header_lines = [
+        f"=== 葵ちゃんウォームアップレポート {run_time_jst} ===",
+        f"成功: {ok}件 / スキップ: {skip}件 / エラー: {err}件",
+        "",
+        f"{'スポット':<40} {'ラベル':<6} {'モード':<10} {'文字数':>6}  状態",
+        "-" * 80,
+    ]
+    report_text = "\n".join(header_lines + detail_lines)
+
+    # filename: aoi_warmup_20260505_0005.txt
+    ts_compact = run_time_jst[:16].replace("-", "").replace(" ", "_").replace(":", "")
+    filename = f"aoi_warmup_{ts_compact}.txt"
+
+    msg = MIMEMultipart()
+    msg["Subject"] = subject
+    msg["From"]    = mail_from
+    msg["To"]      = mail_to
+    msg.attach(MIMEText(body_text, "plain", "utf-8"))
+
+    attachment = MIMEText(report_text, "plain", "utf-8")
+    attachment.add_header("Content-Disposition", "attachment", filename=filename)
+    msg.attach(attachment)
+
+    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+        smtp.ehlo()
+        smtp.starttls()
+        smtp.login(mail_from, password)
+        smtp.sendmail(mail_from, mail_to, msg.as_string())
+
+    print(f"[aoi-warmup] レポートメール送信完了: {mail_to}")
+
+
 # ── モード判定 ────────────────────────────────────────────────────────────────
 
 _MODE_RE = re.compile(r"<mode>(good|unsure|ng|danger)</mode>[ \t]*\n?", re.IGNORECASE)
