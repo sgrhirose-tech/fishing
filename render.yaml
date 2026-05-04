@@ -112,6 +112,28 @@ services:
         value: 3.11.0
 
   - type: cron
+    name: tsuricast-aoi-comments
+    runtime: python
+    repo: https://github.com/sgrhirose-tech/fishing
+    branch: master
+    schedule: "0 7,19 * * *"   # 16:00 JST (07:00 UTC) + 04:00 JST (19:00 UTC)
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+    startCommand: python tools/generate_aoi_comments.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: WEATHERAPI_KEY
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+      - key: MAIL_TO
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+
+  - type: cron
     name: tsuricast-aoi-test-prompt
     runtime: python
     repo: https://github.com/sgrhirose-tech/fishing

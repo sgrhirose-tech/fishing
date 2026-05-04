@@ -768,6 +768,14 @@ class AoiCache:
 
 _cache = AoiCache()
 
+
+def get_cached_comment(slug: str, label_jp: str, date_str: str) -> dict | None:
+    entry = _cache.get(f"{slug}:{label_jp}:{date_str}")
+    if entry:
+        return {"comment": entry["comment"], "mode": entry["mode"]}
+    return None
+
+
 # ── 同時実行制御（同一スポット+日付への並列リクエストを1回に絞る） ────────────
 
 _LOCKS: dict[str, threading.Lock] = {}
