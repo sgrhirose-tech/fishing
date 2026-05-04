@@ -1174,6 +1174,9 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .article-row-title { font-size: .95rem; font-weight: bold; line-height: 1.4; }
 .article-row-date { font-size: .75rem; color: #888; }
 .articles-empty { color: #888; font-size: .9rem; }
+.articles-more-link { text-align: right; margin-top: .75rem; padding-bottom: .25rem; }
+.articles-more-link a { font-size: .875rem; color: #0066cc; text-decoration: none; }
+.articles-more-link a:hover { text-decoration: underline; }
 
 /* 記事本文 */
 .article-body { font-size: 1rem; line-height: 1.8; }

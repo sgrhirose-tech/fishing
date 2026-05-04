@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category_label }} | 釣りコラム | Tsuricast{% endblock %}
+{% block description %}{{ category_label }}の記事一覧です。{% endblock %}
+{% block og_url %}https://tsuricast.jp/articles/{{ category_key }}/{% endblock %}
+{% block canonical %}https://tsuricast.jp/articles/{{ category_key }}/{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/">ホーム</a> &rsaquo;
+  <a href="/articles/">釣りコラム</a> &rsaquo;
+  <span>{{ category_label }}</span>
+</nav>
+
+<section class="page-header">
+  <h1>{{ category_label }}</h1>
+</section>
+
+{% if intro %}
+<section class="articles-columnist-intro">
+  <h2 class="articles-category-heading">執筆者紹介</h2>
+  <ul class="article-list">
+    <li>
+      <a href="/articles/{{ intro.category }}/{{ intro.slug }}/" class="article-row-card">
+        <img src="{{ intro.card_image }}" alt="{{ intro.title or intro.slug }}" loading="lazy">
+        <span class="article-row-info">
+          <span class="article-row-title">{{ intro.title or intro.slug }}</span>
+          {% if intro.updated_at %}<span class="article-row-date">更新 {{ intro.updated_at }}</span>{% endif %}
+        </span>
+      </a>
+    </li>
+  </ul>
+</section>
+{% endif %}
+
+<section class="articles-category-section">
+  <h2 class="articles-category-heading">記事一覧</h2>
+  {% if articles %}
+  <ul class="article-list">
+    {% for a in articles %}
+    <li>
+      <a href="/articles/{{ a.category }}/{{ a.slug }}/" class="article-row-card">
+        <img src="{{ a.card_image }}" alt="{{ a.title or a.slug }}" loading="lazy">
+        <span class="article-row-info">
+          <span class="article-row-title">{{ a.title or a.slug }}</span>
+          {% if a.updated_at %}<span class="article-row-date">更新 {{ a.updated_at }}</span>{% endif %}
+        </span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="articles-empty">記事はまだありません。</p>
+  {% endif %}
+</section>
+
+{% endblock %}

@@ -2031,12 +2031,18 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
 
 _ARTICLE_CATEGORY_LABELS: dict[str, str] = {
     "column":       "店長コラム",
-    "info":         "店員インフォメーション",
+    "info":         "葵ちゃんの相談室",
     "report":       "店員現地レポート",
     "introduction": "スタッフ紹介",
 }
 _ARTICLE_CATEGORY_ORDER = ["column", "info", "report", "introduction"]
-_ARTICLE_HIDDEN_CATEGORIES: set[str] = {"info", "introduction"}  # 一覧・RSS から除外
+_ARTICLE_HIDDEN_CATEGORIES: set[str] = {"introduction"}  # introduction は非表示、info は公開
+
+_CATEGORY_INTRO: dict[str, tuple[str, str, str]] = {
+    "column": ("introduction", "tanaka_introduction",  "/static/img/fishing_master_card.png"),
+    "info":   ("info",         "staff_introduction",   "/static/img/shop_girl_card.png"),
+    "report": ("introduction", "reporter_introduction", "/static/img/reporter_card.png"),
+}
 
 
 @app.get("/articles/", response_class=HTMLResponse)
@@ -2047,8 +2053,14 @@ def page_articles_top(request: Request):
         cat = a.get("category", "")
         if cat in grouped:
             grouped[cat].append(a)
+    TOP_N = 8
     categories = [
-        {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": sorted(grouped[cat], key=lambda a: a.get("mtime", 0), reverse=True)}
+        {
+            "key":      cat,
+            "label":    _ARTICLE_CATEGORY_LABELS[cat],
+            "articles": sorted(grouped[cat], key=lambda a: a.get("mtime", 0), reverse=True)[:TOP_N],
+            "total":    len(grouped[cat]),
+        }
         for cat in _ARTICLE_CATEGORY_ORDER
         if cat not in _ARTICLE_HIDDEN_CATEGORIES
     ]
@@ -2056,10 +2068,37 @@ def page_articles_top(request: Request):
     tanaka_intro = {**_ti, "card_image": "/static/img/fishing_master_card.png"} if _ti else None
     _ri = next((a for a in all_articles if a.get("category") == "introduction" and a.get("slug") == "reporter_introduction"), None)
     reporter_intro = {**_ri, "card_image": "/static/img/reporter_card.png"} if _ri else None
+    _ai = next((a for a in all_articles if a.get("category") == "info" and a.get("slug") == "staff_introduction"), None)
+    aoi_intro = {**_ai, "card_image": "/static/img/shop_girl_card.png"} if _ai else None
     return templates.TemplateResponse(request, "articles/top.html", {
-        "categories": categories,
-        "tanaka_intro": tanaka_intro,
+        "categories":     categories,
+        "tanaka_intro":   tanaka_intro,
+        "aoi_intro":      aoi_intro,
         "reporter_intro": reporter_intro,
+    })
+
+
+@app.get("/articles/{category}/", response_class=HTMLResponse)
+def page_articles_category(request: Request, category: str):
+    if category not in _ARTICLE_CATEGORY_ORDER:
+        raise HTTPException(status_code=404)
+    all_articles = _load_articles()
+    _PINNED_SLUGS = {"report": "reporter_introduction"}
+    articles = sorted(
+        [a for a in all_articles
+         if a.get("category") == category
+         and a.get("slug") != _PINNED_SLUGS.get(category)],
+        key=lambda a: a.get("mtime", 0), reverse=True,
+    )
+    intro_cat, intro_slug, intro_card = _CATEGORY_INTRO[category]
+    _intro = next((a for a in all_articles
+                   if a.get("category") == intro_cat and a.get("slug") == intro_slug), None)
+    intro = {**_intro, "card_image": intro_card} if _intro else None
+    return templates.TemplateResponse(request, "articles/category.html", {
+        "category_key":   category,
+        "category_label": _ARTICLE_CATEGORY_LABELS[category],
+        "articles":       articles,
+        "intro":          intro,
     })
 
 
