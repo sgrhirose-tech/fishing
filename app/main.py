@@ -35,7 +35,7 @@ from .weather import (fetch_weather, fetch_weather_range,
                        fetch_sst_noaa, get_weather_fetched_at)
 from .scoring import score_spot, direction_label, score_7days
 from .osm import fetch_nearby_facilities, load_facilities_json, get_cached_facilities
-from .aoi import get_cached_comment, get_or_generate_comment, get_web_log_records, clear_web_log_records, send_aoi_report_email
+from .aoi import get_cached_comment, get_or_generate_comment, clear_web_log_records, send_warmup_report_email
 
 JST = timezone(timedelta(hours=9))
 
@@ -351,26 +351,16 @@ def _rss_refresh_loop() -> None:
 
 
 def _aoi_report_loop() -> None:
-    """毎朝6時(JST)に前日分の葵ちゃんコメント生成ログをメール送信するループ。"""
+    """毎朝6時(JST)に古いウェブログレコードを削除するループ。"""
     import threading as _th
-    print("[aoi] 日次レポートループ起動")
+    print("[aoi] ログクリーンアップループ起動")
     while True:
         now = datetime.now(JST)
         next_6am = now.replace(hour=6, minute=0, second=0, microsecond=0)
         if now >= next_6am:
             next_6am += timedelta(days=1)
         wait_sec = (next_6am - now).total_seconds()
-        print(f"[aoi] 次回送信予定: {next_6am.strftime('%Y-%m-%d %H:%M JST')} ({wait_sec/3600:.1f}h後)")
         _th.Event().wait(wait_sec)
-
-        yesterday = (datetime.now(JST) - timedelta(days=1)).strftime("%Y-%m-%d")
-        print(f"[aoi] 日次レポート処理開始: {yesterday}")
-        try:
-            records = get_web_log_records(yesterday)
-            print(f"[aoi] レコード取得: {len(records)}件")
-            send_aoi_report_email(yesterday, records)
-        except Exception as e:
-            print(f"[aoi] 日次レポートメール送信エラー: {e}")
 
         try:
             today = datetime.now(JST).strftime("%Y-%m-%d")
@@ -382,54 +372,71 @@ def _aoi_report_loop() -> None:
 def _aoi_warmup_all_spots() -> None:
     """全非禁止スポットの葵ちゃんコメント（今日・明日）を事前生成してキャッシュを温める。"""
     import concurrent.futures as _cf
+    import threading as _th
     today_str    = _today()
     tomorrow_str = _tomorrow()
     spots = [s for s in load_spots() if not s.get("banned")]
     total = len(spots)
+    run_time_jst = datetime.now(JST).strftime("%Y-%m-%d %H:%M JST")
     print(f"[aoi-warmup] 開始: {total}スポット × 今日({today_str})・明日({tomorrow_str})")
     ok = err = skip = 0
+    detail_lines: list[str] = []
+    _detail_lock = _th.Lock()
 
     def _warm(spot: dict) -> None:
         nonlocal ok, err, skip
         slug = spot.get("slug", "")
+        name = spot.get("name", slug)
         if not slug:
             return
         for label, date_str in [("今日", today_str), ("明日", tomorrow_str)]:
             try:
                 result = get_or_generate_comment(slug, spot, label, date_str,
                                                  bypass_rate_limit=True)
-                if result:
-                    ok += 1
-                else:
-                    skip += 1
+                with _detail_lock:
+                    if result:
+                        mode     = result.get("mode", "?")
+                        char_len = len(result.get("comment", ""))
+                        detail_lines.append(f"{name:<40} {label:<6} {mode:<10} {char_len:>6}  OK")
+                        ok += 1
+                    else:
+                        detail_lines.append(f"{name:<40} {label:<6} {'':10} {'':>6}  SKIP")
+                        skip += 1
             except Exception as e:
                 print(f"[aoi-warmup] ERROR {slug} {label}: {e}")
-                err += 1
+                with _detail_lock:
+                    detail_lines.append(f"{name:<40} {label:<6} {'':10} {'':>6}  ERR: {e}")
+                    err += 1
 
     with _cf.ThreadPoolExecutor(max_workers=3) as ex:
         list(ex.map(_warm, spots))
 
     print(f"[aoi-warmup] 完了: 成功{ok} / スキップ{skip} / エラー{err}")
+    try:
+        send_warmup_report_email(run_time_jst, ok, skip, err, detail_lines)
+    except Exception as e:
+        print(f"[aoi-warmup] メール送信エラー: {e}")
 
 
 def _aoi_warmup_loop() -> None:
     """4:00/16:00 JST に全スポットキャッシュを温めるループ。"""
     import threading as _th
-    _WARMUP_HOURS = [4, 16]
+    _WARMUP_TIMES = [(0, 5), (12, 0)]   # (hour, minute) JST: 00:05 / 12:00
     print("[aoi-warmup] ループ起動 — 起動直後に即時実行")
     first = True
     while True:
         if not first:
             now = datetime.now(JST)
             next_run = None
-            for h in _WARMUP_HOURS:
-                candidate = now.replace(hour=h, minute=0, second=0, microsecond=0)
+            for h, m in _WARMUP_TIMES:
+                candidate = now.replace(hour=h, minute=m, second=0, microsecond=0)
                 if candidate > now:
                     next_run = candidate
                     break
             if next_run is None:
+                h0, m0 = _WARMUP_TIMES[0]
                 next_run = (now + timedelta(days=1)).replace(
-                    hour=_WARMUP_HOURS[0], minute=0, second=0, microsecond=0)
+                    hour=h0, minute=m0, second=0, microsecond=0)
             wait_sec = (next_run - now).total_seconds()
             print(f"[aoi-warmup] 次回: {next_run.strftime('%Y-%m-%d %H:%M JST')} ({wait_sec/3600:.1f}h後)")
             _th.Event().wait(wait_sec)

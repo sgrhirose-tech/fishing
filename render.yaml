@@ -116,7 +116,7 @@ services:
     runtime: python
     repo: https://github.com/sgrhirose-tech/fishing
     branch: master
-    schedule: "0 7,19 * * *"   # 16:00 JST (07:00 UTC) + 04:00 JST (19:00 UTC)
+    schedule: "0 3 * * *"      # 12:00 JST (03:00 UTC) — モニタリング用（SSR暖機はWebサービス内で00:05/12:00 JSTに実行）
     buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: python tools/generate_aoi_comments.py
     envVars:
