@@ -19,7 +19,7 @@ try:
 except ImportError:
     pass
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import BackgroundTasks, FastAPI, HTTPException, Query
 from fastapi.exception_handlers import http_exception_handler
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
@@ -35,7 +35,7 @@ from .weather import (fetch_weather, fetch_weather_range,
                        fetch_sst_noaa, get_weather_fetched_at)
 from .scoring import score_spot, direction_label, score_7days
 from .osm import fetch_nearby_facilities, load_facilities_json, get_cached_facilities
-from .aoi import get_or_generate_comment, get_web_log_records, clear_web_log_records, send_aoi_report_email
+from .aoi import get_cached_comment, get_or_generate_comment, get_web_log_records, clear_web_log_records, send_aoi_report_email
 
 JST = timezone(timedelta(hours=9))
 
@@ -2620,6 +2620,7 @@ def _get_nearby_spots(spot: dict, limit: int = 6) -> list:
 @app.get("/{pref_slug}/{area_slug}/{city_slug}/{slug}", response_class=HTMLResponse)
 def page_spot_detail(
     request: Request,
+    background_tasks: BackgroundTasks,
     pref_slug: str,
     area_slug: str,
     city_slug: str,
@@ -2722,6 +2723,15 @@ def page_spot_detail(
                 lead_text_date = datetime.fromisoformat(_gen_at).strftime("%Y年%m月%d日")
         except Exception:
             pass
+    # 葵ちゃんコメント SSR — キャッシュから読み出し、なければバックグラウンドで生成
+    aoi_today    = get_cached_comment(slug, "今日",  today_str)
+    aoi_tomorrow = get_cached_comment(slug, "明日", tomorrow_str)
+    if not spot.get("banned"):
+        if not aoi_today:
+            background_tasks.add_task(get_or_generate_comment, slug, spot, "今日",  today_str)
+        if not aoi_tomorrow:
+            background_tasks.add_task(get_or_generate_comment, slug, spot, "明日", tomorrow_str)
+
     return templates.TemplateResponse(request, "spot.html", {
         "spot":               spot,
         "today_jp":           _format_date_jp(today_str),
@@ -2755,4 +2765,6 @@ def page_spot_detail(
         "spot_updated_at":    spot_updated_at,
         "lead_text_date":     lead_text_date,
         "cameras":            get_spot_cameras(slug),
+        "aoi_today":          aoi_today,
+        "aoi_tomorrow":       aoi_tomorrow,
     })

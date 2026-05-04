@@ -35,6 +35,7 @@ from app.aoi import (
     load_prompt, _fmt, _fmt_precip_mmh, _scrub_placeholders,
     get_spot_targets, pick_period,
     send_mail,
+    parse_mode_from_response, _cache,
 )
 import app.aoi as _aoi_mod
 
@@ -164,7 +165,10 @@ def main() -> None:
                 err += 1
                 continue
 
+            mode, comment = parse_mode_from_response(comment)
             comment = _scrub_placeholders(comment, label, spot_name)
+
+            _cache.set(f"{slug}:{label}:{date_str}", {"comment": comment, "mode": mode})
 
             record = {
                 "ts":          now.isoformat(),
@@ -177,6 +181,7 @@ def main() -> None:
                 "wave":        p.get("wave_height_raw"),
                 "wind":        p.get("wind_speed_raw"),
                 "weather":     p.get("sky", ""),
+                "mode":        mode,
                 "user_prompt": user_msg,
                 "comment":     comment,
                 "char_len":    len(comment),
