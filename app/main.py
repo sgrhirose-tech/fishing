@@ -2009,31 +2009,31 @@ def _render_md_with_affiliates(content: str, slots: list, article_path: str = ""
 
 
 _ARTICLE_CATEGORY_LABELS: dict[str, str] = {
-    "column": "店長コラム",
-    "info":   "店員インフォメーション",
-    "report": "店員現地レポート",
+    "column":       "店長コラム",
+    "info":         "店員インフォメーション",
+    "report":       "店員現地レポート",
+    "introduction": "スタッフ紹介",
 }
-_ARTICLE_CATEGORY_ORDER = ["column", "info", "report"]
-_ARTICLE_HIDDEN_CATEGORIES: set[str] = {"info"}  # 一覧・RSS から除外
+_ARTICLE_CATEGORY_ORDER = ["column", "info", "report", "introduction"]
+_ARTICLE_HIDDEN_CATEGORIES: set[str] = {"info", "introduction"}  # 一覧・RSS から除外
 
 
 @app.get("/articles/", response_class=HTMLResponse)
 def page_articles_top(request: Request):
     all_articles = _load_articles()
-    _PINNED_SLUGS = {"report": "reporter_introduction"}
     grouped: dict[str, list] = {cat: [] for cat in _ARTICLE_CATEGORY_ORDER}
     for a in all_articles:
         cat = a.get("category", "")
-        if cat in grouped and a.get("slug") != _PINNED_SLUGS.get(cat):
+        if cat in grouped:
             grouped[cat].append(a)
     categories = [
         {"key": cat, "label": _ARTICLE_CATEGORY_LABELS[cat], "articles": sorted(grouped[cat], key=lambda a: a.get("mtime", 0), reverse=True)}
         for cat in _ARTICLE_CATEGORY_ORDER
         if cat not in _ARTICLE_HIDDEN_CATEGORIES
     ]
-    _ti = next((a for a in all_articles if a.get("category") == "info" and a.get("slug") == "tanaka_introduction"), None)
+    _ti = next((a for a in all_articles if a.get("category") == "introduction" and a.get("slug") == "tanaka_introduction"), None)
     tanaka_intro = {**_ti, "card_image": "/static/img/fishing_master_card.png"} if _ti else None
-    _ri = next((a for a in all_articles if a.get("category") == "report" and a.get("slug") == "reporter_introduction"), None)
+    _ri = next((a for a in all_articles if a.get("category") == "introduction" and a.get("slug") == "reporter_introduction"), None)
     reporter_intro = {**_ri, "card_image": "/static/img/reporter_card.png"} if _ri else None
     return templates.TemplateResponse(request, "articles/top.html", {
         "categories": categories,
@@ -2168,7 +2168,7 @@ def page_tackle_top(request: Request):
     scenes = _load_tackle_scenes()
     articles = _load_articles()
     staff_intro = next(
-        (a for a in articles if a.get("category") == "info" and a.get("slug") == "staff_introduction"),
+        (a for a in articles if a.get("category") == "introduction" and a.get("slug") == "aoi_introduction"),
         None,
     )
     aoi_interview = next(
