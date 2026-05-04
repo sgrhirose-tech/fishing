@@ -415,21 +415,22 @@ def _aoi_warmup_all_spots() -> None:
 def _aoi_warmup_loop() -> None:
     """4:00/16:00 JST に全スポットキャッシュを温めるループ。"""
     import threading as _th
-    _WARMUP_HOURS = [4, 16]
+    _WARMUP_TIMES = [(0, 5), (12, 0)]   # (hour, minute) JST: 00:05 / 12:00
     print("[aoi-warmup] ループ起動 — 起動直後に即時実行")
     first = True
     while True:
         if not first:
             now = datetime.now(JST)
             next_run = None
-            for h in _WARMUP_HOURS:
-                candidate = now.replace(hour=h, minute=0, second=0, microsecond=0)
+            for h, m in _WARMUP_TIMES:
+                candidate = now.replace(hour=h, minute=m, second=0, microsecond=0)
                 if candidate > now:
                     next_run = candidate
                     break
             if next_run is None:
+                h0, m0 = _WARMUP_TIMES[0]
                 next_run = (now + timedelta(days=1)).replace(
-                    hour=_WARMUP_HOURS[0], minute=0, second=0, microsecond=0)
+                    hour=h0, minute=m0, second=0, microsecond=0)
             wait_sec = (next_run - now).total_seconds()
             print(f"[aoi-warmup] 次回: {next_run.strftime('%Y-%m-%d %H:%M JST')} ({wait_sec/3600:.1f}h後)")
             _th.Event().wait(wait_sec)
