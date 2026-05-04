@@ -24,3 +24,4 @@ data/cache/xpost_*.json
 .DS_Store
 .DS_store
 
+static/article-assets

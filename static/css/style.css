@@ -676,12 +676,27 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 
 /* ---- スポット: 関連コラム ---- */
 .spot-related-articles { margin: 1.5rem 0; }
-.spot-related-articles h2 { font-size: 1.1rem; margin-bottom: .5rem; }
-.spot-related-articles ul { list-style: none; padding: 0; margin: 0; }
-.spot-related-articles li { padding: .35rem 0; border-bottom: 1px solid #eee; }
-.spot-related-articles li:last-child { border-bottom: none; }
-.spot-related-articles a { color: #1a6496; text-decoration: none; }
-.spot-related-articles a:hover { text-decoration: underline; }
+.spot-related-articles h2 { font-size: 1.1rem; margin-bottom: .75rem; }
+
+/* 関連コラム カード（旧テキストリストを置き換え） */
+.article-col-card {
+  display: flex; align-items: flex-start; gap: .9rem;
+  padding: .55rem .75rem; border: 1px solid #e0e0e0; border-radius: 8px;
+  text-decoration: none; color: inherit;
+  transition: box-shadow .15s, background .15s;
+}
+.article-col-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); background: #f8fbff; }
+.article-col-card img {
+  width: 80px; height: 56px; object-fit: cover;
+  border-radius: 5px; flex-shrink: 0; background: #e0e8e0;
+}
+.article-col-card-body { flex: 1; min-width: 0; }
+.article-col-card-title {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; font-size: .88rem; font-weight: 500;
+  color: #1a3a5c; line-height: 1.45;
+}
+.article-col-card-author { display: block; font-size: .73rem; color: #999; margin-top: .25rem; }
 
 /* ---- スポット: 関連ブログ最新記事 ---- */
 .blog-posts-section { margin: 1.5rem 0; }
@@ -1374,6 +1389,30 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .spot-report-row-meta { font-size: .8rem; color: #888; }
 
 /* ---- 葵ちゃんコメント ---- */
+/* 葵ちゃん回遊CTA（コメント直下） */
+.aoi-cta-block {
+  display: flex; flex-wrap: wrap; gap: .55rem;
+  margin: .6rem 0 1.25rem;
+}
+.aoi-cta-block a {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .42rem 1rem;
+  border: 1.5px solid #c8dff5; border-radius: 20px;
+  background: #f0f7ff; color: #1a6b9e;
+  font-size: .84rem; font-weight: 500;
+  text-decoration: none;
+  transition: background .15s, box-shadow .15s;
+}
+.aoi-cta-block a:hover { background: #ddeeff; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+
+/* 狙える魚セクション（写真・地図の下） */
+.spot-fish-target {
+  margin: 1rem 0;
+  padding: .85rem 1rem;
+  background: #f6fdf2; border: 1px solid #bfdfaa; border-radius: 8px;
+}
+.spot-fish-target h2 { font-size: .95rem; margin: 0 0 .55rem; color: #2a5c1a; }
+
 .aoi-section { margin: 1.5rem 0; }
 .aoi-card {
   display: flex;
