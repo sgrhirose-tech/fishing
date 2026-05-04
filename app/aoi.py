@@ -797,6 +797,7 @@ def get_or_generate_comment(
     date_label: str,
     date_str: str,
     client_ip: str | None = None,
+    bypass_rate_limit: bool = False,
 ) -> dict | None:
     """キャッシュからコメントを返す。なければ生成してキャッシュに保存する。
 
@@ -830,7 +831,7 @@ def get_or_generate_comment(
             return {"comment": cached["comment"], "mode": cached["mode"]}
 
         # 4. レート制限チェック（API呼び出し直前にのみ消費）
-        if not _rate_limiter.check_and_consume(client_ip):
+        if not bypass_rate_limit and not _rate_limiter.check_and_consume(client_ip):
             return None
 
         # 5. 気象データ取得
