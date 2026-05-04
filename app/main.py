@@ -1970,6 +1970,27 @@ def _apply_aoi_card(html: str) -> str:
     return _AOI_SECTION_RE.sub(_replace, html)
 
 
+_AOI_SUMMARY_RE = _re.compile(
+    r'<h2>葵ちゃんのまとめ</h2>(.*?)(?=<hr\b|$)',
+    _re.DOTALL,
+)
+
+def _apply_aoi_summary(html: str) -> str:
+    """info 記事末尾の「葵ちゃんのまとめ」h2 セクションを .aoi-card スタイルに変換する。"""
+    def _replace(m: _re.Match) -> str:
+        content = m.group(1).strip()
+        return (
+            '<div class="aoi-section">'
+            '<div class="aoi-card">'
+            '<img class="aoi-illust" src="/static/img/aoi_comment_info.png" alt="葵ちゃん">'
+            '<div class="aoi-body">'
+            '<p class="aoi-label">葵ちゃんのまとめ</p>'
+            f'<div class="aoi-comment aoi-summary-body">{content}</div>'
+            '</div></div></div>'
+        )
+    return _AOI_SUMMARY_RE.sub(_replace, html)
+
+
 def _render_md_with_affiliates(content: str, slots: list, article_path: str = "") -> str:
     """MarkdownをアフィリエイトスロットHTMLに展開してHTMLに変換する。"""
     if _MARKDOWN is None:
@@ -2071,7 +2092,7 @@ def page_article_detail(request: Request, category: str, slug: str):
     else:
         body = _strip_catch_mask_markers(body)
     slots = _load_article_slots(category, slug)
-    body_html = _apply_aoi_card(_render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}"))
+    body_html = _apply_aoi_summary(_apply_aoi_card(_render_md_with_affiliates(body, slots, article_path=f"{category}/{slug}")))
     part_metas = []
     for p in parts_paths:
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)

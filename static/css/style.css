@@ -1391,6 +1391,9 @@ a.fish-chip:hover { background: #1a6b9e; color: white; border-color: #1a6b9e; }
 .aoi-body { flex: 1; min-width: 0; }
 .aoi-label { font-size: 0.72rem; color: #888; margin-bottom: 0.3rem; }
 .aoi-comment { margin: 0 0 0.4rem; font-size: 0.95rem; line-height: 1.65; color: #222; }
+.aoi-summary-body { margin: 0; }
+.aoi-summary-body p { margin: 0 0 0.6rem; font-size: 0.95rem; line-height: 1.65; color: #222; }
+.aoi-summary-body p:last-child { margin-bottom: 0; }
 .aoi-disclaimer { font-size: 0.68rem; color: #bbb; }
 
 /* ---- 404 ページ ---- */
