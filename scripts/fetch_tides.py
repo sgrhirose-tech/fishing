@@ -144,6 +144,23 @@ def normalize(raw: dict, harbor_code: str, harbor_name: str, month_str: str) -> 
         except (TypeError, ValueError):
             moon_age = None
 
+        hourly = [
+            {"time": item["time"], "cm": item["cm"]}
+            for item in day_raw.get("tide", [])
+        ]
+        ebb_raw = [
+            {"time": item["time"], "cm": item["cm"]}
+            for item in day_raw.get("ebb", [])
+        ]
+        # API が ebb を返さない場合は hourly の局所最小値から導出する
+        if not ebb_raw and len(hourly) >= 3:
+            cms = [h["cm"] for h in hourly]
+            ebb_raw = [
+                {"time": hourly[i]["time"], "cm": round(cms[i], 1)}
+                for i in range(1, len(cms) - 1)
+                if cms[i] < cms[i - 1] and cms[i] < cms[i + 1]
+            ]
+
         days[date_str] = {
             "tide_name": moon.get("title", ""),
             "sunrise": sun.get("rise", ""),
@@ -153,14 +170,8 @@ def normalize(raw: dict, harbor_code: str, harbor_name: str, month_str: str) -> 
                 {"time": item["time"], "cm": item["cm"]}
                 for item in day_raw.get("flood", [])
             ],
-            "ebb": [
-                {"time": item["time"], "cm": item["cm"]}
-                for item in day_raw.get("ebb", [])
-            ],
-            "hourly": [
-                {"time": item["time"], "cm": item["cm"]}
-                for item in day_raw.get("tide", [])
-            ],
+            "ebb": ebb_raw,
+            "hourly": hourly,
         }
 
     return {
