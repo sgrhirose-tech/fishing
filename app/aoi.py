@@ -34,6 +34,13 @@ AOI_PROMPT_PATH = ROOT / "aoi_prompt.md"
 _AOI_CACHE_DIR  = Path(os.environ.get("AOI_CACHE_DIR", str(ROOT / "data" / "cache")))
 _WEB_LOG_PATH   = _AOI_CACHE_DIR / "aoi_web.jsonl"
 
+TONE_HINTS = [
+    "羨望", "情景", "高揚", "行動", "自虐", "季節感",
+    "慎重", "葛藤", "時間帯提案", "体感", "現実的",
+    "諦め", "悔しさ", "切り替え", "安全意識",
+    "あっさり", "未練", "ポジティブ",
+]
+
 # in-memory ログ蓄積（同一プロセス内の高速参照用）
 _web_log_memory: list[dict] = []
 _web_log_memory_lock = threading.Lock()
@@ -124,7 +131,8 @@ def _scrub_placeholders(comment: str, date_label: str, spot_name: str) -> str:
 
 
 def build_user_message(spot: dict, day: dict, user_tmpl: str,
-                       month: int = 0, date_label: str = "明日") -> str:
+                       month: int = 0, date_label: str = "明日",
+                       tone_hint: str = "") -> str:
     """USER テンプレートにスポット・気象データを埋め込んで返す。"""
     periods = day.get("periods", [])
     by_band = {p["period"]: p for p in periods}
@@ -171,6 +179,7 @@ def build_user_message(spot: dict, day: dict, user_tmpl: str,
         "month":                str(month),
         "tide_activity_clause": tide_activity_clause,
         "facing_line":          facing_line,
+        "tone_hint":            tone_hint,
         # backward compat: 朝の代表値
         "wave":                 _fmt(朝_p.get("wave_height_raw")),
         "wind_dir":             朝_p.get("wind_dir_compass", "ー"),
@@ -899,8 +908,11 @@ def get_or_generate_comment(
             return None
 
         # 7. USER部組み立て
-        month = int(date_str[5:7])
-        user_msg = build_user_message(spot, day, user_tmpl, month=month, date_label=date_label)
+        import random as _random
+        month     = int(date_str[5:7])
+        tone_hint = _random.choice(TONE_HINTS)
+        user_msg  = build_user_message(spot, day, user_tmpl, month=month,
+                                       date_label=date_label, tone_hint=tone_hint)
 
         # 8. API呼び出し
         try:
