@@ -415,27 +415,16 @@ def _aoi_warmup_all_spots() -> None:
 
     print(f"[aoi-warmup] 完了: 成功{ok} / スキップ{skip} / エラー{err}")
 
-    # 12:00 スロットは 1時間後（13:00）に送信。0:05 のキャッシュが有効なため
-    # 即送では 0:05 結果の再掲になってしまうため遅延させる。
-    now_hour = datetime.now(JST).hour
-    delay_sec = 3600 if now_hour == 12 else 0
-
-    def _send_email():
-        if delay_sec:
-            print(f"[aoi-warmup] メール送信を {delay_sec//60} 分後に延期")
-            _th.Event().wait(delay_sec)
-        try:
-            send_warmup_report_email(run_time_jst, ok, skip, err, detail_lines)
-        except Exception as e:
-            print(f"[aoi-warmup] メール送信エラー: {e}")
-
-    _th.Thread(target=_send_email, daemon=True).start()
+    try:
+        send_warmup_report_email(run_time_jst, ok, skip, err, detail_lines)
+    except Exception as e:
+        print(f"[aoi-warmup] メール送信エラー: {e}")
 
 
 def _aoi_warmup_loop() -> None:
     """4:00/16:00 JST に全スポットキャッシュを温めるループ。"""
     import threading as _th
-    _WARMUP_TIMES = [(0, 5), (12, 0)]   # (hour, minute) JST: 00:05 / 12:00
+    _WARMUP_TIMES = [(0, 5)]   # (hour, minute) JST: 00:05 のみ
     print("[aoi-warmup] ループ起動 — 起動直後に即時実行")
     first = True
     while True:
