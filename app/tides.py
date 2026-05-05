@@ -16,6 +16,18 @@ _DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
 _TIDES_DIR = _DATA_DIR / "tides"
 
 
+def _derive_ebb(hourly: list[dict]) -> list[dict]:
+    """hourly データから局所最小値を干潮として導出する。端点は除外する。"""
+    if len(hourly) < 3:
+        return []
+    cms = [h["cm"] for h in hourly]
+    result = []
+    for i in range(1, len(cms) - 1):
+        if cms[i] < cms[i - 1] and cms[i] < cms[i + 1]:
+            result.append({"time": hourly[i]["time"], "cm": round(cms[i], 1)})
+    return result
+
+
 def get_tide_data(slug: str, date_str: str) -> dict | None:
     """
     スポット slug と日付文字列（YYYY-MM-DD）から潮汐データを返す。
@@ -60,8 +72,10 @@ def get_tide_data(slug: str, date_str: str) -> dict | None:
     if not day_data:
         return None
 
-    return {
-        "date": date_str,
-        "harbor_name": harbor_name,
-        **day_data,
-    }
+    result = {"date": date_str, "harbor_name": harbor_name, **day_data}
+
+    # tide736.net が ebb を返さないケースがあるため hourly から補完する
+    if not result.get("ebb") and result.get("hourly"):
+        result["ebb"] = _derive_ebb(result["hourly"])
+
+    return result

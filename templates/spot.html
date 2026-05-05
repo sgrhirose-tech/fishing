@@ -137,6 +137,7 @@
 {% endif %}
 {% endif %}
 
+<!-- ② リード文・ここだけの話 -->
 {% if not is_kinshi and (spot_lead or spot_description_human) %}
 <div class="spot-description">
   {% if spot_lead %}<p>{{ spot_lead }}</p>{% endif %}
@@ -147,90 +148,7 @@
 <p class="spot-description">{{ spot_description }}</p>
 {% endif %}
 
-<!-- スポット写真 -->
-{% if photos %}
-<div class="spot-photo">
-  <img src="{{ photos[0] }}" alt="{{ spot.name }}" loading="lazy"
-       onerror="this.parentElement.style.display='none'">
-</div>
-{% endif %}
-
-<!-- スポットマップ -->
-<div id="map-detail" class="map-container map-detail"></div>
-<div class="map-legend">
-  <span class="legend-item"><span class="legend-badge" style="background:#1565C0">P</span>駐車場</span>
-  <span class="legend-item"><span class="legend-badge" style="background:#2E7D32">WC</span>トイレ</span>
-  <span class="legend-item"><span class="legend-badge" style="background:#E65100">釣</span>釣具屋</span>
-  <span class="legend-item"><span class="legend-badge" style="background:#6A1B9A">C</span>コンビニ</span>
-  <span class="legend-item"><span class="legend-dot" style="background:#1a6b9e"></span>釣り場</span>
-</div>
-
-<!-- 周辺施設（SSR: Googlebot 向け可視テキスト） -->
-{% if facility_flags.toilet or facility_flags.parking or facility_flags.convenience %}
-<section class="spot-facilities">
-  <h2>周辺施設</h2>
-  <div class="facility-chips">
-    {% if facility_flags.parking %}<span class="facility-chip chip-parking">駐車場あり</span>{% endif %}
-    {% if facility_flags.toilet %}<span class="facility-chip chip-toilet">トイレあり</span>{% endif %}
-    {% if facility_flags.convenience %}<span class="facility-chip chip-conbini">コンビニあり</span>{% endif %}
-  </div>
-  <p class="facility-note">マーカーの場所は上の地図でご確認ください（500m以内）。</p>
-</section>
-{% endif %}
-
-<!-- 基本情報 -->
-<section class="spot-info">
-  <h2>基本情報</h2>
-  <table class="info-table">
-    {% if spot_type %}
-    <tr>
-      <th>釣り場タイプ</th>
-      <td>{{ spot_type.label }}{% if spot_type.caveat %}<span class="type-caveat">（{{ spot_type.caveat }}）</span>{% endif %}</td>
-    </tr>
-    {% endif %}
-    <tr><th>底質</th><td>{{ df.seabed_summary or 'ー' }}</td></tr>
-    <tr>
-      <th>海底傾斜</th>
-      <td>{{ slope_type or 'ー' }}</td>
-    </tr>
-    <tr><th>アクセス</th><td>{{ spot.info.access }}</td></tr>
-    <tr id="conbini-row" style="display:none;">
-      <th>最寄りコンビニ</th>
-      <td id="conbini-name"></td>
-    </tr>
-    {% if spot.target_fish %}
-    <tr>
-      <th>対象魚種</th>
-      <td>
-        <div class="fish-chips">
-          {% for fish in spot.target_fish %}
-          <a href="/fish/{{ fish }}" class="fish-chip">{{ fish_name_map.get(fish, fish) }}</a>
-          {% endfor %}
-        </div>
-      </td>
-    </tr>
-    {% endif %}
-    {% if spot_updated_at %}
-    <tr><th>情報更新日</th><td>{{ spot_updated_at }}</td></tr>
-    {% endif %}
-  </table>
-</section>
-
-{% if qa_items %}
-<section class="spot-qa">
-  <h2>よくある質問</h2>
-  <dl class="qa-list">
-    {% for item in qa_items %}
-    <div class="qa-item">
-      <dt class="qa-q">{{ item.q }}</dt>
-      <dd class="qa-a">{{ item.a }}</dd>
-    </div>
-    {% endfor %}
-  </dl>
-</section>
-{% endif %}
-
-<!-- 24時間チャート -->
+<!-- ③ 24時間チャート -->
 <section class="chart24-section">
   <div class="chart24-day-tabs">
     <button class="chart24-tab active" data-which="today"></button>
@@ -312,7 +230,7 @@
   </div>
 </section>
 
-<!-- 葵ちゃんコメント (SSR) -->
+<!-- ④ 葵ちゃんコメント (SSR) -->
 {% if aoi_today or aoi_tomorrow %}
 <section class="aoi-section" id="aoi-section">
   {% if aoi_today %}
@@ -362,10 +280,85 @@
 </section>
 {% endif %}
 
+<!-- 回遊CTA -->
+<div class="aoi-cta-block">
+  <a href="/tackle/">🎣 葵ちゃんのタックルガイド</a>
+  <a href="/articles/info/">💬 葵ちゃんの相談室</a>
+</div>
+
 <!-- 安全リンク -->
 <p class="safety-link-inline"><a href="/safety">釣行前に安全事項をご確認ください →</a></p>
 
-<!-- タイドグラフ（一週間） -->
+<!-- ⑤ スポット写真 -->
+{% if photos %}
+<div class="spot-photo">
+  <img src="{{ photos[0] }}" alt="{{ spot.name }}" loading="lazy"
+       onerror="this.parentElement.style.display='none'">
+</div>
+{% endif %}
+
+<!-- ⑤ スポットマップ -->
+<div id="map-detail" class="map-container map-detail"></div>
+<div class="map-legend">
+  <span class="legend-item"><span class="legend-badge" style="background:#1565C0">P</span>駐車場</span>
+  <span class="legend-item"><span class="legend-badge" style="background:#2E7D32">WC</span>トイレ</span>
+  <span class="legend-item"><span class="legend-badge" style="background:#E65100">釣</span>釣具屋</span>
+  <span class="legend-item"><span class="legend-badge" style="background:#6A1B9A">C</span>コンビニ</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#1a6b9e"></span>釣り場</span>
+</div>
+
+<!-- ⑥ このスポットで狙える魚 -->
+{% if spot.target_fish %}
+<section class="spot-fish-target">
+  <h2>このスポットで狙える魚</h2>
+  <div class="fish-chips">
+    {% for fish in spot.target_fish %}
+    <a href="/fish/{{ fish }}" class="fish-chip">{{ fish_name_map.get(fish, fish) }}</a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ⑦ 周辺施設（SSR: Googlebot 向け可視テキスト） -->
+{% if facility_flags.toilet or facility_flags.parking or facility_flags.convenience %}
+<section class="spot-facilities">
+  <h2>周辺施設</h2>
+  <div class="facility-chips">
+    {% if facility_flags.parking %}<span class="facility-chip chip-parking">駐車場あり</span>{% endif %}
+    {% if facility_flags.toilet %}<span class="facility-chip chip-toilet">トイレあり</span>{% endif %}
+    {% if facility_flags.convenience %}<span class="facility-chip chip-conbini">コンビニあり</span>{% endif %}
+  </div>
+  <p class="facility-note">マーカーの場所は上の地図でご確認ください（500m以内）。</p>
+</section>
+{% endif %}
+
+<!-- ⑦ 基本情報 -->
+<section class="spot-info">
+  <h2>基本情報</h2>
+  <table class="info-table">
+    {% if spot_type %}
+    <tr>
+      <th>釣り場タイプ</th>
+      <td>{{ spot_type.label }}{% if spot_type.caveat %}<span class="type-caveat">（{{ spot_type.caveat }}）</span>{% endif %}</td>
+    </tr>
+    {% endif %}
+    <tr><th>底質</th><td>{{ df.seabed_summary or 'ー' }}</td></tr>
+    <tr>
+      <th>海底傾斜</th>
+      <td>{{ slope_type or 'ー' }}</td>
+    </tr>
+    <tr><th>アクセス</th><td>{{ spot.info.access }}</td></tr>
+    <tr id="conbini-row" style="display:none;">
+      <th>最寄りコンビニ</th>
+      <td id="conbini-name"></td>
+    </tr>
+    {% if spot_updated_at %}
+    <tr><th>情報更新日</th><td>{{ spot_updated_at }}</td></tr>
+    {% endif %}
+  </table>
+</section>
+
+<!-- ⑧ タイドグラフ（一週間） -->
 <section class="tide-section" id="tide-section" style="display:none;">
   <h2>一週間の潮汐</h2>
   <div class="tide-nav">
@@ -494,24 +487,20 @@
 </section>
 {% endif %}
 
-{% if nearby_spots %}
-<section class="nearby-spots-section">
-  <h2>近くの{{ spot_type.label if spot_type else "" }}スポット</h2>
-  <ul class="nearby-spots-list">
-    {% for s in nearby_spots %}
-    {% set a = s.area %}
-    <li><a href="/{{ a.pref_slug }}/{{ a.area_slug }}/{{ a.city_slug }}/{{ s.slug }}" class="nearby-spot-link">{{ s.name }}</a><span class="nearby-spot-area">（{{ a.city }}）</span></li>
-    {% endfor %}
-  </ul>
-</section>
-{% endif %}
-
 {% if related_articles %}
 <section class="spot-related-articles">
   <h2>この釣り場に関連するコラム</h2>
-  <ul>
+  <ul class="article-list">
     {% for a in related_articles %}
-    <li><a href="/articles/{{ a.category }}/{{ a.slug }}/">{{ a.title or a.slug }}</a></li>
+    <li>
+      <a href="/articles/{{ a.category }}/{{ a.slug }}/" class="article-col-card">
+        <img src="{{ a.card_image }}" alt="{{ a.title or a.slug }}" loading="lazy">
+        <div class="article-col-card-body">
+          <span class="article-col-card-title">{{ a.title or a.slug }}</span>
+          <span class="article-col-card-author">{{ a.category | replace('column','田中店長 コラム') | replace('info','葵ちゃんの相談室') | replace('report','現地レポート') }}</span>
+        </div>
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </section>
@@ -532,6 +521,33 @@
 </section>
 {% endif %}
 
+<!-- ⑩ 近くの釣りスポット -->
+{% if nearby_spots %}
+<section class="nearby-spots-section">
+  <h2>近くの{{ spot_type.label if spot_type else "" }}スポット</h2>
+  <ul class="nearby-spots-list">
+    {% for s in nearby_spots %}
+    {% set a = s.area %}
+    <li><a href="/{{ a.pref_slug }}/{{ a.area_slug }}/{{ a.city_slug }}/{{ s.slug }}" class="nearby-spot-link">{{ s.name }}</a><span class="nearby-spot-area">（{{ a.city }}）</span></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<!-- ⑪ Q&A（SEO/GEO用） -->
+{% if qa_items %}
+<section class="spot-qa">
+  <h2>よくある質問</h2>
+  <dl class="qa-list">
+    {% for item in qa_items %}
+    <div class="qa-item">
+      <dt class="qa-q">{{ item.q }}</dt>
+      <dd class="qa-a">{{ item.a }}</dd>
+    </div>
+    {% endfor %}
+  </dl>
+</section>
+{% endif %}
 
 <a href="/{{ area.pref_slug }}/{{ area.area_slug }}/{{ area.city_slug }}/" class="back-link">‹ 戻る</a>
 {% endblock %}
