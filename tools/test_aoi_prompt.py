@@ -21,6 +21,7 @@ import argparse
 import io
 import json
 import os
+import random
 import re
 import smtplib
 import sys
@@ -36,7 +37,7 @@ ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 
 from app.aoi import (
-    MODELS,
+    MODELS, TONE_HINTS,
     _fmt, _fmt_precip_mmh, _scrub_placeholders,
     build_user_message, call_claude_with_retry,
     get_spot_targets, load_prompt, pick_period,
@@ -234,10 +235,12 @@ def main() -> None:
                 skip += 1
                 continue
 
+            tone_hint = random.choice(TONE_HINTS)
             user_msg = build_user_message(
                 spot, day, user_tmpl,
                 month=int(date_str[5:7]),
                 date_label=label,
+                tone_hint=tone_hint,
             )
 
             try:
@@ -262,6 +265,7 @@ def main() -> None:
                 "wave":          p.get("wave_height_raw"),
                 "wind":          p.get("wind_speed_raw"),
                 "weather":       p.get("sky", ""),
+                "tone_hint":     tone_hint,
                 "user_prompt":   user_msg,
                 "comment":       comment,
                 "char_len":      len(comment),
