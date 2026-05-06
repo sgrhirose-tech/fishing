@@ -134,6 +134,24 @@ services:
         sync: false
 
   - type: cron
+    name: tsuricast-jma-tides-check
+    runtime: python
+    repo: https://github.com/sgrhirose-tech/fishing
+    branch: master
+    schedule: "0 18 1 12 *"   # 12月2日 AM3:00 JST — 来年分データの有無をチェック
+    buildCommand: "true"
+    startCommand: python scripts/fetch_jma_tides.py --check-next-year
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: MAIL_FROM
+        sync: false
+      - key: MAIL_TO
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+
+  - type: cron
     name: tsuricast-aoi-test-prompt
     runtime: python
     repo: https://github.com/sgrhirose-tech/fishing
