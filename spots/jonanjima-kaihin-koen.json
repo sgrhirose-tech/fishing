@@ -41,5 +41,6 @@
   "harbor_code": "13-3",
   "harbor_name": "羽田",
   "photo_url": "/static/img/spots/jonanjima-kaihin-koen.jpg",
-  "updated_at": "2026-04-18"
+  "updated_at": "2026-04-18",
+  "jma_harbor_code": "KW"
 }

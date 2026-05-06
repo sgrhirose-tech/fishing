@@ -1,0 +1,1827 @@
+{
+  "_meta": {
+    "description": "tide736.net 港コード → 気象庁局コード マッピング",
+    "note": "apply_jma_harbor_map.py で spots/*.json の jma_harbor_code に書き込む",
+    "max_dist_km": 60.0,
+    "generated_by": "scripts/create_jma_harbor_map.py"
+  },
+  "harbors": {
+    "22-14": {
+      "harbor_name": "三保",
+      "harbor_code": "22-14",
+      "lat": 35.0,
+      "lon": 138.516667,
+      "jma_harbor_code": "SM",
+      "jma_station_name": "清水港",
+      "dist_km": 2.7,
+      "slugs": [
+        "kuno-kaigan",
+        "miho-hikojo",
+        "miho-komagoe",
+        "otanigawa-hosui",
+        "shimizu-fujimi"
+      ]
+    },
+    "30-6": {
+      "harbor_name": "三尾",
+      "harbor_code": "30-6",
+      "lat": 33.883333,
+      "lon": 135.083333,
+      "jma_harbor_code": "GB",
+      "jma_station_name": "御坊",
+      "dist_km": 7.0,
+      "slugs": [
+        "gobo-gyoko",
+        "mio-gyoko",
+        "shioya-gyoko"
+      ]
+    },
+    "22-10": {
+      "harbor_name": "三津",
+      "harbor_code": "22-10",
+      "lat": 35.016667,
+      "lon": 138.9,
+      "jma_harbor_code": "UC",
+      "jma_station_name": "内浦",
+      "dist_km": 3.1,
+      "slugs": [
+        "ashibu-ko",
+        "heda-gyoko",
+        "hirasawa-ko",
+        "ida-beach",
+        "juuji-ko",
+        "kano-kako",
+        "kinose-teibou",
+        "mitoura-ko",
+        "numazu-ko",
+        "osezaki",
+        "senbon-katahama",
+        "shishihama-kaigan",
+        "shizuura-gyoko",
+        "tabi-ko"
+      ]
+    },
+    "23-8": {
+      "harbor_name": "三谷",
+      "harbor_code": "23-8",
+      "lat": 34.816667,
+      "lon": 137.25,
+      "jma_harbor_code": "G5",
+      "jma_station_name": "形原",
+      "dist_km": 8.3,
+      "slugs": [
+        "mito-rinkai",
+        "mitsuya-gyoko"
+      ]
+    },
+    "12-5": {
+      "harbor_name": "上総勝浦",
+      "harbor_code": "12-5",
+      "lat": 35.133333,
+      "lon": 140.25,
+      "jma_harbor_code": "ZF",
+      "jma_station_name": "勝浦",
+      "dist_km": 1.6,
+      "slugs": [
+        "hebara-kaigan",
+        "ichinomiya-kaigan",
+        "isumigawa-kako",
+        "iwafune-ko",
+        "iwawada-ko",
+        "izumiura-kaigan",
+        "katsuura-todai-shita",
+        "kawazu-ko",
+        "kominato-ko",
+        "mama-misaki",
+        "moriya",
+        "okitsu-ko",
+        "onjuku-ko",
+        "onjuku",
+        "shinkan-ko",
+        "taito-kaigan",
+        "taito-saki",
+        "toyohama-ko",
+        "uchiura-kaigan",
+        "uhara-kaigan",
+        "uhara-ko",
+        "yahata-misaki"
+      ]
+    },
+    "30-9": {
+      "harbor_name": "下津",
+      "harbor_code": "30-9",
+      "lat": 34.116667,
+      "lon": 135.133333,
+      "jma_harbor_code": "H1",
+      "jma_station_name": "下津",
+      "dist_km": 1.6,
+      "slugs": [
+        "aridagawa-kako",
+        "hatsushima-gyoko",
+        "hirokawa-kako",
+        "minoshima-gyoko",
+        "sudahara-kaigan",
+        "yuasa-gyoko"
+      ]
+    },
+    "22-5": {
+      "harbor_name": "下田",
+      "harbor_code": "22-5",
+      "lat": 34.666667,
+      "lon": 138.95,
+      "jma_harbor_code": "D6",
+      "jma_station_name": "下田",
+      "dist_km": 2.2,
+      "slugs": [
+        "madogahama-park",
+        "shimoda-ko-inubashiri",
+        "shimoda-michinoeki",
+        "sotourahama",
+        "suzaki-ko",
+        "tadadohama"
+      ]
+    },
+    "30-3": {
+      "harbor_name": "串本",
+      "harbor_code": "30-3",
+      "lat": 33.466667,
+      "lon": 135.783333,
+      "jma_harbor_code": "KS",
+      "jma_station_name": "串本",
+      "dist_km": 3.8,
+      "slugs": [
+        "arida-port-kushimoto",
+        "koza-port",
+        "koza-river-mouth",
+        "kushimoto-gyoko",
+        "mio-jiiso"
+      ]
+    },
+    "14-10": {
+      "harbor_name": "久里浜",
+      "harbor_code": "14-10",
+      "lat": 35.216667,
+      "lon": 139.716667,
+      "jma_harbor_code": "QN",
+      "jma_station_name": "横須賀",
+      "dist_km": 10.9,
+      "slugs": [
+        "kurihama-ko-ban"
+      ]
+    },
+    "24-13": {
+      "harbor_name": "二木島",
+      "harbor_code": "24-13",
+      "lat": 33.933333,
+      "lon": 136.183333,
+      "jma_harbor_code": "KN",
+      "jma_station_name": "熊野",
+      "dist_km": 3.1,
+      "slugs": [
+        "futakijima-gyoko",
+        "kumano-ko",
+        "niishika-kaigan",
+        "onigajo-chiso"
+      ]
+    },
+    "24-8": {
+      "harbor_name": "五ヶ所",
+      "harbor_code": "24-8",
+      "lat": 34.316667,
+      "lon": 136.666667,
+      "jma_harbor_code": "TB",
+      "jma_station_name": "鳥羽",
+      "dist_km": 22.5,
+      "slugs": [
+        "gokasho-gyoko",
+        "oka-oike",
+        "sakama-gyoko"
+      ]
+    },
+    "22-2": {
+      "harbor_name": "伊東",
+      "harbor_code": "22-2",
+      "lat": 34.966667,
+      "lon": 139.116667,
+      "jma_harbor_code": "Z3",
+      "jma_station_name": "伊東",
+      "dist_km": 7.0,
+      "slugs": [
+        "ito-ko-shiro-ban",
+        "nagisa-kouen",
+        "shiofuki-koen",
+        "sunhatoya-ura"
+      ]
+    },
+    "23-1": {
+      "harbor_name": "伊良湖",
+      "harbor_code": "23-1",
+      "lat": 34.583333,
+      "lon": 137.016667,
+      "jma_harbor_code": "I4",
+      "jma_station_name": "赤羽根",
+      "dist_km": 13.9,
+      "slugs": [
+        "hinode-hamada",
+        "horikiri-omotehama",
+        "irago-ko",
+        "koijigahama",
+        "nishi-no-hama"
+      ]
+    },
+    "23-4": {
+      "harbor_name": "佐久島",
+      "harbor_code": "23-4",
+      "lat": 34.733333,
+      "lon": 137.05,
+      "jma_harbor_code": "G5",
+      "jma_station_name": "形原",
+      "dist_km": 12.2,
+      "slugs": [
+        "kira-sunrise-park",
+        "mano-ko",
+        "miyazaki-ko",
+        "yoshida-shinko"
+      ]
+    },
+    "12-16": {
+      "harbor_name": "千葉灯標",
+      "harbor_code": "12-16",
+      "lat": 35.566667,
+      "lon": 140.05,
+      "jma_harbor_code": "QL",
+      "jma_station_name": "千葉",
+      "dist_km": 1.6,
+      "slugs": [
+        "ichihara-umizuri-shisetsu",
+        "inage-kaihin-koen",
+        "kemigawahama-tottei",
+        "yorogawa-rinkai-koen"
+      ]
+    },
+    "22-6": {
+      "harbor_name": "南伊豆",
+      "harbor_code": "22-6",
+      "lat": 34.616667,
+      "lon": 138.883333,
+      "jma_harbor_code": "QK",
+      "jma_station_name": "南伊豆",
+      "dist_km": 2.7,
+      "slugs": [
+        "karyuu-ko",
+        "osegyoko",
+        "touji-beach",
+        "yumigahama-aonogawa"
+      ]
+    },
+    "24-12": {
+      "harbor_name": "古江",
+      "harbor_code": "24-12",
+      "lat": 33.966667,
+      "lon": 136.2,
+      "jma_harbor_code": "KN",
+      "jma_station_name": "熊野",
+      "dist_km": 5.7,
+      "slugs": [
+        "kajika-gyoko",
+        "mikinosato-kaigan"
+      ]
+    },
+    "24-9": {
+      "harbor_name": "吉津",
+      "harbor_code": "24-9",
+      "lat": 34.266667,
+      "lon": 136.5,
+      "jma_harbor_code": "OW",
+      "jma_station_name": "尾鷲",
+      "dist_km": 35.3,
+      "slugs": [
+        "hoza-gyoko",
+        "kowa-minamiise",
+        "naya-gyoko",
+        "nie-gyoko",
+        "yoshizu-kamizaki"
+      ]
+    },
+    "23-17": {
+      "harbor_name": "名古屋",
+      "harbor_code": "23-17",
+      "lat": 35.083333,
+      "lon": 136.883333,
+      "jma_harbor_code": "NG",
+      "jma_station_name": "名古屋",
+      "dist_km": 1.6,
+      "slugs": [
+        "funami-futou",
+        "ikadagawa-kako",
+        "inae-kouen",
+        "nabeta-hinankō",
+        "nagoya-garden-futou",
+        "shinpo-tokai",
+        "tobeshima-futou",
+        "yamazaki-horikawa"
+      ]
+    },
+    "12-4": {
+      "harbor_name": "名洗",
+      "harbor_code": "12-4",
+      "lat": 35.7,
+      "lon": 140.85,
+      "jma_harbor_code": "CS",
+      "jma_station_name": "銚子漁港",
+      "dist_km": 5.9,
+      "slugs": [
+        "horikawa-hama",
+        "iioka-ko",
+        "kidohama-kaigan",
+        "nagaarai-ko",
+        "nakayazato-kaigan",
+        "note-hama",
+        "yokata-kaigan",
+        "yoshizaki-hama"
+      ]
+    },
+    "12-12": {
+      "harbor_name": "君津",
+      "harbor_code": "12-12",
+      "lat": 35.35,
+      "lon": 139.866667,
+      "jma_harbor_code": "KZ",
+      "jma_station_name": "木更津",
+      "dist_km": 3.8,
+      "slugs": [
+        "banzu-higata",
+        "egawa-kaigan",
+        "futtsu-shinko",
+        "kaneda-mitate-kaigan",
+        "kisarazu-choukokujo",
+        "kisarazu-ko",
+        "kisarazu-shiohama-koen",
+        "kuzuma-kaigan",
+        "mitate-gyoko",
+        "nakanoshima-koen",
+        "onuki-ko",
+        "shinmaiko-kaigan"
+      ]
+    },
+    "30-4": {
+      "harbor_name": "周参見",
+      "harbor_code": "30-4",
+      "lat": 33.55,
+      "lon": 135.5,
+      "jma_harbor_code": "SR",
+      "jma_station_name": "白浜",
+      "dist_km": 19.6,
+      "slugs": [
+        "ezusaki-gyoko",
+        "hioki-gyoko",
+        "hiokigawa-kako",
+        "kii-hioki-kaigan"
+      ]
+    },
+    "30-11": {
+      "harbor_name": "和歌山",
+      "harbor_code": "30-11",
+      "lat": 34.216667,
+      "lon": 135.15,
+      "jma_harbor_code": "WY",
+      "jma_station_name": "和歌山",
+      "dist_km": 1.6,
+      "slugs": [
+        "isonoura-kaigan",
+        "kinokawa-kako",
+        "kinomoto-gyoko",
+        "saigasaki-gyoko",
+        "shin-wakanoura-tsutsumi",
+        "tanoura-gyoko",
+        "wakanoura-gyoko",
+        "wakayama-ko"
+      ]
+    },
+    "24-1": {
+      "harbor_name": "四日市",
+      "harbor_code": "24-1",
+      "lat": 34.95,
+      "lon": 136.633333,
+      "jma_harbor_code": "G3",
+      "jma_station_name": "四日市港",
+      "dist_km": 2.7,
+      "slugs": [
+        "akasuka-gyoko",
+        "chiyozaki-surf",
+        "fusou-ryokuchi",
+        "isotsu-gyoko",
+        "kasumi-fishing-park",
+        "kawagoe-tsurizanbashi",
+        "mitaki-haneage",
+        "shiohama-tetra",
+        "shiroko-gyoko",
+        "suzuka-nipponkokan",
+        "tomisuhara-gyoko",
+        "yokkaichi-yumekujira",
+        "yoshizaki-kaigan"
+      ]
+    },
+    "14-13": {
+      "harbor_name": "城ヶ島",
+      "harbor_code": "14-13",
+      "lat": 35.133333,
+      "lon": 139.616667,
+      "jma_harbor_code": "Z1",
+      "jma_station_name": "油壺",
+      "dist_km": 4.3,
+      "slugs": [
+        "abosaki",
+        "jogashima-ganpeki",
+        "kannonyama-shita",
+        "misaki-ko",
+        "nagatorozaki",
+        "nusuttogari"
+      ]
+    },
+    "27-5": {
+      "harbor_name": "堺",
+      "harbor_code": "27-5",
+      "lat": 34.583333,
+      "lon": 135.466667,
+      "jma_harbor_code": "SI",
+      "jma_station_name": "堺",
+      "dist_km": 2.7,
+      "slugs": [
+        "hamadera-park-kaigan",
+        "ishizu-fishing-port",
+        "sakai-kyu-ko"
+      ]
+    },
+    "14-1": {
+      "harbor_name": "塩浜運河",
+      "harbor_code": "14-1",
+      "lat": 35.516667,
+      "lon": 139.75,
+      "jma_harbor_code": "KW",
+      "jma_station_name": "川崎",
+      "dist_km": 1.6,
+      "slugs": [
+        "higashi-ogishima-nishi-koen"
+      ]
+    },
+    "27-6": {
+      "harbor_name": "大阪",
+      "harbor_code": "27-6",
+      "lat": 34.65,
+      "lon": 135.433333,
+      "jma_harbor_code": "OS",
+      "jma_station_name": "大阪",
+      "dist_km": 1.6,
+      "slugs": [
+        "maishima-ryokuchi",
+        "nanko-yachoen-gokan",
+        "osaka-nanko-fishing-park",
+        "yumeshima"
+      ]
+    },
+    "22-7": {
+      "harbor_name": "妻良子浦",
+      "harbor_code": "22-7",
+      "lat": 34.666667,
+      "lon": 138.783333,
+      "jma_harbor_code": "G9",
+      "jma_station_name": "石廊崎",
+      "dist_km": 6.9,
+      "slugs": [
+        "ihama-gyoko",
+        "iruma-ko",
+        "koura-beach",
+        "kumomi-kaigan",
+        "mera-ko-izu"
+      ]
+    },
+    "12-13": {
+      "harbor_name": "姉崎",
+      "harbor_code": "12-13",
+      "lat": 35.483333,
+      "lon": 140.033333,
+      "jma_harbor_code": "QL",
+      "jma_station_name": "千葉",
+      "dist_km": 9.6,
+      "slugs": [
+        "anesaki-ko",
+        "nagaura-ko",
+        "sodegaura-imai-ban",
+        "sodegaura-kitasode",
+        "ushigome-kaigan"
+      ]
+    },
+    "22-9": {
+      "harbor_name": "宇久須",
+      "harbor_code": "22-9",
+      "lat": 34.85,
+      "lon": 138.766667,
+      "jma_harbor_code": "Z4",
+      "jma_station_name": "田子",
+      "dist_km": 5.4,
+      "slugs": [
+        "arari-ko",
+        "komezaki-ko",
+        "toi-beach",
+        "ugusu-ko"
+      ]
+    },
+    "24-4": {
+      "harbor_name": "宇治山田",
+      "harbor_code": "24-4",
+      "lat": 34.516667,
+      "lon": 136.75,
+      "jma_harbor_code": "TB",
+      "jma_station_name": "鳥羽",
+      "dist_km": 5.7,
+      "slugs": [
+        "aritaki-teibou",
+        "futami-gyoko",
+        "miyagawa-kako",
+        "oyodo-kaigan"
+      ]
+    },
+    "12-15": {
+      "harbor_name": "寒川",
+      "harbor_code": "12-15",
+      "lat": 35.583333,
+      "lon": 140.116667,
+      "jma_harbor_code": "CB",
+      "jma_station_name": "千葉港",
+      "dist_km": 3.7,
+      "slugs": [
+        "chiba-ko-chuo-futo",
+        "koitogawa-ko-ban",
+        "myogane-misaki"
+      ]
+    },
+    "23-12": {
+      "harbor_name": "寺津",
+      "harbor_code": "23-12",
+      "lat": 34.816667,
+      "lon": 137.0,
+      "jma_harbor_code": "G8",
+      "jma_station_name": "衣浦",
+      "dist_km": 9.9,
+      "slugs": [
+        "heisakairie-terazubashi",
+        "isshiki-ko",
+        "juyongouchi",
+        "yahagi-furukawa-kako"
+      ]
+    },
+    "14-17": {
+      "harbor_name": "小田和湾",
+      "harbor_code": "14-17",
+      "lat": 35.216667,
+      "lon": 139.616667,
+      "jma_harbor_code": "Z1",
+      "jma_station_name": "油壺",
+      "dist_km": 5.4,
+      "slugs": [
+        "akiya-gyoko",
+        "akiya",
+        "arai-ko",
+        "arasaki",
+        "ashina-gyoko",
+        "bonten-no-hana-tateishi-koen",
+        "kuruwa-gyoko",
+        "nagai-ko",
+        "nagasawa-kaigan",
+        "shinjuku-ko",
+        "urushiyama-ko",
+        "wada-nagahama-kaigan"
+      ]
+    },
+    "24-11": {
+      "harbor_name": "尾鷲",
+      "harbor_code": "24-11",
+      "lat": 34.066667,
+      "lon": 136.216667,
+      "jma_harbor_code": "OW",
+      "jma_station_name": "尾鷲",
+      "dist_km": 3.8,
+      "slugs": [
+        "choshi-kako",
+        "owase-tenman",
+        "ozone-gyoko",
+        "shirogishi-doze",
+        "sugari-gyoko",
+        "yukunoura-gyoko"
+      ]
+    },
+    "12-10": {
+      "harbor_name": "岩井袋",
+      "harbor_code": "12-10",
+      "lat": 35.1,
+      "lon": 139.833333,
+      "jma_harbor_code": "TT",
+      "jma_station_name": "館山",
+      "dist_km": 12.6,
+      "slugs": [
+        "dairoku-kaigan",
+        "dairoku-ko",
+        "hamakanaya-tofu-ban",
+        "hota-beach",
+        "hota-yoshihama-reclaimed",
+        "ishikoura-ko",
+        "iwai-kaigan",
+        "iwaibukuro-port",
+        "kanaya-ferry-port",
+        "kanaya-gyoko-ban",
+        "kanaya-kaihin-kaigan",
+        "kanaya-seaside-park",
+        "katsuyama-kaigan",
+        "katsuyama-ko",
+        "koura-ko",
+        "motona-beach",
+        "namuya-beach",
+        "nishigasaki-jiso",
+        "nobura-ko",
+        "ryujima-kaigan",
+        "ryujima-port",
+        "takasaki-ko"
+      ]
+    },
+    "27-3": {
+      "harbor_name": "岸和田",
+      "harbor_code": "27-3",
+      "lat": 34.466667,
+      "lon": 135.366667,
+      "jma_harbor_code": "J2",
+      "jma_station_name": "岸和田",
+      "dist_km": 1.6,
+      "slugs": [
+        "izumisano-food-combinator",
+        "izumisano-marina-gokan",
+        "kaizuka-jinto",
+        "kishiwada-port",
+        "nishiki-no-hama-park",
+        "tadaoka-mokuzai",
+        "tajiri-fishing-port"
+      ]
+    },
+    "22-3": {
+      "harbor_name": "川奈",
+      "harbor_code": "22-3",
+      "lat": 34.95,
+      "lon": 139.133333,
+      "jma_harbor_code": "Z3",
+      "jma_station_name": "伊東",
+      "dist_km": 5.4,
+      "slugs": [
+        "akazawa-kaigan",
+        "futo-ko",
+        "izu-okawa-ko",
+        "jogasaki-iso",
+        "kawana-iruka",
+        "kitagawa-ko",
+        "yahano-ko"
+      ]
+    },
+    "12-14": {
+      "harbor_name": "市原",
+      "harbor_code": "12-14",
+      "lat": 35.533333,
+      "lon": 140.116667,
+      "jma_harbor_code": "CB",
+      "jma_station_name": "千葉港",
+      "dist_km": 8.3,
+      "slugs": [
+        "fudodo-kaigan",
+        "ichinomiyagawa-kako",
+        "katakai-ko",
+        "magame-kaigan",
+        "motosuka-kaigan",
+        "sakuda-kaigan",
+        "shirasato-kaigan"
+      ]
+    },
+    "12-17": {
+      "harbor_name": "市川",
+      "harbor_code": "12-17",
+      "lat": 35.683333,
+      "lon": 139.95,
+      "jma_harbor_code": "QL",
+      "jma_station_name": "千葉",
+      "dist_km": 14.7,
+      "slugs": [
+        "ichikawa-ko",
+        "takasu-kaihin-koen",
+        "urayasu-denpato-gogan",
+        "urayasu-sogo-koen"
+      ]
+    },
+    "12-8": {
+      "harbor_name": "布良",
+      "harbor_code": "12-8",
+      "lat": 34.916667,
+      "lon": 139.833333,
+      "jma_harbor_code": "MR",
+      "jma_station_name": "布良",
+      "dist_km": 1.6,
+      "slugs": [
+        "aihama-ko",
+        "heisaura",
+        "mera-ko-uchibo"
+      ]
+    },
+    "23-14": {
+      "harbor_name": "師崎",
+      "harbor_code": "23-14",
+      "lat": 34.7,
+      "lon": 136.983333,
+      "jma_harbor_code": "G5",
+      "jma_station_name": "形原",
+      "dist_km": 19.3,
+      "slugs": [
+        "katana-ko",
+        "morozaki-hazumisaki",
+        "nakasu-gyoko",
+        "oi-gyoko",
+        "shin-morozaki-ko",
+        "toyohama-fishing-park",
+        "toyooka-ko",
+        "utsumi-shinko",
+        "yamiumi-gyoko"
+      ]
+    },
+    "23-15": {
+      "harbor_name": "常滑",
+      "harbor_code": "23-15",
+      "lat": 34.866667,
+      "lon": 136.833333,
+      "jma_harbor_code": "ZD",
+      "jma_station_name": "鬼崎",
+      "dist_km": 5.1,
+      "slugs": [
+        "fuguzaki-gyoko",
+        "kariya-gyoko",
+        "rinku-gogan",
+        "tokoname-maejima"
+      ]
+    },
+    "23-10": {
+      "harbor_name": "形原",
+      "harbor_code": "23-10",
+      "lat": 34.783333,
+      "lon": 137.183333,
+      "jma_harbor_code": "G5",
+      "jma_station_name": "形原",
+      "dist_km": 1.6,
+      "slugs": [
+        "chigara-ko",
+        "kasugaura-tottei",
+        "katahara-gyoko",
+        "kuji-ko"
+      ]
+    },
+    "22-17": {
+      "harbor_name": "御前崎",
+      "harbor_code": "22-17",
+      "lat": 34.6,
+      "lon": 138.233333,
+      "jma_harbor_code": "OM",
+      "jma_station_name": "御前崎",
+      "dist_km": 3.8,
+      "slugs": [
+        "jitokata-ko",
+        "marine-park-omaezaki",
+        "omaezaki-ko",
+        "omaezaki-longbeach"
+      ]
+    },
+    "12-1": {
+      "harbor_name": "新地",
+      "harbor_code": "12-1",
+      "lat": 35.733333,
+      "lon": 140.85,
+      "jma_harbor_code": "CS",
+      "jma_station_name": "銚子漁港",
+      "dist_km": 2.2,
+      "slugs": [
+        "choshi-ko"
+      ]
+    },
+    "14-18": {
+      "harbor_name": "新宿湾",
+      "harbor_code": "14-18",
+      "lat": 35.283333,
+      "lon": 139.566667,
+      "jma_harbor_code": "QN",
+      "jma_station_name": "横須賀",
+      "dist_km": 6.1,
+      "slugs": [
+        "chojakasaki",
+        "hayama-ko",
+        "isshiki",
+        "kotsubo-gyoko",
+        "kotsubo-ko-tetra",
+        "manase-gyoko",
+        "morito",
+        "ohama",
+        "tagoe-kako",
+        "tonbi-iso",
+        "yuigahama",
+        "zaimokuza-kaigan",
+        "zushi-kaigan"
+      ]
+    },
+    "14-4": {
+      "harbor_name": "新山下",
+      "harbor_code": "14-4",
+      "lat": 35.433333,
+      "lon": 139.666667,
+      "jma_harbor_code": "HM",
+      "jma_station_name": "本牧",
+      "dist_km": 1.6,
+      "slugs": [
+        "daikoku-umizuri-shisetsu",
+        "honmoku-umizuri-shisetsu"
+      ]
+    },
+    "14-3": {
+      "harbor_name": "新港",
+      "harbor_code": "14-3",
+      "lat": 35.45,
+      "lon": 139.633333,
+      "jma_harbor_code": "QS",
+      "jma_station_name": "横浜",
+      "dist_km": 0.4,
+      "slugs": [
+        "nameri-kako"
+      ]
+    },
+    "13-14": {
+      "harbor_name": "晴海",
+      "harbor_code": "13-14",
+      "lat": 35.65,
+      "lon": 139.766667,
+      "jma_harbor_code": "TK",
+      "jma_station_name": "東京",
+      "dist_km": 1.6,
+      "slugs": [
+        "ariake-nishi-futo-koen",
+        "harumibashi-koen",
+        "kasai-rinkai-koen",
+        "shinkiba-koen",
+        "shiomi-undo-koen",
+        "toyomi-undo-koen",
+        "toyosu-gururi-koen",
+        "wakasu-kaihin-koen"
+      ]
+    },
+    "14-2": {
+      "harbor_name": "末広",
+      "harbor_code": "14-2",
+      "lat": 35.483333,
+      "lon": 139.7,
+      "jma_harbor_code": "KW",
+      "jma_station_name": "川崎",
+      "dist_km": 5.1,
+      "slugs": [
+        "fureyu-ura"
+      ]
+    },
+    "24-3": {
+      "harbor_name": "松阪",
+      "harbor_code": "24-3",
+      "lat": 34.6,
+      "lon": 136.566667,
+      "jma_harbor_code": "TB",
+      "jma_station_name": "鳥羽",
+      "dist_km": 24.8,
+      "slugs": [
+        "ohori-gyoko"
+      ]
+    },
+    "14-5": {
+      "harbor_name": "根岸",
+      "harbor_code": "14-5",
+      "lat": 35.4,
+      "lon": 139.633333,
+      "jma_harbor_code": "HM",
+      "jma_station_name": "本牧",
+      "dist_km": 4.3,
+      "slugs": [
+        "isogo-umizuri-shisetsu",
+        "sugita-rinkai-ryokuchi"
+      ]
+    },
+    "14-7": {
+      "harbor_name": "横須賀",
+      "harbor_code": "14-7",
+      "lat": 35.283333,
+      "lon": 139.65,
+      "jma_harbor_code": "QN",
+      "jma_station_name": "横須賀",
+      "dist_km": 1.6,
+      "slugs": [
+        "sarushima",
+        "shin-yasuura-ban",
+        "umibe-tsuri-koen",
+        "umikaze-koen"
+      ]
+    },
+    "23-13": {
+      "harbor_name": "武豊",
+      "harbor_code": "23-13",
+      "lat": 34.85,
+      "lon": 136.933333,
+      "jma_harbor_code": "G8",
+      "jma_station_name": "衣浦",
+      "dist_km": 4.1,
+      "slugs": [
+        "fuki-ko",
+        "handa-ko",
+        "hekinan-fishing",
+        "kamezaki-ko",
+        "kinura-tunnel-handa",
+        "kinura-tunnel-hekinan",
+        "kowa-gyoko",
+        "taketoyo-ko",
+        "taketoyo-ryokuchi"
+      ]
+    },
+    "30-7": {
+      "harbor_name": "比井湾",
+      "harbor_code": "30-7",
+      "lat": 33.916667,
+      "lon": 135.1,
+      "jma_harbor_code": "GB",
+      "jma_station_name": "御坊",
+      "dist_km": 8.4,
+      "slugs": [
+        "entsuigahama",
+        "hidakagawa-kako"
+      ]
+    },
+    "14-19": {
+      "harbor_name": "江ノ島",
+      "harbor_code": "14-19",
+      "lat": 35.3,
+      "lon": 139.483333,
+      "jma_harbor_code": "D8",
+      "jma_station_name": "湘南港",
+      "dist_km": 1.6,
+      "slugs": [
+        "chigasaki-headland",
+        "chigasaki-kaigan",
+        "chigasaki-ko-ban",
+        "enoshima",
+        "hanamizugawa-kako",
+        "hikichigawa-kako",
+        "hiratsuka-kaigan",
+        "hiratsuka-shinko",
+        "inamuragasaki",
+        "katase-gyoko",
+        "katase",
+        "katase_east",
+        "koshigoe-gyoko",
+        "kugenuma-kaigan",
+        "kyu-yoshida-tei-shita",
+        "oiso-choyakuba-shita",
+        "oiso-ko",
+        "oiso",
+        "sagamigawa-kako",
+        "shichirigahama",
+        "shonan-dai-teibo",
+        "shonan-ko-ban",
+        "tsujido",
+        "yanagishima-kaigan"
+      ]
+    },
+    "30-12": {
+      "harbor_name": "沖ノ島",
+      "harbor_code": "30-12",
+      "lat": 34.283333,
+      "lon": 135.016667,
+      "jma_harbor_code": "WY",
+      "jma_station_name": "和歌山",
+      "dist_km": 12.8,
+      "slugs": [
+        "kada-gyoko",
+        "kada-kaigan",
+        "miyama-gogan"
+      ]
+    },
+    "27-4": {
+      "harbor_name": "泉大津",
+      "harbor_code": "27-4",
+      "lat": 34.5,
+      "lon": 135.4,
+      "jma_harbor_code": "IO",
+      "jma_station_name": "泉大津",
+      "dist_km": 2.7,
+      "slugs": [
+        "izumiotsu-jinto",
+        "kishiwada-ichimonji",
+        "sukematsu-futo",
+        "takaishi-fishing-port"
+      ]
+    },
+    "24-2": {
+      "harbor_name": "津",
+      "harbor_code": "24-2",
+      "lat": 34.716667,
+      "lon": 136.533333,
+      "jma_harbor_code": "G3",
+      "jma_station_name": "四日市港",
+      "dist_km": 29.2,
+      "slugs": [
+        "iwata-kako",
+        "tsu-nipponkokan",
+        "tsu-port"
+      ]
+    },
+    "23-11": {
+      "harbor_name": "洲崎",
+      "harbor_code": "23-11",
+      "lat": 34.783333,
+      "lon": 137.166667,
+      "jma_harbor_code": "G5",
+      "jma_station_name": "形原",
+      "dist_km": 0.4,
+      "slugs": [
+        "higashihazu-ko",
+        "kuramai-matsushima",
+        "nishihazu-ko",
+        "nishiura-beach",
+        "suzaki-ko",
+        "terabe-ko"
+      ]
+    },
+    "24-7": {
+      "harbor_name": "浜島",
+      "harbor_code": "24-7",
+      "lat": 34.3,
+      "lon": 136.766667,
+      "jma_harbor_code": "TB",
+      "jma_station_name": "鳥羽",
+      "dist_km": 21.0,
+      "slugs": [
+        "funakoshi-maehama",
+        "goza-ko",
+        "hamajima-nanbari",
+        "koshika-kaigan",
+        "wagu-gyoko",
+        "wagu-hiroma"
+      ]
+    },
+    "30-2": {
+      "harbor_name": "浦神",
+      "harbor_code": "30-2",
+      "lat": 33.55,
+      "lon": 135.9,
+      "jma_harbor_code": "UR",
+      "jma_station_name": "浦神",
+      "dist_km": 2.7,
+      "slugs": [
+        "shimosato-port",
+        "tahara-port-kushimoto",
+        "uragami-port"
+      ]
+    },
+    "14-9": {
+      "harbor_name": "浦賀",
+      "harbor_code": "14-9",
+      "lat": 35.233333,
+      "lon": 139.716667,
+      "jma_harbor_code": "QN",
+      "jma_station_name": "横須賀",
+      "dist_km": 9.6,
+      "slugs": [
+        "heisakugawa-kako",
+        "kurihama",
+        "uraga-ko"
+      ]
+    },
+    "30-10": {
+      "harbor_name": "海南",
+      "harbor_code": "30-10",
+      "lat": 34.15,
+      "lon": 135.2,
+      "jma_harbor_code": "Z9",
+      "jma_station_name": "海南",
+      "dist_km": 1.6,
+      "slugs": [
+        "kainan-gyoko",
+        "kataonami-gogan",
+        "shimizu-gyoko",
+        "shiotsu-gyoko"
+      ]
+    },
+    "27-2": {
+      "harbor_name": "淡輪",
+      "harbor_code": "27-2",
+      "lat": 34.333333,
+      "lon": 135.183333,
+      "jma_harbor_code": "TN",
+      "jma_station_name": "淡輪",
+      "dist_km": 1.6,
+      "slugs": [
+        "hakozukuri-fishing-port",
+        "hannan-port-hakonoura",
+        "ozaki-fishing-port",
+        "tannowa-fishing-port",
+        "tarui-fishing-port"
+      ]
+    },
+    "27-1": {
+      "harbor_name": "深日",
+      "harbor_code": "27-1",
+      "lat": 34.316667,
+      "lon": 135.133333,
+      "jma_harbor_code": "TN",
+      "jma_station_name": "淡輪",
+      "dist_km": 3.8,
+      "slugs": [
+        "fukahi-fishing-port",
+        "tanagawa-kojima-port"
+      ]
+    },
+    "22-13": {
+      "harbor_name": "清水",
+      "harbor_code": "22-13",
+      "lat": 35.016667,
+      "lon": 138.5,
+      "jma_harbor_code": "SM",
+      "jma_station_name": "清水港",
+      "dist_km": 0.4,
+      "slugs": [
+        "ito-ko",
+        "miho-sotomi-kaigan",
+        "shimizu-ejiri-futo"
+      ]
+    },
+    "22-15": {
+      "harbor_name": "焼津",
+      "harbor_code": "22-15",
+      "lat": 34.866667,
+      "lon": 138.333333,
+      "jma_harbor_code": "Z5",
+      "jma_station_name": "焼津",
+      "dist_km": 1.6,
+      "slugs": [
+        "abegawa-kako",
+        "fishuna-yaizu",
+        "hirono-kaigankouen",
+        "ishizuhama-park",
+        "mochimune-ko",
+        "ogawa-ko",
+        "ohama-kaigan",
+        "oigawa-ko",
+        "okuzure-kaigan",
+        "tajiri-fujimori",
+        "takashinden-hama",
+        "yaizu-ko"
+      ]
+    },
+    "22-19": {
+      "harbor_name": "熱海",
+      "harbor_code": "22-19",
+      "lat": 35.083333,
+      "lon": 139.083333,
+      "jma_harbor_code": "OD",
+      "jma_station_name": "小田原",
+      "dist_km": 17.6,
+      "slugs": [
+        "atami-ko-umizuri"
+      ]
+    },
+    "12-3": {
+      "harbor_name": "犬吠埼",
+      "harbor_code": "12-3",
+      "lat": 35.7,
+      "lon": 140.866667,
+      "jma_harbor_code": "CS",
+      "jma_station_name": "銚子漁港",
+      "dist_km": 6.1,
+      "slugs": [
+        "inubosaki",
+        "kimigahama"
+      ]
+    },
+    "22-8": {
+      "harbor_name": "田子",
+      "harbor_code": "22-8",
+      "lat": 34.8,
+      "lon": 138.766667,
+      "jma_harbor_code": "Z4",
+      "jma_station_name": "田子",
+      "dist_km": 1.6,
+      "slugs": [
+        "ishibu-beach",
+        "iwachi-beach",
+        "matsuzaki-ko",
+        "nishina-ko",
+        "otago-kaigan",
+        "tago-gyoko"
+      ]
+    },
+    "22-11": {
+      "harbor_name": "田子の浦",
+      "harbor_code": "22-11",
+      "lat": 35.133333,
+      "lon": 138.7,
+      "jma_harbor_code": "UC",
+      "jma_station_name": "内浦",
+      "dist_km": 19.7,
+      "slugs": [
+        "fujikawa-kako",
+        "kambara-kaigan",
+        "tagonoura-minato"
+      ]
+    },
+    "30-13": {
+      "harbor_name": "田辺",
+      "harbor_code": "30-13",
+      "lat": 33.683333,
+      "lon": 135.383333,
+      "jma_harbor_code": "SR",
+      "jma_station_name": "白浜",
+      "dist_km": 1.6,
+      "slugs": [
+        "fukuro-port",
+        "tomidagawa-kako",
+        "uchinourawanko-gogan"
+      ]
+    },
+    "30-5": {
+      "harbor_name": "田辺（旧）",
+      "harbor_code": "30-5",
+      "lat": 33.716667,
+      "lon": 135.366667,
+      "jma_harbor_code": "SR",
+      "jma_station_name": "白浜",
+      "dist_km": 3.3,
+      "slugs": [
+        "aizugawa-kako",
+        "haya-gyoko",
+        "isoma-gyoko",
+        "momori-ko",
+        "shinjo-gyoko"
+      ]
+    },
+    "30-8": {
+      "harbor_name": "由良",
+      "harbor_code": "30-8",
+      "lat": 33.95,
+      "lon": 135.116667,
+      "jma_harbor_code": "GB",
+      "jma_station_name": "御坊",
+      "dist_km": 11.2,
+      "slugs": [
+        "hirohama-gyoko",
+        "hirokawa-gyoko",
+        "kina-gyoko",
+        "shirasaki-kaigan"
+      ]
+    },
+    "12-7": {
+      "harbor_name": "白浜",
+      "harbor_code": "12-7",
+      "lat": 34.916667,
+      "lon": 139.933333,
+      "jma_harbor_code": "MR",
+      "jma_station_name": "布良",
+      "dist_km": 10.6,
+      "slugs": [
+        "chikura-ko",
+        "nojimasaki",
+        "okawa-ko",
+        "otohama-ko",
+        "senda-ko",
+        "setohama-kaigan",
+        "shirako-ko",
+        "shiromazu-ko",
+        "shiromazu-no-iso"
+      ]
+    },
+    "22-4": {
+      "harbor_name": "白浜",
+      "harbor_code": "22-4",
+      "lat": 34.716667,
+      "lon": 138.983333,
+      "jma_harbor_code": "D6",
+      "jma_station_name": "下田",
+      "dist_km": 4.5,
+      "slugs": [
+        "imaihama-beach",
+        "inatori-ko",
+        "inatorigawa-ko",
+        "itato-ko",
+        "katase-shirota",
+        "kawazu-hama",
+        "mitaka-ko",
+        "namikiri-ko",
+        "niekawa-beach",
+        "shobuzawa-kaigan"
+      ]
+    },
+    "24-6": {
+      "harbor_name": "的矢",
+      "harbor_code": "24-6",
+      "lat": 34.366667,
+      "lon": 136.866667,
+      "jma_harbor_code": "TB",
+      "jma_station_name": "鳥羽",
+      "dist_km": 14.7,
+      "slugs": [
+        "akonomatsubara",
+        "anori-gyoko",
+        "chidorigahama",
+        "ichigo-hama",
+        "koga-gyoko",
+        "kuzaki-gyoko",
+        "nada-area",
+        "osatsu-gyoko"
+      ]
+    },
+    "22-16": {
+      "harbor_name": "相良",
+      "harbor_code": "22-16",
+      "lat": 34.683333,
+      "lon": 138.233333,
+      "jma_harbor_code": "OM",
+      "jma_station_name": "御前崎",
+      "dist_km": 7.7,
+      "slugs": [
+        "benzaiten-osuka",
+        "fukuda-beach",
+        "hamaoka-chihama",
+        "kikugawa-daito",
+        "sagara-ko",
+        "sakaguchitani-hachinya",
+        "sakai-ko",
+        "shizunami-kaigan",
+        "yoshida-ko"
+      ]
+    },
+    "14-20": {
+      "harbor_name": "真鶴",
+      "harbor_code": "14-20",
+      "lat": 35.15,
+      "lon": 139.15,
+      "jma_harbor_code": "OD",
+      "jma_station_name": "小田原",
+      "dist_km": 9.8,
+      "slugs": [
+        "banbaura",
+        "domu",
+        "enoura-gyoko",
+        "fukuura-ko",
+        "hayakawa-ko",
+        "iwa-ko",
+        "kama-no-kuchi",
+        "kobachiman-kaigan",
+        "komekami-teibo",
+        "kozu",
+        "maeha-kaigan",
+        "manazuru-ko",
+        "mitsuishi",
+        "miyuki",
+        "nebukawa",
+        "ninomiya",
+        "odawara-ko",
+        "sakawa",
+        "sanno-kaigan",
+        "umezawa-kaigan",
+        "yugawara-kaihin-koen"
+      ]
+    },
+    "23-6": {
+      "harbor_name": "福江",
+      "harbor_code": "23-6",
+      "lat": 34.633333,
+      "lon": 137.116667,
+      "jma_harbor_code": "I4",
+      "jma_station_name": "赤羽根",
+      "dist_km": 5.7,
+      "slugs": [
+        "izumi-ko",
+        "koshiozu-kaigan",
+        "udue-gyoko"
+      ]
+    },
+    "23-5": {
+      "harbor_name": "立馬埼",
+      "harbor_code": "23-5",
+      "lat": 34.666667,
+      "lon": 137.083333,
+      "jma_harbor_code": "I4",
+      "jma_station_name": "赤羽根",
+      "dist_km": 10.4,
+      "slugs": [
+        "atsumi-karyoku",
+        "fukue-gyoko"
+      ]
+    },
+    "12-11": {
+      "harbor_name": "第１海堡",
+      "harbor_code": "12-11",
+      "lat": 35.316667,
+      "lon": 139.766667,
+      "jma_harbor_code": "QN",
+      "jma_station_name": "横須賀",
+      "dist_km": 12.6,
+      "slugs": [
+        "futtsu-kaigan",
+        "futtsu-minato-park",
+        "futtsu-misaki",
+        "nunobiki-beach",
+        "shimosu-ko-ban"
+      ]
+    },
+    "30-1": {
+      "harbor_name": "紀伊勝浦",
+      "harbor_code": "30-1",
+      "lat": 33.633333,
+      "lon": 135.95,
+      "jma_harbor_code": "UR",
+      "jma_station_name": "浦神",
+      "dist_km": 9.4,
+      "slugs": [
+        "katsuura-south-breakwater",
+        "nachi-katsuura-port",
+        "shingu-port",
+        "taiji-port",
+        "ukui-port",
+        "yukawa-port"
+      ]
+    },
+    "22-1": {
+      "harbor_name": "網代",
+      "harbor_code": "22-1",
+      "lat": 35.05,
+      "lon": 139.083333,
+      "jma_harbor_code": "Z3",
+      "jma_station_name": "伊東",
+      "dist_km": 16.6,
+      "slugs": [
+        "ajiro-ko",
+        "hatsushima",
+        "nagahama-kaihin",
+        "shimotaga-ko",
+        "usami-ko"
+      ]
+    },
+    "13-3": {
+      "harbor_name": "羽田",
+      "harbor_code": "13-3",
+      "lat": 35.55,
+      "lon": 139.766667,
+      "jma_harbor_code": "KW",
+      "jma_station_name": "川崎",
+      "dist_km": 4.5,
+      "slugs": [
+        "jonanjima-kaihin-koen",
+        "keihinjima-tsubasa-koen",
+        "omori-furusato-hamabe",
+        "tokai-futo-koen"
+      ]
+    },
+    "22-12": {
+      "harbor_name": "興津",
+      "harbor_code": "22-12",
+      "lat": 35.05,
+      "lon": 138.516667,
+      "jma_harbor_code": "SM",
+      "jma_station_name": "清水港",
+      "dist_km": 3.7,
+      "slugs": [
+        "okitsu-kako",
+        "shimizu-sodeshi-futo",
+        "shimizuko-umidzuri",
+        "yui-gyoko"
+      ]
+    },
+    "22-18": {
+      "harbor_name": "舞阪",
+      "harbor_code": "22-18",
+      "lat": 34.683333,
+      "lon": 137.616667,
+      "jma_harbor_code": "MI",
+      "jma_station_name": "舞阪",
+      "dist_km": 1.6,
+      "slugs": [
+        "arai-benten-fishing-park",
+        "bentenjima-kaihin",
+        "fukuda-gyoko",
+        "maisaka-tsutsumi",
+        "nakatajima-enshunada",
+        "samejima-kaigan",
+        "sangenya-kaigan",
+        "tenryugawa-ryuyo"
+      ]
+    },
+    "12-9": {
+      "harbor_name": "船形",
+      "harbor_code": "12-9",
+      "lat": 35.016667,
+      "lon": 139.85,
+      "jma_harbor_code": "TT",
+      "jma_station_name": "館山",
+      "dist_km": 3.7,
+      "slugs": [
+        "funakata-port",
+        "haraoka-pier",
+        "hojo-beach",
+        "maruyama-breakwater",
+        "myojin-misaki",
+        "nago-kaigan",
+        "tomiura-new-port",
+        "tomiura-old-port"
+      ]
+    },
+    "12-18": {
+      "harbor_name": "船橋",
+      "harbor_code": "12-18",
+      "lat": 35.683333,
+      "lon": 139.983333,
+      "jma_harbor_code": "CB",
+      "jma_station_name": "千葉港",
+      "dist_km": 12.7,
+      "slugs": [
+        "akanehama-gogan",
+        "funabashi-ko-shinsui",
+        "funabashi-sanbanze"
+      ]
+    },
+    "13-2": {
+      "harbor_name": "芝浦",
+      "harbor_code": "13-2",
+      "lat": 35.633333,
+      "lon": 139.75,
+      "jma_harbor_code": "TK",
+      "jma_station_name": "東京",
+      "dist_km": 2.2,
+      "slugs": [
+        "akatsuki-futo-koen",
+        "aomi-minami-ban",
+        "mizu-no-hiroba-koen",
+        "odaiba-kaihin-koen",
+        "oi-futo-chuo-kaihin-koen-nagisa-no-mori",
+        "shiokaze-koen"
+      ]
+    },
+    "14-15": {
+      "harbor_name": "諸磯",
+      "harbor_code": "14-15",
+      "lat": 35.15,
+      "lon": 139.616667,
+      "jma_harbor_code": "Z1",
+      "jma_station_name": "油壺",
+      "dist_km": 2.7,
+      "slugs": [
+        "aburatsubo",
+        "hatsuse-gyoko",
+        "koajiro-teibo-ban",
+        "kurosaki-no-hana",
+        "mitoohama-teibo-ban",
+        "miyakawa-ko",
+        "moroi-so",
+        "yashikura-no-iso"
+      ]
+    },
+    "23-7": {
+      "harbor_name": "豊橋",
+      "harbor_code": "23-7",
+      "lat": 34.716667,
+      "lon": 137.333333,
+      "jma_harbor_code": "G4",
+      "jma_station_name": "三河",
+      "dist_km": 3.8,
+      "slugs": [
+        "himejima-gyoko",
+        "shirotani-katahama",
+        "tahara-ko"
+      ]
+    },
+    "23-18": {
+      "harbor_name": "赤羽根",
+      "harbor_code": "23-18",
+      "lat": 34.6,
+      "lon": 137.2,
+      "jma_harbor_code": "I4",
+      "jma_station_name": "赤羽根",
+      "dist_km": 3.1,
+      "slugs": [
+        "akabane-ko",
+        "koshito-tottei",
+        "magusakou",
+        "pacific-longbeach"
+      ]
+    },
+    "14-8": {
+      "harbor_name": "走水",
+      "harbor_code": "14-8",
+      "lat": 35.25,
+      "lon": 139.733333,
+      "jma_harbor_code": "QN",
+      "jma_station_name": "横須賀",
+      "dist_km": 10.0,
+      "slugs": [
+        "hagio-ko-ban",
+        "hashirimizu-kaigan",
+        "hashirimizu-ko",
+        "kamoi-ko",
+        "kamome-danchi",
+        "kannonzaki",
+        "kazusa-minato-ko",
+        "kazusa-minato-seaside-park",
+        "mabori-kaigan-ban",
+        "miharu-ganpeki-ban",
+        "minatogawa-river-mouth",
+        "otsu-shinteibo",
+        "takeoka-port"
+      ]
+    },
+    "14-11": {
+      "harbor_name": "金田湾",
+      "harbor_code": "14-11",
+      "lat": 35.2,
+      "lon": 139.683333,
+      "jma_harbor_code": "Z1",
+      "jma_station_name": "油壺",
+      "dist_km": 8.3,
+      "slugs": [
+        "kaneda-kaigan",
+        "kita-shimoura-gyoko",
+        "miura",
+        "nobi-kaigan",
+        "tsukui"
+      ]
+    },
+    "12-2": {
+      "harbor_name": "銚子漁港",
+      "harbor_code": "12-2",
+      "lat": 35.733333,
+      "lon": 140.866667,
+      "jma_harbor_code": "CS",
+      "jma_station_name": "銚子漁港",
+      "dist_km": 2.7,
+      "slugs": [
+        "choshi-gaiko",
+        "kuromae-ko"
+      ]
+    },
+    "24-15": {
+      "harbor_name": "錦",
+      "harbor_code": "24-15",
+      "lat": 34.216667,
+      "lon": 136.4,
+      "jma_harbor_code": "OW",
+      "jma_station_name": "尾鷲",
+      "dist_km": 24.6,
+      "slugs": [
+        "nishiki-gyoko"
+      ]
+    },
+    "24-10": {
+      "harbor_name": "長島",
+      "harbor_code": "24-10",
+      "lat": 34.2,
+      "lon": 136.333333,
+      "jma_harbor_code": "OW",
+      "jma_station_name": "尾鷲",
+      "dist_km": 18.7,
+      "slugs": [
+        "hiike-kaigan",
+        "jonohama-beach",
+        "kaino-gyoko",
+        "kii-nagashima-ko",
+        "kurohama-kaigan",
+        "miura-gyoko-kihoku",
+        "ojiro-park"
+      ]
+    },
+    "14-6": {
+      "harbor_name": "長浦",
+      "harbor_code": "14-6",
+      "lat": 35.316667,
+      "lon": 139.65,
+      "jma_harbor_code": "QN",
+      "jma_station_name": "横須賀",
+      "dist_km": 3.7,
+      "slugs": [
+        "aikuru",
+        "fukuura-ganpeki",
+        "hakkeijima-taigan",
+        "nojima-koen",
+        "umi-no-koen"
+      ]
+    },
+    "14-12": {
+      "harbor_name": "間口",
+      "harbor_code": "14-12",
+      "lat": 35.15,
+      "lon": 139.683333,
+      "jma_harbor_code": "Z1",
+      "jma_station_name": "油壺",
+      "dist_km": 7.9,
+      "slugs": [
+        "bishamon-tenka",
+        "kaneda-gyoko",
+        "maguchi-gyoko",
+        "matsuwa-ena-ko",
+        "nagatebana-goshuura",
+        "oura-kaigan",
+        "tsurugizaki"
+      ]
+    },
+    "12-19": {
+      "harbor_name": "館山",
+      "harbor_code": "12-19",
+      "lat": 34.983333,
+      "lon": 139.85,
+      "jma_harbor_code": "TT",
+      "jma_station_name": "館山",
+      "dist_km": 1.6,
+      "slugs": [
+        "kenbutsu-breakwater",
+        "okinoshima",
+        "sunosaki-lighthouse-shita",
+        "sunosaki-west-port",
+        "tateyama-jieitai-breakwater",
+        "tateyama-sunset-pier",
+        "tateyama_port"
+      ]
+    },
+    "23-16": {
+      "harbor_name": "鬼崎",
+      "harbor_code": "23-16",
+      "lat": 34.9,
+      "lon": 136.833333,
+      "jma_harbor_code": "ZD",
+      "jma_station_name": "鬼崎",
+      "dist_km": 3.1,
+      "slugs": [
+        "enokido-gyoko",
+        "kamachi-gyoko",
+        "ono-gyoko",
+        "shinmaiko-fishing"
+      ]
+    },
+    "24-5": {
+      "harbor_name": "鳥羽",
+      "harbor_code": "24-5",
+      "lat": 34.483333,
+      "lon": 136.85,
+      "jma_harbor_code": "TB",
+      "jma_station_name": "鳥羽",
+      "dist_km": 4.6,
+      "slugs": [
+        "araushima-gyoko",
+        "ishikagami-gyoko",
+        "kohama-gyoko-toba",
+        "toba-nakanogou",
+        "toshijima",
+        "uramura-motoura"
+      ]
+    },
+    "12-6": {
+      "harbor_name": "鴨川",
+      "harbor_code": "12-6",
+      "lat": 35.083333,
+      "lon": 140.116667,
+      "jma_harbor_code": "ZF",
+      "jma_station_name": "勝浦",
+      "dist_km": 12.2,
+      "slugs": [
+        "amatsu-ko",
+        "dayuzaki-ko",
+        "emi-kaigan",
+        "emi-ko",
+        "futoma-kaigan",
+        "futomi-ko",
+        "hamaogi-ko",
+        "hamaogi-no-iso",
+        "hanazono-kaigan",
+        "kamogawa-ko",
+        "maebara",
+        "shirazu-kaigan",
+        "shirosaki-kaigan",
+        "tojo-kaigan",
+        "wada-gyoko",
+        "wadaura-kaigan"
+      ]
+    },
+    "24-14": {
+      "harbor_name": "鵜殿",
+      "harbor_code": "24-14",
+      "lat": 33.733333,
+      "lon": 136.016667,
+      "jma_harbor_code": "UR",
+      "jma_station_name": "浦神",
+      "dist_km": 22.0,
+      "slugs": [
+        "miwasaki-port",
+        "shichirimihama-kiho",
+        "shichirimihama-mihasecho",
+        "udono-ko"
+      ]
+    }
+  }
+}
