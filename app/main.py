@@ -913,7 +913,7 @@ def _compute_forecast(spot) -> dict:
 
     all_days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
 
-    # 潮名を tide736.net キャッシュデータで上書き（フォールバックなし・データなしは "ー"）
+    # 潮名を気象庁推算潮位表データで上書き（フォールバックなし・データなしは "ー"）
     from .tides import get_tide_data
     slug = spot_slug(spot)
     for day in all_days:
