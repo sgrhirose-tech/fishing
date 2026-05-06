@@ -124,6 +124,17 @@ def _derive_flood(hourly: list[dict]) -> list[dict]:
 def _derive_ebb(hourly: list[dict]) -> list[dict]:
     return _derive_extrema(hourly, find_max=False)
 
+def _merge_peaks(base: list[dict], supplement: list[dict], threshold_min: int = 90) -> list[dict]:
+    """supplement のうち base の既存ピークから threshold_min 分以上離れたものを追加して返す。
+    JMA 整数データでの検出漏れ（フラット底部）を公式スロットで補完するために使用。"""
+    result = list(base)
+    for s in supplement:
+        s_m = _hm_to_min(s["time"])
+        if all(abs(s_m - _hm_to_min(b["time"])) > threshold_min for b in result):
+            result.append(s)
+    result.sort(key=lambda x: _hm_to_min(x["time"]))
+    return result
+
 # ── tide736.net フォールバック ────────────────────────────────
 
 def _load_tide736_day(harbor_code: str, date_str: str) -> dict | None:
@@ -179,9 +190,10 @@ def get_tide_data(slug: str, date_str: str) -> dict | None:
         jma_day = _load_jma_day(jma_code, date_str)
         if jma_day and jma_day.get("hourly"):
             hourly = jma_day["hourly"]
-            # hourly から全ピーク・谷を導出（JMA スロットは最大値1点のみの場合がある）
-            flood  = _derive_flood(hourly)
-            ebb    = _derive_ebb(hourly)
+            # hourly 導出 + JMA 公式スロットで漏れ補完
+            # （整数 cm の同値プラトーで strict < 比較が失敗するケースを補う）
+            flood = _merge_peaks(_derive_flood(hourly), jma_day.get("flood", []))
+            ebb   = _merge_peaks(_derive_ebb(hourly),   jma_day.get("ebb", []))
             ma             = round(_moon_age(date_str), 1)
             sunrise, sunset = _sun_times(lat, lon, date_str) if lat and lon else ("", "")
             return {
