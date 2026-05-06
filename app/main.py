@@ -2643,9 +2643,14 @@ _SPOT_PATTERNS: list[dict] = [
     {"id": "eging",    "label": "エギング・アオリイカ（磯・堤防）",     "desc": "磯や堤防からアオリイカをエギで狙う",                   "rule": _pat_eging},
 ]
 
+def _is_fishing_banned(s: dict) -> bool:
+    lead = (s.get("info") or {}).get("lead_text", "") or ""
+    return lead.startswith("この釣り場は") and "禁止" in lead
+
+
 def _apply_spot_patterns(spots: list[dict]) -> list[dict]:
-    """banned 除外後のスポットにパターンを適用し、2件以上マッチしたものだけ返す。"""
-    active = [s for s in spots if not s.get("banned")]
+    """釣り禁止スポットを除外してパターンを適用し、2件以上マッチしたものだけ返す。"""
+    active = [s for s in spots if not _is_fishing_banned(s)]
     result = []
     for p in _SPOT_PATTERNS:
         matched = [s for s in active if p["rule"](s)]
