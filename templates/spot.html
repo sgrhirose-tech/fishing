@@ -997,31 +997,10 @@
           '<span class="tide-sun">日の出 ' + d.sunrise + '&ensp;日の入 ' + d.sunset + '</span>';
 
         // グラフデータ
-        // flood/ebb 時刻を最近傍の hourly ラベルに丸める（JMA は整時、旧tide736は20分刻み）
-        function nearestHourLabel(timeStr, labelArr) {
-          var parts = timeStr.split(':');
-          var mins = parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
-          var best = labelArr[0], bestDiff = Infinity;
-          labelArr.forEach(function(l) {
-            var p = l.split(':');
-            var lm = parseInt(p[0], 10) * 60 + parseInt(p[1], 10);
-            var diff = Math.abs(lm - mins);
-            if (diff < bestDiff) { bestDiff = diff; best = l; }
-          });
-          return best;
-        }
         var maxCm = Math.max.apply(null, d.hourly.map(function(h) { return h.cm; }));
         var sugMax = Math.ceil(maxCm * 1.2 / 50) * 50;
         var labels = d.hourly.map(function(h) { return h.time; });
         var values = d.hourly.map(function(h) { return h.cm; });
-        var floodLabels = new Set(d.flood.map(function(f) { return nearestHourLabel(f.time, labels); }));
-        var ebbLabels   = new Set(d.ebb.map(function(e)   { return nearestHourLabel(e.time, labels); }));
-        var ptR = labels.map(function(l) {
-          return (floodLabels.has(l) || ebbLabels.has(l)) ? 5 : 0;
-        });
-        var ptBg = labels.map(function(l) {
-          return floodLabels.has(l) ? '#1565C0' : ebbLabels.has(l) ? '#E65100' : 'transparent';
-        });
 
         // 日の出・日の入り インデックス更新
         sunriseIdx = nearestIdx(d.sunrise, labels);
@@ -1030,9 +1009,6 @@
         if (tideChart) {
           tideChart.data.labels = labels;
           tideChart.data.datasets[0].data = values;
-          tideChart.data.datasets[0].pointRadius = ptR;
-          tideChart.data.datasets[0].pointBackgroundColor = ptBg;
-          tideChart.data.datasets[0].pointBorderColor = ptBg;
           tideChart.options.scales.y.suggestedMax = sugMax;
           tideChart.update();
         } else {
@@ -1048,9 +1024,7 @@
                 fill: true,
                 cubicInterpolationMode: 'monotone',
                 tension: 0.4,
-                pointRadius: ptR,
-                pointBackgroundColor: ptBg,
-                pointBorderColor: ptBg,
+                pointRadius: 0,
               }]
             },
             options: {
