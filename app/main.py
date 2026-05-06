@@ -2001,7 +2001,9 @@ def _build_spot_article_index() -> dict[str, list]:
     return index
 
 
-_SPOT_ARTICLE_INDEX: dict[str, list] = _build_spot_article_index()
+def _get_spot_articles(slug: str) -> list:
+    """指定スポットに紐づく記事をリクエストごとに返す（キャッシュなし）。"""
+    return _build_spot_article_index().get(slug, [])
 
 
 def _load_article_slots(category: str, slug: str) -> list:
@@ -2824,11 +2826,11 @@ def page_spot_detail(
         "spot_description_human":  _desc_human,
         "spot_description":        _spot_desc_fallback,
         "meta_description":   meta_description,
-        "related_articles":   [_a for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") != "report"],
+        "related_articles":   [_a for _a in _get_spot_articles(slug) if _a.get("category") != "report"],
         "related_reports":    [{**_a,
                                 "catch_display": _parse_catch(_a.get("catch") or [], _FISH_MASTER, article_updated=_a.get("updated")),
                                 "updated_jp": (datetime.strptime(_a["updated"], "%Y-%m-%d").strftime("%Y年%m月%d日") if _a.get("updated") else "")}
-                               for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") == "report"],
+                               for _a in _get_spot_articles(slug) if _a.get("category") == "report"],
         "blog_posts":         blog_posts,
         "is_kinshi":          is_kinshi,
         "kinshi_nearby":      kinshi_nearby,
