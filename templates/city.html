@@ -60,6 +60,25 @@
 
 <div id="map-city" class="map-container"></div>
 
+{% if patterns %}
+<section class="spot-patterns">
+  <h2>こんな釣りがしたい人へ</h2>
+  <div class="pattern-grid">
+    {% for p in patterns %}
+    <div class="pattern-card">
+      <h3 class="pattern-label">{{ p.label }}</h3>
+      <p class="pattern-desc">{{ p.desc }}</p>
+      <ul class="pattern-spots">
+        {% for s in p.spots %}
+        <li><a href="/{{ s.area.pref_slug }}/{{ s.area.area_slug }}/{{ s.area.city_slug }}/{{ s.slug }}/">{{ s.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <section class="spots-list">
   {% for spot in spots %}
   {% set area = spot.area %}

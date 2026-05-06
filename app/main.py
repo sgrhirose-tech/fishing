@@ -2556,6 +2556,58 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
     })
 
 
+
+
+# ── 市町村ページ「おすすめスポット」パターン ────────────────────────────────────────
+
+def _pat_family(s: dict) -> bool:
+    clf   = s.get("classification", {})
+    flags = set(clf.get("secondary_flags", []))
+    return (clf.get("primary_type") in ("fishing_facility", "breakwater")
+            and bool(flags & {"parking_nearby", "marina", "pier"}))
+
+def _pat_casting(s: dict) -> bool:
+    clf = s.get("classification", {})
+    pf  = s.get("physical_features", {})
+    return (clf.get("primary_type") == "sand_beach"
+            and pf.get("seabed_type") == "sand"
+            and bool(set(s.get("target_fish", [])) & {"shirogisu", "hirame", "magochi", "karei"}))
+
+def _pat_easyport(s: dict) -> bool:
+    clf = s.get("classification", {})
+    return (clf.get("primary_type") in ("fishing_facility", "breakwater")
+            and bool(set(s.get("target_fish", [])) & {"aji", "karei", "mebaru", "haze"}))
+
+def _pat_rocky(s: dict) -> bool:
+    clf = s.get("classification", {})
+    pf  = s.get("physical_features", {})
+    return ((clf.get("primary_type") == "rocky_shore" or pf.get("seabed_type") == "rock")
+            and bool(set(s.get("target_fish", [])) & {"kurodai", "mejina"}))
+
+def _pat_eging(s: dict) -> bool:
+    clf = s.get("classification", {})
+    return ("aoriika" in s.get("target_fish", [])
+            and clf.get("primary_type") in ("rocky_shore", "breakwater"))
+
+_SPOT_PATTERNS: list[dict] = [
+    {"id": "family",   "label": "アクセス良好・ファミリー向け",         "desc": "駐車場や桟橋があって足場の良い釣り場",                 "rule": _pat_family},
+    {"id": "casting",  "label": "砂浜の投げ釣り（キス・ヒラメ）",       "desc": "広い砂浜からキス・ヒラメ・マゴチを狙う",               "rule": _pat_casting},
+    {"id": "easyport", "label": "漁港・堤防でのんびり（アジ・カレイ）", "desc": "堤防や漁港でサビキ・ちょい投げを楽しむ",               "rule": _pat_easyport},
+    {"id": "rocky",    "label": "磯・岩礁での本格釣り（クロダイ・メジナ）", "desc": "岩場や磯からクロダイ・メジナを狙う上級者向け",     "rule": _pat_rocky},
+    {"id": "eging",    "label": "エギング・アオリイカ（磯・堤防）",     "desc": "磯や堤防からアオリイカをエギで狙う",                   "rule": _pat_eging},
+]
+
+def _apply_spot_patterns(spots: list[dict]) -> list[dict]:
+    """banned 除外後のスポットにパターンを適用し、2件以上マッチしたものだけ返す。"""
+    active = [s for s in spots if not s.get("banned")]
+    result = []
+    for p in _SPOT_PATTERNS:
+        matched = [s for s in active if p["rule"](s)]
+        if len(matched) >= 2:
+            result.append({"id": p["id"], "label": p["label"], "desc": p["desc"], "spots": matched})
+    return result
+
+
 @app.get("/{pref_slug}/{area_slug}/{city_slug}/", response_class=HTMLResponse)
 def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     all_spots = load_spots()
@@ -2602,6 +2654,7 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "top_fish_jp": _seo["top_fish_jp"],
         "intro_text": "".join(_intro),
         "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}/{city_slug}", ""),
+        "patterns": _apply_spot_patterns(spots),
     })
 
 
