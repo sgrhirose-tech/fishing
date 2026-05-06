@@ -36,13 +36,16 @@ Usage:
 import argparse
 import json
 import math
+import os
 import pathlib
+import smtplib
 import ssl
 import sys
 import time
 import urllib.request
 import urllib.error
 from datetime import datetime, timezone, timedelta
+from email.mime.text import MIMEText
 
 _REPO_ROOT = pathlib.Path(__file__).parent.parent
 sys.path.insert(0, str(_REPO_ROOT))
@@ -441,6 +444,49 @@ def save_json(data: dict, station_code: str, year: int) -> pathlib.Path:
     return path
 
 
+def _send_reminder_mail(subject: str, body: str) -> None:
+    mail_from = os.environ.get("MAIL_FROM", "")
+    mail_to   = os.environ.get("MAIL_TO", "")
+    password  = os.environ.get("MAIL_PASSWORD", "")
+    if not (mail_from and mail_to and password):
+        print("[mail] MAIL_FROM / MAIL_TO / MAIL_PASSWORD 未設定のため送信スキップ")
+        return
+    msg = MIMEText(body, "plain", "utf-8")
+    msg["Subject"] = subject
+    msg["From"]    = mail_from
+    msg["To"]      = mail_to
+    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+        smtp.ehlo(); smtp.starttls()
+        smtp.login(mail_from, password)
+        smtp.sendmail(mail_from, mail_to, msg.as_string())
+    print(f"[mail] 送信完了: {subject}")
+
+
+def check_next_year() -> None:
+    """来年分の JMA データが存在するか確認し、なければメールで通知する。"""
+    next_year = datetime.now(JST).year + 1
+    missing = [c for c in TARGET_STATIONS
+               if not (OUTPUT_DIR / f"{c}_{next_year}.json").exists()]
+    if not missing:
+        print(f"[OK] {next_year}年分データは全局揃っています。")
+        return
+
+    msg = (
+        f"気象庁 推算潮位表 {next_year}年分データが未取得です。\n\n"
+        f"不足局: {', '.join(missing[:10])}{'...' if len(missing) > 10 else ''} "
+        f"（{len(missing)}/{len(TARGET_STATIONS)} 局）\n\n"
+        f"日本国内ネットワークから以下を実行してください:\n"
+        f"  python scripts/fetch_jma_tides.py --year {next_year}\n"
+        f"  git add data/jma_tides/ && git commit -m '潮汐: 気象庁データ {next_year}年分追加' && git push\n"
+    )
+    print(msg)
+    _send_reminder_mail(
+        subject=f"[Tsuricast] 気象庁潮位データ更新のお知らせ（{next_year}年分）",
+        body=msg,
+    )
+    sys.exit(1)  # Render ログに記録されるよう非ゼロ終了
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="気象庁 推算潮位表 ダウンロード")
     parser.add_argument("--year", type=int, nargs="+", default=None,
@@ -453,7 +499,13 @@ def main() -> None:
                         help="ダウンロードのみ・ファイル保存なし")
     parser.add_argument("--list-stations", action="store_true",
                         help="対象局コード・名称・座標を表示して終了")
+    parser.add_argument("--check-next-year", action="store_true",
+                        help="来年分データの有無を確認し、不足時はメール通知して終了")
     args = parser.parse_args()
+
+    if args.check_next_year:
+        check_next_year()
+        return
 
     if args.list_stations:
         stations = args.stations or TARGET_STATIONS
