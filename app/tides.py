@@ -179,8 +179,9 @@ def get_tide_data(slug: str, date_str: str) -> dict | None:
         jma_day = _load_jma_day(jma_code, date_str)
         if jma_day and jma_day.get("hourly"):
             hourly = jma_day["hourly"]
-            flood  = jma_day.get("flood") or _derive_flood(hourly)
-            ebb    = jma_day.get("ebb")   or _derive_ebb(hourly)
+            # hourly から全ピーク・谷を導出（JMA スロットは最大値1点のみの場合がある）
+            flood  = _derive_flood(hourly)
+            ebb    = _derive_ebb(hourly)
             ma             = round(_moon_age(date_str), 1)
             sunrise, sunset = _sun_times(lat, lon, date_str) if lat and lon else ("", "")
             return {
