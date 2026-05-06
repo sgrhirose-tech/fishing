@@ -17,14 +17,26 @@ _TIDES_DIR = _DATA_DIR / "tides"
 
 
 def _derive_ebb(hourly: list[dict]) -> list[dict]:
-    """hourly データから局所最小値を干潮として導出する。端点は除外する。"""
+    """hourly データから干潮を2次補間で導出する（精度 ±5〜10 分）。端点は除外する。"""
     if len(hourly) < 3:
         return []
     cms = [h["cm"] for h in hourly]
+    times = [h["time"] for h in hourly]
     result = []
     for i in range(1, len(cms) - 1):
-        if cms[i] < cms[i - 1] and cms[i] < cms[i + 1]:
-            result.append({"time": hourly[i]["time"], "cm": round(cms[i], 1)})
+        y0, y1, y2 = cms[i - 1], cms[i], cms[i + 1]
+        if y1 < y0 and y1 < y2:
+            # 2次補間で真の最小値時刻を推定 (x=-1,0,1 座標)
+            a = (y0 - 2 * y1 + y2) / 2
+            b = (y2 - y0) / 2
+            dx = -b / (2 * a) if a != 0 else 0.0
+            dx = max(-1.0, min(1.0, dx))
+            offset_min = int(dx * 20)
+            hh, mm = map(int, times[i].split(":"))
+            total = max(0, min(23 * 60 + 59, hh * 60 + mm + offset_min))
+            t = f"{total // 60:02d}:{total % 60:02d}"
+            cm = round(y1 + b * dx + a * dx * dx, 1)
+            result.append({"time": t, "cm": cm})
     return result
 
 
