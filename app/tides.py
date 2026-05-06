@@ -84,29 +84,47 @@ def _load_jma_day(jma_code: str, date_str: str) -> dict | None:
         return None
     return data.get("days", {}).get(date_str)
 
-# ── tide736.net フォールバック ────────────────────────────────
+# ── 極値導出 ──────────────────────────────────────────────────
 
-def _derive_ebb(hourly: list[dict]) -> list[dict]:
-    """hourly データから干潮を2次補間で導出する（精度 ±5〜10 分）。端点は除外する。"""
+def _hm_to_min(s: str) -> int:
+    h, m = map(int, s.split(":"))
+    return h * 60 + m
+
+def _derive_extrema(hourly: list[dict], find_max: bool) -> list[dict]:
+    """hourly データから極大(find_max=True)または極小(find_max=False)を2次補間で導出。
+    時刻間隔は自動検出。端点は除外。"""
     if len(hourly) < 3:
         return []
+    interval_min = _hm_to_min(hourly[1]["time"]) - _hm_to_min(hourly[0]["time"])
+    if interval_min <= 0:
+        interval_min = 60
     cms   = [h["cm"] for h in hourly]
     times = [h["time"] for h in hourly]
     result = []
     for i in range(1, len(cms) - 1):
         y0, y1, y2 = cms[i - 1], cms[i], cms[i + 1]
-        if y1 < y0 and y1 < y2:
-            a = (y0 - 2 * y1 + y2) / 2
-            b = (y2 - y0) / 2
-            dx = -b / (2 * a) if a != 0 else 0.0
-            dx = max(-1.0, min(1.0, dx))
-            offset_min = int(dx * 20)
-            hh, mm = map(int, times[i].split(":"))
-            total = max(0, min(23 * 60 + 59, hh * 60 + mm + offset_min))
-            t = f"{total // 60:02d}:{total % 60:02d}"
-            cm = round(y1 + b * dx + a * dx * dx, 1)
-            result.append({"time": t, "cm": cm})
+        is_extreme = (y1 > y0 and y1 > y2) if find_max else (y1 < y0 and y1 < y2)
+        if not is_extreme:
+            continue
+        a = (y0 - 2 * y1 + y2) / 2
+        b = (y2 - y0) / 2
+        dx = -b / (2 * a) if a != 0 else 0.0
+        dx = max(-1.0, min(1.0, dx))
+        offset_min = int(dx * interval_min)
+        hh, mm = map(int, times[i].split(":"))
+        total = max(0, min(23 * 60 + 59, hh * 60 + mm + offset_min))
+        t = f"{total // 60:02d}:{total % 60:02d}"
+        cm = round(y1 + b * dx + a * dx * dx, 1)
+        result.append({"time": t, "cm": cm})
     return result
+
+def _derive_flood(hourly: list[dict]) -> list[dict]:
+    return _derive_extrema(hourly, find_max=True)
+
+def _derive_ebb(hourly: list[dict]) -> list[dict]:
+    return _derive_extrema(hourly, find_max=False)
+
+# ── tide736.net フォールバック ────────────────────────────────
 
 def _load_tide736_day(harbor_code: str, date_str: str) -> dict | None:
     month_str  = date_str[:7]
@@ -160,6 +178,9 @@ def get_tide_data(slug: str, date_str: str) -> dict | None:
     if jma_code:
         jma_day = _load_jma_day(jma_code, date_str)
         if jma_day and jma_day.get("hourly"):
+            hourly = jma_day["hourly"]
+            flood  = jma_day.get("flood") or _derive_flood(hourly)
+            ebb    = jma_day.get("ebb")   or _derive_ebb(hourly)
             ma             = round(_moon_age(date_str), 1)
             sunrise, sunset = _sun_times(lat, lon, date_str) if lat and lon else ("", "")
             return {
@@ -169,9 +190,9 @@ def get_tide_data(slug: str, date_str: str) -> dict | None:
                 "sunrise":     sunrise,
                 "sunset":      sunset,
                 "moon_age":    ma,
-                "flood":       jma_day.get("flood", []),
-                "ebb":         jma_day.get("ebb", []),
-                "hourly":      jma_day["hourly"],
+                "flood":       flood,
+                "ebb":         ebb,
+                "hourly":      hourly,
                 "data_source": "jma",
             }
 
@@ -181,6 +202,9 @@ def get_tide_data(slug: str, date_str: str) -> dict | None:
         return None
 
     result = {"date": date_str, "harbor_name": harbor_name, **day_data, "data_source": "tide736"}
-    if not result.get("ebb") and result.get("hourly"):
-        result["ebb"] = _derive_ebb(result["hourly"])
+    hourly = result.get("hourly", [])
+    if not result.get("flood") and hourly:
+        result["flood"] = _derive_flood(hourly)
+    if not result.get("ebb") and hourly:
+        result["ebb"] = _derive_ebb(hourly)
     return result
