@@ -56,13 +56,6 @@
 </nav>
 
 <h1>{{ city_name }}の釣り場</h1>
-{% if page_lead %}
-<p class="page-intro">{{ page_lead }}</p>
-{% elif intro_text %}
-<p class="page-intro">{{ intro_text }}</p>
-{% endif %}
-
-<div id="map-city" class="map-container"></div>
 
 {% if patterns %}
 <section class="spot-patterns">
@@ -82,6 +75,14 @@
   </div>
 </section>
 {% endif %}
+
+{% if page_lead %}
+<p class="page-intro">{{ page_lead }}</p>
+{% elif intro_text %}
+<p class="page-intro">{{ intro_text }}</p>
+{% endif %}
+
+<div id="map-city" class="map-container"></div>
 
 <section class="spots-list">
   {% for spot in spots %}
