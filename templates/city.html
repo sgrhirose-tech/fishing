@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}{{ city_name }}の釣り場{{ spot_count }}か所 | {{ area_name }}・{{ pref_name }} | Tsuricast{% endblock %}
-{% block description %}{{ city_name }}（{{ area_name }}・{{ pref_name }}）の釣り場{{ spot_count }}か所を掲載。{% if top_fish_jp %}{{ top_fish_jp[:3]|join('・') }}などが狙えます。{% endif %}天気・海況情報あり。{% endblock %}
+{% block title %}{% if city_seo.title_suffix %}{{ city_name }}の釣り場{{ spot_count }}か所｜{{ city_seo.title_suffix }} | Tsuricast{% else %}{{ city_name }}の釣り場{{ spot_count }}か所 | {{ area_name }}・{{ pref_name }} | Tsuricast{% endif %}{% endblock %}
+{% block title2 %}{% if city_seo.og_title %}{{ city_seo.og_title }}{% else %}{{ city_name }}の釣り場{{ spot_count }}か所 | {{ area_name }}・{{ pref_name }}{% endif %}{% endblock %}
+{% block description %}{% if city_seo.seo_desc %}{{ city_seo.seo_desc }}{% else %}{{ city_name }}（{{ area_name }}・{{ pref_name }}）の釣り場{{ spot_count }}か所を掲載。{% if top_fish_jp %}{{ top_fish_jp[:3]|join('・') }}などが狙えます。{% endif %}天気・海況情報あり。{% endif %}{% endblock %}
+{% block og_desc %}{{ city_seo.seo_desc or '' }}{% endblock %}
+{% block tw_title %}{{ city_seo.og_title or (city_name + 'の釣り場 | Tsuricast') }}{% endblock %}
+{% block tw_desc %}{{ city_seo.seo_desc or '' }}{% endblock %}
 {% block og_url %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 {% block canonical %}https://tsuricast.jp{{ request.url.path }}{% endblock %}
 

@@ -2558,6 +2558,52 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
 
 
 
+# ── 市町村ページ SEO タイトル・ディスクリプション ───────────────────────────────────
+
+_PATTERN_SEO_ORDER = ["family", "casting", "rocky", "eging", "easyport"]
+
+_PATTERN_SEO_LABELS: dict[str, tuple[str, str]] = {
+    "family":   ("ファミリー", "家族連れ"),
+    "casting":  ("投げ釣り",   "投げ釣り"),
+    "rocky":    ("磯釣り",     "磯釣り"),
+    "eging":    ("エギング",   "エギング"),
+    "easyport": ("堤防釣り",   "堤防釣り"),
+}
+
+def _build_city_seo(city_name: str, spot_count: int, patterns: list[dict]) -> dict:
+    """市町村ページの SEO 用タイトルサフィックス・OG タイトル・ディスクリプションを生成する。"""
+    ordered = sorted(patterns,
+                     key=lambda p: _PATTERN_SEO_ORDER.index(p["id"])
+                     if p["id"] in _PATTERN_SEO_ORDER else 99)
+    top3 = ordered[:3]
+    if not top3:
+        return {}
+
+    t_parts, d_parts = [], []
+    for p in top3:
+        title_lbl, desc_lbl = _PATTERN_SEO_LABELS.get(p["id"], ("", ""))
+        if title_lbl:
+            t_parts.append(title_lbl)
+        spots = p["spots"]
+        spot_text = "・".join(s["name"] for s in spots[:2])
+        if len(spots) > 2:
+            spot_text += "など"
+        if desc_lbl and spot_text:
+            d_parts.append(f"{desc_lbl}なら{spot_text}")
+
+    suffix = "・".join(t_parts) + " 目的別ガイド"
+    seo_desc = (
+        f"{city_name}の釣り場{spot_count}か所を目的別に整理。"
+        + "、".join(d_parts) + "。"
+        + "各スポットで1週間分の天気・波高・潮汐情報を毎日更新。"
+    )
+    return {
+        "title_suffix": suffix,
+        "og_title":     f"{city_name}の釣り場{spot_count}か所｜{suffix}",
+        "seo_desc":     seo_desc,
+    }
+
+
 # ── 市町村ページ「おすすめスポット」パターン ────────────────────────────────────────
 
 def _pat_family(s: dict) -> bool:
@@ -2654,7 +2700,8 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "top_fish_jp": _seo["top_fish_jp"],
         "intro_text": "".join(_intro),
         "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}/{city_slug}", ""),
-        "patterns": _apply_spot_patterns(spots),
+        "patterns":  (patterns := _apply_spot_patterns(spots)),
+        "city_seo":  _build_city_seo(city_name, _spot_count, patterns),
     })
 
 
