@@ -1992,11 +1992,19 @@ def _apply_article_meta_mask(meta: dict) -> dict:
     return meta
 
 
+def _related_spots_list(meta: dict) -> list:
+    """related_spots が文字列でも list でも安全に list[str] を返す。"""
+    val = meta.get("related_spots")
+    if not val:
+        return []
+    return [val] if isinstance(val, str) else list(val)
+
+
 def _build_spot_article_index() -> dict[str, list]:
     """spot_slug → [article_meta, ...] の逆引き辞書を返す。"""
     index: dict[str, list] = {}
     for art in _load_articles():
-        for s in art.get("related_spots") or []:
+        for s in _related_spots_list(art):
             index.setdefault(s, []).append(art)
     return index
 
@@ -2209,7 +2217,7 @@ def page_article_detail(request: Request, category: str, slug: str):
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
         pm["part_slug"] = p.stem
         part_metas.append(pm)
-    related_spots = [s for rs in (meta.get("related_spots") or []) if (s := load_spot(rs))]
+    related_spots = [s for rs in _related_spots_list(meta) if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
     local_card = _ARTICLES_DIR / category / slug / "img" / "card.jpg"
     card_w, card_h = _jpeg_dims(local_card) if local_card.exists() else (1200, 628)
@@ -2252,7 +2260,7 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
     parent_masked = False
     if parent_md.exists():
         _pm, _ = _extract_article_meta(parent_md.read_text(encoding="utf-8"), slug)
-        _parent_slugs = _pm.get("related_spots") or []
+        _parent_slugs = _related_spots_list(_pm)
         parent_masked = _is_catch_masked(_pm)
     if parent_masked:
         _apply_article_meta_mask(meta)
