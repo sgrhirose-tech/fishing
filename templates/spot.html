@@ -370,8 +370,8 @@
   <div class="tide-graph-wrapper">
     <canvas id="tide-chart"></canvas>
   </div>
-  <p class="tide-disclaimer">
-    潮汐データは <a href="https://tide736.net/" target="_blank" rel="noopener">tide736.net</a> の推算値です。
+  <p class="tide-disclaimer" id="tide-disclaimer">
+    潮汐データは <a href="https://www.data.jma.go.jp/kaiyou/db/tide/suisan/" target="_blank" rel="noopener">気象庁 推算潮位表</a> を使用しています。
     実際の潮位と異なる場合があります。航海には海上保安庁発行の潮汐表をご使用ください。
   </p>
 </section>
@@ -997,17 +997,30 @@
           '<span class="tide-sun">日の出 ' + d.sunrise + '&ensp;日の入 ' + d.sunset + '</span>';
 
         // グラフデータ
-        var floodTimes = new Set(d.flood.map(function(f) { return f.time; }));
-        var ebbTimes   = new Set(d.ebb.map(function(e)   { return e.time; }));
+        // flood/ebb 時刻を最近傍の hourly ラベルに丸める（JMA は整時、旧tide736は20分刻み）
+        function nearestHourLabel(timeStr, labelArr) {
+          var parts = timeStr.split(':');
+          var mins = parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+          var best = labelArr[0], bestDiff = Infinity;
+          labelArr.forEach(function(l) {
+            var p = l.split(':');
+            var lm = parseInt(p[0], 10) * 60 + parseInt(p[1], 10);
+            var diff = Math.abs(lm - mins);
+            if (diff < bestDiff) { bestDiff = diff; best = l; }
+          });
+          return best;
+        }
         var maxCm = Math.max.apply(null, d.hourly.map(function(h) { return h.cm; }));
         var sugMax = Math.ceil(maxCm * 1.2 / 50) * 50;
         var labels = d.hourly.map(function(h) { return h.time; });
         var values = d.hourly.map(function(h) { return h.cm; });
-        var ptR = d.hourly.map(function(h) {
-          return (floodTimes.has(h.time) || ebbTimes.has(h.time)) ? 5 : 0;
+        var floodLabels = new Set(d.flood.map(function(f) { return nearestHourLabel(f.time, labels); }));
+        var ebbLabels   = new Set(d.ebb.map(function(e)   { return nearestHourLabel(e.time, labels); }));
+        var ptR = labels.map(function(l) {
+          return (floodLabels.has(l) || ebbLabels.has(l)) ? 5 : 0;
         });
-        var ptBg = d.hourly.map(function(h) {
-          return floodTimes.has(h.time) ? '#1565C0' : ebbTimes.has(h.time) ? '#E65100' : 'transparent';
+        var ptBg = labels.map(function(l) {
+          return floodLabels.has(l) ? '#1565C0' : ebbLabels.has(l) ? '#E65100' : 'transparent';
         });
 
         // 日の出・日の入り インデックス更新
@@ -1033,6 +1046,7 @@
                 borderColor: '#1a6b9e',
                 backgroundColor: 'rgba(26,107,158,0.12)',
                 fill: true,
+                cubicInterpolationMode: 'monotone',
                 tension: 0.4,
                 pointRadius: ptR,
                 pointBackgroundColor: ptBg,
@@ -1058,7 +1072,9 @@
                   grid: {
                     color: function(context) {
                       var label = context.chart.data.labels[context.index];
-                      return (label && label.endsWith(':00')) ? 'rgba(0,0,0,0.08)' : 'rgba(0,0,0,0)';
+                      if (!label) return 'rgba(0,0,0,0)';
+                      var hour = parseInt(label.split(':')[0], 10);
+                      return (hour % 3 === 0) ? 'rgba(0,0,0,0.08)' : 'rgba(0,0,0,0)';
                     }
                   }
                 },

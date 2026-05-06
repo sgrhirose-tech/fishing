@@ -913,7 +913,7 @@ def _compute_forecast(spot) -> dict:
 
     all_days = score_7days(spot, weather, marine, sst=sst, fetch_km=fetch_km)
 
-    # 潮名を tide736.net キャッシュデータで上書き（フォールバックなし・データなしは "ー"）
+    # 潮名を気象庁推算潮位表データで上書き（フォールバックなし・データなしは "ー"）
     from .tides import get_tide_data
     slug = spot_slug(spot)
     for day in all_days:
@@ -1992,16 +1992,26 @@ def _apply_article_meta_mask(meta: dict) -> dict:
     return meta
 
 
+def _related_spots_list(meta: dict) -> list:
+    """related_spots が文字列でも list でも安全に list[str] を返す。"""
+    val = meta.get("related_spots")
+    if not val:
+        return []
+    return [val] if isinstance(val, str) else list(val)
+
+
 def _build_spot_article_index() -> dict[str, list]:
     """spot_slug → [article_meta, ...] の逆引き辞書を返す。"""
     index: dict[str, list] = {}
     for art in _load_articles():
-        for s in art.get("related_spots") or []:
+        for s in _related_spots_list(art):
             index.setdefault(s, []).append(art)
     return index
 
 
-_SPOT_ARTICLE_INDEX: dict[str, list] = _build_spot_article_index()
+def _get_spot_articles(slug: str) -> list:
+    """指定スポットに紐づく記事をリクエストごとに返す（キャッシュなし）。"""
+    return _build_spot_article_index().get(slug, [])
 
 
 def _load_article_slots(category: str, slug: str) -> list:
@@ -2207,7 +2217,7 @@ def page_article_detail(request: Request, category: str, slug: str):
         pm, _ = _extract_article_meta(p.read_text(encoding="utf-8"), p.stem)
         pm["part_slug"] = p.stem
         part_metas.append(pm)
-    related_spots = [s for rs in (meta.get("related_spots") or []) if (s := load_spot(rs))]
+    related_spots = [s for rs in _related_spots_list(meta) if (s := load_spot(rs))]
     card_image = _article_card_image(category, slug)
     local_card = _ARTICLES_DIR / category / slug / "img" / "card.jpg"
     card_w, card_h = _jpeg_dims(local_card) if local_card.exists() else (1200, 628)
@@ -2250,7 +2260,7 @@ def page_article_part(request: Request, category: str, slug: str, part_slug: str
     parent_masked = False
     if parent_md.exists():
         _pm, _ = _extract_article_meta(parent_md.read_text(encoding="utf-8"), slug)
-        _parent_slugs = _pm.get("related_spots") or []
+        _parent_slugs = _related_spots_list(_pm)
         parent_masked = _is_catch_masked(_pm)
     if parent_masked:
         _apply_article_meta_mask(meta)
@@ -2824,11 +2834,11 @@ def page_spot_detail(
         "spot_description_human":  _desc_human,
         "spot_description":        _spot_desc_fallback,
         "meta_description":   meta_description,
-        "related_articles":   [_a for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") != "report"],
+        "related_articles":   [_a for _a in _get_spot_articles(slug) if _a.get("category") != "report"],
         "related_reports":    [{**_a,
                                 "catch_display": _parse_catch(_a.get("catch") or [], _FISH_MASTER, article_updated=_a.get("updated")),
                                 "updated_jp": (datetime.strptime(_a["updated"], "%Y-%m-%d").strftime("%Y年%m月%d日") if _a.get("updated") else "")}
-                               for _a in _SPOT_ARTICLE_INDEX.get(slug, []) if _a.get("category") == "report"],
+                               for _a in _get_spot_articles(slug) if _a.get("category") == "report"],
         "blog_posts":         blog_posts,
         "is_kinshi":          is_kinshi,
         "kinshi_nearby":      kinshi_nearby,
