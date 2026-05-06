@@ -333,6 +333,19 @@ def _is_valid_time(s: str) -> bool:
     return 0 <= hh <= 23 and 0 <= mm <= 59
 
 
+def _parse_hourly(line: str) -> list[dict]:
+    """bytes 0-71 から時別潮位 24点（整時ごと）をパース。"""
+    hourly = []
+    for i in range(24):
+        h_str = line[i * 3:(i + 1) * 3]
+        try:
+            cm = int(h_str)
+        except ValueError:
+            continue
+        hourly.append({"time": f"{i:02d}:00", "cm": float(cm)})
+    return hourly
+
+
 def _parse_tide_slots(line: str, start: int) -> list[dict]:
     """line[start:start+28] から4スロット（各7文字: HHMM + 3桁cm）をパース。"""
     entries = []
@@ -378,9 +391,10 @@ def parse_jma_text(content: str, station_code: str, year: int) -> dict:
             continue
 
         date_str = f"{full_year:04d}-{mo:02d}-{dy:02d}"
-        flood = _parse_tide_slots(line, 80)
-        ebb   = _parse_tide_slots(line, 108)
-        days[date_str] = {"flood": flood, "ebb": ebb}
+        hourly = _parse_hourly(line)
+        flood  = _parse_tide_slots(line, 80)
+        ebb    = _parse_tide_slots(line, 108)
+        days[date_str] = {"flood": flood, "ebb": ebb, "hourly": hourly}
 
     info = JMA_STATIONS.get(station_code)
     return {
