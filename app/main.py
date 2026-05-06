@@ -2556,6 +2556,109 @@ def page_area(request: Request, pref_slug: str, area_slug: str):
     })
 
 
+
+
+# ── 市町村ページ SEO タイトル・ディスクリプション ───────────────────────────────────
+
+_PATTERN_SEO_ORDER = ["family", "casting", "rocky", "eging", "easyport"]
+
+_PATTERN_SEO_LABELS: dict[str, tuple[str, str]] = {
+    "family":   ("ファミリー", "家族連れ"),
+    "casting":  ("投げ釣り",   "投げ釣り"),
+    "rocky":    ("磯釣り",     "磯釣り"),
+    "eging":    ("エギング",   "エギング"),
+    "easyport": ("堤防釣り",   "堤防釣り"),
+}
+
+def _build_city_seo(city_name: str, spot_count: int, patterns: list[dict]) -> dict:
+    """市町村ページの SEO 用タイトルサフィックス・OG タイトル・ディスクリプションを生成する。"""
+    ordered = sorted(patterns,
+                     key=lambda p: _PATTERN_SEO_ORDER.index(p["id"])
+                     if p["id"] in _PATTERN_SEO_ORDER else 99)
+    top3 = ordered[:3]
+    if not top3:
+        return {}
+
+    t_parts, d_parts = [], []
+    for p in top3:
+        title_lbl, desc_lbl = _PATTERN_SEO_LABELS.get(p["id"], ("", ""))
+        if title_lbl:
+            t_parts.append(title_lbl)
+        spots = p["spots"]
+        spot_text = "・".join(s["name"] for s in spots[:2])
+        if len(spots) > 2:
+            spot_text += "など"
+        if desc_lbl and spot_text:
+            d_parts.append(f"{desc_lbl}なら{spot_text}")
+
+    suffix = "・".join(t_parts) + " 目的別ガイド"
+    seo_desc = (
+        f"{city_name}の釣り場{spot_count}か所を目的別に整理。"
+        + "、".join(d_parts) + "。"
+        + "各スポットで1週間分の天気・波高・潮汐情報を毎日更新。"
+    )
+    return {
+        "title_suffix": suffix,
+        "og_title":     f"{city_name}の釣り場{spot_count}か所｜{suffix}",
+        "seo_desc":     seo_desc,
+    }
+
+
+# ── 市町村ページ「おすすめスポット」パターン ────────────────────────────────────────
+
+def _pat_family(s: dict) -> bool:
+    clf   = s.get("classification", {})
+    flags = set(clf.get("secondary_flags", []))
+    return (clf.get("primary_type") in ("fishing_facility", "breakwater")
+            and bool(flags & {"parking_nearby", "marina", "pier"}))
+
+def _pat_casting(s: dict) -> bool:
+    clf = s.get("classification", {})
+    pf  = s.get("physical_features", {})
+    return (clf.get("primary_type") == "sand_beach"
+            and pf.get("seabed_type") == "sand"
+            and bool(set(s.get("target_fish", [])) & {"shirogisu", "hirame", "magochi", "karei"}))
+
+def _pat_easyport(s: dict) -> bool:
+    clf = s.get("classification", {})
+    return (clf.get("primary_type") in ("fishing_facility", "breakwater")
+            and bool(set(s.get("target_fish", [])) & {"aji", "karei", "mebaru", "haze"}))
+
+def _pat_rocky(s: dict) -> bool:
+    clf = s.get("classification", {})
+    pf  = s.get("physical_features", {})
+    return ((clf.get("primary_type") == "rocky_shore" or pf.get("seabed_type") == "rock")
+            and bool(set(s.get("target_fish", [])) & {"kurodai", "mejina"}))
+
+def _pat_eging(s: dict) -> bool:
+    clf = s.get("classification", {})
+    return ("aoriika" in s.get("target_fish", [])
+            and clf.get("primary_type") in ("rocky_shore", "breakwater"))
+
+_SPOT_PATTERNS: list[dict] = [
+    {"id": "family",   "label": "アクセス良好・ファミリー向け",         "desc": "駐車場や桟橋があって足場の良い釣り場",                 "rule": _pat_family},
+    {"id": "casting",  "label": "砂浜の投げ釣り（キス・ヒラメ）",       "desc": "広い砂浜からキス・ヒラメ・マゴチを狙う",               "rule": _pat_casting},
+    {"id": "easyport", "label": "漁港・堤防でのんびり（アジ・カレイ）", "desc": "堤防や漁港でサビキ・ちょい投げを楽しむ",               "rule": _pat_easyport},
+    {"id": "rocky",    "label": "磯・岩礁での本格釣り（クロダイ・メジナ）", "desc": "岩場や磯からクロダイ・メジナを狙う上級者向け",     "rule": _pat_rocky},
+    {"id": "eging",    "label": "エギング・アオリイカ（磯・堤防）",     "desc": "磯や堤防からアオリイカをエギで狙う",                   "rule": _pat_eging},
+]
+
+def _is_fishing_banned(s: dict) -> bool:
+    lead = (s.get("info") or {}).get("lead_text", "") or ""
+    return lead.startswith("この釣り場は") and "禁止" in lead
+
+
+def _apply_spot_patterns(spots: list[dict]) -> list[dict]:
+    """釣り禁止スポットを除外してパターンを適用し、2件以上マッチしたものだけ返す。"""
+    active = [s for s in spots if not _is_fishing_banned(s)]
+    result = []
+    for p in _SPOT_PATTERNS:
+        matched = [s for s in active if p["rule"](s)]
+        if len(matched) >= 2:
+            result.append({"id": p["id"], "label": p["label"], "desc": p["desc"], "spots": matched})
+    return result
+
+
 @app.get("/{pref_slug}/{area_slug}/{city_slug}/", response_class=HTMLResponse)
 def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
     all_spots = load_spots()
@@ -2602,6 +2705,8 @@ def page_city(request: Request, pref_slug: str, area_slug: str, city_slug: str):
         "top_fish_jp": _seo["top_fish_jp"],
         "intro_text": "".join(_intro),
         "page_lead": _PAGE_LEADS.get(f"{pref_slug}/{area_slug}/{city_slug}", ""),
+        "patterns":  (patterns := _apply_spot_patterns(spots)),
+        "city_seo":  _build_city_seo(city_name, _spot_count, patterns),
     })
 
 
